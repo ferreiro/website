@@ -1,31 +1,37 @@
 var menu = $('.menu');
 var footer = $('footer');
+var ss = sessionStorage;
 
-function animate_about() {
-    var about = $('.about');
+function animateMainContainer() {
+    var mainContainer = $('#mainContainer');
 
-    if (menu.length) {
-      menu.addClass('animated fadeInDownBig');
+    console.log(ss.disabledMenuEffect !== true);
+
+    if (footer.length) {
       footer.hide(0).delay(1200).show(0);
     }
-    if (about.length) {
-      about.hide(0).delay(900).show(0).addClass('animated fadeInUp');
+    if (ss.disabledMenuEffect != "true" && menu.length) {
+      ss.disabledMenuEffect = "true"; // Don't repeat the header effect every load.
+      menu.addClass('animated fadeInDownBig');
+    }
+    if (mainContainer.length) {
+      mainContainer.hide(0).delay(900).show(0).addClass('animated fadeInUp');
     }
 
 
 }
 
 $(document).ready(function(){
-  animate_about();
+  animateMainContainer();
   // animate_menu();
-  // animate_about();
+  // animate_main-container();
 });
 
 
 /// HOME ///
 // Check if the div is in the window.
 //
-// function animate_about() {
+// function animate_main-container() {
 //
 //   var h1 = $('h1');
 //   var h2 = $('h2');
@@ -71,11 +77,11 @@ $(document).ready(function(){
 //
 // }
 //
-// function animate_about() {
-//   var about = $('.about');
-//   if (about.length) {
-//     about.delay(2000);
+// function animate_main-container() {
+//   var main-container = $('.main-container');
+//   if (main-container.length) {
+//     main-container.delay(2000);
 //     $('h1').addClass('animated fadeInUp');
-//     about.addClass('animated fadeInUp');
+//     main-container.addClass('animated fadeInUp');
 //   }
 // }
