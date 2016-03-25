@@ -31,10 +31,79 @@ h1 {
   color: #d83902;
 }
 h2 {
-  font-size: 2em;
+  font-size: 1.6em;
+  font-weight: 400;
+  margin-bottom: 0.3em;
 }
 h3 {
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 1.5em 0;
+}
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+.tags li {
+  float: left;
+}
+.tag {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+  text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+.tag-first {
+  width: 70px;
+  color: #fff;
+  background: #888888;
+  margin-right: 15px;
+}
+.tag-transparent {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  margin-left: 0 !important;
+  background: transparent !important;
+}
+.tag-transparent:hover {
+  color: #222 !important;
+}
+.tag-transparent::before {
+  content: none !important;
+}
+.tag-transparent::after {
+  content: none !important;
+}
+.tag::before {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+  content: '';
+  height: 6px;
+  left: 10px;
+  position: absolute;
+  width: 6px;
+  top: 10px;
+}
+.tag::after {
+  background: #fff;
+  border-bottom: 13px solid transparent;
+  border-left: 10px solid #eee;
+  border-left-color: #888888;
+  border-top: 13px solid transparent;
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .container {
   width: 100%;
@@ -147,5 +216,29 @@ h3 {
 .dropdown-content a:hover {
   font-weight: bold;
 }
-
-/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
+.about {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+.about-avatar {
+  width: 170px;
+  height: 170px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  background-size: cover;
+  margin: 0 auto;
+  margin-bottom: 1.8em;
+}
+.about-avatar img {
+  width: 100%;
+}
+.about h1 {
+  text-align: center;
+  margin-bottom: 0.5em;
+}

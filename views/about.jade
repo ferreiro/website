@@ -4,25 +4,62 @@ block content
 
   .about
     .about-avatar
-      img(src="https://pbs.twimg.com/profile_images/677744015098454016/z0qWB_0S_400x400.jpg")
+      img(src="/images/avatar.png")
     .about-content
       h1 Jorge Ferreiro
       h2 <strong>Full Stack</strong> Developer & <strong>Software Engineer</strong>
-      h2 Studying Computer Science Degree <i>(in English)</i>
-      h2 <a href='http://www.github.com/ferreiro' target='_blank'>Coding</a> and <a href="https://soundcloud.com/jgferreiro" target="_blank">Music</a> passionist.
+      h2 Studying Computer Science <i>(in English)</i>
+      h2 Passionate on <a href='http://www.github.com/ferreiro' target='_blank'>Coding</a> and <a href="https://soundcloud.com/jgferreiro" target="_blank">Music</a>.
 
-      .presentation-skills
-        h3.presentation-skills-title Programming Skills:
+      h3 Programming Skills:
 
-        ul.presentation-skills-list
-          li.presentation-skills-list-entry
-            <p><b><span class="tag-backend">Backend:</span></b> Python, Node.JS, Java, C++</p>
 
-          li.presentation-skills-list-entry
-            <p><b><span class="tag-frontend">Frontend:</span></b> Javascript, HTML5, CSS3 (Less.JS/Stylus).</p>
+      ul(class="tags")
+        li
+          a.tag.tag-first Backend
+        li
+          a.tag.tag-transparent Python
+        li
+          a.tag.tag-transparent Node.JS
+        li
+          a.tag.tag-transparent Java
+        li
+          a.tag.tag-transparent C++
 
-          li.presentation-skills-list-entry
-            <p><b><span class="tag-frontend">Databases:</span></b> MongoDB, Oracle, SQLite3.</p>
 
-          li.presentation-skills-list-entry
-            <p><b>Tools:</b> GIT, Bash, Mocha.JS (testing), Gulp.</p>
+      ul(class="tags")
+        li
+          a.tag.tag-first Databases
+        li
+          a.tag.tag-transparent MongoDB
+        li
+          a.tag.tag-transparent Oracle
+        li
+          a.tag.tag-transparent SQLite3
+
+      ul(class="tags")
+        li
+          a.tag.tag-first Frontend
+        li
+          a.tag.tag-transparent Javascript
+        li
+          a.tag.tag-transparent HTML5
+        li
+          a.tag.tag-transparent CSS3
+        li
+          a.tag.tag-transparent Less.JS/Stylus
+
+      ul(class="tags")
+        li
+          a.tag.tag-first Tools
+        li
+          a.tag.tag-transparent GIT
+        li
+          a.tag.tag-transparent Bash
+        li
+          a.tag.tag-transparent Mocha.JS
+        li
+          a.tag.tag-transparent Gulp
+
+
+      #{repositories}
