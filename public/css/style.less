@@ -22,8 +22,19 @@ body {
 	margin-right: 0.5em;
 }
 
+.primaryColor { 
+	color: @primaryColor;
+}
+
 .secundaryColor { 
 	color: @secundaryColor;
+}
+
+.separator {
+	width: 100%;
+	height: 1px;
+	background: #f4f4f4;
+	margin: 1em 0;
 }
 
 // Core variables and mixins
@@ -32,10 +43,11 @@ body {
 
 /// ELEMENTS ///
 
-@import "./elements/texts";
+@import "./elements/breadcrumb";
 @import "./elements/buttons";
 @import "./elements/input";
 @import "./elements/tags";
+@import "./elements/texts";
 
 /// COLLECTIONS ///
 

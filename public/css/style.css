@@ -18,59 +18,40 @@ body {
 .extra-margin {
   margin-right: 0.5em;
 }
+.primaryColor {
+  color: #d83902;
+}
 .secundaryColor {
   color: #000000;
 }
-p,
-a,
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: #000000;
-  margin: 0;
-  padding: 0;
+.separator {
+  width: 100%;
+  height: 1px;
+  background: #f4f4f4;
+  margin: 1em 0;
 }
-h1 {
-  font-size: 2.6em;
-  color: #d83902;
+.breadcrumb {
+  width: 100%;
+  display: inline-block;
 }
-@media all and (min-width: 800px) {
-  
+.breadcrumb-parent {
+  display: inline-block;
+  margin-right: 0.3em;
+  font-weight: 600;
 }
-@media all and (min-width: 900px) {
-  h1 {
-    font-size: 3em;
-  }
+.breadcrumb-parent a {
+  text-decoration: none;
 }
-@media all and (min-width: 1300px) {
-  h1 {
-    font-size: 4em;
-  }
+.breadcrumb-parent a:hover {
+  text-decoration: underline;
 }
-h2 {
-  font-size: 1.2em;
+.breadcrumb-divider {
   font-weight: 400;
-  margin-bottom: 0.3em;
+  display: inline-block;
 }
-@media all and (min-width: 800px) {
-  h2 {
-    font-size: 1.4em;
-  }
-}
-@media all and (min-width: 900px) {
-  h2 {
-    font-size: 1.6em;
-  }
-}
-@media all and (min-width: 1300px) {
-  
-}
-h3 {
-  font-size: 1.2em;
-  font-weight: 400;
-  margin: 1.5em 0;
+.breadcrumb-current {
+  width: 100%;
+  display: inline-block;
 }
 .tags {
   list-style: none;
@@ -142,6 +123,57 @@ h3 {
   position: absolute;
   right: 0;
   top: 0;
+}
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 2.6em;
+  color: #d83902;
+}
+@media all and (min-width: 800px) {
+  
+}
+@media all and (min-width: 900px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+@media all and (min-width: 1300px) {
+  h1 {
+    font-size: 4em;
+  }
+}
+h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-bottom: 0.3em;
+}
+@media all and (min-width: 800px) {
+  h2 {
+    font-size: 1.4em;
+  }
+}
+@media all and (min-width: 900px) {
+  h2 {
+    font-size: 1.6em;
+  }
+}
+@media all and (min-width: 1300px) {
+  
+}
+h3 {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 1.5em 0;
 }
 .logo {
   width: 67px;

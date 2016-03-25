@@ -3,12 +3,23 @@
   display: inline-block;
 
   &-parent {
+    display: inline-block;
+    margin-right: 0.3em;
+    font-weight: 600;
 
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   &-divider {
+    font-weight: 400;
     display: inline-block;
   }
   &-current {
-
+    width: 100%;
+    display: inline-block;
   }
 }
