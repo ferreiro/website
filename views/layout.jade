@@ -23,10 +23,10 @@ html
         a.logo(href="/about")
             <img src="/images/logo.jpg">
 
-        a.item(href="/about")
+        a.item(href="/about", class="#{path==='about'?'item-selected':''}")
           p About Jorge Ferreiro
 
-        a.item(href="/projects")
+        a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
           p Projects &amp; Works
 
         .right

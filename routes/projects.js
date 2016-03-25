@@ -4,7 +4,10 @@ var router = express.Router();
 /* GET users listing. */
 
 router.get('/', function(req, res, next) {
-  res.render('projects', { title: 'About Jorge Ferreiro - Full Stack Developer' });
+  res.render('projects', {
+    title: 'About Jorge Ferreiro - Full Stack Developer',
+    path: 'projects'
+  });
 });
 
 /* GET users listing. */
