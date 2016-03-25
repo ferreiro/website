@@ -6,6 +6,7 @@ body {
 }
 .fixed {
   position: fixed;
+  top: 0;
 }
 .right {
   display: inline-block;
@@ -35,6 +36,9 @@ h2 {
 h3 {
   font-size: 1em;
 }
+.container {
+  width: 100%;
+}
 @media all and (min-width: 0) {
   
 }
@@ -46,10 +50,30 @@ h3 {
 }
 @media all and (min-width: 1300px) {
   .container {
-    width: 900px;
-    padding: 0 2em;
+    width: 1300px;
+    padding: 0;
     margin: 0 auto;
-    display: block;
+  }
+}
+.container_wrap {
+  margin: 0 auto;
+  margin-top: 67px !important;
+}
+@media all and (min-width: 0) {
+  
+}
+@media all and (min-width: 800px) {
+  
+}
+@media all and (min-width: 900px) {
+  .container_wrap {
+    padding: 2em;
+  }
+}
+@media all and (min-width: 1300px) {
+  .container_wrap {
+    padding: 0;
+    padding-top: 2em;
   }
 }
 .logo {

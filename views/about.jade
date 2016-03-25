@@ -2,9 +2,27 @@ extends layout
 
 block content
 
-  img(src="https://pbs.twimg.com/profile_images/677744015098454016/z0qWB_0S_400x400.jpg")
+  .about
+    .about-avatar
+      img(src="https://pbs.twimg.com/profile_images/677744015098454016/z0qWB_0S_400x400.jpg")
+    .about-content
+      h1 Jorge Ferreiro
+      h2 <strong>Full Stack</strong> Developer & <strong>Software Engineer</strong>
+      h2 Studying Computer Science Degree <i>(in English)</i>
+      h2 <a href='http://www.github.com/ferreiro' target='_blank'>Coding</a> and <a href="https://soundcloud.com/jgferreiro" target="_blank">Music</a> passionist.
 
-  h1 Jorge Ferreiro
-  h2 <strong>Full Stack</strong> Developer & <strong>Software Engineer</strong>
-  h2 Studying Computer Science Degree <i>(in English)</i>
-  h2 <a href='http://www.github.com/ferreiro' target='_blank'>Coding</a> and <a href="https://soundcloud.com/jgferreiro" target="_blank">Music</a> passionist.
+      .presentation-skills
+        h3.presentation-skills-title Programming Skills:
+
+        ul.presentation-skills-list
+          li.presentation-skills-list-entry
+            <p><b><span class="tag-backend">Backend:</span></b> Python, Node.JS, Java, C++</p>
+
+          li.presentation-skills-list-entry
+            <p><b><span class="tag-frontend">Frontend:</span></b> Javascript, HTML5, CSS3 (Less.JS/Stylus).</p>
+
+          li.presentation-skills-list-entry
+            <p><b><span class="tag-frontend">Databases:</span></b> MongoDB, Oracle, SQLite3.</p>
+
+          li.presentation-skills-list-entry
+            <p><b>Tools:</b> GIT, Bash, Mocha.JS (testing), Gulp.</p>
