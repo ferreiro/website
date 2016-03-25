@@ -33,7 +33,7 @@ body {
 .loader {
   width: 100%;
   height: 100%;
-  background: #ffffff url("../../bower_components/SVG-Loaders/svg-loaders/three-dots.svg");
+  background: #ffffff url("../images/three-dots.svg");
   background-repeat: no-repeat;
   background-size: 60px auto;
   background-position: 50% 50%;
