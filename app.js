@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var projects = require('./routes/projects');
+var social = require('./routes/social');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use('/semantic',  express.static(__dirname + '/semantic'));
 // Routes
 app.use('/', routes);
 app.use('/projects', projects);
+app.use('/social', social);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
