@@ -1,0 +1,39 @@
+body {
+	background: #fff;
+	color: @secundaryColor;
+	font-size: 16px;
+	font-family: 'Lato', sans-serif;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.right {
+	display: inline-block;
+	float: right;
+}
+
+.extra-margin {
+	margin-right: 0.5em;
+}
+
+// Core variables and mixins
+@import "./globals/variables";
+@import "./globals/mixins";
+
+/// ELEMENTS ///
+
+@import "./elements/texts";
+@import "./elements/buttons";
+@import "./elements/input";
+
+/// COLLECTIONS ///
+
+@import "./collections/containers.less";
+@import "./collections/menu.less";
+
+// @import "./collections/menu.less";
+// @import "./collections/containers";
+// @import "./collections/grid";
+//

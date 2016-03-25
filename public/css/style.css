@@ -1,0 +1,127 @@
+body {
+  background: #fff;
+  color: #000000;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+.fixed {
+  position: fixed;
+}
+.right {
+  display: inline-block;
+  float: right;
+}
+.extra-margin {
+  margin-right: 0.5em;
+}
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 3em;
+  color: #d83902;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1em;
+}
+@media all and (min-width: 0) {
+  
+}
+@media all and (min-width: 800px) {
+  
+}
+@media all and (min-width: 900px) {
+  
+}
+@media all and (min-width: 1300px) {
+  .container {
+    width: 900px;
+    padding: 0 2em;
+    margin: 0 auto;
+    display: block;
+  }
+}
+.logo {
+  width: 67px;
+  height: 67px;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+}
+.logo img {
+  height: 67px;
+}
+.menu {
+  width: 100%;
+  min-height: 67px;
+  display: inline-block;
+  background: #ffffff;
+  border-bottom: 1px solid #cecece;
+  vertical-align: middle;
+}
+.with-icon {
+  padding-top: 0.1em !important;
+}
+.item {
+  height: 67px;
+  display: inline-block;
+  position: relative;
+  padding: 0 1.5em;
+  border-right: 1px dashed #cfcfcf;
+  text-decoration: none;
+}
+.item p {
+  font-size: 1.2em;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.item:hover {
+  background: #f9764f;
+  border-color: #d83902;
+}
+.item:hover p {
+  color: #fff;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content {
+  min-width: 100px;
+  padding: 1em;
+  background: #fff;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  display: none;
+}
+.dropdown-content a {
+  width: 100%;
+  padding: 0.5em 0;
+  display: inline-block;
+  text-align: right;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  font-weight: bold;
+}
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

@@ -1,10 +1,62 @@
 doctype html
 html
   head
+
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    // meta(name="description", content="#{description}")
+    // meta(name="author", content="Jorge Ferreiro")*/
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700, 900" rel="stylesheet" type="text/css">
+    link(rel='stylesheet', href='/fonts/ferreiro/style.css')
+    link(rel='stylesheet', href='/css/normalize.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+  body(class="pushable")
+
+
+    .menu.fixed
+      .container
+
+        a.logo(href="/about")
+            <img src="/images/logo.jpg">
+
+        a.item(href="/about")
+          p About Jorge Ferreiro
+
+        a.item(href="/projects")
+          p Projects &amp; Works
+
+        .right
+
+          a.item(href="/contact")
+            p Contact
+
+          .dropdown
+            .item.with-icon
+              p
+                span.icon-address-book.extra-margin
+                span Social
+                .dropdown-content#DropdownSocial
+                  a.dropdown-link(href="http://github.com/ferreiro", target="_blank") Github
+                  a.dropdown-link(href="http://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
+                  a.dropdown-link(href="http://linkedin.com/in/jgferreiro", target="_blank") Linkedin
+                  a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
+
+          .dropdown
+            .item.with-icon
+              p
+                span.icon-paragraph-justify
+                .dropdown-content#DropdownSocial
+                  a.dropdown-link(href="/es") Español
+                  a.dropdown-link(href="/en") English
+
+    .ui.container
+      block content
+
   footer
     p Designed and programmed by<br />Jorge Ferreiro
-    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="javascripts/menu.js"></script>
