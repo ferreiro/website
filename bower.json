@@ -1,0 +1,29 @@
+{
+  "name": "jgferreiro-website",
+  "description": "Personal website",
+  "main": "app.js",
+  "authors": [
+    "Jorge Ferreiro <me@jgferreiro.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "website",
+    "developer",
+    "designer"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "www.jgferreiro.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.2"
+  }
+}
