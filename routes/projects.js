@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.render('projects', {
-    title: 'About Jorge Ferreiro - Full Stack Developer',
+    title: 'Projects &amp; Works',
     path: 'projects'
   });
 });

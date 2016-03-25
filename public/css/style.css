@@ -18,6 +18,9 @@ body {
 .extra-margin {
   margin-right: 0.5em;
 }
+.secundaryColor {
+  color: #000000;
+}
 p,
 a,
 h1,
