@@ -24,6 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^2.2.2"
+    "jquery": "^2.2.2",
+    "SVG-Loaders": "svg-loaders#^1.0.2"
   }
 }
