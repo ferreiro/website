@@ -8,6 +8,9 @@ body {
   position: fixed;
   top: 0;
 }
+.left {
+  display: inline-block;
+}
 .right {
   display: inline-block;
   float: right;
@@ -27,13 +30,39 @@ h5 {
   padding: 0;
 }
 h1 {
-  font-size: 3em;
+  font-size: 2.6em;
   color: #d83902;
 }
+@media all and (min-width: 800px) {
+  
+}
+@media all and (min-width: 900px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+@media all and (min-width: 1300px) {
+  h1 {
+    font-size: 4em;
+  }
+}
 h2 {
-  font-size: 1.6em;
+  font-size: 1.2em;
   font-weight: 400;
   margin-bottom: 0.3em;
+}
+@media all and (min-width: 800px) {
+  h2 {
+    font-size: 1.4em;
+  }
+}
+@media all and (min-width: 900px) {
+  h2 {
+    font-size: 1.6em;
+  }
+}
+@media all and (min-width: 1300px) {
+  
 }
 h3 {
   font-size: 1.2em;
@@ -53,6 +82,7 @@ h3 {
   background: #eee;
   border-radius: 3px 0 0 3px;
   color: #999;
+  color: #000000;
   display: inline-block;
   height: 26px;
   line-height: 26px;
@@ -63,6 +93,14 @@ h3 {
   -webkit-transition: color 0.2s;
 }
 .tag-first {
+  width: 100%;
+}
+@media all and (min-width: 800px) {
+  .tag-first {
+    width: auto !important;
+  }
+}
+.tag-first a {
   width: 70px;
   color: #fff;
   background: #888888;
@@ -73,9 +111,6 @@ h3 {
   padding-right: 5px !important;
   margin-left: 0 !important;
   background: transparent !important;
-}
-.tag-transparent:hover {
-  color: #222 !important;
 }
 .tag-transparent::before {
   content: none !important;
@@ -108,9 +143,6 @@ h3 {
 .container {
   width: 100%;
 }
-@media all and (min-width: 0) {
-  
-}
 @media all and (min-width: 800px) {
   
 }
@@ -125,11 +157,9 @@ h3 {
   }
 }
 .container_wrap {
+  padding: 1em 0;
   margin: 0 auto;
   margin-top: 67px !important;
-}
-@media all and (min-width: 0) {
-  
 }
 @media all and (min-width: 800px) {
   
@@ -142,7 +172,7 @@ h3 {
 @media all and (min-width: 1300px) {
   .container_wrap {
     padding: 0;
-    padding-top: 2em;
+    padding: 2em 0;
   }
 }
 .logo {
@@ -162,9 +192,16 @@ h3 {
   background: #ffffff;
   border-bottom: 1px solid #cecece;
   vertical-align: middle;
+  z-index: 100;
 }
 .with-icon {
   padding-top: 0.1em !important;
+}
+.item-selected {
+  background: #F7F7F7 !important;
+}
+.item-selected p {
+  color: #000 !important;
 }
 .item {
   height: 67px;
@@ -191,9 +228,12 @@ h3 {
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 100;
 }
-.dropdown:hover .dropdown-content {
-  display: block;
+@media all and (max-width: 900px) {
+  .dropdown {
+    display: none !important;
+  }
 }
 .dropdown-content {
   min-width: 100px;
@@ -203,7 +243,7 @@ h3 {
   top: 100%;
   right: 0;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 100;
   display: none;
 }
 .dropdown-content a {
@@ -216,29 +256,59 @@ h3 {
 .dropdown-content a:hover {
   font-weight: bold;
 }
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+#dropdown-mobiles {
+  display: none;
+}
+@media all and (max-width: 900px) {
+  .left {
+    display: none;
+  }
+  #dropdown-mobiles {
+    display: inline-block !important;
+  }
+}
 .about {
   max-width: 500px;
   margin: 0 auto;
-  padding: 2em 0;
+  padding: 2em 1em;
 }
 .about-avatar {
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  background-size: cover;
+  margin: 0 auto;
+  margin-bottom: 2em;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  overflow: hidden;
-  background-size: cover;
-  margin: 0 auto;
-  margin-bottom: 1.8em;
 }
 .about-avatar img {
   width: 100%;
 }
+@media all and (min-width: 800px) {
+  .about-avatar {
+    width: 170px;
+    height: 170px;
+  }
+}
+@media all and (min-width: 900px) {
+  
+}
+@media all and (min-width: 1300px) {
+  
+}
 .about h1 {
   text-align: center;
   margin-bottom: 0.5em;
+}
+.about h2,
+.about h3 {
+  text-align: center;
 }

@@ -1,9 +1,7 @@
 
 .container {
   width: 100%;
-  @media all and (min-width: 0) {
-    // padding: 0 1em;
-  }
+
   @media all and (min-width: @tablet-screen) {
     //padding: 0 2em;
   }
@@ -20,20 +18,18 @@
 }
 
 .container_wrap {
+  padding: 1em 0;
   margin:0 auto;
   margin-top: @logoHeight !important;
-  @media all and (min-width: 0) {
-    // padding: 0 1em;
-  }
+
   @media all and (min-width: @tablet-screen) {
     //padding: 0 2em;
   }
   @media all and (min-width:@desktop-screen) {
-
     padding: 2em;
   }
   @media all and (min-width:@big-screen) {
     padding: 0;
-    padding-top: 2em;
+    padding: 2em 0;
   }
 }

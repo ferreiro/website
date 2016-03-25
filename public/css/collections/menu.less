@@ -15,9 +15,16 @@
   background: @menuColor;
   border-bottom: 1px solid #cecece;
   vertical-align: middle;
+ z-index: 100;
 }
 .with-icon {
   padding-top: 0.1em !important;
+}
+.item-selected {
+  background: #F7F7F7 !important;
+  p {
+    color: #000 !important;
+  }
 }
 .item {
   height: @logoHeight;
@@ -41,34 +48,54 @@
     }
   }
 }
+
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 100;
+
+  @media all and (max-width: @desktop-screen) {
+    display: none !important; // Hide everyhing on mobile
+  }
+
+  &-content {
+    min-width: 100px;
+    padding: 1em;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    display: none;
+
+    a {
+      width: 100%;
+      padding: 0.5em 0;
+      display: inline-block;
+      text-align: right;
+      text-decoration: none;
+
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
 
   &:hover .dropdown-content {
     display: block;
   }
 }
-.dropdown-content {
-  min-width: 100px;
-  padding: 1em;
-  background: #fff;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+
+#dropdown-mobiles {
   display: none;
+}
 
-  a {
-    width: 100%;
-    padding: 0.5em 0;
-    display: inline-block;
-    text-align: right;
-    text-decoration: none;
-
-    &:hover {
-      font-weight: bold;
-    }
+@media all and (max-width: @desktop-screen) {
+  .left {
+    display: none;
+  }
+  #dropdown-mobiles {
+    display: inline-block !important; // This must be inline-block
   }
 }
