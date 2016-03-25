@@ -1,86 +1,91 @@
 doctype html
 html
-  head
+	head
 
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
-    title= title
-    // meta(name="description", content="#{description}")
-    // meta(name="author", content="Jorge Ferreiro")*/
+		title= title
+		// meta(name="description", content="#{description}")
+		// meta(name="author", content="Jorge Ferreiro")*/
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700, 900" rel="stylesheet" type="text/css">
-    link(rel='stylesheet', href='/fonts/ferreiro/style.css')
-    link(rel='stylesheet', href='/css/normalize.css')
-    link(rel='stylesheet', href='/css/style.css')
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,300,700, 900" rel="stylesheet" type="text/css">
+		link(rel='stylesheet', href='/fonts/ferreiro/style.css')
+		link(rel='stylesheet', href='/css/normalize.css')
+		link(rel='stylesheet', href='/css/style.css')
 
-  body(class="pushable")
-
-
-    .menu.fixed
-      .container
-
-        a.logo(href="/about")
-            <img src="/images/logo.jpg">
-
-        .left
-          a.item(href="/about", class="#{path==='about'?'item-selected':''}")
-            p About Jorge Ferreiro
-
-          a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
-            p Projects &amp; Works
-
-        .right
-
-          a.item(href="/contact")#contact
-            p Contact
-
-          .dropdown
-            .item.with-icon
-              p
-                span.icon-address-book.extra-margin
-                span Social
-                .dropdown-content#DropdownSocial
-                  a.dropdown-link(href="http://github.com/ferreiro", target="_blank") Github
-                  a.dropdown-link(href="http://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
-                  a.dropdown-link(href="http://linkedin.com/in/jgferreiro", target="_blank") Linkedin
-                  a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
-
-          .dropdown
-            .item.with-icon
-              p
-                span.icon-paragraph-justify
-                .dropdown-content#DropdownSocial
-                  a.dropdown-link(href="/es") Español
-                  a.dropdown-link(href="/en") English
+	body(class="pushable")
 
 
-          .dropdown#dropdown-mobiles
-            .item.with-icon
-              p
-                span.icon-paragraph-justify
-                .dropdown-content#DropdownSocial
+		.menu.fixed
+			.container
 
-                  a.dropdown-link(href="/about/") About
-                  a.dropdown-link(href="/projects/") Projects
-                  a.dropdown-link(href="/contact/") Contact me
+				a.logo(href="/about")
+						<img src="/images/logo.jpg">
 
-                  h3 Social
-                  a.dropdown-link(href="http://github.com/ferreiro", target="_blank") Github
-                  a.dropdown-link(href="http://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
-                  a.dropdown-link(href="http://linkedin.com/in/jgferreiro", target="_blank") Linkedin
-                  a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
+				.left
+					a.item(href="/about", class="#{path==='about'?'item-selected':''}")
+						p About Jorge Ferreiro
 
-                  h3 Languages
-                  a.dropdown-link(href="/es/") Español
-                  a.dropdown-link(href="/") English
+					a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
+						p Projects &amp; Works
+
+				.right
+
+					a.item(href="/contact")#contact
+						p Contact
+
+					.dropdown
+						.item.with-icon
+							p
+								span.icon-address-book.extra-margin
+								span Social
+								.dropdown-content#DropdownSocial
+									a.dropdown-link(href="http://github.com/ferreiro", target="_blank") Github
+									a.dropdown-link(href="http://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
+									a.dropdown-link(href="http://linkedin.com/in/jgferreiro", target="_blank") Linkedin
+									a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
+
+					.dropdown
+						.item.with-icon
+							p
+								span.icon-paragraph-justify
+								.dropdown-content#DropdownSocial
+									a.dropdown-link(href="/es") Español
+									a.dropdown-link(href="/en") English
 
 
-    .ui.container
-      .container_wrap
-        block content
+					.dropdown#dropdown-mobiles
+						.item.with-icon
+							p
+								span.icon-paragraph-justify
+								.dropdown-content#DropdownSocial
 
-  footer
-    p Designed and programmed by<br />Jorge Ferreiro
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="javascripts/menu.js"></script>
+									a.dropdown-link(href="/about/") About
+									a.dropdown-link(href="/projects/") Projects
+									a.dropdown-link(href="/contact/") Contact me
+
+									h3 Social
+									a.dropdown-link(href="http://github.com/ferreiro", target="_blank") Github
+									a.dropdown-link(href="http://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
+									a.dropdown-link(href="http://linkedin.com/in/jgferreiro", target="_blank") Linkedin
+									a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
+
+									h3 Languages
+									a.dropdown-link(href="/es/") Español
+									a.dropdown-link(href="/") English
+
+
+		.ui.container
+			.container_wrap
+				block content
+
+		footer.container#footer
+			.footer-separator
+			.footer-credits
+
+				p.footer-credits-text Designed &amp; programmed by:
+				p.footer-credits-text <strong>Jorge Ferreiro</strong>
+
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="javascripts/menu.js"></script>
