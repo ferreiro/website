@@ -4,13 +4,16 @@ block content
 
   include ./includes/breadcrumb.jade
   
-  .projects
+  .projects#animate_div
   
-    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);")
+   
+
+            
+    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);").dark_gradient
       .projects_box_content
-        .projects_box_left
+        .projects_box_avatar
           <img src="images/projects/dotfiles.png">
-        .projects_box_right
+        .projects_box_middle
           h1 JF Dotfiles
           p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
           .projects_box_technologies
@@ -24,4 +27,41 @@ block content
             span.icon-web
             span See webpage
         
+    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);").main_gradient
+      .projects_box_content
+        .projects_box_avatar
+          <img src="images/projects/dotfiles.png">
+        .projects_box_middle
+          h1 JF Dotfiles
+          p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
+          .projects_box_technologies
+            span Bash
+            span Mark Down
+            
+          a.button(href="#")
+            span.icon-github
+            span Open Source Repository
+          a.button(href="#")
+            span.icon-web
+            span See webpage
+                
+    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);").light_gradient
+      .projects_box_content
+        .projects_box_avatar
+          <img src="images/projects/dotfiles.png">
+        .projects_box_middle
+          h1 JF Dotfiles
+          p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
+          .projects_box_technologies
+            span Bash
+            span Mark Down
+            
+          a.button(href="#")
+            span.icon-github
+            span Open Source Repository
+          a.button(href="#")
+            span.icon-web
+            span See webpage
+
+
   
