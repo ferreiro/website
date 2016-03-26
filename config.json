@@ -1,0 +1,6 @@
+{
+  "gmail": {
+    "user": "landcreativaContactForm@gmail.com",
+    "password": "process.env.GMAIL_PASSWD"
+  }
+}
