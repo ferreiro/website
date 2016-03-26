@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		include ./head.jade
+
+	body(class="pushable")
+
+		.loader#loader
+
+		include ./menu.jade
+		
+		div(style="margin-top:90px;")
+		block content
+		
+		include ./footer.jade

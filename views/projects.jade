@@ -3,5 +3,25 @@ extends ./includes/layout
 block content
 
   include ./includes/breadcrumb.jade
-
+  
+  .projects
+  
+    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);")
+      .projects_box_content
+        .projects_box_left
+          <img src="images/projects/dotfiles.png">
+        .projects_box_right
+          h1 JF Dotfiles
+          p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
+          .projects_box_technologies
+            span Bash
+            span Mark Down
+            
+          a.button(href="#")
+            span.icon-github
+            span Open Source Repository
+          a.button(href="#")
+            span.icon-web
+            span See webpage
+        
   

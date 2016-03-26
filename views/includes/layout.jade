@@ -1,22 +1,7 @@
 doctype html
 html
 	head
-
-		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
-
-		title= title
-		// meta(name="description", content="!{description}")
-		// meta(name="author", content="Jorge Ferreiro")*/
-
-		<link href="https://fonts.googleapis.com/css?family=Lato:400,300,700, 900" rel="stylesheet" type="text/css">
-		link(rel='stylesheet', href='/fonts/ferreiro/style.css')
-		link(rel='stylesheet', href='/css/normalize.css')
-		link(rel='stylesheet', href='/css/style.css')
-		
-		// Installed libraries
-		link(rel="stylesheet", href="/css_libs/animate.min.css")
-		link(rel="stylesheet", href="/css_libs/hover-minn.css")
+		include ./head.jade
 
 	body(class="pushable")
 
@@ -27,16 +12,5 @@ html
 		.ui.container#mainContainer
 			.container_wrap
 				block content
-
-		footer.container#footer
-			.footer-separator
-			.footer-credits
-
-				p.footer-credits-text Designed &amp; programmed by:
-				p.footer-credits-text <strong>Jorge Ferreiro</strong>
-				<div class="footer-logo"><div class="footer-logo-square"><a href="#top" title="Jorge Ferreiro" class="header-logo-square-link"></a></div><div class="footer-logo-square"><a href="#top" title="Jorge Ferreiro" class="header-logo-square-link"></a></div></div>
-
-		<script src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="javascripts/loader.js"></script>
-		<script src="javascripts/menu.js"></script>
-		<script src="javascripts/animations.js"></script>
+		
+		include ./footer.jade
