@@ -4,6 +4,11 @@ body {
   font-size: 16px;
   font-family: 'Lato', sans-serif;
 }
+.sectionWrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2em 1em;
+}
 .fixed {
   position: fixed;
   top: 0;
@@ -44,7 +49,7 @@ body {
 }
 .breadcrumb {
   width: 100%;
-  display: inline-block;
+  display: block;
 }
 .breadcrumb-parent {
   display: inline-block;
@@ -64,6 +69,39 @@ body {
 .breadcrumb-current {
   width: 100%;
   display: inline-block;
+}
+.button {
+  display: inline-block;
+  color: $color_text;
+  border: 2px solid #F4F4F4;
+  padding: 20px 20px;
+  background: transparent;
+  outline: 0;
+}
+.button:hover {
+  border-color: #D4D4D4;
+  background: transparent;
+}
+.send_margin {
+  margin-top: 0.5em;
+}
+.send {
+  border-width: 4px;
+  border: 4px dotted #cecece;
+  border-color: #f9764f;
+  border-color: #cfcfcf;
+  padding: 25px 20px;
+  box-shadow: inset 0 0 0 0 #000000;
+  -webkit-transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.send:hover {
+  color: #fff;
+  border-color: #000000;
+  box-shadow: inset 0 100px 0 0 #000000;
 }
 .tags {
   list-style: none;
@@ -186,6 +224,49 @@ h3 {
   font-size: 1.2em;
   font-weight: 400;
   margin: 1.5em 0;
+}
+fieldset {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: inline-block;
+}
+input,
+textarea {
+  width: 100%;
+  font-size: 1.3em;
+  border: 2px solid #cecece;
+  padding: 20px 0;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 0 10px 0;
+  display: block;
+  outline: 0;
+}
+input.wrong,
+textarea.wrong {
+  border-color: ;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.8);
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+
+  color: rgba(0, 0, 0, 0.8);
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+
+  color: rgba(0, 0, 0, 0.8);
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.8);
 }
 .logo {
   width: 67px;
@@ -368,11 +449,6 @@ h3 {
     padding: 2em 0;
   }
 }
-.about {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 2em 1em;
-}
 .about-avatar {
   width: 150px;
   height: 150px;
@@ -415,4 +491,10 @@ h3 {
 .about h2,
 .about h3 {
   text-align: center;
+}
+.contact-form {
+  margin-top: 2em;
+}
+.contact-form-fieldset {
+  margin-bottom: 0.4em;
 }

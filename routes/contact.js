@@ -5,7 +5,8 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.render('contact', {
-    title: 'Contact me'
+    title: 'Contact me',
+    path: 'contact'
   });
 });
 

@@ -1,9 +1,10 @@
 var menu = $('.menu');
 var footer = $('footer');
+var sectionHeader = $('#sectionHeader');
 var ss = sessionStorage;
 
 function animateMainContainer() {
-    var mainContainer = $('#mainContainer');
+    var mainContainer = $('#animate_div');
 
     console.log(ss.disabledMenuEffect !== true);
 
@@ -14,10 +15,12 @@ function animateMainContainer() {
       ss.disabledMenuEffect = "true"; // Don't repeat the header effect every load.
       menu.addClass('animated fadeInDownBig');
     }
+    if (sectionHeader.length) {
+      sectionHeader.hide(0).delay(300).show(0).addClass('animated flipInX');
+    }
     if (mainContainer.length) {
       mainContainer.hide(0).delay(900).show(0).addClass('animated fadeInUp');
     }
-
 
 }
 

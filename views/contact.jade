@@ -4,20 +4,28 @@ block content
 
 	include ./includes/breadcrumb.jade
 	
-	.contact
-		form(action='/contact/send', method='post', autocomplete="off")#contactform
-			
-			fieldset.contact-fieldset
-				.contact-fieldset-data
-					input(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact-fieldset-input
-			
-			fieldset.contact-fieldset
-				.contact-fieldset-data
-					input(type='name', id='email', name='contact_email', placeholder='And your email?').contact-fieldset-input
-					
-			fieldset.contact-fieldset
-				.contact-fieldset-data
-					textarea(type='name', id='email', name='contact_msg', placeholder='Write your message... :)').contact-fieldset-input
-					
-			fieldset.contact-fieldset.contact-fieldset-nomargin
-				input(type="submit", value="Contact me").button-orange
+	.sectionWrapper#animate_div
+
+		.contact
+		
+			h2 Do you have a project, job offer, an event or just want to say hi? Ping me in the form below and I'll reply you in < 24h. :)
+		
+			form.contact-form(action='/contact/send', method='post', autocomplete="off")#contactform
+				
+				fieldset.contact-form-fieldset
+					.contact-fieldset-data
+						//p Name (*)
+						input(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact-fieldset-input
+						
+						
+				fieldset.contact-form-fieldset
+					.contact-fieldset-data
+						//p Email (you'll be replied to this email)
+						input(type='name', id='email', name='contact_email', placeholder='And your email?').contact-fieldset-input
+						
+				fieldset.contact-form-fieldset
+					.contact-fieldset-data
+						textarea(type='name', id='email', name='contact_msg', placeholder='Write your message... :)').contact-fieldset-input
+						
+				fieldset.contact-form-fieldset.contact-fieldset-nomargin
+					input(type="submit", value="Contact me").button.send.send_margin
