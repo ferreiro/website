@@ -28,7 +28,7 @@ router.post('/send', function(req, res, next) {
       , contactForm
       , mailOptions;
 
-    gmailUser = config.gmail.user;
+    gmailUser = process.env.GMAIL_USER;
     gmailPassword = process.env.GMAIL_PASSWD; // get from Enviroments
 
     console.log(gmailPassword)
