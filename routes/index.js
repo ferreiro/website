@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/about', function(req, res, next) {
   res.render('about', {
-    title: 'About Jorge Ferreiro - Full Stack Developer',
+    title: 'About me',
     path: 'about'
   });
 });
