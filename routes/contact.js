@@ -31,8 +31,6 @@ router.post('/send', function(req, res, next) {
     gmailUser = process.env.GMAIL_USER;
     gmailPassword = process.env.GMAIL_PASSWD; // get from Enviroments
 
-    console.log(gmailPassword)
-
     contactForm = {
       sent: false,
       name: req.body.contact_name,
