@@ -11,10 +11,9 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "gulp": "^3.9.1",
-    "handlebars": "^4.0.5",
-    "hbs": "^4.0.0",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "nodemailer": "^2.3.0",
     "semantic-ui": "^2.1.8",
     "serve-favicon": "~2.3.0"
   },
