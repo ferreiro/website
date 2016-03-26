@@ -3,7 +3,7 @@ var footer = $('footer');
 var sectionHeader = $('#sectionHeader');
 var ss = sessionStorage;
 
-var animations = ['fadeInDownBig', 'rollIn',"zoomIn", 'flipInY', 'fadeInUpBig']
+var animations = ['fadeInDownBig', 'rollIn',"zoomIn", 'flipInY', 'fadeInUpBig', 'bounceIn']
 
 function animateMainContainer() {
     var mainContainer = $('#animate_div');
