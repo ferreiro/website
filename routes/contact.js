@@ -28,6 +28,11 @@ router.post('/send', function(req, res, next) {
       , contactForm
       , mailOptions;
 
+    gmailUser = config.gmail.user;
+    gmailPassword = process.env.GMAIL_PASSWD; // get from Enviroments
+
+    console.log(gmailPassword)
+
     contactForm = {
       sent: false,
       name: req.body.contact_name,
@@ -53,8 +58,8 @@ router.post('/send', function(req, res, next) {
     transporter = nodemailer.createTransport({
   	    service: 'Gmail',
   	    auth: {
-  	        user: config.gmail.user,
-  	        pass: config.gmail.password
+  	        user: gmailUser,
+  	        pass: gmailPassword
   	    }
   	});
 
