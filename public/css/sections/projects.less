@@ -21,34 +21,33 @@
 
       opacity: 0.97;
 
-      background: linear-gradient(270deg, #672572, #dc06ff);
+      background: linear-gradient(270deg, #d83902, #ac360d);
       background-size: 400% 400%;
-
-      -webkit-animation: AnimationName 11s ease infinite;
-      -moz-animation: AnimationName 11s ease infinite;
-      -o-animation: AnimationName 11s ease infinite;
-      animation: AnimationName 11s ease infinite;
-
+      -webkit-animation: AnimationName 22s ease infinite;
+      -moz-animation: AnimationName 22s ease infinite;
+      -o-animation: AnimationName 22s ease infinite;
+      animation: AnimationName 22s ease infinite;
       @-webkit-keyframes AnimationName {
-         0%{background-position:0% 50%}
-         50%{background-position:100% 50%}
-         100%{background-position:0% 50%}
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
       }
       @-moz-keyframes AnimationName {
-         0%{background-position:0% 50%}
-         50%{background-position:100% 50%}
-         100%{background-position:0% 50%}
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
       }
       @-o-keyframes AnimationName {
-         0%{background-position:0% 50%}
-         50%{background-position:100% 50%}
-         100%{background-position:0% 50%}
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
       }
       @keyframes AnimationName {
-         0%{background-position:0% 50%}
-         50%{background-position:100% 50%}
-         100%{background-position:0% 50%}
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
       }
+
     }
 
     &_content {
@@ -59,33 +58,35 @@
       vertical-align: top;
       display: inline-block;
     }
-
-    &_left {
-      width: 200px;
-      display: inline-block;
-      vertical-align: top;
-      display: inline-block;
-      margin-right: 3em;
-
-      @media all and (min-width: @tablet-screen) {
-          width: 300px;
-      }
-      @media all and (min-width:@desktop-screen) {
-          width: 300px;
-      }
-      @media all and (min-width:@big-screen) {
-
-      }
-      img {
-        width: 100%;
-      }
-    }
+    //
+    // &_left {
+    //   width: 200px;
+    //   display: inline-block;
+    //   vertical-align: top;
+    //   display: inline-block;
+    //   margin-right: 3em;
+    //
+    //   @media all and (min-width: @tablet-screen) {
+    //       width: 300px;
+    //   }
+    //   @media all and (min-width:@desktop-screen) {
+    //       width: 300px;
+    //   }
+    //   @media all and (min-width:@big-screen) {
+    //
+    //   }
+    //   img {
+    //     width: 100%;
+    //   }
+    // }
 
     &_avatar {
       width: 160px;
       height: 160px;
       margin: 0 auto;
       overflow: hidden;
+      .border-radius(100%);
+      margin-bottom: 1em;
 
       @media all and (min-width: @tablet-screen) {
       }
@@ -105,13 +106,23 @@
       text-align: center !important;
 
       h1,
+      h2,
+      h3,
       p {
         max-width: 60%;
         margin: 0 auto;
         position: relative;
         color: #fff;
       }
-
+      h1 {
+        margin-bottom: 0.1em;
+      }
+      h2 {
+        margin-bottom: 0.3em;
+      }
+      h3 {
+        margin-bottom: 0.6em;
+      }
       @media all and (min-width: @tablet-screen) {
       }
       @media all and (min-width:@desktop-screen) {
@@ -122,20 +133,76 @@
     }
 
     &_technologies {
-      margin:1.5em 0;
+      margin:1.7em 0;
       span {
-        margin:0 5px;
-        padding: 4px 6px;
+        margin:0 0;
+        padding: 4px 12px;
         color: rgba(255, 255, 255, 0.6);
-        border:1px solid #fff;
+        font-size: 1.2em;
+        border-right:1px dotted #fff;
         .border-radius(2px);
       }
     }
 
+    &_people {
+      width: 100%;
+      margin:1em 0;
+
+      &_entry {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        position: relative;
+        margin-right: -0.5em;
+
+        &_link {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+        &_avatar {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          .border-radius(100%);
+          img {
+            width: 100%;
+          }
+        }
+        &:hover {
+          .projects_box_people_entry_name {
+            display: block;
+          }
+        }
+        &_name {
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,.5);
+          color: #fff;
+          display: none;
+          position: absolute;
+          left: 0;
+          top: 0;
+          .border-radius(100%);
+          // top: 50%;
+          // left: 50%;
+          // transform: translate(-50%, -50%);
+          p {
+            font-size: 11px;
+            color: #fff;
+            text-align: center;
+            padding-top: 5px;
+          }
+        }
+      }
+    }
+
+
   }
 }
-
-
 
 .dark_gradient::before {
   background: linear-gradient(270deg, #000000, #272727);
@@ -168,7 +235,8 @@
    }
 }
 
-
+.no-color::before,
+.default::before,
 .main_gradient::before {
   background: linear-gradient(270deg, #d83902, #ac360d);
   background-size: 400% 400%;
@@ -196,6 +264,69 @@
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
   }
+}
+
+
+.red_gradient::before {
+  background: linear-gradient(270deg, #962828, #B72D2D);
+ background-size: 400% 400%;
+
+ -webkit-animation: AnimationName 22s ease infinite;
+ -moz-animation: AnimationName 22s ease infinite;
+ -o-animation: AnimationName 22s ease infinite;
+ animation: AnimationName 22s ease infinite;
+
+ @-webkit-keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+ @-moz-keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+ @-o-keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+ @keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+}
+
+.blue_gradient::before {
+  background: linear-gradient(270deg, #283196, #2D38B7);
+ background-size: 400% 400%;
+
+ -webkit-animation: AnimationName 22s ease infinite;
+ -moz-animation: AnimationName 22s ease infinite;
+ -o-animation: AnimationName 22s ease infinite;
+ animation: AnimationName 22s ease infinite;
+
+ @-webkit-keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+ @-moz-keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+ @-o-keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
+ @keyframes AnimationName {
+     0%{background-position:0% 50%}
+     50%{background-position:100% 50%}
+     100%{background-position:0% 50%}
+ }
 }
 
 

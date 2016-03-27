@@ -3,65 +3,73 @@ extends ./includes/layout
 block content
 
   include ./includes/breadcrumb.jade
-  
+
   .projects#animate_div
-  
-   
 
-            
-    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);").dark_gradient
-      .projects_box_content
-        .projects_box_avatar
-          <img src="images/projects/dotfiles.png">
-        .projects_box_middle
-          h1 JF Dotfiles
-          p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
-          .projects_box_technologies
-            span Bash
-            span Mark Down
-            
-          a.button(href="#")
-            span.icon-github
-            span Open Source Repository
-          a.button(href="#")
-            span.icon-web
-            span See webpage
-        
-    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);").main_gradient
-      .projects_box_content
-        .projects_box_avatar
-          <img src="images/projects/dotfiles.png">
-        .projects_box_middle
-          h1 JF Dotfiles
-          p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
-          .projects_box_technologies
-            span Bash
-            span Mark Down
-            
-          a.button(href="#")
-            span.icon-github
-            span Open Source Repository
-          a.button(href="#")
-            span.icon-web
-            span See webpage
-                
-    .projects_box(style="background-image:url(https://github.com/ferreiro/dotfiles/raw/master/assets/installation.gif);").light_gradient
-      .projects_box_content
-        .projects_box_avatar
-          <img src="images/projects/dotfiles.png">
-        .projects_box_middle
-          h1 JF Dotfiles
-          p Crafting a program to install easily and comfortably all my mac applications, configuration files and design preferences
-          .projects_box_technologies
-            span Bash
-            span Mark Down
-            
-          a.button(href="#")
-            span.icon-github
-            span Open Source Repository
-          a.button(href="#")
-            span.icon-web
-            span See webpage
+    if content.list
+
+      - for project in content.list
+
+        - color = project.color
+        - background = project.background
+
+        .projects_box(style="background-image:url(#{background!=null? background : no-background});", class="#{color!=null? color : no-color}")
+          .projects_box_content
+
+            if project.pic
+              .projects_box_avatar
+                <img src="#{project.pic}">
+
+            .projects_box_middle
+
+              if project.title
+                h1 !{project.title}
+
+              if project.date
+                h3 #{project.date}
+
+              if project.description
+                h3 !{project.description}
+
+              if project.highlights
+                .projects_box_highlights
+                  - for h_text in project.highlights
+                    h2 #{h_text}
 
 
-  
+              if project.skills
+                .projects_box_technologies
+                  - for skill in project.skills
+                    span #{skill}
+
+              if project.people
+                p Cool people I work in this project:
+                .projects_box_people
+                  - for people in project.people
+                    .projects_box_people_entry
+                        a(href="#{people.website}", target="_blank").projects_box_people_entry_link
+                        .projects_box_people_entry_avatar
+                          img(src="#{people.avatar}")
+                        .projects_box_people_entry_name
+                          p #{people.name}
+
+              if project.repository
+                a.button(href="#{project.repository}", target="_blank").button_solid.button_rounded
+                  span.icon-github
+                  span #{content.repoButton}
+
+              .separator_blank
+
+              if project.webpage
+                if project.repository
+                  .separator.transparent
+                  // Remove solid color and put blank when exits a repo link
+                  a.button(href="#{project.webpage}").button_solid.button_rounded.button_transparent
+                    span.icon-web
+                    span #{content.webButton}
+                else
+                  a.button(href="#{project.webpage}").button_solid.button_rounded
+                    span.icon-web
+                    span #{content.webButton}
+
+      <a href="./projects" class="button"><span>Contact me</span><span class="icon-arrow-right2"></span></a>

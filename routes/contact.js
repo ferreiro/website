@@ -10,20 +10,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-function composeEmailHTML(name, email, message) {
-      // Preparing email message
-      html =  '<html><body style="background: #F8F8F8; margin:0; padding:1em 2em;">';
-      html += '<h3>Mensaje</h3>';
-      html += '<p style="font-size:16px;">';
-      html += 'Nombre: '  + name +'<br /> ';
-      html += 'Email: '   + email + '<br />';
-      html += 'Date: '    + message + '<br />';
-      html += '</p>';
-      html += '</body></html>';
-
-      return html;
-}
-
 router.post('/send', function(req, res, next) {
     var transporter
       , contactForm
@@ -36,7 +22,7 @@ router.post('/send', function(req, res, next) {
       sent: false,
       name: req.body.contact_name,
       email: req.body.contact_email,
-      msg: req.body.contact_msg,
+      message: req.body.contact_msg,
       subject: "Contacto Web de Jorge"
     };
 
@@ -74,5 +60,19 @@ router.post('/send', function(req, res, next) {
     });
 
 });
+
+function composeEmailHTML(name, email, message) {
+    // Preparing email message
+    html =  '<html><body style="background: #F8F8F8; margin:0; padding:1em 2em;">';
+    html += '<h3>Mensaje</h3>';
+    html += '<p style="font-size:16px;">';
+    html += 'Nombre: '  + name +'<br /> ';
+    html += 'Email: '   + email + '<br />';
+    html += 'Date: '    + message + '<br />';
+    html += '</p>';
+    html += '</body></html>';
+
+    return html;
+}
 
 module.exports = router;

@@ -1,5 +1,7 @@
 
 .button {
+  margi-left:1em !important;
+  margi-right:1em !important;
   display: inline-block;
   color: $color_text;
   border: 2px solid #F4F4F4;
@@ -8,12 +10,41 @@
   padding:20px 20px;
   background:transparent;
   outline:0;
+  text-decoration: none !important;
+  color: #fff;
+
+  span {
+    margin-right:10px;
+  }
 
   &:hover {
     border-color:#D4D4D4;
 		background: transparent;
   }
+
+  &_solid {
+    background: #fff;
+    color: #000;
+    &:hover {
+      background: #fff;
+      color:@primaryColor;
+    }
+  }
+  &_transparent {
+    background: transparent !important;
+    color: #fff;
+    &:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.2) !important;
+    }
+  }
+  &_rounded {
+    .border-radius(30px);
+    overflow: hidden;
+  }
 }
+
+
 
 .send_margin {
   margin-top: 0.5em;

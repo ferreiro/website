@@ -1,0 +1,98 @@
+{
+  "about"  : {
+    "highlights" : [
+      "Computer Science Student",
+      "Full Stack. Software Developer",
+      "Programming & Music lover"
+    ],
+    "button" : "Dicover my work"
+  },
+  "projects" : {
+    "webButton" : "See webpage",
+    "repoButton" : "Open Source repository",
+    "list": [
+      {
+        "title" : "Jorge Ferreiro Website",
+        "background" : "images/projects/ferreiro_back.gif",
+        "date" : "March 2016 - current",
+        "color" : "main_gradient",
+        "pic" : "images/projects/ferreiro.jpg",
+        "description" : "From concept to execution designed and programmed my personal website from scratch in just <b>2 days</b> . Backend in Node.js and publicily open source.",
+        "webpage" : "www.jgferreiro.com",
+        "skills" : ["Node.JS", "HTML5", "Less.JS", "Jade"],
+        "repository" : "https://github.com/ferreiro/website",
+        "people" : null
+      },
+      {
+        "title" : "JF~Dotfiles",
+        "background" : "images/projects/dotfiles_back.gif",
+        "date" : "March 2016 - current",
+        "color" : "dark_gradient",
+        "pic" : "images/projects/dotfiles.png",
+        "description" : "Program to install easily and comfortably all my mac applications, configuration files and design preferences (Dock, Finder...).",
+        "webpage" : null,
+        "skills" : ["Bash", "MacOSX"],
+        "repository" : "https://github.com/ferreiro/dotfiles",
+        "people" : null
+      },
+      {
+        "title" : "SudoNotes",
+        "background" : "images/projects/sudonotes_back.gif",
+        "date" : "November 2015 - current",
+        "color" : "blue_gradient",
+        "pic" : "images/projects/sudonotes.jpg",
+        "description" : "The easiest way to keep all your ideas, notes and projects in one place. Python MVC Application created in 3 days using Bottle Framework and SQLite3. ",
+        "url" : "https://github.com/sudonotes",
+        "webpage" : null,
+        "skills" : ["Python", "HTML5/CSS3"],
+        "repository" : "http://github.com/ferreiro/sudonotes",
+        "people" : [
+          {
+            "name" : "Luis Felipe",
+            "avatar" : "images/projects/people/luis.jpg",
+            "website" : "https://github.com/luisdeol"
+          },
+          {
+            "name" : "Tommaso Innocenti",
+            "avatar" : "images/projects/people/tommy.jpg",
+            "website" : "https://github.com/innotommy91"
+          }
+        ]
+      },
+      {
+        "title" : "Music4deejays",
+        "background" : "images/projects/music4deejays_back.gif",
+        "date" : "May 2014-Nov 2015",
+        "color" : "red_gradient",
+        "pic" : null,
+        "description" : "Music streaming application to listen and discover emerging artists.",
+        "highlights" : [
+          "More than 56.000 downloads",
+          "Top ... on Firefox 0s"
+        ],
+        "skills" : ["Javascript", "HTML5", "CSS3"],
+        "url" : null,
+        "webpage" : "http://music4deejays.com",
+        "people" : null
+      },
+      {
+        "title" : "Games-X4",
+        "background" : null,
+        "date" : "October 2014 - June 2015",
+        "color" : "red",
+        "pic" : null,
+        "description" : "Java program to play up to 4 games addictive Games. Developed using MVC (Model View Controller) pattern and Swing for GUI (Graphical User Interface).",
+        "url" : null,
+        "skills" : ["Java", "Swing"],
+        "repository" : "https://github.com/ferreiro/JavaGames-X4",
+        "people" : [
+          {
+            "name" : "Pedro Garcia",
+            "avatar" : "images/projects/people/pedro.png",
+            "website" : "https://github.com/pegartillo95"
+          }
+        ]
+      }
+    ]
+  }
+}
