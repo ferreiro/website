@@ -13,7 +13,9 @@ block content
         - color = project.color
         - background = project.background
 
-        .projects_box(style="background-image:url(#{background!=null? background : no-background});", class="#{color!=null? color : no-color}")
+        .projects_box(class="#{color!=null? color : no-color}")
+
+          .projects_box_wallpaper(style="background-image:url(#{background!=null? background : no-background});")
           .projects_box_content
 
             if project.pic
@@ -32,10 +34,9 @@ block content
                 h3 !{project.description}
 
               if project.highlights
-                .projects_box_highlights
+                ul.projects_box_highlights
                   - for h_text in project.highlights
-                    h2 #{h_text}
-
+                    li <span class="icon-"></span> #{h_text}
 
               if project.skills
                 .projects_box_technologies
@@ -46,7 +47,6 @@ block content
                       span.no_border #{skill}
                     else
                       span #{skill}
-
 
               if project.people
                 p Cool people I work in this project:

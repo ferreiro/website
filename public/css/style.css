@@ -258,6 +258,11 @@ h5 {
   margin: 0;
   padding: 0;
 }
+ul,
+li {
+  padding: 0;
+  margin: 0;
+}
 h1 {
   font-size: 2.6em;
   color: #d83902;
@@ -579,6 +584,7 @@ textarea:-ms-input-placeholder {
   background-size: cover;
   position: relative;
   margin-bottom: 0;
+  overflow: hidden;
 }
 @media all and (min-width: 400px) {
   
@@ -602,7 +608,7 @@ textarea:-ms-input-placeholder {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 0;
+  z-index: 5;
   opacity: 0.97;
   background: linear-gradient(270deg, #d83902, #ac360d);
   background-size: 400% 400%;
@@ -655,6 +661,22 @@ textarea:-ms-input-placeholder {
     background-position: 0% 50%;
   }
 }
+.projects_box_wallpaper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-cover: size;
+  z-index: 0;
+  box-shadow: 0px 0px 20px 10px #ffffff;
+  opacity: 0.7;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  -o-filter: blur(5px);
+  filter: blur(5px);
+}
 .projects_box_content {
   height: 100%;
   z-index: 10;
@@ -665,12 +687,12 @@ textarea:-ms-input-placeholder {
 }
 @media all and (min-width: 400px) {
   .projects_box_content {
-    padding: 2em 2em;
+    padding: 3em 2em;
   }
 }
 @media all and (min-width: 800px) {
   .projects_box_content {
-    padding: 5em 0;
+    padding: 4em 0;
     width: 400px;
   }
 }
@@ -736,6 +758,18 @@ textarea:-ms-input-placeholder {
 }
 @media all and (min-width: 1300px) {
   
+}
+.projects_box_highlights {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.projects_box_highlights li {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  color: #FFFF00 !important;
+  list-style-type: none;
 }
 .projects_box_technologies {
   margin: 1.7em 0;

@@ -37,7 +37,7 @@
       },
       {
         "title" : "SudoNotes",
-        "background" : "images/projects/sudonotes_back.gif",
+        "background" : "images/projects/sudonotes_back.png",
         "date" : "November 2015 - current",
         "color" : "blue_gradient",
         "pic" : "images/projects/sudonotes.jpg",
@@ -65,7 +65,7 @@
         "date" : "May 2014-Nov 2015",
         "color" : "red_gradient",
         "pic" : null,
-        "description" : "Music Streaming Application for promoting and discover new music producers around the globe.",
+        "description" : "Music Streaming Application for promoting and discover emerging producers around the globe.",
         "highlights" : [
           "Top #5 music app on FirefoxOS (May 2015).",
           "More than 56.000 installs. "
