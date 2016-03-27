@@ -65,10 +65,10 @@
         "date" : "May 2014-Nov 2015",
         "color" : "red_gradient",
         "pic" : null,
-        "description" : "Music streaming application to listen and discover emerging artists.",
+        "description" : "Music Streaming Application for promoting and discover new music producers around the globe.",
         "highlights" : [
-          "More than 56.000 downloads",
-          "Top ... on Firefox 0s"
+          "Top #5 music app on FirefoxOS (May 2015).",
+          "More than 56.000 installs. "
         ],
         "skills" : ["Javascript", "HTML5", "CSS3"],
         "url" : null,

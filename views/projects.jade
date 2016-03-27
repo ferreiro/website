@@ -70,11 +70,11 @@ block content
                 if project.repository
                   .separator.transparent
                   // Remove solid color and put blank when exits a repo link
-                  a.button(href="#{project.webpage}").button_solid.button_rounded.button_transparent
+                  a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded.button_transparent
                     span.icon-web
                     span #{content.webButton}
                 else
-                  a.button(href="#{project.webpage}").button_solid.button_rounded
+                  a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded
                     span.icon-web
                     span #{content.webButton}
 
