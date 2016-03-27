@@ -19,6 +19,9 @@ body {
 .left {
   display: inline-block;
 }
+.no_border {
+  border: 0 !important;
+}
 .right {
   display: inline-block;
   float: right;

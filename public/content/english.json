@@ -18,7 +18,7 @@
         "color" : "main_gradient",
         "pic" : "images/projects/ferreiro.jpg",
         "description" : "From concept to execution designed and programmed my personal website from scratch in just <b>2 days</b> . Backend in Node.js and publicily open source.",
-        "webpage" : "www.jgferreiro.com",
+        "webpage" : "http://www.jgferreiro.com",
         "skills" : ["Node.JS", "HTML5", "Less.JS", "Jade"],
         "repository" : "https://github.com/ferreiro/website",
         "people" : null
