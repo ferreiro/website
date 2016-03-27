@@ -565,10 +565,23 @@ textarea:-ms-input-placeholder {
 }
 .projects_box {
   display: block;
-  padding: 5em 3em;
   background-size: cover;
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 0;
+}
+@media all and (min-width: 400px) {
+  
+}
+@media all and (min-width: 800px) {
+  
+}
+@media all and (min-width: 900px) {
+  .projects_box {
+    margin-bottom: 2em;
+  }
+}
+@media all and (min-width: 1300px) {
+  
 }
 .projects_box::before {
   content: '';
@@ -632,12 +645,31 @@ textarea:-ms-input-placeholder {
   }
 }
 .projects_box_content {
-  width: 100%;
   height: 100%;
   z-index: 10;
   position: relative;
   vertical-align: top;
-  display: inline-block;
+  margin: 0 auto;
+  padding: 2em 1em;
+}
+@media all and (min-width: 400px) {
+  .projects_box_content {
+    padding: 2em 2em;
+  }
+}
+@media all and (min-width: 800px) {
+  .projects_box_content {
+    padding: 5em 0;
+    width: 400px;
+  }
+}
+@media all and (min-width: 900px) {
+  .projects_box_content {
+    width: 505px;
+  }
+}
+@media all and (min-width: 1300px) {
+  
 }
 .projects_box_avatar {
   width: 160px;
@@ -665,7 +697,6 @@ textarea:-ms-input-placeholder {
   width: 100%;
 }
 .projects_box_middle {
-  width: 70%;
   margin: 0 auto;
   text-align: center !important;
 }
@@ -673,7 +704,6 @@ textarea:-ms-input-placeholder {
 .projects_box_middle h2,
 .projects_box_middle h3,
 .projects_box_middle p {
-  max-width: 60%;
   margin: 0 auto;
   position: relative;
   color: #fff;
