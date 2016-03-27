@@ -46,3 +46,7 @@ transporter = nodemailer.createTransport({
   ```
 
 **In order to work on your server** (in this case Microsoft azure) you have also add those variables into the server Enviroments variables
+
+# How to Setup a Custom Domain Name Registered With Gandi on an Azure Website
+
+http://gunnariauvinen.com/how-to-configure-custom-domain-name-from-gandi-on-an-azure-website/
