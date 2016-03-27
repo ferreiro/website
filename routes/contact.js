@@ -22,8 +22,7 @@ router.post('/send', function(req, res, next) {
       valid: false,
       name: validator.escape(req.body.contact_name),
       email: validator.escape(req.body.contact_email),
-      message: validator.escape(req.body.contact_msg),
-      subject: "Contacto Web de Jorge"
+      message: validator.escape(req.body.contact_msg)
     };
 
     // Validate contact form
@@ -49,8 +48,8 @@ router.post('/send', function(req, res, next) {
 
     mailOptions = { // Setup e-mail data with unicode symbols
         subject: '[jgferreiro.com] Message from ' + contactForm.name,
-        from: 'Jorge <me@jgferreiro.com>', // sender address
-        to: 'me@jgferreiro.com', // list of receivers
+        from: 'Jorge <hi@ferreiro.me>', // sender address
+        to: 'hi@ferreiro.mem', // list of receivers
         replyTo: contactForm.email,
         html: email_html // html body
     };

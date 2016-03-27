@@ -16,6 +16,17 @@ body {
   position: fixed;
   top: 0;
 }
+.dotted {
+  border-style: dotted !important;
+}
+.dark {
+  color: #000000 !important;
+  border-color: #cfcfcf !important;
+}
+.dark:hover {
+  background: #cfcfcf !important;
+  color: #fff !important;
+}
 .left {
   display: inline-block;
 }
@@ -104,7 +115,7 @@ body {
   margi-left: 1em !important;
   margi-right: 1em !important;
   display: inline-block;
-  color: $color_text;
+  color: #d83902;
   border: 2px solid #F4F4F4;
   padding: 20px 20px;
   background: transparent;
