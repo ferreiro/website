@@ -3,7 +3,7 @@ var footer = $('footer');
 var sectionHeader = $('#sectionHeader');
 var ss = sessionStorage;
 
-var animations = ['rollIn',"zoomIn", 'flipInY', 'fadeInUpBig', 'bounceIn']
+var animations = [ "zoomIn", 'flipInY', 'fadeInUpBig']; // 'rollIn', 'bounceIn'
 
 function animateMainContainer() {
     var mainContainer = $('#animate_div');
@@ -28,4 +28,26 @@ function animateMainContainer() {
 
 $(document).ready(function(){
   animateMainContainer();
+  animate();
 });
+
+
+// Animate call to action button each 3 seconds
+function animate() {
+  var startTime = 2000;
+  //var animation = "animated bounceIn";
+  var animation = "animated bounce";
+  var cButton = $('.callToAction');
+
+  if (cButton) {
+    setInterval(function() {
+      cButton.addClass(animation);
+      setTimeout(function() {
+        cButton.removeClass(animation);
+      }, startTime - 200);
+      if (startTime > 20000) {
+        startTime = 2000
+      }
+    }, startTime*3);
+  }
+}
