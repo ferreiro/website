@@ -40,16 +40,20 @@ block content
 
               if project.skills
                 .projects_box_technologies
-                  - totalSkills = project.skills.length
-                  - each skill, index in project.skills
+                  - each icon, index in project.skills
+                    .tech_skills_box_content_entry
 
-                    if index == totalSkills - 1
-                      span.no_border #{skill}
-                    else
-                      span #{skill}
+                      if icon == "bower"
+                        <i class="cbp-ig-icon devicon-bower-line"></i>
+                      else if icon == "less"
+                        <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
+                      else
+                        i.cbp-ig-icon(class="devicon-#{icon}-plain")
+                      p #{icon}
+
 
               if project.people
-                p Cool people I work in this project:
+                p Talented people working in the project:
                 .projects_box_people
                   - for people in project.people
                     .projects_box_people_entry

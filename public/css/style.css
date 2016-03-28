@@ -59,7 +59,7 @@ body {
   width: 100%;
   height: 1px;
   background: #f4f4f4;
-  margin: 1em 0;
+  margin: 1.5em 0;
 }
 .separator_blank {
   width: 100%;
@@ -80,8 +80,10 @@ body {
   z-index: 1000;
 }
 .breadcrumb {
-  display: inline-block !important;
-  padding: 0 1em !important;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center;
 }
 @media all and (min-width: 800px) {
   .breadcrumb {
@@ -614,6 +616,9 @@ textarea:-ms-input-placeholder {
   text-transform: none;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
+}
+.contact h2 {
+  text-align: justify;
 }
 .contact-form {
   margin-top: 2em;

@@ -11,16 +11,16 @@
       a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
         p Projects &amp; Works
 
-    .right
-
       a.item(href="/contact", class="#{path==='contact'?'item-selected':''}")#contact
         p Contact
+
+    .right
 
       .dropdown
         .item.with-icon
           p
             span.icon-address-book.extra-margin
-            span Social
+            span Social Networks
             .dropdown-content#DropdownSocial
               a.dropdown-link(href="https://github.com/ferreiro", target="_blank") Github
               a.dropdown-link(href="https://linkedin.com/in/jgferreiro", target="_blank") Linkedin
@@ -31,10 +31,10 @@
       .dropdown
         .item.with-icon
           p
-            span.icon-paragraph-justify
+            span.icon-cog
             .dropdown-content#DropdownSocial
-              a.dropdown-link(href="/es") Español
-              a.dropdown-link(href="/en") English
+              //a.dropdown-link(href="/es") Español
+              a.dropdown-link(href="/") English
 
 
       .dropdown#dropdown-mobiles
@@ -55,5 +55,5 @@
               a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
 
               h3 Languages
-              a.dropdown-link(href="/es/") Español
+              // a.dropdown-link(href="/es/") Español
               a.dropdown-link(href="/") English
