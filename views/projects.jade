@@ -68,20 +68,15 @@ block content
                   span.icon-github
                   span #{content.repoButton}
 
-              .separator_blank
 
               if project.webpage
-                if project.repository
-                  .separator.transparent
-                  // Remove solid color and put blank when exits a repo link
-                  a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded.button_transparent
-                    span.icon-web
-                    span #{content.webButton}
-                else
-                  a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded
-                    span.icon-web
-                    span #{content.webButton}
+                .separator_blank
+                // Remove solid color and put blank when exits a repo link
+                a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded.button_transparent
+                  span.icon-web
+                  span #{content.webButton}
 
-    a(href="./contact", class="callToAction").button.centered.margin_top.dark.dotted
+
+    a(href="./contact", class="callToAction").button.button_rounded.centered.margin_top.dark
       span Contact Jorge Ferreiro
       span.icon-arrow-right2

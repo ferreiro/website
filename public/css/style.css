@@ -66,6 +66,7 @@ body {
   height: 1px;
   background: transparent;
   margin: 0;
+  margin: 1em 0;
 }
 .loader {
   width: 100%;
@@ -837,9 +838,12 @@ textarea:-ms-input-placeholder {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
+.projects_box_technologies i:before {
+  color: rgba(255, 255, 255, 0.7);
+}
 .projects_box_people {
   width: 100%;
-  margin: 1em 0;
+  margin: 1.5em 0;
 }
 .projects_box_people_entry {
   width: 40px;

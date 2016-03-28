@@ -37,7 +37,7 @@
         "pic" : "images/projects/ferreiro.jpg",
         "description" : "From concept to execution designed and programmed my personal website from scratch in just <b>2 days</b> . Backend in Node.js and publicily open source.",
         "webpage" : "http://www.jgferreiro.com",
-        "skills" : ["nodejs", "html5", "bower", "less"],
+        "skills" : ["nodejs", "bower", "less"],
         "repository" : "https://github.com/ferreiro/website",
         "people" : null
       },
