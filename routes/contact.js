@@ -48,8 +48,8 @@ router.post('/send', function(req, res, next) {
 
     mailOptions = { // Setup e-mail data with unicode symbols
         subject: '[jgferreiro.com] Message from ' + contactForm.name,
-        from: 'Jorge <hi@ferreiro.me>', // sender address
-        to: 'hi@ferreiro.mem', // list of receivers
+        from: 'Jorge <hello@ferreiro.me>', // sender address
+        to: 'hello@ferreiro.me', // list of receivers
         replyTo: contactForm.email,
         html: email_html // html body
     };
