@@ -6,7 +6,7 @@ form.submit(function(event){
 });
 
 function submitForm() {
-  var base = "http://localhost:3000";
+  var base = ""
   var end_point = "/contact/send";
   var url = base + end_point;
 
