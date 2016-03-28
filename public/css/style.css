@@ -21,10 +21,12 @@ body {
 }
 .dark {
   color: #000000 !important;
-  border-color: #cfcfcf !important;
+  border-color: #E4E4E4 !important;
 }
 .dark:hover {
-  background: #cfcfcf !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+  background: #d83902 !important;
+  color: #000 !important;
   color: #fff !important;
 }
 .left {
@@ -164,17 +166,12 @@ body {
   border-color: #f9764f;
   border-color: #cfcfcf;
   padding: 25px 20px;
-  box-shadow: inset 0 0 0 0 #000000;
   -webkit-transition: all ease 0.3s;
   -moz-transition: all ease 0.3s;
   transition: all ease 0.3s;
   text-transform: uppercase;
   font-weight: bold;
-}
-.send:hover {
-  color: #fff;
-  border-color: #000000;
-  box-shadow: inset 0 100px 0 0 #000000;
+  color: #000;
 }
 .tags {
   list-style: none;
@@ -193,7 +190,7 @@ body {
   display: inline-block;
   height: 26px;
   line-height: 26px;
-  padding: 0 20px 0 23px;
+  padding: 0 20px 0 15px;
   position: relative;
   margin: 0 10px 10px 0;
   text-decoration: none;
@@ -562,6 +559,11 @@ textarea:-ms-input-placeholder {
 @media all and (min-width: 1300px) {
   
 }
+.about_skills {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+}
 .about h1 {
   text-align: center;
   margin-bottom: 0.5em;
@@ -569,6 +571,45 @@ textarea:-ms-input-placeholder {
 .about h2,
 .about h3 {
   text-align: center;
+}
+.tech_skills {
+  text-align: center;
+}
+.tech_skills_box {
+  display: inline-block;
+  padding: 0 0.7em;
+  margin-bottom: 1em;
+  border: 1px solid #f4f4f4;
+  border-top: 0;
+  border-bottom: 0;
+}
+.tech_skills_box_title h3 {
+  font-size: 11px;
+  text-align: left !center;
+  margin: 0;
+  margin-bottom: 1em;
+}
+.tech_skills_box_content_entry {
+  display: inline-block;
+}
+.tech_skills_box_content_entry i:before {
+  color: rgba(0, 0, 0, 0.61);
+}
+.tech_skills_box_content_entry p {
+  font-size: 11px;
+  margin-top: 0.7em;
+  color: rgba(0, 0, 0, 0.7);
+}
+.cbp-ig-icon:before {
+  font-family: 'devicon';
+  font-size: 2.4em;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
 .contact-form {
   margin-top: 2em;

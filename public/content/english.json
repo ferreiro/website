@@ -1,11 +1,29 @@
 {
   "about"  : {
     "highlights" : [
-      "Computer Science Student",
-      "Full Stack. Software Developer",
-      "Programming & Music lover"
+      "<strong>Computer Science</strong> Student",
+      "Full Stack <strong>Software Developer</strong>",
+      "<a href='http://www.github.com/ferreiro' target='_blank'>Programming</a> &amp; <a href='https://soundcloud.com/jgferreiro' target='_blank'>Music</a> lover"
     ],
-    "button" : "Dicover my work"
+    "button" : "Dicover my work",
+    "skills" : [
+      {
+        "title" : "Backend",
+        "list" : [ "nodejs", "python", "cplusplus", "java" ]
+      },
+      {
+        "title" : "Databases",
+        "list" : [ "mongodb", "oracle" ]
+      },
+      {
+        "title" : "Frontend",
+        "list" : [ "javascript", "html5", "sass", "less", "jquery" ]
+      },
+      {
+        "title" : "Tools",
+        "list" : [ "git", "bower", "atom" ]
+      }
+    ]
   },
   "projects" : {
     "webButton" : "See webpage",

@@ -25,6 +25,14 @@
 
     }
   }
+  &_skills {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    // left: 50%;
+    // top: 0;
+    // transform: translate(-60%, 0);
+  }
   h1 {
     text-align: center;
     margin-bottom: 0.5em;
@@ -33,4 +41,49 @@
   h3 {
     text-align: center;
   }
+}
+
+.tech_skills {
+  text-align: center;
+  &_box {
+    display: inline-block;
+    padding: 0 0.7em;
+    margin-bottom: 1em;
+    border: 1px solid #f4f4f4;
+    border-top: 0;
+    border-bottom: 0;
+    &_title {
+      h3 {
+        font-size: 11px;
+        text-align: left !center;
+        margin: 0;
+        margin-bottom: 1em;
+      }
+    }
+    &_content {
+      &_entry {
+        display: inline-block;
+        i:before {
+          color: rgba(0, 0, 0, 0.61);
+        }
+        p {
+          font-size: 11px;
+          margin-top: 0.7em;
+          color:rgba(0,0,0,.7);
+        }
+      }
+    }
+  }
+}
+
+.cbp-ig-icon:before {
+    font-family: 'devicon';
+    font-size: 2.4em;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
 }

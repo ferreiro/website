@@ -14,7 +14,8 @@ router.get('/', function(req, res, next) {
 router.get('/about', function(req, res, next) {
   res.render('about', {
     title: 'About me',
-    path: 'about'
+    path: 'about',
+    content: content.about
   });
 });
 
