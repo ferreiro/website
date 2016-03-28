@@ -10,9 +10,18 @@ function submitForm() {
   var end_point = "/contact/send";
   var url = base + end_point;
 
+  $('.success').hide();
+  $('.failure').hide();
+
   if (!validateInputs()) {
     return;
   }
+
+  msg = {
+    contact_name: $('#the_name').val(),
+    contact_email: $('#email').val(),
+    contact_msg: $('#message').val()
+  };
 
   $.ajax({
      url: url,
@@ -22,7 +31,16 @@ function submitForm() {
      encode: true
   })
   .done(function(objectReturned) {
-    console.log(objectReturned);
+    sent = objectReturned.data.sent;
+    valid = objectReturned.data.valid;
+
+    if (!sent || !valid) {
+      $('.failure').show();
+    }
+    else {
+      $('.success').show();
+    }
+
   })
   .fail(function(objectReturned) {
 

@@ -632,6 +632,16 @@ textarea:-ms-input-placeholder {
 .contact-form-fieldset {
   margin-bottom: 0.4em;
 }
+.formNotificationMessage {
+  padding: 15px;
+  display: none;
+}
+.failure {
+  background-color: #FD9E9E;
+}
+.success {
+  background-color: #B2E682;
+}
 .projects {
   width: 100%;
 }

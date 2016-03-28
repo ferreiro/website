@@ -10,6 +10,9 @@ block content
 
 			h2 Do you have a project, job offer, an event or just want to say hi? Ping me in the form below and I'll reply you in < 24h. :)
 
+			p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
+			p.formNotificationMessage.success Your message has been sent. Congrats!
+
 			form.contact-form(action='/contact/send', method='post', autocomplete="off")#contactform
 
 				fieldset.contact-form-fieldset
