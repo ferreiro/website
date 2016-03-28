@@ -130,6 +130,7 @@ body {
 }
 .button span {
   margin-right: 10px;
+  font-weight: bold;
 }
 .button:hover {
   border-color: #D4D4D4;

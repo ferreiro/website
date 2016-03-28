@@ -49,7 +49,7 @@
         "pic" : "images/projects/dotfiles.png",
         "description" : "Program to install easily and comfortably all your mac applications, configuration files and design preferences (Dock, Finder...).",
         "webpage" : null,
-        "skills" : ["bash", "apple"],
+        "skills" : ["bash"],
         "repository" : "https://github.com/ferreiro/dotfiles",
         "people" : null
       },
