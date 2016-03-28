@@ -1,0 +1,36 @@
+
+.university {
+  &-avatar {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    background-size: cover;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    .border-radius(5px);
+    .border-radius(100%);
+
+    img {
+      width: 100%
+    }
+
+    @media all and (min-width: @tablet-screen) {
+        width: 170px;
+        height: 170px;
+    }
+    @media all and (min-width:@desktop-screen) {
+
+    }
+    @media all and (min-width:@big-screen) {
+
+    }
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  h2,
+  h3 {
+    text-align: center;
+  }
+}

@@ -94,5 +94,35 @@
         ]
       }
     ]
-  }
+  },
+  "university" : [
+    {
+      "title" : "2013-2014",
+      "subjects" : [
+        {  "lang" : "en",
+          "title" : "Fundamentals of Programming"
+        },
+        {
+          "lang" : "en",
+          "title" : "Introduction to computers"
+        },
+        {
+          "lang" : "en",
+          "title" : "athematical methods for engineering"
+        },
+        {
+          "lang" : "en",
+          "title" : "Discrete Mathematics and Logic"
+        },
+        {
+          "lang" : "en",
+          "title" : "Business Management"
+        },
+        {
+          "lang" : "en",
+          "title" : "Introduction to electricity and electronics"
+        }
+      ]
+    }
+  ]
 }

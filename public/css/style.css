@@ -1107,3 +1107,46 @@ textarea:-ms-input-placeholder {
     background-position: 0% 50%;
   }
 }
+.university-avatar {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  background-size: cover;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.university-avatar img {
+  width: 100%;
+}
+@media all and (min-width: 800px) {
+  .university-avatar {
+    width: 170px;
+    height: 170px;
+  }
+}
+@media all and (min-width: 900px) {
+  
+}
+@media all and (min-width: 1300px) {
+  
+}
+.university h1 {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+.university h2,
+.university h3 {
+  text-align: center;
+}
