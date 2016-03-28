@@ -50,3 +50,8 @@ transporter = nodemailer.createTransport({
 # How to Setup a Custom Domain Name Registered With Gandi on an Azure Website
 
 http://gunnariauvinen.com/how-to-configure-custom-domain-name-from-gandi-on-an-azure-website/
+
+https://wiki.gandi.net/en/dns/zone/a-record
+
+type A (@) points to your sever XXX.XX.XX.XXX
+type (WWW) points to name.azurewebsites.net
