@@ -23,32 +23,37 @@ function submitForm() {
     contact_msg: $('#message').val()
   };
 
-  $.ajax({
-     url: url,
-     data: msg,
-     type: 'POST',
-     dataType: 'json',
-     encode: true
-  })
-  .done(function(objectReturned) {
-    sent = objectReturned.data.sent;
-    valid = objectReturned.data.valid;
+  try {
+    $.ajax({
+       url: url,
+       data: msg,
+       type: 'POST',
+       dataType: 'json',
+       encode: true
+    })
+    .done(function(objectReturned) {
+      sent = objectReturned.data.sent;
+      valid = objectReturned.data.valid;
 
-    if (!sent || !valid) {
-      $('.failure').show();
-    }
-    else {
-      $('.success').show();
-    }
+      if (!sent || !valid) {
+        $('.failure').show();
+      }
+      else {
+        $('.success').show();
+      }
 
-  })
-  .fail(function(objectReturned) {
+    })
+    .fail(function(objectReturned) {
 
-  })
-  .always(function(objectReturned) {
+    })
+    .always(function(objectReturned) {
 
-  });
-
+    });
+  }
+  catch(err) {
+    $('.failure').show();
+    console.log(err.message);
+  }
 }
 
 function validateInputs() {
