@@ -95,34 +95,52 @@
       }
     ]
   },
-  "university" : [
-    {
-      "title" : "2013-2014",
-      "subjects" : [
-        {  "lang" : "en",
-          "title" : "Fundamentals of Programming"
-        },
-        {
-          "lang" : "en",
-          "title" : "Introduction to computers"
-        },
-        {
-          "lang" : "en",
-          "title" : "athematical methods for engineering"
-        },
-        {
-          "lang" : "en",
-          "title" : "Discrete Mathematics and Logic"
-        },
-        {
-          "lang" : "en",
-          "title" : "Business Management"
-        },
-        {
-          "lang" : "en",
-          "title" : "Introduction to electricity and electronics"
-        }
-      ]
-    }
-  ]
+  "university" : {
+    "title" : "Education",
+    "courses" : [
+      {
+        "title" : "2013-2014",
+        "subjects" : [
+            { "lang" : "en", "title" : "Fundamentals of Programming" }
+          , { "lang" : "en", "title" : "Introduction to computers" }
+          , { "lang" : "en", "title" : "Mathematical methods for engineering" }
+          , { "lang" : "en", "title" : "Discrete Mathematics and Logic" }
+          , { "lang" : "en", "title" : "Business Management" }
+          , { "lang" : "en", "title" : "Introduction to electricity and electronics" }
+        ]
+      },
+      {
+        "title" : "2014-2015",
+        "subjects" : [
+            { "lang" : "en", "title" : "Programming Technology" }
+          , { "lang" : "en", "title" : "Computer Organization" }
+          , { "lang" : "en", "title" : "Software Engineering" }
+          , { "lang" : "en", "title" : "Data structures and algorithms" }
+          , { "lang" : "en", "title" : "Organization of Computer Systems" }
+          , { "lang" : "en", "title" : "Advanced Mathematics" }
+          , { "lang" : "en", "title" : "Probability and Statistics" }
+        ]
+      },
+      {
+        "title" : "2015-2016",
+        "subjects" : [
+            { "lang" : "en", "title" : "Operating Systems" }
+          , { "lang" : "en", "title" : "Databases" }
+          , { "lang" : "en", "title" : "Computer networks" }
+          , { "lang" : "es", "title" : "Concurrent Programming" }
+          , { "lang" : "es", "title" : "Declarative Programming" }
+          , { "lang" : "es", "title" : "Algorithmic Methods for Solving Problems" }
+          , { "lang" : "es", "title" : "Artificial Intelligence" }
+          , { "lang" : "es", "title" : "Foundations of computer languages" }
+          , { "lang" : "es", "honors": true, "title" : "Data Mining and Big Data paradigm" }
+          , { "lang" : "es", "title" : "Web Information Management" }
+          , { "lang" : "es", "title" : "Computer Networks Security (listener)" }
+        ]
+      },
+      {
+        "title" : "2016-2017",
+        "subjects" : null
+      }
+    ]
+  }
 }
