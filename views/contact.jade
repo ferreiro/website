@@ -15,17 +15,18 @@ block content
 				fieldset.contact-form-fieldset
 					.contact-fieldset-data
 						//p Name (*)
-						input(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact-fieldset-input
-
-
-				fieldset.contact-form-fieldset
-					.contact-fieldset-data
-						//p Email (you'll be replied to this email)
-						input(type='name', id='email', name='contact_email', placeholder='And your email?').contact-fieldset-input
+						p.wrong#wrongName Error: Your name can not be blank
+						input.input_not_blank(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact-fieldset-input
 
 				fieldset.contact-form-fieldset
 					.contact-fieldset-data
-						textarea(type='name', id='email', name='contact_msg', placeholder='Write your message... :)').contact-fieldset-input
+						p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
+						input.input_email(type='name', id='email', name='contact_email', placeholder='And your email?').contact-fieldset-input
+
+				fieldset.contact-form-fieldset
+					.contact-fieldset-data
+						p.wrong#wrongMessage Error: Hey! Fill some text here ;).
+						textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message...').contact-fieldset-input
 
 				fieldset.contact-form-fieldset.contact-fieldset-nomargin
 					input(type="submit", value="Contact me").button.send.send_margin.dark

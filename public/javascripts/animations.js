@@ -46,7 +46,7 @@ function animate() {
         cButton.removeClass(animation);
       }, startTime - 200);
       if (startTime > 20000) {
-        startTime = 2000
+        startTime = 2000;
       }
     }, startTime*3);
   }

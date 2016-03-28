@@ -16,6 +16,10 @@ body {
   position: fixed;
   top: 0;
 }
+.wrong {
+  color: #D60000;
+  display: none;
+}
 .dotted {
   border-style: dotted !important;
 }
