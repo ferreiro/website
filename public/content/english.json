@@ -9,19 +9,19 @@
     "skills" : [
       {
         "title" : "Backend",
-        "list" : [ "nodejs", "python", "cplusplus", "java" ]
+        "list" : [ "python","nodejs", "cplusplus", "java" ]
       },
       {
         "title" : "Databases",
-        "list" : [ "mongodb", "oracle" ]
+        "list" : [ "mysql", "mongodb"]
       },
       {
         "title" : "Frontend",
-        "list" : [ "javascript", "html5", "sass", "less", "jquery" ]
+        "list" : [ "javascript", "less", "html5", "sass", "bower" ]
       },
       {
         "title" : "Tools",
-        "list" : [ "git", "bower", "atom" ]
+        "list" : [ "jquery", "atom", "git"]
       }
     ]
   },

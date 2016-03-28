@@ -43,28 +43,42 @@
   }
 }
 
+// .separator_about {
+//   width: 100%;
+//   border-top:1px solid #cecece;
+//   padding-top: 0;
+//   margin-top: 2em;
+// }
+
 .tech_skills {
   text-align: center;
+  h3 {
+    padding-top: 0;
+    margin-top: 0;
+  }
   &_box {
     display: inline-block;
-    padding: 0 0.7em;
+    padding: 0 0.2em;
     margin-bottom: 1em;
-    border: 1px solid #f4f4f4;
-    border-top: 0;
-    border-bottom: 0;
+    // border: 1px solid #f4f4f4;
+    // border-top: 0;
+    // border-bottom: 0;
     &_title {
       h3 {
         font-size: 11px;
         text-align: left !center;
         margin: 0;
         margin-bottom: 1em;
+        color: rgba(0,0,0,.5)
       }
     }
     &_content {
       &_entry {
         display: inline-block;
+        padding: 4px 3px;
         i:before {
           color: rgba(0, 0, 0, 0.61);
+          color: rgba(0, 0, 0, 0.5);
         }
         p {
           font-size: 11px;
@@ -78,7 +92,7 @@
 
 .cbp-ig-icon:before {
     font-family: 'devicon';
-    font-size: 2.4em;
+    font-size: 2.2em;
     speak: none;
     font-style: normal;
     font-weight: normal;

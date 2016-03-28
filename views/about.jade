@@ -17,6 +17,8 @@ block content
           - for highlight in content.highlights
             h2 !{highlight}
 
+        .separator_about
+
         h3 Skills and Tools:
 
         if content.skills
@@ -28,12 +30,15 @@ block content
                 .tech_skills_box_content
                   - for icon in skill_type.list
                     .tech_skills_box_content_entry
-                      if icon == "less"
+
+                      if icon == "bower"
+                        <i class="cbp-ig-icon devicon-bower-line"></i>
+                      else if icon == "less"
                         <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
                       else
                         i.cbp-ig-icon(class="devicon-#{icon}-plain")
                       p #{icon}
 
         a(href="./projects", class="callToAction").button.button_rounded.centered.margin_top.dark
-          span Discover my Work
+          span Discover my Work!
           span.icon-arrow-right2

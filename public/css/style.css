@@ -575,25 +575,29 @@ textarea:-ms-input-placeholder {
 .tech_skills {
   text-align: center;
 }
+.tech_skills h3 {
+  padding-top: 0;
+  margin-top: 0;
+}
 .tech_skills_box {
   display: inline-block;
-  padding: 0 0.7em;
+  padding: 0 0.2em;
   margin-bottom: 1em;
-  border: 1px solid #f4f4f4;
-  border-top: 0;
-  border-bottom: 0;
 }
 .tech_skills_box_title h3 {
   font-size: 11px;
   text-align: left !center;
   margin: 0;
   margin-bottom: 1em;
+  color: rgba(0, 0, 0, 0.5);
 }
 .tech_skills_box_content_entry {
   display: inline-block;
+  padding: 4px 3px;
 }
 .tech_skills_box_content_entry i:before {
   color: rgba(0, 0, 0, 0.61);
+  color: rgba(0, 0, 0, 0.5);
 }
 .tech_skills_box_content_entry p {
   font-size: 11px;
@@ -602,7 +606,7 @@ textarea:-ms-input-placeholder {
 }
 .cbp-ig-icon:before {
   font-family: 'devicon';
-  font-size: 2.4em;
+  font-size: 2.2em;
   speak: none;
   font-style: normal;
   font-weight: normal;
