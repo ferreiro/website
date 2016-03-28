@@ -4,11 +4,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //res.redirect('/about');
-  res.render('about', {
-    title: 'Jorge Ferreiro',
-    path: 'index'
-  });
+  res.redirect('/about');
+  // res.render('about', {
+  //   title: 'Jorge Ferreiro',
+  //   path: 'index'
+  // });
 });
 
 router.get('/about', function(req, res, next) {
