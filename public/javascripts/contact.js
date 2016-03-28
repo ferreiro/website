@@ -7,6 +7,7 @@ form.submit(function(event){
 
 function submitForm() {
   var base = ""
+  var loader = $('.loader');
   var end_point = "/contact/send";
   var url = base + end_point;
 
@@ -16,6 +17,8 @@ function submitForm() {
   if (!validateInputs()) {
     return;
   }
+
+  if (loader) $('.loader').show();
 
   msg = {
     contact_name: $('#the_name').val(),
@@ -35,6 +38,8 @@ function submitForm() {
       sent = objectReturned.data.sent;
       valid = objectReturned.data.valid;
 
+      $('.loader').hide();
+
       if (!sent || !valid) {
         $('.failure').show();
       }
@@ -47,11 +52,12 @@ function submitForm() {
 
     })
     .always(function(objectReturned) {
-
+      $('.loader').hide();
     });
   }
   catch(err) {
     $('.failure').show();
+    $('.loader').hide();
     console.log(err.message);
   }
 }
