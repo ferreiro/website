@@ -9,13 +9,13 @@
 
     // Menu block containing links
     ul
-      li.current_section
+      li(class="#{path==='about'? 'current_section' : '' }")
         a(href="/about")
           span About Jorge Ferreiro
-      li
+      li(class="#{path==='projects'? 'current_section' : '' }")
         a(href="projects")
           span Projects &amp; Works
-      li
+      li(class="#{path==='contact'? 'current_section' : '' }")
         a(href="/contact")
           span Contact me
       li.submenu
