@@ -4,7 +4,10 @@ var GitHubApi = require("github");
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render(getGithubUser());
+  res.setHeader('Content-Type', 'application/json');
+  res.json({
+      data: getGithubUser() // We return form object we created before
+  });
 });
 
 module.exports = router;
