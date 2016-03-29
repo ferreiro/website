@@ -4,9 +4,9 @@ var router = express.Router();
 
 router.get('/', projects);
 
-// router.get('/dotfiles', function(req, res, next) {
-//   res.send('Dotfiles project page');
-// });
+module.exports = router;
+
+// FUNCTIONS
 
 function projects(req, res, next) {
   res.render('projects', {
@@ -16,4 +16,6 @@ function projects(req, res, next) {
   });
 }
 
-module.exports = router;
+// router.get('/dotfiles', function(req, res, next) {
+//   res.send('Dotfiles project page');
+// });

@@ -5,8 +5,10 @@ var validator = require('validator');
 var router = express.Router();
 
 router.get('/', contact);
-router.post('/send', contactSendForm);
+router.post('/send', sendForm);
 module.exports = router;
+
+// FUNCTIONS
 
 function contact(req, res, next) {
   res.render('contact', {
@@ -15,8 +17,7 @@ function contact(req, res, next) {
   });
 }
 
-// POST: Receiving contact form via params and send the email to webpage
-function contactSendForm(req, res, next) {
+function sendForm(req, res, next) {
     var transporter;
     var contactForm;
     var mailOptions;
@@ -82,7 +83,6 @@ function contactSendForm(req, res, next) {
     });
 }
 
-// Preparing email message template
 function generateEmailTemplate(name, email, message) {
 
     html  = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';

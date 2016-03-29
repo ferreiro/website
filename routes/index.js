@@ -6,6 +6,10 @@ router.get('/', about); // Home shows about page
 router.get('/about', about);
 router.get('/university', university);
 
+module.exports = router;
+
+// FUNCTIONS
+
 // function home(req, res, next) {
 //   res.render('index', {
 //     title: 'Home',
@@ -29,5 +33,3 @@ function university(req, res, next) {
     content: content.university
   });
 }
-
-module.exports = router;

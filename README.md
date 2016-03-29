@@ -55,3 +55,7 @@ https://wiki.gandi.net/en/dns/zone/a-record
 
 type A (@) points to your sever XXX.XX.XX.XXX
 type (WWW) points to name.azurewebsites.net
+
+# Dont redirect home
+
+http://searchengineland.com/seo-when-your-domain-homepage-are-not-the-same-131592
