@@ -113,6 +113,13 @@
       }
     ]
   },
+  "stats" : {
+    "info" : "",
+    "images" : [
+      "images/stats/stats1.png",
+      "images/stats/stats2.png"
+    ]
+  },
   "university" : {
     "title" : "Education",
     "courses" : [

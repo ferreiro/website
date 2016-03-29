@@ -5,6 +5,7 @@ var router = express.Router();
 router.get('/', about); // Home shows about page
 router.get('/about', about);
 router.get('/university', university);
+router.get('/stats', stats);
 
 module.exports = router;
 
@@ -31,5 +32,13 @@ function university(req, res, next) {
     title: 'University curriculum',
     path: 'university',
     content: content.university
+  });
+}
+
+function stats(req, res, next) {
+  res.render('stats', {
+    title: 'App statistics',
+    path: 'stats',
+    content: content.stats
   });
 }

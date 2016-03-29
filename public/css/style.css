@@ -1219,3 +1219,16 @@ textarea:-ms-input-placeholder {
 .university h3 {
   text-align: center;
 }
+.stats_images {
+  text-align: center;
+}
+.stats_images_pic {
+  width: 100%;
+  margin-bottom: 1em;
+}
+@media all and (min-width: 900px) {
+  .stats_images_pic {
+    max-width: 900px;
+    display: inline-block;
+  }
+}
