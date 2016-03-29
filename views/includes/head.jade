@@ -1,9 +1,17 @@
-meta(charset="UTF-8")
 meta(name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+meta(charset="UTF-8")
+meta(name="author", content="Jorge Ferreiro")
 
-title= title
-// meta(name="description", content="!{description}")
-// meta(name="author", content="Jorge Ferreiro")*/
+if title
+  title= title + ' - Jorge Ferreiro'
+else
+  title 'Jorge Ferreiro - Programmer - Backend / frontend - node, javascript, less.js, jade. '
+
+if description
+  meta(name="description", content="#{description}")
+else
+  //- default description
+  meta(name="description", content="Programmer. Node, javascript, HTML5, CSS3, JQuery. Backend developer and frontend developer")
 
 link(rel="apple-touch-icon", sizes="57x57", href="/images/favicons/apple-touch-icon-57x57.png")
 link(rel="apple-touch-icon", sizes="60x60", href="/images/favicons/apple-touch-icon-60x60.png")
@@ -20,9 +28,9 @@ link(rel="icon", type="image/png", href="/images/favicons/favicon-96x96.png", si
 link(rel="icon", type="image/png", href="/images/favicons/favicon-16x16.png", sizes="16x16")
 link(rel="manifest", href="/images/favicons/manifest.json")
 link(rel="mask-icon", href="/images/favicons/safari-pinned-tab.svg", color="#d83902")
-meta(name="msapplication-TileColor", content="#e64007")
+meta(name="msapplication-TileColor", content="#9C2901")
 meta(name="msapplication-TileImage", content="/images/favicons/mstile-144x144.png")
-meta(name="theme-color", content="#d83902")
+meta(name="theme-color", content="#9C2901")
 
 link(href="https://fonts.googleapis.com/css?family=Lato:400,300,700, 900", rel="stylesheet", type="text/css")
 link(rel='stylesheet', href='/fonts/ferreiro/style.css')
