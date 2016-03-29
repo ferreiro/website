@@ -6,7 +6,7 @@ form.submit(function(event){
 });
 
 function submitForm() {
-  var base = ""
+  var base = "";
   var loader = $('.loader');
   var end_point = "/contact/send";
   var url = base + end_point;
@@ -15,6 +15,10 @@ function submitForm() {
   $('.failure').hide();
 
   if (!validateInputs()) {
+    $('html, body').animate({
+        scrollTop: $('#contactform').offset().top
+    }, 300);
+
     return;
   }
 

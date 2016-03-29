@@ -10,9 +10,6 @@ block content
 
 			h2 Do you have a project, job offer, an event or just want to say hi? Ping me in the form below and I'll reply you in < 24h. :)
 
-			p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
-			p.formNotificationMessage.success Your message has been sent. Congrats!
-
 			form.contact-form(action='/contact/send', method='post', autocomplete="off")#contactform
 
 				fieldset.contact-form-fieldset
@@ -30,6 +27,9 @@ block content
 					.contact-fieldset-data
 						p.wrong#wrongMessage Error: Hey! Fill some text here ;).
 						textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message...').contact-fieldset-input
+
+				p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
+				p.formNotificationMessage.success Your message has been sent. Congrats!
 
 				fieldset.contact-form-fieldset.contact-fieldset-nomargin
 					input(type="submit", value="Contact me").button.send.send_margin.dark

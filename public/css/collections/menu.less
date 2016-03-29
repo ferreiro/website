@@ -1,11 +1,28 @@
 .logo {
   width: @logoHeight;
   height: @logoHeight;
-  overflow: hidden;
   display: inline-block;
   float: left;
+  border-right: 1px dashed @secundaryColorLight;
+  position: relative;
+  &::before {
+    content: 'Beta';
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    top: 100%;
+    // background: rgba(0,0,0,0.5);
+    left: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 5px;
+    padding-left: 10px;
+    color:rgba(0,0,0,0.5);
+  }
 }
 .logo img {
+  // height: 52px;
+  // padding: 8px;
   height: @logoHeight;
 }
 .menu {
