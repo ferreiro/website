@@ -6,59 +6,120 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.setHeader('Content-Type', 'application/json');
   res.json({
-      data: getGithubUser() // We return form object we created before
+      data: githubNumRepositories('ferreiro') // We return form object we created before
   });
 });
 
 module.exports = router;
 
-function getGithubUser() {
-  var github = new GitHubApi({
-      // required
-      version: "3.0.0",
-      // optional
-      debug: true,
-      protocol: "https",
-      host: "ferreiro.me", // should be api.github.com for GitHub
-      pathPrefix: "/api/v3", // for some GHEs; none for GitHub
-      timeout: 5000,
-      headers: {
-          "user-agent": "My-Cool-GitHub-App" // GitHub is happy with a unique user agent
-      }
-  });
-
-  github.user.getFollowingFromUser({
-      // optional:
-      // headers: {
-      //     "cookie": "blahblah"
-      // },
-      user: "ferreiro"
-  }, function(err, res) {
-      console.log(JSON.stringify(res));
-      return res;
-  });
-}
-
 //
-// /*
-//   Calling Github API and get total number of open
-//   repositories I have hosted on my account
-// */
-// function githubNumRepositories(profile) {
-//   var total_repositories = 0;
-//   var url = "https://api.github.com/users/" + profile;
+// function github(req, res, next) {
+//   var name = 'ferreiro';
+//   var url = "https://api.github.com/users/" + name;
+//   var timeoutInMilliseconds = 10*1000;
 //
-//   console.log(url);
-//   request({
+//   var opts = {
+//     url: url,
+//     headers: {
+//       'User-Agent': 'request'
+//     },
+//     timeout: timeoutInMilliseconds
+//   };
+//
+//   res.setHeader('Content-Type', 'application/json');
+//
+//   request(opts, function (err, response, user) {
+//
+//     user = JSON.parse(user); // Important -->
+//
+//     if (err) {
+//       res.json({
+//           "public_repos": -1
+//       });
+//     }
+//     res.json({
+//         "public_repos": user.public_repos // We return form object we created before
+//     });
+//     // var statusCode = res.statusCode
+//   };
+
+// router.get('/github', function(req, res, next) {
+//     var name = 'ferreiro';
+//     var url = "https://api.github.com/users/" + name;
+//     var timeoutInMilliseconds = 10*1000;
+//
+//     var opts = {
 //       url: url,
-//       json: true
-//   }, function (error, response, body) {
-//       if (!error && response.statusCode === 200) {
-//           total_repositories = body.public_repos;
-//           console.log("body.public_repos " + total_repositories); // Print the json response
-//           console.log("The respond is " + body); // Print the json response
+//       headers: {
+//         'User-Agent': 'request'
+//       },
+//       timeout: timeoutInMilliseconds
+//     };
+//
+//     res.setHeader('Content-Type', 'application/json');
+//
+//     request(opts, function (err, response, user) {
+//
+//       user = JSON.parse(user); // Important -->
+//
+//       if (err) {
+//         res.json({
+//             "public_repos": -1
+//         });
 //       }
-//       return total_repositories;
+//
+//
+//       res.json({
+//           "public_repos": user.public_repos // We return form object we created before
+//       });
+//       // var statusCode = res.statusCode
+//
+//
+//
+//     });
+// });
+
+
+//
+// router.get('/github/repositories', function(req, res, next) {
+//   var name = 'name';
+//   var user = getGithubUser(name);
+//   var totalRepositories = -1;
+//
+//   console.log(user);
+//
+//   if (user.public_repos) {
+//     totalRepositories = user.public_repos;
+//   }
+//
+//   res.setHeader('Content-Type', 'application/json');
+//   res.json({
+//       "public_repos": totalRepositories // We return form object we created before
 //   });
-//   return total_repositories;
+// });
+//
+// module.exports = router;
+//
+// function getGithubUser(name) {
+//   var user = {};
+//   var url = "https://api.github.com/users/" + name;
+//   var timeoutInMilliseconds = 10*1000;
+//
+//   var opts = {
+//     url: url,
+//     headers: {
+//       'User-Agent': 'request'
+//     },
+//     timeout: timeoutInMilliseconds
+//   };
+//
+//   request(opts, function (err, res, user) {
+//     console.log(err);
+//     if (err) {
+//       console.dir(err);
+//       return {};
+//     }
+//     // var statusCode = res.statusCode
+//     return user;
+//   });
 // }

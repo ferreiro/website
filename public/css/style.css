@@ -136,6 +136,35 @@ body {
   width: 100%;
   display: inline-block;
 }
+.full_screen_button {
+  width: 100%;
+  margin-top: 1em;
+}
+.full_screen_button_block {
+  text-align: center;
+}
+.full_screen_button a {
+  display: block;
+  padding: 3em 0;
+  text-align: center;
+  font-size: 1.2em;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(90deg, #FF5722, #673AB7);
+}
+.full_screen_button a span {
+  padding-bottom: 4px;
+}
+.full_screen_button a span.button_fullscreen_text {
+  margin-right: 14px;
+}
+.full_screen_button a span.button_fullscreen_icon {
+  padding-top: 3px;
+  margin-bottom: -8px;
+}
+.full_screen_button a:hover span.button_fullscreen_text {
+  border-bottom: 5px solid #fff;
+}
 .button {
   margi-left: 1em !important;
   margi-right: 1em !important;
