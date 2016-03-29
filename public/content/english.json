@@ -174,5 +174,13 @@
         "subjects" : null
       }
     ]
+  },
+  "contact" : {
+    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a onclick=\"alert('hello@ferreiro.me')\")>email</a> and I'll reply you in < 24h. :)"
+    , "sendButton" : "Send message"
+  },
+  "feedback" : {
+    "title" : "Do you have some ideas, features, bugs...? Fill the form and let's improve the website togueter ;)", 
+    "sendButton" : "Send Feedback"
   }
 }

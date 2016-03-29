@@ -8,7 +8,8 @@ block content
 
 		.contact#animate_div
 
-			h2 Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a onclick="alert('hello@ferreiro.me')")>email</a> and I'll reply you in < 24h. :)
+			if content.title
+				h2 !{content.title}
 
 			form.contact-form(action='/contact/send', method='post', autocomplete="off")#contactform
 
@@ -32,4 +33,4 @@ block content
 				p.formNotificationMessage.success Your message has been sent. Congrats!
 
 				fieldset.contact-form-fieldset.contact-fieldset-nomargin
-					input(type="submit", value="Contact me").button.send.send_margin.dark
+					input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.dark

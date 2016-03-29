@@ -1,20 +1,29 @@
 var express = require('express');
 var nodemailer = require('nodemailer'); // Nodemailer es un módulo externo de node que nos permite mandar correos.
-var config = require('./../config.json');
 var validator = require('validator');
+var content = require('../public/content/english.json'); // TODO: Add multilanguage
 var router = express.Router();
 
 router.get('/', contact);
+router.get('/feedback', feedback);
 router.post('/send', sendForm);
 
 module.exports = router;
 
 // FUNCTIONS
-
 function contact(req, res, next) {
   res.render('contact', {
     title: 'Contact me',
-    path: 'contact'
+    path: 'contact',
+    content: content.contact
+  });
+}
+
+function feedback(req, res, next) {
+  res.render('contact', {
+    title: 'Feeback',
+    path: 'feedback',
+    content: content.feedback
   });
 }
 
