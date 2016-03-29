@@ -817,6 +817,10 @@ textarea:-ms-input-placeholder {
 .contact h2 {
   text-align: justify;
 }
+.contact h2 a {
+  border-bottom: 1px dotted #000;
+  cursor: pointer;
+}
 .contact-form {
   margin-top: 2em;
 }
