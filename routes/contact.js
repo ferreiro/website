@@ -6,6 +6,7 @@ var router = express.Router();
 
 router.get('/', contact);
 router.post('/send', sendForm);
+
 module.exports = router;
 
 // FUNCTIONS
@@ -58,7 +59,7 @@ function sendForm(req, res, next) {
     mailOptions = { // Setup e-mail data with unicode symbols
         subject: '[jgferreiro.com] Message from ' + contactForm.name,
         from: 'Jorge <hello@ferreiro.me>', // sender address
-        to: 'hello@ferreiro.me', // list of receivers
+        to: 'hello@ferreiro.me, me@jgferreiro.com', // list of receivers
         replyTo: contactForm.email,
         html: email_html // html body
     };
