@@ -36,7 +36,9 @@ block content
               if project.highlights
                 ul.projects_box_highlights
                   - for h_text in project.highlights
-                    li <span class="icon-trophy"></span> #{h_text}
+                    li
+                      span(class="icon-trophy").high_icon
+                      span.high_text !{h_text}
 
               if project.skills
                 .projects_box_technologies
@@ -53,7 +55,7 @@ block content
 
 
               if project.people
-                p Talented people working in the project:
+                p Friends working in this project:
                 .projects_box_people
                   - for people in project.people
                     .projects_box_people_entry
@@ -76,7 +78,9 @@ block content
                   span.icon-web
                   span #{content.webButton}
 
-
-    a(href="./contact", class="callToAction").button.button_rounded.centered.margin_top.dark
-      span Contact Jorge Ferreiro
-      span.icon-arrow-right2
+    .projects_box
+      a(href="/contact")
+        .projects_box_content
+          .callToAction.centered.margin_top.dark
+            span Contact Jorge Ferreiro
+            span.icon-arrow-right2

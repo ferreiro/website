@@ -7,6 +7,29 @@ var jfmenuOverlay = $('.jfmenu_overlay');
 var menuButton = $('.jfmenu_open_button');
 var scrollPosition = 0;
 
+
+jfmenuOverlay.click(function() {
+  hideMenu();
+});
+
+// Menu links.
+// When the menu link has a submenu inside (aka <ul>), display the submenu
+// in onther case, don't do anaything
+$('.jfmenu').find('li').click(function(event) {
+  var e = $(this);
+  var submenu_list = e.find('ul');
+  console.log(event);
+
+  submenu_list.each(function() {
+    var menu = $(this);
+    menu.toggleClass('jfmenu_displayed'); // Display the submenu
+    console.log(menu);
+  });
+
+
+});
+
+
 menuButton.click(function() {
   var e = $(this);
 
@@ -39,28 +62,3 @@ function displayMenu(){
   jfmenuOverlay.addClass('animated fadeIn');
   $("html").scrollTop(0);
 }
-
-jfmenuOverlay.click(function() {
-
-});
-
-// Menu links.
-// When the menu link has a submenu inside (aka <ul>), display the submenu
-// in onther case, don't do anaything
-$('.jfmenu').find('li').click(function(event) {
-  var e = $(this);
-  var submenu_list = e.find('ul');
-  console.log(event);
-
-  if (e.hasClass('submenu')) {
-    event.preventDefault(); // Parent element. Don't open the link
-  }
-
-  submenu_list.each(function() {
-    var menu = $(this);
-    menu.toggleClass('jfmenu_displayed'); // Display the submenu
-    console.log(menu);
-  });
-
-
-});

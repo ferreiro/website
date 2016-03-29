@@ -31,35 +31,43 @@
     "list": [
       {
         "title" : "Jorge Ferreiro web",
-        "background" : null,
+        "background" : "/images/projects/ferreiro_back.gif",
         "date" : "March 2016 - current",
         "color" : "main_gradient",
-        "pic" : "images/projects/ferreiro.jpg",
-        "description" : "From concept to execution: designed and programmed from scratch my personal website in just <b>2 days</b>. Backend in Node.js and publicily open source.",
-        "webpage" : "http://www.jgferreiro.com",
+        "pic" : "/images/avatar.png",
+        "description" : "Designed and programmed from scratch my personal website in around <b>3 days</b>. Backend in <strong>Node.JS</strong> and publicily open source.",
+        "highlights" : [
+          "Node.JS Open Source Program."
+        ],
+        "webpage" : "http://www.ferreiro.me",
         "skills" : ["nodejs", "bower", "less"],
         "repository" : "https://gitlab.com/ferreiro/website",
         "people" : null
       },
       {
-        "title" : "JF~Dotfiles",
-        "background" : null,
-        "date" : "March 2016 - current",
-        "color" : "dark_gradient",
-        "pic" : "images/projects/dotfiles.png",
-        "description" : "Program to install easily and comfortably all your mac applications, configuration files and design preferences (Dock, Finder...).",
-        "webpage" : null,
-        "skills" : ["bash"],
-        "repository" : "https://github.com/ferreiro/dotfiles",
+        "title" : "Music4deejays",
+        "background" : "/images/projects/m4d_back.png",
+        "date" : "May 2014-Nov 2015",
+        "color" : "red_gradient",
+        "pic" : "/images/projects/m4d_icon.png",
+        "description" : "Streaming application for listen, share and download the best electronic music from emerging artits. Tech: PHP, Javascript/AJAX",
+        "highlights" : [
+          "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",
+          "Reached Top #5 music app on FirefoxOS",
+          "Streaming service using Soundcloud API"
+        ],
+        "skills" : ["php", "javascript", "html5", "css3"],
+        "url" : null,
+        "webpage" : "http://music4deejays.com",
         "people" : null
       },
       {
         "title" : "SudoNotes",
-        "background" : "images/projects/sudonotes_back.png",
+        "background" : "/images/projects/sudonotes_back.png",
         "date" : "November 2015 - current",
         "color" : "blue_gradient",
         "pic" : "images/projects/sudonotes.jpg",
-        "description" : "The easiest way to keep all your ideas, notes and projects in one place. Python MVC Application created in 3 days using Bottle Framework and SQLite3. ",
+        "description" : "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) Application marked 10/10 in 'GIW' university course.",
         "url" : "https://github.com/sudonotes",
         "webpage" : null,
         "skills" : ["python", "html5", "css3", "jquery", "SQLite3"],
@@ -78,28 +86,24 @@
         ]
       },
       {
-        "title" : "Music4deejays",
+        "title" : "JF~Dotfiles",
         "background" : null,
-        "date" : "May 2014-Nov 2015",
-        "color" : "red_gradient",
-        "pic" : null,
-        "description" : "Music Streaming Application for promoting and discover emerging producers around the globe.",
-        "highlights" : [
-          "Top #5 music app on FirefoxOS (May 2015).",
-          "More than 56.000 installs. "
-        ],
-        "skills" : ["php", "javascript", "html5", "css3"],
-        "url" : null,
-        "webpage" : "http://music4deejays.com",
+        "date" : "March 2016 - current",
+        "color" : "dark_gradient",
+        "pic" : "images/projects/dotfiles.png",
+        "description" : "Program to install easily and comfortably all your mac applications, configuration files and design preferences (Dock, Finder...).",
+        "webpage" : null,
+        "skills" : null,
+        "repository" : "https://github.com/ferreiro/dotfiles",
         "people" : null
       },
       {
         "title" : "Games-X4",
-        "background" : null,
+        "background" : "/images/projects/java_back.jpg",
         "date" : "October 2014 - June 2015",
-        "color" : "red",
+        "color" : "green_gradient",
         "pic" : null,
-        "description" : "Java program to play up to 4 games addictive Games. Developed using MVC (Model View Controller) pattern and Swing for GUI (Graphical User Interface).",
+        "description" : "Java GUI (Graphical User Interface) program to play up to 4 games developed in partnership with an university fellow during 2º year.",
         "url" : null,
         "skills" : ["java"],
         "repository" : "https://github.com/ferreiro/JavaGames-X4",
@@ -116,8 +120,8 @@
   "stats" : {
     "info" : "",
     "images" : [
-      "images/stats/stats1.png",
-      "images/stats/stats2.png"
+      "/images/stats/stats1.png",
+      "/images/stats/stats2.png"
     ]
   },
   "university" : {
