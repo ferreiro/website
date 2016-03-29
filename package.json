@@ -11,6 +11,7 @@
     "debug": "~2.2.0",
     "email-templates": "^2.2.0",
     "express": "~4.13.1",
+    "github": "^0.2.4",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "nodemailer": "^2.3.0",
