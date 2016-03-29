@@ -1,4 +1,5 @@
 // Margins - Padding
+@website_desktop_width:@desktop-screen; // Width of your desktop container
 @website_header:67px; // Header size of your website
 @menu_padding:20px; // Used on titles and li's
 // Text Size
@@ -50,7 +51,10 @@
   display: none;
 
   &_displayed {
-    display: block !important;
+    display: block;
+    @media all and (min-width: @website_desktop_width) {
+      display: none !important; // Hide opened menu if window resizes
+    }
   }
 
   &_overlay {
@@ -107,7 +111,7 @@
     width: 100%;
     border-bottom:@border_size @border_type @border_color;
     display: inline-block;
-    
+
     &.current_section {
       background: @active_menu_color;
       border-left-color: @main_color;

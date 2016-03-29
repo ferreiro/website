@@ -23,7 +23,6 @@ function animateMainContainer() {
     if (mainContainer.length) {
       mainContainer.hide(0).delay(900).show(0).addClass('animated ' + animations[randomAnimation]);
     }
-
 }
 
 $(document).ready(function(){
@@ -31,11 +30,9 @@ $(document).ready(function(){
   animate();
 });
 
-
 // Animate call to action button each 3 seconds
 function animate() {
   var startTime = 2000;
-  //var animation = "animated bounceIn";
   var animation = "animated bounce";
   var cButton = $('.callToAction');
 
