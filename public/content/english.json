@@ -31,7 +31,7 @@
     "list": [
       {
         "title" : "Jorge Ferreiro web",
-        "background" : "images/projects/ferreiro_back.gif",
+        "background" : null,
         "date" : "March 2016 - current",
         "color" : "main_gradient",
         "pic" : "images/projects/ferreiro.jpg",
@@ -43,7 +43,7 @@
       },
       {
         "title" : "JF~Dotfiles",
-        "background" : "images/projects/dotfiles_back.gif",
+        "background" : null,
         "date" : "March 2016 - current",
         "color" : "dark_gradient",
         "pic" : "images/projects/dotfiles.png",
@@ -79,7 +79,7 @@
       },
       {
         "title" : "Music4deejays",
-        "background" : "images/projects/music4deejays_back.gif",
+        "background" : null,
         "date" : "May 2014-Nov 2015",
         "color" : "red_gradient",
         "pic" : null,
