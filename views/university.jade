@@ -9,7 +9,9 @@ block content
 
 			img(src="https://media.licdn.com/mpr/mpr/shrinknp_674_240/AAEAAQAAAAAAAAGdAAAAJDJmZGEzM2ExLTQ2NmItNGY4MS04NTU3LTE3ZWQ4MTk1NjcxZA.jpg", width="100%")
 
-			p.paragraph I'm attending year <strong>3</strong> out 4 on <strong>computer science</strong> at Universidad Complutense de Madrid <a href="http://informatica.ucm.es" target="_blank">(www.ucm.es)</a>. It's a Bilingual Degree so courses are taugh in English and Spanish. My itinerary is called "Tecnología Específica de Computación".
+			if content.info
+				for text in content.info
+					p.paragraph !{content}
 
 			if content.courses
 				- for course in content.courses
@@ -18,9 +20,18 @@ block content
 						if course.title
 							h1.course-title #{course.title}
 
-						if  course.subjects
+						if course.subjects
 							- for subject in course.subjects
-								p #{subject.lang}
-								h2 #{subject.title}
+
+								#{subject.lang}
+
+								if lang
+									if lang == es
+										span.flag_spanish ES
+									else if lang == en
+										span.flag_english EN
+
+								if subject.title
+									p #{subject.title}
 						else
 							p Subjects for next year not decided yet.

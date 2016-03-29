@@ -11,28 +11,29 @@ menuButton.click(function() {
   var e = $(this);
 
   if (jfmenu.hasClass('jfmenu_displayed')) {
-    hideMenu(e);
+    e.removeClass('jfmenu_open_button_active');
+    hideMenu();
+
   }
   else {
-    displayMenu(e);
+    e.addClass('jfmenu_open_button_active');
+    displayMenu();
   }
 });
 
-function hideMenu(e){
+function hideMenu(){
   $('html, body').animate({
       scrollTop: scrollPosition
   }, 0);
-  e.addClass('jfmenu_displayed');
   jfmenu.removeClass('jfmenu_displayed');
   jfmenuContent.removeClass('animated fadeInDownBig');
 }
 
-function displayMenu(e){
+function displayMenu(){
   scrollPosition = $('body').scrollTop(); // Capture current top position
   $('html, body').animate({
       scrollTop: 0
   }, 400);
-  e.removeClass('jfmenu_displayed');
   jfmenu.addClass('jfmenu_displayed animated');
   jfmenuContent.addClass('animated fadeInDownBig');
   jfmenuOverlay.addClass('animated fadeIn');
