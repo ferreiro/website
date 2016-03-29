@@ -69,7 +69,6 @@ body {
   width: 100%;
   height: 1px;
   background: transparent;
-  margin: 0;
   margin: 1em 0;
 }
 .loader {
@@ -350,6 +349,83 @@ textarea::-moz-placeholder {
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.8);
+}
+.jfmenu_open_button {
+  width: 67px;
+  height: 67px;
+  display: block;
+  color: #949494;
+  position: relative;
+}
+.jfmenu_open_button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.jfmenu_open_button span:before {
+  font-size: 30px;
+}
+.jfmenu {
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.jfmenu_overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.jfmenu_content {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+}
+.jfmenu_top_separator {
+  height: 67px;
+}
+.jfmenu_title {
+  font-size: 2em;
+  padding: 20px;
+  color: #d83902;
+  font-weight: 300;
+}
+.jfmenu ul {
+  border-top: 1px dotted #cecece;
+}
+.jfmenu ul ul {
+  display: none;
+}
+.jfmenu ul > li.submenu > a {
+  background: #f4f4f4;
+}
+.jfmenu li {
+  width: 100%;
+  border-bottom: 1px dotted #cecece;
+  display: inline-block;
+  border-left: 5px solid #cecece;
+}
+.jfmenu li.current_section {
+  background: #ffece6;
+  border-left-color: #d83902;
+}
+.jfmenu li a {
+  text-decoration: none;
+  font-size: 20px;
+  display: block;
+  padding: 20px 20px;
 }
 .logo {
   width: 67px;

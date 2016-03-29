@@ -1,3 +1,58 @@
+.jfmenu
+  .jfmenu_overlay
+  .jfmenu_content
+    
+    // put the size of your header
+    .jfmenu_top_separator
+    
+    h1.jfmenu_title Discover me
+  
+    // Menu block containing links
+    ul
+      li.current_section
+        a(href="/About")
+          span About Jorge Ferreiro
+      li
+        a(href="/Projects &amp; Works")
+          span Projects &amp; Works
+      li
+        a(href="/Contact me")
+          span Contact me
+      li.submenu
+        a(href="#")
+          span Social Networks
+          span.icon-arrow-down2.right
+        
+        // Menu block containing links (sublinks)
+        ul
+          li
+            a(href="https://www.github.com/ferreiro", target="_blank")
+              span Github
+          li
+            a(href="https://www.linkedin.com/in/jgferreiro", target="_blank")
+              span Linkedin
+          li
+            a(href="https://www..com/jgferreiro", target="_blank")
+              span Twitter
+          li
+            a(href="https://www.twitter.com/jgferreiro", target="_blank")
+              span Facebook
+              
+      li.submenu
+        a(href="#")
+          span Language
+          span.icon-arrow-down2.right
+        
+        ul
+          li
+            a(href="/")
+              span English
+              
+      //- li
+      //-   a(onclick="alert('me [at] jgferreiro.com')")
+      //-     span Email
+
+
 .menu.fixed
   .container
 
@@ -15,7 +70,10 @@
         p Contact
 
     .right
-
+      
+      .jfmenu_open_button#dropdown-mobiles
+        span.icon-paragraph-justify
+                
       .dropdown
         .item.with-icon
           p
@@ -34,29 +92,4 @@
             span.icon-cog
             .dropdown-content#DropdownSocial
               //a.dropdown-link(href="/es") Español
-              a.dropdown-link(href="/") English
-
-
-      .dropdown#dropdown-mobiles
-        .item.with-icon
-
-          p
-            span.extra-margin Menu
-            span.icon-paragraph-justify
-
-            .dropdown-content#DropdownSocial
-
-              a.dropdown-link(href="/about/") About
-              a.dropdown-link(href="/projects/") Projects
-              a.dropdown-link(href="/contact/") Contact me
-
-              h3 Social
-              a.dropdown-link(href="https://github.com/ferreiro", target="_blank") Github
-              a.dropdown-link(href="https://linkedin.com/in/jgferreiro", target="_blank") Linkedin
-              a.dropdown-link(href="https://twitter.com/jgferreiro", target="_blank") Twitter
-              a.dropdown-link(href="https://soundcloud.com/jgferreiro", target="_blank") Soundcloud
-              a.dropdown-link(onclick="alert('me [at] jgferreiro.com')") Email
-
-              h3 Languages
-              // a.dropdown-link(href="/es/") Español
               a.dropdown-link(href="/") English

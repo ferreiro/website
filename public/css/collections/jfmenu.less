@@ -1,0 +1,116 @@
+// Margins - Padding
+@website_header:67px; // Header size of your website
+@menu_padding:20px; // Used on titles and li's
+// Text Size
+@title_size:2em;
+@links_size:20px;
+// Colors
+@main_color:@primaryColor;
+@text_color:@secundaryColor;
+@submenu_color:#f4f4f4;
+@active_menu_color:#FFECE6;
+@overlay_color: rgba(0, 0, 0, 0.6);
+@open_button_color:#949494;
+// Borders
+@border_type:dotted;
+@border_size:1px;
+@border_color:#cecece;
+
+.jfmenu_open_button {
+  width: @website_header;
+  height: @website_header;
+  display: block;
+  color:@open_button_color;
+  position: relative;
+
+  span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    &:before {
+      font-size: 30px;
+    }
+  }
+}
+
+.jfmenu {
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+
+  &_overlay {
+    width: 100%;
+    height: 100%;
+    background: @overlay_color;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0; // Overlay behind our content
+  }
+
+  &_content {
+    width: 100%; // Ocuppy all the screen
+    height: auto; // 100%=ocuppy all the height | auto=adjust to menu content
+    background: #fff; // Background of the menu
+    position: absolute;
+    z-index: 10;
+    top: 0;
+  }
+
+  // Start the menu after the header of your website
+  &_top_separator {
+    height:@website_header; // Header size of your website
+  }
+
+  &_title {
+    font-size: @title_size;
+    padding: @menu_padding;
+    color:@main_color;
+    font-weight: 300;
+  }
+
+  // A block is a bunch of links
+  // When a block itself, does not container another block
+  // it's considered as normal block
+  // When a block, contains another block, it's considered a parent block
+  // So the title will not have any link
+
+  ul {
+    border-top:@border_size @border_type @border_color;
+  }
+
+  ul ul {
+    display: none; // Hide Submenus - Submenus will be shown when user click on the menu link via javascript
+  }
+
+  ul > li.submenu > a {
+    background: @submenu_color; // Apply color to parent link to the block
+  }
+
+  li {
+
+    width: 100%;
+    border-bottom:@border_size @border_type @border_color;
+    display: inline-block;
+    border-left:5px solid @border_color;
+
+    &.current_section {
+      background: @active_menu_color;
+      border-left-color: @main_color;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: @links_size;
+      display: block; // Don't change this
+      padding: @menu_padding @menu_padding;
+    }
+  }
+
+}
