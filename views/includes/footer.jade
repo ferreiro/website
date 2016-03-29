@@ -8,6 +8,11 @@ footer.container#footer
 		//<div class="footer-logo"><div class="footer-logo-square"><a href="#top" title="Jorge Ferreiro" class="header-logo-square-link"></a></div><div class="footer-logo-square"><a href="#top" title="Jorge Ferreiro" class="header-logo-square-link"></a></div></div>
 
 script(src="/bower_components/jquery/dist/jquery.min.js")
-script(src="/javascripts/loader.js")
+script(src="/javascripts/jfmenu.js")
 script(src="/javascripts/animations.js")
 script(src="/javascripts/contact.js")
+
+script(type='text/javascript').
+	$(window).load(function() {
+		$('.loader').fadeOut('2000');
+	});

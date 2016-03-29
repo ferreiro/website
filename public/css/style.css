@@ -356,6 +356,10 @@ textarea:-ms-input-placeholder {
   display: block;
   color: #949494;
   position: relative;
+  cursor: pointer;
+}
+.jfmenu_open_button_active {
+  background: #f4f4f4;
 }
 .jfmenu_open_button span {
   position: absolute;
@@ -375,6 +379,10 @@ textarea:-ms-input-placeholder {
   bottom: 0;
   right: 0;
   position: absolute;
+  display: none;
+}
+.jfmenu_displayed {
+  display: block !important;
 }
 .jfmenu_overlay {
   width: 100%;

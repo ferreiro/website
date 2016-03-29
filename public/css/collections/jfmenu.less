@@ -22,7 +22,11 @@
   display: block;
   color:@open_button_color;
   position: relative;
+  cursor: pointer;
 
+  &_active {
+    background: #f4f4f4;
+  }
   span {
   position: absolute;
   top: 50%;
@@ -43,6 +47,11 @@
   bottom: 0;
   right: 0;
   position: absolute;
+  display: none;
+
+  &_displayed {
+    display: block !important;
+  }
 
   &_overlay {
     width: 100%;
