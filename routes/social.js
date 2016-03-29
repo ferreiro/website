@@ -35,7 +35,7 @@ function getGithubUser() {
       user: "ferreiro"
   }, function(err, res) {
       console.log(JSON.stringify(res));
-      return JSON.stringify(res);
+      return res;
   });
 }
 
