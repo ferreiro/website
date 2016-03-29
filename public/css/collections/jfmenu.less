@@ -52,7 +52,7 @@
   display: none;
 
   &_displayed {
-    display: block;
+    display: block !important; // Don't change !important
     @media all and (min-width: @website_desktop_width) {
       display: none !important; // Hide opened menu if window resizes
     }
@@ -100,7 +100,7 @@
   }
 
   ul ul {
-    display: none; // Hide Submenus - Submenus will be shown when user click on the menu link via javascript
+    display: none; // Never put !important - Hide Submenus - Submenus will be shown when user click on the menu link via javascript
   }
 
   ul > li.submenu > a {

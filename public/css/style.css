@@ -74,6 +74,7 @@ body {
   height: 1px;
   background: #f4f4f4;
   margin: 1.5em 0;
+  margin-top: 0;
 }
 .separator_blank {
   width: 100%;
@@ -95,13 +96,25 @@ body {
 }
 .breadcrumb {
   width: 100%;
-  padding: 0 !important;
-  margin: 0 !important;
+  padding: 0;
+  margin: 0;
   text-align: center;
+  padding: 1.5em 0;
+  margin: 0 auto;
+  margin-top: -1em;
 }
 @media all and (min-width: 800px) {
+}
+@media all and (min-width: 900px) {
   .breadcrumb {
-    padding: 0 2em;
+    margin-top: -2em !important;
+    padding: 1.8em 0;
+    padding-top: 2em;
+  }
+}
+@media all and (min-width: 1300px) {
+  .breadcrumb {
+    padding: 0;
   }
 }
 .breadcrumb-parent {
@@ -380,7 +393,7 @@ textarea:-ms-input-placeholder {
   display: none;
 }
 .jfmenu_displayed {
-  display: block;
+  display: block !important;
 }
 @media all and (min-width: 900px) {
   .jfmenu_displayed {
@@ -614,7 +627,7 @@ textarea:-ms-input-placeholder {
   }
 }
 .container_wrap {
-  padding: 1em 0;
+  padding: 1em;
   margin: 0 auto;
   margin-top: 67px !important;
 }
@@ -628,7 +641,6 @@ textarea:-ms-input-placeholder {
 @media all and (min-width: 1300px) {
   .container_wrap {
     padding: 0;
-    padding: 2em 0;
   }
 }
 .about-avatar {
@@ -967,13 +979,13 @@ textarea:-ms-input-placeholder {
   text-align: center;
   padding-top: 5px;
 }
-.dark_gradient::before {
-  background: linear-gradient(270deg, #000000, #272727);
-}
 .no-color::before,
 .default::before,
 .main_gradient::before {
   background: linear-gradient(270deg, #d83902, #ac360d);
+}
+.dark_gradient::before {
+  background: linear-gradient(270deg, #000000, #272727);
 }
 .red_gradient::before {
   background: linear-gradient(270deg, #962828, #B72D2D);

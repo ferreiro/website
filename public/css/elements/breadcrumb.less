@@ -1,18 +1,24 @@
 .breadcrumb {
   width: 100%;
   //display: inline-block !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  padding: 0;
+  margin: 0;
   text-align: center;
+  padding: 1.5em 0;
+  margin:0 auto;
+  margin-top: -1em; // Container padding
 
   @media all and (min-width: @tablet-screen) {
-    padding: 0 2em;
+    //padding: 0 2em;
   }
   @media all and (min-width:@desktop-screen) {
-
+    margin-top: -2em !important; // Container padding
+    padding: 1.8em 0;
+    padding-top: 2em;
   }
   @media all and (min-width:@big-screen) {
-
+    padding: 0;
+    // padding: 2em 0;
   }
 
   &-parent {

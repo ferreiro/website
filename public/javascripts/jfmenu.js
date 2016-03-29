@@ -7,9 +7,10 @@ var jfmenuOverlay = $('.jfmenu_overlay');
 var menuButton = $('.jfmenu_open_button');
 var scrollPosition = 0;
 
-
 jfmenuOverlay.click(function() {
-  hideMenu();
+  if ($('.jfmenu').hasClass('jfmenu_displayed')) {
+    hideMenu();
+  }
 });
 
 // Menu links.
@@ -19,14 +20,14 @@ $('.jfmenu').find('li').click(function(event) {
   var e = $(this);
   var submenu_list = e.find('ul');
   console.log(event);
+  console.log(event);
 
-  submenu_list.each(function() {
-    var menu = $(this);
-    menu.toggleClass('jfmenu_displayed'); // Display the submenu
-    console.log(menu);
-  });
-
-
+  if (submenu_list.length > 0) {
+    submenu_list.each(function() {
+      var menu = $(this);
+      menu.toggleClass('jfmenu_displayed'); // Display the submenu
+    });
+  }
 });
 
 
@@ -45,20 +46,35 @@ menuButton.click(function() {
 });
 
 function hideMenu(){
-  $('html, body').animate({
-      scrollTop: scrollPosition
-  }, 0);
-  jfmenu.removeClass('jfmenu_displayed');
-  jfmenuContent.removeClass('animated fadeInDownBig');
+  if (jfmenu.hasClass('jfmenu_displayed')) {
+
+    $('html, body').animate({
+        scrollTop: scrollPosition
+    }, 0);
+
+    jfmenu.removeClass('jfmenu_displayed');
+    jfmenuContent.removeClass('fadeInDownBig');
+    jfmenuOverlay.removeClass('fadeIn');
+    // jfmenuContent.addClass('animated fadeOutUpBig');
+    // jfmenuOverlay.addClass('animated fadeOut');
+    // // Wait n seconds before hiding the menu
+    // setTimeout(function() {
+    //
+    // }, 50);
+  }
 }
 
 function displayMenu(){
-  scrollPosition = $('body').scrollTop(); // Capture current top position
-  $('html, body').animate({
-      scrollTop: 0
-  }, 400);
-  jfmenu.addClass('jfmenu_displayed animated');
-  jfmenuContent.addClass('animated fadeInDownBig');
-  jfmenuOverlay.addClass('animated fadeIn');
-  $("html").scrollTop(0);
+
+  if (! jfmenu.hasClass('jfmenu_displayed')) {
+    scrollPosition = $('body').scrollTop(); // Capture current top position
+    $('html, body').animate({
+        scrollTop: 0
+    }, 400);
+
+    jfmenu.addClass('jfmenu_displayed');
+    jfmenuContent.addClass('animated fadeInDownBig');
+    jfmenuOverlay.addClass('animated fadeIn');
+  }
+
 }
