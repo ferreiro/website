@@ -2,29 +2,32 @@ var express = require('express');
 var content = require('../public/content/english.json'); // TODO: Add multilanguage
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.redirect('/about');
-  // res.render('about', {
-  //   title: 'Jorge Ferreiro',
-  //   path: 'index'
-  // });
-});
+router.get('/', about); // Home shows about page
+router.get('/about', about);
+router.get('/university', university);
 
-router.get('/about', function(req, res, next) {
+// function home(req, res, next) {
+//   res.render('index', {
+//     title: 'Home',
+//     path: 'index',
+//     content: content.home
+//   });
+// }
+
+function about(req, res, next) {
   res.render('about', {
     title: 'About me',
     path: 'about',
     content: content.about
   });
-});
+}
 
-router.get('/university', function(req, res, next) {
+function university(req, res, next) {
   res.render('university', {
     title: 'University curriculum',
     path: 'university',
     content: content.university
   });
-});
+}
 
 module.exports = router;
