@@ -95,6 +95,66 @@ body {
   left: 0;
   z-index: 1000;
 }
+.jfmodalbox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 400;
+  display: none;
+}
+.jfmodalbox_displayed {
+  display: block;
+}
+.jfmodalbox_overlay {
+  width: 100%;
+  height: 100%;
+  displa: block;
+  background: rgba(255, 255, 255, 0.8);
+}
+.jfmodalbox_close {
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background: #cecece;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+.jfmodalbox_close span {
+  display: inline-block;
+  margin-top: 5px !important;
+  background: transparent !important;
+  padding: 0;
+}
+.jfmodalbox_content {
+  width: 250px;
+  top: 50% !important;
+  left: 50% !important;
+  background: #fff;
+  transform: translate(-50%, -50%) !important;
+  border: 1px solid #cecece;
+  padding: 1em;
+  position: absolute;
+}
+.jfmodalbox_content h2 {
+  color: #d83902;
+  margin-bottom: 10px;
+}
+.jfmodalbox_content p {
+  color: #000;
+  margin-bottom: 10px;
+}
+.jfmodalbox_content span {
+  background: red;
+  margin: 15px 0;
+}
 .breadcrumb {
   width: 100%;
   padding: 0;
@@ -486,7 +546,7 @@ textarea:-ms-input-placeholder {
 .jfFooter_separator {
   width: 100%;
   display: none;
-  border: 1px solid #f4f4f4;
+  border-top: 2px solid #f4f4f4;
   margin: 0;
 }
 @media all and (min-width: 900px) {
@@ -694,6 +754,7 @@ textarea:-ms-input-placeholder {
   display: inline-block;
   text-align: right;
   text-decoration: none;
+  cursor: pointer;
 }
 .dropdown-content a:hover {
   font-weight: bold;
