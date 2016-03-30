@@ -10,6 +10,8 @@ block content
 
       if content.title
         h2 !{content.title}
+            
+      p.formNotificationMessage.success Your message has been sent. Congrats!
 
       form.contact_form(action='/contact/send', method='post', autocomplete="off")#contactform
 
@@ -31,7 +33,9 @@ block content
 
         fieldset.contact_form_fieldset.contact_fieldset_nomargin
           input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_fieldset_submit
-
+        
+        p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
+        
         fieldset.contact_form_fieldset
           .contact_form_newsletter
             span.contact_form_newsletter_check
@@ -42,5 +46,3 @@ block content
 
             span.contact_form_newsletter_text I want to know Jorge Ferreiro new projects and updates
         
-        p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
-        p.formNotificationMessage.success Your message has been sent. Congrats!
