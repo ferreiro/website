@@ -1,34 +1,29 @@
-var menu = $('.menu');
-var footer = $('footer');
-var sectionHeader = $('#sectionHeader');
 var ss = sessionStorage;
-
+var menu = $('.menu');
+var sectionHeader = $('#sectionHeader');
 var animations = [ "zoomIn", "fadeInUpBig"]; //  'flipInY', '', 'bounceIn'
 
 window.animateMainContainer = function animateMainContainer() {
     var mainContainer = $('#animate_div');
     var randomAnimation = Math.floor((Math.random() * animations.length));
 
-    if (ss.disabledMenuEffect != "true" && menu.length) {
-      ss.disabledMenuEffect = "true"; // Don't repeat the header effect every load.
-      menu.addClass('animated zoomIn');
-    }
-    else {
-      menu.removeClass('animated zoomIn');
-    }
-
-    if (footer.length) {
-      footer.hide(0).delay(1200).show(0);
-    }
+    // if (ss.disabledMenuEffect != "true" && menu.length) {
+    //   ss.disabledMenuEffect = "true"; // Don't repeat the header effect every load.
+    //   menu.addClass('animated zoomIn');
+    // }
+    // else {
+    //   menu.removeClass('animated zoomIn');
+    // }
 
     if (sectionHeader.length) {
+      // sectionHeader.addClass('animated flipInX');
       sectionHeader.addClass('animated flipInX');
     }
 
     if (mainContainer.length) {
       mainContainer.addClass('animated ' + animations[randomAnimation]);
     }
-}
+};
 
 // Animate call to action button each 3 seconds
 window.animateCalltoAction = function animate() {
@@ -47,4 +42,4 @@ window.animateCalltoAction = function animate() {
       }
     }, startTime*3);
   }
-}
+};

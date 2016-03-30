@@ -3,7 +3,7 @@
     "highlights" : [
       "<strong>Computer Science</strong> Student",
       "Full Stack <strong>Software Developer</strong>",
-      "<a href='http://www.github.com/ferreiro' target='_blank'>Programming</a> &amp; <a href='https://soundcloud.com/jgferreiro' target='_blank'>Music</a> lover"
+      "<strong>Programming</strong> &amp; Music lover"
     ],
     "button" : "Dicover my work",
     "skills" : [
@@ -35,7 +35,7 @@
         "date" : "March 2016 - current",
         "color" : "main_gradient",
         "pic" : "/images/avatar.png",
-        "description" : "Designed and programmed from scratch my personal website in around <b>3 days</b>. Backend in <strong>Node.JS</strong> and publicily open source.",
+        "description" : "Designed and programmed from scratch my personal website in <b>4</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
         "highlights" : [
           "Node.JS Open Source Project."
         ],
@@ -67,7 +67,7 @@
         "date" : "November 2015 - current",
         "color" : "blue_gradient",
         "pic" : "images/projects/sudonotes.jpg",
-        "description" : "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) Application marked 10/10 in 'GIW' university course.",
+        "description" : "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) Application granted 10/10 in 'GIW' university course.",
         "url" : "https://github.com/sudonotes",
         "webpage" : null,
         "skills" : ["python", "html5", "css3", "jquery", "SQLite3"],
@@ -180,7 +180,7 @@
     , "sendButton" : "Send message"
   },
   "feedback" : {
-    "title" : "Do you have ideas, features, bugs... for my wbsite? Fill the form and let's improve the website togueter ;)", 
+    "title" : "Do you have ideas, feedback, bugs report or want to share your thoughts? Fill the form and let's improve the website togueter ;)",
     "sendButton" : "Send Feedback"
   }
 }
