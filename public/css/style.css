@@ -826,7 +826,10 @@ textarea:-ms-input-placeholder {
   }
 }
 @media all and (min-width: 1300px) {
-  
+  .container_wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 .about {
   padding-top: 2em;
@@ -1475,5 +1478,8 @@ textarea:-ms-input-placeholder {
   }
 }
 @media all and (min-width: 1300px) {
-  
+  .container_wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
