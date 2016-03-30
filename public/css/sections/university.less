@@ -1,36 +1,81 @@
 
 .university {
-  &-avatar {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    background-size: cover;
-    margin: 0 auto;
-    margin-bottom: 2em;
-    .border-radius(5px);
+  &_wall {
+    width: 100%;
+  }
+  .paragraph {
+    margin: 1em 0;
+  }
+}
+
+.language_icon {
+  display: inline-block;
+  margin-right: 1em;
+  padding: 5px 10px;
+  border:1px solid #f4f4f4;
+  .border-radius(30px);
+}
+
+.lang {
+  &_icon {
+    width: 10px;
+    height: 10px;
     .border-radius(100%);
+    background: blue;
+    display: inline-block;
+  }
+  &_english {
+    background: blue;
+  }
+  &_spanish {
+    background: red;
+  }
+  &_text {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
 
-    img {
-      width: 100%
-    }
 
-    @media all and (min-width: @tablet-screen) {
-        width: 170px;
-        height: 170px;
-    }
-    @media all and (min-width:@desktop-screen) {
+.course {
+  width: 100%;
+  margin-top: 1em;
 
-    }
-    @media all and (min-width:@big-screen) {
+  &_title {
+    width: 100%;
 
+    &_year {
+      padding: 0.3em 0.6em;
+      background: #6F6D6C;
+      display: inline-block;
+      margin-right: 0.7em;
+      color: #fff;
     }
   }
-  h1 {
-    text-align: center;
-    margin-bottom: 0.5em;
-  }
-  h2,
-  h3 {
-    text-align: center;
+  &_subjects {
+    width: 100%;
+    &_entry {
+      width: 100%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-bottom: 0.5em;
+
+      .flags {
+        width: 20px;
+        height: 20px;
+        background:yellow;
+        border:5px solid #f4f4f4;
+        display: inline-block;
+        margin-right: 1.1em;
+        margin-left: 1em;
+        .border-radius(100%);
+        text-align: center;
+      }
+
+      p {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
   }
 }

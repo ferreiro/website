@@ -7,31 +7,42 @@ block content
 	.sectionWrapper#animate_div
 		.university
 
-			img(src="https://media.licdn.com/mpr/mpr/shrinknp_674_240/AAEAAQAAAAAAAAGdAAAAJDJmZGEzM2ExLTQ2NmItNGY4MS04NTU3LTE3ZWQ4MTk1NjcxZA.jpg", width="100%")
+			img.university_wall(src="/images/fdi_ucm.jpg", width="100%")
 
-			if content.info
-				for text in content.info
-					p.paragraph !{content}
+			if content.text
+				for text in content.text
+					p.paragraph !{text}
+
+			.language_icon
+				span.lang_icon.lang_english
+				span.lang_text English course #{englishCourses}/50
+
+			.language_icon
+				span.lang_icon.lang_spanish
+				span.lang_text Spanish course #{spanishCourses}/50
 
 			if content.courses
-				- for course in content.courses
+				- for course, index in content.courses
 					.course
 
 						if course.title
-							h1.course-title #{course.title}
+							h2.course_title
+								span.course_title_year #{index+1}
+								span.course_title_text #{course.title}
 
 						if course.subjects
-							- for subject in course.subjects
-
-								#{subject.lang}
-
-								if lang
-									if lang == es
-										span.flag_spanish ES
-									else if lang == en
-										span.flag_english EN
-
-								if subject.title
-									p #{subject.title}
+							.course_subjects
+								- for subject in course.subjects
+									.course_subjects_entry
+										- lang = subject.lang
+										if lang
+											if lang == "es"
+												span.flags
+													span.lang_icon.lang_spanish
+											else if lang == "en"
+												span.flags
+													span.lang_icon.lang_english
+										if subject.title
+											p #{subject.title}
 						else
 							p Subjects for next year not decided yet.

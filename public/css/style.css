@@ -1164,39 +1164,88 @@ textarea:-ms-input-placeholder {
 .light_gradient::before {
   background: linear-gradient(270deg, #ffffff, #dddddd);
 }
-.university-avatar {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  background-size: cover;
-  margin: 0 auto;
-  margin-bottom: 2em;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+.university_wall {
+  width: 100%;
+}
+.university .paragraph {
+  margin: 1em 0;
+}
+.language_icon {
+  display: inline-block;
+  margin-right: 1em;
+  padding: 5px 10px;
+  border: 1px solid #f4f4f4;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.lang_icon {
+  width: 10px;
+  height: 10px;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
   border-radius: 100%;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
+  background: blue;
+  display: inline-block;
 }
-.university-avatar img {
+.lang_english {
+  background: blue;
+}
+.lang_spanish {
+  background: red;
+}
+.lang_text {
+  display: inline-block;
+  margin-left: 5px;
+}
+.course {
+  width: 100%;
+  margin-top: 1em;
+}
+.course_title {
   width: 100%;
 }
-@media all and (min-width: 800px) {
-  .university-avatar {
-    width: 170px;
-    height: 170px;
-  }
+.course_title_year {
+  padding: 0.3em 0.6em;
+  background: #6F6D6C;
+  display: inline-block;
+  margin-right: 0.7em;
+  color: #fff;
 }
-.university h1 {
-  text-align: center;
+.course_subjects {
+  width: 100%;
+}
+.course_subjects_entry {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
   margin-bottom: 0.5em;
 }
-.university h2,
-.university h3 {
+.course_subjects_entry .flags {
+  width: 20px;
+  height: 20px;
+  background: yellow;
+  border: 5px solid #f4f4f4;
+  display: inline-block;
+  margin-right: 1.1em;
+  margin-left: 1em;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
   text-align: center;
+}
+.course_subjects_entry p {
+  display: inline-block;
+  vertical-align: middle;
 }
 .stats_images {
   text-align: center;
