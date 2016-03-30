@@ -453,12 +453,76 @@ textarea:-ms-input-placeholder {
   padding-left: 10px;
   color: rgba(0, 0, 0, 0.3);
   text-align: right;
+  z-index: 60;
 }
 .notice_beta a {
   text-decoration: none;
 }
 .underline {
   text-decoration: underline;
+}
+.jfFooter {
+  width: 100%;
+  display: block !important;
+  margin-top: 2em;
+  border: 0;
+  border-top: 1px solid #f4f4f4;
+  position: relative;
+}
+@media all and (min-width: 900px) {
+  .jfFooter {
+    padding: 2em 0;
+  }
+}
+.jfFooter_content {
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.jfFooter_separator {
+  width: 100%;
+  display: none;
+  border: 1px solid #f4f4f4;
+  margin: 0;
+}
+@media all and (min-width: 900px) {
+  .jfFooter_separator {
+    margin: 2em 0;
+    display: block;
+  }
+}
+.jfFooter_entry {
+  width: 100%;
+  border-bottom: 1px solid #f4f4f4;
+  display: inline-block;
+  padding: 1em 0;
+}
+@media all and (min-width: 900px) {
+  .jfFooter_entry {
+    border: 0;
+    width: auto !important;
+    padding: 0 2em;
+    border-left: 1px solid #f4f4f4;
+    border-right: 1px solid #f4f4f4;
+  }
+}
+.jfFooter_entry h2 {
+  font-size: 1em;
+  color: #000;
+}
+.jfFooter_entry h1 {
+  font-size: 1.6em;
+  color: #676767;
+}
+.jfFooter_entry p {
+  font-size: 1em;
+  color: #000;
+}
+.jfFooter_credits {
+  border: 0;
 }
 .jfmenu_open_button {
   width: 67px;

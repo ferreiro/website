@@ -1,0 +1,76 @@
+.jfFooter {
+  width: 100%;
+  display: block !important;
+  margin-top: 2em;
+  border: 0;
+  border-top: 1px solid #f4f4f4;
+  position: relative;
+
+  @media all and (min-width: @tablet-screen) {
+  }
+  @media all and (min-width:@desktop-screen) {
+    padding:2em 0;
+  }
+  @media all and (min-width:@big-screen) {
+  }
+
+  &_content {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  &_separator {
+    width: 100%;
+    display: none;
+    border: 1px solid #f4f4f4;
+    margin: 0;
+    @media all and (min-width: @tablet-screen) {
+    }
+    @media all and (min-width:@desktop-screen) {
+      margin: 2em 0;
+      display: block;
+    }
+    @media all and (min-width:@big-screen) {
+    }
+  }
+
+  &_entry {
+    width: 100%;
+    border-bottom:1px solid #f4f4f4;
+    display: inline-block;
+    padding:1em 0;
+
+    @media all and (min-width: @tablet-screen) {
+    }
+    @media all and (min-width:@desktop-screen) {
+      border: 0;
+      width: auto !important;
+      padding:0 2em;
+      border-left:1px solid #f4f4f4;
+      border-right:1px solid #f4f4f4;
+    }
+    @media all and (min-width:@big-screen) {
+    }
+
+
+    h2 {
+      font-size: 1em;
+      color: #000;
+    }
+    h1 {
+      font-size: 1.6em;
+      color:#676767;
+    }
+    p {
+      font-size: 1em;
+      color: #000;
+    }
+  }
+  &_credits {
+    border: 0;
+  }
+
+}
