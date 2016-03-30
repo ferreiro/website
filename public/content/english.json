@@ -41,7 +41,7 @@
         ],
         "webpage" : "http://www.ferreiro.me",
         "skills" : ["nodejs", "bower", "less"],
-        "repository" : "https://gitlab.com/ferreiro/website",
+        "repository" : "https://github.com/ferreiro/website",
         "people" : null
       },
       {

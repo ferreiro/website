@@ -199,7 +199,6 @@ body {
 }
 .full_screen_button {
   width: 100%;
-  margin-top: 1em;
 }
 .full_screen_button_block {
   text-align: center;
@@ -504,9 +503,9 @@ textarea:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.8);
 }
 .notice_beta {
-  height: 20px;
   position: fixed;
-  bottom: 1em;
+  padding: 1em;
+  bottom: 0.5em;
   right: 1em;
   font-size: 11px;
   text-transform: uppercase;
@@ -525,7 +524,6 @@ textarea:-ms-input-placeholder {
 .jfFooter {
   width: 100%;
   display: block !important;
-  margin-top: 2em;
   border: 0;
   border-top: 1px solid #f4f4f4;
   position: relative;
@@ -772,57 +770,6 @@ textarea:-ms-input-placeholder {
   #dropdown-mobiles {
     display: inline-block !important;
   }
-}
-#footer {
-  padding-top: 0;
-}
-.footer-separator {
-  height: 1px;
-  background: #f4f4f4;
-}
-.footer-logo {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.3);
-  margin-top: 15px;
-}
-.footer-logo a {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.footer-logo-square {
-  width: 100%;
-  height: 100%;
-  background-image: url('../images/logo.jpg');
-  background-size: cover;
-  position: relative;
-}
-.footer-hot_links {
-  padding: 20px 0;
-  text-align: center;
-}
-.footer-hot_links-button {
-  font-size: 16px;
-  margin: 0:8px;
-  display: inline-block;
-}
-.footer-hot_links-button a {
-  display: block;
-  color: rgba(0, 0, 0, 0.8);
-}
-.footer-hot_links-button a:hover {
-  color: #cfcfcf;
-}
-.footer-credits {
-  text-align: center;
-  padding: 30px 0;
-}
-.footer-credits-text {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.5);
-  margin-top: 2px;
 }
 .container {
   width: 100%;
