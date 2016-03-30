@@ -11,6 +11,7 @@ body {
   max-width: 500px;
   margin: 0 auto;
   padding: 2em 1em;
+  padding-top: 0;
 }
 .fixed {
   position: fixed;
@@ -795,6 +796,9 @@ textarea:-ms-input-placeholder {
   .container_wrap {
     padding: 0;
   }
+}
+.about {
+  padding-top: 2em;
 }
 .about-avatar {
   width: 150px;
