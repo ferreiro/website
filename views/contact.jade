@@ -2,35 +2,45 @@ extends ./includes/layout
 
 block content
 
-	include ./includes/breadcrumb.jade
+  include ./includes/breadcrumb.jade
 
-	.sectionWrapper
+  .sectionWrapper
 
-		.contact#animate_div
+    .contact#animate_div
 
-			if content.title
-				h2 !{content.title}
+      if content.title
+        h2 !{content.title}
 
-			form.contact-form(action='/contact/send', method='post', autocomplete="off")#contactform
+      form.contact_form(action='/contact/send', method='post', autocomplete="off")#contactform
 
-				fieldset.contact-form-fieldset
-					.contact-fieldset-data
-						//p Name (*)
-						p.wrong#wrongName Error: Your name can not be blank
-						input.input_not_blank(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact-fieldset-input
+        fieldset.contact_form_fieldset
+          .contact_fieldset_data
+            //p Name (*)
+            p.wrong#wrongName Error: Your name can not be blank
+            input.input_not_blank(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact_form_fieldset_input
 
-				fieldset.contact-form-fieldset
-					.contact-fieldset-data
-						p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
-						input.input_email(type='name', id='email', name='contact_email', placeholder='And your email?').contact-fieldset-input
+        fieldset.contact_form_fieldset
+          .contact_fieldset_data
+            p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
+            input.input_email(type='name', id='email', name='contact_email', placeholder='And your email?').contact_form_fieldset_input
 
-				fieldset.contact-form-fieldset
-					.contact-fieldset-data
-						p.wrong#wrongMessage Error: Hey! Fill some text here ;).
-						textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message...').contact-fieldset-input
+        fieldset.contact_form_fieldset
+          .contact_fieldset_data
+            p.wrong#wrongMessage Error: Hey! Fill some text here ;).
+            textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message').contact_form_fieldset_input
 
-				p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
-				p.formNotificationMessage.success Your message has been sent. Congrats!
+        fieldset.contact_form_fieldset.contact_fieldset_nomargin
+          input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_fieldset_submit
 
-				fieldset.contact-form-fieldset.contact-fieldset-nomargin
-					input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.dark
+        fieldset.contact_form_fieldset
+          .contact_form_newsletter
+            span.contact_form_newsletter_check
+              .mk-trc(data-style='check')
+                input(id='checkbox1.1', class="newsletter", type='checkbox', name='contact_subcription', value="Subscribed", checked)
+                label(for='checkbox1.1')
+                  i
+
+            span.contact_form_newsletter_text I want to know Jorge Ferreiro new projects and updates
+        
+        p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
+        p.formNotificationMessage.success Your message has been sent. Congrats!

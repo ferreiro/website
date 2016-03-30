@@ -6,11 +6,43 @@
       cursor: pointer;
     }
   }
-  &-form {
+  &_form {
     margin-top: 2em;
 
-    &-fieldset {
+    &_fieldset {
       margin-bottom: 0.4em;
+      &_input {
+        border:2px dotted #cecece;
+        text-align: center;
+      }
+      &_submit {
+        border:3px solid #cecece;
+        &:hover {
+          color: #fff;
+          background: #000;
+          border-color: #000;
+        }
+      }
+    }
+    &_newsletter {
+      width: 100%;
+      display: flex; /* or inline-flex */
+      flex-direction: row;
+      padding: 0;
+      margin-top: 0.5em;
+
+      &_check {
+         //flex-grow: 1;
+         padding: 0;
+      }
+      &_text {
+         flex-grow: 1;
+         margin: 0;
+         padding: 0;
+         padding-left: 10px;
+         padding-top: 3px;
+         color: #989898;
+      }
     }
   }
 }

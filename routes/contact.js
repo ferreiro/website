@@ -42,9 +42,11 @@ function sendForm(req, res, next) {
       valid: false,
       name: validator.escape(req.body.contact_name),
       email: validator.escape(req.body.contact_email),
-      message: validator.escape(req.body.contact_msg)
+      message: validator.escape(req.body.contact_msg),
+      newsletter: String(req.body.contact_newsletter)
     };
 
+    console.log(contactForm);
     // Validate contact form
 
     validForm = validator.isEmail(contactForm.email) &&

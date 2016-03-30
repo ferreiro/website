@@ -1,4 +1,4 @@
-var form = $('.contact-form');
+var form = $('.contact_form');
 
 form.submit(function(event){
     event.preventDefault(); // Stop change webpage
@@ -8,7 +8,7 @@ form.submit(function(event){
 function submitForm() {
   var base = "";
   var loader = $('.loader');
-  var end_point = "/contact/send";
+  var end_point = "contact/send";
   var url = base + end_point;
 
   $('.success').hide();
@@ -22,42 +22,50 @@ function submitForm() {
     return;
   }
 
-  if (loader) $('.loader').show();
+  if (loader) {
+     $('.loader').show();
+  }
 
-  msg = {
+  newsletterChecked = ($(".newsletter:checked").length) > 0;
+
+  contactForm = {
     contact_name: $('#the_name').val(),
     contact_email: $('#email').val(),
-    contact_msg: $('#message').val()
+    contact_msg: $('#message').val(),
+    contact_newsletter: newsletterChecked
   };
 
+  $.ajax({
+     url: url,
+     data: contactForm,
+     type: 'POST',
+     dataType: 'json',
+     encode: true
+  })
+  .done(function(objectReturned) {
+    sent = objectReturned.data.sent;
+    valid = objectReturned.data.valid;
+
+    $('.loader').hide();
+
+    if (!sent || !valid) {
+      $('.failure').show();
+    }
+    else {
+      form.hide();
+      $('.success').show();
+    }
+
+  })
+  .fail(function(objectReturned) {
+
+  })
+  .always(function(objectReturned) {
+    $('.loader').hide();
+  });
+
   try {
-    $.ajax({
-       url: url,
-       data: msg,
-       type: 'POST',
-       dataType: 'json',
-       encode: true
-    })
-    .done(function(objectReturned) {
-      sent = objectReturned.data.sent;
-      valid = objectReturned.data.valid;
 
-      $('.loader').hide();
-
-      if (!sent || !valid) {
-        $('.failure').show();
-      }
-      else {
-        $('.success').show();
-      }
-
-    })
-    .fail(function(objectReturned) {
-
-    })
-    .always(function(objectReturned) {
-      $('.loader').hide();
-    });
   }
   catch(err) {
     $('.failure').show();
