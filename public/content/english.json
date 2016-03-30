@@ -127,11 +127,11 @@
   "university" : {
     "title" : "Education",
     "text" : [
-      "I'm attending year <strong>3</strong> out 4 on <strong>computer science</strong> at Universidad Complutense de Madrid <a href=\"http://informatica.ucm.es\" target=\"_blank\">(www.ucm.es)</a>. It's a Bilingual Degree so courses are taugh in English and Spanish. My itinerary is called \"Tecnología Específica de Computación\" ."
+      "I'm attending year <strong>3</strong> out of 4 in <strong>Computer Science</strong> at Universidad Complutense de Madrid <a href=\"http://informatica.ucm.es\" target=\"_blank\">(www.ucm.es)</a>. It's a Bilingual Degree so courses are taugh in English and Spanish. My itinerary is called \"Tecnología Específica de Computación\""
     ],
     "courses" : [
       {
-        "title" : "2013-2014",
+        "title" : "First Year - 2013/2014",
         "subjects" : [
             { "lang" : "en", "title" : "Fundamentals of Programming" }
           , { "lang" : "en", "title" : "Introduction to computers" }
@@ -142,7 +142,7 @@
         ]
       },
       {
-        "title" : "2014-2015",
+        "title" : "Second Year - 2014/2015",
         "subjects" : [
             { "lang" : "en", "title" : "Programming Technology" }
           , { "lang" : "en", "title" : "Computer Organization" }
@@ -154,23 +154,23 @@
         ]
       },
       {
-        "title" : "2015-2016",
+        "title" : "Third Year - 2015/2016",
         "subjects" : [
             { "lang" : "en", "title" : "Operating Systems" }
           , { "lang" : "en", "title" : "Databases" }
           , { "lang" : "en", "title" : "Computer networks" }
+          , { "lang" : "es", "honors": "Distinction honor", "title" : "Web Information Management" }
+          , { "lang" : "es", "title" : "Data Mining and Big Data paradigm" }
           , { "lang" : "es", "title" : "Concurrent Programming" }
           , { "lang" : "es", "title" : "Declarative Programming" }
           , { "lang" : "es", "title" : "Algorithmic Methods for Solving Problems" }
           , { "lang" : "es", "title" : "Artificial Intelligence" }
           , { "lang" : "es", "title" : "Foundations of computer languages" }
-          , { "lang" : "es", "honors": true, "title" : "Data Mining and Big Data paradigm" }
-          , { "lang" : "es", "title" : "Web Information Management" }
           , { "lang" : "es", "title" : "Computer Networks Security (listener)" }
         ]
       },
       {
-        "title" : "2016-2017",
+        "title" : "Fourth Year - 2016/2017",
         "subjects" : null
       }
     ]
