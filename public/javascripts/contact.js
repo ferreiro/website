@@ -55,22 +55,20 @@ function submitForm() {
      encode: true
   })
   .done(function(objectReturned) {
-    sent = objectReturned.data.sent;
-    valid = objectReturned.data.valid;
+    emailSent = objectReturned.data.emailSent;
+    validData = objectReturned.data.validData;
 
-    $('.loader').hide();
-
-    if (!sent || !valid) {
+    if (!emailSent || !validData) {
       $('.failure').show();
     }
     else {
       form.hide();
       $('.success').show();
     }
-
+    
   })
   .fail(function(objectReturned) {
-
+    $('.failure').show();
   })
   .always(function(objectReturned) {
     $('.loader').hide();

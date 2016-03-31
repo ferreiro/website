@@ -36,6 +36,8 @@ function sendForm(req, res, next) {
   var gmailUser = process.env.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
   var gmailPassword = process.env.GMAIL_PASSWD || "noPassword";
 
+  console.log(gmailUser);
+  console.log(gmailPassword);
   form = {
     "name" : req.body.contact_name,
     "email" : req.body.contact_email,
@@ -76,12 +78,18 @@ function sendForm(req, res, next) {
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
+      var returnedData = {
+        "validData" : true,
+        "emailSent" : true
+      };
+
+      if (error) {
+        returnedData.emailSent = false;
+      }
+
       res.setHeader('Content-Type', 'application/json');
       res.json({
-        "data": {
-          "validData" : true,
-          "emailSent" : error
-        }
+        "data": returnedData
       });
     });
   }
