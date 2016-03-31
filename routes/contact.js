@@ -41,7 +41,7 @@ function sendForm(req, res, next) {
     "email" : req.body.contact_email,
     "message" : req.body.contact_msg,
     "subscribed" : req.body.contact_newsletter || "false",
-    "source" : req.body.contact_source "General"
+    "source" : req.body.contact_source || "General"
   };
 
   invalidForm = form.name === undefined || form.email === undefined ||
