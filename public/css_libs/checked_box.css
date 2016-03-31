@@ -15,14 +15,13 @@
 }
 
 .mk-trc i {
-    float: left;
     width: 55px;
     height: 25px;
     margin-right: 5px;
     font-style: normal;
     position: relative;
     display: inline-block;
-    background: rgba(0, 0, 0, .3)
+    background: rgba(0, 0, 0, .3);
 }
 
 .mk-trc[data-style=radio] i,

@@ -11,7 +11,7 @@ block content
       if content.title
         h2 !{content.title}
             
-      p.formNotificationMessage.success Your message has been sent. Congrats!
+      p.formNotificationMessage.success Your message has been sent. Thank you!
 
       form.contact_form(action='/contact/send', method='post', autocomplete="off")#contactform
 
@@ -30,11 +30,6 @@ block content
           .contact_fieldset_data
             p.wrong#wrongMessage Error: Hey! Fill some text here ;).
             textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message').contact_form_fieldset_input
-
-        fieldset.contact_form_fieldset.contact_fieldset_nomargin
-          input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_fieldset_submit
-        
-        p.formNotificationMessage.failure Sorry. Your message couldn't been sent. Try again or contact me directly.
         
         fieldset.contact_form_fieldset
           .contact_form_newsletter
@@ -43,6 +38,10 @@ block content
                 input(id='checkbox1.1', class="newsletter", type='checkbox', name='contact_subcription', value="Subscribed", checked)
                 label(for='checkbox1.1')
                   i
-
-            span.contact_form_newsletter_text I want to know Jorge Ferreiro new projects and updates
+            span.contact_form_newsletter_text I want to new projects and updates from Jorge
+ 
+        p.formNotificationMessage.failure Sorry. Your message couldn't been sent.<br /> Try again or <u><a class="openModalBox">contact me directly</a></u>
+                    
+        fieldset#formSendButton.contact_form_fieldset.contact_fieldset_nomargin
+          input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_fieldset_submit
         

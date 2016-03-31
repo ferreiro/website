@@ -1,4 +1,16 @@
 var form = $('.contact_form');
+var formSubmitButton = $('#formSendButton');
+var formValidInputs = []; // Array of bools that has length of tototal inputs in the site
+// 
+// setInterval(function() {
+//   var validInputs = validateInputs();
+//   if (validInputs) {
+//     formSubmitButton.removeClass('contact_form_fieldset_submit_disabled');
+//   }
+//   else {
+//     formSubmitButton.addClass('contact_form_fieldset_submit_disabled');
+//   }
+// }, 1);
 
 form.submit(function(event){
     event.preventDefault(); // Stop change webpage
