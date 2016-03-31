@@ -18,10 +18,8 @@ form.submit(function(event){
 });
 
 function submitForm() {
-  var base = "";
   var loader = $('.loader');
-  var end_point = "contact/send";
-  var url = base + end_point;
+  var end_point = "/contact/send";
 
   $('.success').hide();
   $('.failure').hide();
@@ -49,7 +47,7 @@ function submitForm() {
   };
 
   $.ajax({
-     url: url,
+     url: end_point,
      data: contactForm,
      type: 'POST',
      dataType: 'json',
