@@ -1,7 +1,7 @@
 var form = $('.contact_form');
 var formSubmitButton = $('#formSendButton');
 var formValidInputs = []; // Array of bools that has length of tototal inputs in the site
-// 
+
 // setInterval(function() {
 //   var validInputs = validateInputs();
 //   if (validInputs) {

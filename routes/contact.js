@@ -28,74 +28,66 @@ function feedback(req, res, next) {
 }
 
 function sendForm(req, res, next) {
-    var transporter;
-    var contactForm;
-    var mailOptions;
-    var validForm;
-    var gmailUser, gmailPassword;
+  var form;
+  var validForm;
+  var responseEmail;
+  var transporter;
+  var mailOptions;
+  var gmailUser = process.env.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
+  var gmailPassword = process.env.GMAIL_PASSWD || "noPassword";
 
-    gmailUser = process.env.GMAIL_USER;  // get from Enviroments
-    gmailPassword = process.env.GMAIL_PASSWD;  // get from Enviroments
+  form = {
+    "name" : req.body.contact_name,
+    "email" : req.body.contact_email,
+    "message" : req.body.contact_msg,
+    "subscribed" : req.body.contact_newsletter
+  };
 
-    contactForm = {
-      sent: false,
-      valid: false,
-      name: validator.escape(req.body.contact_name),
-      email: validator.escape(req.body.contact_email),
-      message: validator.escape(req.body.contact_msg),
-      newsletter: String(req.body.contact_newsletter)
-    };
+  invalidForm = form.name === undefined || form.email === undefined ||
+                form.message === undefined || ! validator.isEmail(String(form.email));
 
-    console.log(contactForm);
-    // Validate contact form
+  if (invalidForm) {
+    res.setHeader('Content-Type', 'application/json');
+    res.json({
+      "data": {
+        "validData" : false,
+        "emailSent" : false
+      }
+    });
+  }
+  else {
+    transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: gmailUser,
+            pass: gmailPassword
+        }
+    });
 
-    validForm = validator.isEmail(contactForm.email) &&
-                ! validator.isNull(contactForm.message) &&
-                ! validator.isNull(contactForm.name);
-
-    contactForm.valid = validForm;
-
-    if (!validForm) {
-      res.setHeader('Content-Type', 'application/json');
-      res.json({ data: contactForm });
-      return;
-    }
-
-    email_html = generateEmailTemplate(
-      contactForm.name,
-      contactForm.email,
-      contactForm.message
-    );
+    email_html = generateEmailTemplate(form.name, form.email, form.message,
+                                        form.subscribed);
 
     mailOptions = { // Setup e-mail data with unicode symbols
-        subject: '[jgferreiro.com] Message from ' + contactForm.name,
+        subject: '[jgferreiro.com] Message from ' + form.name,
         from: 'Jorge <hello@ferreiro.me>', // sender address
         to: 'hello@ferreiro.me, me@jgferreiro.com', // list of receivers
-        replyTo: contactForm.email,
+        replyTo: form.email,
         html: email_html // html body
     };
 
-    transporter = nodemailer.createTransport({
-  	    service: 'Gmail',
-  	    auth: {
-  	        user: gmailUser,
-  	        pass: gmailPassword
-  	    }
-  	});
-
-    // Send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {
-      if (!error) {
-        contactForm.sent = true;
-      }
       res.setHeader('Content-Type', 'application/json');
       res.json({
-          data: contactForm // We return form object we created before
+        "data": {
+          "validData" : true,
+          "emailSent" : error
+        }
       });
     });
+  }
 }
 
-function generateEmailTemplate(name, email, message) {
+function generateEmailTemplate(name, email, message, subscribed) {
 
     html  = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
     html += '<html xmlns="http://www.w3.org/1999/xhtml">';
@@ -114,6 +106,7 @@ function generateEmailTemplate(name, email, message) {
     html += 'Nombre: '  + name +'<br /> ';
     html += 'Email: '   + email + '<br />';
     html += 'Message: '    + message + '<br />';
+    html += 'Subscribed: '  + subscribed + '<br />';
     html += '</p>';
     html += '</div>';
     html += '</body></html>';
