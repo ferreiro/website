@@ -31,6 +31,9 @@ block content
             p.wrong#wrongMessage Error: Hey! Fill some text here ;).
             textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message').contact_form_fieldset_input
         
+        //- Pass the current location to the form
+        input(type='hidden', name='contact_source_code', id="source", value="#{title}")
+          
         fieldset.contact_form_fieldset
           .contact_form_newsletter
             span.contact_form_newsletter_check

@@ -36,13 +36,12 @@ function sendForm(req, res, next) {
   var gmailUser = process.env.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
   var gmailPassword = process.env.GMAIL_PASSWD || "noPassword";
 
-  console.log(gmailUser);
-  console.log(gmailPassword);
   form = {
     "name" : req.body.contact_name,
     "email" : req.body.contact_email,
     "message" : req.body.contact_msg,
-    "subscribed" : req.body.contact_newsletter
+    "subscribed" : req.body.contact_newsletter,
+    "source" : req.body.contact_source
   };
 
   invalidForm = form.name === undefined || form.email === undefined ||
@@ -67,10 +66,10 @@ function sendForm(req, res, next) {
     });
 
     email_html = generateEmailTemplate(form.name, form.email, form.message,
-                                        form.subscribed);
+                                        form.subscribed, form.source);
 
     mailOptions = { // Setup e-mail data with unicode symbols
-        subject: '[jgferreiro.com] Message from ' + form.name,
+        subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
         from: 'Jorge <hello@ferreiro.me>', // sender address
         to: 'hello@ferreiro.me, me@jgferreiro.com', // list of receivers
         replyTo: form.email,
@@ -95,7 +94,7 @@ function sendForm(req, res, next) {
   }
 }
 
-function generateEmailTemplate(name, email, message, subscribed) {
+function generateEmailTemplate(name, email, message, subscribed, source) {
 
     html  = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
     html += '<html xmlns="http://www.w3.org/1999/xhtml">';
@@ -115,6 +114,7 @@ function generateEmailTemplate(name, email, message, subscribed) {
     html += 'Email: '   + email + '<br />';
     html += 'Message: '    + message + '<br />';
     html += 'Subscribed: '  + subscribed + '<br />';
+    html += 'Subscribed: '  + source + '<br />';
     html += '</p>';
     html += '</div>';
     html += '</body></html>';

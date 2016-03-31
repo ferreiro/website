@@ -44,6 +44,7 @@ function submitForm() {
     contact_name: $('#the_name').val(),
     contact_email: $('#email').val(),
     contact_msg: $('#message').val(),
+    contact_source: $('#source').val(),
     contact_newsletter: newsletterChecked
   };
 
@@ -65,7 +66,7 @@ function submitForm() {
       form.hide();
       $('.success').show();
     }
-    
+
   })
   .fail(function(objectReturned) {
     $('.failure').show();
