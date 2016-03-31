@@ -40,8 +40,8 @@ function sendForm(req, res, next) {
     "name" : req.body.contact_name,
     "email" : req.body.contact_email,
     "message" : req.body.contact_msg,
-    "subscribed" : req.body.contact_newsletter,
-    "source" : req.body.contact_source
+    "subscribed" : req.body.contact_newsletter || "false",
+    "source" : req.body.contact_source "General"
   };
 
   invalidForm = form.name === undefined || form.email === undefined ||
@@ -110,11 +110,11 @@ function generateEmailTemplate(name, email, message, subscribed, source) {
     html += '<div class="content">';
     html += '<h3>Mensaje</h3>';
     html += '<p style="font-size:16px;">';
-    html += 'Nombre: '  + name +'<br /> ';
-    html += 'Email: '   + email + '<br />';
-    html += 'Message: '    + message + '<br />';
-    html += 'Subscribed: '  + subscribed + '<br />';
-    html += 'Subscribed: '  + source + '<br />';
+    html += 'Nombre: '  + String(name) +'<br /> ';
+    html += 'Email: '   + String(email) + '<br />';
+    html += 'Message: '    + String(message) + '<br />';
+    html += 'Subscribed: '  + String(subscribed) + '<br />';
+    html += 'Source: ' + String(source) + '<br />';
     html += '</p>';
     html += '</div>';
     html += '</body></html>';
