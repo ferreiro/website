@@ -74,11 +74,6 @@
         "repository" : "http://github.com/ferreiro/sudonotes",
         "people" : [
           {
-            "name" : "Luis Felipe",
-            "avatar" : "images/projects/people/luis.jpg",
-            "website" : "https://github.com/luisdeol"
-          },
-          {
             "name" : "Tommaso Innocenti",
             "avatar" : "images/projects/people/tommy.jpg",
             "website" : "https://github.com/innotommy91"
