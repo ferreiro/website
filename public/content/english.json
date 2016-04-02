@@ -171,11 +171,23 @@
     ]
   },
   "contact" : {
-    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a class='openModalBox'>email</a> and I'll reply you in < 24h. :)"
-    , "sendButton" : "Send message"
+    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a class='openModalBox'>email</a> and I'll reply you in < 24h. :)",
+    "form" : {
+      "name" : "What is your name?",
+      "email" : "And your email?",
+      "message" : "Write your message",
+      "newsletter": "I want to receive projects and updates from Jorge"
+    },
+    "sendButton" : "Send message"
   },
   "feedback" : {
     "title" : "Do you have ideas, feedback, bugs report or want to share your thoughts? Fill the form and let's improve the website togueter ;)",
+    "form" : {
+      "name" : "What is your name?",
+      "email" : "And your email?",
+      "message" : "How can I improve the website?",
+      "newsletter": "I want to receive projects and updates from Jorge"
+    },
     "sendButton" : "Send Feedback"
   }
 }

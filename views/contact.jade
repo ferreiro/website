@@ -13,35 +13,35 @@ block content
             
       p.formNotificationMessage.success Your message has been sent. Thank you!
 
-      form.contact_form(action='/contact/send', method='post', autocomplete="off")#contactform
+      form.contact_form(action="/contact/send", method="post", autocomplete="off")#contactform
 
         fieldset.contact_form_fieldset
           .contact_fieldset_data
             //p Name (*)
             p.wrong#wrongName Error: Your name can not be blank
-            input.input_not_blank(type='name', id='the_name', name='contact_name', placeholder='What is your name?').contact_form_fieldset_input
+            input.input_not_blank(type="name", id="the_name", name="contact_name", placeholder="#{content.form.name || 'What is your name?'}").contact_form_fieldset_input
 
         fieldset.contact_form_fieldset
           .contact_fieldset_data
             p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
-            input.input_email(type='name', id='email', name='contact_email', placeholder='And your email?').contact_form_fieldset_input
+            input.input_email(type="name", id="email", name="contact_email", placeholder="#{content.form.email || 'And your email?'}").contact_form_fieldset_input
 
         fieldset.contact_form_fieldset
           .contact_fieldset_data
             p.wrong#wrongMessage Error: Hey! Fill some text here ;).
-            textarea.input_not_blank(type='name', id='message', name='contact_msg', placeholder='Write your message').contact_form_fieldset_input
+            textarea.input_not_blank(type="name", id="message", name="contact_msg", placeholder="#{content.form.message || 'Send message'}").contact_form_fieldset_input
         
         //- Pass the current location to the form
-        input(type='hidden', name='contact_source_code', id="source", value="#{title}")
+        input(type="hidden", name="contact_source_code", id="source", value="#{title}")
           
         fieldset.contact_form_fieldset
           .contact_form_newsletter
             span.contact_form_newsletter_check
-              .mk-trc(data-style='check')
-                input(id='checkbox1.1', class="newsletter", type='checkbox', name='contact_subcription', value="Subscribed", checked)
-                label(for='checkbox1.1')
+              .mk-trc(data-style="check")
+                input(id="checkbox1.1", class="newsletter", type="checkbox", name="contact_subcription", value="Subscribed", checked)
+                label(for="checkbox1.1")
                   i
-            span.contact_form_newsletter_text I want to new projects and updates from Jorge
+            span.contact_form_newsletter_text #{content.form.newsletter || 'I want to receive projects and updates from Jorge'}
  
         p.formNotificationMessage.failure Sorry. Your message couldn't been sent.<br /> Try again or <u><a class="openModalBox">contact me directly</a></u>
                     
