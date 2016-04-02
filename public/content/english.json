@@ -1,4 +1,22 @@
 {
+  "menu" : [
+    {
+      "title" : "About Jorge Ferreiro",
+      "url" : "/about"
+    },
+    {
+      "title" : "Projects &amp; Works",
+      "url" : "/projects"
+    },
+    {
+      "title" : "Contact",
+      "url" : "/contact"
+    },
+    {
+      "title" : "Social Networks",
+      "url" : "#"
+    }
+  ],
   "about"  : {
     "highlights" : [
       "<strong>Computer Science</strong> Student",
