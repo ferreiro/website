@@ -1,7 +1,7 @@
 var githubRepostiries = $('#githubRespositories');
 
 function updateGithubRepositories() {
-  var apiEndPoint = 'social/github';
+  var apiEndPoint = '/social/github';
 
   $.ajax({
     url: apiEndPoint,
