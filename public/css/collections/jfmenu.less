@@ -43,7 +43,7 @@
 .jfmenu {
   width: 100%;
   height: 100%;
-  z-index: 30;
+  z-index: 50;
   top: 0;
   left: 0;
   bottom: 0;
@@ -97,6 +97,7 @@
   // So the title will not have any link
 
   ul {
+    // border-left:5px solid @border_color;
     border-top:@border_size @border_type @border_color;
   }
 
@@ -109,22 +110,25 @@
   }
 
   li {
-
     width: 100%;
     border-bottom:@border_size @border_type @border_color;
     display: inline-block;
 
     &.current_section {
-      background: @active_menu_color;
-      border-left-color: @main_color;
+      a {
+        background: @active_menu_color;
+        border-left-color: @main_color;
+        // border-left: 5px solid #000;
+        // margin-left: -5px;
+      }
     }
 
     a {
       text-decoration: none;
       font-size: @links_size;
+      border-left:5px solid @border_color;
       display: block; // Don't change this
       padding: @menu_padding @menu_padding;
-      border-left:5px solid @border_color;
       cursor: pointer;
     }
   }
