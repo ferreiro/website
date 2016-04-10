@@ -57,7 +57,7 @@
         "highlights" : [
           "Node.JS Open Source Project."
         ],
-        "webpage" : "http://www.ferreiro.me",
+        "webpage" : null,
         "skills" : ["nodejs", "bower", "less"],
         "repository" : "https://github.com/ferreiro/website",
         "people" : null
