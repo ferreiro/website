@@ -17,7 +17,6 @@
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
     "nodemailer": "^2.3.0",
-    "semantic-ui": "^2.1.8",
     "serve-favicon": "~2.3.0",
     "validator": "^5.1.0"
   }
