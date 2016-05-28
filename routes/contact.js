@@ -33,8 +33,8 @@ function sendForm(req, res, next) {
   var responseEmail;
   var transporter;
   var mailOptions;
-  var gmailUser = process.env.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
-  var gmailPassword = process.env.GMAIL_PASSWD || "noPassword";
+  var gmailUser = ENV.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
+  var gmailPassword = ENV.GMAIL_PASSWD || "noPassword";
 
   form = {
     "name" : req.body.contact_name,
