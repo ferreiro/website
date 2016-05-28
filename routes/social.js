@@ -2,13 +2,6 @@ var express = require('express');
 var request = require("request");
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-  res.setHeader('Content-Type', 'application/json');
-  res.json({
-      data: githubNumRepositories('ferreiro') // We return form object we created before
-  });
-});
-
 router.get('/github', githubFollowers);
 
 module.exports = router;
