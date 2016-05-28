@@ -1,7 +1,15 @@
 {
-  "name": "jgferreiro-website",
-  "version": "0.0.1",
+  "name": "JorgeFerreiro-website",
+  "description": "Jorge Ferreiro's personal website developed in Node.JS",
+  "homepage": "http://www.github.com/ferreiro/website",
+  "version": "1.0.0",
   "private": true,
+  "license" : "MIT",
+  "author" : {
+    "name": "Jorge Ferreiro",
+    "email": "jorge@ferreiro.me",
+    "email": "http://www.ferreiro.me/"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
