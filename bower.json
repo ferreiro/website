@@ -1,15 +1,17 @@
 {
-  "name": "jgferreiro-website",
-  "description": "Personal website",
+  "name": "jorgeferreiro-website",
+  "description": "Jorge Ferreiro's personal website developed in Node.JS",
   "main": "app.js",
   "authors": [
-    "Jorge Ferreiro <me@jgferreiro.com>"
+    "Jorge Ferreiro <jorge@ferreiro.me>"
   ],
   "license": "MIT",
   "keywords": [
-    "website",
+    "programmer",
     "developer",
-    "designer"
+    "full-stack",
+    "backend",
+    "frontend"
   ],
   "moduleType": [
     "node"

@@ -5,6 +5,13 @@
   "version": "1.0.0",
   "private": true,
   "license" : "MIT",
+  "keywords": [
+    "programmer",
+    "developer",
+    "full-stack",
+    "backend",
+    "frontend"
+  ],
   "author" : {
     "name": "Jorge Ferreiro",
     "email": "jorge@ferreiro.me",
