@@ -35,10 +35,6 @@ function sendForm(req, res, next) {
   var mailOptions;
   var gmailUser = process.env.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
   var gmailPassword = process.env.GMAIL_PASSWD || "noPassword";
-  
-  console.log("Gmail User" + gmailUser);
-  console.log("Gmail Password" + gmailPassword);
-  
 
   form = {
     "name" : req.body.contact_name,
@@ -74,8 +70,8 @@ function sendForm(req, res, next) {
 
     mailOptions = { // Setup e-mail data with unicode symbols
         subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
-        from: 'Jorge <hello@ferreiro.me>', // sender address
-        to: 'hello@ferreiro.me, me@jgferreiro.com', // list of receivers
+        from: String(req.body.contact_name) + ' <' + String(req.body.contact_email) + '>', // sender address
+        to: 'jorge@ferreiro.me', // list of receivers
         replyTo: form.email,
         html: email_html // html body
     };
