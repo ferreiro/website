@@ -5,7 +5,7 @@
       "url" : "/about"
     },
     {
-      "title" : "Projects &amp; Works",
+      "title" : "Projects &amp; works",
       "url" : "/projects"
     },
     {
@@ -13,15 +13,15 @@
       "url" : "/contact"
     },
     {
-      "title" : "Social Networks",
+      "title" : "Social networks",
       "url" : "#"
     }
   ],
   "about"  : {
     "highlights" : [
-      "<strong>Computer Science</strong> Student",
-      "Full Stack <strong>Software Developer</strong>",
-      "<strong>Programming</strong> &amp; Music lover"
+      "<strong>Computer science</strong> student",
+      "Full stack <strong>software developer</strong>",
+      "<strong>Programming</strong> &amp; music lover"
     ],
     "button" : "Dicover my work",
     "skills" : [
@@ -45,7 +45,7 @@
   },
   "projects" : {
     "webButton" : "See webpage",
-    "repoButton" : "Open Source repository",
+    "repoButton" : "Open source repository",
     "list": [
       {
         "title" : "Music4deejays",
@@ -189,12 +189,12 @@
     ]
   },
   "contact" : {
-    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a class='openModalBox'>email</a> and I'll reply you in < 24h. :)",
+    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a class='openModalBox'>email</a>. I'll reply you in < 24h. :)",
     "form" : {
       "name" : "What is your name?",
       "email" : "And your email?",
-      "message" : "Write your message",
-      "newsletter": "I want to receive projects and updates from Jorge"
+      "message" : "Write me your message",
+      "newsletter": "I want to receive new projects of Jorge"
     },
     "sendButton" : "Send message"
   },
@@ -206,6 +206,6 @@
       "message" : "How can I improve the website?",
       "newsletter": "I want to receive projects and updates from Jorge"
     },
-    "sendButton" : "Send Feedback"
+    "sendButton" : "Send feedback"
   }
 }
