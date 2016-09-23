@@ -18,6 +18,7 @@
       li(class="#{path==='contact'? 'current_section' : '' }")
         a(href="/contact")
           span Contact me
+          
       li.submenu
         a
           span Social Networks
@@ -64,26 +65,64 @@
         p About Jorge Ferreiro
 
       a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
-        p Projects &amp; Works
+        p Projects &amp; works
+      //- 
+      //- .dropdown
+      //-   .item.with-icon
+      //-     p
+      //-       //- span.icon-address-book.extra-margin
+      //-       span Social Networks
+      //-       .dropdown-content#DropdownSocial
+      //-         a.dropdown-link(href="https://linkedin.com/in/jgferreiro", target="_blank") Linkedin
+      //-         a.dropdown-link(href="https://github.com/ferreiro", target="_blank") Github @ferreiro
+      //-         a.dropdown-link(href="https://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
+      //-         a.dropdown-link(href="https://soundcloud.com/jgferreiro", target="_blank") Soundcloud
 
       a.item(href="/contact", class="#{path==='contact'?'item-selected':''}")#contact
         p Contact
-
+      
     .right
 
       .jfmenu_open_button#dropdown-mobiles
         span.icon-paragraph-justify
+      
+      .dropdown
+        a(href='http://github.com/ferreiro', target='_blank')
+          .item.with-icon
+            p
+              span.icon-github 
+              span Github
+                
+      .dropdown
+        a(href='http://linkedin.com/jgferreiro', target='_blank')
+          .item.with-icon
+            p
+              span.icon-linkedin 
+              span Linkedin
 
       .dropdown
-        .item.with-icon
-          p
-            span.icon-address-book.extra-margin
-            span Social Networks
-            .dropdown-content#DropdownSocial
-              a.dropdown-link(href="https://linkedin.com/in/jgferreiro", target="_blank") Linkedin
-              a.dropdown-link(href="https://github.com/ferreiro", target="_blank") Github @ferreiro
-              a.dropdown-link(href="https://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
-              a.dropdown-link(href="https://soundcloud.com/jgferreiro", target="_blank") Soundcloud
+        a(href='http://twitter.com/jgferreiro', target='_blank')
+          .item.with-icon
+            p
+              span.icon-twitter 
+              span Twitter
+  
+        //- .dropdown
+        //-   a(href='/contact')
+        //-     .item.with-icon
+        //-       p
+        //-         span Email                  
+      //-         
+      //- .dropdown
+      //-   .item.with-icon
+      //-     p
+      //-       //- span.icon-address-book.extra-margin
+      //-       span Email
+      //-       .dropdown-content#DropdownSocial
+      //-         a.dropdown-link(href="https://linkedin.com/in/jgferreiro", target="_blank") Linkedin
+      //-         a.dropdown-link(href="https://github.com/ferreiro", target="_blank") Github @ferreiro
+      //-         a.dropdown-link(href="https://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
+      //-         a.dropdown-link(href="https://soundcloud.com/jgferreiro", target="_blank") Soundcloud
       //
         .dropdown
           .item.with-icon
