@@ -1,0 +1,114 @@
+
+.about {
+
+  padding-top: 2em;
+
+  &-avatar {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    background-size: cover;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    .border-radius(5px);
+    .border-radius(100%);
+
+    img {
+      width: 100%
+    }
+
+    @media all and (min-width: @tablet-screen) {
+        width: 170px;
+        height: 170px;
+    }
+    @media all and (min-width:@desktop-screen) {
+
+    }
+    @media all and (min-width:@big-screen) {
+
+    }
+  }
+  &_skills {
+    display: inline-block;
+    margin: 0 auto;
+    position: relative;
+    // left: 50%;
+    // top: 0;
+    // transform: translate(-60%, 0);
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5em;
+  }
+  h2 {
+    font-weight: 300;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  h2,
+  h3 {
+    text-align: center;
+  }
+}
+
+// .separator_about {
+//   width: 100%;
+//   border-top:1px solid #cecece;
+//   padding-top: 0;
+//   margin-top: 2em;
+// }
+
+.tech_skills {
+  text-align: center;
+  h3 {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  &_box {
+    display: inline-block;
+    padding: 0 0.2em;
+    margin-bottom: 1em;
+    // border: 1px solid #f4f4f4;
+    // border-top: 0;
+    // border-bottom: 0;
+    &_title {
+      h3 {
+        font-size: 11px;
+        text-align: left !center;
+        margin: 0;
+        margin-bottom: 1em;
+        color: rgba(0,0,0,.5)
+      }
+    }
+    &_content {
+      &_entry {
+        display: inline-block;
+        padding: 4px 3px;
+        i:before {
+          color: rgba(0, 0, 0, 0.61);
+          color: rgba(0, 0, 0, 0.5);
+        }
+        p {
+          font-size: 11px;
+          margin-top: 0.7em;
+          color:rgba(0,0,0,.7);
+        }
+      }
+    }
+  }
+}
+
+.cbp-ig-icon:before {
+    font-family: 'devicon';
+    font-size: 2.2em;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}

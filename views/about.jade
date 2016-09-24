@@ -2,41 +2,47 @@ extends ./includes/layout
 
 block content
 
-  .sectionWrapper
+  .about#animate_div
+    
+    .about-images
+      .about-images-entry.about-images-photo1
+        img(src="images/trip.jpg", alt="")
+          
+      .about-images-entry.about-images-photo2
+        img(src="images/tech.jpg", alt="")
+          
+      .about-images-entry.about-images-photo3
+        img(src="images/city.jpg", alt="")
+      
+    .about-bio
+      h1.about-bio-title Jorge Ferreiro
+      h2.about-bio-subtitle Computer science <strong>student</strong><br/>Software <strong>developer</strong>
+      //<br/><span>&amp; Full stack software developer</span>
+      p.about-bio-text Hello! I’m Jorge Ferreiro, 21 yo software developer and computer science student living in Madrid (Spain). My passion is making software to solve real world problems.
+      p.about-bio-text I’m studying computer science at UCM and I’m a self-taugh programmer and web develoer since 11 years old. I love learning and pushing up my skills to higher levels.
+      p.about-bio-text On 2017 I’m finishing my university so I’m currently running my startup as a final project.
+      
+      h3.about-bio-skills-title Skills and Tools:
 
-    .about#animate_div
-      .about-avatar(class="animated")
-        img(src="/images/avatar.png")
-      .about-content
+      if content.skills
+        .tech_skills
+          - for skill_type in content.skills
+            .tech_skills_box(id="#{skill_type.id}")
+              .tech_skills_box_title
+                h3 <strong>#{skill_type.title}</strong>
+              .tech_skills_box_content
+                - for icon in skill_type.list
+                  .tech_skills_box_content_entry
 
-        h1 Jorge Ferreiro
+                    if icon == "bower"
+                      <i class="cbp-ig-icon devicon-bower-line"></i>
+                    else if icon == "less"
+                      <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
+                    else
+                      i.cbp-ig-icon(class="devicon-#{icon}-plain")
+                    p #{icon}
 
-        if content.highlights
-          - for highlight in content.highlights
-            h2 !{highlight}
 
-        .separator_about
-
-        h3 Skills and Tools:
-
-        if content.skills
-          .tech_skills
-            - for skill_type in content.skills
-              .tech_skills_box
-                .tech_skills_box_title
-                  h3 <strong>#{skill_type.title}</strong>
-                .tech_skills_box_content
-                  - for icon in skill_type.list
-                    .tech_skills_box_content_entry
-
-                      if icon == "bower"
-                        <i class="cbp-ig-icon devicon-bower-line"></i>
-                      else if icon == "less"
-                        <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
-                      else
-                        i.cbp-ig-icon(class="devicon-#{icon}-plain")
-                      p #{icon}
-
-        a(href="./projects", class="callToAction").button.button_rounded.centered.margin_top.orange
-          span Discover my Work!
-          span.icon-arrow-right2
+      a(href="./projects", class="callToAction").button.button_rounded.margin_top.orange
+        span Discover my Work!
+        span.icon-arrow-right2

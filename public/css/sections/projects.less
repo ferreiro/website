@@ -1,13 +1,27 @@
 
 .projects {
   width: 100%;
+  vertical-align: top;
+
+  // display: -webkit-flex;
+  // display: -ms-flexbox;
+  // display: flex;
+  // overflow: scroll-Y;
+
 
   &_box {
+
     display: block;
     background-size: cover;
     position: relative;
     margin-bottom: 0;
-    overflow: hidden;
+    // overflow: hidden;
+    // vertical-align: top;
+
+    // display: -webkit-flex;
+    // display: -ms-flexbox;
+    // display: flex;
+    // overflow: scroll-Y;
 
     @media all and (min-width: @mobile-screen) {
 
@@ -16,7 +30,12 @@
 
     }
     @media all and (min-width:@desktop-screen) {
-        margin-bottom: 2em;
+        width: 50%;
+        display: inline-block;
+        // margin-bottom: 2em;
+        // flex: 1;
+        vertical-align: top;
+
     }
     @media all and (min-width:@big-screen) {
 
