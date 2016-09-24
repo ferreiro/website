@@ -31,14 +31,14 @@
         "list" : [ "python","nodejs", "cplusplus", "java" ]
       },
       {
-        "id": "database",
-        "title" : "Databases",
-        "list" : [ "redis", "mongodb", "mysql" ]
-      },
-      {
         "id": "frontend",
         "title" : "Frontend",
         "list" : [ "javascript", "less", "html5", "sass" ]
+      },
+      {
+        "id": "database",
+        "title" : "Databases",
+        "list" : [ "redis", "mongodb", "mysql" ]
       },
       {
         "id": "tools",
