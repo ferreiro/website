@@ -18,31 +18,32 @@ block content
       
     .about-bio
       h1.about-bio-title Jorge Ferreiro
-      //- h2.about-bio-subtitle <strong>Software developer</strong> &amp; computer science student
+      h2.about-bio-subtitle <strong>Software developer</strong> &amp; computer science student
       //<br/><span>&amp; Full stack software developer</span>
-      p.about-bio-text Hi! I am <strong>Jorge Ferreiro</strong>, 21-years-old <strong>software developer</strong> studying <strong>computer science</strong> at UCM (Madrid, Spain). I am finishing the university by June 2017. As a final project I am launching my own startup called <a href="http://www.dailyfocus.io" target="_blank">Dailyfocus</a>.
-      p.about-bio-text I’m a <strong>self-taugh programmer</strong> and <strong>web developer</strong> since 12 years old. I love learning and pushing up my skills to higher levels.
-      p.about-bio-text My passions are: <br />💻 Making software to improve people's life.<br /> 🎾 Playing tennis and sports.<br />🎵 Making and listening music.
+      p.about-bio-text Hi! I am <strong>Jorge Ferreiro</strong>, 21-years-old <strong>software developer</strong> studying <strong>computer science</strong> at UCM (Madrid, Spain).
+      p.about-bio-text I am a <strong>self-taugh programmer</strong> and <strong>web developer</strong> since 12 years old. So, I love learning and pushing up my skills to higher levels.
+      p.about-bio-text By June 2017 I am finishing the university. As a final project I am launching my own startup called <a href="http://www.dailyfocus.io" target="_blank">Dailyfocus</a>.
+      p.about-bio-text My passions are: <br />💻 Making software to improve people's life.<br /> 🎾 Playing tennis and try new sports.<br />🎵 Making and listening music.
     
-    if content.skills
-      .tech_skills
-        
-        h3.about-bio-skills-title(style="text-align:center;") Skills and Tools
-        - for skill_type in content.skills
-          .tech_skills_box(id="#{skill_type.id}")
-            .tech_skills_box_title
-              h3 <strong>#{skill_type.title}</strong>
-            .tech_skills_box_content
-              - for icon in skill_type.list
-                .tech_skills_box_content_entry
+      if content.skills
+        .tech_skills
+          
+          h3.about-bio-skills-title(style="text-align:center;") Skills and Tools
+          - for skill_type in content.skills
+            .tech_skills_box(id="#{skill_type.id}")
+              .tech_skills_box_title
+                h3 <strong>#{skill_type.title}</strong>
+              .tech_skills_box_content
+                - for icon in skill_type.list
+                  .tech_skills_box_content_entry
 
-                  if icon == "bower"
-                    <i class="cbp-ig-icon devicon-bower-line"></i>
-                  else if icon == "less"
-                    <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
-                  else
-                    i.cbp-ig-icon(class="devicon-#{icon}-plain")
-                  p #{icon}
+                    if icon == "bower"
+                      <i class="cbp-ig-icon devicon-bower-line"></i>
+                    else if icon == "less"
+                      <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
+                    else
+                      i.cbp-ig-icon(class="devicon-#{icon}-plain")
+                    p #{icon}
                   
     .hot_links
       h3.hot_links_title Discover more about Jorge

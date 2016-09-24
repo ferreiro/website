@@ -21,7 +21,7 @@
 
     @media all and (min-width: @tablet-screen) {}
     @media all and (min-width:@desktop-screen) {
-      width: 30%;
+      // width: 30%;
       // height: 580px;
     }
     @media all and (min-width:@big-screen) {}
@@ -40,13 +40,13 @@
 
       @media all and (min-width: @tablet-screen) {}
       @media all and (min-width:@desktop-screen) {
-        width:100%;
-        height: auto;
-        border: 10px solid #fff;
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-        margin:0;
+        // width:100%;
+        // height: auto;
+        // border: 10px solid #fff;
+        // -webkit-border-radius: 0;
+        // -moz-border-radius: 0;
+        // border-radius: 0;
+        // margin:0;
       }
       @media all and (min-width:@big-screen) {}
     }
@@ -83,9 +83,9 @@
   }
   &-bio {
     width: 100%;
-    vertical-align: top;
-    display: inline-block;
-      vertical-align: middle;
+    // vertical-align: top;
+    // display: inline-block;
+    vertical-align: middle;
 
     @media all and (min-width: @tablet-screen) {
       // position: absolute;
@@ -94,8 +94,10 @@
       // transform: translate(0, -50%);
     }
     @media all and (min-width:@desktop-screen) {
-      width: 60%;
-      margin-left: 5%;
+      width: 50%;
+      width: 650px;
+      margin:0 auto;
+      // margin-left: 5%;
     }
     @media all and (min-width:@big-screen) {
 
@@ -113,6 +115,7 @@
       @media all and (min-width:@desktop-screen) {
         font-size: 4em !important;
         text-align: left;
+        text-align: center;
       }
     }
 
@@ -121,7 +124,7 @@
       margin-bottom: 0;
       padding-bottom: 0;
       line-height: 1em;
-      margin-bottom: 15px;
+      margin-bottom: 1em;
       text-align: center;
 
       @media all and (min-width: @tablet-screen) {
@@ -129,7 +132,8 @@
       }
       @media all and (min-width:@desktop-screen) {
         font-size: 1.7em;
-        text-align: left;
+        text-align: center;
+        margin-bottom: 1.3em;
       }
 
       span {
@@ -138,14 +142,17 @@
     }
 
     &-text {
+      display: block;
       margin:1.3em 0;
       font-size: 1.2em;
       font-weight: 300;
       @media all and (min-width:@desktop-screen) {
         width: 90%;
+        width: 100%;
         margin:1em 0;
         font-size: 1.3em;
         line-height: 1.3em;
+        text-align: justify;
       }
     }
 
