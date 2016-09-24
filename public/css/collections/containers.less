@@ -1,36 +1,73 @@
 
-.container {
-  width: 100%;
+/**************************************************/
+/***** November 2016: new modular Container ******/
+/*************************************************/
 
-  @media all and (min-width: @tablet-screen) {
-    //padding: 0 2em;
-  }
-  @media all and (min-width:@desktop-screen) {
-    // padding: 0;
-    // margin:0 auto;
-  }
+.container_wrapper {
+  width: 100%;
+  margin:0 auto;
+  @media all and (min-width: @tablet-screen) {}
+  @media all and (min-width:@desktop-screen) {}
   @media all and (min-width:@big-screen) {
     width: @big-screen;
-    padding: 0;
-    margin:0 auto;
   }
 }
 
-.container_wrap {
-  padding: 1em 0;
-  margin:0 auto;
-  margin-top: @logoHeight !important;
+.container {
+  padding:1em;
+  display: block;
+  margin-top:@logoHeight;
+  position: relative;
+  overflow: visible;
 
-  @media all and (min-width: @tablet-screen) {
-    padding: 1em;
-    //padding: 0 2em;
-  }
-  @media all and (min-width:@desktop-screen) {
-    padding: 2em;
+  @media all and (min-width: @desktop-screen) {
+    padding:2em;
   }
   @media all and (min-width:@big-screen) {
-    // padding: 2em 0;
-    padding-left: 0;
+    padding-left:0;
     padding-right: 0;
   }
+
+  &_middle {
+    // background: red;
+    margin-bottom: 1em;
+    @media all and (min-width: @desktop-screen) {
+      // margin-bottom: 2em;
+    }
+  }
+
+  &_left {
+    // background: blue;
+    margin-bottom: 1em;
+
+    @media all and (min-width: @tablet-screen) {}
+    @media all and (min-width: @desktop-screen) {
+      width: @leftContainerWidth;
+      margin-bottom: 0 !important;
+      position: fixed;
+      height: 300px;
+    }
+    @media all and (min-width:@big-screen) {
+    }
+
+  }
+
+  &_right {
+    // background: purple;
+    min-height: 500px;
+    @media all and (min-width: @tablet-screen) {}
+    @media all and (min-width: @desktop-screen) {
+      width: auto;
+      position: relative !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin-left: @leftContainerWidth !important; /* Move container the size of left */
+      padding-left: 2em; /* Add extra padding to the left */
+    }
+    @media all and (min-width:@big-screen) {
+    }
+  }
 }
+
+/**** Fin container *****************************/
+/************************************************/
