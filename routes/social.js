@@ -1,5 +1,5 @@
 var express = require('express');
-var request = require("request");
+var request = require('request');
 var router = express.Router();
 
 router.get('/github', githubFollowers);
