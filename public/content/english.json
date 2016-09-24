@@ -26,20 +26,19 @@
     "button" : "Dicover my work",
     "skills" : [
       {
-        "title" : "Backend",
-        "list" : [ "python","nodejs", "cplusplus", "java" ]
+        "id": "backend",
+        "title" : "Backend & Databases",
+        "list" : [ "python","nodejs", "cplusplus", "java", "mysql", "mongodb" ]
       },
       {
-        "title" : "Databases",
-        "list" : [ "mysql", "mongodb"]
-      },
-      {
+        "id": "frontend",
         "title" : "Frontend",
         "list" : [ "javascript", "less", "html5", "sass", "bower" ]
       },
       {
+        "id": "tools",
         "title" : "Tools",
-        "list" : [ "jquery", "atom", "git"]
+        "list" : [ "travis", "git", "jquery"]
       }
     ]
   },
