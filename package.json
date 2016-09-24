@@ -4,7 +4,7 @@
   "homepage": "http://www.github.com/ferreiro/website",
   "version": "1.0.0",
   "private": true,
-  "license" : "MIT",
+  "license": "MIT",
   "keywords": [
     "programmer",
     "developer",
@@ -12,9 +12,8 @@
     "backend",
     "frontend"
   ],
-  "author" : {
+  "author": {
     "name": "Jorge Ferreiro",
-    "email": "jorge@ferreiro.me",
     "email": "http://www.ferreiro.me/"
   },
   "scripts": {
@@ -34,5 +33,9 @@
     "nodemailer": "^2.3.0",
     "serve-favicon": "~2.3.0",
     "validator": "^5.1.0"
+  },
+  "devDependencies": {
+    "less": "^2.7.1",
+    "less-plugin-clean-css": "^1.5.1"
   }
 }
