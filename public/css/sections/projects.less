@@ -25,12 +25,17 @@
     @media all and (min-width: @mobile-screen) {}
     @media all and (min-width: @tablet-screen) {}
     @media all and (min-width:@desktop-screen) {
-        // width: 50%;
-        // display: inline-block;
+        width: 49%;
+        margin-right: 2%;
+        display: inline-block;
         // flex: 1;
         margin-bottom: 2em;
         vertical-align: top;
+        border-radius: 5px;
 
+        &:nth-child(even) {
+          margin-right: 0;
+        }
     }
     @media all and (min-width:@big-screen) {
 
