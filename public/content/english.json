@@ -188,7 +188,7 @@
     ]
   },
   "contact" : {
-    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a class='openModalBox'>email</a>. I'll reply you in < 24h. :)",
+    "title" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an <a class='openModalBox'>email</a>. I'll reply you in less than 24h.",
     "form" : {
       "name" : "What is your name?",
       "email" : "And your email?",
