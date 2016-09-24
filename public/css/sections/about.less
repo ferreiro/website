@@ -1,92 +1,250 @@
 
 .about {
+  position: relative;
+  vertical-align: middle;
+  margin: 0 1em;
 
-  padding-top: 2em;
+  @media all and (min-width: @tablet-screen) {}
+  @media all and (min-width:@desktop-screen) {
+    margin: 0;
+  }
+  @media all and (min-width:@big-screen) {}
 
-  &-avatar {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    background-size: cover;
-    margin: 0 auto;
-    margin-bottom: 2em;
-    .border-radius(5px);
-    .border-radius(100%);
+  &-images {
+
+    width: 100%;
+    // height: 300px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+
+    @media all and (min-width: @tablet-screen) {}
+    @media all and (min-width:@desktop-screen) {
+      // width: 30%;
+      // height: 580px;
+    }
+    @media all and (min-width:@big-screen) {}
 
     img {
-      width: 100%
+      width: auto;
+      height: 180px;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      margin: 1em 0;
+      // width: 50%;
+      // -webkit-border-radius: 100%;
+      // -moz-border-radius: 100%;
+      // border-radius: 100%;
+
+      @media all and (min-width: @tablet-screen) {}
+      @media all and (min-width:@desktop-screen) {
+        // width:100%;
+        // height: auto;
+        // border: 10px solid #fff;
+        // -webkit-border-radius: 0;
+        // -moz-border-radius: 0;
+        // border-radius: 0;
+        // margin:0;
+      }
+      @media all and (min-width:@big-screen) {}
     }
+
+    &-entry {
+      z-index: 1;
+      vertical-align: middle;
+    }
+
+    &-photo-full {
+      width:100%;
+      top:0;
+    }
+
+    &-photo1 {
+      width: 60%;
+      top: 0px;
+      right: 0%;
+      padding: 0;
+    }
+    &-photo2 {
+      width: 70%;
+      top: 26% !important;
+      left: 0;
+    }
+    &-photo3 {
+      height: 180px;
+      overflow: hidden;
+      width: 50%;
+      bottom: 0 !important;
+      right: 8% !important;
+    }
+
+  }
+  &-bio {
+    width: 100%;
+    // vertical-align: top;
+    // display: inline-block;
+    vertical-align: middle;
 
     @media all and (min-width: @tablet-screen) {
-        width: 170px;
-        height: 170px;
+      // position: absolute;
+      // top: 50%;
+      // right: 3%;
+      // transform: translate(0, -50%);
     }
     @media all and (min-width:@desktop-screen) {
-
+      width: 50%;
+      width: 610px;
+      margin:0 auto;
+      // margin-left: 5%;
     }
     @media all and (min-width:@big-screen) {
 
     }
-  }
-  &_skills {
-    display: inline-block;
-    margin: 0 auto;
-    position: relative;
-    // left: 50%;
-    // top: 0;
-    // transform: translate(-60%, 0);
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 0.5em;
-  }
-  h2 {
-    font-weight: 300;
-  }
 
-  h3 {
-    text-transform: uppercase;
-    font-weight: 300;
-  }
-  h2,
-  h3 {
-    text-align: center;
+    &-title {
+      font-size: 2.2em !important;
+      margin: 0.4em 0;
+      margin-top: 0.2em;
+      text-align: center;
+
+      @media all and (min-width: @tablet-screen) {
+        font-size: 3em !important;
+      }
+      @media all and (min-width:@desktop-screen) {
+        font-size: 4em !important;
+        text-align: left;
+        text-align: center;
+      }
+    }
+
+    &-subtitle {
+      font-size: 1.3em;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      line-height: 1em;
+      margin-bottom: 1em;
+      text-align: center;
+
+      @media all and (min-width: @tablet-screen) {
+        font-size: 1.5em;
+      }
+      @media all and (min-width:@desktop-screen) {
+        font-size: 1.7em;
+        text-align: center;
+        margin-bottom: 1.3em;
+      }
+
+      span {
+        font-size: 0.8em;
+      }
+    }
+
+    &-text {
+      display: block;
+      margin:1.3em 0;
+      font-size: 1.2em;
+      font-weight: 300;
+      @media all and (min-width:@desktop-screen) {
+        width: 90%;
+        width: 100%;
+        margin:1em 0;
+        font-size: 1.3em;
+        line-height: 1.3em;
+        text-align: justify;
+      }
+    }
+
+    &-extra-subtitle {
+      font-size: 2em;
+    }
+
   }
 }
 
-// .separator_about {
-//   width: 100%;
-//   border-top:1px solid #cecece;
-//   padding-top: 0;
-//   margin-top: 2em;
-// }
-
 .tech_skills {
   text-align: center;
+  border:2px solid #f4f4f4;
+  border-left: 0;
+  border-right:0;
+  padding:2em 0;
+  margin-top: 1em;
+  @media all and (min-width:@desktop-screen) {
+    text-align: left;
+    text-align: center;
+  }
   h3 {
     padding-top: 0;
     margin-top: 0;
+    text-align: center;
   }
+
   &_box {
     display: inline-block;
-    padding: 0 0.2em;
+    padding: 0 0.5em;
     margin-bottom: 1em;
     // border: 1px solid #f4f4f4;
     // border-top: 0;
     // border-bottom: 0;
+
+    &#backend {
+      h3 { border-color:purple; color:purple; }
+      i:before { color:purple; }
+
+      h3 { border-color:#d80281; color:#d80281; }
+      i:before { color:#d80281; }
+    }
+    &#database {
+      h3 { border-color:#2bb414; color:#2bb414; }
+      i:before { color:#2bb414; }
+    }
+    &#frontend {
+      h3 { border-color:green; color:green; }
+      i:before { color:green; }
+
+      h3 { border-color:#1c94dc; color:#1c94dc; }
+      i:before { color:#1c94dc; }
+    }
+    &#tools {
+
+      h3 { border-color:blue; color:blue; }
+      i:before { color:blue; }
+
+      h3 { border-color:#74c71c; color:#74c71c; }
+      i:before { color:#74c71c; }
+
+      h3 { border-color:#b1b1b1; color:#b1b1b1; }
+      i:before { color:#b1b1b1; }
+
+    }
+
     &_title {
       h3 {
-        font-size: 11px;
+        font-size: 14px;
         text-align: left !center;
         margin: 0;
         margin-bottom: 1em;
-        color: rgba(0,0,0,.5)
+        color: rgba(0,0,0,.5);
+        border-bottom:2px solid rgba(0,0,0,.5);
+        // background:rgba(0,0,0,.5);
+        //background:#f4f4f4;
+        // padding: 5px 0;
+        padding:0.6em 0;
+        // -webkit-border-radius: 5px;
+        // -moz-border-radius: 5px;
+        // border-radius: 5px;
       }
     }
     &_content {
       &_entry {
         display: inline-block;
-        padding: 4px 3px;
+        padding: 4px 0.5em;
+        margin:0.5em;
+        border:1px solid #f4f4f4;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
         i:before {
           color: rgba(0, 0, 0, 0.61);
           color: rgba(0, 0, 0, 0.5);
@@ -101,6 +259,7 @@
   }
 }
 
+// Make skills icons bigger
 .cbp-ig-icon:before {
     font-family: 'devicon';
     font-size: 2.2em;

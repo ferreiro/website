@@ -89,3 +89,81 @@ body {
   background: transparent;
   margin: 1em 0;
 }
+
+
+
+.hot_links {
+  width: 100%;
+  margin-top: 2em;
+  &_title {
+    width: 100%;
+    text-align: center;
+  }
+  &_box {
+    width:100%;
+    display: inline-block;
+    text-align: center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1em;
+
+    &:nth-last-child {
+      margin-bottom: 0;
+    }
+
+    @media all and (min-width: @tablet-screen) {}
+    @media all and (min-width:@desktop-screen) {
+      width:49%;
+      margin-right: 2%;
+      margin-bottom: 1em;
+      &:nth-child(odd) {
+        margin-right: 0;
+      }
+    }
+    @media all and (min-width:@big-screen) {}
+
+    &:before {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: rgba(216,57,2,0.6);
+      background: rgba(0, 0, 0, 0.5);
+      
+      // http://www.colorzilla.com/gradient-editor/#d61a02+0,d83902+100&0.8+0,0.95+100
+
+      // background: -moz-linear-gradient(top,  rgba(214,26,2,0.71) 0%, rgba(216,57,2,1) 100%);
+      // background: -webkit-linear-gradient(top,  rgba(214,26,2,0.71) 0%,rgba(216,57,2,1) 100%);
+      // background: linear-gradient(to bottom,  rgba(214,26,2,0.71) 0%,rgba(216,57,2,1) 100%);
+      // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5d61a02', endColorstr='#d83902',GradientType=0 );
+
+      background: -moz-linear-gradient(top,  rgba(214,26,2,0.8) 0%, rgba(216,57,2,0.95) 100%);
+      background: -webkit-linear-gradient(top,  rgba(214,26,2,0.8) 0%,rgba(216,57,2,0.95) 100%);
+      background: linear-gradient(to bottom,  rgba(214,26,2,0.8) 0%,rgba(216,57,2,0.95) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccd61a02', endColorstr='#f2d83902',GradientType=0 );
+
+      position: absolute;
+      content: '';
+      z-index: 1;
+    }
+
+    a {
+      padding:5em 0;
+      display: block;
+      background: rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      text-decoration: none;
+      @media all and (min-width: @tablet-screen) {}
+      @media all and (min-width:@desktop-screen) {
+        padding:7em 0;
+      }
+      @media all and (min-width:@big-screen) {}
+
+      h2 {
+        color:#fff;
+
+      }
+    }
+  }
+}

@@ -11,13 +11,13 @@ module.exports = router;
 
 // FUNCTIONS
 
-// function home(req, res, next) {
-//   res.render('index', {
-//     title: 'Home',
-//     path: 'index',
-//     content: content.home
-//   });
-// }
+function home(req, res, next) {
+  res.render('about', {
+    title: 'Home',
+    path: 'featured',
+    content: content.about
+  });
+}
 
 function about(req, res, next) {
   res.render('about', {

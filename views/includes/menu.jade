@@ -9,6 +9,9 @@
 
     // Menu block containing links
     ul
+      //- li(class="#{path==='featured'? 'current_section' : '' }")
+      //-   a(href="/")
+      //-     span Featured
       li(class="#{path==='about'? 'current_section' : '' }")
         a(href="/about")
           span About Jorge Ferreiro
@@ -65,11 +68,14 @@
         img(src="/images/logo.jpg")
 
     .left
+      //- a.item(href="/", class="#{path==='featured'?'item-selected':''}")
+      //-   p Featured
+
       a.item(href="/about", class="#{path==='about'?'item-selected':''}")
         p About Jorge Ferreiro
 
       a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
-        p Projects &amp; works
+        p Portfolio
 
       //- .dropdown
       //-   .item.with-icon
