@@ -27,18 +27,23 @@
     "skills" : [
       {
         "id": "backend",
-        "title" : "Backend & Databases",
-        "list" : [ "python","nodejs", "cplusplus", "java", "mysql", "mongodb" ]
+        "title" : "Backend",
+        "list" : [ "python","nodejs", "cplusplus", "java" ]
+      },
+      {
+        "id": "database",
+        "title" : "Databases",
+        "list" : [ "redis", "mongodb", "mysql" ]
       },
       {
         "id": "frontend",
         "title" : "Frontend",
-        "list" : [ "javascript", "less", "html5", "sass", "bower" ]
+        "list" : [ "javascript", "less", "html5", "sass" ]
       },
       {
         "id": "tools",
         "title" : "Tools",
-        "list" : [ "travis", "git", "jquery"]
+        "list" : [ "travis", "git", "bower", "jquery"]
       }
     ]
   },
