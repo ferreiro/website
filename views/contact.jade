@@ -1,13 +1,50 @@
 extends ./includes/layout
 
 block content
+  
+  .container_left#sectionHeader
+    include ./includes/breadcrumb.jade
 
-  include ./includes/breadcrumb.jade
+    .profileData.box_with_shadow
 
-  .sectionWrapper
-
+      h3.profileData_title Contact info
+      ul.profileData_list
+        
+        li.profileData_entry
+          p.profileData_entry_text_without_icon <b>Email:</b> jorge @ ferreiro . me
+      
+        li.profileData_entry
+          p.profileData_entry_text_without_icon <b>City:</b> Madrid (Spain)
+    
+      h3.profileData_title Social networks
+      ul.profileData_list
+        
+        li.profileData_entry
+          a(href='', target='_blank').profileData_entry_link
+            span.profileData_entry_icon
+              span.icon-github
+            p.profileData_entry_text Github @ferreiro
+            
+        li.profileData_entry
+          a(href='', target='_blank').profileData_entry_link
+            span.profileData_entry_icon
+              span.icon-linkedin
+            p.profileData_entry_text Linkedin @jgferreiro
+        
+        li.profileData_entry
+          a(href='', target='_blank').profileData_entry_link
+            span.profileData_entry_icon
+              span.icon-twitter
+            p.profileData_entry_text Twitter @jgferreiro
+            
+  .container_right
+    
     .contact#animate_div
-
+      
+      .profileCard
+        .profileCard_avatar
+        .profileCard_bg(style="background-image:url(/images/contact.jpg);")
+   
       if content.title
         h2 !{content.title}
             
