@@ -1,20 +1,37 @@
 .projectsFilter {
 
   background: #fff;
-  position: relative;
   .border-radius(5px);
   .box-shadow(0px 0px 5px 0px rgba(0,0,0,0.20));
+
+  position: relative;
   overflow: hidden;
 
+  &_options {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+  }
   &_title {
     font-size: 1.5em;
     font-weight: 400;
     margin: 0;
     padding: 0;
     padding: 1em;
+    display: inline-block;
+  }
+  &_arrow {
+    display: inline-block;
   }
   &_list {
     list-style: none;
+    .transition(all 3s linear);
+    display: none; /* Hide on mobile phones */
+
+    @media all and (min-width: @desktop-screen) {
+      display: block; /* Always shown on desktop */
+    }
+
   }
   &_entry {
     border-top: 1px solid #cecece;

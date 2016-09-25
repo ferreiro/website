@@ -9,10 +9,12 @@ block content
     include ./includes/breadcrumb.jade
     
     .projectsFilter
-      
-      h3.projectsFilter_title Filter projects by
+      .projectsFilter_options#projectsFilter_button
+        .projectsFilter_title Filter projects by
+        .projectsFilter_arrow
+          span.icon-circle-down
         
-      ul.projectsFilter_list
+      ul.projectsFilter_list#projectsFilter_list
         li.projectsFilter_entry
           a(href="/projects/backend").projectsFilter_entry_link Backend
       
@@ -24,12 +26,15 @@ block content
       
         li.projectsFilter_entry
           a(href="/projects/bash").projectsFilter_entry_link Bash
-
+      
   //- Right Container
   .container_right
     
-    //- include ./includes/breadcrumb.jade
-    
+    if filtered
+      .projectsFilter_warning
+        p.projectsFilter_warning_text Filter activated! Showing <b>#{filtered_by}</b> projects
+        a(href="/projects").projectsFilter_warning_button Restore
+
     .projects#animate_div
 
       if content.list
@@ -39,7 +44,7 @@ block content
           - color = project.color
           - background = project.background
 
-          .projects_box(class="#{color!=null? color : no-color}")
+          .projects_box.box_with_shadow(class="#{color!=null? color : no-color}")
 
             .projects_box_wallpaper(style="background-image:url(#{background!=null? background : no-background});")
             .projects_box_content
