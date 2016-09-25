@@ -27,14 +27,14 @@ function feedback(req, res, next) {
   });
 }
 
-function sendForm(req, res, next) {
+function sendForm(req, res) {
   var form;
   var validForm;
   var responseEmail;
   var transporter;
   var mailOptions;
-  var gmailUser = process.env.GMAIL_USER || "nouser@gmail.com";  // get from Enviroments
-  var gmailPassword = process.env.GMAIL_PASSWD || "noPassword";
+  var gmailUser = process.env.GMAIL_USER || null;  // get from Enviroments
+  var gmailPassword = process.env.GMAIL_PASSWD || null;
 
   form = {
     "name" : req.body.contact_name,
@@ -47,7 +47,7 @@ function sendForm(req, res, next) {
   invalidForm = form.name === undefined || form.email === undefined ||
                 form.message === undefined || ! validator.isEmail(String(form.email));
 
-  if (invalidForm) {
+  if (invalidForm || !gmailUser || !gmailPassword) {
     res.setHeader('Content-Type', 'application/json');
     res.json({
       "data": {

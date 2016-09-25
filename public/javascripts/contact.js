@@ -1,16 +1,9 @@
 var form = $('.contact_form');
 var formSubmitButton = $('#formSendButton');
 var formValidInputs = []; // Array of bools that has length of tototal inputs in the site
-
-// setInterval(function() {
-//   var validInputs = validateInputs();
-//   if (validInputs) {
-//     formSubmitButton.removeClass('contact_form_fieldset_submit_disabled');
-//   }
-//   else {
-//     formSubmitButton.addClass('contact_form_fieldset_submit_disabled');
-//   }
-// }, 1);
+var success = $('.contact_form_success')
+var failure = $('.contact_form_failure')
+var loader = $('.loader')
 
 form.submit(function(event){
     event.preventDefault(); // Stop change webpage
@@ -18,11 +11,11 @@ form.submit(function(event){
 });
 
 function submitForm() {
-  var loader = $('.loader');
+  var loader = loader;
   var end_point = "/contact/send";
 
-  $('.success').hide();
-  $('.failure').hide();
+  success.hide();
+  failure.hide();
 
   if (!validateInputs()) {
     $('html, body').animate({
@@ -33,7 +26,7 @@ function submitForm() {
   }
 
   if (loader) {
-     $('.loader').show();
+     loader.show();
   }
 
   newsletterChecked = ($(".newsletter:checked").length) > 0;
@@ -56,29 +49,30 @@ function submitForm() {
   .done(function(objectReturned) {
     emailSent = objectReturned.data.emailSent;
     validData = objectReturned.data.validData;
+    console.log(objectReturned);
 
     if (!emailSent || !validData) {
-      $('.failure').show();
+      failure.show();
     }
     else {
       form.hide();
-      $('.success').show();
+      success.show();
     }
 
   })
   .fail(function(objectReturned) {
-    $('.failure').show();
+    failure.show();
   })
   .always(function(objectReturned) {
-    $('.loader').hide();
+    loader.hide();
   });
 
   try {
 
   }
   catch(err) {
-    $('.failure').show();
-    $('.loader').hide();
+    failure.show();
+    loader.hide();
     console.log(err.message);
   }
 }
