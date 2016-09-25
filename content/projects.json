@@ -8,10 +8,7 @@
     "background": "/images/projects/m4d_back.png",
     "about": "Streaming application for listen, share and download the best electronic music from emerging artists. ",
     "images": [
-      "/images/projects/m4d_back.png",
-      "/images/projects/m4d_back.png",
-      "/images/projects/m4d_back.png",
-      "/images/projects/m4d_back.png"
+        "/images/projects/m4d_back.png"
     ],
     "highlights": [
       "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",
@@ -88,7 +85,7 @@
     "date": "March 2016 - current",
     "type" : [ "bash" ],
     "color": "black",
-    "avatar": "images/projects/dotfiles.png",
+    "avatar": "/images/projects/dotfiles.png",
     "background": "",
     "about": "Program to install easily and comfortably all your mac applications, configuration files and design preferences (Dock, Finder...).",
     "images": null,
