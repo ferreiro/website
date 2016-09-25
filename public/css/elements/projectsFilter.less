@@ -1,0 +1,32 @@
+.projectsFilter {
+
+  background: #fff;
+  position: relative;
+  .border-radius(5px);
+  .box-shadow(0px 0px 5px 0px rgba(0,0,0,0.20));
+  overflow: hidden;
+
+  &_title {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    padding: 1em;
+  }
+  &_list {
+    list-style: none;
+  }
+  &_entry {
+    border-top: 1px solid #cecece;
+    &_link {
+      padding: 1em 1.35em;
+      display: block;
+      text-decoration: none;
+      font-size: 1.2em;
+      .transition(all 0.3s);
+      &:hover {
+        background:#f4f4f4;
+      }
+    }
+  }
+}
