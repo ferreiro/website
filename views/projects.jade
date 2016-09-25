@@ -1,84 +1,104 @@
 extends ./includes/layout
 
 block content
+  
+   
+  //- Left Container
+  .container_left
+    
+    include ./includes/breadcrumb.jade
+    
+    .projectsFilter
+      
+      h3.projectsFilter_title Filter projects by
+        
+      ul.projectsFilter_list
+        li.projectsFilter_entry
+          a(href="/projects/backend").projectsFilter_entry_link Backend
+      
+        li.projectsFilter_entry
+          a(href="/projects/frontend").projectsFilter_entry_link Frontend
+      
+        li.projectsFilter_entry
+          a(href="/projects/database").projectsFilter_entry_link Database
+      
+        li.projectsFilter_entry
+          a(href="/projects/bash").projectsFilter_entry_link Bash
 
-  include ./includes/breadcrumb.jade
+  //- Right Container
+  .container_right
+    
+    //- include ./includes/breadcrumb.jade
+    
+    .projects#animate_div
 
-  .projects#animate_div
+      if content.list
 
-    if content.list
+        - for project in content.list
 
-      - for project in content.list
+          - color = project.color
+          - background = project.background
 
-        - color = project.color
-        - background = project.background
+          .projects_box(class="#{color!=null? color : no-color}")
 
-        .projects_box(class="#{color!=null? color : no-color}")
+            .projects_box_wallpaper(style="background-image:url(#{background!=null? background : no-background});")
+            .projects_box_content
 
-          .projects_box_wallpaper(style="background-image:url(#{background!=null? background : no-background});")
-          .projects_box_content
+              if project.pic
+                .projects_box_avatar
+                  img(src="#{project.pic}")
 
-            if project.pic
-              .projects_box_avatar
-                img(src="#{project.pic}")
+              .projects_box_middle
 
-            .projects_box_middle
+                if project.title
+                  h1 !{project.title}
 
-              if project.title
-                h1 !{project.title}
+                if project.date
+                  h3 #{project.date}
 
-              if project.date
-                h3 #{project.date}
+                if project.description
+                  h3 !{project.description}
 
-              if project.description
-                h3 !{project.description}
+                if project.highlights
+                  ul.projects_box_highlights
+                    - for h_text in project.highlights
+                      li
+                        span(class="icon-trophy").high_icon
+                        span.high_text !{h_text}
 
-              if project.highlights
-                ul.projects_box_highlights
-                  - for h_text in project.highlights
-                    li
-                      span(class="icon-trophy").high_icon
-                      span.high_text !{h_text}
+                if project.skills
+                  .projects_box_technologies
+                    - each icon, index in project.skills
+                      .tech_skills_box_content_entry
 
-              if project.skills
-                .projects_box_technologies
-                  - each icon, index in project.skills
-                    .tech_skills_box_content_entry
+                        if icon == "bower"
+                          <i class="cbp-ig-icon devicon-bower-line"></i>
+                        else if icon == "less"
+                          <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
+                        else
+                          i.cbp-ig-icon(class="devicon-#{icon}-plain")
+                        p #{icon}
 
-                      if icon == "bower"
-                        <i class="cbp-ig-icon devicon-bower-line"></i>
-                      else if icon == "less"
-                        <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
-                      else
-                        i.cbp-ig-icon(class="devicon-#{icon}-plain")
-                      p #{icon}
+                if project.people
+                  p Talented people involved in this project:
+                  .projects_box_people
+                    - for people in project.people
+                      .projects_box_people_entry
+                          a(href="#{people.website}", target="_blank").projects_box_people_entry_link
+                          .projects_box_people_entry_avatar
+                            img(src="#{people.avatar}")
+                          .projects_box_people_entry_name
+                            p #{people.name}
 
-              if project.people
-                p Talented people involved in this project:
-                .projects_box_people
-                  - for people in project.people
-                    .projects_box_people_entry
-                        a(href="#{people.website}", target="_blank").projects_box_people_entry_link
-                        .projects_box_people_entry_avatar
-                          img(src="#{people.avatar}")
-                        .projects_box_people_entry_name
-                          p #{people.name}
-
-              if project.repository
-                a.button(href="#{project.repository}", target="_blank").button_solid.button_rounded
-                  span.icon-github
-                  span #{content.repoButton}
+                if project.repository
+                  a.button(href="#{project.repository}", target="_blank").button_solid.button_rounded
+                    span.icon-github
+                    span #{content.repoButton}
 
 
-              if project.webpage
-                .separator_blank
-                // Remove solid color and put blank when exits a repo link
-                a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded.button_transparent
-                  span.icon-web
-                  span #{content.webButton}
-
-    .full_screen_button
-      a(href="/contact")
-        .full_screen_button_block
-          span.button_fullscreen_text Contact Jorge Ferreiro
-          span.icon-arrow-right2.button_fullscreen_icon
+                if project.webpage
+                  .separator_blank
+                  // Remove solid color and put blank when exits a repo link
+                  a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded.button_transparent
+                    span.icon-web
+                    span #{content.webButton}

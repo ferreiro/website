@@ -35,7 +35,7 @@ app.use('/semantic',  express.static(__dirname + '/semantic'));
 
 // Routes
 app.use('/', routes);
-app.use('/projects', projects);
+app.use(projects);
 app.use('/social', social);
 app.use('/contact', contact);
 

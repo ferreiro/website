@@ -53,6 +53,7 @@
     "list": [
       {
         "title" : "Music4deejays",
+        "type" : [ "backend", "frontend" ],
         "background" : "/images/projects/m4d_back.png",
         "date" : "May 2014-Nov 2015",
         "color" : "red_gradient",
@@ -70,6 +71,7 @@
       },
       {
         "title" : "Jorge Ferreiro web",
+        "type" : [ "backend", "frontend" ],
         "background" : "/images/projects/ferreiro_back.png",
         "date" : "March 2016 - current",
         "color" : "main_gradient",
@@ -85,6 +87,7 @@
       },
       {
         "title" : "SudoNotes",
+        "type" : [ "backend", "frontend" ],
         "background" : "/images/projects/sudonotes_back.png",
         "date" : "November 2015 - current",
         "color" : "blue_gradient",
@@ -104,6 +107,7 @@
       },
       {
         "title" : "JF~Dotfiles",
+        "type" : [ "bash" ],
         "background" : null,
         "date" : "March 2016 - current",
         "color" : "dark_gradient",
@@ -116,6 +120,7 @@
       },
       {
         "title" : "Games-X4",
+        "type" : [ "backend" ],
         "background" : "/images/projects/java_back.jpg",
         "date" : "October 2014 - June 2015",
         "color" : "green_gradient",
