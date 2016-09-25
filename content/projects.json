@@ -8,6 +8,9 @@
     "background": "/images/projects/m4d_back.png",
     "about": "Streaming application for listen, share and download the best electronic music from emerging artists. ",
     "images": [
+      "/images/projects/m4d_back.png",
+      "/images/projects/m4d_back.png",
+      "/images/projects/m4d_back.png",
       "/images/projects/m4d_back.png"
     ],
     "highlights": [
@@ -20,7 +23,7 @@
       {
         "name": "Jorge Ferreiro",
         "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro/website"
+        "url": "https://github.com/ferreiro"
       }
     ]
   },
@@ -39,12 +42,12 @@
       {
         "name": "Jorge Ferreiro",
         "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro/website"
+        "url": "https://github.com/ferreiro"
       }
     ],
     "links": {
       "website": "http://ferreiro.me/",
-      "code": "http://github.com/ferreiro/ferreiro"
+      "code": "https://github.com/ferreiro/website"
     }
   },
   {
@@ -52,11 +55,14 @@
     "date": "November 2015 - current",
     "type" : [ "backend", "frontend" ],
     "color": "#283196",
-    "avatar": "/images/projects/sudonotes.jpg",
-    "background": "/images/projects/sudonotes_back.png",
+    "avatar": "/images/projects/sudonotes/sudonotes.jpg",
+    "background": "/images/projects/sudonotes/1.png",
     "about": "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) Application granted 10/10 in 'GIW' university course.",
     "images": [
-      "/images/projects/sudonotes_back.png"
+      "/images/projects/sudonotes/1.png",
+      "/images/projects/sudonotes/2.png",
+      "/images/projects/sudonotes/3.png",
+      "/images/projects/sudonotes/4.png"
     ],
     "highlights": null,
     "stack": ["python", "html5", "css3", "jquery", "SQLite3"],
@@ -64,7 +70,7 @@
       {
         "name": "Jorge Ferreiro",
         "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro/website"
+        "url": "https://github.com/ferreiro"
       },
       {
         "name" : "Tommaso Innocenti",
@@ -92,11 +98,11 @@
       {
         "name": "Jorge Ferreiro",
         "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro/website"
+        "url": "https://github.com/ferreiro"
       }
     ],
     "links": {
-      "website": "https://github.com/ferreiro/dotfiles",
+      "website": null,
       "code": "https://github.com/ferreiro/dotfiles"
     }
   },
@@ -115,7 +121,7 @@
       {
         "name": "Jorge Ferreiro",
         "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro/website"
+        "url": "https://github.com/ferreiro"
       },
       {
         "name" : "Pedro Garcia",
@@ -124,7 +130,7 @@
       }
     ],
     "links": {
-      "website": "https://github.com/ferreiro/JavaGames-X4",
+      "website": null,
       "code": "https://github.com/ferreiro/JavaGames-X4"
     }
   }
