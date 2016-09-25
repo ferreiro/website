@@ -81,12 +81,12 @@ block content
             //- Project Body
             .project_body
                             
-              h4.project_body_title About #{project.title} &amp; highlights
-              
               if project.about
+                h4.project_body_title About #{project.title}
                 p.project_body_text !{project.about}
                 
               if project.highlights
+                h4.project_body_title Highlights
                 .project_highlight
                   ul.project_highlight_list
                     for highlight in project.highlights

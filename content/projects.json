@@ -8,9 +8,7 @@
     "background": "/images/projects/m4d_back.png",
     "about": "Streaming application for listen, share and download the best electronic music from emerging artists. ",
     "images": [
-      "/images/projects/m4d_back.png",
-      "/images/projects/sudonotes_back.png",
-      "/images/projects/ferreiro_back.png"
+      "/images/projects/m4d_back.png"
     ],
     "highlights": [
       "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",

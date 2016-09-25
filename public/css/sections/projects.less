@@ -144,7 +144,7 @@
     background: rgba(0, 0, 0, 0.5);
 
     @media all and (min-width:@desktop-screen) {
-      height: 160px;
+      height: 180px;
     }
 
     &_next {
@@ -184,12 +184,12 @@
     z-index: 12;
     position: relative;
     padding: 1em;
-    // background: #fff;
+    background: #fff;
     @media all and (min-width:@desktop-screen) {
       padding: 2em;
     }
     &_title {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(0, 0, 0, 1);
       font-size: 1.4em;
       font-weight: 500;
       margin-bottom: 0.5em;
@@ -201,7 +201,7 @@
       font-size: 1.2em;
       font-weight: 300;
       line-height: 1.2em;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(0, 0, 0, 0.8);
       margin-bottom: 1em;
     }
   }
@@ -217,7 +217,7 @@
     }
     &_entry {
       width: 100%;
-      height: 40px;
+      height: 18px;
       display: inline-block;
       vertical-align: top;
       position: relative;
@@ -236,18 +236,19 @@
       &_icon {
         position: absolute;
         left: 0;
-        padding: 0.5em;
+        // padding: 0.5em;
         display: inline-block;
-        border: 2px dashed #FF0;
-        color: #FF0;
+        // border: 2px dashed @primaryColor;
+        color: @primaryColor;
         vertical-align: middle;
         .border-radius(100%);
       }
       &_text {
         display: inline-block;
         vertical-align: middle;
-        margin-left: 55px;
-        color: rgba(255, 255, 255, 0.8);
+        margin-left: 30px;
+        color: rgba(255, 255, 255, 0.9);
+        color: @primaryColor;
         font-size: 1.1em;
          transform: translate(0, -50%);
          position: relative;
@@ -256,6 +257,7 @@
          a {
            font-weight: 300;
            color: rgba(255, 255, 255, 0.8);
+           color: @primaryColor;
          }
       }
     }
@@ -274,12 +276,12 @@
       margin-right: 1em;
       display: inline-block;
       // color: rgba(255, 108, 57, 1);
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.6);
       text-align: center;
     }
     &_title {
       color: rgba(255, 108, 57, 1);
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(0, 0, 0, 0.6);
     }
   }
 
@@ -309,9 +311,9 @@
   }
 
   &_links {
-    background: #fff;
     z-index: 12;
     overflow: hidden;
+    background: #fff;
     a {
       width: 50%;
       display: inline-block;
