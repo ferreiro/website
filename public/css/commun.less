@@ -115,7 +115,8 @@ body {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    margin-bottom: 1em;
+    .border-radius(5px);
+    // margin-bottom: 1em;
 
     &:nth-last-child {
       margin-bottom: 0;
@@ -123,9 +124,9 @@ body {
 
     @media all and (min-width: @tablet-screen) {}
     @media all and (min-width:@desktop-screen) {
-      width:49%;
-      margin-right: 2%;
-      margin-bottom: 1em;
+      width:100%;
+      // margin-right: 2%;
+      // margin-bottom: 1em;
       &:nth-child(odd) {
         margin-right: 0;
       }
