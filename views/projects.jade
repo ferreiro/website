@@ -4,7 +4,7 @@ block content
   
    
   //- Left Container
-  .container_left
+  .container_left#sectionHeader
     
     include ./includes/breadcrumb.jade
     
@@ -39,7 +39,7 @@ block content
     //-     p.projectsFilter_warning_text Showing <b>all</b> projects. You can filter by using left box
 
     if projects
-      .projects
+      .projects#animate_div
         
         - for project in projects
           .project.box_with_shadow
