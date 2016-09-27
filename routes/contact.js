@@ -75,6 +75,13 @@ function submitForm (req, res) {
         html: 'htmlEmail' // html body
     }
 
+    res.setHeader('Content-Type', 'application/json')
+    return res.json({
+      'mailoptions': mailOptions,
+      'transporter': transporter
+    })
+
+
     transporter.sendMail (mailOptions, function(error, data) {
       res.setHeader('Content-Type', 'application/json')
       res.json({
