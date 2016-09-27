@@ -1,34 +1,56 @@
 var express = require('express')
 var router = express.Router()
 
-var reCAPTCHA=require('recaptcha2')
+Recaptcha = require('node-recaptcha2').Recaptcha
 var nodemailer = require('nodemailer') // Nodemailer es un módulo externo de node que nos permite mandar correos.
 var validator = require('validator')
 var content = require('../public/content/english.json') // TODO: Add multilanguage
 var config = require('../config')
 
-recaptcha = new reCAPTCHA({
-  siteKey: config.recaptcha.PUBLIC_KEY,
-  secretKey: config.recaptcha.SECRET_KEY
-})
-
 GMAIL_USER = config.gmail.USER
 GMAIL_PASS = config.gmail.PASS
+RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
+RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY
 
 // Routes
 router.get('/', contact)
 router.get('/feedback', feedback)
-router.post('/send', submitForm)
+router.post('/send', function(req, res) {
+  console.log(data);
+    var data = {
+        remoteip:  req.connection.remoteAddress || undefined,
+        response:  req.body['g-recaptcha-response'] || undefined
+    };
+    var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY, data);
+
+    recaptcha.verify(function(success, error_code) {
+        if (success) {
+          console.log('valid');
+          res.send('Recaptcha response valid.');
+        }
+        else {
+          console.log('error');
+          console.log(error_code);
+          res.render('contact', {
+            title: 'Contact me',
+            path: 'contact',
+            content: content.contact,
+            recaptcha_form: recaptcha.toHTML()
+          })
+        }
+    });
+});
 
 module.exports = router
 
 // FUNCTIONS
 function contact(req, res, next) {
+  var recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY, RECAPTCHA_SECRET_KEY)
   res.render('contact', {
     title: 'Contact me',
     path: 'contact',
     content: content.contact,
-    recaptcha_form: recaptcha.formElement()
+    recaptcha_form: recaptcha.toHTML()
   })
 }
 
@@ -41,17 +63,36 @@ function feedback(req, res, next) {
 }
 
 function submitForm(req,res){
-  recaptcha.validateRequest(req)
-  .then(function(){
-    // validated and secure
-    console.log('true');
-    res.json({formSubmit:true})
-  })
-  .catch(function(errorCodes){
-    // invalid
-    console.log('invalid');
-    console.log(recaptcha.translateErrors(errorCodes));
-    res.json({formSubmit:false,errors:recaptcha.translateErrors(errorCodes)});// translate error codes to human readable text
+  console.log(req.body);
+  var data = {
+      remoteip: req.connection.remoteAddress,
+      response: req.body['g-recaptcha-response']
+  };
+  console.log(data);
+  var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY, data);
+  console.log(recaptcha);
+
+  recaptcha.verify(function(success, error_code) {
+    if (success) {
+        res.send('Recaptcha response valid.');
+    }
+    else {
+      console.log('error');
+      console.log(error_code);
+      res.render('contact', {
+        title: 'Contact me',
+        path: 'contact',
+        content: content.contact,
+        recaptcha_form: recaptcha.toHTML()
+      })
+        // // Redisplay the form.
+        // res.render('form.jade', {
+        //     layout: false,
+        //     locals: {
+        //         recaptcha_form: recaptcha.toHTML()
+        //     }
+        // });
+    }
   });
 }
 
