@@ -45,11 +45,6 @@ function submitForm (req, res) {
     'message': req.body.contact_msg || undefined,
     'subscribed': req.body.contact_newsletter || false,
     'source': req.body.contact_source || 'General'
-    // 'captchaData': {
-    //     remoteip: req.connection.remoteAddress || undefined,
-    //     challenge: req.body.recaptcha_challenge_field || undefined,
-    //     response: req.body.recaptcha_response_field || undefined
-    // }
   }
 
   validForm = validateForm(form.email, form.message)
@@ -73,14 +68,14 @@ function submitForm (req, res) {
     })
 
     mailOptions = { // Setup e-mail data with unicode symbols
-        subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
+        subject: '[Ferreiro/contact] Message from ' + form.name,
         from: String(form.name) + ' <' + String(form.email) + '>', // sender address
-        to: String(JORGE_EMAIL), // list of receivers
+        to: 'jorge@ferreiro.me', // list of receivers
         replyTo: form.email,
         html: htmlEmail // html body
     }
 
-    transporter.sendMail(mailOptions, function(error, data) {
+    transporter.sendMail (mailOptions, function(error, data) {
       res.setHeader('Content-Type', 'application/json')
       res.json({
         'error': error,
@@ -106,10 +101,4 @@ validateForm = function (email, message) {
   var isMessageFilled = (email !== undefined)
 
   return isEmailCorrect && isMessageFilled
-}
-
-function generateEmailTemplate(name, email, message, subscribed, source) {
-
-
-    return html;
 }
