@@ -1,9 +1,9 @@
-var form = $('.contact_form');
-var formSubmitButton = $('#formSendButton');
-var formValidInputs = []; // Array of bools that has length of tototal inputs in the site
+var form = $('.contact_form')
+var loader = $('#contactLoader')
+var formSubmitButton = $('#formSendButton')
+var formValidInputs = [] // Array of bools that has length of tototal inputs in the site
 var success = $('.contact_form_success')
 var failure = $('.contact_form_failure')
-var loader = $('.loader')
 
 form.submit(function(event){
   console.log('yeaah');
@@ -12,7 +12,6 @@ form.submit(function(event){
 });
 
 function submitForm() {
-  var loader = loader;
   var end_point = "/contact/send";
 
   success.hide();
@@ -26,8 +25,10 @@ function submitForm() {
     return;
   }
 
+  loader.show()
+
   if (loader) {
-     loader.show();
+     loader.show()
   }
 
   newsletterChecked = ($(".newsletter:checked").length) > 0;
@@ -47,10 +48,11 @@ function submitForm() {
      dataType: 'json',
      encode: true
   })
-  .done(function(objectReturned) {
-    emailSent = objectReturned.data.emailSent;
-    validData = objectReturned.data.validData;
-    console.log(objectReturned);
+  .done(function(data) {
+    console.log(data)
+
+    emailSent = data.emailSent
+    validData = data.validData
 
     if (!emailSent || !validData) {
       failure.show();
