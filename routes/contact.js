@@ -1,8 +1,16 @@
-var express = require('express');
-var nodemailer = require('nodemailer'); // Nodemailer es un módulo externo de node que nos permite mandar correos.
-var validator = require('validator');
-var content = require('../public/content/english.json'); // TODO: Add multilanguage
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+
+var Recaptcha = require('recaptcha').Recaptcha
+var nodemailer = require('nodemailer') // Nodemailer es un módulo externo de node que nos permite mandar correos.
+var validator = require('validator')
+var content = require('../public/content/english.json') // TODO: Add multilanguage
+var config = require('../config')
+
+var PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
+var PRIVATE_KEY = config.recaptcha.PRIVATE_KEY
+
+// roUTES
 
 router.get('/', contact);
 router.get('/feedback', feedback);
@@ -12,10 +20,14 @@ module.exports = router;
 
 // FUNCTIONS
 function contact(req, res, next) {
+  var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY)
   res.render('contact', {
     title: 'Contact me',
     path: 'contact',
-    content: content.contact
+    content: content.contact,
+    locals: {
+        recaptcha_form: recaptcha.toHTML()
+    }
   });
 }
 
@@ -28,20 +40,20 @@ function feedback(req, res, next) {
 }
 
 function sendForm(req, res) {
-  var form;
-  var validForm;
-  var responseEmail;
-  var transporter;
-  var mailOptions;
-  var gmailUser = process.env.GMAIL_USER || null;  // get from Enviroments
-  var gmailPassword = process.env.GMAIL_PASSWD || null;
+  var form
+  var validForm
+  var responseEmail
+  var transporter
+  var mailOptions
+  var gmailUser = process.env.GMAIL_USER || null  // get from Enviroments
+  var gmailPassword = process.env.GMAIL_PASSWD || null
 
   form = {
-    "name" : req.body.contact_name,
-    "email" : req.body.contact_email,
-    "message" : req.body.contact_msg,
-    "subscribed" : req.body.contact_newsletter || "false",
-    "source" : req.body.contact_source || "General"
+    'name' : req.body.contact_name,
+    'email' : req.body.contact_email,
+    'message' : req.body.contact_msg,
+    'subscribed' : req.body.contact_newsletter || 'false',
+    'source' : req.body.contact_source || 'General'
   };
 
   invalidForm = form.name === undefined || form.email === undefined ||
@@ -50,9 +62,9 @@ function sendForm(req, res) {
   if (invalidForm || !gmailUser || !gmailPassword) {
     res.setHeader('Content-Type', 'application/json');
     res.json({
-      "data": {
-        "validData" : false,
-        "emailSent" : false
+      'data': {
+        'validData' : false,
+        'emailSent' : false
       }
     });
   }

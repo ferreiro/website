@@ -68,6 +68,13 @@ block content
               p.wrong#wrongMessage Error: Hey! Fill some text here ;).
               textarea.input_not_blank(type="name", id="message", name="contact_msg", placeholder="#{content.form.message || 'Write your message'}").contact_form_input
 
+          fieldset.contact_form_fieldset
+             p.wrong#wrongCaptcha Error: The captcha you introduced is not valid. Try again.
+             .input_email
+               != recaptcha_form
+               
+            #{locals.recaptcha_form}
+               
             fieldset.contact_form_fieldset
               .contact_form_newsletter
                 span.contact_form_newsletter_check
