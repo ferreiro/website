@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var Recaptcha = require('recaptcha').Recaptcha
+var Recaptcha = require('node-recaptcha2').Recaptcha
 var nodemailer = require('nodemailer') // Nodemailer es un módulo externo de node que nos permite mandar correos.
 var validator = require('validator')
 var content = require('../public/content/english.json') // TODO: Add multilanguage
@@ -10,7 +10,7 @@ var config = require('../config')
 RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
 RECAPTCHA_PRIVATE_KEY = config.recaptcha.PRIVATE_KEY
 
-// roUTES
+// Routes
 
 router.get('/', contact)
 router.get('/feedback', feedback)

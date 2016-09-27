@@ -30,8 +30,8 @@
     "github": "^0.2.4",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "node-recaptcha2": "^2.1.2",
     "nodemailer": "^2.3.0",
-    "recaptcha": "^1.2.1",
     "serve-favicon": "~2.3.0",
     "validator": "^5.1.0"
   },
