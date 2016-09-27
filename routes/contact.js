@@ -58,42 +58,23 @@ function submitForm (req, res) {
         }
     })
 
-    // var compiledTemplate = pug.compileFile('views/emailTemplate.pug')
-    // var htmlEmail = compiledTemplate({
-    //   name: form.name,
-    //   email: form.email,
-    //   message: form.message,
-    //   subscribed: form.subscribed,
-    //   source: form.source
-    // })
+    var compiledTemplate = pug.compileFile('views/emailTemplate.pug')
+    var htmlEmail = compiledTemplate({
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      subscribed: form.subscribed,
+      source: form.source
+    })
 
     mailOptions = { // Setup e-mail data with unicode symbols
         subject: '[Ferreiro/contact] Message from ' + form.name,
         from: String(form.name) + ' <' + String(form.email) + '>', // sender address
         to: 'jorge@ferreiro.me', // list of receivers
         replyTo: form.email,
-        html: 'htmlEmail' // html body
+        html: htmlEmail // html body
     }
-
     transporter.sendMail (mailOptions, function(error, data) {
-
-
-
-
-      res.setHeader('Content-Type', 'application/json')
-      return res.json({
-        'mailoptions': mailOptions,
-        'transporter': transporter,
-        'GMAIL_USER': GMAIL_USER,
-        'GMAIL_PASS': GMAIL_PASS,
-        'JORGE_EMAIL':JORGE_EMAIL,
-        'error': error,
-        'data': data
-      })
-
-
-
-
       res.setHeader('Content-Type', 'application/json')
       res.json({
         'error': error,
