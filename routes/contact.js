@@ -50,13 +50,16 @@ function submitForm (req, res) {
   validForm = validateForm(form.email, form.message)
 
   if (validForm) { // validCaptcha &&
-    transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: GMAIL_USER || undefined,
-            pass: GMAIL_PASS || undefined
-        }
-    })
+    // transporter = nodemailer.createTransport({
+    //     service: 'Gmail',
+    //     auth: {
+    //         user: GMAIL_USER || undefined,
+    //         pass: GMAIL_PASS || undefined
+    //     }
+    // })
+
+    transporter = nodemailer.createTransport(
+      'smtps://' + GMAIL_USER + ':' + GMAIL_PASS + '@smtp.gmail.com');
 
     var compiledTemplate = pug.compileFile('views/emailTemplate.pug')
     var htmlEmail = compiledTemplate({
