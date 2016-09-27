@@ -7,8 +7,10 @@ var validator = require('validator')
 var content = require('../public/content/english.json') // TODO: Add multilanguage
 var config = require('../config')
 
+GMAIL_USER = config.gmail.USER
+GMAIL_PASS = config.gmail.PASS
 RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
-RECAPTCHA_PRIVATE_KEY = config.recaptcha.PRIVATE_KEY
+RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY
 
 // Routes
 
@@ -20,9 +22,7 @@ module.exports = router
 
 // FUNCTIONS
 function contact(req, res, next) {
-  console.log(RECAPTCHA_PUBLIC_KEY)
-  console.log(RECAPTCHA_PRIVATE_KEY)
-  var recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY)
+  var recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY, RECAPTCHA_SECRET_KEY)
   res.render('contact', {
     title: 'Contact me',
     path: 'contact',
@@ -40,71 +40,180 @@ function feedback(req, res, next) {
 }
 
 function sendForm(req, res) {
-  var form
-  var validForm
-  var responseEmail
-  var transporter
-  var mailOptions
-  var gmailUser = process.env.GMAIL_USER || null  // get from Enviroments
-  var gmailPassword = process.env.GMAIL_PASSWD || null
+  var recaptcha
+  var form = {
+    'name': req.body.contact_name || undefined,
+    'email': req.body.contact_email || undefined,
+    'message': req.body.contact_msg || undefined,
+    'subscribed': req.body.contact_newsletter || 'false',
+    'source': req.body.contact_source || 'General',
+    'captchaData': {
+        remoteip: req.connection.remoteAddress || undefined,
+        challenge: req.body.recaptcha_challenge_field || undefined,
+        response: req.body.recaptcha_response_field || undefined
+    }
+  }
 
-  form = {
-    'name' : req.body.contact_name,
-    'email' : req.body.contact_email,
-    'message' : req.body.contact_msg,
-    'subscribed' : req.body.contact_newsletter || 'false',
-    'source' : req.body.contact_source || 'General'
+  recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY,
+      RECAPTCHA_SECRET_KEY, form.captchaData)
+
+  console.log('Pass the variables initialization');
+
+  recaptcha.verify(function(validCaptcha, error_code) {
+    var validForm = validateForm(form.email, form.message)
+    if (validCaptcha && validForm) {
+      console.log('Yeah! Captcha and forms are valid')
+      sendEmail(form)
+    }
+    else {
+      res.setHeader('Content-Type', 'application/json')
+      res.json({
+        'data': {
+          'validData' : validForm,
+          'validCaptcha': validCaptcha,
+          'newCaptcha': recaptcha.toHTML(),
+          'emailSent' : false
+        }
+      })
+    }
+  })
+}
+
+validateForm = function(email, message) {
+  var isEmailCorrect = validator.isEmail(String(email))
+  var isMessageFilled = (email !== undefined)
+
+  return isEmailCorrect && isMessageFilled
+}
+
+sendEmail = function(form) {
+  transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+          user: GMAIL_USER,
+          pass: GMAIL_PASS
+      }
+  });
+
+  email_html = generateEmailTemplate(form.name, form.email, form.message,
+                                      form.subscribed, form.source);
+
+  mailOptions = { // Setup e-mail data with unicode symbols
+      subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
+      from: String(req.body.contact_name) + ' <' + String(req.body.contact_email) + '>', // sender address
+      to: 'jorge@ferreiro.me', // list of receivers
+      replyTo: form.email,
+      html: email_html // html body
   };
 
-  invalidForm = form.name === undefined || form.email === undefined ||
-                form.message === undefined || ! validator.isEmail(String(form.email));
-
-  if (invalidForm || !gmailUser || !gmailPassword) {
-    res.setHeader('Content-Type', 'application/json');
-    res.json({
-      'data': {
-        'validData' : false,
-        'emailSent' : false
-      }
-    });
-  }
-  else {
-    transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: gmailUser,
-            pass: gmailPassword
-        }
-    });
-
-    email_html = generateEmailTemplate(form.name, form.email, form.message,
-                                        form.subscribed, form.source);
-
-    mailOptions = { // Setup e-mail data with unicode symbols
-        subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
-        from: String(req.body.contact_name) + ' <' + String(req.body.contact_email) + '>', // sender address
-        to: 'jorge@ferreiro.me', // list of receivers
-        replyTo: form.email,
-        html: email_html // html body
+  transporter.sendMail(mailOptions, function(error, info) {
+    var returnedData = {
+      "validData" : true,
+      "emailSent" : true
     };
 
-    transporter.sendMail(mailOptions, function(error, info) {
-      var returnedData = {
-        "validData" : true,
-        "emailSent" : true
-      };
+    if (error) {
+      returnedData.emailSent = false;
+    }
 
-      if (error) {
-        returnedData.emailSent = false;
-      }
-
-      res.setHeader('Content-Type', 'application/json');
-      res.json({
-        "data": returnedData
-      });
+    res.setHeader('Content-Type', 'application/json');
+    res.json({
+      "data": returnedData
     });
-  }
+  });
 }
+
+// function sendForm(req, res) {
+//   var form
+//   var validForm
+//   var responseEmail
+//   var transporter
+//   var mailOptions
+//   var gmailUser = process.env.GMAIL_USER || null  // get from Enviroments
+//   var gmailPassword = process.env.GMAIL_PASS || null
+//
+//   form = {
+//     'name' : req.body.contact_name,
+//     'email' : req.body.contact_email,
+//     'message' : req.body.contact_msg,
+//     'subscribed' : req.body.contact_newsletter || 'false',
+//     'source' : req.body.contact_source || 'General'
+//   };
+//
+//   recaptchaData = {
+//     remoteip:  req.connection.remoteAddress,
+//     challenge: req.body.recaptcha_challenge_field,
+//     response:  req.body.recaptcha_response_field
+//   }
+//
+//   var recaptcha = new Recaptcha(
+//     RECAPTCHA_PUBLIC_KEY, RECAPTCHA_SECRET_KEY, recaptchaData
+//   )
+//
+//   invalidForm = form.name === undefined || form.email === undefined ||
+//                 form.message === undefined || ! validator.isEmail(String(form.email));
+//
+//   recaptcha.verify(function(success, error_code) {
+//       if (success) {
+//           res.send('Recaptcha response valid.');
+//       }
+//       else {
+//           // Redisplay the form.
+//           res.render('form.jade', {
+//               layout: false,
+//               locals: {
+//                   recaptcha_form: recaptcha.toHTML()
+//               }
+//           });
+//       }
+//     });
+//
+//   if (invalidForm || !gmailUser || !gmailPassword) {
+//     res.setHeader('Content-Type', 'application/json');
+//     res.json({
+//       'data': {
+//         'validData' : false,
+//         'emailSent' : false
+//       }
+//     });
+//   }
+//   else {
+//     transporter = nodemailer.createTransport({
+//         service: 'Gmail',
+//         auth: {
+//             user: gmailUser,
+//             pass: gmailPassword
+//         }
+//     });
+//
+//     email_html = generateEmailTemplate(form.name, form.email, form.message,
+//                                         form.subscribed, form.source);
+//
+//     mailOptions = { // Setup e-mail data with unicode symbols
+//         subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
+//         from: String(req.body.contact_name) + ' <' + String(req.body.contact_email) + '>', // sender address
+//         to: 'jorge@ferreiro.me', // list of receivers
+//         replyTo: form.email,
+//         html: email_html // html body
+//     };
+//
+//     transporter.sendMail(mailOptions, function(error, info) {
+//       var returnedData = {
+//         "validData" : true,
+//         "emailSent" : true
+//       };
+//
+//       if (error) {
+//         returnedData.emailSent = false;
+//       }
+//
+//       res.setHeader('Content-Type', 'application/json');
+//       res.json({
+//         "data": returnedData
+//       });
+//     });
+//   }
+// }
 
 function generateEmailTemplate(name, email, message, subscribed, source) {
 
