@@ -78,7 +78,10 @@ function submitForm (req, res) {
     res.setHeader('Content-Type', 'application/json')
     return res.json({
       'mailoptions': mailOptions,
-      'transporter': transporter
+      'transporter': transporter,
+      'GMAIL_USER': GMAIL_USER,
+      'GMAIL_PASS': GMAIL_PASS,
+      'JORGE_EMAIL':JORGE_EMAIL
     })
 
 
