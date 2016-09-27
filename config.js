@@ -1,5 +1,7 @@
 var config = {
-  "jorgeEmail": process.env.JORGE_EMAIL,
+  "email": {
+    "JORGE": process.env.JORGE_EMAIL
+  },
   "gmail": {
     "USER": process.env.GMAIL_USER,
     "PASS": process.env.GMAIL_PASSWD

@@ -6,7 +6,7 @@ var validator = require('validator')
 var content = require('../public/content/english.json')
 var config = require('../config')
 
-JORGE_EMAIL = config.JORGE_EMAIL || 'contactForm@ferreiro.me'
+JORGE_EMAIL = config.email.JORGE || 'contactForm@ferreiro.me'
 GMAIL_USER = config.gmail.USER || undefined
 GMAIL_PASS = config.gmail.PASS || undefined
 RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY || undefined
@@ -15,18 +15,16 @@ RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY || undefined
 // Routes
 router.get('/', contact)
 router.get('/feedback', feedback)
-router.post('/send', submitForm);
+router.post('/send', submitForm)
 
 module.exports = router
 
 // FUNCTIONS
 function contact (req, res, next) {
-  // var recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY, RECAPTCHA_SECRET_KEY)
   res.render('contact', {
     title: 'Contact me'
     , path: 'contact'
     , content: content.contact
-    // ,recaptcha_form: recaptcha.toHTML()
   })
 }
 
@@ -37,39 +35,6 @@ function feedback(req, res, next) {
     , content: content.feedback
   })
 }
-//
-// function submitForm(req,res) {
-//   // var data = {
-//   //     remoteip: req.connection.remoteAddress,
-//   //     response: req.body['g-recaptcha-response']
-//   // };
-//   // console.log(data);
-//   // var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY, data);
-//   // console.log(recaptcha);
-//
-//   recaptcha.verify(function(success, error_code) {
-//     if (success) {
-//         res.send('Recaptcha response valid.');
-//     }
-//     else {
-//       console.log('error');
-//       console.log(error_code);
-//       res.render('contact', {
-//         title: 'Contact me',
-//         path: 'contact',
-//         content: content.contact,
-//         recaptcha_form: recaptcha.toHTML()
-//       })
-//         // // Redisplay the form.
-//         // res.render('form.jade', {
-//         //     layout: false,
-//         //     locals: {
-//         //         recaptcha_form: recaptcha.toHTML()
-//         //     }
-//         // });
-//     }
-//   });
-// }
 
 function submitForm (req, res) {
   var validForm
@@ -131,50 +96,10 @@ function submitForm (req, res) {
 
 validateForm = function (email, message) {
   var isEmailCorrect = validator.isEmail(String(email))
-  var isMessageFilled = (email !== undefined)
+  var isMessageFilled = (email !== undefined)
 
   return isEmailCorrect && isMessageFilled
 }
-
-// sendEmail = function(form, cb) {
-//   console.log('sending form...');
-//   transporter = nodemailer.createTransport({
-//       service: 'Gmail',
-//       auth: {
-//           user: GMAIL_USER || undefined,
-//           pass: GMAIL_PASS || undefined
-//       }
-//   });
-//
-//   email_html = generateEmailTemplate(form.name, form.email, form.message,
-//                                       form.subscribed, form.source);
-//
-//   mailOptions = { // Setup e-mail data with unicode symbols
-//       subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
-//       from: String(form.name) + ' <' + String(form.email) + '>', // sender address
-//       to: 'jorge@ferreiro.me', // list of receivers
-//       replyTo: form.email,
-//       html: email_html // html body
-//   }
-//
-//   console.log('MAIL OPTIONS')
-//
-//   transporter.sendMail(mailOptions, function(error, info) {
-//
-//     console.log('HEOOO, transporter CALLBACK');
-//     var returnedData = {
-//       "validData" : true,
-//       "emailSent" : true
-//     };
-//
-//     if (error) {
-//       returnedData.emailSent = false
-//     }
-//     console.log('Returned Data')
-//     console.log(returnedData)
-//     return returnedData
-//   })
-// }
 
 function generateEmailTemplate(name, email, message, subscribed, source) {
 
