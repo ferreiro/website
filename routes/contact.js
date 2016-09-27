@@ -75,17 +75,25 @@ function submitForm (req, res) {
         html: 'htmlEmail' // html body
     }
 
-    res.setHeader('Content-Type', 'application/json')
-    return res.json({
-      'mailoptions': mailOptions,
-      'transporter': transporter,
-      'GMAIL_USER': GMAIL_USER,
-      'GMAIL_PASS': GMAIL_PASS,
-      'JORGE_EMAIL':JORGE_EMAIL
-    })
-
-
     transporter.sendMail (mailOptions, function(error, data) {
+
+
+
+
+      res.setHeader('Content-Type', 'application/json')
+      return res.json({
+        'mailoptions': mailOptions,
+        'transporter': transporter,
+        'GMAIL_USER': GMAIL_USER,
+        'GMAIL_PASS': GMAIL_PASS,
+        'JORGE_EMAIL':JORGE_EMAIL,
+        'error': error,
+        'data': data
+      })
+
+
+
+
       res.setHeader('Content-Type', 'application/json')
       res.json({
         'error': error,
