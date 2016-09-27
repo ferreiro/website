@@ -51,44 +51,42 @@ block content
         
       .contact_form_wrapper.box_with_shadow
           
-          if content.title
-            h2 !{content.title}
-        
-         form.contact_form(action="/contact/send", method="post", autocomplete="off")#contactform
-           
-           fieldset.contact_form_fieldset
-              p.wrong#wrongName Error: Your name can not be blank
-              input.input_not_blank(type="name", id="the_name", name="contact_name", placeholder="#{content.form.name || 'What is your name?'}").contact_form_input
-       
-           fieldset.contact_form_fieldset
-              p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
-              input.input_email(type="name", id="email", name="contact_email", placeholder="#{content.form.email || 'And your email?'}").contact_form_input
-       
-           fieldset.contact_form_fieldset
-              p.wrong#wrongMessage Error: Hey! Fill some text here ;).
-              textarea.input_not_blank(type="name", id="message", name="contact_msg", placeholder="#{content.form.message || 'Write your message'}").contact_form_input
+        if content.title
+        h2 !{content.title}
+
+        form.contact_form(action="/contact/send", method="post", autocomplete="off")#contactform
 
           fieldset.contact_form_fieldset
-             p.wrong#wrongCaptcha Error: The captcha you introduced is not valid. Try again.
-             .input_email
-               != recaptcha_form
-               
-            fieldset.contact_form_fieldset
-              .contact_form_newsletter
-                span.contact_form_newsletter_check
-                  .mk-trc(data-style="check")
-                    input(id="checkbox1.1", class="newsletter", type="checkbox", name="contact_subcription", value="Subscribed", checked)
-                    label(for="checkbox1.1")
-                      i
-                span.contact_form_newsletter_text #{content.form.newsletter || 'I want to receive projects and updates from Jorge'}
-            
-            .contact_form_result.contact_form_success
-              p Your message has been sent. Thank you!
-              
-            .contact_form_result.contact_form_failure
-              p Sorry. Your message couldn't been sent.<br /> Try again or <u><a class="openModalBox">contact me directly</a></u>
-           
-            fieldset#formSendButton.contact_form_fieldset.contact_fieldset_nomargin
-              input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_submit
-              
-  
+            p.wrong#wrongName Error: Your name can not be blank
+            input.input_not_blank(type="name", id="the_name", name="contact_name", placeholder="#{content.form.name || 'What is your name?'}").contact_form_input
+
+          fieldset.contact_form_fieldset
+            p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
+            input.input_email(type="name", id="email", name="contact_email", placeholder="#{content.form.email || 'And your email?'}").contact_form_input
+
+          fieldset.contact_form_fieldset
+            p.wrong#wrongMessage Error: Hey! Fill some text here ;).
+            textarea.input_not_blank(type="name", id="message", name="contact_msg", placeholder="#{content.form.message || 'Write your message'}").contact_form_input
+
+          fieldset.contact_form_fieldset
+            p.wrong#wrongCaptcha Error: The captcha you introduced is not valid. Try again.
+            .input_email
+              != recaptcha_form
+
+          fieldset.contact_form_fieldset
+            .contact_form_newsletter
+              span.contact_form_newsletter_check
+                .mk-trc(data-style="check")
+                  input(id="checkbox1.1", class="newsletter", type="checkbox", name="contact_subcription", value="Subscribed", checked)
+                  label(for="checkbox1.1")
+                    i
+                    span.contact_form_newsletter_text #{content.form.newsletter || 'I want to receive projects and updates from Jorge'}
+
+          .contact_form_result.contact_form_success
+            p Your message has been sent. Thank you!
+
+          .contact_form_result.contact_form_failure
+            p Sorry. Your message couldn't been sent.<br /> Try again or <u><a class="openModalBox">contact me directly</a></u>
+
+          fieldset.contact_form_fieldset.contact_fieldset_nomargin
+            input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_submit#formSendButton
