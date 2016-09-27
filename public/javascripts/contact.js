@@ -6,6 +6,7 @@ var failure = $('.contact_form_failure')
 var loader = $('.loader')
 
 form.submit(function(event){
+  console.log('yeaah');
     event.preventDefault(); // Stop change webpage
     submitForm();
 });

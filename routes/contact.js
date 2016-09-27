@@ -1,33 +1,34 @@
 var express = require('express')
 var router = express.Router()
 
-var Recaptcha = require('node-recaptcha2').Recaptcha
+var reCAPTCHA=require('recaptcha2')
 var nodemailer = require('nodemailer') // Nodemailer es un módulo externo de node que nos permite mandar correos.
 var validator = require('validator')
 var content = require('../public/content/english.json') // TODO: Add multilanguage
 var config = require('../config')
 
+recaptcha = new reCAPTCHA({
+  siteKey: config.recaptcha.PUBLIC_KEY,
+  secretKey: config.recaptcha.SECRET_KEY
+})
+
 GMAIL_USER = config.gmail.USER
 GMAIL_PASS = config.gmail.PASS
-RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
-RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY
 
 // Routes
-
 router.get('/', contact)
 router.get('/feedback', feedback)
-router.post('/send', sendForm)
+router.post('/send', submitForm)
 
 module.exports = router
 
 // FUNCTIONS
 function contact(req, res, next) {
-  var recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY, RECAPTCHA_SECRET_KEY)
   res.render('contact', {
     title: 'Contact me',
     path: 'contact',
     content: content.contact,
-    recaptcha_form: recaptcha.toHTML()
+    recaptcha_form: recaptcha.formElement()
   })
 }
 
@@ -39,45 +40,91 @@ function feedback(req, res, next) {
   });
 }
 
-function sendForm(req, res) {
-  var recaptcha
-  var form = {
-    'name': req.body.contact_name || undefined,
-    'email': req.body.contact_email || undefined,
-    'message': req.body.contact_msg || undefined,
-    'subscribed': req.body.contact_newsletter || 'false',
-    'source': req.body.contact_source || 'General',
-    'captchaData': {
-        remoteip: req.connection.remoteAddress || undefined,
-        challenge: req.body.recaptcha_challenge_field || undefined,
-        response: req.body.recaptcha_response_field || undefined
-    }
-  }
-
-  recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY,
-      RECAPTCHA_SECRET_KEY, form.captchaData)
-
-  console.log('Pass the variables initialization');
-
-  recaptcha.verify(function(validCaptcha, error_code) {
-    var validForm = validateForm(form.email, form.message)
-    if (validCaptcha && validForm) {
-      console.log('Yeah! Captcha and forms are valid')
-      sendEmail(form)
-    }
-    else {
-      res.setHeader('Content-Type', 'application/json')
-      res.json({
-        'data': {
-          'validData' : validForm,
-          'validCaptcha': validCaptcha,
-          'newCaptcha': recaptcha.toHTML(),
-          'emailSent' : false
-        }
-      })
-    }
+function submitForm(req,res){
+  recaptcha.validateRequest(req)
+  .then(function(){
+    // validated and secure
+    console.log('true');
+    res.json({formSubmit:true})
   })
+  .catch(function(errorCodes){
+    // invalid
+    console.log('invalid');
+    console.log(recaptcha.translateErrors(errorCodes));
+    res.json({formSubmit:false,errors:recaptcha.translateErrors(errorCodes)});// translate error codes to human readable text
+  });
 }
+
+//
+// function submitForm(req, res) {
+//   var form = {
+//     'name': req.body.contact_name || undefined,
+//     'email': req.body.contact_email || undefined,
+//     'message': req.body.contact_msg || undefined,
+//     'subscribed': req.body.contact_newsletter || 'false',
+//     'source': req.body.contact_source || 'General'
+//     // 'captchaData': {
+//     //     remoteip: req.connection.remoteAddress || undefined,
+//     //     challenge: req.body.recaptcha_challenge_field || undefined,
+//     //     response: req.body.recaptcha_response_field || undefined
+//     // }
+//   }
+//
+//   console.log(recaptcha);
+//
+//   console.log('Pass the variables initialization');
+//   console.log('haha');
+//
+//   // recaptcha = new Recaptcha({
+//   //   siteKey: RECAPTCHA_PUBLIC_KEY,
+//   //   secretKey: RECAPTCHA_SECRET_KEY,
+//   //   ssl: true
+//   // })
+//
+//   recaptcha.validateRequest(req)
+//   .then(function(){
+//     // validated and secure
+//     console.log('Yeah! Captcha correct');
+//     res.json({formSubmit:true})
+//   })
+//   .catch(function(errorCodes){
+//     // invalid
+//     console.log('NOP! Captcha incorrect');
+//     console.log(recaptcha.translateErrors(errorCodes));
+//     res.json({formSubmit:false,errors:recaptcha.translateErrors(errorCodes)});// translate error codes to human readable text
+//   });
+//
+//   // recaptcha.verify(function(validCaptcha, error_code) {
+//   //   console.log(form);
+//   //   var validForm = validateForm(form.email, form.message)
+//   //
+//   //   console.log('Valid Captcha? ')
+//   //   console.log(validCaptcha);
+//   //   console.log('Error code');
+//   //   console.log(error_code);
+//   //
+//   //   if (validCaptcha && validForm) {
+//   //     console.log('Yeah! Captcha and forms are valid')
+//   //     data = sendEmail(form)
+//   //     res.setHeader('Content-Type', 'application/json');
+//   //     res.json({
+//   //       "data": data
+//   //     })
+//   //   }
+//   //   else {
+//   //     console.log('Not valid');
+//   //     res.setHeader('Content-Type', 'application/json')
+//   //     res.json({
+//   //       'data': {
+//   //         'validData' : validForm,
+//   //         'validCaptcha': validCaptcha,
+//   //         'newCaptcha': recaptcha.toHTML(),
+//   //         'emailSent' : false
+//   //       }
+//   //     })
+//   //   }
+//   // })
+// }
 
 validateForm = function(email, message) {
   var isEmailCorrect = validator.isEmail(String(email))
@@ -87,11 +134,12 @@ validateForm = function(email, message) {
 }
 
 sendEmail = function(form) {
+  console.log('sending form...');
   transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-          user: GMAIL_USER,
-          pass: GMAIL_PASS
+          user: GMAIL_USER || undefined,
+          pass: GMAIL_PASS || undefined
       }
   });
 
@@ -100,13 +148,17 @@ sendEmail = function(form) {
 
   mailOptions = { // Setup e-mail data with unicode symbols
       subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
-      from: String(req.body.contact_name) + ' <' + String(req.body.contact_email) + '>', // sender address
+      from: String(form.name) + ' <' + String(form.email) + '>', // sender address
       to: 'jorge@ferreiro.me', // list of receivers
       replyTo: form.email,
       html: email_html // html body
-  };
+  }
+
+  console.log('MAIL OPTIONS')
 
   transporter.sendMail(mailOptions, function(error, info) {
+
+    console.log('HEOOO, transporter CALLBACK');
     var returnedData = {
       "validData" : true,
       "emailSent" : true
@@ -115,11 +167,9 @@ sendEmail = function(form) {
     if (error) {
       returnedData.emailSent = false;
     }
-
-    res.setHeader('Content-Type', 'application/json');
-    res.json({
-      "data": returnedData
-    });
+    console.log('Returned Data');
+    console.log(returnedData);
+    return returnedData
   });
 }
 
