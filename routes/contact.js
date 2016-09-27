@@ -6,10 +6,11 @@ var validator = require('validator')
 var content = require('../public/content/english.json')
 var config = require('../config')
 
-GMAIL_USER = config.gmail.USER
-GMAIL_PASS = config.gmail.PASS
-RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
-RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY
+JORGE_EMAIL = config.JORGE_EMAIL || 'contactForm@ferreiro.me'
+GMAIL_USER = config.gmail.USER || undefined
+GMAIL_PASS = config.gmail.PASS || undefined
+RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY || undefined
+RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY || undefined
 
 // Routes
 router.get('/', contact)
@@ -31,9 +32,9 @@ function contact (req, res, next) {
 
 function feedback(req, res, next) {
   res.render('contact', {
-    title: 'Feeback',
-    path: 'feedback',
-    content: content.feedback
+    title: 'Feeback'
+    , path: 'feedback'
+    , content: content.feedback
   })
 }
 //
@@ -71,6 +72,7 @@ function feedback(req, res, next) {
 // }
 
 function submitForm (req, res) {
+  var validForm
   var form = {
     'name': req.body.contact_name || undefined,
     'email': req.body.contact_email || undefined,
@@ -84,17 +86,16 @@ function submitForm (req, res) {
     // }
   }
 
-  var validForm = validateForm(form.email, form.message)
+  validForm = validateForm(form.email, form.message)
 
   if (validForm) { // validCaptcha &&
-    console.log('sending form...');
     transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
             user: GMAIL_USER || undefined,
             pass: GMAIL_PASS || undefined
         }
-    });
+    })
 
     email_html = generateEmailTemplate(form.name, form.email, form.message,
                                         form.subscribed, form.source);
@@ -102,12 +103,10 @@ function submitForm (req, res) {
     mailOptions = { // Setup e-mail data with unicode symbols
         subject: '[jgferreiro.com/' + form.source + '] Message from ' + form.name,
         from: String(form.name) + ' <' + String(form.email) + '>', // sender address
-        to: 'jorge@ferreiro.me', // list of receivers
+        to: String(JORGE_EMAIL), // list of receivers
         replyTo: form.email,
         html: email_html // html body
     }
-
-    console.log('MAIL OPTIONS')
 
     transporter.sendMail(mailOptions, function(error, data) {
       res.setHeader('Content-Type', 'application/json')
@@ -122,9 +121,8 @@ function submitForm (req, res) {
     res.setHeader('Content-Type', 'application/json')
     res.json({
       'data': {
+        'error': true,
         'validData' : validForm,
-        // 'validCaptcha': validCaptcha,
-        // 'newCaptcha': recaptcha.toHTML(),
         'emailSent' : false
       }
     })
