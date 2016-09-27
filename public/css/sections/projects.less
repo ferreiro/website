@@ -110,7 +110,7 @@
       color: #fff;
       font-size: 1.2em;
       margin-bottom: 0.3em;
-      text-decoration: none; 
+      text-decoration: none;
 
       @media all and (min-width:@desktop-screen) {
         font-size: 1.4em;
@@ -162,7 +162,7 @@
     background: rgba(0, 0, 0, 0.5);
 
     @media all and (min-width:@desktop-screen) {
-      height: 170px;
+      height: 155px;
     }
 
     &_next {
@@ -192,9 +192,14 @@
       height: 100%;
       overflow: hidden;
 
+      @media all and (min-width:@desktop-screen) {
+        width: 33.33%;
+      }
+
       img {
+
         height: 100%;
-        .opacity(0.8);
+        .opacity(0.6);
       }
     }
   }
@@ -269,10 +274,11 @@
         display: inline-block;
         vertical-align: middle;
         margin-left: 30px;
-        color: rgba(255, 255, 255, 0.9);
         color: @primaryColor;
         font-size: 1.1em;
         position: relative;
+        color:#333333;
+        // color: rgba(0, 0, 0, 0.8);
 
          a {
            font-weight: 300;
