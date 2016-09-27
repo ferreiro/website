@@ -7,28 +7,28 @@ var validator = require('validator')
 var content = require('../public/content/english.json') // TODO: Add multilanguage
 var config = require('../config')
 
-var PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
-var PRIVATE_KEY = config.recaptcha.PRIVATE_KEY
+RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY
+RECAPTCHA_PRIVATE_KEY = config.recaptcha.PRIVATE_KEY
 
 // roUTES
 
-router.get('/', contact);
-router.get('/feedback', feedback);
-router.post('/send', sendForm);
+router.get('/', contact)
+router.get('/feedback', feedback)
+router.post('/send', sendForm)
 
-module.exports = router;
+module.exports = router
 
 // FUNCTIONS
 function contact(req, res, next) {
-  var recaptcha = new Recaptcha(PUBLIC_KEY, PRIVATE_KEY)
+  console.log(RECAPTCHA_PUBLIC_KEY)
+  console.log(RECAPTCHA_PRIVATE_KEY)
+  var recaptcha = new Recaptcha(RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY)
   res.render('contact', {
     title: 'Contact me',
     path: 'contact',
     content: content.contact,
-    locals: {
-        recaptcha_form: recaptcha.toHTML()
-    }
-  });
+    recaptcha_form: recaptcha.toHTML()
+  })
 }
 
 function feedback(req, res, next) {
