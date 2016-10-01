@@ -38,6 +38,7 @@ app.use('/', routes)
 app.use('/projects', projects)
 app.use('/social', social)
 app.use('/contact', contact)
+app.use('/api', require('./api'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

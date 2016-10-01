@@ -7,7 +7,7 @@ router.get('/about', about)
 router.get('/university', university)
 router.get('/stats', stats)
 
-module.exports = router;
+module.exports = router
 
 // FUNCTIONS
 

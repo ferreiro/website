@@ -1,0 +1,1 @@
+define({ "api": [  {    "type": "",    "url": "POST /contact",    "title": "Sends emails",    "version": "0.0.0",    "filename": "api/v1/contact/routes.js",    "group": "_Users_ferreiro_Documents_Code_Github_website_api_v1_contact_routes_js",    "groupTitle": "_Users_ferreiro_Documents_Code_Github_website_api_v1_contact_routes_js",    "name": "PostContact"  }] });
