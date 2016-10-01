@@ -17,7 +17,7 @@
     "email": "http://www.ferreiro.me/"
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "morgan": "~1.6.1",
     "node-recaptcha2": "^2.1.2",
     "nodemailer": "^2.3.0",
+    "nodemon": "^1.10.2",
     "pug": "^2.0.0-beta6",
     "recaptcha2": "^1.0.8",
     "serve-favicon": "~2.3.0",
