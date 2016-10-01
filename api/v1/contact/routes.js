@@ -20,16 +20,15 @@ router.get('/', function (req, res) {
 * @ email
 * @ subscribed
 */
-
 router.post('/', function (req, res) {
-
+  
   var message = ({
     'name': req.body.__name || null,
     'email': req.body.__email || null,
     'msg': req.body.__msg || null,
     'subscribed': req.body.__subscribed || null
   })
-  
+
   utils.validateMessage(message, function(valid) {
     console.log(valid);
     if (!valid) {

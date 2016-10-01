@@ -13,7 +13,8 @@ var config = {
   'recaptcha': {
     'PUBLIC_KEY': process.env.RECAPTCHA_PUBLIC,
     'SECRET_KEY': process.env.RECAPTCHA_SECRET
-  }
+  },
+  'NEW_RELIC_LICENSE_KEY': process.env.NEW_RELIC_LICENSE_KEY
 }
 
 module.exports = config
