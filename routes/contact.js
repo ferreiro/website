@@ -2,16 +2,17 @@ var express = require('express')
 var router = express.Router()
 
 var pug = require('pug')
+var xoauth2 = require('xoauth2')
 var nodemailer = require('nodemailer')
 var validator = require('validator')
 var content = require('../public/content/english.json')
 var config = require('../config')
 
-JORGE_EMAIL = config.email.JORGE || 'contactForm@ferreiro.me'
+MAILGUN_USER = config.mailgun.USER || undefined
+MAILGUN_PASS = config.mailgun.PASS || undefined
+JORGE_EMAIL = config.email.JORGE ||  undefined
 GMAIL_USER = config.gmail.USER || undefined
 GMAIL_PASS = config.gmail.PASS || undefined
-RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY || undefined
-RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY || undefined
 
 // Routes
 router.get('/', contact)
@@ -56,18 +57,13 @@ function submitForm (req, res, next) {
     var htmlEmail
     var mailOptions
 
-    var smtpConfig = {
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true, // use SSL
-        auth: {
-            user: GMAIL_USER + '@gmail.com',
-            pass: GMAIL_PASS
-        }
-    };
-
-    // endpoint = 'smtps://' + GMAIL_USER + '%40gmail.com:' + GMAIL_PASS + '@smtp.gmail.com'
-    transporter = nodemailer.createTransport(smtpConfig)
+    transporter = nodemailer.createTransport({
+      service: 'Mailgun',
+      auth: {
+        user: MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
+        pass: MAILGUN_PASS // You set this.
+      }
+    })
 
     // HTML Template
     compiledTemplate = pug.compileFile('views/emailTemplate.pug')
