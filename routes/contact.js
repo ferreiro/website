@@ -72,8 +72,8 @@ function submitForm (req, res, next) {
 
     // Setup e-mail data with unicode symbols
     mailOptions = {
-      from: '"${form.name} 👥" <${form.email}>', // sender address
-      to: '${GMAIL_USER}@gmail.com', // list of receivers
+      from: '"' + form.name + " 👥 <" + form.email + '>', // sender address
+      to: [JORGE_EMAIL], // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world 🐴', // plaintext body
       html: '<b>Hello world 🐴</b>' // html body
