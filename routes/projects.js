@@ -1,21 +1,35 @@
-var express = require('express');
-var content = require('../public/content/english.json'); // TODO: Add multilanguage
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 
-router.get('/', projects);
+var projects = require('../content/projects')
 
-module.exports = router;
-
-// FUNCTIONS
-
-function projects(req, res, next) {
+router.get('/', function(req, res) {
   res.render('projects', {
-    title: 'Projects &amp; Works',
     path: 'projects',
-    content: content.projects
-  });
-}
+    title: 'Portfolio',
+    filtered: false, /* If projects are filtered by some category */
+    projects: projects
+  })
+})
 
-// router.get('/dotfiles', function(req, res, next) {
-//   res.send('Dotfiles project page');
-// });
+router.get('/:category', function(req, res) {
+  var category = req.params.category
+  var title = category + ' projects'
+  var projectsFiltered;
+
+  projectsFiltered = projects.filter(function(project) {
+    var projectCategories = project.type
+    var projectHasCategory = projectCategories.indexOf(category)
+    return projectHasCategory >= 0
+  })
+
+  res.render('projects', {
+    path: 'projects',
+    title: 'Portfolio',
+    filtered: true,
+    filtered_by: category,
+    projects: projectsFiltered
+  })
+})
+
+module.exports = router
