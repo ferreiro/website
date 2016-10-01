@@ -1,28 +1,21 @@
-var form = $('.contact_form');
-var formSubmitButton = $('#formSendButton');
-var formValidInputs = []; // Array of bools that has length of tototal inputs in the site
-
-// setInterval(function() {
-//   var validInputs = validateInputs();
-//   if (validInputs) {
-//     formSubmitButton.removeClass('contact_form_fieldset_submit_disabled');
-//   }
-//   else {
-//     formSubmitButton.addClass('contact_form_fieldset_submit_disabled');
-//   }
-// }, 1);
+var form = $('.contact_form')
+var loader = $('#contactLoader')
+var formSubmitButton = $('#formSendButton')
+var formValidInputs = [] // Array of bools that has length of tototal inputs in the site
+var success = $('.contact_form_success')
+var failure = $('.contact_form_failure')
 
 form.submit(function(event){
+  console.log('yeaah');
     event.preventDefault(); // Stop change webpage
     submitForm();
 });
 
 function submitForm() {
-  var loader = $('.loader');
   var end_point = "/contact/send";
 
-  $('.success').hide();
-  $('.failure').hide();
+  success.hide();
+  failure.hide();
 
   if (!validateInputs()) {
     $('html, body').animate({
@@ -32,8 +25,10 @@ function submitForm() {
     return;
   }
 
+  loader.show()
+
   if (loader) {
-     $('.loader').show();
+     loader.show()
   }
 
   newsletterChecked = ($(".newsletter:checked").length) > 0;
@@ -53,32 +48,34 @@ function submitForm() {
      dataType: 'json',
      encode: true
   })
-  .done(function(objectReturned) {
-    emailSent = objectReturned.data.emailSent;
-    validData = objectReturned.data.validData;
+  .done(function(data) {
+    console.log(data)
+
+    emailSent = data.emailSent
+    validData = data.validData
 
     if (!emailSent || !validData) {
-      $('.failure').show();
+      failure.show();
     }
     else {
       form.hide();
-      $('.success').show();
+      success.show();
     }
 
   })
   .fail(function(objectReturned) {
-    $('.failure').show();
+    failure.show();
   })
   .always(function(objectReturned) {
-    $('.loader').hide();
+    loader.hide();
   });
 
   try {
 
   }
   catch(err) {
-    $('.failure').show();
-    $('.loader').hide();
+    failure.show();
+    loader.hide();
     console.log(err.message);
   }
 }
