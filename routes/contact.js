@@ -1,12 +1,11 @@
-var express = require('express')
-var router = express.Router()
-
-var pug = require('pug')
-var xoauth2 = require('xoauth2')
-var nodemailer = require('nodemailer')
-var validator = require('validator')
+/**
+* Contact. Send messages
+*/
 var content = require('../public/content/english.json')
 var config = require('../config')
+
+var express = require('express')
+var router = express.Router()
 
 MAILGUN_USER = config.mailgun.USER || undefined
 MAILGUN_PASS = config.mailgun.PASS || undefined
@@ -17,7 +16,7 @@ GMAIL_PASS = config.gmail.PASS || undefined
 // Routes
 router.get('/', contact)
 router.get('/feedback', feedback)
-router.post('/send', submitForm)
+router.post('/send', submit)
 
 module.exports = router
 
@@ -38,13 +37,13 @@ function feedback(req, res, next) {
   })
 }
 
-function submitForm (req, res, next) {
+function submit (req, res, next) {
   var form = {
-    'name': req.body.contact_name || undefined,
-    'email': req.body.contact_email || undefined,
-    'message': req.body.contact_msg || undefined,
-    'subscribed': req.body.contact_newsletter || false,
-    'source': req.body.contact_source || 'General'
+    'name': req.query.contact_name || undefined,
+    'email': req.query.contact_email || undefined,
+    'message': req.query.contact_msg || undefined,
+    'subscribed': req.query.contact_newsletter || false,
+    'source': req.query.contact_source || 'General'
   }
 
   validForm = validateForm(form.email, form.message)
@@ -68,21 +67,29 @@ function submitForm (req, res, next) {
     // HTML Template
     compiledTemplate = pug.compileFile('views/emailTemplate.pug')
     htmlEmail = compiledTemplate({ form: form })
-    console.log(endpoint);
 
     // Setup e-mail data with unicode symbols
     mailOptions = {
       from: '"' + form.name + " 👥 <" + form.email + '>', // sender address
-      to: [JORGE_EMAIL], // list of receivers
+      to: JORGE_EMAIL, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world 🐴', // plaintext body
       html: '<b>Hello world 🐴</b>' // html body
     }
+    //
+    // console.log(mailOptions);
+    // console.log(MAILGUN_PASS);
+    // console.log(MAILGUN_USER);
+    // console.log(JORGE_EMAIL);
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {
+
+
+      console.log(error);
+      console.log(info);
       res.json({
-        'error': info,
+        'error': error,
         'validData': true,
         'emailSent': (!error)
       })
@@ -156,6 +163,7 @@ function submitForm (req, res, next) {
 validateForm = function (email, message) {
   var isEmailCorrect = validator.isEmail(String(email))
   var isMessageFilled = (email !== undefined)
-
+  console.log(isEmailCorrect);
+  console.log(isMessageFilled);
   return isEmailCorrect && isMessageFilled
 }

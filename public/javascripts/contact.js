@@ -6,13 +6,12 @@ var success = $('.contact_form_success')
 var failure = $('.contact_form_failure')
 
 form.submit(function(event){
-  console.log('yeaah');
-    event.preventDefault(); // Stop change webpage
-    submitForm();
+  event.preventDefault(); // Stop change webpage
+  submitForm();
 });
 
 function submitForm() {
-  var end_point = "/contact/send";
+  var end_point = "/api/v1/contact";
 
   success.hide();
   failure.hide();
@@ -31,14 +30,14 @@ function submitForm() {
      loader.show()
   }
 
-  newsletterChecked = ($(".newsletter:checked").length) > 0;
+  var newsletterChecked = ($(".newsletter:checked").length) > 0;
 
   contactForm = {
-    contact_name: $('#the_name').val(),
-    contact_email: $('#email').val(),
-    contact_msg: $('#message').val(),
-    contact_source: $('#source').val(),
-    contact_newsletter: newsletterChecked
+    __name: $('#the_name').val(),
+    __email: $('#email').val(),
+    __msg: $('#message').val(),
+    __source: $('#source').val(),
+    __newsletter: newsletterChecked
   };
 
   $.ajax({
@@ -48,20 +47,15 @@ function submitForm() {
      dataType: 'json',
      encode: true
   })
-  .done(function(data) {
-    console.log(data)
-
-    emailSent = data.emailSent
-    validData = data.validData
-
-    if (!emailSent || !validData) {
+  .done(function(email) {
+    console.log(email);
+    if (email.error) {
       failure.show();
     }
     else {
       form.hide();
       success.show();
     }
-
   })
   .fail(function(objectReturned) {
     failure.show();
