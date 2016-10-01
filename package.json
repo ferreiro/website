@@ -32,6 +32,7 @@
     "github": "^0.2.4",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "newrelic": "^1.30.4",
     "nodemailer": "^2.3.0",
     "nodemon": "^1.10.2",
     "pug": "^2.0.0-beta6",
