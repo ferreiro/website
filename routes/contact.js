@@ -68,7 +68,7 @@ function submit (req, res, next) {
 
     // Setup e-mail data with unicode symbols
     mailOptions = {
-      from: '"' + form.name + " 👥 <" + form.email + '>', // sender address
+      from: MAILGUN_USER, // sender address
       to: PERSONAL_EMAIL, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world 🐴', // plaintext body
