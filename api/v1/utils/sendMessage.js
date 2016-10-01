@@ -18,6 +18,8 @@ sendMessage = function (message, cb) {
     }
   })
 
+  console.log('Hola desde sendMessage');
+
   // compiledTemplate = pug.compileFile(path.join('/emailTemplate.pug'))
   // console.log('compilerd');
   // emailHMTL = compiledTemplate({ message: message })

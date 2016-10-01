@@ -1,5 +1,5 @@
 module.exports = {
-  'MAILGUN_USER': '',
-  'MAILGUN_PASS': '',
-  'PERSONAL_EMAIL': 'jorge@ferreiro.me'
+  'MAILGUN_USER': process.env.MAILGUN_USER || undefined,
+  'MAILGUN_PASS': process.env.MAILGUN_PASS || undefined,
+  'PERSONAL_EMAIL': process.env.PERSONAL_EMAIL || undefined
 }

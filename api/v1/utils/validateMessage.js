@@ -1,15 +1,25 @@
 var validator = require('validator')
 
-validateMessage = function (message, email) {
+validateMessage = function (message, cb) {
+  var valid = false
+  var emailCorrect = false
+  var messageFilled = false
 
-  if (message == null || email == null) {
-    return false
-  }
+  if (message === null)
+    return cb(valid)
 
-  var emailCorrect = validator.isEmail(String(email))
-  var messageFilled = (email !== undefined)
+  if (message.email === null || message.msg === null)
+    return cb(valid)
 
-  return emailCorrect && messageFilled
+  var email = message.email
+  var msg = message.msg
+  
+  emailCorrect = validator.isEmail(String(email))
+  messageFilled = (msg !== undefined)
+
+  valid = emailCorrect && messageFilled
+
+  cb(valid)
 }
 
 module.exports = validateMessage
