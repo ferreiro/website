@@ -26,7 +26,7 @@ sendMessage = function (message, cb) {
   emailHMTL = ''
 
   mailOptions = {
-    from: '"' + message.name + " 👥 <" + message.email + '>', // sender address
+    from: config.MAILGUN_USER, // sender address
     to: config.PERSONAL_EMAIL, // list of receivers
     subject: 'Hello ✔', // Subject line
     html: emailHMTL // html body
