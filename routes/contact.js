@@ -7,16 +7,14 @@ var config = require('../config')
 var express = require('express')
 var router = express.Router()
 
-MAILGUN_USER = config.mailgun.USER || undefined
-MAILGUN_PASS = config.mailgun.PASS || undefined
-JORGE_EMAIL = config.email.JORGE ||  undefined
-GMAIL_USER = config.gmail.USER || undefined
-GMAIL_PASS = config.gmail.PASS || undefined
+MAILGUN_USER = config.mailgun.USER
+MAILGUN_PASS = config.mailgun.PASS
+PERSONAL_EMAIL = config.email.JORGE ||  undefined
 
 // Routes
 router.get('/', contact)
 router.get('/feedback', feedback)
-router.post('/send', submit)
+// router.post('/send', submit)
 
 module.exports = router
 
@@ -71,7 +69,7 @@ function submit (req, res, next) {
     // Setup e-mail data with unicode symbols
     mailOptions = {
       from: '"' + form.name + " 👥 <" + form.email + '>', // sender address
-      to: JORGE_EMAIL, // list of receivers
+      to: PERSONAL_EMAIL, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world 🐴', // plaintext body
       html: '<b>Hello world 🐴</b>' // html body
@@ -80,7 +78,7 @@ function submit (req, res, next) {
     // console.log(mailOptions);
     // console.log(MAILGUN_PASS);
     // console.log(MAILGUN_USER);
-    // console.log(JORGE_EMAIL);
+    // console.log(PERSONAL_EMAIL);
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {

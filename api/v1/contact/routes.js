@@ -24,25 +24,27 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
 
   var message = ({
-    'name': req.query.__name || null,
-    'email': req.query.__email || null,
-    'body': req.query.__body || null,
-    'subscribed': req.query.__subscribed || null
+    'name': req.body.__name || null,
+    'email': req.body.__email || null,
+    'msg': req.body.__msg || null,
+    'subscribed': req.body.__subscribed || null
   })
-
-  if (utils.validateMessage(message.body, message.email)) {
-    utils.sendMessage(message, function (err, email) {
-      if (err) {
-        errors.emailNotSend(req, res)
-      } else {
-        res.status(200).json(email)
-      }
-    })
-  }
-  else {
-    errors.formNotValid(req, res)
-  }
-
+  
+  utils.validateMessage(message, function(valid) {
+    console.log(valid);
+    if (!valid) {
+      errors.formNotValid(req, res)
+    }
+    else {
+      utils.sendMessage(message, function (err, email) {
+        if (err) {
+          errors.emailNotSend(req, res)
+        } else {
+          res.status(200).json(email)
+        }
+      })
+    }
+  })
 })
 
 module.exports = router
