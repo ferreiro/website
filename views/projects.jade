@@ -1,84 +1,141 @@
 extends ./includes/layout
 
 block content
+  
+   
+  //- Left Container
+  .container_left#sectionHeader
+    
+    include ./includes/breadcrumb.jade
+    
+    .projectsFilter
+      .projectsFilter_options#projectsFilter_button
+        .projectsFilter_title Filter projects by
+        .projectsFilter_arrow
+          span.icon-circle-down
+        
+      ul.projectsFilter_list#projectsFilter_list
+        if filtered
+          li.projectsFilter_entry
+            a(href="/projects").projectsFilter_entry_link < Clear filter
+      
+        li.projectsFilter_entry
+          a(href="/projects/backend").projectsFilter_entry_link Backend
+  
+        li.projectsFilter_entry
+          a(href="/projects/frontend").projectsFilter_entry_link Frontend
+      
+        li.projectsFilter_entry
+          a(href="/projects/bash").projectsFilter_entry_link Bash
+      
+  //- Right Container
+  .container_right
+  
+    if filtered
+      .projectsFilter_warning
+        p.projectsFilter_warning_text Filter activated! Showing <b>#{filtered_by}</b> projects
+        a(href="/projects").projectsFilter_warning_button Restore
+    //- else
+    //-   .projectsFilter_warning.projectsFilter_warning_gray
+    //-     p.projectsFilter_warning_text Showing <b>all</b> projects. You can filter by using left box
 
-  include ./includes/breadcrumb.jade
+    if projects
+      .projects#animate_div
+        
+        - for project in projects
+          .project.box_with_shadow
+            
+            .project_bg
+              if project.background
+                .project_bg_image(style="background-image:url(#{project.background});")
+              if project.color
+                .project_bg_solid(style="background-color:#{project.color};")
+                  
+            //- Project Header
+            .project_header
+              .project_header_left
+                if project.avatar
+                  .project_header_avatar(style="background-image:url(#{project.avatar});")
+                .project_header_data
+                  if project.title
+                    .project_header_title
+                      a(href="#").project_header_title #{project.title}
+                  if project.date
+                    a.project_header_date #{project.date}
+                      
+              .project_header_right
+                //- 
+                //- //- Project Body
+                //- if project.links
+                //-   .project_links
+                //-     if project.links.website
+                //-       a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Website
+                //-     if project.links.code
+                //-       a(href="#{project.links.code}", target="_blank").project_links_code Code
+                    
 
-  .projects#animate_div
-
-    if content.list
-
-      - for project in content.list
-
-        - color = project.color
-        - background = project.background
-
-        .projects_box(class="#{color!=null? color : no-color}")
-
-          .projects_box_wallpaper(style="background-image:url(#{background!=null? background : no-background});")
-          .projects_box_content
-
-            if project.pic
-              .projects_box_avatar
-                img(src="#{project.pic}")
-
-            .projects_box_middle
-
-              if project.title
-                h1 !{project.title}
-
-              if project.date
-                h3 #{project.date}
-
-              if project.description
-                h3 !{project.description}
-
+                .project_header_share
+                  span.icon-share
+                    
+            //- Project Body
+            if project.images
+              .project_gallery
+                .project_gallery_next
+                  p
+                    span.icon-next
+                
+                .project_gallery_list
+                  //- .owl-carousel
+                  for image in project.images
+                    .project_gallery_entry
+                      img(src='#{image}')
+                    
+            //- Project Body
+            .project_body
+                            
+              if project.about
+                h4.project_body_title About #{project.title}
+                p.project_body_text !{project.about}
+                
               if project.highlights
-                ul.projects_box_highlights
-                  - for h_text in project.highlights
-                    li
-                      span(class="icon-trophy").high_icon
-                      span.high_text !{h_text}
-
-              if project.skills
-                .projects_box_technologies
-                  - each icon, index in project.skills
-                    .tech_skills_box_content_entry
-
-                      if icon == "bower"
-                        <i class="cbp-ig-icon devicon-bower-line"></i>
-                      else if icon == "less"
-                        <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
-                      else
-                        i.cbp-ig-icon(class="devicon-#{icon}-plain")
-                      p #{icon}
-
+                h4.project_body_title Highlights
+                .project_highlight
+                  ul.project_highlight_list
+                    for highlight in project.highlights
+                      li.project_highlight_entry
+                        .project_highlight_entry_icon
+                          span.icon-trophy
+                        p.project_highlight_entry_text !{highlight}
+              
+              if project.stack
+                .project_stack
+                  h4.project_body_title Techonologies stack
+                  ul.project_stack_list
+                    for stack in project.stack
+                      li.project_stack_entry
+                        if stack == "bower"
+                          i(class="cbp-ig-icon devicon-bower-line")
+                        else if stack == "less"
+                          i(class="cbp-ig-icon devicon-less-plain-wordmark")
+                        else
+                          i.cbp-ig-icon(class="devicon-#{stack}-plain")
+                        p.project_stack_title #{stack}
+              
               if project.people
-                p Talented people involved in this project:
-                .projects_box_people
-                  - for people in project.people
-                    .projects_box_people_entry
-                        a(href="#{people.website}", target="_blank").projects_box_people_entry_link
-                        .projects_box_people_entry_avatar
-                          img(src="#{people.avatar}")
-                        .projects_box_people_entry_name
-                          p #{people.name}
-
-              if project.repository
-                a.button(href="#{project.repository}", target="_blank").button_solid.button_rounded
-                  span.icon-github
-                  span #{content.repoButton}
-
-
-              if project.webpage
-                .separator_blank
-                // Remove solid color and put blank when exits a repo link
-                a.button(href="#{project.webpage}", target="_blank").button_solid.button_rounded.button_transparent
-                  span.icon-web
-                  span #{content.webButton}
-
-    .full_screen_button
-      a(href="/contact")
-        .full_screen_button_block
-          span.button_fullscreen_text Contact Jorge Ferreiro
-          span.icon-arrow-right2.button_fullscreen_icon
+                .project_people
+                  h4.project_body_title People
+                  ul.project_people_list
+                    for person in project.people
+                      li.project_people_entry
+                        img(src="#{person.avatar}").project_people_entry_avatar
+                        p #{person.name}
+                      
+                        
+              //- Project Body
+              if project.links
+                .project_links
+                  if project.links.website
+                    a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Visit website
+                  if project.links.code
+                    a(href="#{project.links.code}", target="_blank").project_links_code Open source code
+                  
