@@ -74,23 +74,12 @@ function submitForm (req, res, next) {
     }
 
     // send mail with defined transport object
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          res.json({
-            'data': {
-              'error': true,
-              'validData' : validForm,
-              'emailSent' : false
-            }
-          })
-        }
-        else {
-          res.json({
-            'error': error,
-            'validData': true,
-            'emailSent': (!error)
-          })
-        }
+    transporter.sendMail(mailOptions, function(error, info) {
+      res.json({
+        'error': info,
+        'validData': true,
+        'emailSent': (!error)
+      })
     })
   }
   else {
