@@ -6,7 +6,6 @@ var nodemailer = require('nodemailer')
 sendMessage = function (message, cb) {
 
   var transporter;
-  var compiledTemplate;
   var emailHTML;
   var mailOptions;
 
@@ -18,17 +17,20 @@ sendMessage = function (message, cb) {
     }
   })
 
-  console.log('Hola desde sendMessage');
-
-  // compiledTemplate = pug.compileFile(path.join('/emailTemplate.pug'))
-  // console.log('compilerd');
-  // emailHMTL = compiledTemplate({ message: message })
-  emailHMTL = ''
+  try {
+    var compiledFunction = pug.compileFile(path.join(__dirname,'template.pug'))
+    emailHMTL = compiledFunction({
+      form: message
+    })
+  }
+  catch(err) {
+      emailHMTL = '' + JSON.stringify(message)
+  }
 
   mailOptions = {
-    from: config.MAILGUN_USER, // sender address
+    from: message.name + '<' + config.MAILGUN_USER + '>', // sender address
     to: config.PERSONAL_EMAIL, // list of receivers
-    subject: 'Hello ✔', // Subject line
+    subject: '[Ferreiro.me] New message', // Subject line
     html: emailHMTL // html body
   }
 
