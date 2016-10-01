@@ -24,10 +24,10 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
 
   var message = ({
-    'name': req.body.__name || null,
-    'email': req.body.__email || null,
-    'body': req.body.__body || null,
-    'subscribed': req.body.__subscribed || null
+    'name': req.query.__name || null,
+    'email': req.query.__email || null,
+    'body': req.query.__body || null,
+    'subscribed': req.query.__subscribed || null
   })
 
   if (utils.validateMessage(message.body, message.email)) {
