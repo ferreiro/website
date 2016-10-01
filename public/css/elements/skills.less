@@ -1,0 +1,129 @@
+
+.skills {
+  // border:2px solid #f4f4f4;
+  border-left: 0;
+  border-right:0;
+  padding:2em 0;
+  margin-top: 1em;
+  @media all and (min-width:@desktop-screen) {
+    text-align: left;
+  }
+
+  &_title {
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: left;
+    margin: 0;
+    margin-top: -0.5em;
+    margin-bottom: 1.5em;
+  }
+
+  &_box {
+    display: inline-block;
+    padding: 0 0.5em;
+    margin-bottom: 1em;
+    // border: 1px solid #f4f4f4;
+    // border-top: 0;
+    // border-bottom: 0;
+
+    @media all and (min-width:@desktop-screen) {
+      width: 48%;
+      padding: 0;
+      margin: 0;
+      margin-right: 3.5%;
+      display: inline-block;
+      &:nth-child(odd) {
+        margin-right:0;
+      }
+    }
+
+    &#backend {
+      h3 { border-color:purple; color:purple; }
+      i:before { color:purple; }
+
+      h3 { border-color:#d80281; color:#d80281; }
+      i:before { color:#d80281; }
+    }
+    &#database {
+      h3 { border-color:#2bb414; color:#2bb414; }
+      i:before { color:#2bb414; }
+    }
+    &#frontend {
+      h3 { border-color:green; color:green; }
+      i:before { color:green; }
+
+      h3 { border-color:#1c94dc; color:#1c94dc; }
+      i:before { color:#1c94dc; }
+    }
+    &#tools {
+
+      h3 { border-color:blue; color:blue; }
+      i:before { color:blue; }
+
+      h3 { border-color:#74c71c; color:#74c71c; }
+      i:before { color:#74c71c; }
+
+      h3 { border-color:#b1b1b1; color:#b1b1b1; }
+      i:before { color:#b1b1b1; }
+
+    }
+
+    &_title {
+      h3 {
+        font-size: 1.2em;
+        text-align: left;
+        margin: 0;
+        margin-bottom: 1em;
+        color: rgba(0,0,0,.5);
+        // border-top:1px solid red;
+        border-bottom:2px solid rgba(0,0,0,.5);
+        // background:rgba(0,0,0,.5);
+        //background:#f4f4f4;
+        // padding: 5px 0;
+        padding:0.6em 0;
+        padding-top: 0;
+        // -webkit-border-radius: 5px;
+        // -moz-border-radius: 5px;
+        // border-radius: 5px;
+      }
+    }
+    &_content {
+      margin-bottom: 1em;
+      @media all and (min-width:@desktop-screen) {
+        margin-bottom: 1.3em;
+      }
+      &_entry {
+        display: inline-block;
+        padding: 4px 0.5em;
+        margin:0.5em;
+        border:1px solid #f4f4f4;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        i:before {
+          color: rgba(0, 0, 0, 0.61);
+          color: rgba(0, 0, 0, 0.5);
+        }
+        p {
+          font-size: 11px;
+          margin-top: 0.7em;
+          color:rgba(0,0,0,.7);
+        }
+      }
+    }
+  }
+}
+
+
+// Make skills icons bigger
+.cbp-ig-icon:before {
+    font-family: 'devicon';
+    font-size: 2.2em;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}

@@ -2,7 +2,7 @@
   "name": "JorgeFerreiro-website",
   "description": "Jorge Ferreiro's personal website developed in Node.JS",
   "homepage": "http://www.github.com/ferreiro/website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "license": "MIT",
   "keywords": [
@@ -17,12 +17,12 @@
     "email": "http://www.ferreiro.me/"
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
-    "bower": "^1.7.7",
     "body-parser": "~1.13.2",
+    "bower": "^1.7.7",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "email-templates": "^2.2.0",
@@ -30,7 +30,11 @@
     "github": "^0.2.4",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "node-recaptcha2": "^2.1.2",
     "nodemailer": "^2.3.0",
+    "nodemon": "^1.10.2",
+    "pug": "^2.0.0-beta6",
+    "recaptcha2": "^1.0.8",
     "serve-favicon": "~2.3.0",
     "validator": "^5.1.0"
   },

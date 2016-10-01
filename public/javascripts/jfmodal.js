@@ -1,8 +1,8 @@
-var openModalBox = $('.openModalBox');
-var jfmodalbox = $('.jfmodalbox');
-var jfmodalboxOverlay = $('.jfmodalbox_overlay');
-var jfmodalboxContent = $('.jfmodalbox_content');
-var jfmodalboxClose = $('.jfmodalbox_close');
+var openModalBox = $('.openModalBox')
+var jfmodalbox = $('.jfmodalbox')
+var jfmodalboxOverlay = $('.jfmodalbox_overlay')
+var jfmodalboxContent = $('.jfmodalbox_content')
+var jfmodalboxClose = $('.jfmodalbox_close')
 
 jfmodalboxOverlay.click(function() {
   if (jfmodalbox.hasClass('jfmodalbox_displayed'))

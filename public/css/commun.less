@@ -4,6 +4,15 @@ body {
   font-size: 16px;
   font-family: 'Lato', sans-serif;
 }
+
+.box_with_shadow {
+  background: #fff;
+  .border-radius(5px);
+  .box-shadow(0px 0px 5px 0px rgba(0,0,0,0.20));
+}
+
+
+
 // Used when mobile menu is opened
 .body_overflow {
   overflow: hidden;
@@ -106,7 +115,8 @@ body {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    margin-bottom: 1em;
+    .border-radius(5px);
+    // margin-bottom: 1em;
 
     &:nth-last-child {
       margin-bottom: 0;
@@ -114,9 +124,9 @@ body {
 
     @media all and (min-width: @tablet-screen) {}
     @media all and (min-width:@desktop-screen) {
-      width:49%;
-      margin-right: 2%;
-      margin-bottom: 1em;
+      width:100%;
+      // margin-right: 2%;
+      // margin-bottom: 1em;
       &:nth-child(odd) {
         margin-right: 0;
       }
@@ -129,7 +139,7 @@ body {
       display: block;
       background: rgba(216,57,2,0.6);
       background: rgba(0, 0, 0, 0.5);
-      
+
       // http://www.colorzilla.com/gradient-editor/#d61a02+0,d83902+100&0.8+0,0.95+100
 
       // background: -moz-linear-gradient(top,  rgba(214,26,2,0.71) 0%, rgba(216,57,2,1) 100%);
