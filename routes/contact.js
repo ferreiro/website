@@ -56,8 +56,18 @@ function submitForm (req, res, next) {
     var htmlEmail
     var mailOptions
 
-    endpoint = 'smtps://' + GMAIL_USER + '%40gmail.com:' + GMAIL_PASS + '@smtp.gmail.com'
-    transporter = nodemailer.createTransport(endpoint)
+    var smtpConfig = {
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true, // use SSL
+        auth: {
+            user: GMAIL_USER + '@gmail.com',
+            pass: GMAIL_PASS
+        }
+    };
+
+    // endpoint = 'smtps://' + GMAIL_USER + '%40gmail.com:' + GMAIL_PASS + '@smtp.gmail.com'
+    transporter = nodemailer.createTransport(smtpConfig)
 
     // HTML Template
     compiledTemplate = pug.compileFile('views/emailTemplate.pug')
