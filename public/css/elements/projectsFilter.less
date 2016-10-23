@@ -1,11 +1,12 @@
 .projectsFilter {
 
-  background: #fff;
   .border-radius(5px);
   .box-shadow(0px 0px 5px 0px rgba(0,0,0,0.20));
-
+  background: #fff;
   position: relative;
   overflow: hidden;
+  margin-bottom: 0.5em;
+  display: none;
 
   &_options {
     width: 100%;
@@ -14,6 +15,7 @@
     // text-align: center;
   }
   &_title {
+    width: 100%;
     font-size: 1.5em;
     font-weight: 400;
     margin: 0;
@@ -21,24 +23,20 @@
     padding: 1em;
     display: inline-block;
     padding-right: 0.5em;
-
+    text-align: center;
   }
   &_arrow {
     display: inline-block;
-    padding-right: 1em;
+    padding-left: 1em;
   }
   &_list {
     list-style: none;
     .transition(all 3s linear);
     display: none; /* Hide on mobile phones */
-
-    @media all and (min-width: @desktop-screen) {
-      display: block; /* Always shown on desktop */
-    }
-
   }
   &_entry {
     border-top: 1px solid #cecece;
+    text-align: center;
     &_link {
       padding: 1em 1.35em;
       display: block;

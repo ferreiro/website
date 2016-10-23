@@ -1,18 +1,16 @@
 extends ./includes/layout
 
 block content
-  
-   
-  //- Left Container
-  .container_left#sectionHeader
     
+  //- Container middle
+  .container_middle
     include ./includes/breadcrumb.jade
-    
+     
     .projectsFilter
       .projectsFilter_options#projectsFilter_button
         .projectsFilter_title Filter projects by
-        .projectsFilter_arrow
-          span.icon-circle-down
+          .projectsFilter_arrow
+            span.icon-circle-down
         
       ul.projectsFilter_list#projectsFilter_list
         if filtered
@@ -27,9 +25,17 @@ block content
       
         li.projectsFilter_entry
           a(href="/projects/bash").projectsFilter_entry_link Bash
-      
+  
+  .imagePopup
+    .imagePopup_wrap
+      .imagePopup_close
+        span X
+      .imagePopup_content
+        img(src="images/projects/music4deejays.png")
+  
+  
   //- Right Container
-  .container_right
+  .container_middle
   
     if filtered
       .projectsFilter_warning
@@ -59,12 +65,15 @@ block content
                 .project_header_data
                   if project.title
                     .project_header_title
-                      a(href="#").project_header_title #{project.title}
+                      if project.links
+                        a(href="#{project.links.website}").project_header_title.project_header_title_clickable #{project.title}
+                      else
+                        a.project_header_title #{project.title}
                   if project.date
                     a.project_header_date #{project.date}
                       
               .project_header_right
-                //- 
+
                 //- //- Project Body
                 //- if project.links
                 //-   .project_links
@@ -87,8 +96,7 @@ block content
                 .project_gallery_list
                   //- .owl-carousel
                   for image in project.images
-                    .project_gallery_entry
-                      img(src='#{image}')
+                    .project_gallery_entry(style="background-image:url(#{image});")
                     
             //- Project Body
             .project_body
