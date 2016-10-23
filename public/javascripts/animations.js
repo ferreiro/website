@@ -1,6 +1,6 @@
 var ss = sessionStorage;
 var menu = $('.menu');
-var sectionHeader = $('#sectionHeader');
+var sectionHeader = $('.sectionHeader');
 var animations = [ "zoomIn", "fadeInUpBig"]; //  'flipInY', '', 'bounceIn'
 
 window.animateMainContainer = function animateMainContainer() {
