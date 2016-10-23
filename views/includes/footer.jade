@@ -32,6 +32,7 @@ script(src="/javascripts/projectsFilter.js")
 script(src="/javascripts/animations.js")
 script(src="/javascripts/emails.js")
 script(src="/javascripts/projects.js")
+script(src="/javascripts/slick.min.js")
 script(src='https://www.google.com/recaptcha/api.js')
 
 script.
@@ -48,3 +49,15 @@ script(type='text/javascript').
     FastClick.attach(document.body);
     animateMainContainer();
   });
+
+
+
+script(src="/javascripts/owl.carousel.min.js")
+<!-- Frontpage Demo -->
+script.
+  $(document).ready(function($) {
+    $( ".owl-carousel" ).each(function() {
+      $(this).owlCarousel()
+    });
+  });
+  $("body").data("page", "frontpage");
