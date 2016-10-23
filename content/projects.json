@@ -26,36 +26,13 @@
     "links": null
   },
   {
-    "title": "Jorge Ferreiro web",
-    "date": "March 2016 - current",
-    "type" : [ "backend", "frontend" ],
-    "color": "#d83902",
-    "avatar": "/images/avatar.png",
-    "background": "/images/projects/ferreiro_back.png",
-    "about": "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
-    "images": null,
-    "highlights": null,
-    "stack": ["nodejs", "bower", "less"],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      }
-    ],
-    "links": {
-      "website": "http://ferreiro.me/",
-      "code": "https://github.com/ferreiro/website"
-    }
-  },
-  {
     "title": "SudoNotes",
     "date": "November 2015 - current",
     "type" : [ "backend", "frontend" ],
     "color": "#283196",
     "avatar": "/images/projects/sudonotes/sudonotes.jpg",
     "background": "/images/projects/sudonotes/1.png",
-    "about": "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) Application granted 10/10 in 'GIW' university course.",
+    "about": "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) application granted 10/10 in 'GIW' college course.",
     "images": [
       "/images/projects/sudonotes/1.png",
       "/images/projects/sudonotes/2.png",
@@ -79,6 +56,29 @@
     "links": {
       "website": "http://github.com/sudonotes",
       "code": "http://github.com/ferreiro/sudonotes"
+    }
+  },
+  {
+    "title": "Jorge Ferreiro web",
+    "date": "March 2016 - current",
+    "type" : [ "backend", "frontend" ],
+    "color": "#d83902",
+    "avatar": "/images/avatar.png",
+    "background": "/images/projects/ferreiro_back.png",
+    "about": "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
+    "images": null,
+    "highlights": null,
+    "stack": ["nodejs", "bower", "less"],
+    "people": [
+      {
+        "name": "Jorge Ferreiro",
+        "avatar": "/images/avatar.png",
+        "url": "https://github.com/ferreiro"
+      }
+    ],
+    "links": {
+      "website": "http://ferreiro.me/",
+      "code": "https://github.com/ferreiro/website"
     }
   },
   {
