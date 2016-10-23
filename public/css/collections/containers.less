@@ -43,20 +43,24 @@
 .container_left {
 
   margin-bottom: 1em;
-  // background: rgba(0, 0, 0, 0.1);
+  position: absolute;
 
   @media all and (min-width: @tablet-screen) {}
   @media all and (min-width: @desktop-screen) {
     width: @leftContainerWidth;
-    margin-bottom: 0 !important;
-    // max-height: 600px;
-    // overflow-y: scroll;
-    position: fixed;
-    height: 300px;
   }
   @media all and (min-width:@big-screen) {
   }
 
+  &_fixed {
+    @media all and (min-width: @tablet-screen) {}
+    @media all and (min-width: @desktop-screen) {
+      margin-bottom: 0 !important;
+      position: fixed;
+    }
+    @media all and (min-width:@big-screen) {
+    }
+  }
 }
 
 .container_right {
