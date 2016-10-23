@@ -25,7 +25,7 @@ var changePopupImage = function(src) {
 
 var hidepopup = function () {
   if (popupDisplayed) {
-    popup.hide()
+    popup.hide(0)
     popupDisplayed = false
   }
 }
@@ -41,3 +41,11 @@ var displayPopup = function (elem) {
   changePopupImage(imageURL)
   popupDisplayed = true
 }
+
+// Listening when the user press a key
+$(document).keydown(function(e) {
+    // ESCAPE key pressed
+    if (e.keyCode == 27) {
+        hidepopup() // Close my modal window
+    }
+})
