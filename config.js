@@ -1,15 +1,20 @@
 var config = {
-  "email": {
-    "JORGE": process.env.JORGE_EMAIL
+  'email': {
+    'JORGE': process.env.JORGE_EMAIL
   },
-  "gmail": {
-    "USER": process.env.GMAIL_USER,
-    "PASS": process.env.GMAIL_PASSWD
+  'mailgun': {
+    'USER': process.env.MAILGUN_USER,
+    'PASS': process.env.MAILGUN_PASS
   },
-  "recaptcha": {
-    "PUBLIC_KEY": process.env.RECAPTCHA_PUBLIC,
-    "SECRET_KEY": process.env.RECAPTCHA_SECRET
-  }
+  'gmail': {
+    'USER': process.env.GMAIL_USER,
+    'PASS': process.env.GMAIL_PASSWD
+  },
+  'recaptcha': {
+    'PUBLIC_KEY': process.env.RECAPTCHA_PUBLIC,
+    'SECRET_KEY': process.env.RECAPTCHA_SECRET
+  },
+  'NEW_RELIC_LICENSE_KEY': process.env.NEW_RELIC_LICENSE_KEY
 }
 
 module.exports = config

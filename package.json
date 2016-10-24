@@ -17,13 +17,14 @@
     "email": "http://www.ferreiro.me/"
   },
   "scripts": {
-    "server": "nodemon ./bin/www",
-    "start": "node ./bin/www",
+    "documentAPI": "apidoc -i api/ -o apidoc/",
+    "start": "npm run documentAPI && nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
-    "bower": "^1.7.7",
+    "apidoc": "^0.16.1",
     "body-parser": "~1.13.2",
+    "bower": "^1.7.7",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "email-templates": "^2.2.0",
@@ -31,7 +32,10 @@
     "github": "^0.2.4",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "newrelic": "^1.30.4",
     "nodemailer": "^2.3.0",
+    "nodemon": "^1.10.2",
+    "pug": "^2.0.0-beta6",
     "serve-favicon": "~2.3.0",
     "validator": "^5.1.0"
   },

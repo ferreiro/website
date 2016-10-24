@@ -1,22 +1,20 @@
-var express = require('express')
-var router = express.Router()
-
-var pug = require('pug')
-var nodemailer = require('nodemailer')
-var validator = require('validator')
+/**
+* Contact. Send messages
+*/
 var content = require('../public/content/english.json')
 var config = require('../config')
 
-JORGE_EMAIL = config.email.JORGE || 'contactForm@ferreiro.me'
-GMAIL_USER = config.gmail.USER || undefined
-GMAIL_PASS = config.gmail.PASS || undefined
-RECAPTCHA_PUBLIC_KEY = config.recaptcha.PUBLIC_KEY || undefined
-RECAPTCHA_SECRET_KEY = config.recaptcha.SECRET_KEY || undefined
+var express = require('express')
+var router = express.Router()
+
+MAILGUN_USER = config.mailgun.USER
+MAILGUN_PASS = config.mailgun.PASS
+PERSONAL_EMAIL = config.email.JORGE ||  undefined
 
 // Routes
 router.get('/', contact)
 router.get('/feedback', feedback)
-router.post('/send', submitForm)
+// router.post('/send', submit)
 
 module.exports = router
 
@@ -37,13 +35,13 @@ function feedback(req, res, next) {
   })
 }
 
-function submitForm (req, res, next) {
+function submit (req, res, next) {
   var form = {
-    'name': req.body.contact_name || undefined,
-    'email': req.body.contact_email || undefined,
-    'message': req.body.contact_msg || undefined,
-    'subscribed': req.body.contact_newsletter || false,
-    'source': req.body.contact_source || 'General'
+    'name': req.query.contact_name || undefined,
+    'email': req.query.contact_email || undefined,
+    'message': req.query.contact_msg || undefined,
+    'subscribed': req.query.contact_newsletter || false,
+    'source': req.query.contact_source || 'General'
   }
 
   validForm = validateForm(form.email, form.message)
@@ -56,27 +54,40 @@ function submitForm (req, res, next) {
     var htmlEmail
     var mailOptions
 
-    endpoint = 'smtps://' + GMAIL_USER + '%40gmail.com:' + GMAIL_PASS + '@smtp.gmail.com'
-    transporter = nodemailer.createTransport(endpoint)
+    transporter = nodemailer.createTransport({
+      service: 'Mailgun',
+      auth: {
+        user: MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
+        pass: MAILGUN_PASS // You set this.
+      }
+    })
 
     // HTML Template
     compiledTemplate = pug.compileFile('views/emailTemplate.pug')
     htmlEmail = compiledTemplate({ form: form })
-    console.log(endpoint);
 
     // Setup e-mail data with unicode symbols
     mailOptions = {
-      from: '"${form.name} 👥" <${form.email}>', // sender address
-      to: '${GMAIL_USER}@gmail.com', // list of receivers
+      from: MAILGUN_USER, // sender address
+      to: PERSONAL_EMAIL, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world 🐴', // plaintext body
       html: '<b>Hello world 🐴</b>' // html body
     }
+    //
+    // console.log(mailOptions);
+    // console.log(MAILGUN_PASS);
+    // console.log(MAILGUN_USER);
+    // console.log(PERSONAL_EMAIL);
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {
+
+
+      console.log(error);
+      console.log(info);
       res.json({
-        'error': info,
+        'error': error,
         'validData': true,
         'emailSent': (!error)
       })
@@ -150,6 +161,7 @@ function submitForm (req, res, next) {
 validateForm = function (email, message) {
   var isEmailCorrect = validator.isEmail(String(email))
   var isMessageFilled = (email !== undefined)
-
+  console.log(isEmailCorrect);
+  console.log(isMessageFilled);
   return isEmailCorrect && isMessageFilled
 }
