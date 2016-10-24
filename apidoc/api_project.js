@@ -1,1 +1,0 @@
-define({  "name": "JorgeFerreiro-website",  "version": "1.0.0",  "description": "Jorge Ferreiro's personal website developed in Node.JS",  "sampleUrl": false,  "apidoc": "0.2.0",  "generator": {    "name": "apidoc",    "time": "2016-10-01T17:58:13.249Z",    "url": "http://apidocjs.com",    "version": "0.16.1"  }});

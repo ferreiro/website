@@ -1,17 +1,32 @@
 .projects {
-
+  @media all and (min-width:@desktop-screen) {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 1.5em;
+    -moz-column-count: 2;
+    -moz-column-gap: 1.5em;
+    column-count: 2;
+    column-gap: 1.5em;
+  }
 }
 
 .project {
 
   vertical-align: top;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   overflow: hidden;
   position: relative;
+  border: 1px solid #f0f0f0;
 
   @media all and (min-width: @tablet-screen) {}
-  @media all and (min-width:@desktop-screen) {
+  @media all and (min-width: @desktop-screen) {
+    display: inline-block;
+    background: #FEFEFE;
+    margin: 0;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
     margin-bottom: 2em;
+
   }
   @media all and (min-width:@big-screen) {}
 
@@ -67,7 +82,7 @@
     border-top-right-radius: 5px;
 
     @media all and (min-width:@desktop-screen) {
-      padding: 1.5em 2em;
+      padding: 1.2em 2em;
     }
 
     &_left {
@@ -92,7 +107,7 @@
       @media all and (min-width:@desktop-screen) {
         width: 90px;
         height: 90px;
-        margin-right: 1.8em;
+        margin-right: 1.2em;
       }
     }
 
@@ -115,7 +130,8 @@
       @media all and (min-width:@desktop-screen) {
         font-size: 1.4em;
       }
-      &:hover {
+
+      &_clickable:hover {
         text-decoration: underline;
       }
     }
@@ -156,13 +172,14 @@
 
   &_gallery {
     z-index: 10;
-    height: 120px;
+    height: 100px;
     position: relative;
     overflow-y: hidden;
     background: rgba(0, 0, 0, 0.5);
+    padding: 1em;
 
     @media all and (min-width:@desktop-screen) {
-      height: 155px;
+      height: 130px;
     }
 
     &_next {
@@ -188,18 +205,21 @@
     }
 
     &_entry {
+      min-width: 33%;
       display: inline-block;
       height: 100%;
       overflow: hidden;
+      margin-right: 1em;
+      background-size: cover;
+      .opacity(0.6);
+      cursor: pointer;
+
+      &:hover {
+        .opacity(0.8);
+      }
 
       @media all and (min-width:@desktop-screen) {
         width: 33.33%;
-      }
-
-      img {
-
-        height: 100%;
-        .opacity(0.6);
       }
     }
   }
@@ -361,7 +381,7 @@
 
     }
     &_code {
-      background: #f4f4f4 !important;
+      // background: #f4f4f4 !important;
       color: #8b8b8b !important;
       border-color:#cecece !important;
       &:hover {

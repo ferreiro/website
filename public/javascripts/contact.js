@@ -13,15 +13,15 @@ form.submit(function(event){
 function submitForm() {
   var end_point = "/api/v1/contact";
 
-  success.hide();
-  failure.hide();
+  success.hide()
+  failure.hide()
 
   if (!validateInputs()) {
     $('html, body').animate({
         scrollTop: $('#contactform').offset().top
-    }, 300);
+    }, 300)
 
-    return;
+    return
   }
 
   loader.show()
@@ -53,64 +53,64 @@ function submitForm() {
       failure.show();
     }
     else {
-      form.hide();
-      success.show();
+      form.hide()
+      success.show()
     }
   })
   .fail(function(objectReturned) {
-    failure.show();
+    failure.show()
   })
   .always(function(objectReturned) {
-    loader.hide();
-  });
+    loader.hide()
+  })
 
   try {
 
   }
   catch(err) {
-    failure.show();
-    loader.hide();
-    console.log(err.message);
+    failure.show()
+    loader.hide()
+    console.log(err.message)
   }
 }
 
 function validateInputs() {
-  var input_not_blank = $('.input_not_blank');
-  var input_email = $('.input_email');
-  var userEmail = input_email.val();
-  var valid = true;
+  var input_not_blank = $('.input_not_blank')
+  var input_email = $('.input_email')
+  var userEmail = input_email.val()
+  var valid = true
 
-  $('.wrong').hide(0); // Hide previous messages
+  $('.wrong').hide(0) // Hide previous messages
 
   // Check the email
-  valid &= validEmail(userEmail);
+  valid &= validEmail(userEmail)
 
   if (!valid) {
-    $('#wrongEmail').show();
+    $('#wrongEmail').show()
   }
 
   // Check fields that can not be empty
   input_not_blank.each(function() {
-    var aValue = $(this).val();
-    valid &= notEmpty(aValue);
+    var aValue = $(this).val()
+    valid &= notEmpty(aValue)
     if (! notEmpty(aValue)) {
       if (this.id == "the_name") {
-        $('#wrongName').show();
+        $('#wrongName').show()
       }
       if (this.id == "message") {
-        $('#wrongMessage').show();
+        $('#wrongMessage').show()
       }
     }
-  });
+  })
 
-  return valid;
+  return valid
 }
 
 function notEmpty(text) {
-    return text.length > 0;
+    return text.length > 0
 }
 
 function validEmail(email) {
-    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-    return re.test(email);
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+    return re.test(email)
 }

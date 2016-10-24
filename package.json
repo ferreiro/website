@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "less": "^2.7.1",
-    "less-plugin-clean-css": "^1.5.1"
+    "less-plugin-clean-css": "^1.5.1",
+    "nodemon": "^1.11.0"
   }
 }

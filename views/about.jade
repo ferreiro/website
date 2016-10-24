@@ -2,17 +2,12 @@ extends ./includes/layout
 
 block content
   
-  //- .container_middle
-  //-   include ./includes/breadcrumb.jade
-  //- 
-  
-  
   //- Left Container
-  .container_left#sectionHeader
-    
+  .container_left.sectionHeader
+  
     include ./includes/breadcrumb.jade
-
-    .profileData.box_with_shadow
+  
+    .profileData.box_with_shadow(style="margin-top:0;")
 
       h3.profileData_title Contact info
       ul.profileData_list
@@ -69,7 +64,7 @@ block content
   //- Right Container
   .container_right
     .about#animate_div
-  
+      
       .profileCard
         .profileCard_bg
         .profileCard_avatar
@@ -106,9 +101,7 @@ block content
                         i.cbp-ig-icon(class="devicon-#{icon}-plain")
                       p #{icon}
 
-        
       .hot_links.box_with_shadow
         .hot_links_box(style="background-image:url('images/projects/m4d_back.png');")
           a(href="/projects")
             h2 Discover my projects > 
-        
