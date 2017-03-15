@@ -1,17 +1,17 @@
 extends ./includes/layout
 
 block content
-   
-  //- Left Container
-  .container_left.sectionHeader
-    
-    include ./includes/breadcrumb.jade
-    
+
+  .container_middle.sectionHeader
+      include ./includes/breadcrumb.jade
+
+  .container_left
     .profileData.box_with_shadow
+
       h3.profileData_title Contact info
       ul.profileData_list
         
-        li.profileData_entryme
+        li.profileData_entry
           p.profileData_entry_text_without_icon <b>Email:</b> <span class="email">jorge AT ferreiro DOT me</span>
       
         li.profileData_entry
