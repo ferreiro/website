@@ -28,7 +28,7 @@
       {
         "id": "backend",
         "title" : "Backend",
-        "list" : [ "python","nodejs", "cplusplus", "java" ]
+        "list" : [ "nodejs", "python", "java", "cplusplus" ]
       },
       {
         "id": "frontend",
@@ -38,7 +38,7 @@
       {
         "id": "database",
         "title" : "Databases",
-        "list" : [ "redis", "mongodb", "mysql" ]
+        "list" : [ "mongodb", "redis", "mysql" ]
       },
       {
         "id": "tools",
