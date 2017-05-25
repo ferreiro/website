@@ -17,8 +17,10 @@
     "email": "http://www.ferreiro.me/"
   },
   "scripts": {
-    "documentAPI": "apidoc -i api/ -o apidoc/",
-    "start": "npm run documentAPI && nodemon ./bin/www",
+    "build:apiDocs": "apidoc -i api/ -o apidoc/",
+    "build:assets": "lessc ./public/css/style.less ./public/css/style.css --clean-css='--s1 --advanced --compatibility=ie8'",
+    "build": "npm run build:apiDocs && npm run build:assets",
+    "start": "npm run build && nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
@@ -30,7 +32,9 @@
     "email-templates": "^2.2.0",
     "express": "~4.13.1",
     "github": "^0.2.4",
+    "helmet": "^3.6.1",
     "jade": "~1.11.0",
+    "less-plugin-clean-css": "^1.5.1",
     "morgan": "~1.6.1",
     "newrelic": "^1.30.4",
     "nodemailer": "^2.3.0",
