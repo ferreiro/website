@@ -114,7 +114,7 @@ block content
                     for highlight in project.highlights
                       li.project_highlight_entry
                         .project_highlight_entry_icon
-                          span.icon-trophy
+                          span.icon-trophy(style="color: #{project.color} !important;")
                         p.project_highlight_entry_text !{highlight}
               
               if project.stack
@@ -145,7 +145,7 @@ block content
               if project.links
                 .project_links
                   if project.links.website
-                    a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Visit website
+                    a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Check out the project!
                   if project.links.code
                     a(href="#{project.links.code}", target="_blank").project_links_code Open source code
                   

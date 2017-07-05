@@ -1,7 +1,38 @@
 [
   {
+    "title": "Dailyfocus",
+    "date": "May 2016 - current",
+    "type" : [ "backend", "frontend" ],
+    "color": "#6a4171",
+    "avatar": "/images/projects/dailyfocus_icon.png",
+    "background": null,
+    "about": "",
+    "images": [
+        "/images/projects/dailyfocus/dailyfocus_splash.png",
+        "/images/projects/dailyfocus/services.png"
+    ],
+    "highlights": [
+      "College capstone project with the maximum grade (10/10)",
+      "Built in 5 months the Backend, Rest API and Frontend systems from scratch, using MVC architecture and creating an extensible modular application with plugins.",
+      "Integrated a Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses.",
+      "Designed a responsive interface, took and fulfilled requirements of potential users."
+    ],
+    "stack": ["nodejs", "javascript", "mongodb", "redis", "html5", "css3"],
+    "people": [
+      {
+        "name": "Jorge Ferreiro",
+        "avatar": "/images/avatar.png",
+        "url": "https://github.com/ferreiro"
+      }
+    ],
+    "links": {
+      "website": "http://test.dailyfocus.io",
+      "code": null
+    }
+  },
+  {
     "title": "Music4deejays",
-    "date": "May 2014 - Nov 2015",
+    "date": "Dec 2013 - Dec 2015",
     "type" : [ "backend", "frontend" ],
     "color": "#962828",
     "avatar": "/images/projects/m4d_icon.png",
@@ -132,5 +163,4 @@
       "code": "https://github.com/ferreiro/JavaGames-X4"
     }
   }
-
 ]
