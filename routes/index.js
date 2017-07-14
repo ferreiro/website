@@ -13,7 +13,7 @@ module.exports = router
 
 // FUNCTIONS
 
-function home(req, res, next) {
+function home (req, res, next) {
   res.render('home', {
     title: 'Home',
     path: 'featured',
@@ -21,8 +21,17 @@ function home(req, res, next) {
   })
 }
 
-function resume(req, res, next) {
+function resume (req, res, next) {
   var filePath = __dirname + '/../public/pdf/13_july_2017_final.pdf'
+
+  if (req.query.download) {
+    return res.download(filePath)
+  }
+
+  renderResume(res)
+} 
+
+function renderResume (res) {
   fs.readFile(filePath, function (err, data) {
     if (err) {
       return res.render('error', {
@@ -34,9 +43,9 @@ function resume(req, res, next) {
     res.contentType('application/pdf')
     res.send(data)
   })
-} 
+}
 
-function about(req, res, next) {
+function about (req, res, next) {
   res.render('about', {
     title: 'About me',
     path: 'about',
@@ -44,7 +53,7 @@ function about(req, res, next) {
   })
 }
 
-function university(req, res, next) {
+function university (req, res, next) {
   res.render('university', {
     title: 'University curriculum',
     path: 'university',
@@ -52,7 +61,7 @@ function university(req, res, next) {
   })
 }
 
-function stats(req, res, next) {
+function stats (req, res, next) {
   res.render('stats', {
     title: 'App statistics',
     path: 'stats',
