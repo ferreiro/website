@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		include ./head.jade
+		include ./head.pug
 
 	body(class="pushable")
 
@@ -21,13 +21,13 @@ html
 
 		.loader#loader
 
-		include ./menu.jade
+		include ./menu.pug
 
 		.ui.container#mainContainer
 			.container_inner
 				block content
 
-		include ./footer.jade
-		
+		include ./footer.pug
+
 		// This is used if some pages want to load some specific scripts
 		block extraScripts

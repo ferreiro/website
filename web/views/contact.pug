@@ -3,57 +3,57 @@ extends ./includes/layout
 block content
 
   .container_middle.sectionHeader
-      include ./includes/breadcrumb.jade
+      include ./includes/breadcrumb.pug
 
   .container_left
     .profileData.box_with_shadow(style="margin-top: 0;")
 
       h3.profileData_title Contact info
       ul.profileData_list
-        
+
         li.profileData_entry
           p.profileData_entry_text_without_icon <b>Email:</b> <span class="email">jorge AT ferreiro DOT me</span>
-      
+
         li.profileData_entry
           p.profileData_entry_text_without_icon <b>City:</b> Madrid (Spain)
-          
+
       h3.profileData_title Social networks
       ul.profileData_list
-        
+
         li.profileData_entry
           a(href='', target='_blank').profileData_entry_link
             span.profileData_entry_icon
               span.icon-github
             p.profileData_entry_text Github @ferreiro
-            
+
         li.profileData_entry
           a(href='', target='_blank').profileData_entry_link
             span.profileData_entry_icon
               span.icon-linkedin
             p.profileData_entry_text Linkedin @jgferreiro
-        
+
         li.profileData_entry
           a(href='', target='_blank').profileData_entry_link
             span.profileData_entry_icon
               span.icon-twitter
             p.profileData_entry_text Twitter @jgferreiro
-    
+
   //- Right Container
   .container_right
-    
+
     .contact#animate_div
-      
+
       .profileCard.box_with_shadow
         .profileCard_userFields
-          h1.profileCard_name Contact form  
+          h1.profileCard_name Contact form
         .profileCard_bg
           //- (style="background-image:url(/images/contact.jpg);")
-      
+
       .contact_form_wrapper.box_with_shadow
-        
+
         if content.title
           h2 !{content.title}
-        
+
         .contact_form_result.contact_form_success
           h2 Thank you!
           p Your message has been sent.<br />
@@ -61,20 +61,20 @@ block content
           | Would you like to send me another? <br /><a href="/contact">Write new message</a>  
 
         form.contact_form(action="/contact/send", method="post", autocomplete="off")#contactform
-          
+
           div(id="contactLoader", class="loader contactLoader")
-          
+
           fieldset.contact_form_fieldset
             p.wrong#wrongName Error: Your name can not be blank
-            input.input_not_blank(type="name", id="the_name", name="__name", placeholder="#{content.form.name || 'What is your name?'}").contact_form_input
+            input.input_not_blank(type="name", id="the_name", name="__name", placeholder= content.form.name || 'What is your name?').contact_form_input
 
           fieldset.contact_form_fieldset
             p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
-            input.input_email(type="name", id="email", name="__email", placeholder="#{content.form.email || 'And your email?'}").contact_form_input
+            input.input_email(type="name", id="email", name="__email", placeholder= content.form.email || 'And your email?').contact_form_input
 
           fieldset.contact_form_fieldset
             p.wrong#wrongMessage Error: Hey! Fill some text here ;).
-            textarea.input_not_blank(type="name", id="message", name="__text", placeholder="#{content.form.message || 'Write your message'}").contact_form_input
+            textarea.input_not_blank(type="name", id="message", name="__text", placeholder= content.form.message || 'Write your message').contact_form_input
 
           //- fieldset.contact_form_fieldset
           //-   p.wrong#wrongCaptcha Error: The captcha you introduced is not valid. Try again.
@@ -89,11 +89,9 @@ block content
                   label(for="checkbox1.1")
                     i
               span.contact_form_newsletter_text #{content.form.newsletter || 'I want to receive projects and updates from Jorge'}
-        
+
           .contact_form_result.contact_form_failure
             p Sorry. Your message couldn't been sent.<br /> Try again or <u><a class="openModalBox">contact me directly</a></u>
 
           fieldset.contact_form_fieldset.contact_fieldset_nomargin
-            input(type="submit", value="#{content.sendButton || 'Send message'}").button.send.send_margin.contact_form_submit#formSendButton
-    
-      
+            input(type="submit", value= content.sendButton || 'Send message').button.send.send_margin.contact_form_submit#formSendButton

@@ -1,65 +1,63 @@
 extends ./includes/layout
 
 block content
-  
-  include ./includes/breadcrumb.jade
-  
+
+  include ./includes/breadcrumb.pug
+
   //- Left Container
   .container_left.sectionHeader
     .profileData.box_with_shadow(style="margin-top:0;")
 
       h3.profileData_title Contact info
       ul.profileData_list
-        
+
         li.profileData_entry
           p.profileData_entry_text_without_icon <b>Email:</b> jorge @ ferreiro . me
-      
+
         li.profileData_entry
           p.profileData_entry_text_without_icon <b>City:</b> Madrid (Spain)
-    
+
       h3.profileData_title Social networks
       ul.profileData_list
-        
+
         li.profileData_entry
           a(href='https://github.com/ferreiro', target='_blank').profileData_entry_link
             span.profileData_entry_icon
               span.icon-github
             p.profileData_entry_text Github @ferreiro
-            
+
         li.profileData_entry
           a(href='https://www.linkedin.com/in/jgferreiro', target='_blank').profileData_entry_link
             span.profileData_entry_icon
               span.icon-linkedin
             p.profileData_entry_text Linkedin @jgferreiro
-        
+
         li.profileData_entry
           a(href='https://twitter.com/jgferreiro', target='_blank').profileData_entry_link
             span.profileData_entry_icon
               span.icon-twitter
             p.profileData_entry_text Twitter @jgferreiro
-            
+
         .profileData_contactButton
           a(href="/contact").profileData_contactButton_link Contact Jorge Ferreiro
-  
-         
+
     .profileData.box_with_shadow
 
       h3.profileData_title My passions
       ul.profileData_list
-        
+
         li.profileData_entry
           span.profileData_entry_icon 💻
           p.profileData_entry_text Making software to improve people's lives.
-      
+
         li.profileData_entry
           span.profileData_entry_icon 🎾
           p.profileData_entry_text Playing tennis and trying new sports.
-      
+
         li.profileData_entry
           span.profileData_entry_icon 🎵
           p.profileData_entry_text Producing and listening to music.
 
- 
   //- Right Container
   .container_right
     .about#animate_div
@@ -99,29 +97,30 @@ block content
         //- p.about_bio_text My passions are: <br /><br />💻  Making <strong>software</strong> to improve people's life.<br /> 🎾  Playing <strong>tennis</strong> and try new sports.<br />🎵  Making and listening <strong>music</strong>.
 
         p.about_bio_text We can get in touch <a href="/contact">here</a>!
-        
+
         if content.skills
           .skills
-            
+
             h3.skills_title Skills and Tools
 
-            - for skill_type in content.skills
-              .skills_box(id="#{skill_type.id}")
+            each skill in content.skills
+              .skills_box(id= skill.id)
+
                 .skills_box_title
-                  h3 <strong>#{skill_type.title}</strong>
+                  h3 <strong>#{skill.title}</strong>
+
                 .skills_box_content
-                  - for icon in skill_type.list
+                  each icon in skill.list
                     .skills_box_content_entry
-      
                       if icon == "bower"
                         <i class="cbp-ig-icon devicon-bower-line"></i>
                       else if icon == "less"
                         <i class="cbp-ig-icon devicon-less-plain-wordmark"></i>
                       else
-                        i.cbp-ig-icon(class="devicon-#{icon}-plain")
+                        i.cbp-ig-icon(class="devicon-" + icon + "-plain")
                       p #{icon}
 
       .hot_links.box_with_shadow
         .hot_links_box(style="background-image:url('images/projects/m4d_back.png');")
           a(href="/projects")
-            h2 Discover my projects > 
+            h2 Discover my projects >

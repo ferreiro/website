@@ -3,15 +3,15 @@ meta(charset='UTF-8')
 meta(name='author', content='Jorge Ferreiro')
 
 if title
-  <title>!{title + ' - Jorge Ferreiro'}</title>
+  <title>!{title + ' - Jorge Ferreiro - Software Engineer and Product Manager.'}</title>
 else
-  title 'Jorge Ferreiro - Programmer - Backend / frontend - node, javascript, less.js, jade. '
+  title 'Jorge Ferreiro - Software Engineer and Product Manager. Node, Javascript, Python, Java, HTML5, CSS3, JQuery. Backend engineer and Frontend engineer.'
 
 if description
   meta(name='description', content='#{description}')
 else
   //- default description
-  meta(name='description', content='Programmer. Node, javascript, HTML5, CSS3, JQuery. Backend developer and frontend developer')
+  meta(name='description', content='Jorge Ferreiro is a Software Engineer, Product Manager and Entrepreneur with a solid experience in Backend and Frontend Development. Ferreiro uses the following technologies: Node, Javascript, Python, Java, MongoDB, Redis, HTML5, CSS3, JQuery.')
 
 link(rel='apple-touch-icon', sizes='57x57', href='/images/favicons/apple-touch-icon-57x57.png')
 link(rel='apple-touch-icon', sizes='60x60', href='/images/favicons/apple-touch-icon-60x60.png')
@@ -39,11 +39,11 @@ link(rel='stylesheet', href='/bower_components/normalize-css/normalize.css')
 link(rel='stylesheet', href='/bower_components/devicon/devicon.min.css')
 link(rel='stylesheet', href='/vendors/hover-min.css')
 link(rel='stylesheet', href='/vendors/animate.min.css')
-  
+
 //- Own libraries
-link(rel='stylesheet', href='/css/style.css?v=2.0')
+link(rel='stylesheet', href='/css/style.min.css?v=2.0')
 link(rel='stylesheet', href='/vendors/checked_box.css')
 link(rel='stylesheet', href='/fonts/ferreiro/style.css')
 
-<link href="/vendors/carousel/owl.carousel.css" rel="stylesheet">
-<link href="/vendors/carousel/owl.theme.css" rel="stylesheet">
+link(rel='stylesheet', href='/vendors/carousel/owl.carousel.css')
+link(rel='stylesheet', href='/vendors/carousel/owl.theme.css')

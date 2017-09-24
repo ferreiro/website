@@ -1,25 +1,25 @@
 extends ./includes/layout
 
 block content
-    
+
   //- Container middle
   .container_middle.sectionHeader
-    include ./includes/breadcrumb.jade
-     
+    include ./includes/breadcrumb.pug
+
     .projectsFilter
       .projectsFilter_options#projectsFilter_button
         .projectsFilter_title Filter projects by
           .projectsFilter_arrow
             span.icon-circle-down
-        
+
       ul.projectsFilter_list#projectsFilter_list
         if filtered
           li.projectsFilter_entry
             a(href="/projects").projectsFilter_entry_link < Clear filter
-      
+
         li.projectsFilter_entry
           a(href="/projects/backend").projectsFilter_entry_link Backend
-  
+
         li.projectsFilter_entry
           a(href="/projects/frontend").projectsFilter_entry_link Frontend
       
@@ -47,21 +47,21 @@ block content
 
     if projects
       .projects#animate_div
-        
-        - for project in projects
+
+        each project in projects
           .project.box_with_shadow
-            
+
             .project_bg
               if project.background
-                .project_bg_image(style="background-image:url(#{project.background});")
+                .project_bg_image(style="background-image:url(" + project.background + ");")
               if project.color
-                .project_bg_solid(style="background-color:#{project.color};")
-                  
+                .project_bg_solid(style="background-color:" + project.color + ";")
+
             //- Project Header
             .project_header
               .project_header_left
                 if project.avatar
-                  .project_header_avatar(style="background-image:url(#{project.avatar});")
+                  .project_header_avatar(style="background-image:url(" + project.avatar + ");")
                 .project_header_data
                   if project.title
                     .project_header_title
@@ -71,7 +71,7 @@ block content
                         a.project_header_title #{project.title}
                   if project.date
                     a.project_header_date #{project.date}
-                      
+
               .project_header_right
 
                 //- //- Project Body
@@ -81,32 +81,30 @@ block content
                 //-       a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Website
                 //-     if project.links.code
                 //-       a(href="#{project.links.code}", target="_blank").project_links_code Code
-                    
 
                 .project_header_share
                   span.icon-share
-                    
+
             //- Project Body
             if project.images
               .project_gallery
-                
+
                 .project_gallery_next
                   p
                     span.icon-next
 
-                
                 .project_gallery_list
                   //- .owl-carousel
                   for image in project.images
-                    .project_gallery_entry(style="background-image:url(#{image});")
-                    
+                    .project_gallery_entry(style="background-image: url(" + image + ");")
+
             //- Project Body
             .project_body
-                            
+
               if project.about
                 h4.project_body_title About #{project.title}
                 p.project_body_text !{project.about}
-                
+
               if project.highlights
                 h4.project_body_title Highlights
                 .project_highlight
@@ -114,38 +112,36 @@ block content
                     for highlight in project.highlights
                       li.project_highlight_entry
                         .project_highlight_entry_icon
-                          span.icon-trophy(style="color: #{project.color} !important;")
+                          span.icon-trophy(style="color:" + project.color + "!important;")
                         p.project_highlight_entry_text !{highlight}
-              
+
               if project.stack
                 .project_stack
                   h4.project_body_title Techonologies stack
                   ul.project_stack_list
-                    for stack in project.stack
+                    for technology in project.stack
                       li.project_stack_entry
-                        if stack == "bower"
+                        if technology == "bower"
                           i(class="cbp-ig-icon devicon-bower-line")
-                        else if stack == "less"
+                        else if technology == "less"
                           i(class="cbp-ig-icon devicon-less-plain-wordmark")
                         else
-                          i.cbp-ig-icon(class="devicon-#{stack}-plain")
-                        p.project_stack_title #{stack}
-              
+                          i.cbp-ig-icon(class="devicon-" + technology + "-plain")
+                        p.project_stack_title #{technology}
+
               if project.people
                 .project_people
                   h4.project_body_title People
                   ul.project_people_list
-                    for person in project.people
+                    each person in project.people
                       li.project_people_entry
                         img(src="#{person.avatar}").project_people_entry_avatar
                         p #{person.name}
-                      
-                        
+
               //- Project Body
               if project.links
                 .project_links
                   if project.links.website
-                    a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Check out the project!
+                    a(href= project.links.website, target="_blank").project_links_website(style="border-color:" + project.color + "; color:" + project.color + ";") Check out the project!
                   if project.links.code
-                    a(href="#{project.links.code}", target="_blank").project_links_code Open source code
-                  
+                    a(href= project.links.code, target="_blank").project_links_code Open source code
