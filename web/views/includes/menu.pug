@@ -21,7 +21,7 @@
       li(class="#{path==='contact'? 'current_section' : '' }")
         a(href="/contact")
           span Contact me
-          
+
       li.submenu
         a
           span Social Networks
@@ -68,13 +68,13 @@
         img(src="/images/logo.jpg")
 
     .left
-      a.item(href="/", class="#{path==='featured'?'item-selected':''}")
+      a.item(href="/", class= path==='featured' ? 'item-selected':'')
         p Featured
 
-      a.item(href="/about", class="#{path==='about'?'item-selected':''}")
+      a.item(href="/about", class= path==='about' ? 'item-selected':'')
         p About Jorge Ferreiro
 
-      a.item(href="/projects", class="#{path==='projects'?'item-selected':''}")
+      a.item(href="/projects", class= path==='projects'?'item-selected':'')
         p Portfolio
 
       //- .dropdown
@@ -88,21 +88,21 @@
       //-         a.dropdown-link(href="https://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
       //-         a.dropdown-link(href="https://soundcloud.com/jgferreiro", target="_blank") Soundcloud
 
-      a.item(href="/contact", class="#{path==='contact'?'item-selected':''}")#contact
+      a.item(href="/contact", class= path==='contact' ? 'item-selected':'')#contact
         p Contact
-      
+
     .right
 
       .jfmenu_open_button#dropdown-mobiles
         span.icon-paragraph-justify
-      
+
       .dropdown
         a(href='http://github.com/ferreiro', target='_blank')
           .item.with-icon
             p
               span.icon-github
               span.social_network_text Github
-                
+
       .dropdown
         a(href='http://linkedin.com/in/jgferreiro', target='_blank')
           .item.with-icon
