@@ -1,6 +1,6 @@
 var fs = require('fs')
 var express = require('express')
-var content = require('../public/content/english.json') // TODO: Add multilanguage
+var content = require('../content/english.json') // TODO: Add multilanguage
 var router = express.Router()
 
 router.get('/', featured) // Home shows about page

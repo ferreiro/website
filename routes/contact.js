@@ -1,7 +1,7 @@
 /**
 * Contact. Send messages
 */
-var content = require('../public/content/english.json')
+var content = require('../content/english.json')
 var config = require('../config')
 
 var express = require('express')
