@@ -3,11 +3,23 @@ var express = require('express')
 var content = require('../content/english.json') // TODO: Add multilanguage
 var router = express.Router()
 
+var projects = require('./projects')
+var social = require('./social')
+var contact = require('./contact')
+
 router.get('/', featured) // Home shows about page
 router.get('/about', about)
 router.get('/stats', stats)
 router.get('/university', university)
 router.get('/resume/jorge_ferreiro_resume.pdf', resume)
+
+// Mounting more subroutes.
+router.use('/portfolio', projects)
+router.get('/projects', function (req, res) {
+  res.redirect('/portfolio') // leave this, backwards compatibility
+})
+router.use('/social', social)
+router.use('/contact', contact)
 
 module.exports = router
 
@@ -53,7 +65,7 @@ function resume (req, res, next) {
   }
 
   renderResume(filePath, res)
-} 
+}
 
 function renderResume (filePath, res) {
   fs.readFile(filePath, function (err, data) {
