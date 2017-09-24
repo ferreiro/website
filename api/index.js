@@ -3,7 +3,7 @@ var errors = require('./errors')
 var express = require('express')
 var app = express()
 
-app.set('view engine', 'jade')
+app.set('view engine', 'pug')
 
 // API Route
 app.use('/v1', require('./v1'))

@@ -33,10 +33,7 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'))
 app.use('/semantic',  express.static(__dirname + '/semantic'))
 
 // Routes
-app.use('/', routes)
-app.use('/projects', projects)
-app.use('/social', social)
-app.use('/contact', contact)
+app.use('/', require('./web/routes'))
 app.use('/api', require('./api'))
 
 // catch 404 and forward to error handler
@@ -69,6 +66,5 @@ app.use(function (err, req, res, next) {
     error: {}
   })
 })
-
 
 module.exports = app
