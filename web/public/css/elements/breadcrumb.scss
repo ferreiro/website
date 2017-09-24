@@ -1,0 +1,37 @@
+.breadcrumb {
+
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em 0;
+  display: block;
+  text-align: center !important;
+
+  @media all and (min-width: $tablet-screen) {}
+  @media all and (min-width: $desktop-screen) {
+    padding: 0;
+    margin-bottom: 2em;
+  }
+  @media all and (min-width: $big-screen) {}
+
+  &_parent {
+    display: inline-block;
+    margin-right: 0.3em;
+    font-weight: 600;
+    margin-bottom: 0;
+
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  &_divider {
+    font-weight: 400;
+    display: inline-block;
+  }
+  &_current {
+    width: 100%;
+    display: inline-block;
+  }
+}

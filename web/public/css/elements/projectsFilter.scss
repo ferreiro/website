@@ -1,0 +1,52 @@
+.projectsFilter {
+
+  @include border-radius(5px);
+  @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.20));
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+  display: none;
+
+  &_options {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    // text-align: center;
+  }
+  &_title {
+    width: 100%;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    padding: 1em;
+    display: inline-block;
+    padding-right: 0.5em;
+    text-align: center;
+  }
+  &_arrow {
+    display: inline-block;
+    padding-left: 1em;
+  }
+  &_list {
+    list-style: none;
+    @include transition(all 3s linear);
+    display: none; /* Hide on mobile phones */
+  }
+  &_entry {
+    border-top: 1px solid #cecece;
+    text-align: center;
+    &_link {
+      padding: 1em 1.35em;
+      display: block;
+      text-decoration: none;
+      font-size: 1.2em;
+      @include transition(all 0.3s);
+      &:hover {
+        background:#f4f4f4;
+        background: #fff6f3;
+      }
+    }
+  }
+}

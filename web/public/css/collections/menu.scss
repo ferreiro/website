@@ -1,0 +1,126 @@
+.logo {
+  width: $logoHeight;
+  height: $logoHeight;
+  display: inline-block;
+  float: left;
+  border-right: 1px dashed $secundaryColorLight;
+  position: relative;
+}
+.logo img {
+  // height: 52px;
+  // padding: 8px;
+  height: $logoHeight;
+}
+
+.social_network_text {
+  display: none;
+  @media all and (min-width: 1100px) {
+    display: inline-block;
+    margin-left: 10px;
+  }
+}
+
+.menu {
+  width: 100%;
+  height: $logoHeight;
+  display: inline-block;
+  background: $menuColor;
+  border-bottom: 1px solid #cecece;
+  vertical-align: middle;
+ z-index: 100;
+}
+span.icon-separated {
+  margin-right: 0.5em;
+}
+.with-icon {
+  padding-top: 0.1em !important;
+}
+.item-selected {
+  background: #F7F7F7 !important;
+  background: #fff4f0 !important;
+  &:before {
+    width:100%;
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    content: '';
+    border-bottom: 1px solid #d83902;
+  }
+  p {
+    color: #000 !important;
+  }
+}
+.item {
+  height: $logoHeight;
+  display: inline-block;
+  position: relative;
+  padding: 0 1.5em;
+  border-right: 1px dashed $secundaryColorLight;
+  text-decoration: none;
+  p {
+    font-size: 1.2em;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &:hover {
+    background: $primaryColorLight;
+    border-color: $primaryColor;
+    p {
+      color: #fff;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+
+  @media all and (max-width: $desktop-screen) {
+    display: none !important; // Hide everyhing on mobile
+  }
+
+  &-content {
+    min-width: 100px;
+    padding: 1em;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+    display: none;
+
+    a {
+      width: 100%;
+      padding: 0.5em 0;
+      display: inline-block;
+      text-align: right;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &:hover .dropdown-content {
+    display: block;
+  }
+}
+
+#dropdown-mobiles {
+  display: none;
+}
+
+@media all and (max-width: $desktop-screen) {
+  .left {
+    display: none;
+  }
+  #dropdown-mobiles {
+    display: inline-block !important; // This must be inline-block
+  }
+}

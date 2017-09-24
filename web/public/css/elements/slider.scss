@@ -1,0 +1,381 @@
+.slider {
+
+	width: 100%;
+	height: 340px;
+	background: #f4f4f4; 		// Añadir spinner
+	position: relative;  		// Grap the content inside slider class
+
+	@media all and (max-width: $tablet-screen) {
+		.slider-selector {
+			display: none;
+		}
+	}
+	@media all and (min-width: $tablet-screen) {
+		height: 450px;		 	// Ocupy all the window height on desktop-screen
+		.slider-selector {
+			display: none;
+		}
+	}
+	@media all and (min-width: 800px) {
+		height: 550px;		 	// Ocupy all the window height on desktop-screen
+	}
+	@media all and (min-width: $desktop-screen) {
+		height: 550px !important;		 	// Ocupy all the window height on desktop-screen
+		margin-top: 0;		 	// Restart margin to 0
+		.slider-selector {
+			display: block;
+		}
+	}
+
+	// Buttons for select the slide number
+	ul.slider-selector {
+		left: 50%;				// Position on the middle
+		bottom: 5%;			// Bottom margin
+		z-index: 2;
+		position: absolute;
+		@include border-radius(5px);
+		text-align: center; 	// Center buttons here.
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+
+		li {
+			width: 15px;
+			height: 15px;
+			background: rgba(234, 234, 234, 0.7);
+      list-style: none;
+			// border:1px solid #cecece;
+			display: inline-block;
+			// @include border-radius(100%);
+    		margin-bottom: 2px;
+			margin-right: 8px;
+			position: relative;
+			@include border-radius(100%);
+			cursor: pointer;
+			@include transition(.3s);
+
+			@media all and (min-width: $desktop-screen) {
+				margin-right: 10px;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+			&.current {
+
+				margin-bottom: 0;
+				width: 20px;
+				height: 20px;
+				background: rgba(234, 234, 234, 0.7);
+				&:before {
+					width: 8px;
+					height: 8px;
+					background: transparent;
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					-webkit-transform: translate(-50%,-50%);
+					-ms-transform: translate(-50%,-50%);
+					transform: translate(-50%,-50%);
+					//  @include border-radius(100%);
+
+				}
+			}
+		}
+	}
+	// Buttons to go previous and right on slide
+	ul.slider-navigation {
+
+		@media all and (max-width:$tablet-screen) {
+			display: none;
+		}
+
+		li {
+
+			width: 60px;		// Width for the
+			background: transparent;	// No color
+			position: absolute;	// Position aboluste to the slider
+			bottom: 0;			// Ocupy the whole height
+			top: 0;				// Ocupy the whole height
+			z-index: 3;			// Put it in front of all elements
+      list-style: none;
+
+			@media all and (min-width: $desktop-screen) {
+				width: 90px;
+			}
+
+			a {
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+				display: block;
+
+				span {
+
+					width: 100%;
+					height: 100px;
+					position: absolute;
+					margin-top: -50px;
+					top: 50%;
+					text-align: center;
+
+					// Prev/Next icon
+					&:before {
+						top: 50%;
+						color: #ffffff;
+						font-size: 50px;
+						position: absolute;
+						margin-right: -4px;
+						left: 50%;
+						-webkit-transform: translate(-50%,-50%);
+						-ms-transform: translate(-50%,-50%);
+						transform: translate(-50%,-50%);
+					}
+				}
+				&:hover {
+					background: rgba(0, 0, 0, 0.05)
+				}
+			}
+		}
+		.slider-navigation-left {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.1+0,0+100 */
+			background: -moz-linear-gradient(left,  rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.1)), color-stop(100%,rgba(0,0,0,0)));
+			background: -webkit-linear-gradient(left,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+			background: -o-linear-gradient(left,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+			background: -ms-linear-gradient(left,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+			background: linear-gradient(to right,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a000000', endColorstr='#00000000',GradientType=1 );
+			left: 0;
+		}
+		.slider-navigation-right {
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.1+100 */
+			background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.1)));
+			background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+			background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+			background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+			background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#1a000000',GradientType=1 );
+
+			right: 0;
+		}
+	}
+	// Slides of the slider
+	ul.slider-slides {
+
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		top: 0;
+		list-style: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		overflow: hidden !important;
+		position: absolute;
+
+ 		// <li class="slider-slides-singleSlide fading">
+		.slider-slides-singleSlide {
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			top: 0;
+			margin-right: -4px;
+			// Don't edit this part - prevents inline lists from being hidden
+			display: none;
+			position: absolute !important;
+
+			// Current slide
+			&.current {
+				// Don't edit this part
+				display: block !important;
+				z-index: 2 !important;
+			}
+			// Next slide
+			&.next {
+				// Don't edit this part
+				display: block;
+				z-index: 1 !important;
+			}
+
+			&-content {
+				left: 1.5em;
+				right: 1.5em;	// Margin the width of left/right button
+ 				bottom: 1.5em;
+				z-index: 3;
+				position: absolute;
+
+				@media all and (min-width: $tablet-screen) {
+					bottom: 50%;
+					left: 50%;
+					right: inherit;
+					text-align: center;
+					@include translate(-50%, 50%);
+				}
+				@media all and (min-width: 800px) and (max-width: $desktop-screen) {
+					width: 700px;
+					height: 200px;
+				}
+				@media all and (min-width: $desktop-screen) {
+					bottom: auto;
+					left: auto;
+					right: auto;
+					width: 700px;
+					height: auto;
+					// padding-top: $logoHeight;	// El alto del header
+					top: 50%;
+					left: 50%;
+				  transform: translate(-50%, -50%);
+
+				}
+
+				&-minilogo {
+					width: 100%;
+					height: 70px;
+					float: left;
+					margin-bottom: 1.5em;
+
+					div {
+						width: 70px;
+						height: 70px;
+						margin: 0 auto;
+						background: #3695ed;
+						background:url(../images/iso.png) 50% 50% no-repeat;
+						background-size: auto 100%;
+					}
+					@media all and (max-width: $tablet-screen) {
+						div {
+							display: none;
+						}
+					}
+				}
+				&-title {
+					font-size: 2em;
+					line-height: 1em;
+					font-weight: 400;
+					@media all and (min-width: $desktop-screen) {
+						font-weight: 300;
+						font-size: 3em;
+					}
+				}
+				&-text {
+					font-size: 1em;
+					margin-top: 1em;
+					font-weight: 300;
+					letter-spacing: 1px;
+					a {
+						color: $primaryColorLight;
+					}
+					@media all and (min-width: $desktop-screen) {
+						width: 430px;
+						font-size: 1.4em;
+						margin: 0 auto;
+						margin-top: 0.8em;
+					}
+				}
+				&-link {
+					background: $primaryColor;
+					padding: 0.7em 1em;
+					display: inline-block;
+					margin-top: 1.5em;
+					letter-spacing: .6px;
+					color: #ffffff;
+					@include border-radius(5px);
+					text-decoration: none;
+					@media all and (min-width: $desktop-screen) {
+						margin-top: 2em;
+						padding: 0.9em 1.5em;
+						font-size: 1.3em;
+					}
+					&:hover {
+						background: lighten($primaryColor, 3%);
+					}
+				}
+
+				.blackContent {
+					.slider-slides-singleSlide-content-title,
+					.slider-slides-singleSlide-content-text {
+						color: #000;
+					}
+					.slider-slides-singleSlide-content-link {
+						color: #ffffff; // link in white
+					}
+				}
+				.whiteContent {
+					.slider-slides-singleSlide-content-title,
+					.slider-slides-singleSlide-content-text,
+					.slider-slides-singleSlide-content-link {
+						color: #ffffff; // link in white
+					}
+				}
+			}
+
+			&-blackmask {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 2;
+				background: rgba(0, 0, 0, 0.7);
+			}
+			&-whitemask {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 2;
+				background: rgba(255, 255, 255, 0.92);
+			}
+			&-whitemaskIntense {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 2;
+				background: rgba(255, 255, 255, 0.95);
+			}
+
+			// Styles for the slide
+			&-wallpaper {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				top: 0;
+
+				.blurred {
+					-webkit-filter: blur(10px);
+					-moz-filter: blur(10px);
+					-o-filter: blur(10px);
+					-ms-filter: blur(10px);
+					filter: blur(10px);
+				}
+				div {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					background-size: cover !important;
+					bottom: 0;
+					right: 0;
+					left: 0;
+					top: 0;
+				}
+			}
+
+
+		}
+	}
+}
