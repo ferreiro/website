@@ -18,7 +18,7 @@ function submitForm() {
 
   if (!validateInputs()) {
     $('html, body').animate({
-        scrollTop: $('#contactform').offset().top
+        scrollTop: $('#contactform').offset().top - 120
     }, 300)
 
     return
@@ -37,7 +37,7 @@ function submitForm() {
     __email: $('#email').val(),
     __msg: $('#message').val(),
     __source: $('#source').val(),
-    __newsletter: newsletterChecked
+    __subscribed: newsletterChecked
   };
 
   $.ajax({
