@@ -1,0 +1,90 @@
+.subscriptionBox {
+  text-align: center;
+
+  &__collage {
+    margin-bottom: 1em;
+    position: relative;
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+
+    &__icons {
+      width: 85px;
+      height: 85px;
+      position: relative;
+
+      -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+
+      .icon {
+        font-size: 3em;
+        color: rgba(0, 0, 0, 0.6);
+        display: inline-block;
+      }
+    }
+    &__features {
+      -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+      position: relative;
+
+      text-align: left;
+    }
+    &__feature {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+      margin-left: 2em;
+    }
+  }
+
+  &__form {
+
+  }
+  &__email {
+    border: 1px solid #cecece;
+    padding: 0.8em 0;
+    @include border-radius(10px);
+  }
+  &__loader {
+    height: 30px;
+    display: none;
+  }
+  &__completed {
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  &__submit {
+    margin: 0 auto;
+    margin-top: 0.5em;
+    padding: 1em 1.2em;
+    background: $primaryColor;
+    color: #fff;
+    border: 0;
+    @include transition(0.3s);
+    @include border-radius(60px);
+  }
+}
