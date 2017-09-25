@@ -1,0 +1,273 @@
+.blogHeader {
+    background: #fff;
+    position: relative;
+    // @include border-radius(5px);
+    @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
+    overflow: hidden;
+    padding: 1.1em 0;
+    // min-height: 130px;
+  
+    @media all and (min-width: $desktop-screen) {
+      padding: 3em 0;
+      // padding-bottom: 2.5em;
+      // min-height: 250px;
+    }
+  
+    &_avatar {
+      z-index: 1;
+      width: 90px;
+      height: 90px;
+      position: relative;
+      @include border-radius(100%);
+      background-size: cover;
+      background-image: url('/images/jorge_ferreiro_software_engineer_developer_entrepreneur.jpg');
+      margin: 0 auto;
+      overflow: hidden;
+      margin-bottom:1em;
+  
+      img {
+        display: none !important; /** Only use this for SEO LOL **/
+      }
+  
+      @media all and (min-width: $tablet-screen) {}
+      @media all and (min-width:$desktop-screen) {
+        width: 140px;
+        height: 140px;
+      }
+      @media all and (min-width:$big-screen) {}
+    }
+  
+    &_userFields {
+      z-index: 1;
+      position: relative;
+      text-align: center;
+    }
+
+    &_name {
+      color: #fff;
+      font-weight: 400;
+      font-size: 1.8em;
+      margin-bottom: 0.5em;
+      @media all and (min-width:$desktop-screen) {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+      }
+    }
+
+    &_job {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+      font-size: 1em;
+      margin: 0;
+      margin-top:0.3em;
+      @media all and (min-width:$desktop-screen) {
+        font-size: 1.3em;
+        font-size: 1.5em;
+        margin-bottom: 0.5em
+      }
+    }
+
+    &_button {
+      font-size: 1.3em !important;
+      padding: 1.1em 1.5em !important;
+    }
+
+    &_bg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background-color:#ff652f;
+      background-size: cover;
+      background-image: url("/images/jorge_ferreiro_san_francisco_bay_bridge_software_engineer.jpg");
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 0;
+  
+      // @include border-radius(5px);
+      overflow: hidden;
+  
+      img {
+        display: none; // SEO
+      }
+      &::after {
+        content: '';
+        background: rgba(0,0,0,.5);
+        display: block;
+        float: left;
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 12;
+      }
+    }
+}
+
+.blog {
+  position: relative;
+  &__link {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      &:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+  &__entries {
+
+  }
+  &__entry {
+    padding: 1.5em;
+    margin-bottom: 2em;
+    position: relative;
+  }
+  &__author {
+    top: 0;
+    left: 0;
+    margin-bottom: 1.2em;
+    &__pic {
+      width: 45px;
+      height: 45px;
+      display: inline-block;
+      background: #f4f4f4;
+      vertical-align: middle;
+      margin-right: 1em;
+      overflow: hidden;
+      @include border-radius(100%);
+      img {
+        height: 120%;
+      }
+    }
+    &__content {
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 3px;
+    }
+    &__name {
+      font-size: 1em;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 5px;
+    }
+    &__date {
+      font-size: 0.9em;
+      color: rgba(0, 0, 0, .7);
+    }
+  }
+  &__post {
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+
+    &__left {
+      -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+    }
+    &__right {
+      -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+      padding-left: 2em;
+    }
+
+    &__pic {
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      background-size: cover;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      @include border-radius(5px);
+      @media all and (min-width: $tablet-screen) {
+        height: 240px;
+      }
+      @media all and (min-width: $desktop-screen) {
+        width: 350px;
+        height: 270px;
+      }
+      &__link {
+        /*
+        &::before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: rgba(216, 57, 1, 0.3);
+        }
+        */
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    &__metadata {
+      vertical-align: top;
+      margin-top: 0;
+      display: inline-block;
+    }
+    &__title {
+      margin: 0;
+      font-size: 2em;
+      &__link {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 1);
+        &:hover {
+          border-bottom: 3px solid #000;
+        }
+      }
+    }
+    &__intro {
+      color: rgba(0, 0, 0, .7);
+      font-size: 1em;
+      margin: 0;
+      padding: 0;
+      margin-top: 0.6em;
+      margin-bottom: 1em;
+    }
+    &__read {
+      font-size: 1.1em;
+    }
+    &__share {
+      display: none;
+      float: right;
+    }
+  }
+}

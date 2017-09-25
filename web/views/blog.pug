@@ -1,0 +1,95 @@
+extends ./includes/layout
+
+block content_full
+
+  .blogHeader.animated.zoomIn
+    .blogHeader_bg(style="background-image: url(/" + content.wallpaper + ");")
+      // SEO
+      img(src= content.wallpaper)
+    .blogHeader_userFields
+      h1.blogHeader_name The corner of Jorge
+      h2.blogHeader_job A blog about <strong>Software Engineering, product<br /> managment and entrepreneurship.</strong>
+      h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>Jorge Ferreiro</strong>
+
+      .about_resume
+        a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank").about_resume_button.about_resume_button_view.blogHeader_button Subscribe blog!
+
+block content
+
+  // include ./includes/breadcrumb.pug
+
+  //- Left Container
+  .container_left.sectionHeader
+
+    .profileData.box_with_shadow(style="margin-top: 0;")
+
+      h3.profileData_title Categories
+      ul.profileData_list
+
+        li.profileData_entry
+          p.profileData_entry_text_without_icon
+            a(href="") Software Engineering
+
+        li.profileData_entry
+          p.profileData_entry_text_without_icon
+            a(href="") Product management
+
+        li.profileData_entry
+          p.profileData_entry_text_without_icon
+            a(href="") Entrepreneurship
+
+
+    .profileData.box_with_shadow(style="margin-top:0;")
+
+      include includes/subscriptionBox
+
+    .profileData.box_with_shadow
+
+      h3.profileData_title Top posts
+      ul.profileData_list
+
+        li.profileData_entry
+          span.profileData_entry_icon 1
+          p.profileData_entry_text Making software to improve people's lives.
+
+        li.profileData_entry
+          span.profileData_entry_icon 2
+          p.profileData_entry_text Playing tennis and trying new sports.
+
+        li.profileData_entry
+          span.profileData_entry_icon 3
+          p.profileData_entry_text Producing and listening to music.
+
+  //- Right Container
+  .container_right.animated.fadeInUp
+
+    .blog__entries
+      each post in posts || []
+        - var postUrl = '/blog/' + post.permalink
+        .blog__entry.box_with_shadow
+          //.blog__link
+            a(href= postUrl)
+          .blog__post
+            .blog__post__left
+              .blog__post__pic(style="background-image:url(" + post.pic + ");")
+                a(href= postUrl).blog__post__pic__link
+            .blog__post__right
+              .blog__post__metadata
+                .blog__author
+                  .blog__author__pic
+                    img(src= post.author.pic || '')
+                  .blog__author__content
+                    h2.blog__author__name= post.author.name || ''
+                    p.blog__author__date= post.date || ''
+
+                h1.blog__post__title
+                  a(href=postUrl).blog__post__title__link= post.title
+
+                if post.summary
+                  p.blog__post__intro= post.summary
+                a(href= postUrl).blog__post__read Read more
+
+  //- .hot_links.box_with_shadow
+    .hot_links_box(style="background-image:url('images/projects/m4d_back.png');")
+      a(href="/projects")
+        h2 Discover my projects >
