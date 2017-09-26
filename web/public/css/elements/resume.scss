@@ -1,0 +1,173 @@
+.resume {
+  
+}
+.resume__entry {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+
+  margin-bottom: 1em;
+
+  &__left {
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+  }
+  &__right {
+    margin-left: 2em;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+  }
+  &__pic {
+    width: 240px;
+    padding: 1em;
+    border: 1px solid #f4f4f4;
+    // border-left: 10px solid #d83901;
+    text-align: center;
+    @include border-radius(10px);
+
+    img {
+      @include border-radius(10px);
+    }
+
+    // Horizontal pics: meaning having more width that height
+    &__horizontal {
+      width: 80%;
+    }
+    // Vertical pics: meaning more squeare
+    &__vertical {
+      width: 100px;
+    }
+    // Vertical pics: meaning more squeare
+    &__default {
+      width: 60%;
+    }
+  }
+  &__content {
+    padding: 0.5em 0;
+  }
+  &__header {
+    margin-bottom: 0.6em;
+    display: block;
+    position: relative;
+  }
+  &__title {
+    font-size: 1.6em;
+  }
+  &__position {
+    margin-left: 5px;
+  }
+  &__date {
+    background: #fff;
+    padding-left:10px;
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  &__body {
+    display: block;
+  }
+  &__oneline {
+    &__text {
+      font-size: 1.3em;
+      line-height: 1.4em;
+    }
+  }
+  &__bullets {
+    margin: 0;
+    padding: 0;
+  }
+  &__bullet {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 0.7em;
+    clear: both;
+    &:before {
+      content:"• ";
+      margin-right: 0.5em;
+      float: left;
+    }
+    &__icon {
+      width: 30px;
+      overflow: hidden;
+      margin-right: 0.5em;
+      float: left;
+      height: 100%;
+      i {
+        font-size: 30px;
+      }
+    }
+    &__text {
+      font-size: 1.3em;
+    }
+  }
+  &__warning {
+    padding: 1.2em 0;
+    margin: 1.5em 0;
+    text-align: center;
+    background: rgb(146,45,204); /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(146,45,204,1) 0%, rgba(16,140,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(146,45,204,1) 0%,rgba(16,140,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(146,45,204,1) 0%,rgba(16,140,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#922dcc', endColorstr='#108cff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    position: relative;
+
+    @include border-radius(5px);
+
+    &:hover {
+      &:before {
+        background: #f4f4f4;
+      }
+    }
+
+    &:before {
+      content: '';
+      margin: 4px;
+      background: #fff;
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      @include transition(0.5s);
+      @include border-radius(5px);
+    }
+
+    &__link {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 3;
+      top: 0;
+      left: 0;
+    }
+
+    &__wrapper {
+      position: relative;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: rgb(146,45,204);
+      text-align: left;
+      padding-left: 1em;
+    }
+  }
+}
