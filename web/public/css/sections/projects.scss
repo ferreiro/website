@@ -359,7 +359,7 @@
   &_links {
     z-index: 12;
     overflow: hidden;
-    margin-top: 1em;
+    margin-top: 1.5em;
     a {
       // width: 50%;
       display: inline-block;
@@ -371,6 +371,7 @@
       position: relative;
       border: 2px solid #d83902;
       @include border-radius(5px);
+      // @include border-radius(60px);
       margin-right: 1em;
       @include transition(all 0.5s);
       &:hover {

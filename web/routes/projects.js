@@ -1,11 +1,11 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 
-var projects = require('../content/projects')
+const projects = require('../content/english/projects')
 
 router.get('/', function(req, res) {
   res.render('projects', {
-    path: 'projects',
+    path: 'portfolio',
     title: 'Portfolio',
     filtered: false, /* If projects are filtered by some category */
     projects: projects

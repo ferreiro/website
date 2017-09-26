@@ -66,7 +66,7 @@ block content
                   if project.title
                     .project_header_title
                       if project.links
-                        a(href="#{project.links.website}").project_header_title.project_header_title_clickable #{project.title}
+                        a(href= project.links.website, target="_blank").project_header_title.project_header_title_clickable #{project.title}
                       else
                         a.project_header_title #{project.title}
                   if project.date
