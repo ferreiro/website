@@ -53,7 +53,6 @@
 
   &__left {
     max-width: 50%;
-    background: red;
     overflow: hidden;
     margin-right: 2em;
     @include flexbox_flex(0, 1, auto);
@@ -129,7 +128,7 @@
     margin: 1rem 0;
     font-size: 1rem;
     line-height: 1.4;
-    text-align: justify;
+    text-align: left;
 
     @media all and (min-width: $tablet-screen) {
       font-size: 1.125rem;
@@ -139,7 +138,6 @@
       margin-bottom: 1.25rem;
       font-size: 1.125rem;
       line-height: 1.5;
-      text-align: justify;
     }
   }
   &__callToAction {
@@ -153,7 +151,7 @@
     text-decoration: none;
     font-size: 1em;
     // color: #d83901;
-    @include border-radius(10px);
+    @include border-radius(60px);
     @include transition(0.5s);
     &:hover {
       background: #f4f4f4;

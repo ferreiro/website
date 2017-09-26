@@ -1,5 +1,6 @@
 extends ./includes/layout
 include ./mixins/resumeEntry
+include ./mixins/timelineEntry
 
 block content_full
   // .profileCard
@@ -51,6 +52,29 @@ block content
           a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank", style="margin-right: 1em;").about_bio__large__button Read Resume
           a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_bio__large__button Download Resume
 
+  h1.timeline__bigTitle Timeline
+
+  .timeline
+    .timeline__wrapper
+      .timeline__badge
+        span.timeline__badge__title Education
+      .timeline__entries
+        each item in education || []
+          +timelineEntry(item)
+
+  .timeline
+    .timeline__wrapper
+      .timeline__badge
+        span.timeline__badge__title Experience
+      .timeline__entries
+        each item in work || []
+          +timelineEntry(item)
+
+  .hot_links.box_with_shadow
+    .hot_links_box(style="background-image:url('images/projects/m4d_back.png');")
+      a(href="/projects")
+        h2 Discover my projects >
+//-
   h1.titleSeparator.animated.zoomIn Education
 
   .resume
@@ -243,7 +267,3 @@ block content
                         i.cbp-ig-icon(class="devicon-" + icon + "-plain")
                       p #{icon}
 
-  .hot_links.box_with_shadow
-    .hot_links_box(style="background-image:url('images/projects/m4d_back.png');")
-      a(href="/projects")
-        h2 Discover my projects >

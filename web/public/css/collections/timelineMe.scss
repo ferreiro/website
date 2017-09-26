@@ -1,0 +1,178 @@
+/**
+* Copyright 2017 Jorge Ferreiro
+***/
+$timelineHeight: 220px;
+
+$bigLineHeight: 0;
+$bigLineTopMargin: 0px;
+$bigLineColor: #f9d8cc;
+$bigLineColor: #ececec;
+
+$pinColor: #f9d8cc;
+$eventMaxWidth: 200px;
+$eventTopMargin: 35px;
+$eventPadding: 0.2em;
+
+.timeline_me {
+  width: 100%;
+  height: $timelineHeight;
+  overflow-x: scroll;
+  margin-top: 2em;
+  position: relative;
+  text-align: center;
+  background: #f5f5f5;
+  display: inline-block;
+  @include border-radius(10px);
+  &__wrapper {
+    margin: 0;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+  &__eventsBlock {
+    padding: 0 1em;
+    border-left: 2px dotted #f4f4f4;
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+  &__yearPin {
+    display: none;
+    width: 15px;
+    height: 15px;
+    background: $pinColor;
+    border: 10px solid #fff;
+    left: 50%;
+    margin-left: -17.5px;
+    position: absolute;
+    top: $bigLineTopMargin - 14px;
+    z-index: 2000000;
+    @include border-radius(100%);
+  }
+  &__bigLine {
+    height: $bigLineHeight;
+    position: absolute;
+    top: $bigLineTopMargin;
+    left: 0;
+    right: 0;
+    background: $bigLineColor;
+    z-index: 5;
+  }
+  &__event {
+    width: 220px;
+    position: relative;
+    z-index: 10;
+    padding: 0 $eventPadding;
+    height: $timelineHeight;
+    // max-width: $eventMaxWidth;
+    text-align: center;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    // big line separator
+    &:before {
+      height: $bigLineHeight;
+      position: absolute;
+      top: $bigLineTopMargin;
+      left: 0;
+      right: 0;
+      background: $bigLineColor;
+      z-index: 100;
+      content: '';
+    }
+    &__content {
+      margin-top: $bigLineTopMargin + $eventTopMargin;
+      height: calc(100% - 60px);
+    }
+    &__years {
+      width: 100%;
+      font-size: 1em;
+      color: black;
+      margin-bottom: 0.5em;
+      // padding: 3px 8px;
+      font-style: italic;
+      // border: 1px solid #f4f4f4;
+      display: inline-block;
+      @include border-radius(5px);
+    }
+    &__pic {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      margin-bottom: 1em;
+      img {
+        height: 50px;
+        @include border-radius(10px);
+      }
+    }
+    &__title {
+      width: 100%;
+      font-size: 1.1em;
+      margin-bottom: 0.5em;
+      color: black;
+    }
+    &__position {
+      font-size: 1em;
+      color: black;
+    }
+    &__info {
+      font-size: 0.8em;
+      margin-top: 0.5em;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+  &__separator {
+    /*
+    width: 40px;
+    height: 10px;
+    */
+    width: 2px;
+    height: 60px;
+    background: #f7f7f7;
+    margin-top: $bigLineTopMargin;
+    @include border-radius(60px);
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+  }
+}

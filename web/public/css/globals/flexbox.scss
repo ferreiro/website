@@ -1,0 +1,59 @@
+@mixin flexbox() {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// $flexGrow = 0. fixed widh. Flex will not grow
+// flexShrink. A number specifying how much the item will shrink relative to the rest of the flexible items
+
+@mixin flexbox_flex($flexGrow:0, $flexShrink:1, $flex-basis:'auto') {
+  -webkit-flex: $flexGrow $flexShrink $flex-basis;
+  -ms-flex: $flexGrow $flexShrink $flex-basis;
+  flex: $flexGrow $flexShrink $flex-basis;
+}
+
+@mixin flexbox_direction($direction: 'row'){
+  -webkit-flex-direction: $direction;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin flexbox_wrap($wrap: 'nowrap'){
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin flexbox_order($order) {
+  -webkit-order: $order;
+  -ms-flex-order: $order;
+  order: $order;
+}
+
+// -ms has another justify property name, so we allow
+// to pass to properties
+
+@mixin flexbox_justifyContent($justify, $justifyMS){
+  -webkit-justify-content: $justify;
+  -ms-flex-pack: $justifyMS;
+  justify-content: $justify;
+}
+
+@mixin flexbox_alignContent($align, $alignContentMS){
+  -webkit-align-content: $align;
+  -ms-flex-line-pack: $alignContentMS;
+  align-content: $align;
+}
+
+@mixin flexbox_alignItems($alignItems, $alignItemsMS){
+  -webkit-align-items: $alignItems;
+  -ms-flex-align: $alignItemsMS;
+  align-items: $alignItems;
+}
+
+@mixin flexbox_alignSelf($alignSelf){
+  -webkit-align-self: $alignSelf;
+  -ms-flex-item-align: $alignSelf;
+  align-self: $alignSelf;
+}
