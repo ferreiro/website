@@ -5,12 +5,13 @@ var router = express.Router()
 
 var blog = require('./blog')
 var projects = require('./projects')
+var talks = require('./talks')
 var social = require('./social')
 var contact = require('./contact')
 
+
 router.get('/', featured) // Home shows about page
 router.get('/stats', stats)
-router.get('/talks', talks)
 router.get('/university', university)
 router.get('/resume/jorge_ferreiro_resume.pdf', resume)
 router.get('/projects', function (req, res) {
@@ -21,6 +22,7 @@ router.get('/projects', function (req, res) {
 router.use('/about', require('./about'))
 router.use('/blog', blog)
 router.use('/portfolio', projects)
+router.use('/talks', talks)
 router.use('/social', social)
 router.use('/contact', contact)
 
@@ -35,14 +37,6 @@ function featured (req, res, next) {
   })
 }
 
-function talks (req, res, next) {
-  var talks = require('../content/projects')
-  res.render('talks', {
-    title: 'Talks and workshops',
-    path: 'talks',
-    talks: talks
-  })
-}
 
 function stats (req, res, next) {
   res.render('stats', {
