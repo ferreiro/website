@@ -1,0 +1,67 @@
+extends ./layout
+
+block content_full
+  .blogHeader.animated.zoomIn
+    .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
+      // SEO
+      img(src= )
+    .blogHeader_userFields
+      h1.blogHeader_name= config.title
+      h2.blogHeader_job !{config.subtitle}
+      h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>#{config.author.name}</strong>
+
+      .about_resume
+        a(href= config.subscription).about_resume_button.about_resume_button_view.blogHeader_button Subscribe blog!
+
+block content
+
+  block blog_sidebar
+    //- Left Container
+    .container_left.sectionHeader
+
+      .profileData.box_with_shadow(style="margin-top: 0;")
+
+        h3.profileData_title Categories
+        ul.profileData_list
+
+          li.profileData_entry
+            p.profileData_entry_text_without_icon
+              a(href="") Software Engineering
+
+          li.profileData_entry
+            p.profileData_entry_text_without_icon
+              a(href="") Product management
+
+          li.profileData_entry
+            p.profileData_entry_text_without_icon
+              a(href="") Entrepreneurship
+
+
+      .profileData.box_with_shadow(style="margin-top:0;")
+
+        include ./subscriptionBox
+
+
+      .profileData.box_with_shadow
+        <div class="dropdown-content" style="display: block; position: relative;" id="DropdownSocial"><a class="dropdown-item" id="linkedin" href="https://www.linkedin.com/in/jgferreiro/" target="_blank"><span class="dropdown-icon icon-linkedin"></span><span class="dropdown-text">Linkedin</span></a><a class="dropdown-item" id="twitter" href="https://twitter.com/jgferreiro" target="_blank"><span class="dropdown-icon icon-twitter"></span><span class="dropdown-text">Twitter</span></a><a class="dropdown-item" id="instagram" href="https://www.instagram.com/jgferreiro/" target="_blank"><span class="dropdown-icon icon-instagram"></span><span class="dropdown-text">Instagram</span></a><a class="dropdown-item" id="github" href="https://www.github.com/ferreiro" target="_blank"><span class="dropdown-icon icon-github"></span><span class="dropdown-text">Github</span></a></div>
+
+      .profileData.box_with_shadow
+
+        h3.profileData_title Top posts
+        ul.profileData_list
+
+          li.profileData_entry
+            span.profileData_entry_icon 1
+            p.profileData_entry_text Making software to improve people's lives.
+
+          li.profileData_entry
+            span.profileData_entry_icon 2
+            p.profileData_entry_text Playing tennis and trying new sports.
+
+          li.profileData_entry
+            span.profileData_entry_icon 3
+            p.profileData_entry_text Producing and listening to music.
+
+  //- Each blog page can have their own design
+  block blog_content
+    //- This can be replaced by each of the blog subpages

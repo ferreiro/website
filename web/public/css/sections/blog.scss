@@ -1,34 +1,34 @@
 .blogHeader {
+    // min-height: 130px;
     background: #fff;
     position: relative;
-    // @include border-radius(5px);
-    @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
     overflow: hidden;
     padding: 1.1em 0;
-    // min-height: 130px;
-  
+    // @include border-radius(5px);
+    @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
+
     @media all and (min-width: $desktop-screen) {
       padding: 3em 0;
       // padding-bottom: 2.5em;
       // min-height: 250px;
     }
-  
+
     &_avatar {
-      z-index: 1;
       width: 90px;
       height: 90px;
-      position: relative;
-      @include border-radius(100%);
+      overflow: hidden;
       background-size: cover;
       background-image: url('/images/jorge_ferreiro_software_engineer_developer_entrepreneur.jpg');
       margin: 0 auto;
-      overflow: hidden;
       margin-bottom:1em;
-  
+      position: relative;
+      z-index: 1;
+      @include border-radius(100%);
+
       img {
         display: none !important; /** Only use this for SEO LOL **/
       }
-  
+
       @media all and (min-width: $tablet-screen) {}
       @media all and (min-width:$desktop-screen) {
         width: 140px;
@@ -36,7 +36,7 @@
       }
       @media all and (min-width:$big-screen) {}
     }
-  
+
     &_userFields {
       z-index: 1;
       position: relative;
@@ -80,14 +80,14 @@
       background-size: cover;
       background-image: url("/images/jorge_ferreiro_san_francisco_bay_bridge_software_engineer.jpg");
       position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
       z-index: 0;
-  
+      bottom: 0;
+      left: 0;
+      top: 0;
+
       // @include border-radius(5px);
       overflow: hidden;
-  
+
       img {
         display: none; // SEO
       }
@@ -164,46 +164,25 @@
     }
   }
   &__post {
-
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
-    -webkit-align-items: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
+    @include flexbox();
+    @include flexbox_direction(row);
+    @include flexbox_wrap(nowrap);
+    @include flexbox_justifyContent(flex-start, start);
+    @include flexbox_alignContent(stretch, stretch);
+    @include flexbox_alignItems(stretch, stretch);
 
     &__left {
-      -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-      flex: 0 1 auto;
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      align-self: auto;
+      @include flexbox_flex(0, 1, auto);
+      @include flexbox_alignSelf(auto);
     }
     &__right {
-      -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      align-self: auto;
       padding-left: 2em;
+      @include flexbox_flex(1, 1, auto);
+      @include flexbox_alignSelf(auto);
     }
 
     &__pic {
-      width: 250px;
+      width: 251px;
       height: 250px;
       overflow: hidden;
       background-size: cover;
