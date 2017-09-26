@@ -30,6 +30,7 @@
     "SVG-Loaders": "svg-loaders#^1.0.2",
     "devicon": "*",
     "fastclick": "^1.0.6",
-    "normalize-css": "^4.0.0"
+    "normalize-css": "^4.0.0",
+    "Ionicons": "ionicons#^2.0.1"
   }
 }
