@@ -1,4 +1,4 @@
-const content = require('./web/content/english')
+const content = require('../web/content/english')
 
 module.exports = (app) => {
   app.locals.menu = content.menu

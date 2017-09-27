@@ -24,7 +24,7 @@
     "build:css": "gulp css",
     "build": "npm run build:css",
     "watch": "gulp watch",
-    "start": "DEBUG=website:* npm run build && nodemon ./bin/www",
+    "start": "DEBUG=* npm run build && nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.1",
     "mongoose": "^4.11.13",
+    "mongoose-permalink": "^2.0.0",
     "morgan": "^1.8.2",
     "newrelic": "^2.2.1",
     "nodemailer": "^2.3.0",

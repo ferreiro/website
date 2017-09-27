@@ -8,24 +8,30 @@ const session = require('express-session')
 const express = require('express')
 
 module.exports = (app) => {
+  if (process.env.NODE_ENV === 'production') {
+    require('newrelic') // Stats for production only
+  }
+
   // Add security layer
   app.use(helmet())
 
   // Serve static bower: http://goo.gl/e2nTBf
-  app.use(favicon(path.join(__dirname, 'web', 'public', 'images', 'favicons', 'favicon.ico')))
+  app.use(favicon(path.join(__dirname, '../web', 'public', 'images', 'favicons', 'favicon.ico')))
   app.use(express.static(path.join(__dirname, 'web/public')))
-  app.use(express.static(__dirname + '/public'))
-  app.use('/bower_components',  express.static(__dirname + '/bower_components'))
-  app.use('/semantic',  express.static(__dirname + '/semantic'))
+  app.use(express.static(__dirname + '../web/public'))
+  app.use('/bower_components',  express.static(__dirname + '../bower_components'))
+  app.use('/semantic',  express.static(__dirname + '../semantic'))
   app.use(logger('dev'))
 
   // order matters here for passport
   app.use(cookieParser())
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
-  app.use(session({ secret: 'keyboard cat' }))
+  app.use(session({
+    secret: env.SESSION_SECRET
+  }))
 
   // view engine setup
-  app.set('views', path.join(__dirname, 'web/views'))
+  app.set('views', path.join(__dirname, '../web/views'))
   app.set('view engine', 'pug')
 }
