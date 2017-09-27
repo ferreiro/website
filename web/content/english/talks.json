@@ -8,5 +8,54 @@
       "button": "Contact Jorge to speak at your event"
     }
   },
-  "pastTalks": []
+  "pastTalks": [
+    {
+      "title": "Dailyfocus presentation.",
+      "type": "slides",
+      "pic": "/images/talks/dailyfocus_ucm.png",
+      "date": "Aug 7, 2017",
+      "event": "",
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
+    },
+    {
+      "title": "Workshop: Your first professional website.",
+      "type": "slides",
+      "pic": "/images/talks/wokshop_fdi.png",
+      "date": "",
+      "event": "",
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
+    },
+    {
+      "title": "Presentación final Dailyfocus (incluye DEMO! 🔥) - 16 minutos - FDI UCM",
+      "type": "video",
+      "pic": "/images/talks/dailyfocus_ucm_video.png",
+      "date": "June 17, 2017",
+      "event": "",
+      "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
+    },
+    {
+      "title": "Introducing Redis by Jorge Ferreiro - May 2017",
+      "type": "slides",
+      "pic": "/images/talks/introducing_redis.png",
+      "date": "May, 2017",
+      "event": "",
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp"
+    },
+    {
+      "title": "Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+      "type": "video",
+      "pic": "/images/talks/js_day_es.png",
+      "date": "May, 2017",
+      "event": "JS DAY ES 2017",
+      "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
+    },
+    {
+      "title": "Webapps: introduction and publishing on Firefox OS",
+      "type": "slides",
+      "pic": "/images/talks/mozilla_webapps.png",
+      "date": "Nov 28, 2014",
+      "event": "Mozilla Event",
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/i6RWO4Nmrt0eQw"
+    }
+  ]
 }
