@@ -1,0 +1,21 @@
+.talks {
+  column-width: 320px;
+  column-gap: 15px;
+}
+@media screen and (max-width: 750px) { 
+  .talks { column-gap: 0px; }
+}
+
+.talk {
+  width: 100%;
+  height: 300px;
+  background: url('/images/loading.gif') 50% 50% no-repeat;
+  background-size: 30px;
+  margin-bottom: 20px;
+  column-break-inside: avoid;
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0  !important;
+  }
+}

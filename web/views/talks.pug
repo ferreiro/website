@@ -15,21 +15,29 @@ block content
         h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;")= config.callToAction.claim
 
         .about_resume
-          a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank").about_resume_button.about_resume_button_view.blogHeader_button= config.callToAction.button
+          a(href="/contact").about_resume_button.about_resume_button_view.blogHeader_button= config.callToAction.button
 
   h1.titleSeparator.animated.zoomIn Previous talks and workshops
 
-  each talk in pastTalks || []
-    h1 Hello!
-  style.
-    iframe {
-      width: 33% !important;
-      display: inline-block !important;
-    }
+  .talks
+    .talk
+      <iframe src="//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
 
-  <iframe src="//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/jgferreiro/dailyfocus" title="Dailyfocus" target="_blank">Dailyfocus</a> </strong> from <strong><a href="https://www.slideshare.net/jgferreiro" target="_blank">Jorge Ferreiro</a></strong> </div>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/qlDrZiwkrv0?rel=0" frameborder="0" allowfullscreen></iframe>
-  <iframe src="//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/jgferreiro/redis-76234580" title="Introducing Redis by Jorge Ferreiro - May 2017" target="_blank">Introducing Redis by Jorge Ferreiro - May 2017</a> </strong> from <strong><a href="https://www.slideshare.net/jgferreiro" target="_blank">Jorge Ferreiro</a></strong> </div>
-  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0" frameborder="0" allowfullscreen></iframe>
-  <iframe src="//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/jgferreiro/workshop-your-first-professional-website" title="Workshop: Your first professional Website" target="_blank">Workshop: Your first professional Website</a> </strong> from <strong><a href="https://www.slideshare.net/jgferreiro" target="_blank">Jorge Ferreiro</a></strong> </div>
-  <iframe src="//www.slideshare.net/slideshow/embed_code/key/i6RWO4Nmrt0eQw" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os" title="Webapps: introduction and publishing on Firefox OS" target="_blank">Webapps: introduction and publishing on Firefox OS</a> </strong> from <strong><a href="https://www.slideshare.net/jgferreiro" target="_blank">Jorge Ferreiro</a></strong> </div>
+    .talk
+      <iframe src="//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+
+    .talk
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/qlDrZiwkrv0?rel=0" frameborder="0" allowfullscreen></iframe>
+
+    .talk
+      <iframe src="//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+
+    .talk
+      <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0" frameborder="0" allowfullscreen></iframe>
+
+    .talk
+      <iframe src="//www.slideshare.net/slideshow/embed_code/key/i6RWO4Nmrt0eQw" width="560" height="315" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+
+
+    each talk in pastTalks || []
+      h1 Hello!
