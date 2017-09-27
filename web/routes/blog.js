@@ -1,7 +1,7 @@
-const blog = require('../content/english/blog.json')
-
 const express = require('express')
 const router = express.Router()
+
+const blog = require('../content/english/blog.json')
 
 router.get('/', getBlogHomepage)
 router.get('/example', getSamplePostPage)

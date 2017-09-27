@@ -3,7 +3,7 @@
     background: #fff;
     position: relative;
     overflow: hidden;
-    padding: 1.1em 0;
+    padding: 1em;
     // @include border-radius(5px);
     @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
 
@@ -68,8 +68,16 @@
     }
 
     &_button {
-      font-size: 1.3em !important;
-      padding: 1.1em 1.5em !important;
+      font-size: 1em!important;
+      padding: 0.7em 1em!important;
+      @include transition(500ms);
+      @media all and (min-width:$desktop-screen) {
+        font-size: 1.2em!important;
+        padding: 0.9em 1.2em!important;
+      }
+      &:hover {
+        background: #ff4302;
+      }
     }
 
     &_bg {
