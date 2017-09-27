@@ -32,34 +32,36 @@ block content_full
 
 block content
 
-  block blog_sidebar
-    //- Right Container
-    .container_right.sectionHeader
+  .container_inner__flex
 
-      .profileData.box_with_shadow(style="margin-top:0;")
+    //- Each blog page can have their own design
+    block blog_content
+      //- This can be replaced by each of the blog subpages
 
-        include ./subscriptionBox
+    block blog_sidebar
+      //- Right Container
+      .container_right.sectionHeader
 
-      .profileData.box_with_shadow
-        <div class="dropdown-content" style="display: block; position: relative;" id="DropdownSocial"><a class="dropdown-item" id="linkedin" href="https://www.linkedin.com/in/jgferreiro/" target="_blank"><span class="dropdown-icon icon-linkedin"></span><span class="dropdown-text">Linkedin</span></a><a class="dropdown-item" id="twitter" href="https://twitter.com/jgferreiro" target="_blank"><span class="dropdown-icon icon-twitter"></span><span class="dropdown-text">Twitter</span></a><a class="dropdown-item" id="instagram" href="https://www.instagram.com/jgferreiro/" target="_blank"><span class="dropdown-icon icon-instagram"></span><span class="dropdown-text">Instagram</span></a><a class="dropdown-item" id="github" href="https://www.github.com/ferreiro" target="_blank"><span class="dropdown-icon icon-github"></span><span class="dropdown-text">Github</span></a></div>
+        .profileData.box_with_shadow(style="margin-top:0;")
 
-      .profileData.box_with_shadow
+          include ./subscriptionBox
 
-        h3.profileData_title Top posts
-        ul.profileData_list
+        .profileData.box_with_shadow
+          <div class="dropdown-content" style="display: block; position: relative;" id="DropdownSocial"><a class="dropdown-item" id="linkedin" href="https://www.linkedin.com/in/jgferreiro/" target="_blank"><span class="dropdown-icon icon-linkedin"></span><span class="dropdown-text">Linkedin</span></a><a class="dropdown-item" id="twitter" href="https://twitter.com/jgferreiro" target="_blank"><span class="dropdown-icon icon-twitter"></span><span class="dropdown-text">Twitter</span></a><a class="dropdown-item" id="instagram" href="https://www.instagram.com/jgferreiro/" target="_blank"><span class="dropdown-icon icon-instagram"></span><span class="dropdown-text">Instagram</span></a><a class="dropdown-item" id="github" href="https://www.github.com/ferreiro" target="_blank"><span class="dropdown-icon icon-github"></span><span class="dropdown-text">Github</span></a></div>
 
-          li.profileData_entry
-            span.profileData_entry_icon 1
-            p.profileData_entry_text Making software to improve people's lives.
+        .profileData.box_with_shadow
 
-          li.profileData_entry
-            span.profileData_entry_icon 2
-            p.profileData_entry_text Playing tennis and trying new sports.
+          h3.profileData_title Top posts
+          ul.profileData_list
 
-          li.profileData_entry
-            span.profileData_entry_icon 3
-            p.profileData_entry_text Producing and listening to music.
+            li.profileData_entry
+              span.profileData_entry_icon 1
+              p.profileData_entry_text Making software to improve people's lives.
 
-  //- Each blog page can have their own design
-  block blog_content
-    //- This can be replaced by each of the blog subpages
+            li.profileData_entry
+              span.profileData_entry_icon 2
+              p.profileData_entry_text Playing tennis and trying new sports.
+
+            li.profileData_entry
+              span.profileData_entry_icon 3
+              p.profileData_entry_text Producing and listening to music.

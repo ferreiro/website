@@ -5,13 +5,29 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+p {
+  text-rendering: optimizeLegibility;
+}
+
 .box_with_shadow {
   background: #fff;
   @include border-radius(5px);
   @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.20));
 }
 
+.titleSection {
+  font-size: 1.5em;
+  margin-bottom: 0em;
+  color: black;
+}
 
+.titleSeparator {
+  text-align: center;
+  font-size: 1.5em;
+  color: black;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
 
 // Used when mobile menu is opened
 .body_overflow {
@@ -104,18 +120,20 @@ body {
 .hot_links {
   width: 100%;
   margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
   &_title {
     width: 100%;
     text-align: center;
   }
   &_box {
-    width:100%;
+    // width:100%;
     display: inline-block;
     text-align: center;
     background-size: cover;
     position: relative;
     overflow: hidden;
-    @include border-radius(5px);
+    @include border-radius(10px);
     // margin-bottom: 1em;
 
     &:nth-last-child {
@@ -124,11 +142,12 @@ body {
 
     @media all and (min-width: $tablet-screen) {}
     @media all and (min-width:$desktop-screen) {
-      width:100%;
+      // width:100%;
       // margin-right: 2%;
       // margin-bottom: 1em;
-      &:nth-child(odd) {
-        margin-right: 0;
+      margin: 0 0.5em;
+      &:nth-last-child() {
+        // margin-right: 0;
       }
     }
     @media all and (min-width:$big-screen) {}
@@ -158,7 +177,7 @@ body {
     }
 
     a {
-      padding:5em 0;
+      padding:2.5em;
       display: block;
       background: rgba(0, 0, 0, 0.2);
       position: relative;
@@ -166,13 +185,12 @@ body {
       text-decoration: none;
       @media all and (min-width: $tablet-screen) {}
       @media all and (min-width:$desktop-screen) {
-        padding:7em 0;
+        padding:3.2em;
       }
       @media all and (min-width:$big-screen) {}
 
       h2 {
         color:#fff;
-
       }
     }
   }
