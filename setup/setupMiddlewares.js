@@ -7,6 +7,8 @@ const helmet = require('helmet')
 const session = require('express-session')
 const express = require('express')
 
+const env = require('../env')
+
 module.exports = (app) => {
   if (process.env.NODE_ENV === 'production') {
     require('newrelic') // Stats for production only
@@ -17,10 +19,10 @@ module.exports = (app) => {
 
   // Serve static bower: http://goo.gl/e2nTBf
   app.use(favicon(path.join(__dirname, '../web', 'public', 'images', 'favicons', 'favicon.ico')))
-  app.use(express.static(path.join(__dirname, 'web/public')))
+  app.use(express.static(path.join(__dirname, '../web/public')))
   app.use(express.static(__dirname + '../web/public'))
-  app.use('/bower_components',  express.static(__dirname + '../bower_components'))
-  app.use('/semantic',  express.static(__dirname + '../semantic'))
+  app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')))
+  app.use('/semantic',  express.static(path.join(__dirname, '../semantic')))
   app.use(logger('dev'))
 
   // order matters here for passport

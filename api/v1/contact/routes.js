@@ -21,7 +21,6 @@ router.get('/', function (req, res) {
 * @ subscribed
 */
 router.post('/', function (req, res) {
-  
   var message = ({
     'name': req.body.__name || null,
     'email': req.body.__email || null,
@@ -30,7 +29,6 @@ router.post('/', function (req, res) {
   })
 
   utils.validateMessage(message, function(valid) {
-    console.log(valid);
     if (!valid) {
       errors.formNotValid(req, res)
     }

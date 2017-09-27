@@ -1,7 +1,8 @@
-var pug = require('pug')
-var path = require('path')
-var config = require('../../config')
-var nodemailer = require('nodemailer')
+const pug = require('pug')
+const path = require('path')
+const nodemailer = require('nodemailer')
+
+const env = require('../../../env')
 
 sendMessage = function (message, cb) {
 
@@ -12,8 +13,8 @@ sendMessage = function (message, cb) {
   transporter = nodemailer.createTransport({
     service: 'Mailgun',
     auth: {
-      user: config.MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
-      pass: config.MAILGUN_PASS // You set this.
+      user: env.MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
+      pass: env.MAILGUN_PASS // You set this.
     }
   })
 
@@ -28,8 +29,8 @@ sendMessage = function (message, cb) {
   }
 
   mailOptions = {
-    from: message.name + '<' + config.MAILGUN_USER + '>', // sender address
-    to: config.PERSONAL_EMAIL, // list of receivers
+    from: message.name + '<' + env.MAILGUN_USER + '>', // sender address
+    to: env.PERSONAL_EMAIL, // list of receivers
     subject: '[Ferreiro.me] New message', // Subject line
     html: emailHMTL // html body
   }

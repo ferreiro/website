@@ -1,14 +1,20 @@
 module.exports = {
-  SESSION_SECRET: 'keyboard cat',
+  // APP config
+  PORT: '',
+  MONGO_DB: '',
   ADMIN_EMAIL: 'admin',
   ADMIN_PASS: 'admin',
-  MAILGUN_USER: '',
-  MAILGUN_PASS: '',
+
+  // Email Services
   PERSONAL_EMAIL: '',
-  JORGE_EMAIL: '',
-  PORT: '',
+  MAILGUN_USER: process.env.MAILGUN_USER,
+  MAILGUN_PASS: process.env.MAILGUN_PASS,
   GMAIL_USER: '',
-  GMAIL_PASSWD: '',
-  NEW_RELIC_LICENSE_KEY: '',
-  MONGO_DB: ''
+  GMAIL_PASS: '',
+
+  // Session Configurations
+  SESSION_SECRET: 'keyboard cat',
+
+  // Tracking systems
+  NEW_RELIC_LICENSE_KEY: ''
 }
