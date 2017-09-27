@@ -1,7 +1,9 @@
 const passport = require('passport')
 
+const blogRepository = require('../repository/blog')
+
 module.exports = function (router) {
-  router.get('/home', getAdmin)
+  router.get('/home', isAuthenticated, getAdmin)
   router.get('/logout', logout)
   router.get('/login', login)
   router.post('/login', passport.authenticate('local', {
@@ -10,24 +12,35 @@ module.exports = function (router) {
     failureFlash: 'Invalid password or username.'
   }))
   // router.get('/drafts', getDrafts)
-  router.get('/create', createPostComposer)
-  router.post('/create', createPostSubmit)
-  router.get('/edit/:postId', editPostPage)
-  router.post('/edit/:postId', editPostSubmit)
-  router.get('/delete/:postId', deletePostConfirmation)
-  router.post('/delete/:postId', deletePost)
+  router.get('/create', isAuthenticated, createPostComposer)
+  router.post('/create', isAuthenticated, createPostSubmit)
+  router.get('/edit/:permalink', isAuthenticated, editPostPage)
+  router.post('/edit/:permalink', isAuthenticated, editPostSubmit)
+  router.get('/delete/:permalink', isAuthenticated, deletePostConfirmation)
+  router.get('/delete/:permalink/confirm', isAuthenticated, deletePost)
 
   return router
 }
 
-function getAdmin (req, res, next) {
+function isAuthenticated (req, res, next) {
   // if not logged in, redirect
   if (!req.user) {
     return res.redirect('/admin/login')
   }
-  res.render('admin/home', {
+  return next()
+}
+
+function getAdmin (req, res, next) {
+  var locals = {
     title: 'Admin',
     path: 'admin'
+  }
+  blogRepository.getAll().then(posts => {
+    locals.posts = posts
+    res.render('admin/home', locals)
+  }).catch(err => {
+    locals.error = err
+    res.render('admin/home', locals)
   })
 }
 
@@ -70,57 +83,85 @@ function submitLogin(req, res, next) {
 function createPostComposer (req, res, next) {
   res.render('admin/create')
 }
-function createPostSubmit (req, res, next) {
+
+function parseRequestPostData (req) {
   const title = req.body.post_title
+  const pic = req.body.post_pic
   const permalink = req.body.post_permalink
-  const author = req.bodypost_author_name
+  const author = req.body.post_author_name
   const summary = req.body.post_summary
   const body = req.body.post_body
   const published = req.body.post_isPublished
 
   const bodySanitized = body.replace('\n', '<br />')
-
-  const failedPostCreation = false
-  if (!failedPostCreation) {
+  return {
+    title: title,
+    pic: pic,
+    permalink: permalink,
+    author: author,
+    summary: summary,
+    body: bodySanitized,
+    published: published,
+  }
+}
+function createPostSubmit (req, res, next) {
+  const postData = parseRequestPostData(req)
+  blogRepository.create(postData).then((post) => {
+    return res.render('admin/home', {
+      success: 'Post with id: created!',
+      post: post
+    })
+  }).catch((err) => {
+    console.log(err)
     return res.render('admin/create', {
       error: 'Failed to create new post.'
     })
-  }
-  return res.render('admin/home', {
-    success: 'Post with id: created!'
   })
 }
 
 function editPostPage (req, res, next) {
-  res.render('admin/create', {
-    edit: true,
-    data: {
-      id: 323242,
-      permalink: 'awesome-title',
-      title: 'Awesome title',
-      author: 'Jorge Ferreiro',
-      summary: 'fslkdjflkasdjf',
-      body: '# This is my body\nsdfsdf',
-      published: true
-    }
+  const postPermalink = req.params.permalink
+  blogRepository.findByPermalink(postPermalink).then(post => {
+    return res.render('admin/create', {
+      edit: true,
+      post: post
+    })
+  }).catch((err) => {
+    return res.render('admin/home', {
+      error: 'Failed to create new post.'
+    })
   })
 }
 
 function editPostSubmit (req, res, next) {
-  res.send('Post updated!')
+  const postPermalink = req.params.permalink
+  const postData = parseRequestPostData(req)
+  blogRepository.findAndUpdateByPermalink(postPermalink, postData).then(post => {
+    return res.render('admin/home', {
+      success: 'Updated post!'
+    })
+  }).catch((err) => {
+    return res.render('admin/home', {
+      error: 'Failed to update post.'
+    })
+  })
 }
 
 
 function deletePostConfirmation (req, res, next) {
   // find post.
   // show confirmation screen.
-  res.send('Are you sure you want to delete the post?')
+  const postPermalink = req.params.permalink
+  res.send('Are you sure you want to delete the post?<br /><a href="/admin/home">Cancel</a><a href="/admin/delete/' + postPermalink + '/confirm">Yes. I know this action can not be undo</a>')
 }
 
 function deletePost (req, res, next) {
-  // find post.
-  // delete post.
-  // if deleted => notifiy view.
-  // else => render same view, notifiying error 
-  res.send('Post deleted!')
+  const postPermalink = req.params.permalink
+  blogRepository.findAndDeleteByPermalink(postPermalink).then(post => {
+    return res.redirect('/admin/home')
+  }).catch((err) => {
+    return res.render('admin/home', {
+      error: 'Failed to update post.'
+    })
+  })
 }

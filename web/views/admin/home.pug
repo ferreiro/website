@@ -6,31 +6,33 @@ block content
       a(href="/logout") Logout
 
   if success
-    h1= success
+    .success(style="background: green; padding: 1em;")
+      h1= success
+
+  if error
+    .error(style="background: red; padding: 1em;")
+      h1= error
 
   h1 List of posts
+
   ul
-    li
-      h1 Title of post
-      p permalink:
-      i postid: 23423423423
-      p Views: 3000 | Likes: 400
-      ul
-        li
-          a(href="/blog/permalink") See post
-        li
-          a(href="/admin/edit/342534523452435") Edit post
-        li
-          a(href="/admin/delete/342534523452435") Delete post
-    li
-      h1 Title of post
-      p permalink:
-      i postid: 23423423423
-      p Views: 3000 | Likes: 400
-      ul
-        li
-          a(href="/blog/permalink") See post
-        li
-          a(href="/admin/edit/342534523452435") Edit post
-        li
-          a(href="/admin/delete/342534523452435") Delete post
+    each post in posts || []
+      li
+        h1
+          a(href= '/blog/' + post.permalink)= post.title
+
+        if !post.published
+          p [ DRAFT ]
+
+        p= 'Created :' + post.created
+        i= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
+        p= 'Views ' + post.views + ' | Likes: ' + post.likes
+        p= post.body
+        // p= JSON.stringify(post)
+        ul
+          li
+            a(href= '/blog/' + post.permalink) See post
+          li
+            a(href= '/admin/edit/' + post.permalink) Edit post
+          li
+            a(href= '/admin/delete/' + post.permalink) Delete post
