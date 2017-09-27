@@ -134,14 +134,21 @@
 
   }
   &__entry {
-    padding: 1.5em;
-    margin-bottom: 2em;
+    padding: 1em;
+    margin-bottom: 1em;
     position: relative;
+    @media all and (min-width: $desktop-screen) {
+      padding: 1.5em;
+      margin-bottom: 2em;
+    }
   }
   &__author {
     top: 0;
     left: 0;
-    margin-bottom: 1.2em;
+    margin-bottom: 0.8em;
+    @media all and (min-width: $desktop-screen) {
+      margin-bottom: 1em;
+    }
     &__pic {
       width: 45px;
       height: 45px;
@@ -173,37 +180,50 @@
   }
   &__post {
     @include flexbox();
-    @include flexbox_direction(row);
+    @include flexbox_direction(column);
     @include flexbox_wrap(nowrap);
     @include flexbox_justifyContent(flex-start, start);
     @include flexbox_alignContent(stretch, stretch);
     @include flexbox_alignItems(stretch, stretch);
 
+    @media all and (min-width: $desktop-screen) {
+      @include flexbox_direction(row);
+    }
+
     &__left {
-      @include flexbox_flex(0, 1, auto);
+      @include flexbox_flex(0, 0, 100%);
       @include flexbox_alignSelf(auto);
+      @media all and (min-width: $desktop-screen) {
+        @include flexbox_flex(0, 0, 40%);
+      }
     }
     &__right {
-      padding-left: 2em;
       @include flexbox_flex(1, 1, auto);
       @include flexbox_alignSelf(auto);
+      @media all and (min-width: $desktop-screen) {
+        padding-left: 2em;
+      }
     }
 
     &__pic {
-      width: 251px;
-      height: 250px;
+      width: 100%;
+      height: 150px;
+      max-height: 300px;
       overflow: hidden;
-      background-size: cover;
-      position: relative;
+      background-size: 100%;
+      background-position: 50% 50%;
       display: inline-block;
       vertical-align: top;
+      margin-bottom: 1em;
+      position: relative;
       @include border-radius(5px);
       @media all and (min-width: $tablet-screen) {
-        height: 240px;
+        height: 220px;
       }
       @media all and (min-width: $desktop-screen) {
-        width: 350px;
-        height: 270px;
+        height: 100%;
+        margin-bottom: 0;
+        background-size: cover;
       }
       &__link {
         /*
@@ -232,12 +252,16 @@
     }
     &__title {
       margin: 0;
-      font-size: 2em;
+      font-size: 1.2em;
+      @media all and (min-width: $desktop-screen) {
+        font-size: 2em;
+        font-size: 1.8em;
+      }
       &__link {
         text-decoration: none;
         color: rgba(0, 0, 0, 1);
         &:hover {
-          border-bottom: 3px solid #000;
+          border-bottom: 3px solid rgba(0, 0, 0, 1);
         }
       }
     }
@@ -248,9 +272,12 @@
       padding: 0;
       margin-top: 0.6em;
       margin-bottom: 1em;
+      @media all and (min-width: $desktop-screen) {
+        margin-top: 0.7em;
+      }
     }
     &__read {
-      font-size: 1.1em;
+      font-size: 1em;
     }
     &__share {
       display: none;
