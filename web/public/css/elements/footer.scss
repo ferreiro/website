@@ -37,6 +37,20 @@
     }
   }
 
+  &__logo {
+    height: 40px;
+    margin-bottom: 1em;
+    display: inline-block;
+    img {
+      height: 40px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+      opacity: 0.5;
+      filter: alpha(opacity =50);
+      @include border-radius(5px);
+    }
+  }
+
   &_entry {
     width: 100%;
     border-bottom:1px solid #f4f4f4;
@@ -55,10 +69,15 @@
     @media all and (min-width:$big-screen) {
     }
 
-
+    h3 {
+      margin: 0.5em 0;
+      margin-top: 1em;
+      font-size: 0.8em;
+      color: rgba(0, 0, 0, 0.6);
+    }
     h2 {
-      font-size: 1em;
-      color: #000;
+      font-size: .8em;
+      color: rgba(0, 0, 0, 0.6);
     }
     h1 {
       font-size: 1.6em;

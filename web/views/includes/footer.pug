@@ -16,15 +16,17 @@ footer.jfFooter
 
     .jfFooter_separator
 
-
     .container(style="max-width: 330px; text-align: center;")
       include ./subscriptionBox_minimal
 
     .jfFooter_separator
 
     .jfFooter_entry.jfFooter_credits
+      a(href="/").jfFooter__logo
+          img(src="/images/logo.jpg")
       h2 Designed &amp; Programmed by:
       h1 Jorge Ferreiro
+      h3 &copy; 2017 Jorge Ferreiro
 
 script(src="/bower_components/jquery/dist/jquery.min.js")
 script(src="/bower_components/fastclick/lib/fastclick.js")
