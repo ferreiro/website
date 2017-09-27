@@ -23,6 +23,9 @@ block blog_content
 
 
     .blog__entries
+      if posts.length == 0
+        h1 There are no posts currently. Come back sortly, I'm creating exclusive content!
+
       each post in posts || []
         - var postUrl = '/blog/' + post.permalink
         .blog__entry.box_with_shadow

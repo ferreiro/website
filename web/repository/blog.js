@@ -5,13 +5,19 @@ module.exports.create = function (postData) {
   return newPost.save()
 }
 
+module.exports.getAllPublished = function (options) {
+  return Post.find({
+    'published': true
+  }).sort({ created: -1 })
+}
+
 module.exports.getAll = function () {
   return Post.find().sort({ created: -1 })
 }
 
-module.exports.findByPermalink = function (postPermalink) {
+module.exports.findByPermalink = function (query) {
   return Post.findOne({
-    permalink: postPermalink
+    permalink: query.permalink
   })
 }
 

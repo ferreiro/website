@@ -13,7 +13,7 @@ module.exports = function (router) {
   }))
   // router.get('/drafts', getDrafts)
   router.get('/create', isAuthenticated, createPostComposer)
-  router.post('/create', isAuthenticated, createPostSubmit)
+  router.post('/create', isAuthenticated, postNewBlog)
   router.get('/edit/:permalink', isAuthenticated, editPostPage)
   router.post('/edit/:permalink', isAuthenticated, editPostSubmit)
   router.get('/delete/:permalink', isAuthenticated, deletePostConfirmation)
@@ -33,7 +33,8 @@ function isAuthenticated (req, res, next) {
 function getAdmin (req, res, next) {
   var locals = {
     title: 'Admin',
-    path: 'admin'
+    path: 'admin',
+    admin: true
   }
   blogRepository.getAll().then(posts => {
     locals.posts = posts
@@ -104,7 +105,7 @@ function parseRequestPostData (req) {
     published: published,
   }
 }
-function createPostSubmit (req, res, next) {
+function postNewBlog (req, res, next) {
   const postData = parseRequestPostData(req)
   blogRepository.create(postData).then((post) => {
     return res.render('admin/home', {

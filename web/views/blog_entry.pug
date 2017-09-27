@@ -3,6 +3,14 @@ extends ./includes/blog_layout
 block blog_content
 
   //- Right Container
-  .container_right.animated.fadeInUp
-    .blog_post
-      h1 Hi, this is a post
+  .container_left.animated.fadeInUp
+    if error
+      h1= error
+    if post
+      .blog_post
+        h1= post.title
+        h1= post.created
+        h1= post.author
+        img(src=post.pic)
+        div
+          #{post.body}

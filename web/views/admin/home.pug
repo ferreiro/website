@@ -1,10 +1,5 @@
 extends ./layout
 block content
-  h1 Welcome to the admin pannel!
-  ul
-    li
-      a(href="/logout") Logout
-
   if success
     .success(style="background: green; padding: 1em;")
       h1= success
@@ -15,24 +10,27 @@ block content
 
   h1 List of posts
 
-  ul
-    each post in posts || []
-      li
-        h1
-          a(href= '/blog/' + post.permalink)= post.title
+  if posts
+    ul
+      if posts.length == 0
+        p No posts yet. Write a <a href="/admin/create/">new post!</a>
+      each post in posts || []
+        li
+          h1
+            a(href= '/blog/' + post.permalink)= post.title
 
-        if !post.published
-          p [ DRAFT ]
+          if !post.published
+            p [ DRAFT ]
 
-        p= 'Created :' + post.created
-        i= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
-        p= 'Views ' + post.views + ' | Likes: ' + post.likes
-        p= post.body
-        // p= JSON.stringify(post)
-        ul
-          li
-            a(href= '/blog/' + post.permalink) See post
-          li
-            a(href= '/admin/edit/' + post.permalink) Edit post
-          li
-            a(href= '/admin/delete/' + post.permalink) Delete post
+          p= 'Created :' + post.created
+          i= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
+          p= 'Views ' + post.views + ' | Likes: ' + post.likes
+          p= post.body
+          // p= JSON.stringify(post)
+          ul
+            li
+              a(href= '/blog/' + post.permalink) See post
+            li
+              a(href= '/admin/edit/' + post.permalink) Edit post
+            li
+              a(href= '/admin/delete/' + post.permalink) Delete post

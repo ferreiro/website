@@ -7,4 +7,12 @@ html(lang="en")
         title Document
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css")
     body
+        h1 Welcome to the admin pannel!
+        if admin
+            ul
+                li
+                    a(href="/create") Write new post
+                li
+                    a(href="/logout") Logout
+
         block content
