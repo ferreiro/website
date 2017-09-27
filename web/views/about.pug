@@ -70,10 +70,22 @@ block content
         each item in work || []
           +timelineEntry(item)
 
-  .hot_links.box_with_shadow
-    .hot_links_box(style="background-image:url('images/projects/m4d_back.png');")
+  //.box_with_shadow
+  h2.timeline__smallTitle What to see next?
+  .hot_links
+    // .hot_links_box(style="background-image:url('/images/projects/m4d_back.png');")
       a(href="/projects")
-        h2 Discover my projects >
+        h2 See my portfolio >
+
+    .hot_links_box(style="background-image:url('/images/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg');")
+      a(href="/projects")
+        h2 Contact Jorge >
+        // h2 Discover my blog >
+
+    // .hot_links_box(style="background-image:url('/images/jorge_ferreiro_speaker_talks_workshops.jpg');")
+      a(href="/projects")
+        h2 Checkout my talks >
+
 //-
   h1.titleSeparator.animated.zoomIn Education
 
