@@ -1,0 +1,47 @@
+extends ./layout
+block content
+    if error
+        div(style="background: red; padding: 1em;")
+            p= error
+
+    h1 Create new post
+
+    - formAction = edit==true ? '/admin/edit/' + data.id : '/admin/create'
+
+    form(action='#{formAction}', method='post')
+    div
+        label(for='title') Title:
+        input#title(type='name', name='post_title', value= data && data.title ? data.title : '')
+    div
+        label(for='permalink') Permalink:
+        input#permalink(type='name', name='post_permalink', value= data && data.permalink ? data.permalink : '')
+    div
+        label(for='author_name') Author name:
+        input#author(type='author_name', name='post_author_name', value= data && data.author ? data.author : '')
+    div
+        label(for='summary') Summary:
+        input#summary(type='summary', name='post_summary', value= data && data.summary ? data.summary : '')
+    div
+        label(for='body') Content:
+        textarea#body(type='name', name='post_body')
+    div
+        label(for='isPublished') Is published?:
+        input(type="checkbox", id="isPublished", name="post_isPublished", checked=(data && data.published==true ? 'checked' : ''))
+    div
+        button(type='submit') Submit
+
+
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    script.
+        var simplemde = new SimpleMDE({
+            element: document.getElementById("body"),
+            promptURLs: true,
+            tabSize: 4,
+            autosave: {
+                enabled: true,
+                uniqueId: "JorgeFerreiroBlog",
+                delay: 2000,
+            }
+        });
+    if edit
+        simplemde.value(#{data.body})

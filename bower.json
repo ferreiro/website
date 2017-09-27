@@ -31,6 +31,7 @@
     "devicon": "*",
     "fastclick": "^1.0.6",
     "normalize-css": "^4.0.0",
-    "Ionicons": "ionicons#^2.0.1"
+    "Ionicons": "ionicons#^2.0.1",
+    "simplemde": "^1.11.2"
   }
 }

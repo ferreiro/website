@@ -1,0 +1,22 @@
+extends ./layout
+block content
+    if error
+        div(style="background: red; padding: 1em;")
+            p= error
+    if message
+        div(style="background: red; padding: 1em;")
+            p= message
+
+    <form action="/admin/login" method="post">
+        <div>
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" name="email">
+        </div>
+        <div>
+            <label for="mail">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>

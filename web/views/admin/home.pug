@@ -1,0 +1,36 @@
+extends ./layout
+block content
+  h1 Welcome to the admin pannel!
+  ul
+    li
+      a(href="/logout") Logout
+
+  if success
+    h1= success
+
+  h1 List of posts
+  ul
+    li
+      h1 Title of post
+      p permalink:
+      i postid: 23423423423
+      p Views: 3000 | Likes: 400
+      ul
+        li
+          a(href="/blog/permalink") See post
+        li
+          a(href="/admin/edit/342534523452435") Edit post
+        li
+          a(href="/admin/delete/342534523452435") Delete post
+    li
+      h1 Title of post
+      p permalink:
+      i postid: 23423423423
+      p Views: 3000 | Likes: 400
+      ul
+        li
+          a(href="/blog/permalink") See post
+        li
+          a(href="/admin/edit/342534523452435") Edit post
+        li
+          a(href="/admin/delete/342534523452435") Delete post
