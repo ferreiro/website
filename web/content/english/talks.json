@@ -11,6 +11,7 @@
   "pastTalks": [
     {
       "title": "Dailyfocus presentation.",
+      "url": "https://www.slideshare.net/jgferreiro/dailyfocus",
       "type": "slides",
       "pic": "/images/talks/dailyfocus_ucm.png",
       "date": "Aug 7, 2017",
@@ -19,6 +20,7 @@
     },
     {
       "title": "Workshop: Your first professional website.",
+      "url": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
       "type": "slides",
       "pic": "/images/talks/wokshop_fdi.png",
       "date": "",
@@ -27,6 +29,7 @@
     },
     {
       "title": "Presentación final Dailyfocus (incluye DEMO! 🔥) - 16 minutos - FDI UCM",
+      "url": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
       "type": "video",
       "pic": "/images/talks/dailyfocus_ucm_video.png",
       "date": "June 17, 2017",
@@ -35,6 +38,7 @@
     },
     {
       "title": "Introducing Redis by Jorge Ferreiro - May 2017",
+      "url": "https://www.slideshare.net/jgferreiro/redis-76234580",
       "type": "slides",
       "pic": "/images/talks/introducing_redis.png",
       "date": "May, 2017",
@@ -43,6 +47,7 @@
     },
     {
       "title": "Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+      "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
       "type": "video",
       "pic": "/images/talks/js_day_es.png",
       "date": "May, 2017",
@@ -51,6 +56,7 @@
     },
     {
       "title": "Webapps: introduction and publishing on Firefox OS",
+      "url": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
       "type": "slides",
       "pic": "/images/talks/mozilla_webapps.png",
       "date": "Nov 28, 2014",
