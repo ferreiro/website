@@ -2,43 +2,22 @@ if (process.env.NODE_ENV === 'production') {
   require('newrelic') // Stats for production only
 }
 
-var express = require('express')
-var path = require('path')
-var favicon = require('serve-favicon')
-var logger = require('morgan')
-var cookieParser = require('cookie-parser')
-var bodyParser = require('body-parser')
-var helmet = require('helmet')
-var session = require('express-session')
-var setupPassport = require('./setupPassport')
+const setupDatabase = require('./setupDatabase')
+const setupMiddlewares = require('./setupMiddlewares')
+const setupPassport = require('./setupPassport')
+const setupLocals = require('./setupLocals')
+const setupAdmin = require('./setupAdmin')
 
-var app = express()
+const express = require('express')
+const app = express()
 
-// Add security layer
-app.use(helmet())
-// Serve static bower: http://goo.gl/e2nTBf
-app.use(favicon(path.join(__dirname, 'web', 'public', 'images', 'favicons', 'favicon.ico')))
-app.use(express.static(path.join(__dirname, 'web/public')))
-app.use(express.static(__dirname + '/public'))
-app.use('/bower_components',  express.static(__dirname + '/bower_components'))
-app.use('/semantic',  express.static(__dirname + '/semantic'))
-app.use(logger('dev'))
-// order matters here
-app.use(cookieParser())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(session({ secret: 'keyboard cat' }))
-setupPassport(app)
-
-// view engine setup
-app.set('views', path.join(__dirname, 'web/views'))
-app.set('view engine', 'pug')
+setupDatabase()
+setupMiddlewares(app)
+setupPassport(app) // Important! after middlewares setup
+setupLocals(app)
+setupAdmin(app)
 
 // Routes
-const content = require('./web/content/english')
-app.locals.menu = content.menu
-app.locals.social = content.social
-
 app.use('/', require('./web/routes'))
 app.use('/api', require('./api'))
 
@@ -50,7 +29,6 @@ app.use(function (req, res, next) {
 })
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
