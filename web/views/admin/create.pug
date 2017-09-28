@@ -34,6 +34,7 @@ block content
             button(type='submit') Submit
 
 
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     script.
         var simplemde = new SimpleMDE({
@@ -47,4 +48,7 @@ block content
             }
         });
     if edit
-        simplemde.value(#{post.body})
+        input(type="hidden", id="postBody", value= post.body)
+        script.
+            var data = $('#postBody').val()
+            simplemde.value(data)
