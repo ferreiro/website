@@ -4,9 +4,10 @@ block content_full
 
 block content
   //- Container middle
-  .container_middle.sectionHeader
-    include ./includes/breadcrumb.pug
-    .blogHeader.animated.zoomIn
+  .container_middle
+    div.animated.fadeInUp
+      include ./includes/breadcrumb.pug
+    .blogHeader.animated.fadeInUp.talkHeader
       .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
         // SEO
         img(src= config.wallpaper)
@@ -17,7 +18,7 @@ block content
         .about_resume
           a(href="/contact").about_resume_button.about_resume_button_view.blogHeader_button= config.callToAction.button
 
-  h1.titleSeparator.animated.zoomIn Previous talks and workshops
+  h1.titleSeparator Previous talks and workshops
 
   .talks
     each talk in pastTalks || []

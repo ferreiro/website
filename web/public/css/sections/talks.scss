@@ -6,6 +6,10 @@
   .talks { column-gap: 0px; }
 }
 
+.talkHeader {
+  @include border-radius(10px);
+}
+
 .talk {
   width: 100%;
   height: 280px;
