@@ -1,5 +1,16 @@
 extends ./includes/blog_layout
 
+block content_full
+  .blogHeader#blogHeader
+    .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
+      // SEO
+      img(src= )
+    .blogHeader_userFields
+      h1.blogHeader_name
+        a(href="/blog").blogHeader_name_link
+        | #{config.title}
+      h2.blogHeader_job !{config.subtitle}
+
 block extraScripts
   script(src="/javascripts/socialSharing.js")
 
@@ -7,7 +18,6 @@ block blog_sidebar
   //- override it
 
 block blog_content
-
   //- Right Container
   .blogPost.animated.fadeInUp
     if admin
@@ -43,14 +53,15 @@ block blog_content
       h2.blogPost__subtitle= post.summary
       .blogPost__content !{post.html}
 
-      .blogPostRelated
-        h3.blogPostRelated__title Related posts
-        p No related posts yet.
-        a(href='/blog') Go back home
-        //.blogPostRelated__items
-          .blogPostRelated__item(style="background-image: url;")
-            a(href="").blogPostRelated__item__link
-          .blogPostRelated__item(style="background-image: url;")
-            a(href="").blogPostRelated__item__link
-          .blogPostRelated__item(style="background-image: url;")
-            a(href="").blogPostRelated__item__link
+block after_content
+  .blogPostRelated#relatedPosts
+    h3.blogPostRelated__title Related posts
+    p No related posts yet.
+    a(href='/blog') Go back home
+    //.blogPostRelated__items
+      .blogPostRelated__item(style="background-image: url;")
+        a(href="").blogPostRelated__item__link
+      .blogPostRelated__item(style="background-image: url;")
+        a(href="").blogPostRelated__item__link
+      .blogPostRelated__item(style="background-image: url;")
+        a(href="").blogPostRelated__item__link

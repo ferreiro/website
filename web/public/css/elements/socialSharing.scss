@@ -1,6 +1,6 @@
 .socialSharing {
   @include opacity(0);
-  @include transition(200ms);
+  @include transition(500ms);
   @media all and (max-width: $desktop-screen - 1px) {
     width: 100%;
     height: 50px;
@@ -52,31 +52,6 @@
         border: 1px solid #cecece;
         margin: 0.25em 0;
       }
-    }
-  }
-}
-
-.blogPostRelated {
-  width: 100%;
-  margin-top: 2em;
-  display: inline-block;
-  &__title {
-    font-size: 1em;
-    text-transform: uppercase;
-    border: 1px solid #DEDEDE;
-    text-align: center;
-    color: rgba(0, 0, 0, .7);
-    border-left: 0;
-    border-right: 0;
-    padding: 0.9em 0;
-    margin-bottom: 1em;
-  }
-  &__items {
-
-  }
-  &__item {
-    &__link {
-
     }
   }
 }

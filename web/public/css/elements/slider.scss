@@ -4,6 +4,8 @@
 	height: 340px;
 	background: #f4f4f4; 		// Añadir spinner
 	position: relative;  		// Grap the content inside slider class
+	overflow: hidden;
+	@include border-radius(10px);
 
 	@media all and (max-width: $tablet-screen) {
 		.slider-selector {

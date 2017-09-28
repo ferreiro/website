@@ -31,7 +31,7 @@
   background: $menuColor;
   border-bottom: 1px solid #cecece;
   vertical-align: middle;
-  z-index: 100;
+  z-index: 1000000;
   padding: 0.7em 0;
   &__wrapper {
     padding:0 1em;

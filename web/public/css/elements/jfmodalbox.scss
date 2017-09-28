@@ -37,13 +37,13 @@
   }
   &_content {
     width: 250px;
+    padding: 1em;
     top: 50% !important;
     left: 50% !important;
-    background: #fff;
-    transform: translate(-50%, -50%)  !important;
-    border: 1px solid #cecece;
-    padding: 1em;
     position: absolute;
+    background: #fff;
+    border: 1px solid #cecece;
+    @include translate(-50%, -50%);
     h2 {
       color: $primaryColor;
       margin-bottom: 10px;

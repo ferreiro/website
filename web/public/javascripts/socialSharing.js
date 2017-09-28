@@ -33,7 +33,7 @@ function setupScrollListener () {
     const headerHeight = $('.menu').outerHeight()
     const targetContainer = $('#mainContainer')
     const targetHeader = $('#blogHeader')
-    const targetFooter = $('#footer')
+    const targetFooter = $('#relatedPosts')
     const socialSharing = $('#socialSharing')
     
     $(window).scroll(function() {
