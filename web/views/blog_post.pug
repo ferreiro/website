@@ -42,3 +42,15 @@ block blog_content
       h1.blogPost__title= post.title
       h2.blogPost__subtitle= post.summary
       .blogPost__content !{post.html}
+
+      .blogPostRelated
+        h3.blogPostRelated__title Related posts
+        p No related posts yet.
+        a(href='/blog') Go back home
+        //.blogPostRelated__items
+          .blogPostRelated__item(style="background-image: url;")
+            a(href="").blogPostRelated__item__link
+          .blogPostRelated__item(style="background-image: url;")
+            a(href="").blogPostRelated__item__link
+          .blogPostRelated__item(style="background-image: url;")
+            a(href="").blogPostRelated__item__link
