@@ -1,13 +1,15 @@
 extends ./includes/blog_layout
 
+block extraScripts
+  script(src="/javascripts/socialSharing.js")
+
 block blog_sidebar
   //- override it
 
 block blog_content
 
   //- Right Container
-  div(style="max-width: 700px; width: 700px; margin: 0 auto;").animated.fadeInUp
-
+  .blogPost.animated.fadeInUp
     if admin
       ul.blog__post__options
         li
@@ -28,7 +30,15 @@ block blog_content
     if error
       h1= error
     if post
-      .blogPost
-        h1.blogPost__title= post.title
-        h2.blogPost__subtitle= post.summary
-        .blogPost__content !{post.html}
+      .socialSharing#socialSharing
+        ul.socialSharing__list
+          li.socialSharing__entry
+            a(id="tweetShare" href="#" target="_blank")
+              span.icon.icon-twitter
+          li.socialSharing__entry
+            a(id="facebookShare" href="#" target="_blank")
+              span.icon.icon-facebook
+
+      h1.blogPost__title= post.title
+      h2.blogPost__subtitle= post.summary
+      .blogPost__content !{post.html}

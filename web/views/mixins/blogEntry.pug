@@ -27,16 +27,16 @@ mixin blogEntry(post)
             if post.summary
               p.blog__post__intro= post.summary
 
-            ul.blog__post__options
-              li
-                a(href= postUrl)
-                  | Read more
-              li
-                a(href= postUrl)
-                  span.icon.ion-android-favorite-outline
-                  | Like
-
-            if admin
+            if !admin
+              ul.blog__post__options
+                li
+                  a(href= postUrl)
+                    | Read more
+                li
+                  a(href= postUrl)
+                    span.icon.ion-android-favorite-outline
+                    | Like
+            else
               hr
               i= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
               p= 'Views ' + post.views + ' | Likes: ' + post.likes

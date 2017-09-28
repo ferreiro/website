@@ -2,7 +2,7 @@
   "config": {
     "wallpaper":"/images/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg",
     "title": "The corner of Jorge",
-    "subtitle":"A blog about <strong>Software Engineering</strong>, <strong>Product<br />Managment</strong> and <strong>Entrepreneurship</strong>.",
+    "subtitle":"A blog about <strong>Software Engineering</strong>, <strong>Product<br />Management</strong> and <strong>Entrepreneurship</strong>.",
     "subscription":"/contact/",
     "author":{
        "name":"Jorge Ferreiro",

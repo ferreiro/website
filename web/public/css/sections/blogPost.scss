@@ -1,5 +1,9 @@
 .blogPost {
+  margin: 0 auto;
   margin-top: 1.5em;
+  position: relative;
+  max-width: 700px;
+  z-index: 100; //
   &__title {
     font-size: 2em;
     color: #000;
@@ -15,7 +19,7 @@
     }
   }
   &__subtitle {
-    margin-top: 5px;
+    margin-top: 7px;
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
@@ -110,6 +114,7 @@
       line-height: 1.15;
       letter-spacing: -.02em;
       color: rgba(0,0,0,.84);
+      font-size: 24px;
     }
   }
 }
