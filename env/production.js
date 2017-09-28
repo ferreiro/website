@@ -4,6 +4,7 @@ module.exports = {
   MONGODB_URI: process.env.MONGODB_URI,
   ADMIN_EMAIL: process.env.ADMIN_EMAIL,
   ADMIN_PASS: process.env.ADMIN_PASS,
+  MAILCHIMP_API_TOKEN: process.env.MAILCHIMP_API_TOKEN,
 
   // Email Services
   CONTACT_EMAIL: process.env.CONTACT_EMAIL,

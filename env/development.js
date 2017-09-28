@@ -4,6 +4,7 @@ module.exports = {
   MONGODB_URI: 'mongodb://127.0.0.1/ferreiro_blog',
   ADMIN_EMAIL: 'admin',
   ADMIN_PASS: 'admin',
+  MAILCHIMP_API_TOKEN: process.env.MAILCHIMP_API_TOKEN,
 
   // Email Services
   CONTACT_EMAIL: process.env.CONTACT_EMAIL,
