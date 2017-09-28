@@ -17,7 +17,7 @@
       "Integrated a Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses.",
       "Designed a responsive interface, took and fulfilled requirements of potential users."
     ],
-    "stack": ["nodejs", "javascript", "mongodb", "redis", "html5", "css3"],
+    "stack": ["nodejs", "javascript", "html5", "css3", "sass", "mongodb", "redis", "gulp"],
     "people": [
       {
         "name": "Jorge Ferreiro",
@@ -31,20 +31,43 @@
     }
   },
   {
+    "title": "Jorge Ferreiro Website",
+    "date": "Mar 2016 - current",
+    "type" : [ "backend", "frontend" ],
+    "color": "#d83902",
+    "avatar": "/images/avatar.png",
+    "background": "/images/projects/ferreiro_back.png",
+    "about": "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
+    "images": null,
+    "highlights": null,
+    "stack": ["nodejs", "javascript", "bower", "sass", "mongodb"],
+    "people": [
+      {
+        "name": "Jorge Ferreiro",
+        "avatar": "/images/avatar.png",
+        "url": "https://github.com/ferreiro"
+      }
+    ],
+    "links": {
+      "website": "http://ferreiro.me/",
+      "code": "https://github.com/ferreiro/website"
+    }
+  },
+  {
     "title": "Music4deejays",
     "date": "Dec 2013 - Dec 2015",
     "type" : [ "backend", "frontend" ],
     "color": "#962828",
     "avatar": "/images/projects/m4d_icon.png",
     "background": "/images/projects/m4d_back.png",
-    "about": "Streaming application for listening, sharing and downloading the best electronic music from emerging artists. ",
+    "about": "Streaming music application for listening, sharing and downloading the best electronic music from emerging artists. ",
     "images": [
         "/images/projects/music4deejays.png"
     ],
     "highlights": [
       "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",
       "Reached Top #5 music app on FirefoxOS",
-      "Streaming service using Soundcloud API"
+      "Created the streaming player using Soundcloud API"
     ],
     "stack": ["php", "javascript", "html5", "css3"],
     "people": [
@@ -58,7 +81,7 @@
   },
   {
     "title": "SudoNotes",
-    "date": "November 2015 - current",
+    "date": "Nov 2015 - Mar 2016",
     "type" : [ "backend", "frontend" ],
     "color": "#283196",
     "avatar": "/images/projects/sudonotes/sudonotes.jpg",
@@ -87,80 +110,6 @@
     "links": {
       "website": "http://github.com/sudonotes",
       "code": "http://github.com/ferreiro/sudonotes"
-    }
-  },
-  {
-    "title": "Jorge Ferreiro website",
-    "date": "March 2016 - current",
-    "type" : [ "backend", "frontend" ],
-    "color": "#d83902",
-    "avatar": "/images/avatar.png",
-    "background": "/images/projects/ferreiro_back.png",
-    "about": "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
-    "images": null,
-    "highlights": null,
-    "stack": ["nodejs", "bower", "less"],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      }
-    ],
-    "links": {
-      "website": "http://ferreiro.me/",
-      "code": "https://github.com/ferreiro/website"
-    }
-  },
-  {
-    "title": "JF~Dotfiles",
-    "date": "March 2016 - current",
-    "type" : [ "bash" ],
-    "color": "black",
-    "avatar": "/images/projects/dotfiles.png",
-    "background": "",
-    "about": "Program to install easily and comfortably all your mac applications, configuration files and design preferences (Dock, Finder...).",
-    "images": null,
-    "highlights": null,
-    "stack": ["bash"],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      }
-    ],
-    "links": {
-      "website": null,
-      "code": "https://github.com/ferreiro/dotfiles"
-    }
-  },
-  {
-    "title": "Games-X4",
-    "date": "March 2016 - current",
-    "type" : [ "backend" ],
-    "color": "#3F51B5",
-    "avatar": null,
-    "background": "/images/projects/java_back.jpg",
-    "about": "Java GUI (Graphical User Interface) program to play up to 4 games developed in partnership with an university fellow during 2º year.",
-    "images": null,
-    "highlights": null,
-    "stack": ["java"],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      },
-      {
-        "name" : "Pedro Garcia",
-        "avatar" : "images/projects/people/pedro.png",
-        "url" : "https://github.com/pegartillo95"
-      }
-    ],
-    "links": {
-      "website": null,
-      "code": "https://github.com/ferreiro/JavaGames-X4"
     }
   }
 ]

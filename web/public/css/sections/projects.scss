@@ -1,3 +1,5 @@
+$projectBorderRadious: 15px;
+
 .projects {
   @media all and (min-width:$desktop-screen) {
     -webkit-column-count: 2;
@@ -10,12 +12,12 @@
 }
 
 .project {
-
   vertical-align: top;
   margin-bottom: 1.5em;
   overflow: hidden;
   position: relative;
   border: 1px solid #f0f0f0;
+  @include border-radius($projectBorderRadious);
 
   @media all and (min-width: $tablet-screen) {}
   @media all and (min-width: $desktop-screen) {
@@ -26,10 +28,8 @@
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
     margin-bottom: 2em;
-
   }
   @media all and (min-width:$big-screen) {}
-
 
   &_bg {
     width: 100%;
@@ -38,18 +38,18 @@
     top: 0;
     left: 0;
     z-index: 0;
-    @include border-radius(5px);
+    @include border-radius($projectBorderRadious);
     overflow: hidden;
 
     &_image {
       width: 100%;
       height: 100%;
       background-size: cover;
-      -webkit-filter: blur(20px);
-      -moz-filter: blur(20px);
-      -ms-filter: blur(20px);
-      -o-filter: blur(20px);
-      filter: blur(20px);
+      -webkit-filter: blur($projectBorderRadious);
+      -moz-filter: blur($projectBorderRadious);
+      -ms-filter: blur($projectBorderRadious);
+      -o-filter: blur($projectBorderRadious);
+      filter: blur($projectBorderRadious);
 
       &::before{
         width: 100%;
@@ -74,12 +74,12 @@
     z-index: 3;
     position: relative;
 
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: $projectBorderRadious;
+    -webkit-border-top-right-radius: $projectBorderRadious;
+    -moz-border-radius-topleft: $projectBorderRadious;
+    -moz-border-radius-topright: $projectBorderRadious;
+    border-top-left-radius: $projectBorderRadious;
+    border-top-right-radius: $projectBorderRadious;
 
     @media all and (min-width:$desktop-screen) {
       padding: 1.2em 2em;
@@ -98,11 +98,11 @@
       width: 60px;
       height: 60px;
       overflow: hidden;
-      @include border-radius(100%);
       background-size: cover;
       display: inline-block;
       vertical-align: middle;
       margin-right: 1em;
+      @include border-radius(100%);
 
       @media all and (min-width:$desktop-screen) {
         width: 90px;
@@ -116,7 +116,7 @@
       vertical-align: middle;
       // margin-left: 70px;
       @media all and (min-width:$desktop-screen) {
-        // margin-left: 120px;
+        // margin-left: 1$projectBorderRadious;
       }
 
     }
@@ -151,13 +151,11 @@
       top: 50%;
       right: 1em;
       padding: 10px;
-      @include border-radius(5px);
       position: absolute;
       transform: translate(0, -50%);
       background: rgba(255, 255, 255, 0.3);
-      // color: rgba(255, 255, 255, 0.7);
       display: none;
-
+      @include border-radius($projectBorderRadious);
       &:hover {
 
       }
@@ -211,6 +209,7 @@
       overflow: hidden;
       margin-right: 1em;
       background-size: cover;
+      @include border-radius($projectBorderRadious);
       @include opacity(0.6);
       cursor: pointer;
 
