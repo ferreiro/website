@@ -47,12 +47,14 @@
     "helmet": "^3.8.1",
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.1",
+    "mailchimp-api-v3": "^1.7.0",
     "marked": "^0.3.6",
     "mongoose": "^4.11.13",
     "mongoose-permalink": "^2.0.0",
     "morgan": "^1.8.2",
     "newrelic": "^2.2.1",
     "nodemailer": "^2.3.0",
+    "nodemon": "^1.12.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta6",
@@ -60,8 +62,7 @@
     "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.4",
     "standard": "^10.0.3",
-    "validator": "^8.2.0",
-    "nodemon": "^1.12.1"
+    "validator": "^8.2.0"
   },
   "devDependencies": {
     "npm-check": "^5.4.5"
