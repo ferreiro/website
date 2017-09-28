@@ -14,7 +14,7 @@ router.get('/logout', logout)
 router.get('/login', login)
 router.post('/login', recaptcha.middleware.verify, postLogin, passport.authenticate('local', {
   successRedirect: '/admin',
-  failureRedirect: '/login',
+  failureRedirect: '/admin/login',
   failureFlash: 'Invalid password or username.'
 }))
 // router.get('/drafts', getDrafts)
