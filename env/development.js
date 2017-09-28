@@ -1,22 +1,20 @@
 module.exports = {
   // APP config
-  PORT: '',
-  MONGO_DB: '',
+  PORT: 3000,
+  MONGODB_URI: 'mongodb://127.0.0.1/ferreiro_blog',
   ADMIN_EMAIL: 'admin',
   ADMIN_PASS: 'admin',
 
   // Email Services
-  PERSONAL_EMAIL: '',
+  CONTACT_EMAIL: process.env.CONTACT_EMAIL,
   MAILGUN_USER: process.env.MAILGUN_USER,
   MAILGUN_PASS: process.env.MAILGUN_PASS,
-  GMAIL_USER: '',
-  GMAIL_PASS: '',
 
   // Session Configurations
-  SESSION_SECRET: 'keyboard cat',
+  SESSION_SECRET: 'Yolo',
   RECAPTCHA_PUBLIC: process.env.RECAPTCHA_PUBLIC,
   RECAPTCHA_SECRET: process.env.RECAPTCHA_SECRET,
 
   // Tracking systems
-  NEW_RELIC_LICENSE_KEY: ''
+  NEW_RELIC_LICENSE_KEY: process.env.NEW_RELIC_LICENSE_KEY
 }

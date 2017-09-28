@@ -1,7 +1,8 @@
 const debug = require('debug')('website:setup:database')
 const mongoose = require('mongoose');
 
-const mongoDB = process.env.MONGO_DB || 'mongodb://127.0.0.1/ferreiro_blog';
+const env = require('../env')
+const mongoDB = env.MONGODB_URI
 
 module.exports = () => {
   //Set up default mongoose connection
@@ -9,7 +10,7 @@ module.exports = () => {
     useMongoClient: true
   }, (error) => {
     if (error) {
-      throw err
+      throw error
     }
     console.log('Successfully connected to MongoDB');
   })

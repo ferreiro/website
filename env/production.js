@@ -1,16 +1,14 @@
 module.exports = {
   // APP config
-  PORT: '',
-  MONGO_DB: '',
-  ADMIN_EMAIL: '',
-  ADMIN_PASS: '',
+  PORT: process.env.PORT,
+  MONGODB_URI: process.env.MONGODB_URI,
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+  ADMIN_PASS: process.env.ADMIN_PASS,
 
   // Email Services
-  PERSONAL_EMAIL: '',
+  CONTACT_EMAIL: process.env.CONTACT_EMAIL,
   MAILGUN_USER: process.env.MAILGUN_USER,
   MAILGUN_PASS: process.env.MAILGUN_PASS,
-  GMAIL_USER: '',
-  GMAIL_PASS: '',
 
   // Session Configurations
   SESSION_SECRET: process.env.SESSION_SECRET,
@@ -18,5 +16,5 @@ module.exports = {
   RECAPTCHA_SECRET: process.env.RECAPTCHA_SECRET,
 
   // Tracking systems
-  NEW_RELIC_LICENSE_KEY: ''
+  NEW_RELIC_LICENSE_KEY: process.env.NEW_RELIC_LICENSE_KEY
 }
