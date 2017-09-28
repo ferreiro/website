@@ -4,16 +4,27 @@ block content
         div(style="background: red; padding: 1em;")
             p= message
 
-    <form action="/admin/login" method="post">
-        <div>
-            <label for="mail">E-mail:</label>
-            <input type="name" id="mail" name="email">
-        </div>
-        <div>
-            <label for="mail">Password:</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <div>
-            <button type="submit">Login</button>
-        </div>
-    </form>
+    .composer.shadow__box(style="max-width: 350px;")
+        if error
+            div(style="background: red; margin-bottom: 2.5em; padding: 1em;")
+                p= error
+
+        <form action="/admin/login" method="post">
+            <div>
+                <label for="mail">E-mail:</label>
+                <input type="name" placeholder="Your Email address" id="mail" name="email"class="subscriptionBox__email">
+            </div>
+            <div>
+                <label for="mail">Password:</label>
+                <input type="password" placeholder="Your Password" id="password" name="password"class="subscriptionBox__email">
+            </div>
+
+            <div class="g-recaptcha" style="margin-top: 1em; margin-bottom: 2em;" data-sitekey="6LflWDIUAAAAAKTIbuWjcRdx6At0hJSulNFH3p-l"></div>
+
+            <div>
+                <button type="submit" class="about_resume_button about_resume_button_view blogHeader_button" >Login</button>
+            </div>
+        </form>
+
+    <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/api2/r20170919161736/recaptcha__en.js"></script>
+    <script src="//www.google.com/recaptcha/api.js" async="" defer=""></script>

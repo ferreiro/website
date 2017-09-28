@@ -6,13 +6,24 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
         title Document
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css")
-    body
-        h1 Welcome to the admin pannel!
-        if admin
-            ul
-                li
-                    a(href="/create") Write new post
-                li
-                    a(href="/logout") Logout
 
-        block content
+        meta(name='theme-color', content='#9C2901')
+
+        link(href='https://fonts.googleapis.com/css?family=Lato:400,300,700, 900', rel='stylesheet', type='text/css')
+
+        //- Installed libraries
+        link(rel='stylesheet', href='/bower_components/normalize-css/normalize.css')
+        link(rel='stylesheet', href='/bower_components/devicon/devicon.min.css')
+        link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css')
+        link(rel='stylesheet', href='/vendors/hover-min.css')
+        link(rel='stylesheet', href='/vendors/animate.min.css')
+
+        //- Own libraries
+        link(rel='stylesheet', href='/css/style.min.css?v=2.0')
+        link(rel='stylesheet', href='/vendors/checked_box.css')
+        link(rel='stylesheet', href='/fonts/ferreiro/style.css')
+    body
+
+        include ./menu
+        .admin
+            block content

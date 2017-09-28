@@ -1,54 +1,82 @@
 extends ./layout
 block content
+
+    if edit
+        h1.admin__title Edit post
+    else
+        h1.admin__title Create new post
+
     if error
-        div(style="background: red; padding: 1em;")
+        div(style="background: red; text-align: center; margin-bottom: 2em; padding: 1.5em;")
             p= error
 
-    h1 Create new post
+    if success
+        div(style="background: green; text-align: center; margin-bottom: 2em; padding: 1.5em;")
+            p= success
 
-    - formAction = edit==true ? '/admin/edit/' + post.permalink : '/admin/create'
+    if edit == true & post == null
+        p Post does not exist
+    else
+        - formAction = edit==true ? '/admin/edit/' + post.permalink : '/admin/create'
 
-    form(action= formAction, method='post')
-        div
-            label(for='title') Title:
-            input#title(type='name', name='post_title', value= post && post.title ? post.title : '')
-        div
-            label(for='pic') Pic:
-            input#title(type='name', name='post_pic', value= post && post.pic ? post.pic : '')
-        div
-            label(for='permalink') Permalink:
-            input#permalink(type='name', name='post_permalink', value= post && post.permalink ? post.permalink : '')
-        div
-            label(for='author_name') Author name:
-            input#author(type='author_name', name='post_author_name', value= post && post.author ? post.author : '')
-        div
-            label(for='summary') Summary:
-            input#summary(type='summary', name='post_summary', value= post && post.summary ? post.summary : '')
-        div
-            label(for='body') Content:
-            textarea#body(type='name', name='post_body')
-        div
-            label(for='isPublished') Is published?:
-            input(type="checkbox", id="isPublished", name="post_isPublished", checked=(post && post.published==true ? 'checked' : ''))
-        div
-            button(type='submit') Submit
+        .composer.shadow__box
 
+            form(action= formAction, method='post')
+                .composer__entry
+                    // label(for='title', class="composer__legend") Title:
+                    textarea#title.composer__title(type='name', placeholder="Title", name='post_title')= (post && post.title ? post.title : '')
+                .composer__entry
+                    label(for='pic', class="composer__legend")
+                        span.icon.ion-image
+                        p Image
+                    input#pic.composer__input(type='name', placeholder="Image", class="admin__input", name='post_pic', value= post && post.pic ? post.pic : '')
+                .composer__entry
+                    label(for='permalink', class="composer__legend")
+                        span.icon.ion-link
+                        p Permalink
+                    input#permalink.composer__input(type='name', placeholder="Permalink", class="admin__input", name='post_permalink', value= post && post.permalink ? post.permalink : '')
+                .composer__entry
+                    label(for='author_name', class="composer__legend")
+                        span.icon.ion-person
+                        p Author
+                    input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author && post.author.name ? post.author.name : '')
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    script.
-        var simplemde = new SimpleMDE({
-            element: document.getElementById("body"),
-            promptURLs: true,
-            tabSize: 4,
-            autosave: {
-                enabled: true,
-                uniqueId: "JorgeFerreiroBlog",
-                delay: 2000,
-            }
-        });
-    if edit
-        input(type="hidden", id="postBody", value= post.body)
+                .composer__entry
+                    label(for='author_pic', class="composer__legend")
+                        span.icon.ion-person
+                        p Author pic
+                    input#author.composer__input(type='author_pic', placeholder="Author Pic", class="admin__input", name='post_author_pic', value= post && post.author && post.author.pic ? post.author.pic : '')
+
+                .composer__entry
+                    label(for='summary', class="composer__legend")
+                        span.icon.ion-document-text
+                        p Summary
+                    textarea#summary.composer__input(type='summary', placeholder="Summary", class="admin__input", name='post_summary')= (post && post.summary ? post.summary : '')
+                .composer__entry
+                    textarea#body(type='name', class="admin__textarea", name='post_body')
+                .composer__entry
+                    label(for='isPublished', class="composer__legend" style="width: auto; margin-top: -4px;") Is published?
+                    input.composer__input(type="checkbox", style="margin-left: 120px;" id="isPublished", name="post_isPublished", checked=(post && post.published==true ? true : false))
+                .composer__entry(style="margin-top: 2em;")
+                    <button type="submit" class="about_resume_button about_resume_button_view blogHeader_button">Submit</button>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+        script(src="/bower_components/autogrow/autogrow.min.js")
         script.
-            var data = $('#postBody').val()
-            simplemde.value(data)
+            $('textarea').autogrow();
+            var simplemde = new SimpleMDE({
+                element: document.getElementById("body"),
+                promptURLs: true,
+                tabSize: 4,
+                autosave: {
+                    enabled: true,
+                    uniqueId: "JorgeFerreiroBlog",
+                    delay: 2000,
+                }
+            });
+        if edit
+            input(type="hidden", id="postBody", value= post.body)
+            script.
+                var data = $('#postBody').val()
+                simplemde.value(data)

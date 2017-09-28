@@ -1,0 +1,93 @@
+.menu.fixed
+  .container
+    .menu__wrapper
+      a.logo(href="/")
+          img(src="/images/logo.jpg")
+
+      .left
+        .dropdown
+          a(href='/', target='_blank')
+            .item.with-icon
+              p
+                span.icon.ion-ios-arrow-back
+                span.social_network_text Go back to website
+
+      .right
+
+        if admin
+          a.item(href="/admin/")
+            p All blog posts
+          a.item(href="/admin/published")
+            p Published
+          a.item(href="/admin/drafts")
+            p Drafts
+          //-each item in menu || []
+            a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
+              p= item.name
+
+          .dropdown
+            a(href='/admin/create')
+              .item.with-icon(style="background: #f9764f; border-color: #d83902; ")
+                p
+                  span.icon.ion-android-create(style="color: #fff;")
+                  span.social_network_text(style="color: #fff;") Write post
+
+        .jfmenu_open_button#dropdown-mobiles
+          span.icon-paragraph-justify
+
+        if admin
+          .dropdown
+            a(href='/admin/logout')
+              .item.with-icon
+                p
+                  span.icon.ion-log-out
+                  span.social_network_text Logout
+        else
+          .dropdown
+            a(href='/admin/login')
+              .item.with-icon
+                p
+                  span.icon.ion-log-in
+                  span.social_network_text Login
+//- .jfmenu
+  .jfmenu_overlay
+  .jfmenu_content
+
+    // put the size of your header
+    .jfmenu_top_separator
+
+    h1.jfmenu_title Discover me
+
+    // Menu block containing links
+    ul
+      each item in menu || []
+        li(id= item.id, class= path===item.id ? 'current_section' : '')
+          a(href= item.url, target= item.target || '_self')
+            span= item.name
+
+      li.submenu
+        a
+          span Social Networks
+          span.icon-arrow-down2.right
+
+        // Menu block containing links (sublinks)
+        ul
+          each item in social || []
+            li
+              a(href= item.url, target= item.target || '_blank')
+                span.icon-separated(class="icon-" + item.icon)
+                span #{item.name}
+
+      li.submenu
+        a
+          span Language
+          span.icon-arrow-down2.right
+
+        ul
+          li
+            a(href="/")
+              span English
+
+      //- li
+      //-   a(onclick="alert('me [at] jgferreiro.com')")
+      //-     span Email

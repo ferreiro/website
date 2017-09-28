@@ -13,7 +13,9 @@ module.exports = {
   GMAIL_PASS: '',
 
   // Session Configurations
-  SESSION_SECRET: 'cat',
+  SESSION_SECRET: process.env.SESSION_SECRET,
+  RECAPTCHA_PUBLIC: process.env.RECAPTCHA_PUBLIC,
+  RECAPTCHA_SECRET: process.env.RECAPTCHA_SECRET,
 
   // Tracking systems
   NEW_RELIC_LICENSE_KEY: ''
