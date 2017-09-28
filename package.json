@@ -60,12 +60,10 @@
     "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.4",
     "standard": "^10.0.3",
-    "validator": "^8.2.0"
+    "validator": "^8.2.0",
+    "nodemon": "^1.12.1"
   },
   "devDependencies": {
-    "less": "^2.7.1",
-    "less-plugin-clean-css": "^1.5.1",
-    "nodemon": "^1.12.1",
     "npm-check": "^5.4.5"
   }
 }
