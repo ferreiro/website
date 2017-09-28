@@ -2,9 +2,13 @@
   width: $logoHeight;
   height: $logoHeight;
   display: inline-block;
-  float: left;
-  border-right: 1px dashed $secundaryColorLight;
+  // border-right: 1px dashed $secundaryColorLight;
   position: relative;
+  overflow: hidden;
+  float: left;
+  // margin-right: 0.5em;
+  margin-right: 1em;
+  @include border-radius(5px);
 }
 .logo img {
   // height: 52px;
@@ -22,12 +26,16 @@
 
 .menu {
   width: 100%;
-  height: $logoHeight;
+  height: $headerHeight;
   display: inline-block;
   background: $menuColor;
   border-bottom: 1px solid #cecece;
   vertical-align: middle;
- z-index: 100;
+  z-index: 100;
+  padding: 0.7em 0;
+  &__wrapper {
+    padding:0 1em;
+  }
 }
 span.icon-separated {
   margin-right: 0.5em;
@@ -37,7 +45,8 @@ span.icon-separated {
 }
 .item-selected {
   background: #F7F7F7 !important;
-  background: #fff4f0 !important;
+  // background: #fff4f0 !important;
+  // border-bottom: 1px solid #d83902;
   &:before {
     width:100%;
     position: absolute;
@@ -45,19 +54,21 @@ span.icon-separated {
     left:0;
     right:0;
     content: '';
-    border-bottom: 1px solid #d83902;
+    // border-bottom: 1px solid #d83902;
   }
   p {
     color: #000 !important;
   }
 }
 .item {
-  height: $logoHeight;
+  height: $headerHeight;
   display: inline-block;
   position: relative;
   padding: 0 1.5em;
-  border-right: 1px dashed $secundaryColorLight;
+  // border-right: 1px dashed $secundaryColorLight;
   text-decoration: none;
+  margin-right: 0.6em;
+  @include border-radius(60px);
   p {
     font-size: 1.2em;
     position: relative;
@@ -78,13 +89,23 @@ span.icon-separated {
   position: relative;
   display: inline-block;
   z-index: 100;
+  cursor: pointer;
 
   @media all and (max-width: $desktop-screen) {
     display: none !important; // Hide everyhing on mobile
   }
 
+  &-social {
+    .item {
+      font-weight: 600;
+      margin-right: 0;
+      // height: 63px;
+      // border: 2px solid #E9E9E9;
+    }
+  }
+
   &-content {
-    min-width: 100px;
+    min-width: 150px;
     padding: 1em;
     background: #fff;
     position: absolute;
@@ -93,18 +114,37 @@ span.icon-separated {
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 100;
     display: none;
+  }
 
-    a {
-      width: 100%;
-      padding: 0.5em 0;
-      display: inline-block;
-      text-align: right;
-      text-decoration: none;
-      cursor: pointer;
-      &:hover {
-        font-weight: bold;
-      }
+  &-item {
+    width: 100%;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0.5em;
+    &:hover {
+      background: #f4f4f4;
+      @include border-radius(10px);
     }
+  }
+
+  &-icon {
+    width: 40px;
+    font-size: 40px;
+    padding: 5px;
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  &-text {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
   }
 
   &:hover .dropdown-content {

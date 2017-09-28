@@ -5,8 +5,9 @@
   border-right:0;
   padding:2em 0;
   margin-top: 1em;
+  text-align: center;
   @media all and (min-width:$desktop-screen) {
-    text-align: left;
+    // text-align: left;
   }
 
   &_title {
@@ -27,7 +28,7 @@
     // border-bottom: 0;
 
     @media all and (min-width:$desktop-screen) {
-      width: 48%;
+      width: 100%;
       padding: 0;
       margin: 0;
       margin-right: 3.5%;

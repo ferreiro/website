@@ -3,8 +3,10 @@
 @import "./globals/variables";
 @import "./globals/mixins";
 @import "./commun";
+@import "./globals/**";
 
 /* ELEMENTS */
+@import "./elements/**";
 @import "./elements/imagePopup";
 @import "./elements/jfmodalbox";
 @import "./elements/breadcrumb";
@@ -26,11 +28,10 @@
 @import "./elements/slider";
 
 /* COLLECTIONS */
-@import "./collections/containers";
-@import "./collections/menu";
-@import "./collections/jfmenu";
+@import "./collections/**";
 
 /* SECTIONS */
+@import "./sections/**";
 @import "./sections/error";
 @import "./sections/about";
 @import "./sections/contact";

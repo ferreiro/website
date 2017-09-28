@@ -48,6 +48,16 @@
       font-weight: 400;
       font-size: 1.8em;
       margin-bottom: 0.5em;
+      text-decoration: none;
+      position: relative;
+      &_link {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+      }
       @media all and (min-width:$desktop-screen) {
         font-size: 3em;
         margin-bottom: 0.5em;
@@ -145,6 +155,7 @@
   &__author {
     top: 0;
     left: 0;
+    margin-top: 0.5em;
     margin-bottom: 0.8em;
     @media all and (min-width: $desktop-screen) {
       margin-bottom: 1em;
@@ -172,6 +183,7 @@
       margin: 0;
       padding: 0;
       margin-bottom: 5px;
+      text-transform: capitalize;
     }
     &__date {
       font-size: 0.9em;
@@ -247,7 +259,6 @@
     }
     &__metadata {
       vertical-align: top;
-      margin-top: 0;
       display: inline-block;
     }
     &__title {
@@ -275,6 +286,24 @@
       @media all and (min-width: $desktop-screen) {
         margin-top: 0.7em;
       }
+    }
+    &__options li {
+      display: inline-block;
+      margin-top: 0.5em;
+    }
+    &__options li a {
+      margin-right: 1em;
+      border: 1px solid #cecece;
+      border-radius:3px;
+      padding: 0.6em 0.8em;
+      display: inline-block;
+      text-decoration: none;
+    }
+    &__options li a:hover {
+      background: #f4f4f4;
+    }
+    &__options li a span {
+      margin-right: 10px;
     }
     &__read {
       font-size: 1em;

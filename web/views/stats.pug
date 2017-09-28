@@ -3,16 +3,16 @@ extends ./includes/layout
 block content
 
 	include ./includes/breadcrumb.pug
-	
+
 	if content
 
 		p.stats_info #{content.info}
-		
+
 		if content.images
 			.stats_images
-				- for image in content.images
-					a(href="#{image}", target="_blank")
-						img.stats_images_pic(src="#{image}", alt="")
-					
+				each image in content.images
+					a(href= image, target="_blank")
+						img.stats_images_pic(src= image, alt="").box_with_shadow
+
 	else
 		p I could not load the content

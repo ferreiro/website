@@ -7,9 +7,26 @@
   &__bigTitle {
     text-align: center;
     margin-top: 1em;
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 500;
     color: $primaryColor;
+    @media all and (min-width: $desktop-screen) {
+      margin-top: 1em;
+      font-size: 3em;
+    }
+  }
+  &__smallTitle {
+    text-align: center;
+    margin-top: 1em;
+    font-size: 2em;
+    font-weight: 500;
+    color: #000;
+    display: block;
+    @media all and (min-width: $desktop-screen) {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      font-size: 1.5em;
+    }
   }
   &__badge {
     width: 100%;
@@ -111,11 +128,12 @@
       }
     }
     &__logo {
-      width: 80px;
+      width: 60px;
       margin-right: 0.7em;
       @include flexbox_flex(0, 0, auto);
       @include flexbox_alignSelf(stretch);
       @media all and (min-width: $desktop-screen) {
+        width: 80px;
         margin-right: 1.5em;
       }
       img {
@@ -125,7 +143,7 @@
     }
     &__metadata {
       @include flexbox_flex(1, 1, auto);
-      @include flexbox_alignSelf(stretch);
+      @include flexbox_alignSelf(center);
     }
     &__position {
       font-size: 1em;
@@ -161,6 +179,12 @@
       // color: $primaryColor;
     }
   }
+  &__oneline {
+    margin-bottom: 0.1em;
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+  }
   &__bullets {
     margin: 0 ;
     padding: 0;
@@ -171,7 +195,7 @@
   }
   &__bullet {
     list-style: none;
-    margin-bottom: 1em;
+    margin-bottom: 0.9em;
     position: relative;
     &:before {
       content: "•";

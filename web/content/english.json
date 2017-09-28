@@ -1,145 +1,71 @@
 {
-  "menu" : [
+  "menu":[
     {
-      "title" : "About Jorge Ferreiro",
-      "url" : "/about"
+      "id": "about",
+      "icon": null,
+      "name" : "Biography",
+      "url" : "/about",
+      "target": "_self"
     },
     {
-      "title" : "Projects",
-      "url" : "/projects"
+      "id": "blog",
+      "icon": null,
+      "name" : "Blog",
+      "url" : "/blog",
+      "target": "_self"
     },
     {
-      "title" : "Contact",
-      "url" : "/contact"
+      "id": "portfolio",
+      "icon": null,
+      "name" : "Portfolio",
+      "url" : "/portfolio",
+      "target": "_self"
     },
     {
-      "title" : "Social networks",
-      "url" : "#"
+      "id": "talks",
+      "icon": null,
+      "name" : "Talks",
+      "url" : "/talks",
+      "target": "_self"
+    },
+    {
+      "id": "contact",
+      "icon": null,
+      "name" : "Contact",
+      "url" : "/contact",
+      "target": "_self"
     }
   ],
-  "about"  : {
-    "wallpaper": "images/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg",
-    "highlights" : [
-      "<strong>Computer science</strong> student",
-      "Full stack <strong>software developer</strong>",
-      "<strong>Programming</strong> &amp; music lover"
-    ],
-    "button" : "Dicover my work",
-    "skills" : [
-      {
-        "id": "backend",
-        "title" : "Backend",
-        "list" : [ "nodejs", "python", "java", "cplusplus" ]
-      },
-      {
-        "id": "frontend",
-        "title" : "Frontend",
-        "list" : [ "javascript", "less", "html5", "sass" ]
-      },
-      {
-        "id": "database",
-        "title" : "Databases",
-        "list" : [ "mongodb", "redis", "mysql" ]
-      },
-      {
-        "id": "tools",
-        "title" : "Tools",
-        "list" : [ "travis", "git", "bower", "jquery"]
-      }
-    ]
-  },
-  "projects" : {
-    "webButton" : "See webpage",
-    "repoButton" : "Open source repository",
-    "list": [
-      {
-        "title" : "Music4deejays",
-        "type" : [ "backend", "frontend" ],
-        "background" : "/images/projects/m4d_back.png",
-        "date" : "May 2014-Nov 2015",
-        "color" : "red_gradient",
-        "pic" : "/images/projects/m4d_icon.png",
-        "description" : "Streaming application for listen, share and download the best electronic music from emerging artists.",
-        "highlights" : [
-          "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",
-          "Reached Top #5 music app on FirefoxOS",
-          "Streaming service using Soundcloud API"
-        ],
-        "skills" : ["php", "javascript", "html5", "css3"],
-        "url" : null,
-        "webpage" : "http://music4deejays.com",
-        "people" : null
-      },
-      {
-        "title" : "Jorge Ferreiro web",
-        "type" : [ "backend", "frontend" ],
-        "background" : "/images/projects/ferreiro_back.png",
-        "date" : "March 2016 - current",
-        "color" : "main_gradient",
-        "pic" : "/images/avatar.png",
-        "description" : "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
-        "highlights" : [
-          "Node.JS Open Source Project."
-        ],
-        "webpage" : null,
-        "skills" : ["nodejs", "bower", "less"],
-        "repository" : "https://github.com/ferreiro/website",
-        "people" : null
-      },
-      {
-        "title" : "SudoNotes",
-        "type" : [ "backend", "frontend" ],
-        "background" : "/images/projects/sudonotes_back.png",
-        "date" : "November 2015 - current",
-        "color" : "blue_gradient",
-        "pic" : "images/projects/sudonotes.jpg",
-        "description" : "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) Application granted 10/10 in 'GIW' university course.",
-        "url" : "https://github.com/sudonotes",
-        "webpage" : null,
-        "skills" : ["python", "html5", "css3", "jquery", "SQLite3"],
-        "repository" : "http://github.com/ferreiro/sudonotes",
-        "people" : [
-          {
-            "name" : "Tommaso Innocenti",
-            "avatar" : "images/projects/people/tommy.jpg",
-            "website" : "https://github.com/innotommy91"
-          }
-        ]
-      },
-      {
-        "title" : "JF~Dotfiles",
-        "type" : [ "bash" ],
-        "background" : null,
-        "date" : "March 2016 - current",
-        "color" : "dark_gradient",
-        "pic" : "images/projects/dotfiles.png",
-        "description" : "Program to install easily and comfortably all your mac applications, configuration files and design preferences (Dock, Finder...).",
-        "webpage" : null,
-        "skills" : null,
-        "repository" : "https://github.com/ferreiro/dotfiles",
-        "people" : null
-      },
-      {
-        "title" : "Games-X4",
-        "type" : [ "backend" ],
-        "background" : "/images/projects/java_back.jpg",
-        "date" : "October 2014 - June 2015",
-        "color" : "green_gradient",
-        "pic" : null,
-        "description" : "Java GUI (Graphical User Interface) program to play up to 4 games developed in partnership with an university fellow during 2º year.",
-        "url" : null,
-        "skills" : ["java"],
-        "repository" : "https://github.com/ferreiro/JavaGames-X4",
-        "people" : [
-          {
-            "name" : "Pedro Garcia",
-            "avatar" : "images/projects/people/pedro.png",
-            "website" : "https://github.com/pegartillo95"
-          }
-        ]
-      }
-    ]
-  },
+  "social":[
+    {
+      "id": "linkedin",
+      "icon": "linkedin",
+      "name" : "Linkedin",
+      "url": "https://www.linkedin.com/in/jgferreiro/",
+      "target": "_blank"
+    },
+    {
+      "id": "twitter",
+      "icon": "twitter",
+      "name" : "Twitter",
+      "url": "https://twitter.com/jgferreiro",
+      "target": "_blank"
+    },
+    {
+      "id": "instagram",
+      "icon": "instagram",
+      "name" : "Instagram",
+      "url": "https://www.instagram.com/jgferreiro/",
+      "target": "_blank"
+    },
+    {
+      "id": "github",
+      "icon": "github",
+      "name" : "Github",
+      "url": "https://www.github.com/ferreiro",
+      "target": "_blank"
+    }
+  ],
   "stats" : {
     "info" : "",
     "images" : [

@@ -35,6 +35,31 @@ function isAuthenticated (req, res, next) {
   return next()
 }
 
+function logout (req, res, next) {
+  req.logout();
+  res.redirect('/admin')
+}
+
+function login (req, res, next) {
+  var message = null
+  if (req.flash('error').length > 0) {
+    message = 'Invalid password or email.'
+  }
+
+  res.render('admin/login', {
+    message: message
+  })
+}
+
+function postLogin(req, res, next) {
+  if (!req.recaptcha.error) {
+    return next()
+  }
+  res.render('admin/login', {
+    error: 'Recaptcha not valid.'
+  })
+}
+
 function getAllPosts (req, res, next) {
   var locals = {
     title: 'Posts',
@@ -78,30 +103,6 @@ function getDraftsPosts (req, res, next) {
   })
 }
 
-function logout (req, res, next) {
-  req.logout();
-  res.redirect('/admin')
-}
-
-function login (req, res, next) {
-  var message = null
-  if (req.flash('error').length > 0) {
-    message = 'Invalid password or email.'
-  }
-
-  res.render('admin/login', {
-    message: message
-  })
-}
-function postLogin(req, res, next) {
-  if (!req.recaptcha.error) {
-    return next()
-  }
-  res.render('admin/login', {
-    error: 'Recaptcha not valid.'
-  })
-}
-
 function createPostComposer (req, res, next) {
   const context = {
     admin: true
@@ -124,10 +125,8 @@ function parseRequestPostData (req) {
     title: title,
     pic: pic,
     permalink: permalink,
-    author: {
-      name: authorName,
-      pic: authorPic
-    },
+    author_name: authorName,
+    author_pic: authorPic,
     summary: summary,
     body: bodySanitized,
     published: published,

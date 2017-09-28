@@ -1,6 +1,6 @@
 // Margins - Padding
 $website_desktop_width:$desktop-screen; // Width of your desktop container
-$website_header:67px; // Header size of your website
+$website_header: $headerHeight; // Header size of your website
 $menu_padding:20px; // Used on titles and li's
 // Text Size
 $title_size:2em;
@@ -80,7 +80,7 @@ $border_color:#cecece;
 
   // Start the menu after the header of your website
   &_top_separator {
-    height:$website_header; // Header size of your website
+    height:$website_header + 2 * $headerPadding - 6px; // Header size of your website
   }
 
   &_title {

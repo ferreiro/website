@@ -39,13 +39,13 @@ block content
                     label(for='author_name', class="composer__legend")
                         span.icon.ion-person
                         p Author
-                    input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author && post.author.name ? post.author.name : '')
+                    input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author_name ? post.author_name : '')
 
                 .composer__entry
                     label(for='author_pic', class="composer__legend")
                         span.icon.ion-person
                         p Author pic
-                    input#author.composer__input(type='author_pic', placeholder="Author Pic", class="admin__input", name='post_author_pic', value= post && post.author && post.author.pic ? post.author.pic : '')
+                    input#author.composer__input(type='author_pic', placeholder="Author Pic", class="admin__input", name='post_author_pic', value= post && post.author_pic ? post.author_pic : '')
 
                 .composer__entry
                     label(for='summary', class="composer__legend")

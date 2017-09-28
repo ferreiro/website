@@ -22,7 +22,7 @@ block content
 				span.lang_text Spanish course #{spanishCourses}/50
 
 			if content.courses
-				- for course, index in content.courses
+				each course, index in content.courses
 					.course
 
 						if course.title
@@ -32,7 +32,7 @@ block content
 
 						if course.subjects
 							.course_subjects
-								- for subject in course.subjects
+								each subject in course.subjects
 									.course_subjects_entry
 										- lang = subject.lang
 										if lang

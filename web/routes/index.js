@@ -3,28 +3,26 @@ var express = require('express')
 var content = require('../content/english.json') // TODO: Add multilanguage
 var router = express.Router()
 
-var blog = require('./blog')
+// Mounting more subroutes.
 var projects = require('./projects')
 var talks = require('./talks')
 var social = require('./social')
 var contact = require('./contact')
 
-
 router.get('/', featured) // Home shows about page
+router.use('/about', require('./about'))
+router.use('/blog', require('./blog'))
+router.use('/portfolio', projects)
+router.use('/talks', talks)
+router.use('/contact', contact)
+router.use('/social', social)
+router.use('/admin', require('./admin'))
 router.get('/stats', stats)
 router.get('/university', university)
 router.get('/resume/jorge_ferreiro_resume.pdf', resume)
 router.get('/projects', function (req, res) {
   res.redirect('/portfolio') // leave this, backwards compatibility
 })
-
-// Mounting more subroutes.
-router.use('/about', require('./about'))
-router.use('/blog', blog)
-router.use('/portfolio', projects)
-router.use('/talks', talks)
-router.use('/social', social)
-router.use('/contact', contact)
 
 module.exports = router
 
@@ -36,7 +34,6 @@ function featured (req, res, next) {
     content: content.about
   })
 }
-
 
 function stats (req, res, next) {
   res.render('stats', {

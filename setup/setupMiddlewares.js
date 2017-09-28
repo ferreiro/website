@@ -29,6 +29,11 @@ module.exports = (app) => {
   app.use(cookieParser())
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: false }))
+
+  // Session configuration (always after previous block)
+  if (!env.SESSION_SECRET) {
+    throw new Error('SESSION_SECRET not provided ')
+  }
   app.use(session({
     secret: env.SESSION_SECRET
   }))

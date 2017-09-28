@@ -30,7 +30,7 @@ sendMessage = function (message, cb) {
 
   mailOptions = {
     from: message.name + '<' + env.MAILGUN_USER + '>', // sender address
-    to: env.PERSONAL_EMAIL, // list of receivers
+    to: env.CONTACT_EMAIL, // list of receivers
     subject: '[Ferreiro.me] New message', // Subject line
     html: emailHMTL // html body
   }

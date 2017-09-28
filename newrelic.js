@@ -1,7 +1,7 @@
 'use strict'
 
 // ver https://rpm.newrelic.com/accounts/1441331/applications/setup#
-var configFile = require('./config')
+var env = require('./env')
 
 /**
  * New Relic agent configuration.
@@ -17,7 +17,7 @@ exports.config = {
   /**
    * Your New Relic license key.
    */
-  license_key: configFile.NEW_RELIC_LICENSE_KEY,
+  license_key: env.NEW_RELIC_LICENSE_KEY,
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing

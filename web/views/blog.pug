@@ -1,4 +1,5 @@
 extends ./includes/blog_layout
+include ./mixins/blogEntry
 
 block blog_content
 
@@ -27,26 +28,4 @@ block blog_content
         h1 There are no posts currently. Come back sortly, I'm creating exclusive content!
 
       each post in posts || []
-        - var postUrl = '/blog/' + post.permalink
-        .blog__entry.box_with_shadow
-          //.blog__link
-            a(href= postUrl)
-          .blog__post
-            .blog__post__left
-              .blog__post__pic(style="background-image:url(" + post.pic + ");")
-                a(href= postUrl).blog__post__pic__link
-            .blog__post__right
-              .blog__post__metadata
-                .blog__author
-                  .blog__author__pic
-                    img(src= post.author.pic || '')
-                  .blog__author__content
-                    h2.blog__author__name= post.author.name || ''
-                    p.blog__author__date= post.date || ''
-
-                h1.blog__post__title
-                  a(href=postUrl).blog__post__title__link= post.title
-
-                if post.summary
-                  p.blog__post__intro= post.summary
-                a(href= postUrl).blog__post__read Read more
+        +blogEntry(post)

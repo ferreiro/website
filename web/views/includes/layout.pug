@@ -23,9 +23,11 @@ html
 
 		include ./menu.pug
 
-		.ui.container#mainContainer
-			.container_inner
-				block content
+		.ui.container_home
+			block content_full
+			.container#mainContainer
+				.container_inner
+					block content
 
 		include ./footer.pug
 

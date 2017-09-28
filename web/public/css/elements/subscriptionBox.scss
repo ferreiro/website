@@ -54,7 +54,7 @@
       text-align: left;
     }
     &__feature {
-      font-size: 1.2em;
+      font-size: 1em;
       margin-bottom: 0.5em;
       margin-left: 2em;
     }
@@ -65,7 +65,7 @@
   }
   &__email {
     border: 1px solid #cecece;
-    padding: 0.8em 0;
+    padding: 0.7em 0;
     @include border-radius(10px);
   }
   &__loader {
@@ -82,9 +82,13 @@
     margin-top: 0.5em;
     padding: 1em 1.2em;
     background: $primaryColor;
+    cursor: pointer;
     color: #fff;
     border: 0;
     @include transition(0.3s);
     @include border-radius(60px);
+    &:hover {
+      background: #ff4302;
+    }
   }
 }

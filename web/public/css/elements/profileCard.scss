@@ -2,7 +2,7 @@
 
   background: #fff;
   position: relative;
-  @include border-radius(5px);
+  // @include border-radius(5px);
   @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
   overflow: hidden;
   padding: 1.1em 0;
@@ -77,7 +77,7 @@
     bottom: 0;
     z-index: 0;
 
-    @include border-radius(5px);
+    // @include border-radius(5px);
     overflow: hidden;
 
     img {

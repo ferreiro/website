@@ -32,6 +32,7 @@
     "fastclick": "^1.0.6",
     "normalize-css": "^4.0.0",
     "Ionicons": "ionicons#^2.0.1",
-    "simplemde": "^1.11.2"
+    "simplemde": "^1.11.2",
+    "autogrow": "^1.0.3"
   }
 }

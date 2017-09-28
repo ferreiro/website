@@ -11,6 +11,12 @@ module.exports.getAllPublished = function (options) {
   }).sort({ created: -1 })
 }
 
+module.exports.getAllDrafts = function (options) {
+  return Post.find({
+    'published': false
+  }).sort({ created: -1 })
+}
+
 module.exports.getAll = function () {
   return Post.find().sort({ created: -1 })
 }
@@ -24,7 +30,7 @@ module.exports.findByPermalink = function (query) {
 module.exports.findAndUpdateByPermalink = function (postPermalink, postData) {
   return Post.findOneAndUpdate({
     permalink: postPermalink
-  }, postData)
+  },postData, { new: true })
 }
 
 module.exports.findAndDeleteByPermalink = function (postPermalink) {

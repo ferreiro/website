@@ -36,6 +36,7 @@
     "debug": "^3.0.1",
     "email-templates": "^3.0.3",
     "express": "^4.15.4",
+    "express-recaptcha": "^3.0.0",
     "express-session": "^1.15.6",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
@@ -46,6 +47,7 @@
     "helmet": "^3.8.1",
     "less": "^2.7.2",
     "less-plugin-clean-css": "^1.5.1",
+    "marked": "^0.3.6",
     "mongoose": "^4.11.13",
     "mongoose-permalink": "^2.0.0",
     "morgan": "^1.8.2",
@@ -55,6 +57,7 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta6",
     "request": "^2.82.0",
+    "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.4",
     "standard": "^10.0.3",
     "validator": "^8.2.0"

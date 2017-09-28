@@ -20,38 +20,28 @@ mixin blogEntry(post)
               // .blog__author__pic
                 img(src= post.author.pic || '')
               .blog__author__content
-                h2.blog__author__name= post.author.name || ''
-                p.blog__author__date= post.created || ''
+                h2.blog__author__name
+                  | #{post.author_name || 'Jorge'} - #{post.created || ''}
+                // p.blog__author__date= post.created || ''
 
             if post.summary
               p.blog__post__intro= post.summary
-            a(href= postUrl).blog__post__read Read more
+
+            ul.blog__post__options
+              li
+                a(href= postUrl)
+                  | Read more
+              li
+                a(href= postUrl)
+                  span.icon.ion-android-favorite-outline
+                  | Like
 
             if admin
               hr
               i= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
               p= 'Views ' + post.views + ' | Likes: ' + post.likes
-              style.
-                .admin__options li {
-                  display: inline-block;
-                  margin-top: 1em;
-                }
-                .admin__options li a {
-                  margin-right: 1em;
-                  border: 1px solid #cecece;
-                  border-radius:3px;
-                  padding: 0.6em 0.8em;
-                  display: inline-block;
-                  text-decoration: none;
-                }
-                .admin__options li a:hover {
-                  background: #f4f4f4;
-                }
-                .admin__options li a span {
-                  margin-right: 10px;
-                }
 
-              ul.admin__options
+              ul.blog__post__options
                 li
                   a(href= '/blog/' + post.permalink) See post
                 li

@@ -2,45 +2,43 @@
   
 }
 .resume__entry {
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
+  @include flexbox();
+  @include flexbox_wrap(nowrap);
+  @include flexbox_justifyContent(center, center);
+  @include flexbox_alignContent(center, center);
+  @include flexbox_alignItems(stretch, stretch);
+  @include flexbox_direction(column);
+
+  @media all and (min-width: $desktop-screen) {
+    @include flexbox_direction(row);
+  }
 
   margin-bottom: 1em;
 
   &__left {
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+    @include flexbox_flex(0, 1, auto);
+    @include flexbox_alignSelf(stretch);
   }
   &__right {
-    margin-left: 2em;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+    @include flexbox_flex(1, 1, auto);
+    @include flexbox_alignSelf(stretch);
+
+    @media all and (min-width: $desktop-screen) {
+      margin-left: 2em;
+    }
   }
   &__pic {
-    width: 240px;
-    padding: 1em;
-    border: 1px solid #f4f4f4;
-    // border-left: 10px solid #d83901;
+    width: 100%;
     text-align: center;
+    // border-left: 10px solid #d83901;
     @include border-radius(10px);
+
+    @media all and (min-width: $desktop-screen) {
+      width: 240px;
+      padding: 1em;
+      text-align: center;
+      border: 1px solid #f4f4f4;
+    }
 
     img {
       @include border-radius(10px);
@@ -48,7 +46,8 @@
 
     // Horizontal pics: meaning having more width that height
     &__horizontal {
-      width: 80%;
+      width: 60%;
+      max-width: 220px;
     }
     // Vertical pics: meaning more squeare
     &__vertical {
@@ -68,26 +67,64 @@
     position: relative;
   }
   &__title {
-    font-size: 1.6em;
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    display: inline-block;
+    @media all and (min-width: $desktop-screen) {
+      width: auto;
+      font-size: 1.6em;
+      text-align: center;
+    }
   }
   &__position {
-    margin-left: 5px;
+    width: 100%;
+    clear: both;
+    display: inline-block;
+    text-align: center;
+    @media all and (min-width: $desktop-screen) {
+      display: initial;
+      clear: none;
+      width: auto;
+      margin-left: 5px;
+      text-align: center;
+    }
   }
   &__date {
-    background: #fff;
-    padding-left:10px;
-    font-size: 1.2em;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    width: 100%;
+    font-size: 1em;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 0.5em;
+    display: inline-block;
+    text-align: center;
+    @media all and (min-width: $desktop-screen) {
+      width: auto;
+      margin-top: 0;
+      font-size: 1.2em;
+      background: #fff;
+      padding-left:10px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
   }
   &__body {
     display: block;
+    text-align: center;
+    @media all and (min-width: $desktop-screen) {
+      text-align: left;
+    }
   }
   &__oneline {
     &__text {
-      font-size: 1.3em;
+      font-size: 1em;
       line-height: 1.4em;
+      text-align: justify;
+      @media all and (min-width: $desktop-screen) {
+        font-size: 1.3em;
+        line-height: 1.4em;
+      }
     }
   }
   &__bullets {
@@ -116,7 +153,11 @@
       }
     }
     &__text {
-      font-size: 1.3em;
+      font-size: 1em;
+      text-align: justify;
+      @media all and (min-width: $desktop-screen) {
+        font-size: 1.3em;
+      }
     }
   }
   &__warning {

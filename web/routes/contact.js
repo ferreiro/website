@@ -1,15 +1,15 @@
 /**
 * Contact. Send messages
 */
-var content = require('../content/english.json')
-var config = require('../config')
+const express = require('express')
+const router = express.Router()
 
-var express = require('express')
-var router = express.Router()
+const content = require('../content/english.json')
 
-MAILGUN_USER = config.mailgun.USER
-MAILGUN_PASS = config.mailgun.PASS
-PERSONAL_EMAIL = config.email.JORGE ||  undefined
+const env = require('../../env')
+const MAILGUN_USER = env.MAILGUN_USER
+const MAILGUN_PASS = env.MAILGUN_PASS
+const CONTACT_EMAIL = env.CONTACT_EMAIL
 
 // Routes
 router.get('/', contact)
@@ -69,7 +69,7 @@ function submit (req, res, next) {
     // Setup e-mail data with unicode symbols
     mailOptions = {
       from: MAILGUN_USER, // sender address
-      to: PERSONAL_EMAIL, // list of receivers
+      to: CONTACT_EMAIL, // list of receivers
       subject: 'Hello ✔', // Subject line
       text: 'Hello world 🐴', // plaintext body
       html: '<b>Hello world 🐴</b>' // html body
@@ -78,7 +78,7 @@ function submit (req, res, next) {
     // console.log(mailOptions);
     // console.log(MAILGUN_PASS);
     // console.log(MAILGUN_USER);
-    // console.log(PERSONAL_EMAIL);
+    // console.log(CONTACT_EMAIL);
 
     // send mail with defined transport object
     transporter.sendMail(mailOptions, function(error, info) {
