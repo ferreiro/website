@@ -1,8 +1,12 @@
-var utils = require('../utils')
-var errors = require('../../errors')
 
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
+const MailchimpApi = require('mailchimp-api-v3')
+
+const env = require('../../../env')
+const utils = require('../utils')
+const errors = require('../../errors')
+const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 
 router.get('/', function (req, res) {
   res.json({
@@ -28,20 +32,38 @@ router.post('/', function (req, res) {
     'subscribed': req.body.__subscribed || null
   })
 
+  if (message.subscribed) {
+    addUserToMailchimp(email)
+  }
+
   utils.validateMessage(message, function(valid) {
     if (!valid) {
-      errors.formNotValid(req, res)
+      return errors.formNotValid(req, res)
     }
-    else {
-      utils.sendMessage(message, function (err, email) {
-        if (err) {
-          errors.emailNotSend(req, res)
-        } else {
-          res.status(200).json(email)
-        }
-      })
-    }
+
+    utils.sendMessage(message, function (err, email) {
+      if (err) {
+        errors.emailNotSend(req, res)
+      } else {
+        res.status(200).json(email)
+      }
+    })
   })
 })
+
+function addUserToMailchimp (email) {
+  mailchimp.post({
+    path : '/lists/3b63288535/members',
+    body: {
+      email_address: email,
+      status: 'subscribed'
+    }
+  }, (err, result) => {
+    if (err) {
+      // we coudln't add user to 
+    }
+    return
+  })
+}
 
 module.exports = router

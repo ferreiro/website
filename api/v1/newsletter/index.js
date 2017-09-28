@@ -17,9 +17,8 @@ router.post('/subscribe', (req, res) => {
       email_address: email,
       status: 'subscribed'
     }
-  }, function (err, result) {
+  }, (err, result) => {
     if (err) {
-      console.log(err)
       return res.json({
         error: err.detail
       })
