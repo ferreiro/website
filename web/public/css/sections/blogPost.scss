@@ -1,0 +1,115 @@
+.blogPost {
+  margin-top: 1.5em;
+  &__title {
+    font-size: 2em;
+    color: #000;
+    @media all and (min-width: $desktop-screen) {
+      font-size: 2.5em;
+
+      font-weight: 700;
+      font-style: normal;
+      letter-spacing: 0;
+      font-size: 40px;
+      line-height: 1.04;
+      letter-spacing: -.028em;
+    }
+  }
+  &__subtitle {
+    margin-top: 5px;
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+    letter-spacing: -.02em;
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0;
+    font-size: 27px;
+    margin-left: -1.69px;
+    line-height: 1.22;
+    letter-spacing: -.022em;
+    color: rgba(0,0,0,.54);
+
+    @media all and (min-width: $desktop-screen) {
+    }
+  }
+  &__content {
+    display: inline-block;
+    p, ul li, h1, h2, h3, h4, a {
+      font-family: 'Roboto Slab', serif;
+      --x-height-multiplier: 0.35;
+      --baseline-multiplier: 0.179;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 21px;
+      line-height: 1.58;
+      letter-spacing: -.003em;
+      color: rgba(0,0,0,.80);
+      margin-top: 29px;
+      word-break: break-word;
+      word-wrap: break-word;
+      display: block;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      margin-top: 29px;
+      li {
+        margin: 0;
+        list-style: none;
+        &:before {
+          content: '•';
+          margin-right: 0.8em;
+        }
+      }
+    }
+    img {
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+    }
+    blockquote {
+      --x-height-multiplier: 0.363;
+      --baseline-multiplier: 0.157;
+      font-family: medium-content-slab-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 34px;
+      margin: 24px 0;
+      margin-left: -1.75px;
+      line-height: 1.48;
+      letter-spacing: -.014em;
+      color: rgba(0,0,0,.68);
+      border: none;
+      padding: 0;
+      padding-left: 50px;
+      text-align: left;
+    }
+    mark {
+      background-color: transparent !important;
+      background-image: linear-gradient(to bottom, rgba(203, 255, 186, 1), rgba(203, 255, 186, 1));
+      --x-height-multiplier: 0.363;
+      --baseline-multiplier: 0.157;
+      font-family: medium-content-slab-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.48;
+      letter-spacing: -.014em;
+      color: rgba(0,0,0,.68);
+      border: none;
+      padding: 0;
+      margin: 24px 0;
+      margin-left: 50px;
+      text-align: left;
+    }
+    h1 {
+      font-weight: 700;
+      font-style: normal;
+      font-size: 32px;
+      margin-left: -2px;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      color: rgba(0,0,0,.84);
+    }
+  }
+}

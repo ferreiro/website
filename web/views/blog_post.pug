@@ -1,9 +1,12 @@
 extends ./includes/blog_layout
 
+block blog_sidebar
+  //- override it
+
 block blog_content
 
   //- Right Container
-  .container_left.animated.fadeInUp
+  div(style="max-width: 700px; width: 700px; margin: 0 auto;").animated.fadeInUp
 
     if admin
       ul.blog__post__options
@@ -25,6 +28,7 @@ block blog_content
     if error
       h1= error
     if post
-      .blog_post
-        h1= post.title
-        div !{post.html}
+      .blogPost
+        h1.blogPost__title= post.title
+        h2.blogPost__subtitle= post.summary
+        .blogPost__content !{post.html}

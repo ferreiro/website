@@ -3,6 +3,10 @@ body {
   color: $secundaryColor;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
 }
 
 p {
