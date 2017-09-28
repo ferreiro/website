@@ -1,10 +1,10 @@
 {
-  "name": "ferreiro-website",
+  "name": "ferreiro",
   "description": "Jorge Ferreiro's personal website developed in Node.JS",
   "homepage": "http://www.github.com/ferreiro/website",
-  "version": "1.0.0",
+  "version": "3.0.1",
   "private": true,
-  "license": "MIT",
+  "license": "",
   "keywords": [
     "software engineer",
     "programmer",

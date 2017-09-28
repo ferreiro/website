@@ -1,4 +1,4 @@
-const debug = require('debug')('website:setup:database')
+const debug = require('debug')('ferreiro:setup:database')
 const mongoose = require('mongoose');
 
 const env = require('../env')
@@ -12,6 +12,6 @@ module.exports = () => {
     if (error) {
       throw error
     }
-    console.log('Successfully connected to MongoDB');
+    debug('Successfully connected to MongoDB');
   })
 }
