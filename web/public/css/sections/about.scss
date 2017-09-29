@@ -150,6 +150,9 @@
     border: 1px solid #D8D8D8;
     text-decoration: none;
     font-size: 1em;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    margin-right: 1em;
     // color: #d83901;
     @include border-radius(60px);
     @include transition(0.5s);
@@ -157,11 +160,16 @@
       background: #f4f4f4;
     }
     @media all and (min-width: $tablet-screen) {
-
+      margin-right: 1.4em;
     }
     @media all and (min-width: $desktop-screen) {
-      padding: 1em 1.5em;
-      font-size: 1.2em;
+      line-height: 1.2em;
+      padding: 1.2em 1.5em;
+      padding-bottom: 1.1em;
+      font-size: 1em;
+    }
+    span {
+      margin-right: 0.5em;
     }
   }
 }
