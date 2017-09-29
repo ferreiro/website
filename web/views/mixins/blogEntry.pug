@@ -30,10 +30,10 @@ mixin blogEntry(post)
             if !admin
               ul.blog__post__options
                 li
-                  a(href= postUrl)
+                  a(href= postUrl).action_button
                     | Read more
                 li
-                  a(href= postUrl)
+                  a(href= postUrl).action_button
                     span.icon.ion-android-favorite-outline
                     | Like
             else
@@ -43,12 +43,12 @@ mixin blogEntry(post)
 
               ul.blog__post__options
                 li
-                  a(href= '/blog/' + post.permalink) See post
+                  a(href= '/blog/' + post.permalink).action_button See post
                 li
-                  a(href= '/admin/edit/' + post.permalink)
+                  a(href= '/admin/edit/' + post.permalink).action_button
                     span.icon.ion-edit
                     | Edit post
                 li
-                  a(href= '/admin/delete/' + post.permalink)
+                  a(href= '/admin/delete/' + post.permalink).action_button
                     span.icon.ion-android-delete
                     | Delete post

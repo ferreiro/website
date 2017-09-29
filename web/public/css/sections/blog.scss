@@ -144,19 +144,24 @@
 
   }
   &__entry {
+
+    margin-bottom: 1.5em;
+    @media all and (min-width: $desktop-screen) {
+      margin-bottom: 2em;
+    }
+  }
+  &__content {
     padding: 1em;
-    margin-bottom: 1em;
     position: relative;
     @media all and (min-width: $desktop-screen) {
       padding: 1.5em;
-      margin-bottom: 2em;
     }
   }
   &__author {
     top: 0;
     left: 0;
     margin-top: 0.5em;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.75em;
     @media all and (min-width: $desktop-screen) {
       margin-bottom: 1em;
     }
@@ -199,7 +204,9 @@
     @include flexbox_alignItems(stretch, stretch);
 
     @media all and (min-width: $desktop-screen) {
+      min-height: 240px;
       @include flexbox_direction(row);
+      margin-bottom: 2em;
     }
 
     &__left {
@@ -207,14 +214,13 @@
       @include flexbox_alignSelf(auto);
       @media all and (min-width: $desktop-screen) {
         @include flexbox_flex(0, 0, 40%);
+        // margin: 1em;
+        // margin-right: 0;
       }
     }
     &__right {
       @include flexbox_flex(1, 1, auto);
       @include flexbox_alignSelf(auto);
-      @media all and (min-width: $desktop-screen) {
-        padding-left: 2em;
-      }
     }
 
     &__pic {
@@ -226,9 +232,8 @@
       background-position: 50% 50%;
       display: inline-block;
       vertical-align: top;
-      margin-bottom: 1em;
       position: relative;
-      @include border-radius(5px);
+      @include border-radiuses(5px, 5px, 0, 0);
       @media all and (min-width: $tablet-screen) {
         height: 220px;
       }
@@ -236,6 +241,7 @@
         height: 100%;
         margin-bottom: 0;
         background-size: cover;
+        @include border-radiuses(5px, 0, 5px, 0);
       }
       &__link {
         /*
@@ -260,10 +266,15 @@
     &__metadata {
       vertical-align: top;
       display: inline-block;
+      margin: 1em;
+      @media all and (min-width: $desktop-screen) {
+        margin: 1.5em 1.8em;
+        margin: 1.2em 1.5em;
+      }
     }
     &__title {
       margin: 0;
-      font-size: 1.2em;
+      font-size: 1.6em;
       @media all and (min-width: $desktop-screen) {
         font-size: 2em;
         font-size: 1.8em;
@@ -283,7 +294,11 @@
       padding: 0;
       margin-top: 0.6em;
       margin-bottom: 1em;
+      &:after {
+        content: '...';
+      }
       @media all and (min-width: $desktop-screen) {
+        height: 55px;
         margin-top: 0.7em;
       }
     }
@@ -291,53 +306,12 @@
       display: inline-block;
       margin-top: 0.5em;
     }
-    &__options li a {
-      margin-right: 1em;
-      border: 1px solid #cecece;
-      border-radius:3px;
-      padding: 0.6em 0.8em;
-      display: inline-block;
-      text-decoration: none;
-    }
-    &__options li a:hover {
-      background: #f4f4f4;
-    }
-    &__options li a span {
-      margin-right: 10px;
-    }
     &__read {
       font-size: 1em;
     }
     &__share {
       display: none;
       float: right;
-    }
-  }
-}
-
-
-.blogPostRelated {
-  width: 100%;
-  margin-top: 2em;
-  background: #f4f4f4;
-  display: inline-block;
-  &__title {
-    font-size: 1em;
-    text-transform: uppercase;
-    border: 1px solid #DEDEDE;
-    text-align: center;
-    color: rgba(0, 0, 0, .7);
-    border-left: 0;
-    border-right: 0;
-    padding: 0.9em 0;
-    margin-bottom: 1em;
-  }
-  &__items {
-
-  }
-  &__item {
-    &__link {
-
     }
   }
 }

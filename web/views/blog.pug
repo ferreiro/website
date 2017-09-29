@@ -1,31 +1,26 @@
 extends ./includes/blog_layout
 include ./mixins/blogEntry
+include ./mixins/postCard
+
+block content_large
+  .container__middle
+
+    .threeColsGrid
+      each post, index in posts
+        if index == 3
+          .threeColsGrid__item__full_width
+            .profileData.box_with_shadow(style="margin: 0;")
+              include ./includes/subscriptionBox
+        .threeColsGrid__item
+          .threeColsGrid__item__wrapper
+            +postCard(post)
 
 block blog_content
-
   //- Left Container
   .container_left.animated.fadeInUp
-
-    // h1.titleSection.animated.zoomIn Posts
-    // h3.profileData_title Categories
-      ul.profileData_list
-
-        li.profileData_entry
-          p.profileData_entry_text_without_icon
-            a(href="") Software Engineering
-
-        li.profileData_entry
-          p.profileData_entry_text_without_icon
-            a(href="") Product management
-
-        li.profileData_entry
-          p.profileData_entry_text_without_icon
-            a(href="") Entrepreneurship
-
 
     .blog__entries
       if posts.length == 0
         h1 There are no posts currently. Come back sortly, I'm creating exclusive content!
-
       each post in posts || []
         +blogEntry(post)

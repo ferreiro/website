@@ -12,11 +12,10 @@ router.get('/:permalink', getPostByPermalink)
 module.exports = router
 
 // Inner Functions to handle routes
-
 function getBlogHomepage (req, res, next) {
   var admin = (req.user ? true : false)
   var locals = {
-    title: 'Blog',
+    title: 'Jorge Ferreiro Blog',
     path: 'blog',
     config: blog.config,
     admin: admin,
@@ -36,27 +35,40 @@ function getBlogHomepage (req, res, next) {
  * Returns a post entry if it's visible and published
  */
 function getPostByPermalink (req, res, next) {
-  var admin = (req.user ? true : false)
-  var locals = {
+  const admin = (req.user ? true : false)
+  const locals = {
     title: 'Blog',
     path: 'blog',
     admin: admin,
-    config: blog.config,
+    config: blog.config
   }
 
   const postPermalink = req.params.permalink || ''
   blogRepository.findByPermalink({
-    permalink: postPermalink
+    permalink: postPermalink,
+    limit: 3
   }).then((post) => {
     if (post.published || req.user) {
       post.html = markdownToHtml(post.body)
       locals.post = post
-      return res.render('blog_post', locals)
+
+      // Get related posts
+      return blogRepository.getRandomPosts({
+        postPermalinkToSkip: postPermalink,
+        count: 4
+      }).then(posts => {
+        locals.relatedPosts = posts
+        return res.render('blog_post', locals)
+      }).catch(err => {
+        locals.relatedPosts = []
+        return res.render('blog_post', locals)
+      })
+    } else {
+      locals.error = 'Post does not exist or you dont have permissions to view.'
+      res.render('blog_post', locals)
     }
-    locals.error = 'Post does not exist or you dont have permissions to view.'
-    res.render('blog_post', locals)
-  }).catch(err => {
-    locals.err = err
+  }).catch(error => {
+    locals.error = error
     return res.render('blog_post', locals)
   })
 }

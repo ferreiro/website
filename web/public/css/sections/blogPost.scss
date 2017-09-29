@@ -67,6 +67,7 @@
       }
     }
     img {
+      max-width: 100%;
       text-align: center;
       margin: 0 auto;
       display: block;
@@ -85,8 +86,9 @@
       color: rgba(0,0,0,.68);
       border: none;
       padding: 0;
-      padding-left: 50px;
+      margin-left: 50px;
       text-align: left;
+      display: inline-block;
     }
     mark {
       background-color: transparent !important;
@@ -115,6 +117,36 @@
       letter-spacing: -.02em;
       color: rgba(0,0,0,.84);
       font-size: 24px;
+    }
+  }
+}
+
+.blogPostRelated {
+  width: 100%;
+  margin-top: 2em;
+  padding: 1.5em 0;
+  background: #f4f4f4;
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+  @media all and (min-width: $desktop-screen) {
+    margin-top: 4em;
+    // padding: 2em 0;
+  }
+  &__title {
+    font-size: 1.3em;
+    line-height: 1.3em;
+    font-weight: 600;
+    border-right: 0;
+    border-left: 0;
+    text-align: center;
+    color: rgba(0, 0, 0, .6);
+    // padding: 0.9em 0;
+    margin: 0;
+    margin-bottom: 1.8em;
+    @media all and (min-width: $desktop-screen) {
+      font-size: 1.4em;
+      line-height: 1.4em;
     }
   }
 }
