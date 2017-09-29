@@ -11,8 +11,8 @@ block content
       .contact_form_wrapper.box_with_shadow
         .contact_form_container
 
-          if content.title
-            h2.contact_form_title !{content.title}
+          if content.config.claim
+            h2.contact_form_title !{content.config.claim}
 
           .contact_form_result.contact_form_success
             h2 Thank you!
@@ -25,15 +25,21 @@ block content
             #contactLoader.loader.contactLoader
 
             fieldset.contact_form_fieldset
-              p.wrong#wrongName Error: Your name can not be blank
+              p.wrong#wrongName
+                span.icon.ion-alert-circled
+                | Error: Your name can not be blank
               input.input_not_blank(type="name", id="the_name", name="__name", placeholder= content.form.name || 'What is your name?').contact_form_input
 
             fieldset.contact_form_fieldset
-              p.wrong#wrongEmail Error: The email you introduced is not valid. Try again.
+              p.wrong#wrongEmail
+                span.icon.ion-alert-circled
+                | Error: The email you introduced is not valid. Try again.
               input.input_email(type="name", id="email", name="__email", placeholder= content.form.email || 'And your email?').contact_form_input
 
             fieldset.contact_form_fieldset(style="margin-bottom: 0;")
-              p.wrong#wrongMessage Error: Hey! Fill some text here ;).
+              p.wrong#wrongMessage
+                span.icon.ion-alert-circled
+                | Error: Hey! Fill some text here ;).
               textarea.input_not_blank(type="name", style="margin-bottom: 0;", id="message", name="__text", placeholder= content.form.message || 'Write your message').contact_form_input
 
             //- fieldset.contact_form_fieldset
