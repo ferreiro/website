@@ -16,7 +16,7 @@ module.exports.getMostRecentPosts = function (opts) {
   }
   return Post.find(query)
     .limit(limit)
-    .sort({ created: -1 })
+    .sort({ created: 1 })
 }
 
 module.exports.getRandomPosts = function (opts) {
@@ -45,17 +45,17 @@ module.exports.getRandomPosts = function (opts) {
 module.exports.getAllPublished = function (options) {
   return Post.find({
     'published': true
-  }).sort({ created: -1 })
+  }).sort({ created: 1 })
 }
 
 module.exports.getAllDrafts = function (options) {
   return Post.find({
     'published': false
-  }).sort({ created: -1 })
+  }).sort({ created: 1 })
 }
 
 module.exports.getAll = function () {
-  return Post.find().sort({ created: -1 })
+  return Post.find().sort({ created: 1 })
 }
 
 module.exports.findByPermalink = function (query) {
