@@ -51,6 +51,7 @@
     "marked": "^0.3.6",
     "mongoose": "^4.11.13",
     "mongoose-permalink": "^2.0.0",
+    "mongoose-simple-random": "^0.4.1",
     "morgan": "^1.8.2",
     "newrelic": "^2.2.1",
     "nodemailer": "^2.3.0",
