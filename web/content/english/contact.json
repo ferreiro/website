@@ -1,0 +1,13 @@
+{
+  "config": {
+    "title": "Contact Jorge Ferreiro",
+    "claim" : "Do you have a project, job offer or just want to say hi? Ping me in the form below or send me an email to <a class='openModalBox'>jorge@ferreiro.me</a>. I'll reply you in less than 24h.",
+    "sendButton" : "Send message"
+  },
+  "form" : {
+    "name" : "What is your name?",
+    "email" : "And your email?",
+    "message" : "Write me your message",
+    "newsletter": "I want to receive new projects of Jorge"
+  }
+}

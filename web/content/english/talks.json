@@ -1,8 +1,8 @@
 {
   "config": {
-    "title": "Talks and workshops",
-    "subtitle": "Jorge has experienced organising and giving talks in multiple topics such as engineering, entrepreneurship and product, as well as workshops.",
-    "wallpaper": "/images/jorge_ferreiro_speaker_talks_workshops.jpg",
+    "title": "Talks and Workshops",
+    "subtitle": "Jorge has experience giving talks in multiple topics such as <strong>Engineering</strong>, <strong>Entrepreneurship</strong> and <strong>Product</strong>, as well as workshops. He organized a technical workshop sponsored by Github and co-organized Iniciador, a monthly event for entrepreneurs.",
+    "wallpaper": "/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg",
     "callToAction": {
       "claim": "Do you have an event and want jorge to be a speaker or co-organiser? Write an email or contact.",
       "button": "Contact Jorge to speak at your event"

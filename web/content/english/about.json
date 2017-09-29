@@ -3,7 +3,7 @@
     {
        "title":"Summer International Student",
        "position":"UC Berkeley",
-       "pic":"http://www.berkeley.edu/images/uploads/logo-ucberkeley.png",
+       "pic":"/images/about/uc_berkeley.png",
        "pic_type":"horizontal",
        "start":"Jun 2017",
        "end":"Aug 2017",
@@ -23,7 +23,7 @@
     {
        "title":"Computer Science Student",
        "position":"Universidad Complutense de Madrid",
-       "pic":"https://www.ucm.es/data/cont/docs/1150-2015-11-26-Marca%20UCM%20Alternativa%20logo%20negro%20RGB.jpg",
+       "pic":"/images/about/universidad_complutense_de_madrid_ucm.jpg",
        "pic_type":"horizontal",
        "start":"Sept 2013",
        "end":"Current",
@@ -85,7 +85,7 @@
     {
        "title":"Huawei",
        "position":"Internship in China",
-       "pic":"/images/projects/huawei.png",
+       "pic":"/images/about/huawei.png",
        "pic_type":"vertical",
        "start":"Dec 2013",
        "end":"Dec 2015",
