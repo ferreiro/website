@@ -35,6 +35,9 @@
   padding: 0.7em 0;
   &__wrapper {
     padding:0 1em;
+    @media all and (min-width: $desktop-screen) {
+      padding: 0 2em;
+    }
   }
 }
 span.icon-separated {
