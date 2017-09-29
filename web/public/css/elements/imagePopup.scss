@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1000000;
   background: rgba(255, 255, 255, 0.9);
   display: none;
 
@@ -18,12 +18,15 @@
     position: absolute;
     top: 1em;
     right: 1em;
-    background: #cecece;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    padding: 1.4em 1.6em;
     cursor: pointer;
+    @media all and (min-width: $desktop-screen){
+      top: 1.5em;
+      right: 1.5em;
+    }
+    span {
+      font-size: 60px;
+      color: #B9B9B9;
+    }
   }
 
   &_content {

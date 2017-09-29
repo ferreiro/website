@@ -1,5 +1,6 @@
 .socialSharing {
   @include opacity(0);
+  visibility: hidden;
   @include transition(500ms);
   @media all and (max-width: $desktop-screen - 1px) {
     width: 100%;
@@ -14,6 +15,7 @@
     position: fixed;
   }
   &__displayed {
+    visibility: visible;
     @include opacity(1);
   }
   &__list {

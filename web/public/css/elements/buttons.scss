@@ -1,3 +1,34 @@
+// Action Button
+// Use: <a href="" class="action_button"></a>
+$action_button_font_size: 1.2em;
+$action_button_icon_size: 15px;
+$action_button_icon_margin: 4px;
+
+.action_button {
+  display: inline-block;
+  border: 1px solid #cecece;
+  padding: 0.6em 0.8em;
+  text-decoration: none;
+  line-height: $action_button_font_size;
+  @include border-radius(3px);
+  @include transition(500ms);
+  &:hover {
+    background: #f4f4f4;
+  }
+  &__hidden {
+    display: none;
+  }
+  span {
+    height: $action_button_icon_size;
+    margin-right: $action_button_icon_margin;
+    line-height: 0;
+    &:before {
+      padding-top: 1px;
+      font-size: $action_button_icon_size;
+    }
+  }
+}
+
 .full_screen_button {
   width: 100%;
 
