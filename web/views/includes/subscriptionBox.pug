@@ -13,11 +13,12 @@
       li.subscriptionBox__collage__feature Pre-access to tutorials.
       li.subscriptionBox__collage__feature Updates and projects!
 
-  form.subscriptionBox__form(action="/api/v1/newsletter/subscribe", method="POST")
+  //form.subscriptionBox__form(action="/api/v1/newsletter/subscribe", method="POST")
     input.subscriptionBox__email(type='text', name='email', placeholder='Your email address')
-    span.subscriptionBox__completed
-      | ✔
-      span(style='color: #000; margin-left: 0.5em;') Subscribed!
+  span.subscriptionBox__completed
+    | ✔
+    span(style='color: #000; margin-left: 0.5em;') Subscribed!
+  form(action="/newsletter", method="GET")
     button.subscriptionBox__submit
       img.subscriptionBox__loader(src='/images/spinner.svg')
       span.beta__signup__text Get exclusive materials!

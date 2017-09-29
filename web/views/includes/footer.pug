@@ -2,24 +2,51 @@
 footer.jfFooter#footer
   .jfFooter_content
 
-    .jfFooter_entry
+    // .jfFooter_entry
       h2 <span id="githubRespositories"></span> Public repos
       p <a href="http://www.github.com/ferreiro" target="_blank">Github.com/ferreiro</a>
 
-    .jfFooter_entry
+    //.jfFooter_entry
+      a(href="/contact").jfFooter_entry__link
       h2 Contact
       p <a href="/contact">Send a message</a>
 
     .jfFooter_entry
-      h2 Email
-      p <a href="mailto:jorge@ferreiro.me;">jorge@ferreiro.me</a>
+      a(href="mailto:jorge@ferreiro.me;").jfFooter_entry__link
+      span.icon.ion-ios-contact-outline
+      p jorge@ferreiro.me
 
-    .jfFooter_separator
+    .jfFooter_entry
+      a(href="/newsletter").jfFooter_entry__link
+      span.icon.ion-android-mail
+      p Newsletter
 
-    .container(style="max-width: 330px; text-align: center;")
+    .jfFooter_entry
+      a(href="https://twitter.com/jgferreiro", target="_blank").jfFooter_entry__link
+      span.icon.icon-twitter
+      p Twitter
+
+    .jfFooter_entry
+      a(href="https://www.linkedin.com/in/jgferreiro/", target="_blank").jfFooter_entry__link
+      span.icon.icon-linkedin
+      p Linkedin
+
+    .jfFooter_entry
+      a(href="https://www.github.com/ferreiro", target="_blank").jfFooter_entry__link
+      span.icon.icon-github
+      p Github
+
+    .jfFooter_entry
+      a(href="https://www.instagram.com/jgferreiro/", target="_blank").jfFooter_entry__link
+      span.icon.icon-instagram
+      p Instagram
+
+    // .jfFooter_separator
+
+    // .container(style="max-width: 330px; text-align: center;")
       include ./subscriptionBox_minimal
 
-    .jfFooter_separator
+    .jfFooter_separator(style="margin-top: 1.7em;")
 
     .jfFooter_entry.jfFooter_credits
       a(href="/").jfFooter__logo
