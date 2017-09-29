@@ -1,0 +1,27 @@
+mixin postCard(post)
+  - postUrl = '/blog/' + post.permalink
+  - postBackground = 'background-image: url(' + post.pic + ');'
+
+  .postCard.shadow__box
+    input(type="hidden", name="post_permalink", value= post.permalink)
+    //- <img> is only for seo :). To set
+    //- background, use background-image
+    .postCard__header(style= postBackground)
+      a(href= postUrl).postCard__header__link
+      img(src= post.pic)
+    .postCard__body
+      h1.postCard__title
+        a(href= postUrl)= post.title
+      a.postCard__date(href= postUrl)= post.updatedAt
+      a.postCard__summary(href= postUrl)= post.summary
+      ul.postCard__options
+        li.postCard__options__item
+          a.action_button(href= postUrl) Read more
+        li#likePost.postCard__options__item
+          a.action_button(href="#")
+            span.icon.ion-android-favorite-outline
+            | Like
+        li#unlikePost.postCard__options__item.postCard__options__item__hidden
+          a.action_button(href="#")
+            span.icon.ion-android-favorite.icon-red
+            | Liked!
