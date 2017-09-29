@@ -4,7 +4,7 @@
 const express = require('express')
 const router = express.Router()
 
-const content = require('../content/english.json')
+const content = require('../content/english/contact.json')
 
 const env = require('../../env')
 const MAILGUN_USER = env.MAILGUN_USER
@@ -21,9 +21,9 @@ module.exports = router
 // FUNCTIONS
 function contact (req, res, next) {
   res.render('contact', {
-    title: 'Contact me'
-    , path: 'contact'
-    , content: content.contact
+    title: 'Contact me',
+    path: 'contact',
+    content: content
   })
 }
 
