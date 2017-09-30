@@ -92,7 +92,7 @@ function getPostByPermalink (req, res, next) {
 
 function markdownToHtml (srcMarkdown) {
   const htmlBody = marked(srcMarkdown)
-  const sanitizedHtml = htmlBody /// sanitizeHtml(htmlBody)
+  const sanitizedHtml = sanitizeHtml(htmlBody)
   return sanitizedHtml
 }
 
