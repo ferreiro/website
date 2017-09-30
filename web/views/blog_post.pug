@@ -1,4 +1,4 @@
-extends ./includes/blog_layout
+extends ./includes/blog_layout_v2_large
 include ./mixins/postCard
 
 block content_full
@@ -16,10 +16,7 @@ block content_full
 block extraScripts
   script(src="/javascripts/socialSharing.js")
 
-block blog_sidebar
-  //- override it
-
-block blog_content
+block content_large
   //- Right Container
   .blogPost.animated.fadeInUp
     if admin
