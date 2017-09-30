@@ -3,20 +3,21 @@ $threeColsGrid_bottom_margin-desktop: 2em;
 $threeColsGrid_wrapper_margin: 1em;
 
 .threeColsGrid {
-  @include flexbox();
-  @include flexbox_wrap(wrap);
   vertical-align: top;
   margin: 0 (-$threeColsGrid_wrapper_margin);
+  @include flexbox();
+  @include flexbox_wrap(wrap);
+  @include flexbox_justifyContent(center, center);
 
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  &__leftAligned {
+    @include flexbox_justifyContent(start, start);
+  }
 
   &__item__full_width {
-    display: block;
     width: 100%;
-    flex-grow: 0;
+    display: block;
     margin-bottom: $threeColsGrid_bottom_margin-mobile;
+    @include flexbox_grow(0);
     @media all and (min-width: $desktop-screen) {
       padding: 0 $threeColsGrid_wrapper_margin;
       margin-bottom: $threeColsGrid_bottom_margin-desktop;
@@ -31,6 +32,7 @@ $threeColsGrid_wrapper_margin: 1em;
     @media all and (min-width: $tablet-screen) {
       width: 50%;
     }
+
     @media all and (min-width: $desktop-screen) {
       width: 33.3%;
       max-width: 33.3%;
@@ -40,6 +42,7 @@ $threeColsGrid_wrapper_margin: 1em;
 
     //- Wrapper with margin inside the boxes
     &__wrapper {
+      height: 100%;
       padding: 0 $threeColsGrid_wrapper_margin;
     }
   }
