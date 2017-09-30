@@ -13,6 +13,9 @@
     "backend",
     "frontend"
   ],
+  "engines" : {
+    "node" : ">=8.6.0"
+  },
   "author": {
     "name": "Jorge Ferreiro",
     "email": "jorge@ferreiro.me",
