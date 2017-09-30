@@ -4,7 +4,7 @@ setupScrollListener()
 function setupSocialButtons() {
     const postTitle = $('.blogPost__title').text()
 
-    const twitterShareButton = $('#tweetShare')    
+    const twitterShareButton = $('#tweetShare')
     twitterShareButton.click(function (event) {
         event.preventDefault();
 
@@ -12,7 +12,7 @@ function setupSocialButtons() {
         window.open("https://twitter.com/share?text=👓 " + postTitle + " &via=jgferreiro&url="+encodeURIComponent(url), "Share on Twitter", "width=500px,height=250px;");
     })
 
-    const facebookShareButton = $('#facebookShare')    
+    const facebookShareButton = $('#facebookShare')
     facebookShareButton.click(function (event) {
         event.preventDefault();
 
@@ -28,7 +28,6 @@ function setupSocialButtons() {
     })
 }
 
-
 function setupScrollListener () {
     const headerHeight = $('.menu').outerHeight()
     const targetContainer = $('#mainContainer')
@@ -41,7 +40,7 @@ function setupScrollListener () {
         const targetPositionY = targetContainer.position().top
         const targetSocialOffsetY = socialSharing.offset().top
         const targetFooterOffsetY = targetFooter.offset().top
-        
+
         // Remove sticky block when footer is reached
         if (targetSocialOffsetY - targetFooterOffsetY > 0) {
             hideSocialSharing()
@@ -50,7 +49,6 @@ function setupScrollListener () {
         } else {
             hideSocialSharing()
         }
-        console.log('Current Scroll ' + currentScroll + ' | ' + 'targetOffsetY: ' + targetOffsetY)
     })
 }
 
@@ -63,4 +61,3 @@ function hideSocialSharing () {
     const socialSharing = $('#socialSharing')
     socialSharing.removeClass('socialSharing__displayed')
 }
-

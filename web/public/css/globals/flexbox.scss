@@ -12,6 +12,11 @@
   -ms-flex: $flexGrow $flexShrink $flex-basis;
   flex: $flexGrow $flexShrink $flex-basis;
 }
+@mixin flexbox_grow($flexGrow:0) {
+  -webkit-flex-grow: $flexGrow;
+  -ms-flex-grow: $flexGrow;
+  flex-grow: $flexGrow;
+}
 
 @mixin flexbox_direction($direction: 'row'){
   -webkit-flex-direction: $direction;

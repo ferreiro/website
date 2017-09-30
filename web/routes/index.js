@@ -1,18 +1,23 @@
-var fs = require('fs')
-var express = require('express')
-var content = require('../content/english.json') // TODO: Add multilanguage
-var router = express.Router()
+const fs = require('fs')
+const express = require('express')
+const router = express.Router()
+
+const content = require('../content/english.json') // TODO: Add multilanguage
+const blogRepository = require('../repository/blog')
 
 // Mounting more subroutes.
-var projects = require('./projects')
-var talks = require('./talks')
-var social = require('./social')
-var contact = require('./contact')
+const projects = require('./projects')
+const talks = require('./talks')
+const social = require('./social')
+const contact = require('./contact')
 
 router.get('/', featured) // Home shows about page
 router.use('/about', require('./about'))
 router.use('/blog', require('./blog'))
 router.use('/portfolio', projects)
+router.get('/projects', function (req, res) {
+  res.redirect('/portfolio') // leave this, backwards compatibility
+})
 router.use('/talks', talks)
 router.use('/contact', contact)
 router.use('/social', social)
@@ -20,18 +25,27 @@ router.use('/admin', require('./admin'))
 router.get('/stats', stats)
 router.get('/university', university)
 router.get('/resume/jorge_ferreiro_resume.pdf', resume)
-router.get('/projects', function (req, res) {
-  res.redirect('/portfolio') // leave this, backwards compatibility
-})
 
 module.exports = router
 
 // FUNCTIONS
 function featured (req, res, next) {
-  res.render('home', {
-    title: 'Featured',
+  const homeContext = {
+    title: 'Home',
     path: 'featured',
-    content: content.about
+    content: content.about,
+    recentPosts: []
+  }
+
+  // Get related posts
+  return blogRepository.getMostRecentPosts({
+    count: 3
+  }).then(posts => {
+    homeContext.recentPosts = posts
+    res.render('home', homeContext)
+  }).catch(error => {
+    homeContext.error = error
+    res.render('home', homeContext)
   })
 }
 

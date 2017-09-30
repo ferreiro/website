@@ -4,33 +4,39 @@
 }
 
 .contact_form {
-
   margin: 1em 0;
   position: relative;
   @media all and (min-width:$desktop-screen) {
     margin-bottom: 0;
   }
 
-  &_container {
+  &_wrapper {
+    display: block;
+    @media all and (max-width:$desktop-screen) {
+      @include box-shadow(none !important);
+    }
     @media all and (min-width:$desktop-screen) {
-      width: 600px;
+      max-width: 660px;
       margin: 0 auto;
     }
   }
 
-  &_wrapper {
-    display: block;
-    margin-top: 1em;
-    padding: 1em;
+  &_container {
     @media all and (min-width:$desktop-screen) {
-      margin: 2em auto;
-      padding: 2.5em;
+      padding: 2em;
     }
   }
 
   &_title {
+    margin-bottom: 1em;
+    @media all and (min-width:$tablet-screen) {
+    }
     @media all and (min-width:$desktop-screen) {
       margin-bottom: 1.5em;
+    }
+    a {
+      color: $primaryColor;
+      border-color: $primaryColor;
     }
   }
 

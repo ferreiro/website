@@ -12,7 +12,7 @@ mixin postCard(post)
     .postCard__body
       h1.postCard__title
         a(href= postUrl)= post.title
-      a.postCard__date(href= postUrl)= post.updatedAt
+      // a.postCard__date(href= postUrl)= 'Jorge Ferreiro - ' + (post.createdAt || 'Some days ago')
       a.postCard__summary(href= postUrl)= post.summary
       ul.postCard__options
         li.postCard__options__item

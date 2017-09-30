@@ -13,6 +13,11 @@ p {
   text-rendering: optimizeLegibility;
 }
 
+
+.icon-red {
+  color: #D60000;
+}
+
 .box_with_shadow {
   background: #fff;
   @include border-radius(5px);
@@ -61,8 +66,13 @@ p {
   top: 0;
 }
 .wrong {
-  color: #D60000;
   display: none;
+  color: #D60000;
+  padding: 5px 0;
+  padding-top: 0;
+  span {
+    margin-right: 1em;
+  }
 }
 .dotted {
   border-style: dotted !important;

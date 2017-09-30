@@ -3,10 +3,14 @@ $threeColsGrid_bottom_margin-desktop: 2em;
 $threeColsGrid_wrapper_margin: 1em;
 
 .threeColsGrid {
-  display: flex;
-  flex-wrap: wrap;
+  @include flexbox();
+  @include flexbox_wrap(wrap);
   vertical-align: top;
   margin: 0 (-$threeColsGrid_wrapper_margin);
+
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 
   &__item__full_width {
     display: block;
@@ -21,8 +25,8 @@ $threeColsGrid_wrapper_margin: 1em;
 
   &__item {
     width: 100%; // Mobile with one column
-    flex-grow: 1;
     margin-bottom: $threeColsGrid_bottom_margin-mobile;
+    @include flexbox_grow(1);
 
     @media all and (min-width: $tablet-screen) {
       width: 50%;
@@ -30,6 +34,7 @@ $threeColsGrid_wrapper_margin: 1em;
     @media all and (min-width: $desktop-screen) {
       width: 33.3%;
       max-width: 33.3%;
+      // margin: 0 auto;
       margin-bottom: $threeColsGrid_bottom_margin-desktop;
     }
 

@@ -1,10 +1,9 @@
 extends ./includes/layout
+include ./mixins/postCard
 
 block content
-  
   //- Middle Container
   .container_middle
-  
     .slider#slider
         // Buttons for select the slide number
         ul.slider-selector
@@ -69,7 +68,7 @@ block content
                   
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/wallpaper2.jpg);')
-            
+
             //-- Single Slide
             li.fading.slider-slides-singleSlide
                 //- Content of one slide
@@ -78,13 +77,22 @@ block content
                         h2.slider-slides-singleSlide-content-title Keep updated!
                         p.slider-slides-singleSlide-content-text Subscribe to my newsletter and you'll receive the most amazing resources I find on the web and also updates about my upcoming projects.
                         a(href='/contact', target='_blank').slider-slides-singleSlide-content-link Yes! Subscribe me
-            
+
                 //- Black mask
                 .slider-slides-singleSlide-blackmask
 
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/wallpaper3.jpg);')
-                      
+
+    if recentPosts
+          h3.blogPostRelated__title Most recent posts of my blog
+
+          .threeColsGrid
+            each post in recentPosts
+              .threeColsGrid__item
+                .threeColsGrid__item__wrapper
+                  +postCard(post)
+
 block extraScripts
     script(type='text/javascript').
         $('#slider .slider-slides').DDSlider({
