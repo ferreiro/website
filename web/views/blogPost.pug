@@ -1,17 +1,9 @@
 extends ./includes/blog_layout_v2_large
 include ./mixins/postCard
 
-block content_full
-  .blogHeader#blogHeader
-    .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
-      // SEO
-      img(src= )
-    .blogHeader_userFields
-      h1.blogHeader_name
-        a(href="/blog").blogHeader_name_link
-        | #{config.title}
-      h2.blogHeader_job !{config.subtitle}
-      h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>#{config.author.name}</strong>
+block content_header
+  - hasAnimation = false
+  +blogHeader(hasAnimation)
 
 block extraScripts
   script(src="/javascripts/socialSharing.js")

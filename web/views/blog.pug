@@ -1,21 +1,27 @@
 extends ./includes/blog_layout_v2_large
 include ./mixins/blogEntry
 include ./mixins/postCard
+include ./mixins/blogHeader
+
+block content_header
+  - hasAnimation = true
+  +blogHeader(hasAnimation)
 
 block content_large
-  .container__middle
+  .container__middle.animated.fadeInUp
 
-    if posts.length == 0
-        center
-          h1 There are no posts currently.<br /> Come back sortly, I'm creating exclusive content!
-        .profileData.box_with_shadow(style="margin-top: 5em !important; display: block;")
-          include ./includes/subscriptionBox
+    if posts.length <= 0
+        .warningMessage
+          h1.warningMessage__title There are no more posts to show.
+          p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+          .warningMessage__call2Action.box_with_shadow
+            include ./includes/subscriptionBox
     else
       .threeColsGrid
         each post, index in posts || []
           if index == 3
             .threeColsGrid__item__full_width
-              .profileData.box_with_shadow(style="margin: 0;")
+              .box_with_shadow(style="margin: 0;")
                 include ./includes/subscriptionBox
           .threeColsGrid__item
             .threeColsGrid__item__wrapper

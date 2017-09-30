@@ -62,7 +62,7 @@ function getPostByPermalink (req, res, next) {
       "<|>|&|\'|\"|'|,|/|")
   } else {
     blogContext.error = 'Post not found or invalid url'
-    return res.render('blog_post', blogContext)
+    return res.render('blogPost', blogContext)
   }
 
   const query = {
@@ -78,15 +78,15 @@ function getPostByPermalink (req, res, next) {
         count: 3
       }, (relatedPosts) => {
         blogContext.relatedPosts = relatedPosts
-        return res.render('blog_post', blogContext)
+        return res.render('blogPost', blogContext)
       })
     } else {
       blogContext.error = 'Post does not exist or you dont have permissions to view.'
-      res.render('blog_post', blogContext)
+      res.render('blogPost', blogContext)
     }
   }).catch(error => {
     blogContext.error = error
-    return res.render('blog_post', blogContext)
+    return res.render('blogPost', blogContext)
   })
 }
 

@@ -19,7 +19,6 @@
     }
   }
   &__subtitle {
-    margin-top: 7px;
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
@@ -28,10 +27,12 @@
     font-style: normal;
     letter-spacing: 0;
     font-size: 27px;
-    margin-left: -1.69px;
+    font-size: 24px;
     line-height: 1.22;
     letter-spacing: -.022em;
     color: rgba(0,0,0,.54);
+    margin: 0;
+    margin-top: 7px;
 
     @media all and (min-width: $desktop-screen) {
     }

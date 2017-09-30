@@ -1,0 +1,19 @@
+.warningMessage {
+  max-width: 730px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1em;
+  &__title {
+    
+  }
+  &__text {
+    display: block;
+    padding-top: 1em;
+    font-size: 1.4em;
+    line-height: 1.3em;
+  }
+  &__call2Action {
+    margin-top: 2.5em;
+    display: block;
+  }
+}
