@@ -29,6 +29,20 @@ $action_button_icon_margin: 4px;
   }
 }
 
+// This extends from action_button
+.big_action_button {
+  @extend .action_button;
+  padding: 1.2em 1.8em;
+  padding-bottom: 1em;
+  font-size: 1.3em;
+  margin: 0 auto;
+  @include border-radius(5px);
+  @media all and (min-width: $desktop-screen) {
+    width: 300px;
+    padding: 1.1em 1.8em;
+  }
+}
+
 .full_screen_button {
   width: 100%;
 
