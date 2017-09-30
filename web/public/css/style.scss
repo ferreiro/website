@@ -1,40 +1,7 @@
+@import "./globals/**"; /* This first! Order matters */
 
-/* Core variables and mixins */
-@import "./globals/variables";
-@import "./globals/mixins";
-@import "./commun";
-@import "./globals/**";
-
-/* ELEMENTS */
-@import "./elements/**";
-@import "./elements/imagePopup";
-@import "./elements/jfmodalbox";
-@import "./elements/breadcrumb";
-@import "./elements/loader";
-@import "./elements/buttons";
-@import "./elements/tags";
-@import "./elements/texts";
-@import "./elements/forms";
-@import "./elements/notice";
-@import "./elements/footer";
-
-@import "./elements/profileCard";
-@import "./elements/profileData";
-@import "./elements/skills";
-
-@import "./elements/projectsFilter";
-@import "./elements/projectsFilterWarning";
-
-@import "./elements/slider";
-
-/* COLLECTIONS */
+@import "commun.scss";
 @import "./collections/**";
-
-/* SECTIONS */
+@import "./elements/**";
 @import "./sections/**";
-@import "./sections/error";
-@import "./sections/about";
-@import "./sections/contact";
-@import "./sections/projects";
-@import "./sections/university";
-@import "./sections/stats";
+@import "./grids/**";

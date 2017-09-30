@@ -1,5 +1,3 @@
-const debug = require('debug')
-const timestamp = require('unix-timestamp')
 const validator = require('validator')
 const sanitizeHtml = require('sanitize-html')
 const marked = require('marked')
@@ -75,7 +73,6 @@ function getPostByPermalink (req, res, next) {
     if (post.published || req.user) {
       blogContext.post = post
       blogContext.post.html = markdownToHtml(post.body)
-
       generateRelatedPosts({
         permalinkToSkip: postPermalink,
         count: 3
@@ -98,7 +95,6 @@ function markdownToHtml (srcMarkdown) {
   const sanitizedHtml = htmlBody /// sanitizeHtml(htmlBody)
   return sanitizedHtml
 }
-
 
 function generateRelatedPosts (opts, next) {
   blogRepository

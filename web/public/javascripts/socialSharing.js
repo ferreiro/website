@@ -35,7 +35,7 @@ function setupScrollListener () {
     const targetHeader = $('#blogHeader')
     const targetFooter = $('#relatedPosts')
     const socialSharing = $('#socialSharing')
-    
+
     $(window).scroll(function() {
         const currentScroll = $(window).scrollTop() + headerHeight
         const targetPositionY = targetContainer.position().top
