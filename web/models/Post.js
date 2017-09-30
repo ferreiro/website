@@ -1,5 +1,11 @@
 const mongoose = require('mongoose')
+const paginate = mongoosePaginate = require('mongoose-paginate')
 const permalink = require('mongoose-permalink')
+const random = require('mongoose-simple-random')
+
+const mongooseOptions = {
+  timestamps: true // createdAt and updatedAt automatically
+}
 
 const Schema = mongoose.Schema
 const PostSchema = new Schema({
@@ -35,6 +41,11 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  tags: {
+    type: [String],
+    required: false,
+    default: []
+  },
   published: {
     type: Boolean,
     required: true,
@@ -49,19 +60,11 @@ const PostSchema = new Schema({
     type: Number,
     required: false,
     default: 0
-  },
-  updated: {
-    type: Date,
-    default: Date.now,
-    required: false
-  },
-  created: {
-    type: Date,
-    default: Date.now,
-    required: false
   }
-})
+}, mongooseOptions)
 
+PostSchema.plugin(random)
+PostSchema.plugin(paginate)
 PostSchema.plugin(permalink.default, {
   sources: ['title']
 })
