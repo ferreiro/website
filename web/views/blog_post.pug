@@ -70,10 +70,6 @@ block after_content
 
           .threeColsGrid
             each post, index in relatedPosts
-              if index == 3
-                .threeColsGrid__item__full_width
-                  .profileData.box_with_shadow(style="margin: 0;")
-                    include ./includes/subscriptionBox
               .threeColsGrid__item
                 .threeColsGrid__item__wrapper
                   +postCard(post)

@@ -1,0 +1,40 @@
+extends ./layout
+
+block content_full
+  .blogHeader.animated.zoomIn#blogHeader
+    .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
+      // SEO
+      img(src= )
+    .blogHeader_userFields
+      h1.blogHeader_name
+        a(href="/blog").blogHeader_name_link
+        | #{config.title}
+      h2.blogHeader_job !{config.subtitle}
+      h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>#{config.author.name}</strong>
+
+      // .about_resume(style="margin-top: 1em;")
+        a(href= config.subscription).about_resume_button.about_resume_button_view.blogHeader_button Subscribe blog!
+
+  // h1.titleSection.animated.zoomIn Posts
+  // h3.profileData_title Categories
+  // ul.profileData_list
+
+    li.profileData_entry
+      p.profileData_entry_text_without_icon
+        a(href="") Software Engineering
+
+    li.profileData_entry
+      p.profileData_entry_text_without_icon
+        a(href="") Product management
+
+    li.profileData_entry
+      p.profileData_entry_text_without_icon
+        a(href="") Entrepreneurship
+
+block content
+  block content_large
+  //- .container_inner__flex
+    block blog_content
+    block blog_sidebar
+
+block after_content
