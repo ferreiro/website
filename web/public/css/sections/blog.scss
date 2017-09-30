@@ -195,6 +195,16 @@
       color: rgba(0, 0, 0, .7);
     }
   }
+  &__load_more {
+    width: 100%;
+    padding: 1.5em 0;
+    margin-bottom: 1em;
+    text-align: center;
+    @media all and (min-width: $desktop-screen) {
+      margin-bottom: 0;
+      padding: 2.5em 0;
+    }
+  }
   &__post {
     @include flexbox();
     @include flexbox_direction(column);

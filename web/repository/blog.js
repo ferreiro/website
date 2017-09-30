@@ -65,7 +65,6 @@ module.exports.getAllPublished = async function (opts) {
 // https://stackoverflow.com/questions/5539955/how-to-paginate-with-mongoose-in-node-js
 module.exports.getMostRecentPosts = function (opts) {
   const limit = opts.limit || 3
-  const postPermalinkToSkip = opts.postPermalinkToSkip || ''
 
   const query = {
     createdAt: { $lte: new Date() },
@@ -78,12 +77,14 @@ module.exports.getMostRecentPosts = function (opts) {
 
 module.exports.getRandomPosts = function (opts) {
   const limit = opts.limit || 3
-  const postPermalinkToSkip = opts.postPermalinkToSkip || ''
+  const permalinkToSkip = opts.permalinkToSkip || ''
 
   return new Promise((resolve, reject) => {
     const filter = {
       published: true,
-      permalink: { $ne: postPermalinkToSkip }
+      permalink: {
+        $ne: permalinkToSkip
+      }
     }
     const fields = {}
     const options = {

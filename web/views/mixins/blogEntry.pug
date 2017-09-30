@@ -1,6 +1,7 @@
 mixin blogEntry(post)
     - var postUrl = '/blog/' + post.permalink
     .blog__entry.box_with_shadow
+      p= post
       //.blog__link
         a(href= postUrl)
       .blog__post
