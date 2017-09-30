@@ -1,4 +1,5 @@
 extends ./includes/layout
+include ./mixins/talkEntry
 
 block content_full
 
@@ -7,40 +8,31 @@ block content
   .container_middle
     div.animated.fadeInUp
       include ./includes/breadcrumb.pug
-    .blogHeader.animated.fadeInUp.talkHeader
+
+  .animated.fadeInUp
+
+    .blogHeader.talkHeader
       .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
         // SEO
         img(src= config.wallpaper)
       .blogHeader_userFields(style="max-width: 550px; margin: 0 auto;")
-        h2.blogHeader_job= config.subtitle
-        h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;")= config.callToAction.claim
+        h2.blogHeader_job !{config.subtitle}
 
         .about_resume
           a(href="/contact").about_resume_button.about_resume_button_view.blogHeader_button= config.callToAction.button
 
-  h1.titleSeparator Previous talks and workshops
+    .animated.fadeInUp
+      h1.titleSeparator Previous talks and workshops
 
-  .talks
-    each talk in pastTalks || []
-      .talk
-        .talk__title
-          h1= talk.title
-        input(type="hidden", name="iframe_src", value=talk.iframeSrc)
-        a(href= talk.url, target="_blank").talk__link
-        .talk__image(style="background-image: url(" + talk.pic + ");")
-        //.talk__callToAction
-          if talk.type == "video"
-            .talk__callToAction__button Watch video
-          else if talk.type == "slides"
-            .talk__callToAction__button Read slides
-          else
-            .talk__callToAction__button See more about it
+      .threeColsGrid
+        each talk in pastTalks || []
+          .threeColsGrid__item
+            .threeColsGrid__item__wrapper
+              +talkEntry(talk)
 
-        // iframe(src= talk.iframeSrc, width="100%", height="100%")
-
-    if pastTalks.length % 2 == 1
-      .talk
-        .talk__ad
-          h1.talk__ad__title The next talk here!
-          p.talk__ad__subtitle Do you have an event and want jorge to be a speaker or co-organiser? I'll be happy to be part of it! Write me an email with the proposal (jorge@ferreiro.me) or contact through the form.
-          a(href="/contact").talk__ad__link Contact or propose a talk
+            if pastTalks.length % 2 == 1
+              .talk
+                .talk__ad
+                  h1.talk__ad__title The next talk here!
+                  p.talk__ad__subtitle Do you have an event and want jorge to be a speaker or co-organiser? I'll be happy to be part of it! Write me an email with the proposal (jorge@ferreiro.me) or contact through the form.
+                  a(href="/contact").talk__ad__link Contact or propose a talk
