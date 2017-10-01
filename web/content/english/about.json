@@ -40,7 +40,7 @@
     {
        "title":"Dailyfocus Application",
        "position":"Software Engineer / Creator",
-       "pic":"/images/projects/dailyfocus_icon.png",
+       "pic":"/images/projects/dailyfocus/dailyfocus_icon.png",
        "pic_type":"vertical",
        "start":"May 2016",
        "end":"Current",
@@ -112,11 +112,11 @@
     {
        "title":"Music4deejays",
        "position":"Software Engineer & Founder",
-       "pic":"/images/projects/m4d_icon.png",
+       "pic":"/images/projects/music4deejays/m4d_icon.png",
        "pic_type":"vertical",
        "start":"Dec 2013",
        "end":"Dec 2015",
-       "description":[
+       "description": [
           {
              "type":"bullets",
              "icon":null,
