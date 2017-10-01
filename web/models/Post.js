@@ -41,6 +41,10 @@ const PostSchema = new Schema({
     type: String,
     required: true
   },
+  category: {
+    type: [String],
+    default: []
+  },
   tags: {
     type: [String],
     required: false,

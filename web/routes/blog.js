@@ -1,5 +1,5 @@
-const validator = require('validator')
 const sanitizeHtml = require('sanitize-html')
+const validator = require('validator')
 const marked = require('marked')
 const express = require('express')
 const router = express.Router()
@@ -9,57 +9,107 @@ const blogRepository = require('../repository/blog')
 const blog = require('../content/english/blog.json')
 
 router.get('/', getBlogPosts)
+router.get('/category/:category', getBlogPosts)
 router.get('/:permalink', getPostByPermalink)
 
 module.exports = router
 
+/**
+ * Returns a context object with data to feed the views.
+ * This object can be updated before return it to view.
+ */
 function getBlogContext (req) {
   const admin = (req.user ? true : false)
   return {
     title: 'Jorge Ferreiro Blog',
     path: 'blog',
+    blogCategory: 'all',
     config: blog.config,
     admin: admin,
     posts: []
   }
 }
 
-// Inner Functions to handle routes
+/**
+ * Fetches and shows a list of posts.
+ * This method can also filter by
+ * categories (optional argument)
+ * @param {*=} req.params.category - You can provide a post category to query
+ */
 function getBlogPosts (req, res, next) {
+  const opts = getBlogPostsOptions(req)
+
+  var query = {}
+  const category = req.params.category
+  if (category) {
+    if (category.length === 0) {
+      return next(new Error('No valid category'))
+    }
+    query['category'] = category
+  }
+
+  fetchPosts (query, opts, (error, result) => {
+    if (error) {
+      return next(new Error(error))
+    }
+
+    var blogContext = getBlogContext(req)
+    blogContext.posts = result.docs
+    blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page : 'start') // getNextPageTokenFromPosts(posts)
+    blogContext.nextPageToken = (result.page + 1 <= result.pages ? result.page + 1 : 'end') // getNextPageTokenFromPosts(posts)
+    blogContext.blogCategory = category ? category : blogContext.blogCategory
+
+    return res.render('blog', blogContext)
+  })
+}
+
+/**
+ * Generic options object that it's use
+ * when fetching results from database.
+ */
+function getBlogPostsOptions (req) {
   var nextPage = null
   if (req.query.next && validator.isInt(req.query.next)) {
     const nextPageNum = parseInt(req.query.next)
     nextPage = nextPageNum < 0 ? 1 : nextPageNum
   }
-
-  const opts = {
+  return {
     maxPagePosts: MAX_PAGE_POSTS,
     nextPage: nextPage
   }
-  let blogContext = getBlogContext(req)
-  blogRepository.getAllPublished(opts)
+}
+
+/**
+ * Makes a call to the database to fetch
+ * a list of posts.
+ * @param {String=} query.category - (optional) fetches posts from this category
+ * @param {String=} opts.maxPagePosts - (optional) limit of results from database
+ * @param {String=} opts.nextPage - (optional) Page from database to get results from. (use with pagination)
+ * @param {*} callback.error - notifies any error to the caller.
+ * @param {*} callback.result - Database generic result (see method in repository)
+ */
+function fetchPosts (query, opts, callback) {
+  blogRepository.getAllPublished(query, opts)
     .then(result => {
-      blogContext.posts = result.docs
-      blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page : 'start') // getNextPageTokenFromPosts(posts)
-      blogContext.nextPageToken = (result.page + 1 <= result.pages ? result.page + 1 : 'end') // getNextPageTokenFromPosts(posts)
-      return res.render('blog', blogContext)
+      return callback(null, result)
     })
     .catch(error => {
-      blogContext.error = error
-      return res.render('blog', blogContext)
+      return callback(error, null)
     })
 }
 
 /**
- * Returns a post entry if it's visible and published
+ * Finds and returns a blog post if is valid
+ * and the user has the right credentials.
  */
 function getPostByPermalink (req, res, next) {
   let blogContext = getBlogContext(req)
+  blogContext.blogCategory = '' // no menu selected
 
   var postPermalink = null
   if (req.params.permalink) {
-    postPermalink = validator.blacklist(req.params.permalink,
-      "<|>|&|\'|\"|'|,|/|")
+    postPermalink = validator.blacklist(
+      req.params.permalink, "<|>|&|\'|\"|'|,|/|")
   } else {
     blogContext.error = 'Post not found or invalid url'
     return res.render('blogPost', blogContext)

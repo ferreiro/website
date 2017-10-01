@@ -3,7 +3,7 @@
     background: #fff;
     position: relative;
     overflow: hidden;
-    padding: 1em;
+    padding: 2em 0;
     // @include border-radius(5px);
     @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
 
@@ -55,10 +55,14 @@
     &_name {
       color: #fff;
       font-weight: 400;
-      font-size: 1.8em;
-      margin-bottom: 0.5em;
+      font-size: 2.3em;
+      margin-bottom: 0.2em;
       text-decoration: none;
       position: relative;
+      @media all and (min-width:$desktop-screen) {
+        font-size: 3em;
+        margin-bottom: 0.2em;
+      }
       &_link {
         top: 0;
         left: 0;
@@ -66,10 +70,6 @@
         height: 100%;
         position: absolute;
         z-index: 0;
-      }
-      @media all and (min-width:$desktop-screen) {
-        font-size: 3em;
-        margin-bottom: 0.5em;
       }
     }
 

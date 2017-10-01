@@ -1,0 +1,28 @@
+.selectionBox {
+  width: 100%;
+  display: block;
+  padding-top: 1em;
+  text-align: left !important;
+  @include flexbox_justifyContent(flex-start !important, flex-start);
+
+  &__item {
+    display: block;
+    padding: 0.7em 1em;
+    border: 1px solid #cecece;
+    margin: 0;
+    @include border-radius(5px);
+  }
+  input {
+    margin-top: 5px;
+    float: left;
+  }
+  &__left {
+    display: inline-block;
+    margin-right: 0.7em;
+    vertical-align: middle;
+  }
+  &__right {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

@@ -41,6 +41,10 @@ function logout (req, res, next) {
 }
 
 function login (req, res, next) {
+  if (req.user) {
+    return res.redirect('/admin') // logged!
+  }
+
   var message = null
   if (req.flash('error').length > 0) {
     message = 'Invalid password or email.'
@@ -119,6 +123,7 @@ function parseRequestPostData (req) {
   const summary = req.body.post_summary
   const body = req.body.post_body
   const published = req.body.post_isPublished
+  const category = [].concat(req.body.post_category)
 
   const bodySanitized = body
   return {
@@ -130,6 +135,7 @@ function parseRequestPostData (req) {
     summary: summary,
     body: bodySanitized,
     published: published,
+    category: category
   }
 }
 function postNewBlog (req, res, next) {
@@ -141,7 +147,6 @@ function postNewBlog (req, res, next) {
       admin: true
     })
   }).catch((err) => {
-    console.log(err)
     return res.render('admin/create', {
       error: 'Failed to create new post.'
     })

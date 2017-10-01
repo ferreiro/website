@@ -1,6 +1,7 @@
 const Post = require('../models/Post')
 
 module.exports.create = function (postData) {
+  // update categories
   const newPost = new Post(postData)
   return newPost.save()
 }
@@ -40,7 +41,7 @@ module.exports.getAllDrafts = function (options) {
   }).sort({ createdAt: -1 })
 }
 
-module.exports.getAllPublished = async function (opts) {
+module.exports.getAllPublished = function (extraQueryFields, opts) {
   var maxLimit = 10
 
   if (opts) {
@@ -49,16 +50,22 @@ module.exports.getAllPublished = async function (opts) {
       maxLimit = newLimit < maxLimit ? newLimit : maxLimit
     }
   }
-
-  const query = {
-    'published': true
-  }
   const options = {
     sort: { createdAt: -1 },
     lean: true,
     page: opts.nextPage || 1,
     limit: maxLimit
   }
+
+  var query = {
+    'published': true
+  }
+  if (extraQueryFields) {
+    if (extraQueryFields.category) {
+      query['category'] = extraQueryFields.category
+    }
+  }
+
   return Post.paginate(query, options)
 }
 

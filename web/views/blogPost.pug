@@ -41,6 +41,10 @@ block content_large
             a(id="facebookShare" href="#" target="_blank")
               span.icon.icon-facebook
 
+      if post.category
+        each category in post.category
+          span= category
+
       h1.blogPost__title= post.title
       h2.blogPost__subtitle= post.summary
       img(src= post.pic, style="width: 100%; margin: 1.5em 0;")

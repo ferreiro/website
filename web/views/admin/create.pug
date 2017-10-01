@@ -39,9 +39,9 @@ block content
                     label(for='author_name', class="composer__legend")
                         span.icon.ion-person
                         p Author
-                    input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author_name ? post.author_name : '')
+                    input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author_name ? post.author_name : 'Jorge Ferreiro')
 
-                .composer__entry
+                .composer__entry(style="display: none;")
                     label(for='author_pic', class="composer__legend")
                         span.icon.ion-person
                         p Author pic
@@ -52,16 +52,47 @@ block content
                         span.icon.ion-document-text
                         p Summary
                     textarea#summary.composer__input(type='summary', placeholder="Summary", class="admin__input", name='post_summary')= (post && post.summary ? post.summary : '')
+
                 .composer__entry
                     textarea#body(type='name', class="admin__textarea", name='post_body')
-                .composer__entry
-                    label(for='isPublished', class="composer__legend" style="width: auto; margin-top: -4px;") Is published?
-                    input.composer__input(type="checkbox", style="margin-left: 120px;" id="isPublished", name="post_isPublished", checked=(post && post.published==true ? true : false))
-                .composer__entry(style="margin-top: 2em;")
-                    <button type="submit" class="about_resume_button about_resume_button_view blogHeader_button">Submit</button>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+                .composer__entry
+                    h2 Category
+
+                    mixin selectionItem(inputName, inputValue, title)
+                        - isCategorySelected = post.category.indexOf(inputValue) > 0
+                        .threeColsGrid__item
+                            .threeColsGrid__item__wrapper
+                                li.selectionBox__item
+                                    .selectionBox__left
+                                        input(checked= (isCategorySelected ? true : false), name= inputName, value= inputValue, type="checkbox")
+                                    .selectionBox__right
+                                        span= title
+
+                    .threeColsGrid.selectionBox
+                        +selectionItem('post_category', 'software', 'Software Eng.')
+                        +selectionItem('post_category', 'product', 'Product')
+                        +selectionItem('post_category', 'entrepreneurship', ' Entrepreneurship')
+                        +selectionItem('post_category', 'event', 'Event')
+                        +selectionItem('post_category', 'design', 'Design')
+
+                .composer__entry
+                    h2 Privacy
+
+                    .threeColsGrid.selectionBox
+                        .threeColsGrid__item
+                            .threeColsGrid__item__wrapper
+                                li.selectionBox__item
+                                    .selectionBox__left
+                                        input#isPublished(name="post_isPublished", type="checkbox", checked=(post && post.published==true ? true : false))
+                                    .selectionBox__right
+                                        span Is published?
+
+                .composer__entry(style="margin-top: 2em;")
+                    button.about_resume_button.about_resume_button_view.blogHeader_button(type="submit") Submit
+
+        script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js")
         script(src="/bower_components/autogrow/autogrow.min.js")
         script.
             $('textarea').autogrow();

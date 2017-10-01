@@ -1,0 +1,42 @@
+$optionsMenuHeight: 70px;
+$optionsMenuSelectedBorder: 2px;
+$optionsMenuActiveColor: #0084bf;
+
+.optionsMenu {
+  border-bottom: 1px solid #e6e9ec;
+  &__list {
+    text-align: center;
+  }
+  &__item {
+    display: inline-block;
+    height: $optionsMenuHeight !important;
+    &[aria-selected="true"] a {
+      color: $optionsMenuActiveColor;
+      height: ($optionsMenuHeight - $optionsMenuSelectedBorder) !important;
+      border-bottom-width: $optionsMenuSelectedBorder;
+      border-bottom-style: solid;
+      border-color: $optionsMenuActiveColor;
+    }
+    &:hover {
+      a {
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+    &__icon {
+      margin-right: 9px;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    height: $optionsMenuHeight;
+    line-height: ($optionsMenuHeight - $optionsMenuSelectedBorder);
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 21px;
+    border-bottom-width: 4px;
+    padding: 0 24px;
+    color: rgba(0, 0, 0, 0.55);
+    display: inline-block;
+    @include transition(300ms);
+  }
+}
