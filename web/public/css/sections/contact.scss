@@ -28,7 +28,7 @@
   }
 
   &_title {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     @media all and (min-width:$tablet-screen) {
     }
     @media all and (min-width:$desktop-screen) {
@@ -105,16 +105,23 @@
        padding-top: 0;
        color: #989898;
        vertical-align: middle;
+       line-height: 1em;
     }
   }
   &_submit {
-
     width: 240px;
-    border:3px solid #cecece;
+    border: 3px solid #cecece;
     display: block;
     margin: 0 auto;
     cursor: pointer;
     @include border-radius(60px);
+    padding: 1em;
+    margin-bottom: 1em;
+
+    @media all and (min-width:$desktop-screen) {
+      padding: 25px 20px;
+      margin-bottom: 0;
+    }
 
     &:hover {
       color: #fff;

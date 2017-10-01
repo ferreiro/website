@@ -29,11 +29,20 @@ $border_color:#cecece;
     background: #f4f4f4 !important;
   }
 
-  span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &_text {
+    top: 50%;
+    position: absolute;
+    transform: translate(0, -50%);
+    right: calc(100% + 10px);
+    text-transform: capitalize !important;
+    font-size: 20px !important;
+  }
+
+  &_icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     &:before {
       font-size: 30px;
     }
@@ -87,7 +96,7 @@ $border_color:#cecece;
     font-size: $title_size;
     padding: $menu_padding;
     color:$main_color;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   // A block is a bunch of links

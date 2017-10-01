@@ -5,9 +5,11 @@
   // border-right: 1px dashed $secundaryColorLight;
   position: relative;
   overflow: hidden;
-  float: left;
   // margin-right: 0.5em;
   margin-right: 1em;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   @include border-radius(5px);
 }
 .logo img {
@@ -35,8 +37,61 @@
   padding: 0.7em 0;
   &__wrapper {
     padding:0 1em;
+    @include flexbox();
+    @include flexbox_wrap(wrap);
+    @include flexbox_justifyContent(flex-start, start);
+
+        display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+
     @media all and (min-width: $desktop-screen) {
       padding: 0 2em;
+    }
+  }
+
+  &_left {
+    visibility: hidden;
+    @include flexbox_grow(1);
+    @media all and (min-width: $desktop-screen) {
+      visibility: visible;
+
+      -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+    }
+  }
+
+  &_right {
+    visibility: hidden;
+    @include flexbox_grow(0);
+    @media all and (min-width: $desktop-screen) {
+      visibility: visible;
+
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
     }
   }
 }
@@ -165,5 +220,11 @@ span.icon-separated {
   }
   #dropdown-mobiles {
     display: inline-block !important; // This must be inline-block
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
   }
 }

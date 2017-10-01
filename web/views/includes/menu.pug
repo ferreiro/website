@@ -5,7 +5,7 @@
     // put the size of your header
     .jfmenu_top_separator
 
-    h1.jfmenu_title Discover me
+    h1.jfmenu_title Jorge Ferreiro
 
     // Menu block containing links
     ul
@@ -27,27 +27,13 @@
                 span.icon-separated(class="icon-" + item.icon)
                 span #{item.name}
 
-      li.submenu
-        a
-          span Language
-          span.icon-arrow-down2.right
-
-        ul
-          li
-            a(href="/")
-              span English
-
-      //- li
-      //-   a(onclick="alert('me [at] jgferreiro.com')")
-      //-     span Email
-
 .menu.fixed
   .container
     .menu__wrapper
       a.logo(href="/")
           img(src="/images/logo.jpg")
 
-      .left
+      .menu_left
         nav.menu__nav
           each item in menu || []
               a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
@@ -60,7 +46,7 @@
                 a(href= item.url).optionsMenu__link
                   span= item.name
 
-      .right
+      .menu_right
 
         // .dropdown
           a(href='/contact')
@@ -80,45 +66,9 @@
                     span.dropdown-icon(class="icon-" + item.icon)
                     span.dropdown-text #{item.name}
 
-        .jfmenu_open_button#dropdown-mobiles
-          span.icon-paragraph-justify
-
-        // .dropdown
-          a(href='http://linkedin.com/in/jgferreiro', target='_blank')
-            .item.with-icon
-              p
-                span.icon-linkedin
-                span.social_network_text Linkedin
-
-        // .dropdown
-          a(href='http://twitter.com/jgferreiro', target='_blank')
-            .item.with-icon
-              p
-                span.icon-twitter
-                span.social_network_text Twitter
-    
-          //- .dropdown
-          //-   a(href='/contact')
-          //-     .item.with-icon
-          //-       p
-          //-         span Email                  
-        //-         
-        //- .dropdown
-        //-   .item.with-icon
-        //-     p
-        //-       //- span.icon-address-book.extra-margin
-        //-       span Email
-        //-       .dropdown-content#DropdownSocial
-        //-         a.dropdown-link(href="https://linkedin.com/in/jgferreiro", target="_blank") Linkedin
-        //-         a.dropdown-link(href="https://github.com/ferreiro", target="_blank") Github @ferreiro
-        //-         a.dropdown-link(href="https://twitter.com/jgferreiro", target="_blank") Twitter @jgferreiro
-        //-         a.dropdown-link(href="https://soundcloud.com/jgferreiro", target="_blank") Soundcloud
-        
-        //
-          .dropdown
-            .item.with-icon
-              p
-                span.icon-cog
-                .dropdown-content#DropdownSocial
-                  //a.dropdown-link(href="/es") Español
-                  a.dropdown-link(href="/") English
+      .jfmenu_open_button#dropdown-mobiles
+        span.jfmenu_open_button_text= path
+        span.jfmenu_open_button_icon
+          // span.icon.ion-android-menu
+          span.icon.ion-navicon(style="font-size: 60px;")
+          // span.icon.ion-navicon-round
