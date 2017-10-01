@@ -1,4 +1,12 @@
 $projectBorderRadious: 10px;
+$projectHeaderHeight: 60px;
+$projectHeaderMargin: 1em;
+$projectHeaderAvatarSize: 60px;
+$projectHeaderTitleSize: 1.2em;
+$projectHeaderDateSize: 1em;
+$projectHeaderGalleryHeight: 122px;
+$projectHeaderGalleryGradientWidth: 2em;
+$projectHeaderGalleryRadius: 7px;
 
 .projects {
   @media all and (min-width:$desktop-screen) {
@@ -12,11 +20,13 @@ $projectBorderRadious: 10px;
 }
 
 .project {
+  height: 100%;
   vertical-align: top;
   margin-bottom: 1.5em;
   overflow: hidden;
   position: relative;
   border: 1px solid #f0f0f0;
+  padding: 0 !important;
   @include border-radius($projectBorderRadious);
 
   @media all and (min-width: $tablet-screen) {}
@@ -24,10 +34,6 @@ $projectBorderRadious: 10px;
     display: inline-block;
     background: #FEFEFE;
     margin: 0;
-    -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
-    margin-bottom: 2em;
   }
   @media all and (min-width:$big-screen) {}
 
@@ -69,11 +75,11 @@ $projectBorderRadious: 10px;
   }
 
   &_header {
-    padding: 1em;
+    min-height: $projectHeaderHeight;
+    padding: $projectHeaderMargin;
     background: rgba(0, 0, 0, 0.3);
     z-index: 3;
     position: relative;
-
     -webkit-border-top-left-radius: $projectBorderRadious;
     -webkit-border-top-right-radius: $projectBorderRadious;
     -moz-border-radius-topleft: $projectBorderRadious;
@@ -82,39 +88,43 @@ $projectBorderRadious: 10px;
     border-top-right-radius: $projectBorderRadious;
 
     @media all and (min-width:$desktop-screen) {
-      padding: 1.2em 2em;
+      padding: $projectHeaderMargin;
     }
 
     &_left {
-      display: inline-block;
+      width: $projectHeaderHeight;
+      max-width: $projectHeaderHeight;
+      position: absolute;
+      left: 1em;
     }
 
     &_right {
-      display: inline-block;
-      float: right;
+      margin-left: $projectHeaderHeight + 14px;
     }
 
     &_avatar {
-      width: 60px;
-      height: 60px;
+      width: $projectHeaderAvatarSize;
+      height: $projectHeaderAvatarSize;
       overflow: hidden;
       background-size: cover;
       display: inline-block;
       vertical-align: middle;
-      margin-right: 1em;
+      margin-right: $projectHeaderMargin;
       @include border-radius(100%);
 
       @media all and (min-width:$desktop-screen) {
-        width: 90px;
-        height: 90px;
-        margin-right: 1.2em;
+        width: $projectHeaderAvatarSize;
+        height: $projectHeaderAvatarSize;
       }
     }
 
     &_data {
+      width: 100%;
       display: inline-block;
       vertical-align: middle;
-      // margin-left: 70px;
+      margin-top: 5px;
+      @media all and (min-width:$desktop-screen) {
+      }
       @media all and (min-width:$desktop-screen) {
         // margin-left: 1$projectBorderRadious;
       }
@@ -124,11 +134,12 @@ $projectBorderRadious: 10px;
     &_title {
       color: #fff;
       font-size: 1.2em;
+      font-weight: 600;
       margin-bottom: 0.3em;
       text-decoration: none;
 
       @media all and (min-width:$desktop-screen) {
-        font-size: 1.4em;
+        font-size: $projectHeaderTitleSize;
       }
 
       &_clickable:hover {
@@ -140,7 +151,7 @@ $projectBorderRadious: 10px;
       color: #fff;
       font-weight: 300;
       @media all and (min-width:$desktop-screen) {
-        font-size: 1.1em;
+        font-size: $projectHeaderDateSize;
       }
     }
 
@@ -170,14 +181,49 @@ $projectBorderRadious: 10px;
 
   &_gallery {
     z-index: 10;
-    height: 100px;
     position: relative;
-    overflow-y: hidden;
+    height: $projectHeaderGalleryHeight;
     background: rgba(0, 0, 0, 0.5);
-    padding: 1em;
+
+    &_gradient {
+      width: $projectHeaderGalleryGradientWidth;
+      height: 100%;
+      position: absolute;
+      z-index: 100;
+      right: 0;
+      top: 0;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+      
+      // background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 80%); /* FF3.6-15 */
+      // background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* Chrome10-25,Safari5.1-6 */
+      // background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
+
+      &_solid {
+        width: $projectHeaderGalleryGradientWidth;
+        height: 100%;
+        position: absolute;
+        z-index: 100;
+        right: 0;
+        top: 0;
+        opacity: 0.4;
+      }
+      &:after {
+        width: $projectHeaderGalleryGradientWidth;
+        height: 100%;
+        position: absolute;
+        z-index: 100;
+        right: 0;
+        top: 0;
+        // background: rgba(0, 0, 0, 0.4);
+
+        content: '';
+      }
+    }
+
 
     @media all and (min-width:$desktop-screen) {
-      height: 130px;
+      
     }
 
     &_next {
@@ -190,46 +236,90 @@ $projectBorderRadious: 10px;
       z-index: 10;
     }
 
-    &_list {
+    &_wrapper {
+      // width: calc(100% - 2em - #{$projectHeaderGalleryGradientWidth});
       width: 100%;
       height: 100%;
-      overflow: hidden;
+      padding: 0;
+      // padding-right: calc(1em + #{$projectHeaderGalleryGradientWidth});
+      overflow-y: scroll;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &_list {
+      width: calc(100% - 2em);
+      padding: 1em;
+      height: calc(100% - 2em);
       position: relative;
-      @media all and (min-width:$desktop-screen) {
-        min-width: 300px;
-        max-width: 30000px;
+
+      overflow-y: scroll;
+
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+
+      &__offset {
         height: 100%;
+        display: block;
+        visibility: hidden;
+        width: $projectHeaderGalleryGradientWidth - 1em !important;
+        display: inline-block;
+      }
+      @media all and (min-width:$desktop-screen) {
       }
     }
 
     &_entry {
-      min-width: 33%;
+      width: 115px;
       display: inline-block;
       height: 100%;
       overflow: hidden;
       margin-right: 1em;
       background-size: cover;
-      @include border-radius($projectBorderRadious);
+      @include border-radius($projectHeaderGalleryRadius);
       @include opacity(0.6);
       cursor: pointer;
+
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
 
       &:hover {
         @include opacity(0.8);
       }
 
       @media all and (min-width:$desktop-screen) {
-        width: 33.33%;
+        // width: 33.33%;
       }
     }
   }
 
   &_body {
     z-index: 12;
-    position: relative;
+    height: 100%;
     padding: 1em;
+    position: relative;
     background: #fff;
     @media all and (min-width:$desktop-screen) {
-      padding: 2em;
+      padding: 1.5em;
     }
     &_title {
       color: rgba(0, 0, 0, 1);
@@ -241,7 +331,7 @@ $projectBorderRadious: 10px;
       }
     }
     &_text {
-      font-size: 1.2em;
+      font-size: 1em;
       font-weight: 300;
       line-height: 1.2em;
       color: rgba(0, 0, 0, 0.8);
@@ -265,36 +355,30 @@ $projectBorderRadious: 10px;
       display: inline-block;
       vertical-align: top;
       position: relative;
-      margin: 0.3em 0;
+      margin: 0.5em 0;
       margin-right: 0;
 
       @media all and (min-width:$desktop-screen) {
-        // width: 49%;
-        margin-right: 1em;
-        // margin-right: 2%;
-        &:nth-child(even) {
-          margin-right: 0;
-        }
       }
 
       &_icon {
         position: absolute;
         left: 0;
-        // padding: 0.5em;
         display: inline-block;
-        // border: 2px dashed $primaryColor;
         color: $primaryColor;
-        vertical-align: middle;
+        vertical-align: top;
+        top: 3px;
+        // padding: 0.5em;
+        // border: 2px dashed $primaryColor;
         // @include border-radius(100%);
-        top: 50%;
-        transform:translateY(-50%);
       }
       &_text {
         display: inline-block;
         vertical-align: middle;
-        margin-left: 30px;
+        margin-left: 25px;
         color: $primaryColor;
-        font-size: 1.1em;
+        font-size: 1em;
+        line-height: 1.1em;
         position: relative;
         color:#333333;
         // color: rgba(0, 0, 0, 0.8);
@@ -359,6 +443,9 @@ $projectBorderRadious: 10px;
     z-index: 12;
     overflow: hidden;
     margin-top: 1.5em;
+    a:last-child {
+      margin-bottom: 0;
+    }
     a {
       // width: 50%;
       display: inline-block;
@@ -372,6 +459,7 @@ $projectBorderRadious: 10px;
       @include border-radius(5px);
       // @include border-radius(60px);
       margin-right: 1em;
+      margin-bottom: 1em;
       @include transition(all 0.5s);
       &:hover {
         background: #f7f7f7;

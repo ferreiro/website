@@ -7,10 +7,10 @@ block content
       .imagePopup_close
         span.icon.ion-ios-close
       .imagePopup_content
-        img(src="images/projects/music4deejays.png")
+        img(src= )
 
   //- Container middle
-  .container_middle.sectionHeader
+  .container_middle.animated.fadeInUp
     include ./includes/breadcrumb.pug
 
     .projectsFilter
@@ -34,7 +34,7 @@ block content
           a(href="/projects/bash").projectsFilter_entry_link Bash
 
   //- Right Container
-  .container_middle
+  .container_middle.animated.zoomIn
     if filtered
       .projectsFilter_warning
         p.projectsFilter_warning_text Filter activated! Showing <b>#{filtered_by}</b> projects
@@ -44,102 +44,125 @@ block content
     //-     p.projectsFilter_warning_text Showing <b>all</b> projects. You can filter by using left box
 
     if projects
-      .projects#animate_div
+      .threeColsGrid
+        each project, index in projects || []
 
-        each project in projects
-          .project.box_with_shadow
+          .threeColsGrid__item
+            .threeColsGrid__item__wrapper
 
-            .project_bg
-              if project.background
-                .project_bg_image(style="background-image:url(" + project.background + ");")
-              if project.color
-                .project_bg_solid(style="background-color:" + project.color + ";")
+              .project.shadow__box
 
-            //- Project Header
-            .project_header
-              .project_header_left
-                if project.avatar
-                  .project_header_avatar(style="background-image:url(" + project.avatar + ");")
-                .project_header_data
-                  if project.title
-                    .project_header_title
-                      if project.links
-                        a(href= project.links.website, target="_blank").project_header_title.project_header_title_clickable #{project.title}
-                      else
-                        a.project_header_title #{project.title}
-                  if project.date
-                    a.project_header_date #{project.date}
+                .project_bg
+                  if project.background
+                    .project_bg_image(style="background-image:url(" + project.background + ");")
+                  if project.color
+                    .project_bg_solid(style="background-color:" + project.color.hex + ";")
 
-              .project_header_right
+                //- Project Header
+                .project_header
+                  .project_header_left
+                    if project.avatar
+                      .project_header_avatar(style="background-image:url(" + project.avatar + ");")
+                  .project_header_right
+                    .project_header_data
+                      if project.title
+                        .project_header_title
+                          if project.links
+                            a(href= project.links.website, target="_blank").project_header_title.project_header_title_clickable #{project.title}
+                          else
+                            a.project_header_title #{project.title}
+                      if project.date
+                        a.project_header_date #{project.date}
 
-                //- //- Project Body
-                //- if project.links
-                //-   .project_links
-                //-     if project.links.website
-                //-       a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Website
-                //-     if project.links.code
-                //-       a(href="#{project.links.code}", target="_blank").project_links_code Code
+                  .project_header_right
 
-                .project_header_share
-                  span.icon-share
+                    //- //- Project Body
+                    //- if project.links
+                    //-   .project_links
+                    //-     if project.links.website
+                    //-       a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Website
+                    //-     if project.links.code
+                    //-       a(href="#{project.links.code}", target="_blank").project_links_code Code
 
-            //- Project Body
-            if project.images
-              .project_gallery
+                    .project_header_share
+                      span.icon-share
 
-                .project_gallery_next
-                  p
-                    span.icon-next
+                //- Project Body
+                if project.images
+                  .project_gallery
+                    .project_gallery_gradient(style="background-image: linear-gradient(to left, " + project.color.rgba_gradient_start + ", " + project.color.rgba_gradient_end + ");")
+                      // .project_gallery_gradient_solid(style="background-color:" + project.color.hex + ";")
+                    .project_gallery_wrapper
+                      .project_gallery_next
+                        p
+                          span.icon-next
 
-                .project_gallery_list
-                  //- .owl-carousel
-                  for image in project.images
-                    .project_gallery_entry(style="background-image: url(" + image + ");")
+                      .project_gallery_list
+                        //- .owl-carousel
+                        for image in project.images
+                          .project_gallery_entry(style="background-image: url(" + image.small + ");")
+                            input.bigImage(type="hidden", value= image.large, name="bigImage")
 
-            //- Project Body
-            .project_body
+                        //- Ghost offset of the size of right gradient.
+                        .project_gallery_entry.project_gallery_list__offset
+                //- Project Body
+                .project_body
 
-              if project.about
-                h4.project_body_title About #{project.title}
-                p.project_body_text !{project.about}
+                  if project.about
+                    h4.project_body_title About #{project.title}
+                    p.project_body_text !{project.about}
 
-              if project.highlights
-                h4.project_body_title Highlights
-                .project_highlight
-                  ul.project_highlight_list
-                    for highlight in project.highlights
-                      li.project_highlight_entry
-                        .project_highlight_entry_icon
-                          span.icon-trophy(style="color:" + project.color + "!important;")
-                        p.project_highlight_entry_text !{highlight}
+                  if project.highlights
+                    h4.project_body_title Highlights
+                    .project_highlight
+                      ul.project_highlight_list
+                        for highlight in project.highlights
+                          li.project_highlight_entry
+                            .project_highlight_entry_icon
+                              span.icon-trophy(style="color:" + project.color.hex + "!important;")
+                            p.project_highlight_entry_text !{highlight}
 
-              if project.stack
-                .project_stack
-                  h4.project_body_title Techonologies stack
-                  ul.project_stack_list
-                    for technology in project.stack
-                      li.project_stack_entry
-                        if technology == "bower"
-                          i(class="cbp-ig-icon devicon-bower-line")
-                        else if technology == "less"
-                          i(class="cbp-ig-icon devicon-less-plain-wordmark")
-                        else
-                          i.cbp-ig-icon(class="devicon-" + technology + "-plain")
-                        p.project_stack_title #{technology}
+                  if project.stack
+                    .project_stack
+                      h4.project_body_title Techonologies stack
+                      ul.project_stack_list
+                        for technology in project.stack
+                          li.project_stack_entry
+                            if technology == "bower"
+                              i(class="cbp-ig-icon devicon-bower-line")
+                            else if technology == "less"
+                              i(class="cbp-ig-icon devicon-less-plain-wordmark")
+                            else
+                              i.cbp-ig-icon(class="devicon-" + technology + "-plain")
+                            p.project_stack_title #{technology}
 
-              if project.people
-                .project_people
-                  h4.project_body_title People
-                  ul.project_people_list
-                    each person in project.people
-                      li.project_people_entry
-                        img(src="#{person.avatar}").project_people_entry_avatar
-                        p #{person.name}
+                  if project.people
+                    .project_people
+                      h4.project_body_title People
+                      ul.project_people_list
+                        each person in project.people
+                          li.project_people_entry
+                            img(src="#{person.avatar}").project_people_entry_avatar
+                            p #{person.name}
 
-              //- Project Body
-              if project.links
-                .project_links
-                  if project.links.website
-                    a(href= project.links.website, target="_blank").project_links_website(style="border-color:" + project.color + "; color:" + project.color + ";") Check out the project!
-                  if project.links.code
-                    a(href= project.links.code, target="_blank").project_links_code Open source code
+                  //- Project Body
+                  if project.links
+                    // a.action_button(href= project.links.website, target="_blank") Check out the project!
+                    .project_links
+                      if project.links.website
+                        a(href= project.links.website, target="_blank").project_links_website(style="border-color:" + project.color.hex + "; color:" + project.color.hex + ";") Check out the project!
+                      if project.links.code
+                        a(href= project.links.code, target="_blank").project_links_code Open source code
+
+          if index == projects.length - 1
+            .threeColsGrid__item
+              .threeColsGrid__item__wrapper
+                .talk__ad.shadow__box(style="margin-bottom: 2em;")
+                  h1.talk__ad__title My next project?
+                  p.talk__ad__subtitle Do you want to be the first to know my next project or adventure? Join my community and be up to date!
+                  include includes/subscriptionBox
+
+                .talk__ad.shadow__box
+                  h1.talk__ad__title Do you have a project or idea?
+                  p.talk__ad__subtitle Let's keep in touch! Ping me or contact me and I'll try to provide you feedback or maybe team up to make it happen :).
+                  a(href="/contact").talk__ad__link Contact or propose a talk

@@ -15,6 +15,10 @@ popupCloseButton.click(function(e) {
   hidepopup()
 })
 
+popup.click(function(e) {
+  hidepopup()
+})
+
 // AUXILIARY FUNCTIONS
 
 var changePopupImage = function(src) {
@@ -31,14 +35,17 @@ var hidepopup = function () {
 }
 
 var displayPopup = function (elem) {
-  var imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
+  const imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
+  const bigImageUrl = elem
+    .find('.bigImage')
+    .attr('value')
 
   if (!popupDisplayed) {
     popup.fadeIn('400')
   }
 
   // change the image shown in the popup
-  changePopupImage(imageURL)
+  changePopupImage(bigImageUrl)
   popupDisplayed = true
 }
 

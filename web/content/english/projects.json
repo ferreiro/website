@@ -3,13 +3,27 @@
     "title": "Dailyfocus",
     "date": "May 2016 - current",
     "type" : [ "backend", "frontend" ],
-    "color": "#6a4171",
-    "avatar": "/images/projects/dailyfocus_icon.png",
+    "color": {
+      "hex": "#6a4171",
+      "rgba_gradient_start": "rgba(60, 42, 63, 0.8)",
+      "rgba_gradient_end": "rgba(60, 42, 63, 0)"
+    },
+    "avatar": "/images/projects/dailyfocus/dailyfocus_icon.png",
     "background": null,
     "about": "",
     "images": [
-        "/images/projects/dailyfocus/dailyfocus_splash.png",
-        "/images/projects/dailyfocus/services.png"
+      {
+        "small": "/images/projects/dailyfocus/dailyfocus_splash_small.png",
+        "large": "/images/projects/dailyfocus/dailyfocus_splash.png"
+      },
+      {
+        "small": "/images/projects/dailyfocus/dailyfocus_home_small.png",
+        "large": "/images/projects/dailyfocus/dailyfocus_home.png"
+      },
+      {
+        "small": "/images/projects/dailyfocus/services_small.png",
+        "large": "/images/projects/dailyfocus/services.png"
+      }
     ],
     "highlights": [
       "College capstone project with the maximum grade (10/10)",
@@ -17,7 +31,7 @@
       "Integrated a Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses.",
       "Designed a responsive interface, took and fulfilled requirements of potential users."
     ],
-    "stack": ["nodejs", "javascript", "html5", "css3", "sass", "mongodb", "redis", "gulp"],
+    "stack": ["nodejs", "javascript", "html5", "css3", "sass", "mongodb", "redis", "google", "gulp"],
     "people": [
       {
         "name": "Jorge Ferreiro",
@@ -31,14 +45,35 @@
     }
   },
   {
-    "title": "Jorge Ferreiro Website",
+    "title": "Jorge Ferreiro Web",
     "date": "Mar 2016 - current",
     "type" : [ "backend", "frontend" ],
-    "color": "#d83902",
-    "avatar": "/images/avatar.png",
-    "background": "/images/projects/ferreiro_back.png",
+    "color": {
+      "hex": "#d83902",
+      "rgba_gradient_start": "rgba(109, 38, 13, 0.8)",
+      "rgba_gradient_end": "rgba(109, 38, 13, 0)"
+    },
+    "avatar": "/images/about/avatar_jorge_ferreiro.png",
+    "background": "/images/projects/ferreiro_v2/ferreiro_back.png",
     "about": "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
-    "images": null,
+    "images": [
+      {
+        "small": "/images/projects/ferreiro_v2/home_small.png",
+        "large": "/images/projects/ferreiro_v2/home.png"
+      },
+      {
+        "small": "/images/projects/ferreiro_v2/about_small.png",
+        "large": "/images/projects/ferreiro_v2/about.png"
+      },
+      {
+        "small": "/images/projects/ferreiro_v2/portfolio_small.png",
+        "large": "/images/projects/ferreiro_v2/portfolio.png"
+      },
+      {
+        "small": "/images/projects/ferreiro_v2/contact_small.png",
+        "large": "/images/projects/ferreiro_v2/contact.png"
+      }
+    ],
     "highlights": null,
     "stack": ["nodejs", "javascript", "bower", "sass", "mongodb"],
     "people": [
@@ -57,12 +92,19 @@
     "title": "Music4deejays",
     "date": "Dec 2013 - Dec 2015",
     "type" : [ "backend", "frontend" ],
-    "color": "#962828",
-    "avatar": "/images/projects/m4d_icon.png",
-    "background": "/images/projects/m4d_back.png",
+    "color": {
+      "hex": "#962828",
+      "rgba_gradient_start": "rgba(69, 19, 19, 0.8)",
+      "rgba_gradient_end": "rgba(69, 19, 19, 0)"
+    },
+    "avatar": "/images/projects/music4deejays/m4d_icon.png",
+    "background": "/images/projects/music4deejays/m4d_back.png",
     "about": "Streaming music application for listening, sharing and downloading the best electronic music from emerging artists. ",
     "images": [
-        "/images/projects/music4deejays.png"
+      {
+        "small": "/images/projects/music4deejays/music4deejays_small.png",
+        "large": "/images/projects/music4deejays/music4deejays.png"
+      }
     ],
     "highlights": [
       "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",
@@ -81,17 +123,37 @@
   },
   {
     "title": "SudoNotes",
-    "date": "Nov 2015 - Mar 2016",
+    "date": "Nov 2015 - April 2016",
     "type" : [ "backend", "frontend" ],
-    "color": "#283196",
+    "color": {
+      "hex": "#283196",
+      "rgba_gradient_start": "rgba(19, 23, 68, 0.8)",
+      "rgba_gradient_end": "rgba(19, 23, 68, 0)"
+    },
     "avatar": "/images/projects/sudonotes/sudonotes.jpg",
     "background": "/images/projects/sudonotes/1.png",
     "about": "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) application granted 10/10 in 'GIW' college course.",
     "images": [
-      "/images/projects/sudonotes/1.png",
-      "/images/projects/sudonotes/2.png",
-      "/images/projects/sudonotes/3.png",
-      "/images/projects/sudonotes/4.png"
+      {
+        "small": "/images/projects/sudonotes/signup_small.png",
+        "large": "/images/projects/sudonotes/signup.png"
+      },
+      {
+        "small": "/images/projects/sudonotes/welcome_small.png",
+        "large": "/images/projects/sudonotes/welcome.png"
+      },
+      {
+        "small": "/images/projects/sudonotes/profile.png",
+        "large": "/images/projects/sudonotes/profile.png"
+      },
+      {
+        "small": "/images/projects/sudonotes/quick_tipping_small.png",
+        "large": "/images/projects/sudonotes/quick_tipping.png"
+      },
+      {
+        "small": "/images/projects/sudonotes/first_note_small.png",
+        "large": "/images/projects/sudonotes/first_note.png"
+      }
     ],
     "highlights": null,
     "stack": ["python", "html5", "css3", "jquery", "SQLite3"],
