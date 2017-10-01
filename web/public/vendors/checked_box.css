@@ -1,12 +1,13 @@
 .mk-trc {
     height: 26px;
     line-height: 27px;
-    display: inline-block
+    display: inline-block;
 }
 
 .mk-trc label {
     height: inherit;
-    display: block
+    display: block;
+    cursor: pointer;
 }
 
 .mk-trc input[type=radio],
@@ -22,11 +23,14 @@
     position: relative;
     display: inline-block;
     background: rgba(0, 0, 0, .3);
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
 }
 
 .mk-trc[data-style=radio] i,
 .mk-trc[data-style=check] i {
-    width: 25px
+    width: 25px;
 }
 
 .mk-trc i:after,
@@ -46,7 +50,7 @@
 }
 
 .mk-trc input:checked+label i {
-    background: #A7A8A9
+    background: #A7A8A9;
 }
 
 .mk-trc input:checked+label i:before {
@@ -78,18 +82,18 @@
 }
 
 .mk-trc[data-style=check] i:before {
-    top: 10px;
-    left: 7px;
+    top: 12px;
+    left: 8px;
     height: 6px;
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg)
 }
-
+/* Este es el tick */
 .mk-trc[data-style=check] i:after {
-    top: 5px;
+    top: 7px;
     padding: 0!important;
-    left: 12px!important;
+    left: 13px!important;
     height: 12px!important;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -103,7 +107,7 @@
 }
 
 .mk-trc[data-style=check] input:checked+label i:before {
-    left: 7px
+    left: 8px
 }
 
 .mk-trc[data-align=right] i {
