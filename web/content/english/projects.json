@@ -31,7 +31,7 @@
       "Integrated a Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses.",
       "Designed a responsive interface, took and fulfilled requirements of potential users."
     ],
-    "stack": ["nodejs", "javascript", "html5", "css3", "sass", "mongodb", "redis", "google", "gulp"],
+    "stack": ["nodejs", "javascript", "html5", "css3", "sass", "mongodb", "redis", "gulp"],
     "people": [
       {
         "name": "Jorge Ferreiro",
