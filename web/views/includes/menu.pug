@@ -48,9 +48,17 @@
           img(src="/images/logo.jpg")
 
       .left
-        each item in menu || []
-          a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
-            p= item.name
+        nav.menu__nav
+          each item in menu || []
+              a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
+                p= item.name
+
+        // .optionsMenu
+          ul.optionsMenu__list
+            each item in menu || []
+              li.optionsMenu__item(, aria-selected= path===item.id ? 'true' : 'false')
+                a(href= item.url).optionsMenu__link
+                  span= item.name
 
       .right
 
