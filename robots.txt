@@ -1,0 +1,6 @@
+Disallow: /contact
+Disallow: /stats
+Disallow: /university
+Disallow: /newsletter
+Disallow: /admin
+User-agent: *

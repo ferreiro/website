@@ -17,6 +17,14 @@ module.exports = (app) => {
   // Add security layer
   app.use(helmet())
 
+  // Search engines
+  app.get('/robots.txt', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../robots.txt'))
+  })
+  app.get('/sitemap.xml', (req, res) => {
+    res.sendFile(path.join(__dirname + '/../sitemap.xml'))
+  })
+
   // Serve static bower: http://goo.gl/e2nTBf
   app.use(favicon(path.join(__dirname, '../web', 'public', 'images', 'favicons', 'favicon.ico')))
   app.use(express.static(path.join(__dirname, '../web/public')))
@@ -35,7 +43,9 @@ module.exports = (app) => {
     throw new Error('SESSION_SECRET not provided ')
   }
   app.use(session({
-    secret: env.SESSION_SECRET
+    secret: env.SESSION_SECRET,
+    saveUninitialized: false,
+    resave: false
   }))
 
   // view engine setup
