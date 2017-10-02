@@ -10,28 +10,7 @@ block content
       include ./includes/breadcrumb.pug
 
   .animated.fadeInUp
-    style.
-      .blogHeader_info {
-        line-height: 1.2em;
-      }
-    //style.
-      .blogHeader_bg:after {
-        background: rgba(216, 57, 2, 0.7);
-      }
-      .blogHeader_bg:before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: rgba(0, 0, 0, 0.4);
-      }
-      .blogHeader_info {
-        line-height: 1.2em;
-      }
-
-    .blogHeader.talkHeader
+    .blogHeader.talkHeader.lazy
       .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
         // SEO
         img(src= config.wallpaper)
