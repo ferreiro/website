@@ -5,7 +5,7 @@
     "wallpaper": "/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg",
     "callToAction": {
       "claim": "Do you have an event and want jorge to be a speaker or co-organiser? Write an email or contact.",
-      "button": "Contact to speak at your event"
+      "button": "Send me a talk proposal"
     }
   },
   "pastTalks": [
@@ -20,6 +20,7 @@
       "buttons": [
         {
           "title": "Read slides",
+          "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/redis-76234580"
         }
       ],
@@ -36,10 +37,12 @@
       "buttons": [
         {
           "title": "Watch the video",
+          "type": "video",
           "url": "https://www.youtube.com/watch?v=qlDrZiwkrv0"
         },
         {
           "title": "Slides",
+          "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
         }
       ],
@@ -56,6 +59,7 @@
       "buttons": [
         {
           "title": "Watch the video",
+          "type": "video",
           "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk"
         }
       ],
@@ -72,6 +76,7 @@
       "buttons": [
         {
           "title" : "Read presentation",
+          "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
         }
       ],
@@ -88,6 +93,7 @@
       "buttons": [
         {
           "title": "Checkout the Slides",
+          "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website"
         },
         {
@@ -108,6 +114,7 @@
       "buttons": [
         {
           "title": "Read Slides",
+          "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os"
         }
       ],

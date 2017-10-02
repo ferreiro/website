@@ -17,8 +17,20 @@ mixin talkCard(post)
       ul.postCard__options
         each button in post.buttons || []
           li.postCard__options__item
-            a.action_button(target="_blank", href= button.url)= button.title
-          // li#likePost.postCard__options__item
-            a.action_button(target="_blank", href="#")
-              span.icon.ion-android-favorite-outline
-              | Like
+            if button.type == "video"
+              a.action_button(target="_blank", href= button.url)
+                span.icon.ion-ios-film-outline
+                | #{button.title}
+
+            else if button.type == "slides"
+              a.action_button(target="_blank", href= button.url)
+                span.icon.ion-ios-browsers-outline
+                | Read slides
+
+            else if button.type == "image"
+              a.action_button(target="_blank", href= button.url)
+                span.icon.ion-image
+                | #{button.title}
+
+            else
+              a.action_button(target="_blank", href= button.url)= button.title
