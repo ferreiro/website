@@ -43,11 +43,6 @@ block content
                 | Error: Hey! Fill some text here ;).
               textarea.input_not_blank(type="name", style="margin-bottom: 0;", id="message", name="__text", placeholder= content.form.message || 'Write your message').contact_form_input
 
-            //- fieldset.contact_form_fieldset
-            //-   p.wrong#wrongCaptcha Error: The captcha you introduced is not valid. Try again.
-            //-   .input_email
-            //-     != recaptcha_form
-
             fieldset.contact_form_fieldset(style="margin-bottom: 0;")
               .contact_form_newsletter
                 span.contact_form_newsletter_check
