@@ -1,23 +1,16 @@
 
+const MailchimpApi = require('mailchimp-api-v3')
 const express = require('express')
 const router = express.Router()
-const MailchimpApi = require('mailchimp-api-v3')
 
 const env = require('../../../env')
 const utils = require('../utils')
 const errors = require('../../errors')
 const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 
-router.get('/', function (req, res) {
-  res.json({
-    'title': '',
-    'body': ''
-  })
-})
-
 /**
 * @api POST /contact
-* Sends emails
+* Send a personal email
 *
 * @ name
 * @ message
@@ -60,7 +53,7 @@ function addUserToMailchimp (email) {
     }
   }, (err, result) => {
     if (err) {
-      // we coudln't add user to 
+      // we coudln't add user to machilp
     }
     return
   })
