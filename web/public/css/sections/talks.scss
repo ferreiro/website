@@ -62,11 +62,13 @@
     // background-size: 30px;
   }
   &__ad {
-    padding: 1.5em;
+    height: 100%;
+    padding: 0 1.5em;
     position: relative;
     &__title {
       font-size: 1.5em;
       color: #000;
+      margin-top: 1em;
     }
     &__subtitle {
       margin: 1em 0;
@@ -80,6 +82,7 @@
       display: inline-block;
       font-weight: 600;
       padding: 0.9em 1em;
+      margin-bottom: 1.5em;
       border: 3px solid $primaryColor;
       text-decoration: none;
       @include border-radius(60px);

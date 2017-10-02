@@ -1,5 +1,5 @@
 extends ./includes/layout
-include ./mixins/talkEntry
+include ./mixins/talkCard
 
 block content_full
 
@@ -10,29 +10,50 @@ block content
       include ./includes/breadcrumb.pug
 
   .animated.fadeInUp
+    style.
+      .blogHeader_info {
+        line-height: 1.2em;
+      }
+    //style.
+      .blogHeader_bg:after {
+        background: rgba(216, 57, 2, 0.7);
+      }
+      .blogHeader_bg:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .blogHeader_info {
+        line-height: 1.2em;
+      }
 
     .blogHeader.talkHeader
       .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
         // SEO
         img(src= config.wallpaper)
       .blogHeader_userFields(style="max-width: 550px; margin: 0 auto;")
-        h2.blogHeader_job !{config.subtitle}
+        h2.blogHeader_info !{config.subtitle}
 
         .about_resume
           a(href="/contact").about_resume_button.about_resume_button_view.blogHeader_button= config.callToAction.button
 
     .animated.fadeInUp
-      h1.titleSeparator Previous talks and workshops
+      h1.titleSeparator Previous Talks and Workshops
 
       .threeColsGrid
         each talk in pastTalks || []
-          .threeColsGrid__item
+          .threeColsGrid__item.lazy
             .threeColsGrid__item__wrapper
-              +talkEntry(talk)
+              +talkCard(talk)
 
-            if pastTalks.length % 2 == 1
-              .talk
-                .talk__ad
-                  h1.talk__ad__title The next talk here!
-                  p.talk__ad__subtitle Do you have an event and want jorge to be a speaker or co-organiser? I'll be happy to be part of it! Write me an email with the proposal (jorge@ferreiro.me) or contact through the form.
-                  a(href="/contact").talk__ad__link Contact or propose a talk
+        .separator_no_margin
+        .threeColsGrid__item
+          .threeColsGrid__item__wrapper
+            .talk__ad.shadow__box
+              h1.talk__ad__title The next talk here!
+              p.talk__ad__subtitle Are you organizing an event and want me to be your speaker? Send me an email with the proposal (jorge@ferreiro.me). I'll be happy to be part of it!
+              a(href="/contact").talk__ad__link Send talk proposal
