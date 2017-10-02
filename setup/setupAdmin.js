@@ -2,7 +2,7 @@ const User = require('../web/models/User')
 
 module.exports = () => {
   if (process.env.NODE_ENV === 'DEV') {
-    return createAdminUser({
+    createAdminUser({
       email: 'admin',
       password: 'admin'
     })
