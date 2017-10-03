@@ -58,17 +58,20 @@
     position: relative;
     color: rgba(0, 0, 0, 0.9);
 
+    &:hover {
+      .jfFooter_entry__social {
+        p, a, span{
+          color: $primaryColor !important;
+        }
+      }
+    }
+
     &__link {
       width: 100%;
       height: 100%;
       position: absolute;
       left: 0;
       top: 0;
-      &:hover {
-        p, a, span{
-          color:$primaryColor;
-        }
-      }
     }
 
     @media all and (min-width: $tablet-screen) {
