@@ -6,13 +6,12 @@ block content_header
   +blogHeader(hasAnimation)
 
 block extraCss
-  <link href="/vendors/twentytwenty/css/twentytwenty-no-compass.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="/vendors/twentytwenty/css/twentytwenty.css" type="text/css" media="screen" />
 
 block extraScripts
   script(src="/javascripts/socialSharing.js")
   <script src="/vendors/twentytwenty/js/jquery.event.move.js" type="text/javascript"></script>
   <script src="/vendors/twentytwenty/js/jquery.twentytwenty.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="/vendors/twentytwenty/css/twentytwenty.css" type="text/css" media="screen" />
   script(src="/javascripts/imageComparator.js")
   script(src="/javascripts/imageResizer.js")
 
@@ -43,11 +42,11 @@ block content_large
       .socialSharing#socialSharing
         ul.socialSharing__list
           li.socialSharing__entry
-            a(id="tweetShare" href="#" target="_blank")
+            a(id="tweetShare")
               span.icon.icon-twitter
           li.socialSharing__entry
-            a(id="facebookShare" href="#" target="_blank")
-              span.icon.icon-facebook
+            a(id="linkedinShare")
+              span.icon.icon-linkedin2
 
       h1.blogPost__title= post.title
       h2.blogPost__subtitle= post.summary

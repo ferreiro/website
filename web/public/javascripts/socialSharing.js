@@ -2,29 +2,32 @@ setupSocialButtons()
 setupScrollListener()
 
 function setupSocialButtons() {
-    const postTitle = $('.blogPost__title').text()
+    const url = encodeURIComponent(window.location)
+    const title = $('.blogPost__title').text()
+    const summary = $('.blogPost__subtitle').text()
 
+    setupTwitterButton(url, title, summary)
+    setupLinkedinButton(url, title, summary)
+}
+
+function setupTwitterButton (url, title, summary) {
     const twitterShareButton = $('#tweetShare')
     twitterShareButton.click(function (event) {
-        event.preventDefault();
+        event.preventDefault()
 
-        var url = window.location;
-        window.open("https://twitter.com/share?text=👓 " + postTitle + " &via=jgferreiro&url="+encodeURIComponent(url), "Share on Twitter", "width=500px,height=250px;");
+        const twitterShareUrl = "https://twitter.com/share?text=👓 " + title + " &via=jgferreiro&url=" + url
+        window.open(twitterShareUrl, "Share on Twitter", "width=500px,height=250px;");
     })
+}
 
-    const facebookShareButton = $('#facebookShare')
-    facebookShareButton.click(function (event) {
+function setupLinkedinButton (url, title, summary) {
+    const linkedinShareButton = $('#linkedinShare')
+    linkedinShareButton.click(function (event) {
         event.preventDefault();
 
-        var url = window.location;
-
-        var sharingUrl = "https://www.facebook.com/dialog/feed?"
-        sharingUrl += "app_id=1677477615658040"
-        sharingUrl += "&display=popup&amp;caption=An%20example%20caption"
-        sharingUrl += "&link=" + url
-        sharingUrl += "&redirect_uri=" + url
-
-        window.open(sharingUrl, "Share on Facebook", "width=500px,height=500px;");
+        const mini = true
+        const linkedinShareUrl = `https://www.linkedin.com/shareArticle?mini=${mini}&url=${url}&title=${title}&summary=${summary}&source=LinkedIn`
+        window.open(linkedinShareUrl, "Share on Twitter", "width=500px,height=250px;");
     })
 }
 

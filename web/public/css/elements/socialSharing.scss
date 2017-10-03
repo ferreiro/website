@@ -1,6 +1,6 @@
 .socialSharing {
-  @include opacity(0);
   visibility: hidden;
+  @include opacity(0);
   @include transition(500ms);
   @media all and (max-width: $desktop-screen - 1px) {
     width: 100%;
@@ -35,8 +35,9 @@
     }
   }
   &__entry {
-    display: inline-block;
+    cursor: pointer;
     list-style: none;
+    display: inline-block;
     @include opacity(0.5);
     @include transition(300ms);
     &:hover {
