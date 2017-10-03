@@ -4,7 +4,7 @@
       a.logo(href="/")
           img(src="/images/logo.jpg")
 
-      .left
+      .menu_left
         .dropdown
           a(href='/', target='_blank')
             .item.with-icon
@@ -12,7 +12,7 @@
                 span.icon.ion-ios-arrow-back
                 span.social_network_text Go back to website
 
-      .right
+      .menu_right
 
         if admin
           a.item(href="/admin/")
@@ -53,12 +53,12 @@
   .jfmenu_overlay
   .jfmenu_content
 
-    // put the size of your header
+    //-put the size of your header
     .jfmenu_top_separator
 
     h1.jfmenu_title Discover me
 
-    // Menu block containing links
+    //-Menu block containing links
     ul
       each item in menu || []
         li(id= item.id, class= path===item.id ? 'current_section' : '')
@@ -70,7 +70,7 @@
           span Social Networks
           span.icon-arrow-down2.right
 
-        // Menu block containing links (sublinks)
+        //-Menu block containing links (sublinks)
         ul
           each item in social || []
             li

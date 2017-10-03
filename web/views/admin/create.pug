@@ -1,72 +1,162 @@
 extends ./layout
-block content
 
+block extraScripts
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
+    script(src="/javascripts/uploader.js")
+
+    script(src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js")
+    script.
+        var simplemde = new SimpleMDE({
+            element: document.getElementById("composerBody"),
+            promptURLs: true,
+            tabSize: 4,
+            autosave: {
+                enabled: true,
+                uniqueId: "JorgeFerreiroBlog",
+                delay: 2000,
+            }
+        });
+    script.
+       window.onbeforeunload = function(evt) {
+            var message = 'Did you remember to download your form?';
+            if (typeof evt == 'undefined') {
+                evt = window.event;
+            }
+            if (evt) {
+                evt.returnValue = message;
+            }
+
+            return message;
+        }
+
+    //-Update simpleMDE content
     if edit
+        input(type="hidden", id="postBody", value= post.body)
+        script.
+            var data = $('#postBody').val()
+            simplemde.value(data)
+
+block content
+    //if edit
         h1.admin__title Edit post
-    else
-        h1.admin__title Create new post
+    //else
+        h1.admin__title Write post
 
     if error
         div(style="background: red; text-align: center; margin-bottom: 2em; padding: 1.5em;")
-            p= error
+            p !{error}
 
     if success
         div(style="background: green; text-align: center; margin-bottom: 2em; padding: 1.5em;")
-            p= success
+            p !{success}
 
     if edit == true & post == null
         p Post does not exist
     else
-        - formAction = edit==true ? '/admin/edit/' + post.permalink : '/admin/create'
+        style.
+            #headerImageUploaderForm { display: none; }
+            #imageUploader { display: none; }
 
-        .composer.shadow__box
+        form#headerImageUploaderForm(class="uploader", action= '/admin/uploader', method='post', enctype="multipart/form-data")
+            input.composer__input(type='file', name="image")
+            input(type="submit", value="Upload Image", name="submit")
 
-            form(action= formAction, method='post')
+        form#imageUploader(class="uploader", action= '/admin/uploader', method='post', enctype="multipart/form-data")
+            input.composer__input(type='file', name="image")
+            input(type="submit", value="Upload Image", name="submit")
+
+        form(method='post', action= (edit==true ? '/admin/edit/' + post.permalink : '/admin/create'))
+
+            .composer.shadow__box
                 .composer__entry
-                    // label(for='title', class="composer__legend") Title:
-                    textarea#title.composer__title(type='name', placeholder="Title", name='post_title')= (post && post.title ? post.title : '')
+                    //-label(for='title', class="composer__legend") Title:
+                    textarea.title#title.blogPost__title.composer__title(rows="2", placeholder="Title", name='post_title')= (post && post.title ? post.title : '')
+
                 .composer__entry
-                    label(for='pic', class="composer__legend")
+                    textarea.summary.blogPost__subtitle.composer__subtitle#summary(rows="3", placeholder="Summary", name='post_summary')= (post && post.summary ? post.summary : '')
+                    //label(for='summary', class="composer__legend")
+                        span.icon.ion-document-text
+                        p Summary
+                    //.composer__right
+                        textarea#summary.composer__input(type='summary', placeholder="Summary", class="admin__input", name='post_summary')= (post && post.summary ? post.summary : '')
+
+                .composer__entry(style="margin: 0.8em 0; margin-bottom: 1.5em;")
+                    //-label(for='pic', class="composer__legend")
                         span.icon.ion-image
                         p Image
-                    input#pic.composer__input(type='name', placeholder="Image", class="admin__input", name='post_pic', value= post && post.pic ? post.pic : '')
+                    //.composer__right
+                    .headerImage
+                        input.composer__input#picInput(style="display: none;", type='name', placeholder="Image", class="admin__input", name='post_pic', value= post && post.pic ? post.pic : '')
+                        //-div(style="display:inline-block; min-width: 200px; min-height: 120px; background: #f4f4f4; margin: 15px 0;")
+                        img#picImage(src= post && post.pic ? post.pic : '', width="200px")
+                        div(style="width: 100%;")
+                        img#headerImageUploaderLoading(src="/images/loading.gif", width="30px", style="display: none; margin: 15px 0;")
+                        div(style="width: 100%;")
+                        a.action_button(id="headerImageUploaderButton", style="margin-top: 5px; margin-bottom: 1em;") Upload Header Image
+
+                .composer__entry
+                    textarea#composerBody(type='name', class="admin__textarea", name='post_body')
+
+                .stickyUploader
+                    .composer__entry
+
+                        #imageUploaderWrapper(style="margin-bottom: 1em;")
+                            img#imageUploaded(src= '', width="200px")
+                            div(style="width: 100%;")
+                            img#imageUploaderLoader(src="/images/loading.gif", width="30px", style="display: none; margin: 15px 0;")
+                            div(style="width: 100%;")
+                            span#imageUploadedUrl(style="font-size: 11px; line-height: 12px; margin-top: 1em; overflow-wrap: break-word; text-align: justify;")
+
+                        a.action_button(id="imageUploaderButton", style="margin: 0; float: left; display: inline-block;") Upload Image
+                        a.action_button(id="imageUploaderClear", style="margin: 0; float: right; display: inline-block;")
+                            span.icon.ion-android-remove
+
+            //-This is not shown to the user
+            //-but they are automatically fullfilled
+            .composer.shadow__box(style="display: none; margin-top: 2em;")
+                h2 Options
+
                 .composer__entry
                     label(for='permalink', class="composer__legend")
                         span.icon.ion-link
                         p Permalink
-                    input#permalink.composer__input(type='name', placeholder="Permalink", class="admin__input", name='post_permalink', value= post && post.permalink ? post.permalink : '')
+                    .composer__right
+                        input#permalink.composer__input(type='name', placeholder="Permalink", class="admin__input", name='post_permalink', value= post && post.permalink ? post.permalink : '')
+
                 .composer__entry
                     label(for='author_name', class="composer__legend")
                         span.icon.ion-person
                         p Author
-                    input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author_name ? post.author_name : 'Jorge Ferreiro')
+                    .composer__right
+                        input#author.composer__input(type='author_name', placeholder="Author Name", class="admin__input", name='post_author_name', value= post && post.author_name ? post.author_name : 'Jorge Ferreiro')
 
                 .composer__entry(style="display: none;")
                     label(for='author_pic', class="composer__legend")
                         span.icon.ion-person
                         p Author pic
-                    input#author.composer__input(type='author_pic', placeholder="Author Pic", class="admin__input", name='post_author_pic', value= post && post.author_pic ? post.author_pic : '')
+                    .composer__right
+                        input#author.composer__input(type='author_pic', placeholder="Author Pic", class="admin__input", name='post_author_pic', value= post && post.author_pic ? post.author_pic : '')
 
-                .composer__entry
-                    label(for='summary', class="composer__legend")
-                        span.icon.ion-document-text
-                        p Summary
-                    textarea#summary.composer__input(type='summary', placeholder="Summary", class="admin__input", name='post_summary')= (post && post.summary ? post.summary : '')
-
-                .composer__entry
-                    textarea#body(type='name', class="admin__textarea", name='post_body')
-
+            .composer.shadow__box(style="margin-top: 2em;")
                 .composer__entry
                     h2 Category
 
                     mixin selectionItem(inputName, inputValue, title)
-                        - isCategorySelected = post.category.indexOf(inputValue) > 0
+                        - postCategory = []
+                        if post && post.category
+                            - postCategory = post.category
+
+                        - isCategorySelected = postCategory.indexOf(inputValue) >= 0
                         .threeColsGrid__item
                             .threeColsGrid__item__wrapper
                                 li.selectionBox__item
-                                    .selectionBox__left
-                                        input(checked= (isCategorySelected ? true : false), name= inputName, value= inputValue, type="checkbox")
-                                    .selectionBox__right
+                                    .selectionBox__left(style="margin-right: 5px;")
+                                        .toggleWrapper
+                                            input(type="checkbox", id= inputValue, name= inputName, value= inputValue, checked= (isCategorySelected ? true : false))
+                                            .toggle
+                                                label(for= inputValue)
+                                                    i
+                                    .selectionBox__right(style="width: 90px; overflow: hidden;")
                                         span= title
 
                     .threeColsGrid.selectionBox
@@ -84,30 +174,13 @@ block content
                             .threeColsGrid__item__wrapper
                                 li.selectionBox__item
                                     .selectionBox__left
-                                        input#isPublished(name="post_isPublished", type="checkbox", checked=(post && post.published==true ? true : false))
+                                        .toggleWrapper
+                                            input(type="checkbox", id= 'isPublished', name= 'post_isPublished', checked= (post && post.published ? true : false))
+                                            .toggle
+                                                label(for= 'isPublished')
+                                                    i
                                     .selectionBox__right
                                         span Is published?
 
-                .composer__entry(style="margin-top: 2em;")
-                    button.about_resume_button.about_resume_button_view.blogHeader_button(type="submit") Submit
-
-        script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
-        script(src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js")
-        script(src="/bower_components/autogrow/autogrow.min.js")
-        script.
-            $('textarea').autogrow();
-            var simplemde = new SimpleMDE({
-                element: document.getElementById("body"),
-                promptURLs: true,
-                tabSize: 4,
-                autosave: {
-                    enabled: true,
-                    uniqueId: "JorgeFerreiroBlog",
-                    delay: 2000,
-                }
-            });
-        if edit
-            input(type="hidden", id="postBody", value= post.body)
-            script.
-                var data = $('#postBody').val()
-                simplemde.value(data)
+                .composer__entry(style="margin: 0; margin-top: 1em;")
+                    button.about_resume_button.about_resume_button_view.blogHeader_button(type="submit", style="margin: 0;") Submit post

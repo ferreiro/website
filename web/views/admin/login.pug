@@ -1,4 +1,8 @@
 extends ./layout
+
+block extraScripts
+    script(src='https://www.google.com/recaptcha/api.js')
+
 block content
     if message
         div(style="background: red; padding: 1em;")

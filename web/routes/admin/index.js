@@ -3,21 +3,15 @@ const router = express.Router()
 const passport = require('passport')
 const Recaptcha = require('express-recaptcha')
 
-const env = require('../../env')
-const blogRepository = require('../repository/blog')
+const env = require('../../../env')
+const blogRepository = require('../../repository/blog')
+const adminUploader = require('./uploader')
 const recaptcha = new Recaptcha(env.RECAPTCHA_PUBLIC, env.RECAPTCHA_SECRET)
 
+// Application resources routes
 router.get('/', isAuthenticated, getAllPosts)
 router.get('/published', isAuthenticated, getPublishedPosts)
 router.get('/drafts', isAuthenticated, getDraftsPosts)
-router.get('/logout', logout)
-router.get('/login', login)
-router.post('/login', recaptcha.middleware.verify, postLogin, passport.authenticate('local', {
-  successRedirect: '/admin',
-  failureRedirect: '/admin/login',
-  failureFlash: 'Invalid password or username.'
-}))
-// router.get('/drafts', getDrafts)
 router.get('/create', isAuthenticated, createPostComposer)
 router.post('/create', isAuthenticated, postNewBlog)
 router.get('/edit/:permalink', isAuthenticated, editPostPage)
@@ -25,13 +19,26 @@ router.post('/edit/:permalink', isAuthenticated, editPostSubmit)
 router.get('/delete/:permalink', isAuthenticated, deletePostConfirmation)
 router.get('/delete/:permalink/confirm', isAuthenticated, deletePost)
 
+router.use('/uploader', isAuthenticated, adminUploader)
+
+// General access routes
+router.get('/logout', logout)
+router.get('/login', login)
+router.post('/login', recaptcha.middleware.verify, postLogin, passport.authenticate('local', {
+  successRedirect: '/admin',
+  failureRedirect: '/admin/login',
+  failureFlash: 'Invalid password or username.'
+}))
+
 module.exports = router
 
 function isAuthenticated (req, res, next) {
-  // if not logged in, redirect
+  // If not logged user, ask for login.
   if (!req.user) {
     return res.redirect('/admin/login')
   }
+
+  // User is logged In
   return next()
 }
 
@@ -127,28 +134,28 @@ function parseRequestPostData (req) {
 
   const bodySanitized = body
   return {
-    title: title,
-    pic: pic,
-    permalink: permalink,
+    pic,
+    title,
+    summary,
+    permalink,
+    published,
+    category,
     author_name: authorName,
     author_pic: authorPic,
-    summary: summary,
     body: bodySanitized,
-    published: published,
-    category: category
   }
 }
 function postNewBlog (req, res, next) {
   const postData = parseRequestPostData(req)
   blogRepository.create(postData).then((post) => {
-    return res.render('admin/home', {
-      success: 'Post with id: created!',
+    return res.render('admin/result', {
       post: post,
-      admin: true
+      admin: true,
+      success: 'Post created!'
     })
-  }).catch((err) => {
+  }).catch((error) => {
     return res.render('admin/create', {
-      error: 'Failed to create new post.'
+      error: 'Failed to create new post.<br />' + error
     })
   })
 }
@@ -175,14 +182,6 @@ function editPostSubmit (req, res, next) {
   const postData = parseRequestPostData(req)
   blogRepository.findAndUpdateByPermalink(postPermalink, postData).then(post => {
     return res.redirect('/admin/edit/' + post.permalink)
-    /*
-    return res.render('admin/create', {
-      success: 'Post updated!',
-      edit: true,
-      post: post,
-      admin: true
-    })
-    */
   }).catch((err) => {
     return res.render('admin/home', {
       error: 'Failed to update post.'
