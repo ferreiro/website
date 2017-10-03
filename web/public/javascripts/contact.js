@@ -7,11 +7,16 @@ var failure = $('.contact_form_failure')
 
 form.submit(function(event){
   event.preventDefault(); // Stop change webpage
-  submitForm();
+
+  let endpoint = null
+  if ($('#contactFormEndpoint').length > 0) {
+    endpoint = $('#contactFormEndpoint').val()
+  }
+  submitForm(endpoint);
 });
 
-function submitForm() {
-  var end_point = "/api/v1/contact";
+function submitForm(endpoint) {
+  var endpoint = endpoint || "/api/v1/contact";
 
   success.hide()
   failure.hide()
@@ -24,11 +29,8 @@ function submitForm() {
     return
   }
 
+  form.hide()
   loader.show()
-
-  if (loader) {
-     loader.show()
-  }
 
   var newsletterChecked = ($(".newsletter:checked").length) > 0;
 
@@ -41,15 +43,15 @@ function submitForm() {
   };
 
   $.ajax({
-     url: end_point,
+     url: endpoint,
      data: contactForm,
      type: 'POST',
      dataType: 'json',
      encode: true
   })
   .done(function(email) {
-    console.log(email);
     if (email.error) {
+      failure.html(email.error);
       failure.show();
     }
     else {

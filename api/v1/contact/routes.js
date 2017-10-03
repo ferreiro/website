@@ -19,24 +19,27 @@ const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 */
 router.post('/', function (req, res) {
   var message = ({
-    'name': req.body.__name || null,
-    'email': req.body.__email || null,
-    'msg': req.body.__msg || null,
-    'subscribed': req.body.__subscribed || null
+    name: req.body.__name || null,
+    email: req.body.__email || null,
+    msg: req.body.__msg || null,
+    subscribed: req.body.__subscribed || null
   })
-
-  if (message.subscribed) {
-    addUserToMailchimp(email)
-  }
 
   utils.validateMessage(message, function(valid) {
     if (!valid) {
       return errors.formNotValid(req, res)
     }
 
+    if (message.subscribed) {
+      addUserToMailchimp(message.email)
+    }
+
     utils.sendMessage(message, function (err, email) {
       if (err) {
         errors.emailNotSend(req, res)
+        return res.json({
+          error: err
+        })
       } else {
         res.status(200).json(email)
       }
@@ -45,6 +48,8 @@ router.post('/', function (req, res) {
 })
 
 function addUserToMailchimp (email) {
+  console.log('Add user to mailchimp')
+  console.log(email)
   mailchimp.post({
     path : '/lists/3b63288535/members',
     body: {
@@ -52,10 +57,10 @@ function addUserToMailchimp (email) {
       status: 'subscribed'
     }
   }, (err, result) => {
+    console.log(err)
     if (err) {
       // we coudln't add user to machilp
     }
-    return
   })
 }
 

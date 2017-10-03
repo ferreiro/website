@@ -6,18 +6,15 @@ const router = express.Router()
 const env = require('../../../env')
 const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 
-router.get('/subscribe', (req, res) => {
-  res.send('hello')
-})
-router.post('/subscribe', (req, res) => {
-  const email = req.body.email || ''
-  mailchimp.post({
-    path : '/lists/3b63288535/members',
-    body: {
-      email_address: email,
-      status: 'subscribed'
+router.post('/', (req, res) => {
+  const name = req.body.__name || ''
+  const email = req.body.__email || ''
+  addUserToMailchimp (name, email, (err) => {
+    if (err.status === 400) {
+      return res.json({
+        error: 'This email is already register!'
+      })
     }
-  }, (err, result) => {
     if (err) {
       return res.json({
         error: err.detail
@@ -28,5 +25,21 @@ router.post('/subscribe', (req, res) => {
     })
   })
 })
+
+function addUserToMailchimp (name, email, next) {
+  mailchimp.post({
+    path : '/lists/3b63288535/members',
+    body: {
+      name: name,
+      email_address: email,
+      status: 'subscribed'
+    }
+  }, (err, result) => {
+    if (err) {
+      return next(err)
+    }
+    return next(null)
+  })
+}
 
 module.exports = router

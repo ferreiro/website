@@ -6,7 +6,8 @@
   margin: 0 auto;
   position: relative;
   margin-top: 29px;
-  background: #f4f4f4;
+  background: #f4f4f4 url('../images/loading.gif') 50% 50% no-repeat;
+  background-size: 60px;
   z-index: -1;
   &__int {}
 }

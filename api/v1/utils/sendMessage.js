@@ -4,6 +4,17 @@ const nodemailer = require('nodemailer')
 
 const env = require('../../../env')
 
+const MAILGUN_USER = env.MAILGUN_USER
+const MAILGUN_PASS = env.MAILGUN_PASS
+if (!MAILGUN_USER || !MAILGUN_PASS) {
+  throw new Error('MAILGUN ENV TOKENS NOT PROVIDED')
+}
+
+const CONTACT_EMAIL = env.CONTACT_EMAIL
+if (!CONTACT_EMAIL) {
+  throw new Error('CONTACT_EMAIL ENV TOKENS NOT PROVIDED')
+}
+
 sendMessage = function (message, cb) {
 
   var transporter;
@@ -13,8 +24,8 @@ sendMessage = function (message, cb) {
   transporter = nodemailer.createTransport({
     service: 'Mailgun',
     auth: {
-      user: env.MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
-      pass: env.MAILGUN_PASS // You set this.
+      user: MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
+      pass: MAILGUN_PASS // You set this.
     }
   })
 
@@ -29,8 +40,8 @@ sendMessage = function (message, cb) {
   }
 
   mailOptions = {
-    from: message.name + '<' + env.MAILGUN_USER + '>', // sender address
-    to: env.CONTACT_EMAIL, // list of receivers
+    from: message.name + '<' + MAILGUN_USER + '>', // sender address
+    to: CONTACT_EMAIL, // list of receivers
     subject: '[Ferreiro.me] New message', // Subject line
     html: emailHMTL // html body
   }
@@ -40,7 +51,7 @@ sendMessage = function (message, cb) {
     if (error) {
       return cb(error, null)
     }
-    return cb(error, email)
+    return cb(null, email)
   })
 }
 

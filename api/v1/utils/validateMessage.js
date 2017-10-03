@@ -13,7 +13,7 @@ validateMessage = function (message, cb) {
 
   var email = message.email
   var msg = message.msg
-  
+
   emailCorrect = validator.isEmail(String(email))
   messageFilled = (msg !== undefined)
 

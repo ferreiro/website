@@ -10,6 +10,7 @@ const projects = require('./projects')
 const talks = require('./talks')
 const social = require('./social')
 const contact = require('./contact')
+const newsletter = require('./newsletter')
 
 router.get('/', home) // Home shows about page
 router.use('/about', require('./about'))
@@ -19,6 +20,7 @@ router.get('/projects', function (req, res) {
   res.redirect('/portfolio') // leave this, backwards compatibility
 })
 router.use('/talks', talks)
+router.use('/newsletter', newsletter)
 router.use('/contact', contact)
 router.use('/social', social)
 router.use('/admin', require('./admin'))
