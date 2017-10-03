@@ -1,0 +1,12 @@
+.imageComparator {
+  width: 700px;
+  max-width: 700px;
+  min-height: 250px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 29px;
+  background: #f4f4f4;
+  z-index: -1;
+  &__int {}
+}

@@ -1,0 +1,74 @@
+// https://codepen.io/o_ti/pen/bkEco
+
+$toggleColorGreen: #4cd964;
+$toggleColorActive: #C0C0C0;
+
+.toggleWrapper {
+  position: relative;
+  display: inline-block;
+  height: 31px;
+  width: 57px;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+  input[type="checkbox"]:active + .toggle i {
+    width: 35px;
+  }
+
+  input[type="checkbox"]:active + .toggle label,
+  input[type="checkbox"]:checked + .toggle label {
+    border: 16px solid $toggleColorActive;
+  }
+
+  input[type="checkbox"]:checked + .toggle i {
+    left: 21px;
+  }
+
+  input[type="checkbox"]:checked:active + .toggle label {
+    border: 16px solid #e5e5e5;
+  }
+
+  input[type="checkbox"]:checked:active + .toggle i {
+    left: 14px;
+  }
+
+  .toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 9px;
+    margin: auto;
+    width: 51px;
+    height: 31px;
+  }
+
+  .toggle label,
+  .toggle i {
+    box-sizing: border-box;
+    display: block;
+    background: #ffffff;
+  }
+
+  .toggle label {
+    width: 51px;
+    height: 32px;
+    border-radius: 32px; 
+    border: 2px solid #e5e5e5;
+    transition: all 0.30s ease;
+  }
+
+  .toggle i {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    box-shadow: 0 0 1px 0 rgba(0,0,0, 0.25),
+          0 3px 3px 0 rgba(0,0,0, 0.15);
+    background: #ffffff;
+    transition: all 0.3s cubic-bezier(0.275, -0.450, 0.725, 1.450);
+  }
+
+}
