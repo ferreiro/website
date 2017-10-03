@@ -42,10 +42,11 @@ block content_large
       .socialSharing#socialSharing
         ul.socialSharing__list
           li.socialSharing__entry
-            a(id="tweetShare")
-              span.icon.icon-twitter
+            a(id="tweetShare").socialSharing__item
+              // span.icon.icon-twitter
+              span.icon.ion-social-twitter-outline
           li.socialSharing__entry
-            a(id="linkedinShare")
+            a(id="linkedinShare").socialSharing__item
               span.icon.icon-linkedin2
 
       h1.blogPost__title= post.title
