@@ -1,7 +1,6 @@
 .jfFooter {
   width: 100%;
   display: block !important;
-  // margin-top: 2em;
   border: 0;
   border-top: 1px solid #f4f4f4;
   position: relative;
@@ -65,6 +64,11 @@
       position: absolute;
       left: 0;
       top: 0;
+      &:hover {
+        p, a, span{
+          color:$primaryColor;
+        }
+      }
     }
 
     @media all and (min-width: $tablet-screen) {
@@ -80,11 +84,6 @@
     @media all and (min-width:$big-screen) {
     }
 
-    &:hover {
-      p, a, span{
-        color:$primaryColor;
-      }
-    }
     h3 {
       margin: 0.5em 0;
       margin-top: 1em;
@@ -106,6 +105,7 @@
       margin-top: 5px;
       font-size: 1em;
       color: #000;
+      text-decoration: none;
       @include transition(200ms);
     }
     span {
@@ -115,6 +115,7 @@
       @include transition(200ms);
     }
     a {
+      text-decoration: none;
       @include transition(200ms);
     }
   }
