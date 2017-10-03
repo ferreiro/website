@@ -30,8 +30,8 @@ module.exports = (app) => {
     done(null, user.email)
   })
 
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
+  passport.deserializeUser(function(email, done) {
+    User.find({ email }, function(err, user) {
       done(err, user)
     })
   })

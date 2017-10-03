@@ -1,11 +1,13 @@
 const User = require('../web/models/User')
 
-module.exports = () => {
+module.exports = (app) => {
   if (process.env.NODE_ENV === 'DEV') {
-    createAdminUser({
+    const adminUserDevelopment = {
       email: 'admin',
       password: 'admin'
-    })
+    }
+    createAdminUser(adminUserDevelopment)
+    setupFakeAdminSession(app, adminUserDevelopment)
   } else {
     const productionAdminEmail = process.env.ADMIN_EMAIL
     const productionAdminPass = process.env.ADMIN_PASS
@@ -14,6 +16,15 @@ module.exports = () => {
       password: productionAdminPass
     })
   }
+}
+
+function setupFakeAdminSession (app, adminUser) {
+  app.use(function setupSession(req, res, next) {
+    // Since its development, set fake admin user
+    // in the session
+    req.user = adminUser
+    return next()
+  })
 }
 
 function createAdminUser (data) {
