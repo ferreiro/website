@@ -1,6 +1,14 @@
 {
   "menu":[
     {
+      "id": "home",
+      "hidden": false,
+      "icon": "ion-ios-home",
+      "name" : null,
+      "url" : "/",
+      "target": "_self"
+    },
+    {
       "id": "about",
       "icon": null,
       "name" : "Biography",

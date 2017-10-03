@@ -2,7 +2,10 @@
   {
     "title": "Dailyfocus",
     "date": "May 2016 - current",
-    "type" : [ "backend", "frontend" ],
+    "type" : [
+      "backend",
+      "frontend"
+    ],
     "color": {
       "hex": "#6a4171",
       "rgba_gradient_start": "rgba(60, 42, 63, 0.8)",
@@ -10,7 +13,9 @@
     },
     "avatar": "/images/projects/dailyfocus/dailyfocus_icon.png",
     "background": null,
-    "about": "",
+    "about": [
+      "Dailyfocus is a web application that integrates all the services employees use regularly (Gmail, Facebook, etc). It enables them to organize their work and make effective decisions."
+    ],
     "images": [
       {
         "small": "/images/projects/dailyfocus/dailyfocus_splash_small.png",
@@ -31,7 +36,16 @@
       "Integrated a Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses.",
       "Designed a responsive interface, took and fulfilled requirements of potential users."
     ],
-    "stack": ["nodejs", "javascript", "html5", "css3", "sass", "mongodb", "redis", "gulp"],
+    "stack": [
+      "nodejs",
+      "javascript",
+      "html5",
+      "css3",
+      "sass",
+      "mongodb",
+      "redis",
+      "gulp"
+    ],
     "people": [
       {
         "name": "Jorge Ferreiro",
@@ -47,7 +61,10 @@
   {
     "title": "Jorge Ferreiro Web",
     "date": "Mar 2016 - current",
-    "type" : [ "backend", "frontend" ],
+    "type" : [
+      "backend",
+      "frontend"
+    ],
     "color": {
       "hex": "#d83902",
       "rgba_gradient_start": "rgba(109, 38, 13, 0.8)",
@@ -55,7 +72,6 @@
     },
     "avatar": "/images/about/avatar_jorge_ferreiro.png",
     "background": "/images/projects/ferreiro_v2/ferreiro_back.png",
-    "about": "Designed and programmed from scratch my personal website in <b>6</b> days. Backend in <strong>Node.JS</strong> and publicly open source.",
     "images": [
       {
         "small": "/images/projects/ferreiro_v2/home_small.png",
@@ -74,8 +90,23 @@
         "large": "/images/projects/ferreiro_v2/contact.png"
       }
     ],
-    "highlights": null,
-    "stack": ["nodejs", "javascript", "bower", "sass", "mongodb"],
+    "about": [
+      "<b>#ferreiroV2:</b> In 2016, I decided to built from scratch my new personal website. I did everything in <b>6 days</b> and released it as an open source project.",
+      "<b>#ferreiroV3:</b> In late 2017, I wanted to move my website to a whole new level. So I dedicated one week to re-think the vision, improved the design and added new features aligned with my goals.",
+      "Read <a href='/blog/' target='_blank'>my blog article</a> about what's new on version 3, how I've re-built the website and the lessons learned."
+    ],
+    "features": [
+      "Created a blogging and website content management system.",
+      "Third party integrations: AWS (Amazon), Mailchimp, Mailgun.",
+      "Publicily open source project."
+    ],
+    "stack": [
+      "nodejs",
+      "javascript",
+      "bower",
+      "sass",
+      "mongodb"
+    ],
     "people": [
       {
         "name": "Jorge Ferreiro",
@@ -99,7 +130,9 @@
     },
     "avatar": "/images/projects/music4deejays/m4d_icon.png",
     "background": "/images/projects/music4deejays/m4d_back.png",
-    "about": "Streaming music application for listening, sharing and downloading the best electronic music from emerging artists. ",
+    "about": [
+      "Streaming music application for listening, sharing and downloading the best electronic music from emerging artists. "
+    ],
     "images": [
       {
         "small": "/images/projects/music4deejays/music4deejays_small.png",
@@ -111,7 +144,12 @@
       "Reached Top #5 music app on FirefoxOS",
       "Created the streaming player using Soundcloud API"
     ],
-    "stack": ["php", "javascript", "html5", "css3"],
+    "stack": [
+      "php",
+      "javascript",
+      "html5",
+      "css3"
+    ],
     "people": [
       {
         "name": "Jorge Ferreiro",
@@ -132,7 +170,9 @@
     },
     "avatar": "/images/projects/sudonotes/sudonotes.jpg",
     "background": "/images/projects/sudonotes/1.png",
-    "about": "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) application granted 10/10 in 'GIW' college course.",
+    "about": [
+      "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) application granted 10/10 in 'GIW' college course."
+    ],
     "images": [
       {
         "small": "/images/projects/sudonotes/signup_small.png",
