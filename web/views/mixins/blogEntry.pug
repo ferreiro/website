@@ -6,7 +6,7 @@ mixin blogEntry(post)
       .blog__post
         .blog__post__left
           .blog__post__pic(style="background-image:url(" + post.pic + ");")
-            a(href= postUrl).blog__post__pic__link
+            a(href= postUrl, target="_blank").blog__post__pic__link
         .blog__post__right
           .blog__post__metadata
 
@@ -14,15 +14,15 @@ mixin blogEntry(post)
               p(style="border: 1px solid #cecece; margin-bottom: 1em; border-radius:3px; padding: 0.2em 0.4em; display: inline-block;") DRAFT
 
             h1.blog__post__title
-              a(href=postUrl).blog__post__title__link= post.title
+              a(href=postUrl, target="_blank").blog__post__title__link= post.title
 
             .blog__author
-              // .blog__author__pic
+              //-.blog__author__pic
                 img(src= post.author.pic || '')
               .blog__author__content
                 h2.blog__author__name
                   | #{post.author_name || 'Jorge'} - #{post.created || ''}
-                // p.blog__author__date= post.created || ''
+                //-p.blog__author__date= post.created || ''
 
             if post.summary
               p.blog__post__intro= post.summary
@@ -30,25 +30,26 @@ mixin blogEntry(post)
             if !admin
               ul.blog__post__options
                 li
-                  a(href= postUrl).action_button
+                  a(href= postUrl, target="_blank").action_button
                     | Read more
                 li
-                  a(href= postUrl).action_button
+                  a(href= postUrl, target="_blank").action_button
                     span.icon.ion-android-favorite-outline
                     | Like
             else
               hr
-              i= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
+              i= 'Permalink: ' + post.permalink
               p= 'Views ' + post.views + ' | Likes: ' + post.likes
 
               ul.blog__post__options
-                li
-                  a(href= '/blog/' + post.permalink).action_button See post
-                li
+                li(style="margin-right: 1em;")
+                  a(target="_blank", href= '/blog/' + post.permalink + '?disableAdmin=true').action_button
+                    | See post as a normal user
+                li(style="margin-right: 1em;")
                   a(href= '/admin/edit/' + post.permalink).action_button
                     span.icon.ion-edit
                     | Edit post
-                li
+                li(style="margin-right: 0;")
                   a(href= '/admin/delete/' + post.permalink).action_button
                     span.icon.ion-android-delete
                     | Delete post

@@ -7,8 +7,8 @@ mixin blogHeader(hasAnimation)
     .blogHeader
       a(href='/blog').blogHeader_link
       .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
-        // SEO
-        img(src= )
+        //-SEO
+        img(src= config.wallpaper)
       .blogHeader_userFields
         h1.blogHeader_name
           a(href="/blog").blogHeader_name_link
@@ -16,7 +16,7 @@ mixin blogHeader(hasAnimation)
         h2.blogHeader_job !{config.subtitle}
         h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>#{config.author.name}</strong>
 
-        // .about_resume(style="margin-top: 1em;")
+        //-.about_resume(style="margin-top: 1em;")
           a(href= config.subscription).about_resume_button.about_resume_button_view.blogHeader_button Subscribe blog!
 
     .optionsMenu
