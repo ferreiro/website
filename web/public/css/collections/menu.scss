@@ -33,15 +33,17 @@
   background: $menuColor;
   border-bottom: 1px solid #cecece;
   vertical-align: middle;
-  z-index: 1000000;
   padding: 0.7em 0;
+  z-index: 10000;
   &__wrapper {
+    height: $headerHeight;
+
     padding:0 1em;
     @include flexbox();
     @include flexbox_wrap(wrap);
     @include flexbox_justifyContent(flex-start, start);
 
-        display: -ms-flexbox;
+    display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: row;
@@ -115,7 +117,7 @@ span.icon-separated {
     // border-bottom: 1px solid #d83902;
   }
   p {
-    color: #000 !important;
+    color: rgba(0, 0, 0, .8) !important;
   }
 }
 .item {
@@ -133,6 +135,8 @@ span.icon-separated {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-weight: 600;
+    color: rgba(0, 0, 0, .6);
   }
   &:hover {
     background: $primaryColorLight;

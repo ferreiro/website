@@ -1,24 +1,34 @@
 .subscriptionBox
-  h3.profileData_title Join the community!
+  h3.subscriptionBox__title Join the community!
+
+  .subscriptionBox__background
+    span.icon.ion-ios-film-outline(style="position: absolute; margin-bottom: -5px; bottom: 0; right: 0;")
+    span.icon_small.ion-ios-bookmarks-outline(style="margin-top: -4px; position: absolute; bottom: 0; left: 0;")
 
   .subscriptionBox__collage
-    .subscriptionBox__collage__icons
-      // i.icon.ion-ios-analytics(style="position: absolute; margin-bottom: -5px; bottom: 0; right: 0;")
-      i.icon.ion-ios-film-outline(style="position: absolute; margin-bottom: -5px; bottom: 0; right: 0;")
-      i.icon.ion-ios-infinite(style="position: absolute; bottom: 10px; left: 0;")
-      i.icon.ion-ios-bookmarks-outline(style="margin-top: -4px; position: absolute; top: 0;  font-size: 2.8em; right: 15%;")
-      // ios-color-filter-outline
-    ul.subscriptionBox__collage__features
-      li.subscriptionBox__collage__feature Get exclusive content.
-      li.subscriptionBox__collage__feature Pre-access to tutorials.
-      li.subscriptionBox__collage__feature Updates and projects!
+    .subscriptionBox__collage__wrapper
+      .subscriptionBox__collage__icons
+        i.icon.ion-ios-film-outline(style="position: absolute; margin-bottom: -3px; bottom: 0; right: 0;")
+        i.icon.ion-ios-time-outline(style="position: absolute; font-size:3em; bottom: 10px; left: 0;")
+        i.icon.ion-ios-bookmarks-outline(style="margin-top: -4px; position: absolute; top: 0;  font-size: 2.8em; right: 10%;")
+        //-ios-color-filter-outline
+      ul.subscriptionBox__collage__features
+        li.subscriptionBox__collage__feature
+          span.icon.ion-star
+          |Get exclusive content
+        li.subscriptionBox__collage__feature
+          span.icon.ion-ios-timer
+          |Pre-access to tutorials
+        li.subscriptionBox__collage__feature
+          span.icon.ion-speakerphone
+          |Updates and projects!
 
   //form.subscriptionBox__form(action="/api/v1/newsletter/subscribe", method="POST")
     input.subscriptionBox__email(type='text', name='email', placeholder='Your email address')
-  span.subscriptionBox__completed
-    | ✔
-    span(style='color: #000; margin-left: 0.5em;') Subscribed!
-  form(action="/newsletter", method="GET")
+  form(action="/newsletter", method="GET").subscriptionBox__form
+    span.subscriptionBox__completed
+      | ✔
+      span(style='color: #000; margin-left: 0.5em;') Subscribed!
     button.subscriptionBox__submit
       img.subscriptionBox__loader(src='/images/spinner.svg')
       span.beta__signup__text Get exclusive materials!

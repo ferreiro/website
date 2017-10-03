@@ -2,15 +2,18 @@
   .jfmenu_overlay
   .jfmenu_content
 
-    // put the size of your header
+    //-put the size of your header
     .jfmenu_top_separator
 
     h1.jfmenu_title Jorge Ferreiro
 
-    // Menu block containing links
+    //-Menu block containing links
     ul
       each item in menu || []
         li(id= item.id, class= path===item.id ? 'current_section' : '')
+
+          if item.id == 'home'
+            - item.name= 'Home'
           a(href= item.url, target= item.target || '_self')
             span= item.name
 
@@ -19,7 +22,7 @@
           span Social Networks
           span.icon-arrow-down2.right
 
-        // Menu block containing links (sublinks)
+        //-Menu block containing links (sublinks)
         ul
           each item in social || []
             li
@@ -36,10 +39,14 @@
       .menu_left
         nav.menu__nav
           each item in menu || []
+            if !item.hidden
               a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
-                p= item.name
+                if item.icon
+                  p.icon(class= item.icon)
+                if item.name
+                  p= item.name
 
-        // .optionsMenu
+        //-.optionsMenu
           ul.optionsMenu__list
             each item in menu || []
               li.optionsMenu__item(, aria-selected= path===item.id ? 'true' : 'false')
@@ -48,7 +55,7 @@
 
       .menu_right
 
-        // .dropdown
+        //-.dropdown
           a(href='/contact')
             .item.with-icon
               p
@@ -59,7 +66,8 @@
           .item.with-icon
             p
               i(class="icon ion-chatbox-working", style="color:#d83901; margin-right: 0.8em;")
-              span Social - Let's connect!
+              //-span Social - Let's connect!
+              span Social Networks
               .dropdown-content#DropdownSocial
                 each item in social || []
                   a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
@@ -69,6 +77,6 @@
       .jfmenu_open_button#dropdown-mobiles
         span.jfmenu_open_button_text= path
         span.jfmenu_open_button_icon
-          // span.icon.ion-android-menu
+          //-span.icon.ion-android-menu
           span.icon.ion-navicon(style="font-size: 60px;")
-          // span.icon.ion-navicon-round
+          //-span.icon.ion-navicon-round

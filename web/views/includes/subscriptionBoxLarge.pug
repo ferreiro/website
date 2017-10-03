@@ -1,27 +1,14 @@
-.subscriptionBox
+.subscriptionBoxLarge
 
-  h2 Box large! Yepa!
+  h3.subscriptionBoxLarge__title Join the JF community!
+  p.subscriptionBoxLarge__text Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!
 
-  h3.profileData_title Join the community!
-
-  .subscriptionBox__collage
-    .subscriptionBox__collage__icons
-      // i.icon.ion-ios-analytics(style="position: absolute; margin-bottom: -5px; bottom: 0; right: 0;")
-      i.icon.ion-ios-film-outline(style="position: absolute; margin-bottom: -5px; bottom: 0; right: 0;")
-      i.icon.ion-ios-infinite(style="position: absolute; bottom: 10px; left: 0;")
-      i.icon.ion-ios-bookmarks-outline(style="margin-top: -4px; position: absolute; top: 0;  font-size: 2.8em; right: 15%;")
-      // ios-color-filter-outline
-    ul.subscriptionBox__collage__features
-      li.subscriptionBox__collage__feature Get exclusive content.
-      li.subscriptionBox__collage__feature Pre-access to tutorials.
-      li.subscriptionBox__collage__feature Updates and projects!
-
-  //form.subscriptionBox__form(action="/api/v1/newsletter/subscribe", method="POST")
-    input.subscriptionBox__email(type='text', name='email', placeholder='Your email address')
-  span.subscriptionBox__completed
+  //form.subscriptionBoxLarge__form(action="/api/v1/newsletter/subscribe", method="POST")
+    input.subscriptionBoxLarge__email(type='text', name='email', placeholder='Your email address')
+  span.subscriptionBoxLarge__completed
     | ✔
     span(style='color: #000; margin-left: 0.5em;') Subscribed!
-  form(action="/newsletter", method="GET")
-    button.subscriptionBox__submit
-      img.subscriptionBox__loader(src='/images/spinner.svg')
+  form.subscriptionBoxLarge__form(action="/newsletter", method="GET")
+    button.subscriptionBoxLarge__submit
+      img.subscriptionBoxLarge__loader(src='/images/spinner.svg')
       span.beta__signup__text Get exclusive materials!

@@ -286,21 +286,22 @@ $projectHeaderGalleryRadius: 7px;
 
     &_entry {
       width: 115px;
-      display: inline-block;
       height: 100%;
+      cursor: pointer;
       overflow: hidden;
       margin-right: 1em;
+      display: inline-block;
       background-size: cover;
+
+      -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      -webkit-align-self: auto;
+      -ms-flex-item-align: auto;
+      align-self: auto;
+
       @include border-radius($projectHeaderGalleryRadius);
       @include opacity(0.6);
-      cursor: pointer;
-
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
 
       &:hover {
         @include opacity(0.8);
@@ -332,10 +333,12 @@ $projectHeaderGalleryRadius: 7px;
     }
     &_text {
       font-size: 1em;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.2em;
-      color: rgba(0, 0, 0, 0.8);
+      color: rgba(0,0,0,.8);
+      color: rgba(0, 0, 0, .7);
       margin-bottom: 1em;
+      line-height: 1.3em;
     }
   }
 
@@ -376,12 +379,11 @@ $projectHeaderGalleryRadius: 7px;
         display: inline-block;
         vertical-align: middle;
         margin-left: 25px;
-        color: $primaryColor;
         font-size: 1em;
-        line-height: 1.1em;
+        line-height: 1.3em;
         position: relative;
-        color:#333333;
-        // color: rgba(0, 0, 0, 0.8);
+        color: #333;
+        color: rgba(0, 0, 0, .7);
 
          a {
            font-weight: 300;
@@ -394,8 +396,10 @@ $projectHeaderGalleryRadius: 7px;
 
   &_stack {
     display: inline-block;
-    margin-bottom: 0.5em;
     vertical-align: top;
+    margin-bottom: 0.5em;
+    margin-top: 1.2em;
+    display: block;
 
     &_list {
       list-style: none;
@@ -404,9 +408,9 @@ $projectHeaderGalleryRadius: 7px;
     &_entry {
       margin-right: 1em;
       display: inline-block;
-      // color: rgba(255, 108, 57, 1);
       color: rgba(0, 0, 0, 0.6);
       text-align: center;
+      font-size: 0.8em;
     }
     &_title {
       color: rgba(255, 108, 57, 1);
@@ -459,7 +463,7 @@ $projectHeaderGalleryRadius: 7px;
       @include border-radius(5px);
       // @include border-radius(60px);
       margin-right: 1em;
-      margin-bottom: 1em;
+      // margin-bottom: 1em;
       @include transition(all 0.5s);
       &:hover {
         background: #f7f7f7;

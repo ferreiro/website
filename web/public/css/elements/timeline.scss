@@ -31,14 +31,20 @@
   &__badge {
     width: 100%;
     display: block;
+    text-align: center;
+    padding: 1.5em 0;
+    margin: 0;
+    margin-top: -0.5em;
     @media all and (min-width: $desktop-screen) {
-      text-align: center;
+      padding: 0;
+      margin-top: 0;
     }
     &__title {
       color: $primaryColor;
       border: 2px solid $primaryColor;
       padding: 0.5em 1em;
       display: inline-block;
+      margin: 0 auto;
       @include border-radius(5px);
       @media all and (min-width: $desktop-screen) {
         font-size: 1.4em;
@@ -66,9 +72,9 @@
   // @include flexbox_alignContent(flex-start, flex-start);
   // @include flexbox_alignItems(flex-start, flex-start);
   @include flexbox_direction(column);
-  margin-left: 1em;
-  padding-left: 0.5em;
-  border-left: 5px solid $primaryColor;
+  // margin-left: 1em;
+  // padding-left: 0.5em;
+  // border-left: 5px solid $primaryColor;
   @media all and (min-width: $desktop-screen) {
     &:nth-child(1) {
       &:before {

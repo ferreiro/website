@@ -11,7 +11,7 @@ const talks = require('./talks')
 const social = require('./social')
 const contact = require('./contact')
 
-router.get('/', featured) // Home shows about page
+router.get('/', home) // Home shows about page
 router.use('/about', require('./about'))
 router.use('/blog', require('./blog'))
 router.use('/portfolio', projects)
@@ -29,10 +29,10 @@ router.get('/resume/jorge_ferreiro_resume.pdf', resume)
 module.exports = router
 
 // FUNCTIONS
-function featured (req, res, next) {
+function home (req, res, next) {
   const homeContext = {
     title: 'Home',
-    path: 'featured',
+    path: 'home',
     content: content.about,
     recentPosts: []
   }

@@ -1,28 +1,50 @@
 .subscriptionBox {
   text-align: center;
+  padding: 1.5em 1.5em;
+  position: relative;
+  border-top: 2px solid #EAEAEA;
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: none;
+    span:before {
+      font-size: 200px;
+      color: rgba(0, 0, 0, 0.03);
+    }
+    .icon_small:before {
+      font-size: 150px;
+    }
+  }
 
   &__collage {
-    margin-bottom: 1em;
+    margin: 0 auto;
+    padding: 1.5em 0;
     position: relative;
+    text-align: center;
+    max-width: 280px;
 
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
-    -webkit-align-items: stretch;
-    -ms-flex-align: stretch;
-    align-items: stretch;
+    &__wrapper {
+      @include flexbox();
+      @include flexbox_direction(row);
+      @include flexbox_wrap(nowrap);
+      @include flexbox_justifyContent(center, center);
+      @include flexbox_alignContent(stretch, stretch);
+      @include flexbox_alignItems(center, center);
+    }
 
     &__icons {
       width: 85px;
@@ -35,6 +57,7 @@
       -webkit-align-self: auto;
       -ms-flex-item-align: auto;
       align-self: auto;
+      margin-right: 1.25em;
 
       .icon {
         font-size: 3em;
@@ -50,18 +73,28 @@
       -ms-flex-item-align: auto;
       align-self: auto;
       position: relative;
-
-      text-align: left;
     }
     &__feature {
       font-size: 1em;
       margin-bottom: 0.5em;
-      margin-left: 2em;
+      // margin-left: 1em;
+      text-align: left;
+      list-style: none;
+      span.icon {
+        width: 15px;
+        color: rgba(0, 0, 0, 0.6);
+        color: #d83902;
+        display: inline-block;
+        margin-right: 8px;
+        text-align: left;
+        display: none;
+      }
     }
   }
 
   &__form {
-
+    position: relative;
+    z-index: 2;
   }
   &__email {
     border: 1px solid #cecece;
@@ -79,7 +112,6 @@
   }
   &__submit {
     margin: 0 auto;
-    margin-top: 0.5em;
     padding: 1em 1.2em;
     background: $primaryColor;
     cursor: pointer;

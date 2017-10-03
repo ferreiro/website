@@ -98,7 +98,10 @@ $postCard_options_item_margin: 0.8em;
       @media all and (min-width: $desktop-screen) {
         margin-bottom: 0;
       }
-
+      span { // button
+        margin-right: 8px;
+        color: rgba(0, 0, 0, 0.6);
+      }
       &__hidden {
         visibility: hidden;
       }

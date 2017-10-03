@@ -4,7 +4,7 @@ var sectionHeader = $('.sectionHeader');
 var animations = [ "zoomIn", "fadeInUpBig"]; //  'flipInY', '', 'bounceIn'
 
 window.animateMainContainer = function animateMainContainer() {
-    var mainContainer = $('#animate_div');
+    var mainContainer = $('.animate_div');
     var randomAnimation = Math.floor((Math.random() * animations.length));
 
     // if (ss.disabledMenuEffect != "true" && menu.length) {
@@ -14,6 +14,7 @@ window.animateMainContainer = function animateMainContainer() {
     // else {
     //   menu.removeClass('animated zoomIn');
     // }
+
 
     if (sectionHeader.length) {
       // sectionHeader.addClass('animated flipInX');

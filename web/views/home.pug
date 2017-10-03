@@ -1,14 +1,33 @@
 extends ./includes/layout
 include ./mixins/postCard
 
+block extraScripts
+    script(src="/javascripts/slider.js")
+    script(type='text/javascript').
+        $('#slider .slider-slides').DDSlider({
+            prevSlide: '.slider-navigation-left',
+            nextSlide: '.slider-navigation-right',
+            selector: '.slider-selector'
+        });
+
+    //- script(src="/javascripts/owl.carousel.min.js")
+    //- script.
+        $(document).ready(function($) {
+            $( ".owl-carousel" ).each(function() {
+            $(this).owlCarousel()
+            });
+        });
+        $("body").data("page", "frontpage");
+
 block content
+
   //- Middle Container
   .container_middle
     .slider#slider
-        // Buttons for select the slide number
+        //- Buttons for select the slide number
         ul.slider-selector
 
-        // Buttons to go previous and right on slide
+        //- Buttons to go previous and right on slide
         ul.slider-navigation
 
             li.slider-navigation-left
@@ -18,10 +37,9 @@ block content
                 a
                     span.icon-angle-right
 
-        // Slides of the slider 
+        //- Slides of the slider
         ul.slider-slides
             //-- <li> last class is the effect (fading, barTop, square)
-            
             //-- Single Slide
             //- li.fading.slider-slides-singleSlide
             //-     //- Content of one slide
@@ -45,32 +63,46 @@ block content
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
-                        h2.slider-slides-singleSlide-content-title My new website!
-                        p.slider-slides-singleSlide-content-text Welcome to my completely new redesigned website. If you have some feedback, you can <a href="/contact/feedback">send it to me here</a>
-                        a(href="/about").slider-slides-singleSlide-content-link Who is Jorge Ferreiro?
+                        h2.slider-slides-singleSlide-content-title Jorge Ferreiro
+                        p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
+                        a(href="/about").slider-slides-singleSlide-content-link Read the bio
                 //- Black mask
                 .slider-slides-singleSlide-blackmask
-                  
+
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/buildings.jpeg);')
-                      
+
             //-- Single Slide
             li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
-                        h2.slider-slides-singleSlide-content-title Become a tester
-                        p.slider-slides-singleSlide-content-text I'm crafting my first startup called Dailyfocus.io. We're going to release beta versions soon. So if you're interested, you can now join the beta testing program.
-                        a(href="https://dailyfocus.io/beta", target="_blank").slider-slides-singleSlide-content-link Join Beta testing program
-                
+                        h2.slider-slides-singleSlide-content-title JF Community!
+                        p.slider-slides-singleSlide-content-text Exclusive content, pre-access to tutorials, articles, updates... Join my newsletter and be part of the community!
+                        a(href="/newsletter").slider-slides-singleSlide-content-link Join the newsletter!
                 //- Black mask
                 .slider-slides-singleSlide-blackmask
-                  
+
+                .slider-slides-singleSlide-wallpaper
+                    div(style='background-image:url(/images/wallpapers/buildings.jpeg);')
+
+            //-- Single Slide
+            li.fading.slider-slides-singleSlide
+                //- Content of one slide
+                .slider-slides-singleSlide-content
+                    .whiteContent
+                        h2.slider-slides-singleSlide-content-title Dailyfocus beta
+                        p.slider-slides-singleSlide-content-text My new project is already online! Join the beta and let me know your feedback, thanks! #DailyfocusV1
+                        a(href="https://dailyfocus.io/beta", target="_blank").slider-slides-singleSlide-content-link Check out my most recent project
+
+                //- Black mask
+                .slider-slides-singleSlide-blackmask
+
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/wallpaper2.jpg);')
 
             //-- Single Slide
-            li.fading.slider-slides-singleSlide
+            //- li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
@@ -84,21 +116,99 @@ block content
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/wallpaper3.jpg);')
 
+
+    //-style.
+      .blogHeader_bg:after {
+        background: rgba(216, 57, 2, 0.7);
+      }
+      .blogHeader_bg:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+      .blogHeader_info {
+        line-height: 1.2em;
+      }
+
     if recentPosts
-          h3.blogPostRelated__title Most recent posts of my blog
+        style.
+            h3.blogPostRelated__title {
+                margin: 1.2em 0;
+            }
+        h3.blogPostRelated__title Most recent posts of my blog
 
-          .threeColsGrid
+        .threeColsGrid
             each post in recentPosts
-              .threeColsGrid__item
-                .threeColsGrid__item__wrapper
-                  +postCard(post)
+                .threeColsGrid__item
+                    .threeColsGrid__item__wrapper
+                        +postCard(post)
 
-block extraScripts
-    script(type='text/javascript').
-        $('#slider .slider-slides').DDSlider({
+    .threeColsGrid
+      .threeColsGrid__item__full_width
+        .shadow__box
+          include ./includes/subscriptionBoxLarge
 
-            prevSlide: '.slider-navigation-left',
-            nextSlide: '.slider-navigation-right',
-            selector: '.slider-selector'
+    //-.blogHeader.talkHeader
+      .blogHeader_bg(style="background-image: url();")
+        //-SEO
+        img(src= '')
+      .blogHeader_userFields(style="max-width: 550px; margin: 0 auto;")
+        h2.blogHeader_job p
 
-        });
+        .about_resume
+          a(href="/contact").about_resume_button.about_resume_button_view.blogHeader_button Yepa
+
+
+    style.
+        .heroe {
+            width: 100%;
+            position: relative;
+            margin-bottom: 1em;
+        }
+        .heroe:after {
+            top: 0;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(216, 57, 2, 0.7);
+        }
+        .heroe:before {
+            top: 0;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .heroe__wrapper {
+            padding: 3em 2em;
+            position: relative;
+            z-index: 1;
+        }
+        .heroe__title {
+            font-size: 6em;
+            color: #fff;
+        }
+
+    .heroe
+        .heroe__wrapper
+            h1.heroe__title Biography
+
+    .heroe
+        .heroe__wrapper
+            h1.heroe__title(style="text-align: right;") Blog
+
+    .heroe
+        .heroe__wrapper
+            h1.heroe__title Talks &amp;<br /> Workshops
+
+    .heroe
+        .heroe__wrapper
+            h1.heroe__title(style="text-align: right;") Portfolio<br />

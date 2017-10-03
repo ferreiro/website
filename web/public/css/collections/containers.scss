@@ -7,7 +7,7 @@
   margin:0 auto;
   @media all and (min-width: $tablet-screen) {}
   @media all and (min-width:$desktop-screen) {
-    
+   //  width: 1100px;
   }
   @media all and (min-width:$big-screen) {
     width: $big-screen;
