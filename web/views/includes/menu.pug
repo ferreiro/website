@@ -13,7 +13,7 @@
         li(id= item.id, class= path===item.id ? 'current_section' : '')
 
           if item.id == 'home'
-            - item.name= 'Home'
+            - item.name = 'Home'
           a(href= item.url, target= item.target || '_self')
             span= item.name
 
@@ -40,6 +40,8 @@
         nav.menu__nav
           each item in menu || []
             if !item.hidden
+              if item.id == 'home'
+                - item.name = null
               a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
                 if item.icon
                   p.icon(class= item.icon)

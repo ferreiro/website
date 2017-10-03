@@ -3,7 +3,7 @@ jQuery(document).ready(function($){
 });
 
 function setupImageComparator () {
-  const imageComparator = $('.imageComparator')
+  const imageComparator = $('.compare')
 
   imageComparator.each(function () {
     const comparator = $(this)
