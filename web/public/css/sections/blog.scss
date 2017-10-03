@@ -89,6 +89,7 @@
         max-width: 530px;
         font-size: 1.5em;
         margin-bottom: 0.5em;
+        line-height: 1.2em;
         padding: 0;
       }
     }
@@ -106,12 +107,13 @@
       @media all and (min-width:$desktop-screen) {
         padding: 0;
         font-size: 1.5em;
-        margin-bottom: 0.5em
+        margin-bottom: 0.5em;
+        line-height: 1.2em;
       }
     }
 
     &_button {
-      max-width: 100px;
+      // max-width: 100px;
       font-size: 1em!important;
       padding: 0.7em 1em!important;
       @include transition(500ms);

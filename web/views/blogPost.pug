@@ -5,28 +5,36 @@ block content_header
   - hasAnimation = false
   +blogHeader(hasAnimation)
 
+block extraCss
+  <link href="/vendors/twentytwenty/css/twentytwenty-no-compass.css" rel="stylesheet" type="text/css" />
+
 block extraScripts
   script(src="/javascripts/socialSharing.js")
+  <script src="/vendors/twentytwenty/js/jquery.event.move.js" type="text/javascript"></script>
+  <script src="/vendors/twentytwenty/js/jquery.twentytwenty.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/vendors/twentytwenty/css/twentytwenty.css" type="text/css" media="screen" />
+  script(src="/javascripts/imageComparator.js")
+  script(src="/javascripts/imageResizer.js")
 
 block content_large
   //- Right Container
   .blogPost.animated.fadeInUp
     if admin
-      ul.blog__post__options
-        li
-          a(href= '/blog/' + post.permalink) See post
-        li
-          a(href= '/admin/edit/' + post.permalink)
+      ul.blog__post__options(style="margin-bottom: 1em;")
+        li(style="margin-right: 1em;")
+          a(href= post.permalink + '?disableAdmin=true').action_button
+            span.icon.ion-eye
+            | See post as normal user
+        li(style="margin-right: 1em;")
+          a(target="_blank", href= '/admin/edit/' + post.permalink).action_button
             span.icon.ion-edit
             | Edit post
         li
-          a(href= '/admin/delete/' + post.permalink)
+          a(href= '/admin/delete/' + post.permalink).action_button
             span.icon.ion-android-delete
             | Delete post
 
-      i(style="margin-top: 1.5em; display: block;")= 'postid: ' + post._id + ' | Permalink: ' + post.permalink
-      p= 'Views ' + post.views + ' | Likes: ' + post.likes
-      hr
+      //-p= 'Views ' + post.views + ' | Likes: ' + post.likes
 
     if error
       h1= error
@@ -41,14 +49,14 @@ block content_large
             a(id="facebookShare" href="#" target="_blank")
               span.icon.icon-facebook
 
+      h1.blogPost__title= post.title
+      h2.blogPost__subtitle= post.summary
+      img.blogPost__image(src= post.pic, style="width: 100%;")
+      .blogPost__content!= post.html
+
       if post.category
         each category in post.category
           span= category
-
-      h1.blogPost__title= post.title
-      h2.blogPost__subtitle= post.summary
-      img(src= post.pic, style="width: 100%; margin: 1.5em 0;")
-      .blogPost__content !{post.html}
 
 block after_content
 

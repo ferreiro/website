@@ -9,8 +9,8 @@ const blogRepository = require('../repository/blog')
 const blog = require('../content/english/blog.json')
 
 router.get('/', getBlogPosts)
-router.get('/category/:category', getBlogPosts)
 router.get('/:permalink', getPostByPermalink)
+router.get('/category/:category', getBlogPosts)
 
 module.exports = router
 
@@ -19,13 +19,13 @@ module.exports = router
  * This object can be updated before return it to view.
  */
 function getBlogContext (req) {
-  const admin = (req.user ? true : false)
+  const disableAdmin = req.query.disableAdmin
   return {
     title: 'Jorge Ferreiro Blog',
     path: 'blog',
     blogCategory: 'all',
     config: blog.config,
-    admin: admin,
+    admin: req.user && !disableAdmin ? true : false,
     posts: []
   }
 }
@@ -39,21 +39,19 @@ function getBlogContext (req) {
 function getBlogPosts (req, res, next) {
   const opts = getBlogPostsOptions(req)
 
-  var query = {}
-  const category = req.params.category
-  if (category) {
-    if (category.length === 0) {
-      return next(new Error('No valid category'))
-    }
-    query['category'] = category
+  let category = req.params.category || null
+  if (category && category.length === 0) {
+    return next(new Error('No valid category'))
   }
+
+  const query = category ? { category } : {}
 
   fetchPosts (query, opts, (error, result) => {
     if (error) {
       return next(new Error(error))
     }
 
-    var blogContext = getBlogContext(req)
+    let blogContext = getBlogContext(req)
     blogContext.posts = result.docs
     blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page : 'start') // getNextPageTokenFromPosts(posts)
     blogContext.nextPageToken = (result.page + 1 <= result.pages ? result.page + 1 : 'end') // getNextPageTokenFromPosts(posts)
@@ -68,14 +66,14 @@ function getBlogPosts (req, res, next) {
  * when fetching results from database.
  */
 function getBlogPostsOptions (req) {
-  var nextPage = null
+  let nextPage = null
   if (req.query.next && validator.isInt(req.query.next)) {
     const nextPageNum = parseInt(req.query.next)
     nextPage = nextPageNum < 0 ? 1 : nextPageNum
   }
   return {
-    maxPagePosts: MAX_PAGE_POSTS,
-    nextPage: nextPage
+    nextPage,
+    maxPagePosts: MAX_PAGE_POSTS
   }
 }
 
@@ -106,7 +104,7 @@ function getPostByPermalink (req, res, next) {
   let blogContext = getBlogContext(req)
   blogContext.blogCategory = '' // no menu selected
 
-  var postPermalink = null
+  let postPermalink = null
   if (req.params.permalink) {
     postPermalink = validator.blacklist(
       req.params.permalink, "<|>|&|\'|\"|'|,|/|")
@@ -118,42 +116,62 @@ function getPostByPermalink (req, res, next) {
   const query = {
     permalink: postPermalink
   }
-
-  blogRepository.findByPermalink(query).then((post) => {
-    if (post.published || req.user) {
-      blogContext.post = post
-      blogContext.post.html = markdownToHtml(post.body)
-      generateRelatedPosts({
-        permalinkToSkip: postPermalink,
-        count: 3
-      }, (relatedPosts) => {
-        blogContext.relatedPosts = relatedPosts
+  blogRepository
+    .findByPermalinkIncrementViews(query)
+    .then(post => {
+      if (!post) {
+        blogContext.error = 'Post does not exist or you dont have permissions to view.'
         return res.render('blogPost', blogContext)
-      })
-    } else {
-      blogContext.error = 'Post does not exist or you dont have permissions to view.'
-      res.render('blogPost', blogContext)
-    }
-  }).catch(error => {
-    blogContext.error = error
-    return res.render('blogPost', blogContext)
-  })
+      }
+      if (post.published || req.user) {
+        generateRelatedPosts({
+          permalinkToSkip: postPermalink,
+          count: 3
+        }).then(relatedPosts => {
+          blogContext.post = post
+          blogContext.post.html = markdownToHtml(post.body)  
+          blogContext.relatedPosts = relatedPosts
+          return res.render('blogPost', blogContext)
+        })
+      } else {
+        return next(new Error('Post does not exist or you dont have permissions to view.'))
+      }
+    })
+    .catch(error => {
+      blogContext.error = error
+      return res.render('blogPost', blogContext)
+    })
 }
 
 function markdownToHtml (srcMarkdown) {
   const htmlBody = marked(srcMarkdown)
-  const sanitizedHtml = sanitizeHtml(htmlBody)
+  console.log(htmlBody)
+  const sanitizedHtml = sanitizeHtml(htmlBody, {
+    allowedTags: [
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
+      'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
+      'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre',
+      'img'
+    ],
+    allowedAttributes: {
+      '*': [ 'id', 'href', 'align', 'alt', 'center', 'bgcolor' ],
+      div: [ 'class' ],
+      a: [ 'href', 'name', 'target' ],
+      img: [ 'src' , 'style' ],
+      h1: [ 'id' ],
+      h2: [ 'id' ]
+    }
+  })
+  console.log('* * * * * *')
+  console.log(sanitizedHtml)
   return sanitizedHtml
 }
 
-function generateRelatedPosts (opts, next) {
-  blogRepository
-    .getRandomPosts(opts)
-    .then(relatedPosts => {
-      return next(relatedPosts)
-    })
-    .catch(error => {
-      // Ignore Error: just return empty list of posts.
-      return next([])
-    })
+function generateRelatedPosts (opts) {
+  return new Promise (resolve => {
+    return blogRepository
+      .getRandomPosts(opts)
+      .then(posts => resolve(posts))
+      .catch(posts => resolve([]))
+  })
 }

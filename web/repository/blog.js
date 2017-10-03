@@ -1,7 +1,6 @@
 const Post = require('../models/Post')
 
 module.exports.create = function (postData) {
-  // update categories
   const newPost = new Post(postData)
   return newPost.save()
 }
@@ -15,6 +14,25 @@ module.exports.findByPermalink = function (query) {
 module.exports.findById = function findById (query) {
   return Post.findOne({
     _id: query.id
+  })
+}
+
+module.exports.findByPermalinkIncrementViews = findByPermalinkIncrementViews
+function findByPermalinkIncrementViews (query) {
+  return Post.findOneAndUpdate({
+    permalink: query.permalink
+  }, {
+    $inc: {
+      views: 1
+    }
+  })
+}
+
+module.exports.incrementLike = function (query) {
+  return Post.findOneAndUpdate({
+    permalink: query.permalink
+  }, {
+    $inc: { likes: 1 }
   })
 }
 
@@ -37,7 +55,7 @@ module.exports.getAll = function () {
 
 module.exports.getAllDrafts = function (options) {
   return Post.find({
-    'published': false
+    published: false
   }).sort({ createdAt: -1 })
 }
 
@@ -51,14 +69,16 @@ module.exports.getAllPublished = function (extraQueryFields, opts) {
     }
   }
   const options = {
-    sort: { createdAt: -1 },
+    sort: {
+      createdAt: -1
+    },
     lean: true,
-    page: opts.nextPage || 1,
+    page: opts && opts.nextPage ? opts.nextPage : 1,
     limit: maxLimit
   }
 
   var query = {
-    'published': true
+    published: true
   }
   if (extraQueryFields) {
     if (extraQueryFields.category) {

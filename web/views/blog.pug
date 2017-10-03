@@ -1,7 +1,7 @@
 extends ./includes/blog_layout_v2_large
-include ./mixins/blogEntry
 include ./mixins/postCard
 include ./mixins/blogHeader
+include ./mixins/blogEntry
 
 block content_header
   - hasAnimation = true
@@ -9,13 +9,12 @@ block content_header
 
 block content_large
   .container__middle.animated.fadeInUp
-
-    if posts.length <= 0
-        .warningMessage(style="width: 400px; margin: 0 auto;")
-          h1.warningMessage__title There are no more posts to show.
-          p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
-          .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
-            include ./includes/subscriptionBox
+    if !posts || posts.length <= 0
+      .warningMessage(style="width: 400px; margin: 0 auto;")
+        h1.warningMessage__title There are no more posts to show.
+        p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+        .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+          include ./includes/subscriptionBox
     else
       .threeColsGrid
         each post, index in posts || []

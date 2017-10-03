@@ -3,7 +3,7 @@ extends ./layout
 block content_full
   .blogHeader.animated.zoomIn#blogHeader
     .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
-      // SEO
+      //-SEO
       img(src= )
     .blogHeader_userFields
       h1.blogHeader_name
@@ -12,11 +12,11 @@ block content_full
       h2.blogHeader_job !{config.subtitle}
       h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>#{config.author.name}</strong>
 
-      // .about_resume(style="margin-top: 1em;")
+      //-.about_resume(style="margin-top: 1em;")
         a(href= config.subscription).about_resume_button.about_resume_button_view.blogHeader_button Subscribe blog!
 
 
-  // h1.titleSection.animated.zoomIn Posts
+  //-h1.titleSection.animated.zoomIn Posts
   h3.profileData_title Categories
   ul.profileData_list
 
@@ -88,4 +88,4 @@ block after_content
       .hot_links_box(style="background-image:url('/images/jorge_ferreiro_speaker_talks_workshops.jpg');")
         a(href="/contact")
           h2 Contact Jorge
-          // h2 Checkout my talks
+          //-h2 Checkout my talks
