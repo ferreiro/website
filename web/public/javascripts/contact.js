@@ -72,7 +72,6 @@ function submitForm(endpoint) {
   catch(err) {
     failure.show()
     loader.hide()
-    console.log(err.message)
   }
 }
 

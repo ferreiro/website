@@ -1,0 +1,42 @@
+mixin newsletterForm(opts)
+  - namePlaceholder = opts && opts.namePlaceholder ? opts.namePlaceholder : 'What is your name?'
+  - emailPlaceholder = opts && opts.emailHolder ? opts.emailHolder : 'And your email?'
+  - successMessage = opts && opts.successMessage ? opts.successMessage : 'You\'re now subscribed to the community!'
+  - submitButtonText = opts && opts.submitButtonText ? opts.submitButtonText : 'Join community'
+
+  .contact_form_result.contact_form_success
+    h2 Thank you!
+    p= successMessage
+
+  center
+    img#contactLoader.loaderIcon(src="/images/loading.gif", width="30px", style="display: none;")
+
+  form.contact_form(action="/newsletter/send", method="post", autocomplete="off")#contactform
+    input(value="/api/v1/newsletter", type="hidden", id="contactFormEndpoint")
+
+    fieldset.contact_form_fieldset
+      p.wrong#wrongName
+        span.icon.ion-alert-circled
+        | Error: Your name can not be blank
+      input.input_not_blank(type="name", id="the_name", name="__name", placeholder= namePlaceholder).contact_form_input
+
+    fieldset.contact_form_fieldset
+      p.wrong#wrongEmail
+        span.icon.ion-alert-circled
+        | Error: The email you introduced is not valid. Try again.
+      input.input_email(type="name", id="email", name="__email", placeholder= emailPlaceholder).contact_form_input
+
+    fieldset.contact_form_fieldset(style="display: none; margin-bottom: 0;")
+      .contact_form_newsletter
+        span.contact_form_newsletter_check
+          .mk-trc(data-style="check")
+            input(id="checkbox1.1", class="newsletter", type="checkbox", name="__subscribed", value="Subscribed", checked)
+            label(for="checkbox1.1")
+              i
+        span.contact_form_newsletter_text= (content && content.form && content.form.newsletter ? content.form.newsletter : 'I want to receive projects and updates from Jorge')
+
+    .contact_form_result.contact_form_failure
+      p Sorry. I can't add you to the list.<br /> Try again or <u><a class='openModalBox'>contact me directly</a></u>
+
+    fieldset.contact_form_fieldset.contact_fieldset_nomargin(style="margin-top: 0.9em;")
+      input(type="submit", value= submitButtonText, style="max-width: 250px;").subscriptionBoxLarge__submit#formSendButton

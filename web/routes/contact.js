@@ -3,6 +3,9 @@
 */
 const express = require('express')
 const router = express.Router()
+const _ = require('lodash')
+
+const content = require('../content/english/contact.json')
 
 // Routes
 router.get('/', contact)
@@ -14,8 +17,7 @@ module.exports = router
 // FUNCTIONS
 
 function contact (req, res, next) {
-  let content = require('../content/english/contact.json')
-  res.render('contact', {
+  return res.render('contact', {
     title: 'Contact me',
     path: 'contact',
     content: content
@@ -23,22 +25,24 @@ function contact (req, res, next) {
 }
 
 function contactTalk (req, res, next) {
-  let content = require('../content/english/contact.json')
-  content.config.claim = "Are you organizing an event and want me to be your speaker? Send me an email with the proposal (<a class='email openModalBox'>jorge at ferreiro dot me</a>). I'll be happy to be part of it!"
-  content.sendButton = "Submit proposal"
-  content.form.message = "What's your proposal? Name, dates, topics, etc..."
+  let talkContact = _.cloneDeep(content)
+  talkContact.config.claim = "Are you organizing an event and want me to talk? I'll be happy to be part of it! Send me an email with a proposal and let's talk! (<a class='email openModalBox'>jorge at ferreiro dot me</a>)."
+  talkContact.sendButton = "Submit proposal"
+  talkContact.form.message = "What's your event about and when is it?"
+
   res.render('contact', {
     title: 'Jorge at your event',
-    path: 'talks',
-    content: content
+    content: talkContact,
+    path: 'talks'
   })
 }
 
 function feedback(req, res, next) {
-  const content = require('../content/english/contact.json')
-  res.render('contact', {
+  const feedbackContent = require('../content/english/feedback.json')
+  res.render('feedback', {
     title: 'Feeback',
     path: 'feedback',
-    content: content.feedback
+    content: feedbackContent,
+    redirect: req.query.redirect
   })
 }

@@ -48,8 +48,6 @@ router.post('/', function (req, res) {
 })
 
 function addUserToMailchimp (email) {
-  console.log('Add user to mailchimp')
-  console.log(email)
   mailchimp.post({
     path : '/lists/3b63288535/members',
     body: {
@@ -57,10 +55,7 @@ function addUserToMailchimp (email) {
       status: 'subscribed'
     }
   }, (err, result) => {
-    console.log(err)
-    if (err) {
-      // we coudln't add user to machilp
-    }
+    if (err) {} // we coudln't add user to machilp
   })
 }
 

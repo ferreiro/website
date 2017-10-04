@@ -1,0 +1,14 @@
+{
+  "config": {
+    "title": null,
+    "claim" : "Thanks so much for submiting your feedback! It's extremely valuable to improve for coming posts!",
+    "claim2" : "Do you have ideas, feedback, bugs report or want to share your thoughts? Fill the form and let's improve the website togueter ;)",
+    "sendButton" : "Send feedback"
+  },
+  "form" : {
+    "name" : "What is your name?",
+    "email" : "And your email?",
+    "message" : "What do you think about the post? How can I improve it?",
+    "newsletter": "I want to receive projects and updates from Jorge"
+  }
+}
