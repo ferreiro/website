@@ -57,17 +57,10 @@
 
       .menu_right
 
-        //-.dropdown
-          a(href='/contact')
-            .item.with-icon
-              p
-                <i class="icon ion-home"></i>
-                span.social_network_text Contact
-
         .dropdown.dropdown-social
           .item.with-icon
             p
-              i(class="icon ion-chatbox-working", style="color:#d83901; margin-right: 0.8em;")
+              i(class="icon ion-chatbox-working").dropdown-top-icon
               //-span Social - Let's connect!
               span Social Networks
               .dropdown-content#DropdownSocial
@@ -79,6 +72,4 @@
       .jfmenu_open_button#dropdown-mobiles
         span.jfmenu_open_button_text= path
         span.jfmenu_open_button_icon
-          //-span.icon.ion-android-menu
-          span.icon.ion-navicon(style="font-size: 60px;")
-          //-span.icon.ion-navicon-round
+          span.icon.ion-navicon
