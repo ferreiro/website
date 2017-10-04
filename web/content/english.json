@@ -131,15 +131,5 @@
         "subjects" : null
       }
     ]
-  },
-  "feedback" : {
-    "title" : "Do you have ideas, feedback, bugs report or want to share your thoughts? Fill the form and let's improve the website togueter ;)",
-    "form" : {
-      "name" : "What is your name?",
-      "email" : "And your email?",
-      "message" : "How can I improve the website?",
-      "newsletter": "I want to receive projects and updates from Jorge"
-    },
-    "sendButton" : "Send feedback"
   }
 }
