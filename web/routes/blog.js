@@ -1,6 +1,6 @@
+const marked = require('marked')
 const sanitizeHtml = require('sanitize-html')
 const validator = require('validator')
-const marked = require('marked')
 const express = require('express')
 const router = express.Router()
 

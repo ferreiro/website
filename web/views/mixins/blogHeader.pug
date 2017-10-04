@@ -12,7 +12,7 @@ mixin blogHeader(hasAnimation)
       .blogHeader_userFields
         h1.blogHeader_name
           a(href="/blog").blogHeader_name_link
-          | #{config.title}
+          span.blogHeader_name_border #{config.title}
         h2.blogHeader_job !{config.subtitle}
         h2.blogHeader_job(style="font-size: 1.2em; margin-bottom: 0.5em;") By <strong>#{config.author.name}</strong>
 
