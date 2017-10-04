@@ -1,22 +1,40 @@
-meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
 meta(charset='UTF-8')
 meta(http-equiv="Content-Language", content="en-US")
+meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+meta(http-equiv="expires", content="7 * 24 * 60 * 60")
+meta(name="revisit-after", content="7 days")
+
 meta(name='author', content='Jorge Ferreiro')
 meta(name='theme-color', content='#9C2901')
+meta(name="twitter:site", content="@jgferreiro")
+meta(name="keywords", content="Software Engineer, Product Manager, Entrepreneur, Blog, Tech, Node, Javascript, HTML, Backend, Frontend, Full Stack")
+
+block extraMeta
+  //- Override by the templates that needs to add more metadata
+  //- such as Open Graph Articles or facebook social links
+  meta(property="og:type", content="website")
+  meta(property="og:title", content="Jorge Ferreiro")
+  meta(property="og:url", content="http://www.lauraribas.com/blog/")
+  meta(property="og:site_name", content="Jorge Ferreiro")
+  meta(property="og:locale", content="en_US")
+  //- meta(property="og:image", content="https://s0.wp.com/i/blank.jpg")
 
 link(rel="canonical", href="http://ferreiro.me")
 
-
-if title
-  <title>!{title + ' - Jorge Ferreiro - Software Engineer and Product Manager.'}</title>
+if post
+  title= 'Jorge Ferreiro ' + post.title + ' - Software Engineer, Product Manager & Entrepreneur.'
+  meta(name='description', content= post.summary)
 else
-  title Jorge Ferreiro - Software Engineer and Product Manager. Node, Javascript, Python, Java, HTML5, CSS3, JQuery. Backend engineer and Frontend engineer.'
+  if title
+    title= title + ' - Jorge Ferreiro - Software Engineer, Product Manager & Entrepreneur.'
+  else
+    title= 'Jorge Ferreiro - Software Engineer and Product Manager. Node, Javascript, Python, Java, HTML5, CSS3, JQuery. Backend engineer and Frontend engineer.'
 
-if description
-  meta(name='description', content='#{description}')
-else
-  //- default description
-  meta(name='description', content='Jorge Ferreiro is a Software Engineer, Product Manager and Entrepreneur with a solid experience in Backend and Frontend Development. Ferreiro uses the following technologies: Node, Javascript, Python, Java, MongoDB, Redis, HTML5, CSS3, JQuery.')
+  if description
+    meta(name='description', content='#{description}')
+  else
+    //- default description
+    meta(name='description', content='Jorge Ferreiro is a Software Engineer, Product Manager and Entrepreneur with a solid experience in Backend and Frontend Development. Ferreiro uses the following technologies: Node, Javascript, Python, Java, MongoDB, Redis, HTML5, CSS3, JQuery.')
 
 link(rel='apple-touch-icon', sizes='57x57', href='/images/favicons/apple-touch-icon-57x57.png')
 link(rel='apple-touch-icon', sizes='60x60', href='/images/favicons/apple-touch-icon-60x60.png')

@@ -2,7 +2,7 @@
   margin: 0 auto;
   margin-top: 1.5em;
   position: relative;
-  max-width: 700px;
+  max-width: $blogPostWidth;
   z-index: 100; //
   &__title {
     font-size: 2em;
@@ -138,7 +138,8 @@
   position: relative;
   z-index: 100;
   @media all and (min-width: $desktop-screen) {
-    margin-top: 4em;
+    padding: 0.5em 0;
+    margin-top: 3em;
     // padding: 2em 0;
   }
   &__title {
@@ -155,6 +156,7 @@
     @media all and (min-width: $desktop-screen) {
       font-size: 1.4em;
       line-height: 1.4em;
+      margin-bottom: 1.4em;
     }
   }
 }
