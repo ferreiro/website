@@ -7,7 +7,7 @@
   margin:0 auto;
   @media all and (min-width: $tablet-screen) {}
   @media all and (min-width:$desktop-screen) {
-   //  width: 1100px;
+    max-width: $containterMaxDesktopWidth;
   }
   @media all and (min-width:$big-screen) {
     width: $big-screen;
@@ -26,8 +26,16 @@
   z-index: 0;
 
   @media all and (min-width: $desktop-screen) {
-    padding:2em;
+    padding: 2em 0;
+    margin: 0 auto;
   }
+
+  &__blog {
+    @media all and (min-width: $containterMaxDesktopWidth) {
+      padding: 1.5em 0;
+    }
+  }
+
   @media all and (min-width:$big-screen) {
     padding-left:0;
     padding-right: 0;
