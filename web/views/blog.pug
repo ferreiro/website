@@ -2,6 +2,7 @@ extends ./includes/blog_layout_v2_large
 include ./mixins/postCard
 include ./mixins/blogHeader
 include ./mixins/blogEntry
+include ./mixins/subscriptionBoxLarge
 
 block content_header
   - hasAnimation = true
@@ -21,7 +22,11 @@ block content_large
           if index == 3
             .threeColsGrid__item__full_width
               .box_with_shadow(style="margin: 0;")
-                include ./includes/subscriptionBoxLarge
+                +subscriptionBoxLarge({
+                  customTitle: 'Join the JF community!',
+                  customBody: 'Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!',
+                  displayForm: false
+                })
           .threeColsGrid__item
             .threeColsGrid__item__wrapper
               +postCard(post)

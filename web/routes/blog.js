@@ -145,7 +145,6 @@ function getPostByPermalink (req, res, next) {
 
 function markdownToHtml (srcMarkdown) {
   const htmlBody = marked(srcMarkdown)
-  console.log(htmlBody)
   const sanitizedHtml = sanitizeHtml(htmlBody, {
     allowedTags: [
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
@@ -162,8 +161,6 @@ function markdownToHtml (srcMarkdown) {
       h2: [ 'id' ]
     }
   })
-  console.log('* * * * * *')
-  console.log(sanitizedHtml)
   return sanitizedHtml
 }
 

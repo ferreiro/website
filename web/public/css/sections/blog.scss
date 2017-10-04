@@ -1,172 +1,11 @@
-.blogHeader {
-    // min-height: 130px;
-    background: #fff;
-    position: relative;
-    overflow: hidden;
-    padding: 2em 0;
-    // @include border-radius(5px);
-    @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
-
-    @media all and (min-width: $desktop-screen) {
-      padding: 3em 0;
-      // padding-bottom: 2.5em;
-      // min-height: 250px;
-    }
-
-    &_link {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 2;
-      left: 0;
-      top: 0;
-    }
-
-    &_avatar {
-      width: 90px;
-      height: 90px;
-      overflow: hidden;
-      background-size: cover;
-      background-image: url('/images/jorge_ferreiro_software_engineer_developer_entrepreneur.jpg');
-      margin: 0 auto;
-      margin-bottom:1em;
-      position: relative;
-      z-index: 1;
-      @include border-radius(100%);
-
-      img {
-        display: none !important; /** Only use this for SEO LOL **/
-      }
-
-      @media all and (min-width: $tablet-screen) {}
-      @media all and (min-width:$desktop-screen) {
-        width: 140px;
-        height: 140px;
-      }
-      @media all and (min-width:$big-screen) {}
-    }
-
-    &_userFields {
-      z-index: 1;
-      position: relative;
-      text-align: center;
-    }
-
-    &_name {
-      color: #fff;
-      font-weight: 400;
-      font-size: 2.3em;
-      margin-bottom: 0.2em;
-      text-decoration: none;
-      position: relative;
-      @media all and (min-width:$desktop-screen) {
-        font-size: 3em;
-        margin-bottom: 0.2em;
-      }
-      &_link {
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 0;
-      }
-    }
-
-    &_job {
-      margin: 0 auto;
-      margin-top:0.3em;
-      padding: 0 0.4em;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 300;
-      font-size: 1.3em;
-      max-width: 500px;
-
-      @media all and (min-width:$tablet-screen) {
-        padding: 0 1.2em;
-      }
-      @media all and (min-width:$desktop-screen) {
-        max-width: 530px;
-        font-size: 1.5em;
-        margin-bottom: 0.5em;
-        line-height: 1.2em;
-        padding: 0;
-      }
-    }
-
-    &_info {
-      margin: 0;
-      margin-top:0.3em;
-      padding: 0 0.8em;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 300;
-      font-size: 1.3em;
-      @media all and (min-width:$tablet-screen) {
-        padding: 0 1.2em;
-      }
-      @media all and (min-width:$desktop-screen) {
-        padding: 0;
-        font-size: 1.5em;
-        margin-bottom: 0.5em;
-        line-height: 1.2em;
-      }
-    }
-
-    &_button {
-      // max-width: 100px;
-      font-size: 1em!important;
-      padding: 0.7em 1em!important;
-      @include transition(500ms);
-      @media all and (min-width:$desktop-screen) {
-        font-size: 1.2em!important;
-        padding: 0.9em 1.2em!important;
-      }
-      &:hover {
-        background: #ff4302;
-      }
-    }
-
-    &_bg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      background-color:#ff652f;
-      background-size: cover;
-      background-image: url("/images/jorge_ferreiro_san_francisco_bay_bridge_software_engineer.jpg");
-      position: absolute;
-      z-index: 0;
-      bottom: 0;
-      left: 0;
-      top: 0;
-
-      // @include border-radius(5px);
-      overflow: hidden;
-
-      img {
-        display: none; // SEO
-      }
-      &::after {
-        content: '';
-        background: rgba(0,0,0,.5);
-        display: block;
-        float: left;
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 12;
-      }
-    }
-}
-
 .blog {
   position: relative;
   &__link {
-    width: 100%;
-    bottom: 0;
-    position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
     a {
       width: 100%;
       height: 100%;
@@ -176,11 +15,9 @@
       }
     }
   }
-  &__entries {
+  &__entries {}
 
-  }
   &__entry {
-
     margin-bottom: 1.5em;
     @media all and (min-width: $desktop-screen) {
       margin-bottom: 2em;
@@ -204,11 +41,11 @@
     &__pic {
       width: 45px;
       height: 45px;
+      overflow: hidden;
+      margin-right: 1em;
       display: inline-block;
       background: #f4f4f4;
       vertical-align: middle;
-      margin-right: 1em;
-      overflow: hidden;
       @include border-radius(100%);
       img {
         height: 120%;
