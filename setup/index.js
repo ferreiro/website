@@ -9,8 +9,8 @@ module.exports = (app) => {
   setupDatabase()
   setupMiddlewares(app)
   setupPassport(app) // Important! after middlewares setup
-  setupLocals(app)
   setupAdmin(app)
+  setupLocals(app)
 
   // Setup routes
   app.use('/', require('../web/routes'))
