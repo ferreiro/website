@@ -1,7 +1,7 @@
 setupSocialButtons()
 setupScrollListener()
 
-function setupSocialButtons() {
+function setupSocialButtons () {
     const url = encodeURIComponent(window.location)
     const title = $('.blogPost__title').text()
     const summary = $('.blogPost__subtitle').text()
@@ -11,7 +11,7 @@ function setupSocialButtons() {
 }
 
 function setupTwitterButton (url, title, summary) {
-    const twitterShareButton = $('#tweetShare')
+    const twitterShareButton = $('.tweetShare')
     twitterShareButton.click(function (event) {
         event.preventDefault()
 
@@ -21,7 +21,7 @@ function setupTwitterButton (url, title, summary) {
 }
 
 function setupLinkedinButton (url, title, summary) {
-    const linkedinShareButton = $('#linkedinShare')
+    const linkedinShareButton = $('.linkedinShare')
     linkedinShareButton.click(function (event) {
         event.preventDefault();
 
@@ -32,10 +32,11 @@ function setupLinkedinButton (url, title, summary) {
 }
 
 function setupScrollListener () {
+    const offsetFromBreakPoint = 300
     const headerHeight = $('.menu').outerHeight()
     const targetContainer = $('#mainContainer')
     const targetHeader = $('#blogHeader')
-    const targetFooter = $('#relatedPosts')
+    const targetFooter = $('#postFooter')
     const socialSharing = $('#socialSharing')
 
     $(window).scroll(function() {
@@ -45,13 +46,21 @@ function setupScrollListener () {
         const targetFooterOffsetY = targetFooter.offset().top
 
         // Remove sticky block when footer is reached
-        if (targetSocialOffsetY - targetFooterOffsetY > 0) {
+        if (targetSocialOffsetY - targetFooterOffsetY + offsetFromBreakPoint >= 0) {
             hideSocialSharing()
+            displayEmergentSharing()
         } else if (currentScroll > targetPositionY) {
             displaySocialSharing()
         } else {
             hideSocialSharing()
         }
+    })
+}
+
+function displayEmergentSharing () {
+    const sharePostEmergent = $('#sharePostEmergent')
+    sharePostEmergent.show(0, () => {
+        sharePostEmergent.addClass('animated bounceIn')
     })
 }
 
