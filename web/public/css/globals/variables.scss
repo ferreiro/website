@@ -1,9 +1,15 @@
+// Header
 $headerHeight: 60px;
 $headerPadding: 14px;
+$headerMenuPadding: 0.7em;
+$headerTotalHeight: $headerHeight + (2 * $headerPadding) - 5px;
 
-$logoHeight : 60px;
+$logoHeight: 60px;
 $leftContainerWidth: 330px;
 $leftContainerWidthBig: 380px;
+
+//--- Blog!
+$blogPostWidth: 700px;
 
 //--- Medidas ---
 $mobile-screen : 400px;
