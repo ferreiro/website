@@ -25,7 +25,7 @@
 
   //form.subscriptionBox__form(action="/api/v1/newsletter/subscribe", method="POST")
     input.subscriptionBox__email(type='text', name='email', placeholder='Your email address')
-  form(action="/newsletter", method="GET").subscriptionBox__form
+  form(action="/newsletter", method="GET", target="_blank").subscriptionBox__form
     span.subscriptionBox__completed
       | ✔
       span(style='color: #000; margin-left: 0.5em;') Subscribed!

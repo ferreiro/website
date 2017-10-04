@@ -2,7 +2,7 @@
   text-align: center;
   padding: 1.5em 1.5em;
   position: relative;
-  border-top: 2px solid #EAEAEA;
+  border-top: 2px dotted #EAEAEA;
 
   &__title {
     margin: 0;
@@ -14,13 +14,13 @@
   }
 
   &__background {
-    width: 100%;
-    height: 100%;
-    position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
+    width: 100%;
+    height: 100%;
     display: none;
+    position: absolute;
     span:before {
       font-size: 200px;
       color: rgba(0, 0, 0, 0.03);
@@ -50,14 +50,9 @@
       width: 85px;
       height: 85px;
       position: relative;
-
-      -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-      flex: 0 1 auto;
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      align-self: auto;
       margin-right: 1.25em;
+      @include flexbox_flex(0, 0, auto);
+      @include flexbox_alignSelf(auto);
 
       .icon {
         font-size: 3em;
@@ -66,18 +61,14 @@
       }
     }
     &__features {
-      -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      align-self: auto;
       position: relative;
+      @include flexbox_flex(1, 1, auto);
+      @include flexbox_alignSelf(auto);
     }
     &__feature {
       font-size: 1em;
-      margin-bottom: 0.5em;
       // margin-left: 1em;
+      margin-bottom: 0.5em;
       text-align: left;
       list-style: none;
       span.icon {
