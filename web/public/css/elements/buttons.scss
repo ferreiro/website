@@ -10,6 +10,10 @@ $action_button_icon_margin: 4px;
   padding: 0.6em 0.8em;
   text-decoration: none;
   line-height: $action_button_font_size;
+
+  font-weight: 600;
+  color: #616161 !important;
+
   @include border-radius(3px);
   @include transition(500ms);
   &:hover {

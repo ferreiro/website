@@ -21,13 +21,10 @@
     font-style: bold;
     font-weight: 600;
     display: online-block;
-    -webkit-border-radius: 60px;
-    -moz-border-radius: 60px;
-    border-radius: 60px;
     text-decoration: none;
-    -webkit-box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.5);
-    box-shadow: 2px 3px 10px 0px rgba(0,0,0,0.5);
+
+    @include box-shadow(2px 3px 10px 0px rgba(0,0,0,0.5));
+    @include border-radius(60px);
 
     &_download {
       background: transparent;
