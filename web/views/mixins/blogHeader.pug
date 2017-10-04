@@ -3,7 +3,7 @@ mixin blogHeader(hasAnimation)
   if hasAnimation
     - headerClass = 'animated fadeInUp'
 
-  #blogHeader(class= headerClass)
+  #blogHeader.blogHeaderWrapper(class= headerClass)
     .blogHeader
       a(href='/blog').blogHeader_link
       .blogHeader_bg(style="background-image: url(" + config.wallpaper + ");")
