@@ -151,14 +151,14 @@ block content
                             img(src="#{person.avatar}").project_people_entry_avatar
                             p #{person.name}
 
-                  //- Project Body
-                  if project.links
-                    //-a.action_button(href= project.links.website, target="_blank") Check out the project!
-                    .project_links
-                      if project.links.website
-                        a(href= project.links.website, target="_blank").project_links_website(style="border-color:" + project.color.hex + "; color:" + project.color.hex + ";") See project
-                      if project.links.code
-                        a(href= project.links.code, target="_blank").project_links_code Open source code
+                //- Project Body
+                if project.links
+                  //-a.action_button(href= project.links.website, target="_blank") Check out the project!
+                  .project_links
+                    if project.links.website
+                      a(href= project.links.website, target="_blank").project_links_website(style="color: " + project.color.hex + "; border-color:" + project.color.hex + ";") Checkout project
+                    if project.links.code
+                      a(href= project.links.code, target="_blank").project_links_code Open source
 
           if index == projects.length - 1
             .threeColsGrid__item
@@ -171,4 +171,4 @@ block content
                 .talk__ad.shadow__box(style="height: auto !important; padding-bottom: 2em; margin-bottom: 0;")
                   h1.talk__ad__title Do you have a project or idea?
                   p.talk__ad__subtitle Let's keep in touch! Ping me or contact me and I'll try to provide you feedback or maybe team up to make it happen :).
-                  a(href="/contact").talk__ad__link Contact or propose a talk
+                  a(href="/contact").talk__ad__link__simple Contact me

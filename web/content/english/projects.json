@@ -14,7 +14,7 @@
     "avatar": "/images/projects/dailyfocus/dailyfocus_icon.png",
     "background": null,
     "about": [
-      "Dailyfocus is a web application that integrates all the services employees use regularly (Gmail, Facebook, etc). It enables them to organize their work and make effective decisions."
+      "<b>Dailyfocus</b> is a web application that integrates all the services employees use regularly (Gmail, Facebook, etc). It enables them to organize their work and make effective decisions."
     ],
     "images": [
       {
@@ -38,6 +38,7 @@
     ],
     "stack": [
       "nodejs",
+      "jquery",
       "javascript",
       "html5",
       "css3",
@@ -96,9 +97,9 @@
       "Read <a href='/blog/' target='_blank'>my blog article</a> about what's new on version 3, how I've re-built the website and the lessons learned."
     ],
     "features": [
-      "Created a blogging and website content management system.",
-      "Third party integrations: AWS (Amazon), Mailchimp, Mailgun.",
-      "Publicily open source project."
+      "New version created in just 7 days and programmed my own blogging platform.",
+      "Integrated third party services such as AWS (Amazon), Mailchimp, Mailgun.",
+      "Project publicily open source."
     ],
     "stack": [
       "nodejs",
@@ -131,7 +132,9 @@
     "avatar": "/images/projects/music4deejays/m4d_icon.png",
     "background": "/images/projects/music4deejays/m4d_back.png",
     "about": [
-      "Streaming music application for listening, sharing and downloading the best electronic music from emerging artists. "
+      "<b>Music4deejays</b> is a streaming music application for listening, sharing and downloading the best electronic music from emerging artists.",
+      "This project started from a problem I identified: novel music producers are not discovered to the mass world since the music industry only promotes the big artits. ",
+      "I created the whole application, from backend to frontend and also designed a strategy to"
     ],
     "images": [
       {
@@ -140,9 +143,9 @@
       }
     ],
     "highlights": [
-      "More than <a href='stats/' target='_blank'><strong>56.000 installations</strong></a> on mobiles",
-      "Reached Top #5 music app on FirefoxOS",
-      "Created the streaming player using Soundcloud API"
+      "Achieved more than <a href='stats/' target='_blank'><strong>56k downloads</strong></a> on mobile phones by creating a strategy to drive the product to massive reach.",
+      "Reached Top #5 music application on FirefoxOS Marketplace.",
+      "Built my own streaming music player using Soundcloud Rest API."
     ],
     "stack": [
       "php",

@@ -7,6 +7,10 @@ $projectHeaderDateSize: 1em;
 $projectHeaderGalleryHeight: 122px;
 $projectHeaderGalleryGradientWidth: 2em;
 $projectHeaderGalleryRadius: 7px;
+$projectBodyPadding_mobile: 16px;
+$projectBodyPadding_desktop: 24px;
+$projectLinksHeight: 52px;
+$projectLinksTopMargin: 20px;
 
 .projects {
   @media all and (min-width:$desktop-screen) {
@@ -21,12 +25,12 @@ $projectHeaderGalleryRadius: 7px;
 
 .project {
   height: 100%;
-  vertical-align: top;
-  margin-bottom: 1.5em;
   overflow: hidden;
   position: relative;
-  border: 1px solid #f0f0f0;
+  vertical-align: top;
+  margin-bottom: 1.5em;
   padding: 0 !important;
+  border: 1px solid #f0f0f0;
   @include border-radius($projectBorderRadious);
 
   @media all and (min-width: $tablet-screen) {}
@@ -38,14 +42,14 @@ $projectHeaderGalleryRadius: 7px;
   @media all and (min-width:$big-screen) {}
 
   &_bg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
-    @include border-radius($projectBorderRadious);
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    position: absolute;
+    @include border-radius($projectBorderRadious);
 
     &_image {
       width: 100%;
@@ -57,7 +61,7 @@ $projectHeaderGalleryRadius: 7px;
       -o-filter: blur($projectBorderRadious);
       filter: blur($projectBorderRadious);
 
-      &::before{
+      &::before {
         width: 100%;
         height: 100%;
         content: '';
@@ -75,27 +79,22 @@ $projectHeaderGalleryRadius: 7px;
   }
 
   &_header {
+    z-index: 3;
+    position: relative;
     min-height: $projectHeaderHeight;
     padding: $projectHeaderMargin;
     background: rgba(0, 0, 0, 0.3);
-    z-index: 3;
-    position: relative;
-    -webkit-border-top-left-radius: $projectBorderRadious;
-    -webkit-border-top-right-radius: $projectBorderRadious;
-    -moz-border-radius-topleft: $projectBorderRadious;
-    -moz-border-radius-topright: $projectBorderRadious;
-    border-top-left-radius: $projectBorderRadious;
-    border-top-right-radius: $projectBorderRadious;
+    @include border-radiuses($projectBorderRadious, $projectBorderRadious, 0, 0);
 
     @media all and (min-width:$desktop-screen) {
       padding: $projectHeaderMargin;
     }
 
     &_left {
+      left: 1em;
+      position: absolute;
       width: $projectHeaderHeight;
       max-width: $projectHeaderHeight;
-      position: absolute;
-      left: 1em;
     }
 
     &_right {
@@ -158,14 +157,14 @@ $projectHeaderGalleryRadius: 7px;
     &_share {
       cursor: pointer;
 
-      // border:1px solid rgba(255, 255, 255, 0.7);
       top: 50%;
       right: 1em;
       padding: 10px;
+      display: none;
       position: absolute;
       transform: translate(0, -50%);
       background: rgba(255, 255, 255, 0.3);
-      display: none;
+      // border: 1px solid rgba(255, 255, 255, 0.7);
       @include border-radius($projectBorderRadious);
       &:hover {
 
@@ -193,7 +192,6 @@ $projectHeaderGalleryRadius: 7px;
       right: 0;
       top: 0;
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
-      
       // background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 80%); /* FF3.6-15 */
       // background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* Chrome10-25,Safari5.1-6 */
       // background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -222,9 +220,7 @@ $projectHeaderGalleryRadius: 7px;
     }
 
 
-    @media all and (min-width:$desktop-screen) {
-      
-    }
+    @media all and (min-width:$desktop-screen) {}
 
     &_next {
       width: 50px;
@@ -254,24 +250,13 @@ $projectHeaderGalleryRadius: 7px;
       padding: 1em;
       height: calc(100% - 2em);
       position: relative;
-
       overflow-y: scroll;
 
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -webkit-flex-wrap: nowrap;
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-      -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      -webkit-align-items: stretch;
-      -ms-flex-align: stretch;
-      align-items: stretch;
+      @include flexbox();
+      @include flexbox_direction(row);
+      @include flexbox_wrap(nowrap);
+      @include flexbox_justifyContent(flex-start, start);
+      @include flexbox_alignItems(center, center);
 
       &__offset {
         height: 100%;
@@ -280,8 +265,7 @@ $projectHeaderGalleryRadius: 7px;
         width: $projectHeaderGalleryGradientWidth - 1em !important;
         display: inline-block;
       }
-      @media all and (min-width:$desktop-screen) {
-      }
+      @media all and (min-width:$desktop-screen) {}
     }
 
     &_entry {
@@ -293,34 +277,34 @@ $projectHeaderGalleryRadius: 7px;
       display: inline-block;
       background-size: cover;
 
-      -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-      flex: 0 0 auto;
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      align-self: auto;
-
-      @include border-radius($projectHeaderGalleryRadius);
       @include opacity(0.6);
+      @include border-radius($projectHeaderGalleryRadius);
+      @include flexbox_flex(0, 0, auto);
+      @include flexbox_alignSelf(auto);
 
       &:hover {
         @include opacity(0.8);
       }
 
-      @media all and (min-width:$desktop-screen) {
-        // width: 33.33%;
-      }
+      @media all and (min-width:$desktop-screen) {}
     }
   }
 
   &_body {
     z-index: 12;
     height: 100%;
-    padding: 1em;
     position: relative;
     background: #fff;
+    padding: $projectBodyPadding_mobile;
     @media all and (min-width:$desktop-screen) {
-      padding: 1.5em;
+      padding: $projectBodyPadding_desktop;
+      padding-bottom: $projectBodyPadding_desktop + $projectLinksHeight + $projectLinksTopMargin;
+    }
+    &_noLinks { // When a card does not have links (we don't put the buttons down)
+      padding: $projectBodyPadding_mobile;
+      @media all and (min-width:$desktop-screen) {
+        padding: $projectBodyPadding_desktop;
+      }
     }
     &_title {
       color: rgba(0, 0, 0, 1);
@@ -361,19 +345,15 @@ $projectHeaderGalleryRadius: 7px;
       margin: 0.5em 0;
       margin-right: 0;
 
-      @media all and (min-width:$desktop-screen) {
-      }
+      @media all and (min-width:$desktop-screen) {}
 
       &_icon {
-        position: absolute;
         left: 0;
+        top: 3px;
+        position: absolute;
         display: inline-block;
         color: $primaryColor;
         vertical-align: top;
-        top: 3px;
-        // padding: 0.5em;
-        // border: 2px dashed $primaryColor;
-        // @include border-radius(100%);
       }
       &_text {
         display: inline-block;
@@ -395,17 +375,17 @@ $projectHeaderGalleryRadius: 7px;
   }
 
   &_stack {
-    display: inline-block;
-    vertical-align: top;
-    margin-bottom: 0.5em;
-    margin-top: 1.2em;
+    // margin-bottom: 0.5em;
+    margin-top: 1.3em;
     display: block;
 
     &_list {
       list-style: none;
       display: block;
+      margin-top: -1em; // remove first entry margin top
     }
     &_entry {
+      margin-top: 1em;
       margin-right: 1em;
       display: inline-block;
       color: rgba(0, 0, 0, 0.6);
@@ -413,7 +393,7 @@ $projectHeaderGalleryRadius: 7px;
       font-size: 0.8em;
     }
     &_title {
-      color: rgba(255, 108, 57, 1);
+      font-size: 0.9em;
       color: rgba(0, 0, 0, 0.6);
     }
   }
@@ -446,24 +426,28 @@ $projectHeaderGalleryRadius: 7px;
   &_links {
     z-index: 12;
     overflow: hidden;
-    margin-top: 1.5em;
+    position: absolute;
+    min-height: $projectLinksHeight;
+    left: $projectBodyPadding_mobile;
+    bottom: $projectBodyPadding_mobile;
+    @media all and (min-width:$desktop-screen) {
+      left: $projectBodyPadding_desktop;
+      bottom: $projectBodyPadding_desktop;
+    }
     a:last-child {
       margin-bottom: 0;
     }
     a {
-      // width: 50%;
-      display: inline-block;
-      text-align: center;
       color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 1em 1em;
-      position: relative;
-      border: 2px solid #d83902;
-      @include border-radius(5px);
-      // @include border-radius(60px);
+      font-weight: 600;
       margin-right: 1em;
-      // margin-bottom: 1em;
+      padding: 0.8em 1em;
+      position: relative;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      border: 2px solid #d83902;
+      @include border-radius(60px);
       @include transition(all 0.5s);
       &:hover {
         background: #f7f7f7;
