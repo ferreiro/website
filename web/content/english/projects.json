@@ -104,6 +104,7 @@
     "stack": [
       "nodejs",
       "javascript",
+      "jquery",
       "bower",
       "sass",
       "mongodb"
@@ -134,7 +135,7 @@
     "about": [
       "<b>Music4deejays</b> is a streaming music application for listening, sharing and downloading the best electronic music from emerging artists.",
       "This project started from a problem I identified: novel music producers are not discovered to the mass world since the music industry only promotes the big artits. ",
-      "I created the whole application, from backend to frontend and also designed a strategy to"
+      "I created the whole application: design, backend and frontend. I also designed a strategy to spread the project to our targetted audience."
     ],
     "images": [
       {
@@ -150,6 +151,7 @@
     "stack": [
       "php",
       "javascript",
+      "jquery",
       "html5",
       "css3"
     ],
