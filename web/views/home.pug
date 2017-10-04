@@ -1,5 +1,6 @@
 extends ./includes/layout
 include ./mixins/postCard
+include ./mixins/subscriptionBoxLarge
 
 block extraScripts
     script(src="/javascripts/slider.js")
@@ -50,27 +51,42 @@ block content
             //-             h2.slider-slides-singleSlide-content-title Titulo
             //-             p.slider-slides-singleSlide-content-text Subtitulo
             //-             a(href="/nosotros").slider-slides-singleSlide-content-link ¡Descúbrenos!
-            //- 
             //-     //- White mask
             //-     .slider-slides-singleSlide-whitemaskIntense
-            //- 
             //-     //- Wallpaper mask
             //-     .slider-slides-singleSlide-wallpaper
             //-         div.blurred(style='background-image:url(/images/photo-1438302292089-1bfacb810383.jpeg);')
-            
+
+            //-- Single Slide
+            li.fading.slider-slides-singleSlide
+                //- Content of one slide
+                .slider-slides-singleSlide-content
+                    .blackContent
+                        // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
+                        h2.slider-slides-singleSlide-content-title Jorge Ferreiro
+                        p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
+                        a(href="/about").slider-slides-singleSlide-content-link Read about me
+                //- Black mask
+                .slider-slides-singleSlide-whitemask
+
+                .slider-slides-singleSlide-wallpaper
+                    div(style='background-image:url(/images/home/header.jpg);')
+
+
             //-- Single Slide
             li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
+                        // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
                         h2.slider-slides-singleSlide-content-title Jorge Ferreiro
                         p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
-                        a(href="/about").slider-slides-singleSlide-content-link Read the bio
+                        a.whiteButton(href="/about").slider-slides-singleSlide-content-link Read about me
                 //- Black mask
-                .slider-slides-singleSlide-blackmask
+                .slider-slides-singleSlide-orangemask
 
                 .slider-slides-singleSlide-wallpaper
-                    div(style='background-image:url(/images/wallpapers/buildings.jpeg);')
+                    div(style='background-image:url(/images/home/header.jpg);')
 
             //-- Single Slide
             li.fading.slider-slides-singleSlide
@@ -85,6 +101,7 @@ block content
 
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/buildings.jpeg);')
+
 
             //-- Single Slide
             li.fading.slider-slides-singleSlide
@@ -148,9 +165,13 @@ block content
                         +postCard(post)
 
     .threeColsGrid
-      .threeColsGrid__item__full_width
-        .shadow__box
-          include ./includes/subscriptionBoxLarge
+        .threeColsGrid__item__full_width
+            .shadow__box
+                +subscriptionBoxLarge({
+                    customTitle: 'Join the JF community!',
+                    customBody: 'Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!',
+                    displayForm: false
+                })
 
     //-.blogHeader.talkHeader
       .blogHeader_bg(style="background-image: url();")
@@ -197,18 +218,18 @@ block content
             color: #fff;
         }
 
-    .heroe
+    //.heroe
         .heroe__wrapper
             h1.heroe__title Biography
 
-    .heroe
+    //.heroe
         .heroe__wrapper
             h1.heroe__title(style="text-align: right;") Blog
 
-    .heroe
+    //.heroe
         .heroe__wrapper
             h1.heroe__title Talks &amp;<br /> Workshops
 
-    .heroe
+    //.heroe
         .heroe__wrapper
             h1.heroe__title(style="text-align: right;") Portfolio<br />
