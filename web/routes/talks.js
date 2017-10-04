@@ -9,7 +9,7 @@ module.exports = router
 
 function getTalks (req, res, next) {
   res.render('talks', {
-    title: 'Talks and workshops',
+    title: 'Talks and Workshops',
     path: 'talks',
     config: talks.config,
     pastTalks: talks.pastTalks
