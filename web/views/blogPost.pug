@@ -60,8 +60,11 @@ block content_large
       .blogPost__content!= post.html
 
       if post.category
-        each category in post.category
-          span= category
+        ul.blogPost__category
+          p Post published in
+          each category in post.category
+            li
+              a(href= "/category/" + category).action_button= category
 
       .separator_no_margin#postFooter
 

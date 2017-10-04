@@ -1,19 +1,18 @@
 .blogPost {
+  z-index: 100;
   margin: 0 auto;
   margin-top: 1.5em;
   position: relative;
   max-width: $blogPostWidth;
-  z-index: 100; //
+
   &__title {
     font-size: 2em;
     color: #000;
     @media all and (min-width: $desktop-screen) {
-      font-size: 2.5em;
-
+      font-size: 40px;
       font-weight: 700;
       font-style: normal;
       letter-spacing: 0;
-      font-size: 40px;
       line-height: 1.04;
       letter-spacing: -.028em;
     }
@@ -41,6 +40,30 @@
     max-width: 100%;
     margin-top: 1.5em;
   }
+  &__category {
+    margin-top: 2em;
+
+    ul {
+      display: inline-block;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-right: 1em;
+    }
+
+    a {
+      text-transform: capitalize;
+    }
+
+    p {
+      margin-right: 1em;
+      display: inline-block;
+      text-transform: capitalize;
+    }
+  }
+
   &__content {
     display: inline-block;
     p, ul li, h1, h2, h3, h4, a {
@@ -64,6 +87,7 @@
       margin-top: 29px;
       li {
         margin: 0;
+        margin-right: 1em;
         list-style: none;
         &:before {
           content: '•';

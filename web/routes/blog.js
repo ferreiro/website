@@ -53,7 +53,7 @@ function getBlogPosts (req, res, next) {
 
     let blogContext = getBlogContext(req)
     blogContext.posts = result.docs
-    blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page : 'start') // getNextPageTokenFromPosts(posts)
+    blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page - 1 : 'start') // getNextPageTokenFromPosts(posts)
     blogContext.nextPageToken = (result.page + 1 <= result.pages ? result.page + 1 : 'end') // getNextPageTokenFromPosts(posts)
     blogContext.blogCategory = category ? category : blogContext.blogCategory
 
