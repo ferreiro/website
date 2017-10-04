@@ -61,22 +61,6 @@ block content
             li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
-                    .blackContent
-                        // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
-                        h2.slider-slides-singleSlide-content-title Jorge Ferreiro
-                        p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
-                        a(href="/about").slider-slides-singleSlide-content-link Read about me
-                //- Black mask
-                .slider-slides-singleSlide-whitemask
-
-                .slider-slides-singleSlide-wallpaper
-                    div(style='background-image:url(/images/home/header.jpg);')
-
-
-            //-- Single Slide
-            li.fading.slider-slides-singleSlide
-                //- Content of one slide
-                .slider-slides-singleSlide-content
                     .whiteContent
                         // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
                         h2.slider-slides-singleSlide-content-title Jorge Ferreiro
@@ -84,6 +68,21 @@ block content
                         a.whiteButton(href="/about").slider-slides-singleSlide-content-link Read about me
                 //- Black mask
                 .slider-slides-singleSlide-orangemask
+
+                .slider-slides-singleSlide-wallpaper
+                    div(style='background-image:url(/images/home/header.jpg);')
+
+            //-- Single Slide
+            li.fading.slider-slides-singleSlide
+                //- Content of one slide
+                .slider-slides-singleSlide-content
+                    .blackContent
+                        // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
+                        h2.slider-slides-singleSlide-content-title Jorge Ferreiro
+                        p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
+                        a(href="/about").slider-slides-singleSlide-content-link Read about me
+                //- Black mask
+                .slider-slides-singleSlide-whitemask
 
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/home/header.jpg);')
@@ -218,18 +217,19 @@ block content
             color: #fff;
         }
 
-    //.heroe
-        .heroe__wrapper
-            h1.heroe__title Biography
+    div(style="display: none;")
+        .heroe
+            .heroe__wrapper
+                h1.heroe__title Biography
 
-    //.heroe
-        .heroe__wrapper
-            h1.heroe__title(style="text-align: right;") Blog
+        .heroe
+            .heroe__wrapper
+                h1.heroe__title(style="text-align: right;") Blog
 
-    //.heroe
-        .heroe__wrapper
-            h1.heroe__title Talks &amp;<br /> Workshops
+        .heroe
+            .heroe__wrapper
+                h1.heroe__title Talks &amp;<br /> Workshops
 
-    //.heroe
-        .heroe__wrapper
-            h1.heroe__title(style="text-align: right;") Portfolio<br />
+        .heroe
+            .heroe__wrapper
+                h1.heroe__title(style="text-align: right;") Portfolio<br />

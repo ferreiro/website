@@ -95,7 +95,6 @@
   }
   &__title {
     font-size: 2.2em;
-    // font-variant-caps: petite-caps;
     color: $primaryColor;
     margin-top: 0.5em;
     margin-bottom: 0.2em;
@@ -104,21 +103,23 @@
       font-size: 2.6em;
     }
     @media all and (min-width: $desktop-screen) {
-      font-size: 3.2em;
-      margin-top: 0em;
-      margin-bottom: 0.1em;
+      line-height: 35px;
+      font-size: 3.4em;
+      margin: 0em;
+      margin-top: 10px;
     }
   }
   &__subtitle {
     font-size: 1.1em;
-    margin-bottom: 1em;
+    margin-top: 0.8em;
+    margin-bottom: 2em;
     display: block;
     // font-variant-caps: petite-caps;
     @media all and (min-width: $tablet-screen) {
       font-size: 1.3em;
     }
     @media all and (min-width: $desktop-screen) {
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
   }
   &__bio {
