@@ -1,0 +1,17 @@
+mixin sharePostBig(redirectUrl, source)
+  .sharePostBig#sharePostEmergent(style="display: none;")
+    h3.sharePostBig__title <span>Did you like my post?</span>
+    p.sharePostBig__subtitle Help me to spread the knowledge and share this post with your community. This helps me to reach more people and also motivates myself to write more posts 😊
+    ul.sharePostBig__list
+      li.sharePostBig__entry
+        a(class="tweetShare").sharePostBig__link.sharePostBig__twitter
+          span.sharePostBig__icon.icon.ion-social-twitter
+          span.sharePostBig__text Share on your Twitter
+
+      li.sharePostBig__entry
+        a(class="linkedinShare").sharePostBig__link.sharePostBig__linkedin
+          span.sharePostBig__icon.icon-linkedin2
+          span.sharePostBig__text Share on your Linkedin
+
+    - feedbackUrl = '/contact/feedback?redirect=' + redirectUrl + '&source=' + source
+    p.sharePostBig__dissapointed Sorry Jorge, I didn't like the post. I'd like you to <a href="#{feedbackUrl}"  target="_blank">give you feedback</a> to improve for the next time.
