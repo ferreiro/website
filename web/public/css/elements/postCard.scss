@@ -13,16 +13,19 @@ $postCard_options_margin: 1em;
 $postCard_options_item_margin: 0.8em;
 
 .postCard {
+  margin: 0;
+  padding: 0;
+  display: block;
+  text-align: left;
   background: #fff;
   position: relative;
-  text-align: left;
-  display: block;
-  padding: 0;
-  margin: 0;
+
   @include border-radius($postCard_radius);
+
   @media all and (min-width: $desktop-screen) {
     min-height: $postCard_height_desktop;
   }
+
   &__header {
     width: calc(100% + 2 * $postCard_border);
     height: $postCard_headerHeight_mobile;
@@ -31,13 +34,17 @@ $postCard_options_item_margin: 0.8em;
     overflow: hidden;
     margin: -($postCard_border);
     margin-bottom: 0;
+
     @include border-radiuses($postCard_radius, $postCard_radius, 0, 0);
+
     @media all and (min-width: $desktop-screen) {
       height: $postCard_headerHeight_desktop;
     }
+
     img {
       display: none; // image only for seo :)
     }
+
     &__link {
       top: 0;
       left: 0;
@@ -46,37 +53,44 @@ $postCard_options_item_margin: 0.8em;
       position: absolute;
     }
   }
+
   &__body {
     padding: $postCard_body_margin;
   }
+
   &__title {
-    max-height: $postCard_title_max_height;
+    color: #000;
     overflow: hidden;
     font-size: $postCard_title;
     line-height: $postCard_title;
-    color: #000;
+    max-height: $postCard_title_max_height;
+
     a {
       width: 100%;
       display: block;
       text-decoration: none;
     }
   }
+
   &__date {
     display: block;
     text-decoration: none;
     margin-top: 3px;
   }
+
   &__summary {
     width: 100%;
     display: block;
     text-decoration: none;
     padding-top: $postCard_summary_margin;
+
     @media all and (min-width: $desktop-screen) {
       min-height: $postCard_summary_max_height;
       max-height: $postCard_summary_max_height;
       overflow: hidden;
     }
   }
+
   &__options {
     margin: 0;
     padding: 0;
@@ -84,10 +98,12 @@ $postCard_options_item_margin: 0.8em;
     li:last-child {
       margin-bottom: 0;
     }
+
     @media all and (min-width: $desktop-screen) {
       position: absolute;
       bottom: $postCard_body_margin;
     }
+
     &__item {
       list-style: none;
       display: inline-block;
@@ -98,10 +114,12 @@ $postCard_options_item_margin: 0.8em;
       @media all and (min-width: $desktop-screen) {
         margin-bottom: 0;
       }
+
       span { // button
         margin-right: 8px;
         color: rgba(0, 0, 0, 0.6);
       }
+
       &__hidden {
         visibility: hidden;
       }
