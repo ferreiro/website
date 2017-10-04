@@ -148,13 +148,12 @@ function parseRequestPostData (req) {
 function postNewBlog (req, res, next) {
   const postData = parseRequestPostData(req)
   blogRepository.create(postData).then((post) => {
-    return res.render('admin/result', {
+    return res.json({
       post: post,
-      admin: true,
       success: 'Post created!'
     })
   }).catch((error) => {
-    return res.render('admin/create', {
+    return res.json({
       error: 'Failed to create new post.<br />' + error
     })
   })
@@ -181,9 +180,11 @@ function editPostSubmit (req, res, next) {
   const postPermalink = req.params.permalink
   const postData = parseRequestPostData(req)
   blogRepository.findAndUpdateByPermalink(postPermalink, postData).then(post => {
-    return res.redirect('/admin/edit/' + post.permalink)
+    return res.json({
+      post: post
+    })
   }).catch((err) => {
-    return res.render('admin/home', {
+    return res.json({
       error: 'Failed to update post.'
     })
   })

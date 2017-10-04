@@ -2,6 +2,7 @@ extends ./layout
 
 block extraScripts
     script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
+    script(src="/javascripts/createPost.js")
     script(src="/javascripts/uploader.js")
 
     script(src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js")
@@ -10,12 +11,13 @@ block extraScripts
             element: document.getElementById("composerBody"),
             promptURLs: true,
             tabSize: 4,
+            forceSync: true,
             autosave: {
                 enabled: true,
                 uniqueId: "JorgeFerreiroBlog",
                 delay: 2000,
             }
-        });
+        })
     script.
        window.onbeforeunload = function(evt) {
             var message = 'Did you remember to download your form?';
@@ -35,6 +37,9 @@ block extraScripts
         script.
             var data = $('#postBody').val()
             simplemde.value(data)
+    else
+        script.
+            simplemde.value('') // reset when creating a new post.
 
 block content
     //if edit
@@ -65,7 +70,18 @@ block content
             input.composer__input(type='file', name="image")
             input(type="submit", value="Upload Image", name="submit")
 
-        form(method='post', action= (edit==true ? '/admin/edit/' + post.permalink : '/admin/create'))
+        div#errorPostCreate(style="width: 100%; padding: 1em 0; display: none; background: #d40f0f; z-index: 100000000; position: fixed; left: 0; bottom: 0;")
+            div(style="max-width: 500px; margin: 0 auto; text-align: center; font-size: 1.6em; font-weight: 600; color: #fff;")
+                span.successMessage Error creating post
+
+        div#successPostCreate(style="width: 100%; padding: 1.5em 0; display: none; background: #08b908; z-index: 100000000; position: fixed; left: 0; bottom: 0;")
+            div(style="max-width: 500px; margin: 0 auto; text-align: center; font-size: 1.6em; font-weight: 600; color: #fff;")
+                span.errorMessage Post Created! Hooray!
+
+        div#createPostLoader.loaderCreatePost(style="width: 100%; height: 100%; display: none; z-index: 100; background:rgba(255, 255, 255, 0.8); position: fixed; top: 0; left: 0;")
+            img(src="/images/loading.gif", width="50px", style="position: absolute; margin: -15px; top: 50%; left: 50%;")
+
+        form#createPostForm(method='post', action= (edit==true ? '/admin/edit/' + post.permalink : '/admin/create'))
 
             .composer.shadow__box
                 .composer__entry
