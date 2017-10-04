@@ -1,0 +1,21 @@
+include ../mixins/newsletterForm
+
+mixin subscriptionBoxLarge(opts)
+  .subscriptionBoxLarge
+
+    - title = opts && opts.customTitle ? opts.customTitle : 'Join the JF community!'
+    h3.subscriptionBoxLarge__title= title
+
+    - body = opts && opts.customBody ? opts.customBody : 'Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!'
+    p.subscriptionBoxLarge__text= body
+
+    if !opts.displayForm
+      form#subscribeLargeForm.subscriptionBoxLarge__form(action="/newsletter", target="_blank", method="GET")
+        span.subscriptionBoxLarge__completed
+          | ✔
+          span(style='color: #000; margin-left: 0.5em;') Subscribed!
+        button.subscriptionBoxLarge__submit
+          img.subscriptionBoxLarge__loader(src='/images/spinner.svg')
+          span.beta__signup__text Get exclusive materials!
+    else
+      +newsletterForm()
