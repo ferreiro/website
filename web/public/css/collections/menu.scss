@@ -1,20 +1,16 @@
 .logo {
-  width: $logoHeight;
-  height: $logoHeight;
-  display: inline-block;
-  // border-right: 1px dashed $secundaryColorLight;
-  position: relative;
   overflow: hidden;
-  // margin-right: 0.5em;
   margin-right: 1em;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
+  position: relative;
+  display: inline-block;
+  height: $logoHeight;
+  width: $logoHeight;
+
+  @include flexbox_flex(0, 0, auto);
   @include border-radius(5px);
 }
+
 .logo img {
-  // height: 52px;
-  // padding: 8px;
   height: $logoHeight;
 }
 
@@ -28,39 +24,24 @@
 
 .menu {
   width: 100%;
+  z-index: 10000;
   height: $headerHeight;
   display: inline-block;
   background: $menuColor;
-  border-bottom: 1px solid #cecece;
   vertical-align: middle;
-  padding: 0.7em 0;
-  z-index: 10000;
+  padding: $headerMenuPadding 0;
+  border-bottom: 1px solid #cecece;
+
   &__wrapper {
+    padding:0 1em;
     height: $headerHeight;
 
-    padding:0 1em;
     @include flexbox();
-    @include flexbox_wrap(wrap);
+    @include flexbox_wrap(nowrap);
+    @include flexbox_direction(row);
     @include flexbox_justifyContent(flex-start, start);
-
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-align-content: stretch;
-    -ms-flex-line-pack: stretch;
-    align-content: stretch;
-    -webkit-align-items: flex-start;
-    -ms-flex-align: start;
-    align-items: flex-start;
+    @include flexbox_alignContent(stretch, stretch);
+    @include flexbox_alignItems(flex-start, start);
 
     @media all and (min-width: $desktop-screen) {
       padding: 0 2em;
@@ -69,78 +50,79 @@
 
   &_left {
     visibility: hidden;
+
     @include flexbox_grow(1);
+
     @media all and (min-width: $desktop-screen) {
       visibility: visible;
 
-      -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
-      flex: 1 1 auto;
-      -webkit-align-self: auto;
-      -ms-flex-item-align: auto;
-      align-self: auto;
+      @include flexbox_flex(1, 1, auto);
+      @include flexbox_alignSelf(auto);
     }
   }
 
   &_right {
     visibility: hidden;
+
     @include flexbox_grow(0);
+
     @media all and (min-width: $desktop-screen) {
       visibility: visible;
 
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+      @include flexbox_flex(0, 0, auto);
+      @include flexbox_alignSelf(auto);
     }
   }
 }
+
 span.icon-separated {
   margin-right: 0.5em;
 }
+
 .with-icon {
   padding-top: 0.1em !important;
 }
+
 .item-selected {
   background: #F7F7F7 !important;
-  // background: #fff4f0 !important;
-  // border-bottom: 1px solid #d83902;
+
   &:before {
-    width:100%;
-    position: absolute;
-    bottom:0;
     left:0;
     right:0;
+    bottom:0;
+    width:100%;
     content: '';
-    // border-bottom: 1px solid #d83902;
+    position: absolute;
   }
+
   p {
     color: rgba(0, 0, 0, .8) !important;
   }
 }
+
 .item {
+  padding: 0 1.5em;
+  position: relative;
+  margin-right: 0.6em;
   height: $headerHeight;
   display: inline-block;
-  position: relative;
-  padding: 0 1.5em;
-  // border-right: 1px dashed $secundaryColorLight;
   text-decoration: none;
-  margin-right: 0.6em;
   @include border-radius(60px);
+
   p {
-    font-size: 1.2em;
-    position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     font-weight: 600;
+    font-size: 1.2em;
+    position: relative;
+    transform: translate(-50%, -50%);
     color: rgba(0, 0, 0, .6);
   }
+
   &:hover {
-    background: $primaryColorLight;
     border-color: $primaryColor;
+    background: $primaryColorLight;
+
     p {
       color: #fff;
     }
@@ -148,44 +130,57 @@ span.icon-separated {
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
   z-index: 100;
   cursor: pointer;
+  position: relative;
+  display: inline-block;
 
   @media all and (max-width: $desktop-screen) {
     display: none !important; // Hide everyhing on mobile
+  }
+
+  &:hover .dropdown-content {
+    display: block;
+  }
+
+  &:hover .dropdown-top-icon {
+    color: #fff;
   }
 
   &-social {
     .item {
       font-weight: 600;
       margin-right: 0;
-      // height: 63px;
-      // border: 2px solid #E9E9E9;
     }
   }
 
+  &-top-icon {
+    color:#d83901;
+    margin-right: 0.8em;
+  }
+
   &-content {
-    min-width: 150px;
+    right: 0;
+    top: 100%;
+    z-index: 100;
     padding: 1em;
+    display: none;
+    min-width: 150px;
     background: #fff;
     position: absolute;
-    top: 100%;
-    right: 0;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 100;
-    display: none;
   }
 
   &-item {
+    margin: 0;
+    margin-bottom: 0.5em;
+    padding: 0;
     width: 100%;
     display: inline-block;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 0.5em;
+
     &:hover {
       background: #f4f4f4;
+
       @include border-radius(10px);
     }
   }
@@ -193,24 +188,20 @@ span.icon-separated {
   &-icon {
     width: 40px;
     font-size: 40px;
+    margin-right: 10px;
     padding: 5px;
     padding-left: 10px;
     display: inline-block;
     vertical-align: middle;
-    margin-right: 10px;
   }
 
   &-text {
-    vertical-align: middle;
-    display: inline-block;
-    font-size: 1.3em;
-    font-weight: 600;
     margin: 0;
     padding: 0;
-  }
-
-  &:hover .dropdown-content {
-    display: block;
+    font-size: 1.3em;
+    font-weight: 600;
+    display: inline-block;
+    vertical-align: middle;
   }
 }
 
@@ -224,11 +215,8 @@ span.icon-separated {
   }
   #dropdown-mobiles {
     display: inline-block !important; // This must be inline-block
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    -webkit-align-self: auto;
-    -ms-flex-item-align: auto;
-    align-self: auto;
+
+    @include flexbox_flex(0, 0, auto);
+    @include flexbox_alignSelf(auto);
   }
 }
