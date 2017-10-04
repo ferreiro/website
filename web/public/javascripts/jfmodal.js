@@ -4,6 +4,14 @@ var jfmodalboxOverlay = $('.jfmodalbox_overlay')
 var jfmodalboxContent = $('.jfmodalbox_content')
 var jfmodalboxClose = $('.jfmodalbox_close')
 
+// Listening when the user press a key
+$(document).keydown(function(e) {
+  // ESCAPE key pressed
+  if (e.keyCode == 27) {
+      closeModal() // Close my modal window
+  }
+})
+
 jfmodalboxOverlay.click(function() {
   if (jfmodalbox.hasClass('jfmodalbox_displayed'))
     closeModal();
