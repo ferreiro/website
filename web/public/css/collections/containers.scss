@@ -5,10 +5,11 @@
 .container {
   width: 100%;
   margin:0 auto;
-  @media all and (min-width: $tablet-screen) {}
+
   @media all and (min-width:$desktop-screen) {
     max-width: $containterMaxDesktopWidth;
   }
+
   @media all and (min-width:$big-screen) {
     width: $big-screen;
   }
@@ -19,15 +20,19 @@
 }
 
 .container_inner {
-  padding:1em;
+  z-index: 0;
+  padding: 1em;
   display: block;
   position: relative;
   overflow: visible;
-  z-index: 0;
 
   @media all and (min-width: $desktop-screen) {
-    padding: 2em 0;
     margin: 0 auto;
+    padding: 2em;
+  }
+
+  @media all and (min-width: $containterMaxDesktopWidth) {
+    padding: 2em 0;
   }
 
   &__blog {
@@ -54,18 +59,15 @@
 }
 
 .container_middle {
-
   width: 100%;
-  // margin-bottom: 1em;
   display: inline-block;
-  // background: rgba(0, 0, 0, 0.1);
-  @media all and (min-width: $desktop-screen) {
-    // margin-bottom: 2em;
-  }
+
+  @media all and (min-width: $desktop-screen) {}
 }
 
 .container_left {
   min-height: 500px;
+
   @media all and (min-width: $tablet-screen) {}
   @media all and (min-width: $desktop-screen) {
     @include flexbox_flex(1, 1, auto);
@@ -100,7 +102,3 @@
     @media all and (min-width:$big-screen) {}
   }
 }
-
-
-/**** Fin container *****************************/
-/************************************************/
