@@ -5,8 +5,7 @@ var body = $('body');
 var jfmenu = $('.jfmenu');
 var jfmenuContent = $('.jfmenu_content');
 var jfmenuOverlay = $('.jfmenu_overlay');
-var menuButton = $('.jfmenu_open_button');
-// var scrollPosition = 0;
+var menuButton = $('.jfmenu__mobileButton');
 
 jfmenuOverlay.click(function() {
   if ($('.jfmenu').hasClass('jfmenu_displayed')) {
@@ -34,40 +33,29 @@ menuButton.click(function() {
   var e = $(this);
 
   if (jfmenu.hasClass('jfmenu_displayed')) {
-    e.removeClass('jfmenu_open_button_active');
     hideMenu();
-
   }
   else {
-    e.addClass('jfmenu_open_button_active');
     displayMenu();
   }
 });
 
 function hideMenu(){
   if (jfmenu.hasClass('jfmenu_displayed')) {
-
-    // $('html, body').animate({
-    //     scrollTop: scrollPosition
-    // }, 0);
-    jfmenu.removeClass('jfmenu_displayed');
-    jfmenuContent.removeClass('fadeInDownBig');
-    jfmenuOverlay.removeClass('fadeIn');
     body.removeClass('body_overflow');
+    jfmenu.removeClass('jfmenu_displayed');
+    jfmenuOverlay.removeClass('fadeIn');
+    jfmenuContent.removeClass('fadeInDownBig');
+    menuButton.removeClass('jfmenu__mobileButton__active');
   }
 }
 
 function displayMenu(){
-
-  if (! jfmenu.hasClass('jfmenu_displayed')) {
-    // scrollPosition = $('body').scrollTop(); // Capture current top position
-    // $('html, body').animate({
-    //     scrollTop: 0
-    // }, 400);
-    jfmenu.addClass('jfmenu_displayed');
-    jfmenuContent.addClass('animated fadeInDownBig');
-    jfmenuOverlay.addClass('animated fadeIn');
+  if (!jfmenu.hasClass('jfmenu_displayed')) {
     body.addClass('body_overflow');
+    jfmenu.addClass('jfmenu_displayed');
+    jfmenuOverlay.addClass('animated fadeIn');
+    jfmenuContent.addClass('animated fadeInDownBig');
+    menuButton.addClass('jfmenu__mobileButton__active');
   }
-
 }

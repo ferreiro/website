@@ -12,41 +12,45 @@ $submenu_color:#f4f4f4;
 $active_menu_color:#FFECE6;
 $overlay_color: rgba(0, 0, 0, 0.6);
 $open_button_color:#949494;
+$open_button_color_active:#545454;
 // Borders
 $border_type:dotted;
 $border_size:1px;
 $border_color:#cecece;
 
-.jfmenu_open_button {
+.jfmenu__mobileButton {
   display: block;
-  cursor: pointer;
   position: relative;
-  width: $website_header;
-  height: $website_header;
-  color:$open_button_color;
+  height: $headerHeight;
+  color: $open_button_color;
 
-  &_active {
+  &__active {
+    color: $open_button_color_active !important;
     background: #f4f4f4 !important;
-  }
-
-  &_text {
-    top: 50%;
-    position: absolute;
-    right: calc(100% + 10px);
-    font-size: 20px !important;
-    transform: translate(0, -50%);
-    text-transform: capitalize !important;
-  }
-
-  &_icon {
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-
-    span {
-      font-size: 60px;
+    .jfmenu__mobileButton__text {
+      color: $open_button_color_active !important;
     }
+  }
+
+  &__text {
+    top: 50%;
+    right: 55px;
+    position: absolute;
+    display: inline-block;
+    color: $open_button_color;
+    font-size: 20px !important;
+    text-transform: capitalize !important;
+
+    @include translate(0, -50%);
+  }
+
+  &__icon {
+    position: absolute;
+    font-size: 60px;
+    top: 50%;
+    right: 0;
+
+    @include translate(0, -50%);
   }
 }
 

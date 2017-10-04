@@ -12,10 +12,13 @@
 
 .logo img {
   height: $logoHeight;
+
+  @include border-radius(5px);
 }
 
 .social_network_text {
   display: none;
+
   @media all and (min-width: 1100px) {
     display: inline-block;
     margin-left: 10px;
@@ -46,29 +49,31 @@
     @media all and (min-width: $desktop-screen) {
       padding: 0 2em;
     }
+
+    @media all and (min-width: $containterMaxDesktopWidth) {
+      padding: 0;
+    }
   }
 
   &_left {
-    visibility: hidden;
+    display: none;
 
     @include flexbox_grow(1);
 
     @media all and (min-width: $desktop-screen) {
-      visibility: visible;
-
+      display: block;
       @include flexbox_flex(1, 1, auto);
       @include flexbox_alignSelf(auto);
     }
   }
 
   &_right {
-    visibility: hidden;
+    display: none;
 
     @include flexbox_grow(0);
 
     @media all and (min-width: $desktop-screen) {
-      visibility: visible;
-
+      display: block;
       @include flexbox_flex(0, 0, auto);
       @include flexbox_alignSelf(auto);
     }
@@ -209,14 +214,16 @@ span.icon-separated {
   display: none;
 }
 
-@media all and (max-width: $desktop-screen) {
+@media all and (max-width: $desktop-screen - 1px) {
   .left {
     display: none;
   }
-  #dropdown-mobiles {
-    display: inline-block !important; // This must be inline-block
 
-    @include flexbox_flex(0, 0, auto);
+  #dropdown-mobiles {
+    display: block;
+
+    @include flexbox_flex(1, 1, auto);
     @include flexbox_alignSelf(auto);
+    @include border-radius(5px);
   }
 }
