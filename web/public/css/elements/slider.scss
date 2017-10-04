@@ -13,13 +13,13 @@
 		}
 	}
 	@media all and (min-width: $tablet-screen) {
-		height: 300px;		 	// Ocupy all the window height on desktop-screen
+		height: 350px;		 	// Ocupy all the window height on desktop-screen
 		.slider-selector {
 			display: none;
 		}
 	}
 	@media all and (min-width: $desktop-screen) {
-		height: 350px !important;		 	// Ocupy all the window height on desktop-screen
+		height: 450px !important;		 	// Ocupy all the window height on desktop-screen
 		margin-top: 0;		 	// Restart margin to 0
 		.slider-selector {
 			display: block;
@@ -40,16 +40,16 @@
 
 		li {
 			width: 15px;
-			height: 15px;
+			height: 8px;
 			background: rgba(234, 234, 234, 0.7);
       list-style: none;
 			// border:1px solid #cecece;
 			display: inline-block;
 			// @include border-radius(100%);
-    		margin-bottom: 2px;
+    	// margin-bottom: 2px;
 			margin-right: 8px;
 			position: relative;
-			@include border-radius(100%);
+			@include border-radius(10px);
 			cursor: pointer;
 			@include transition(.3s);
 
@@ -62,11 +62,11 @@
 			}
 
 			&.current {
-
+				width: 15px;
+				height: 8px;
 				margin-bottom: 0;
-				width: 20px;
-				height: 20px;
 				background: rgba(234, 234, 234, 0.7);
+				background: hsl(16, 100%, 42%);
 				&:before {
 					width: 8px;
 					height: 8px;
@@ -262,25 +262,28 @@
 					font-weight: 400;
 					@media all and (min-width: $desktop-screen) {
 						font-weight: 300;
+						font-weight: 600;
 						font-size: 3em;
+						font-size: 3.8em;
 					}
 				}
 				&-text {
 					font-size: 1em;
 					margin-top: 1em;
-					font-weight: 300;
+					font-weight: 400;
 					letter-spacing: 1px;
 					a {
 						color: $primaryColorLight;
 					}
 					@media all and (min-width: $desktop-screen) {
 						width: 430px;
-						font-size: 1.4em;
+						font-size: 1.6em;
 						margin: 0 auto;
-						margin-top: 0.8em;
+						margin-top: 1em;
 					}
 				}
 				&-link {
+					font-weight: 600;
 					background: $primaryColor;
 					padding: 0.7em 1em;
 					display: inline-block;
@@ -290,7 +293,7 @@
 					@include border-radius(5px);
 					text-decoration: none;
 					@media all and (min-width: $desktop-screen) {
-						margin-top: 2em;
+						margin-top: 1.5em;
 						padding: 0.9em 1.5em;
 						font-size: 1.3em;
 					}
@@ -299,6 +302,10 @@
 					}
 				}
 
+				.whiteButton {
+					background: #fff;
+					color: rgba(218, 59, 1, 0.8) !important;
+				}
 				.blackContent {
 					.slider-slides-singleSlide-content-title,
 					.slider-slides-singleSlide-content-text {
@@ -325,6 +332,15 @@
 				bottom: 0;
 				z-index: 2;
 				background: rgba(0, 0, 0, 0.7);
+			}
+			&-orangemask {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 2;
+				background: rgba(218, 59, 1, 0.8);
 			}
 			&-whitemask {
 				position: absolute;
