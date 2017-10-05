@@ -7,15 +7,17 @@
 
     h1.jfmenu_title Jorge Ferreiro
 
+    mixin mobileMenuItem (item)
+      li(id= item.id, class= path===item.id ? 'current_section' : '')
+        if item.id == 'home'
+          - item.name = 'Home'
+        a(href= item.url, target= item.target || '_self')
+          span= item.name
+
     //-Menu block containing links
     ul
       each item in menu || []
-        li(id= item.id, class= path===item.id ? 'current_section' : '')
-
-          if item.id == 'home'
-            - item.name = 'Home'
-          a(href= item.url, target= item.target || '_self')
-            span= item.name
+        +mobileMenuItem(item)
 
       li.submenu
         a
@@ -31,8 +33,7 @@
                 span #{item.name}
 
 .menu.fixed
-  .container
-    .menu__wrapper
+  .menu__wrapper.container_inner
       a.logo(href="/")
           img(src="/images/logo.jpg")
 
@@ -42,18 +43,13 @@
             if !item.hidden
               if item.id == 'home'
                 - item.name = null
-              a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
+
+              - itemClass = path===item.id ? 'item-selected' : ''
+              a.item(id= item.id, href= item.url, target= item.target || '_self', class= itemClass)
                 if item.icon
                   p.icon(class= item.icon)
                 if item.name
                   p= item.name
-
-        //-.optionsMenu
-          ul.optionsMenu__list
-            each item in menu || []
-              li.optionsMenu__item(, aria-selected= path===item.id ? 'true' : 'false')
-                a(href= item.url).optionsMenu__link
-                  span= item.name
 
       .menu_right
         if admin
