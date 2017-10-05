@@ -4,15 +4,7 @@
 
 .container {
   width: 100%;
-  margin:0 auto;
-
-  @media all and (min-width:$desktop-screen) {
-    max-width: $containterMaxDesktopWidth;
-  }
-
-  @media all and (min-width:$big-screen) {
-    width: $big-screen;
-  }
+  margin: 0 auto;
 }
 
 .container_home {
@@ -31,19 +23,19 @@
     padding: 2em;
   }
 
-  @media all and (min-width: $containterMaxDesktopWidth) {
+  @media all and (min-width: $containterMaxDesktopWidth + 16px * 2) {
+    max-width: $containterMaxDesktopWidth;
     padding: 2em 0;
+  }
+
+  @media all and (min-width:$big-screen) {
+    max-width: $big-screen;
   }
 
   &__blog {
     @media all and (min-width: $containterMaxDesktopWidth) {
       padding: 1.5em 0;
     }
-  }
-
-  @media all and (min-width:$big-screen) {
-    padding-left:0;
-    padding-right: 0;
   }
 
   &__flex {
