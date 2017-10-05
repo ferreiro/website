@@ -167,7 +167,10 @@
   {
     "title": "SudoNotes",
     "date": "Nov 2015 - April 2016",
-    "type" : [ "backend", "frontend" ],
+    "type" : [
+      "backend",
+      "frontend"
+    ],
     "color": {
       "hex": "#283196",
       "rgba_gradient_start": "rgba(19, 23, 68, 0.8)",
@@ -176,7 +179,9 @@
     "avatar": "/images/projects/sudonotes/sudonotes.jpg",
     "background": "/images/projects/sudonotes/1.png",
     "about": [
-      "The easiest way to keep all your ideas, projects and notes together. <strong>Python</strong> (MVC) application granted 10/10 in 'GIW' college course."
+      "<b>Sudonotes</b> is the easiest way to keep all your ideas, projects and notes together.",
+      "I worked with other 2 international students (from Italy and Brasil) and we delivered the project in under 3 days.",
+      "It's a <strong>Python</strong> application granted 10/10 (A) in 'GIW' college course."
     ],
     "images": [
       {
@@ -201,7 +206,13 @@
       }
     ],
     "highlights": null,
-    "stack": ["python", "html5", "css3", "jquery", "SQLite3"],
+    "stack": [
+      "python",
+      "html5",
+      "css3",
+      "jquery",
+      "SQLite3"
+    ],
     "people": [
       {
         "name": "Jorge Ferreiro",
