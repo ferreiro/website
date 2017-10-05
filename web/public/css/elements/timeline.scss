@@ -50,14 +50,17 @@
     &__title {
       border: 0;
       padding: 0.5em 0;
+      padding-bottom: 0;
       margin: 0 auto;
       color: #4F4F4F; // color: $primaryColor;
       display: inline-block;
+      font-size: 1.4em;
       border: 0;
 
       @include border-radius(5px);
       @media all and (min-width: $desktop-screen) {
         font-size: 1.4em;
+        padding: 0.5em 0;
       }
     }
   }
@@ -102,8 +105,8 @@
   }
 
   &__wrapper {
-    padding: 0.7em;
-    margin-top: 0.5em;
+    padding: 1em;
+    margin-top: 1em;
     background: #fff;
     border: 1px solid #E8E8E8;
 
@@ -150,8 +153,12 @@
       }
 
       img {
+        top: 50%;
         width: 100%;
+        position: relative;
+
         @include border-radius(5px);
+        @include translate(0, -50%);
       }
     }
 
@@ -174,13 +181,15 @@
     &__company {
       margin: 0;
       font-size: 1em;
-      font-weight: 300;
-      margin-bottom: 0.2em;
+      font-weight: 400;
+      margin-bottom: 0.4em;
+
+      color: rgba(0, 0, 0, 0.7);
     }
 
     &__date {
       margin: 0;
-      font-size: 0.8em;
+      font-size: 0.9em;
       font-weight: 300;
       color: rgba(0, 0, 0, .7);
     }
