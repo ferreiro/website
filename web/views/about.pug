@@ -3,6 +3,9 @@ include ./mixins/resumeEntry
 include ./mixins/timelineEntry
 include ./mixins/subscriptionBoxLarge
 
+block extraScripts
+  script(src="./javascripts/about.js")
+
 block content_full
   //.profileCard
     .profileCard_bg
@@ -32,22 +35,25 @@ block content
       .about_bio__large__right
         .about_bio__large__right__content
           p.about_bio__large__bio <span style="font-size: 1.5em; margin-right: 5px;">Hi!</span> I'm <strong>Jorge Ferreiro</strong>, a 22-yo Software Engineer, Product Manager and Entrepreneur with a passion for design and a desire to create software products that solve real problems and improve people's lives.
-          p.about_bio__large__bio In summer 2017, I studied at UC Berkeley (CS 61BL and COS). In 2016 I did an internship in China with Huawei and in 2013 I started my bachelor's degree in Computer Science at UCM (expected graduation year 2017/18).
-          p.about_bio__large__bio I've launched two <a href="/portfolio">projects</a> that I'm really proud of: <strong>Dailyfocus</strong> and <strong>Music4deejays</strong> (a music application that reached 56,000 downloads).
-          p.about_bio__large__bio As the creator and main driver of Dailyfocus, I take requirements and define the product roadmap, design the architecture, create prototypes, run user research to validate ideas, and built an MVP in under 5 months. You can <a href="http://test.dailyfocus.io" target="_blank">checkout the application here</a>
-          p.about_bio__large__bio In my next steps, I'm planning to take Dailyfocus to the next level while looking for opportunities to expand my business knowledge and technical expertise.
-          p.about_bio__large__bio (ideas|WIP) next: work on dailyfocus, expandir mi marca personal, compartir mi conocimiento (blog) y dar charlas. I'm always open to challenging job opportunities and projects. <a href="/contact">Contact me</a> if you want to connect and make a proposal.
-          .about_bio__large__callToAction
+          p.about_bio__large__bio Late 2017, I've finished my <b>Bachelor's Degree in Computer Science</b> at UCM. In summer 2017, I <b>studied at UC Berkeley</b> <i>(CS 61BL and COLWRIT 9I)</i> and in 2016 I did an <b>internship in China</b> with Huawei.
+          p.about_bio__large__bio I've launched two <a href="/portfolio">projects</a> that I'm really proud of: <b>Dailyfocus</b> <i>(a revolutionary productivity application that I'm working right now)</i> and <b>Music4deejays</b> <i>(a music application to promote young artits that reached <b>56,000 downloads</b>)</i>.
+          p.about_bio__large__bio As the creator and main driver of Dailyfocus, I take requirements and define the product roadmap, design the architecture, create prototypes, run user research to validate ideas, and built an MVP in under 5 months. You can <a href="http://test.dailyfocus.io" target="_blank">checkout the application here</a>.
+          p.about_bio__large__bio In my next steps, I'm focusing on taking Dailyfocus to the next level and expanding my personal brand while working on viral projects to learn new technologies. I'm always looking for opportunities of any type to expand my technical and business expertise.
+          p.about_bio__large__bio <a href="/contact">Contact me</a> if you want to connect and make a proposal.
+          .about_bio__large__callToAction#aboutActions
             a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank").about_bio__large__button
               span.icon.ion-document
               | Read Resume
-            a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_bio__large__button
+            a(href="/contact", target="_blank").about_bio__large__button
+              span.icon.ion-android-mail
+              | Contact me
+            //- a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_bio__large__button
               span.icon.ion-ios-cloud-download-outline
               | Download Resume
 
   h1.timeline__bigTitle Timeline
 
-  .timeline
+  .timeline#education
     .timeline__wrapper
       .timeline__badge
         span.timeline__badge__title Education
@@ -55,7 +61,7 @@ block content
         each item in education || []
           +timelineEntry(item)
 
-  .timeline
+  .timeline#experience
     .timeline__wrapper
       .timeline__badge
         span.timeline__badge__title Experience
@@ -65,26 +71,8 @@ block content
 
 block after_content
 
-  //- .hotLinks
-    .hotLinks__list
-      a(href="/blog").hotLinks__item(style="background-image:url('/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg');")
-        h3 Read my blog
-
-  // .blogPostRelated
-    //.box_with_shadow
-    .hot_links
-      //.hot_links_box(style="background-image:url('/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg');")
-        a(href="/talks")
-          h2 Contact Jorge
-          // h2 Checkout my talks
-
-      .hot_links_box(style="background-image:url('/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg');")
-        a(href="/contact")
-          h2 Discover the blog
-
-    //- .box_with_shadow(style="margin: 0;")
-      +subscriptionBoxLarge({
-        customTitle: 'Join the JF community!',
-        customBody: 'Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!',
-        displayForm: false
-      })
+  .about_hot_links#jumpToBlog
+    .hotLinks
+      .hotLinks__list
+        a(href="/blog").hotLinks__item(style="background-image:url('/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg');")
+          h3 Discover my blog

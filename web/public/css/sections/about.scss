@@ -57,12 +57,16 @@
   }
   &__left_v2 {
     width: 100%;
+    overflow: hidden;
     min-height: 210px;
     background: #e7e5e6;
     background-image: url('/images/jorge_big_2.png');
     background-size: 100% auto;
     background-position: 50% 14%;
-    overflow: hidden;
+
+    @include opacity(0);
+    @include transition(2000ms);
+
     @include border-radius(5px);
     @include flexbox_flex(0, 0, auto);
     @include flexbox_alignSelf(stretch);
@@ -72,6 +76,7 @@
       height: 280px;
       background-position: 50% 26%;
     }
+
     @media all and (min-width: $desktop-screen) {
       width: 500px;
       width: 40%;
@@ -108,30 +113,37 @@
     @media all and (min-width: $desktop-screen) {
       line-height: 35px;
       font-size: 3.4em;
-      margin: 0em;
       margin-top: 10px;
     }
   }
 
   &__subtitle {
-    font-size: 1.1em;
-    margin-top: 0.8em;
-    margin-bottom: 2em;
     display: block;
+    max-width: 300px;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    color: rgba(0, 0, 0, 0.7);
 
     @media all and (min-width: $tablet-screen) {
       font-size: 1.3em;
     }
     @media all and (min-width: $desktop-screen) {
       font-size: 1.3em;
+      max-width: 330px;
+      margin-top: 0.9em;
     }
   }
 
   &__bio {
     margin: 1rem 0;
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.4;
     text-align: left;
+    color: rgba(0,0,0,.85);
+
+    @include transition(300ms);
+    @include opacity(0);
 
     @media all and (min-width: $tablet-screen) {
       font-size: 1.125rem;
@@ -143,11 +155,19 @@
       font-size: 1.125rem;
       line-height: 1.5;
     }
+
+    b {
+      color: $primaryColor;
+    }
   }
 
   &__callToAction {
     margin-top: 0.5rem;
     display: inline-block;
+    background: #fff;
+
+    @include opacity(0);
+    @include transition(300ms);
 
     @media all and (max-width: $desktop-screen) {
       a {
@@ -227,4 +247,10 @@
       text-align: justify;
     }
   }
+}
+
+.about_hot_links {
+  margin: 2em 0;
+  margin-bottom: 2em;
+  @include opacity(0);
 }
