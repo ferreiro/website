@@ -13,7 +13,10 @@
     text-decoration: none;
 
     &:hover:before {
-      background: rgba(218,59,1,.7);
+      // only on desktop. Mobile does not need hover animation
+      @media all and (min-width: $desktop-screen) {
+        background: rgba(218,59,1,.7);
+      }
     }
 
     &:before {
@@ -32,10 +35,14 @@
     h3 {
       z-index: 2;
       color: #fff;
-      font-size: 3.5em;
+      font-size: 2em;
       font-weight: bold;
       position: relative;
       text-align: center;
+
+      @media all and (min-width: $desktop-screen) {
+        font-size: 3.5em;
+      }
     }
   }
 }
