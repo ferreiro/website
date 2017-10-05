@@ -36,7 +36,6 @@
   border-bottom: 1px solid #cecece;
 
   &__wrapper {
-    padding:0 1em;
     height: $headerHeight;
 
     @include flexbox();
@@ -46,13 +45,8 @@
     @include flexbox_alignContent(stretch, stretch);
     @include flexbox_alignItems(flex-start, start);
 
-    @media all and (min-width: $desktop-screen) {
-      padding: 0 2em;
-    }
-
-    @media all and (min-width: $containterMaxDesktopWidth) {
-      padding: 0;
-    }
+    padding-bottom: 0;
+    padding-top: 0;
   }
 
   &_left {

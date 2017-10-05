@@ -64,7 +64,7 @@ block content_large
           p Post published in
           each category in post.category
             li
-              a(href= "/category/" + category).action_button= category
+              a(href= "/blog/category/" + category).action_button= category
 
       .separator_no_margin#postFooter
 
@@ -73,7 +73,7 @@ block content_large
       // .box_with_shadow(style="margin-top: 3em;")
         +subscriptionBoxLarge({
           customTitle: 'Read more articles like this?',
-          customBody: 'Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!',
+          customBody: 'Get exclusive content, early access to tutorials, updates and projects! Join my newsletter and keep up to date!',
           displayForm: true
         })
 

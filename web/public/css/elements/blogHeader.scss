@@ -119,12 +119,13 @@
     margin: 0 auto;
     margin-top:0.3em;
     padding: 0 0.4em;
-    max-width: 530px;
     font-weight: 300;
     font-size: 1.3em;
     color: rgba(255, 255, 255, 0.9);
 
     @media all and (min-width:$tablet-screen) {
+      max-width: 450px;
+      font-size: 1.3em;
       padding: 0 1.2em;
     }
     @media all and (min-width:$desktop-screen) {

@@ -6,8 +6,12 @@
   max-width: $blogPostWidth;
 
   &__title {
-    font-size: 2em;
-    color: #000;
+    font-size: 32px;
+    margin-left: -2px;
+    line-height: 1.04;
+    letter-spacing: -.028em;
+    color: rgba(0,0,0,.84);
+
     @media all and (min-width: $desktop-screen) {
       font-size: 40px;
       font-weight: 700;
@@ -81,6 +85,20 @@
       word-wrap: break-word;
       display: block;
     }
+
+    p {
+      font-size: 18px;
+      line-height: 1.58;
+      letter-spacing: -.004em;
+
+      @media all and (min-width: $desktop-screen) {
+        font-size: 21px;
+        line-height: 1.58;
+        letter-spacing: -.003em;
+        color: rgba(0,0,0,.84);
+      }
+    }
+
     ul {
       margin: 0;
       padding: 0;
@@ -157,7 +175,7 @@
   width: 100%;
   margin-top: 2em;
   padding: 1.5em 0;
-  background: #f4f4f4;
+  background: #f4f4f4 !important;
   display: inline-block;
   position: relative;
   z-index: 100;

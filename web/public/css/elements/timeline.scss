@@ -1,8 +1,11 @@
 .timeline {
   margin-top: 1em;
+  @include opacity(0);
+
   @media all and (min-width: $desktop-screen) {
     margin-top: 2em;
   }
+
   &__wrapper {}
   &__bigTitle {
     text-align: center;
@@ -15,52 +18,60 @@
       font-size: 3em;
     }
   }
+
   &__smallTitle {
-    text-align: center;
-    margin-top: 1em;
-    font-size: 2em;
-    font-weight: 500;
     color: #000;
     display: block;
+    font-size: 2em;
+    margin-top: 1em;
+    font-weight: 500;
+    text-align: center;
+
     @media all and (min-width: $desktop-screen) {
       margin-top: 2em;
       margin-bottom: 2em;
       font-size: 1.5em;
     }
   }
+
   &__badge {
+    margin: 0;
     width: 100%;
     display: block;
-    text-align: center;
     padding: 1.5em 0;
-    margin: 0;
     margin-top: -0.5em;
+    text-align: center;
+
     @media all and (min-width: $desktop-screen) {
       padding: 0;
       margin-top: 0;
     }
+
     &__title {
-      color: $primaryColor;
-      border: 2px solid $primaryColor;
-      padding: 0.5em 1em;
-      display: inline-block;
+      border: 0;
+      padding: 0.5em 0;
       margin: 0 auto;
+      color: #4F4F4F; // color: $primaryColor;
+      display: inline-block;
+      border: 0;
+
       @include border-radius(5px);
       @media all and (min-width: $desktop-screen) {
         font-size: 1.4em;
-        // border: 0;
       }
     }
   }
+
   &__entries {
     @include flexbox();
     @include flexbox_wrap(nowrap);
-    // @include flexbox_justifyContent(center, center);
-    // @include flexbox_alignContent(flex-start, flex-start);
-    // @include flexbox_alignItems(flex-start, flex-start);
     @include flexbox_direction(column);
-    @media all and (min-width: $desktop-screen) {
-      // @include flexbox_alignItems(center, center);
+    @include transition(300ms);
+
+    @media all and (min-width: $desktop-screen) {}
+
+    &__displayed {
+      @include opacity(1 !important);
     }
   }
 }
@@ -68,55 +79,53 @@
 .timeline__item {
   @include flexbox();
   @include flexbox_wrap(nowrap);
-  // @include flexbox_justifyContent(center, center);
-  // @include flexbox_alignContent(flex-start, flex-start);
-  // @include flexbox_alignItems(flex-start, flex-start);
   @include flexbox_direction(column);
-  // margin-left: 1em;
-  // padding-left: 0.5em;
-  // border-left: 5px solid $primaryColor;
+
   @media all and (min-width: $desktop-screen) {
     &:nth-child(1) {
       &:before {
         height: 30px;
       }
     }
+
     &:before {
       content: '';
       width: 0;
       height: 20px;
-      // background: #f4f4f4;
-      // background: $primaryColor;
-      border-left: 2px $primaryColor dotted;
-      // border-right: 2px  $primaryColor dashed;
+      border-left: 2px dotted #d0d0d0;
       margin: 0 auto;
     }
+
     border: 0;
     padding-left: 0;
     margin-left: 0;
   }
 
   &__wrapper {
-    background: #fff;
     padding: 0.7em;
-    border: 1px solid #E8E8E8;
-    // border-color: $primaryColor;
     margin-top: 0.5em;
+    background: #fff;
+    border: 1px solid #E8E8E8;
+
     @include border-radius(5px);
     @include box-shadow(0px 0px 10px 0 rgba(0,0,0,0.05));
+
     @media all and (min-width: $desktop-screen) {
-      margin: 0 auto;
-      max-width: 550px;
       width: 550px;
+      margin: 0 auto;
       padding: 1.5em;
+      max-width: 550px;
     }
   }
+
   &__header {
     border-bottom: 1px solid #f4f4f4;
     margin-bottom: 0.5em;
     padding-bottom: 0.5em;
+
     @include flexbox_flex(1, 1, auto);
     @include flexbox_alignSelf(stretch);
+
     @media all and (min-width: $desktop-screen) {
       margin-bottom: 1.5em;
       padding-bottom: 1.5em;
@@ -125,96 +134,110 @@
     &__wrapper {
       @include flexbox();
       @include flexbox_wrap(nowrap);
-      // @include flexbox_justifyContent(center, center);
-      // @include flexbox_alignContent(flex-start, flex-start);
-      // @include flexbox_alignItems(flex-start, flex-start);
       @include flexbox_direction(row);
-      @media all and (min-width: $desktop-screen) {
-        // @include flexbox_direction(column);
-      }
     }
+
     &__logo {
       width: 60px;
       margin-right: 0.7em;
+
       @include flexbox_flex(0, 0, auto);
       @include flexbox_alignSelf(stretch);
+
       @media all and (min-width: $desktop-screen) {
         width: 80px;
         margin-right: 1.5em;
       }
+
       img {
         width: 100%;
         @include border-radius(5px);
       }
     }
+
     &__metadata {
       @include flexbox_flex(1, 1, auto);
       @include flexbox_alignSelf(center);
     }
+
     &__position {
+      margin: 0;
       font-size: 1em;
       font-weight: 600;
-      margin: 0;
       margin-bottom: 0.2em;
+
       @media all and (min-width: $desktop-screen) {
        font-size: 1.2em;
       }
     }
+
     &__company {
+      margin: 0;
       font-size: 1em;
       font-weight: 300;
-      margin: 0;
       margin-bottom: 0.2em;
     }
+
     &__date {
+      margin: 0;
       font-size: 0.8em;
       font-weight: 300;
-      margin: 0;
       color: rgba(0, 0, 0, .7);
     }
   }
+
   &__body {
     @include flexbox_flex(1, 1, auto);
     @include flexbox_alignSelf(stretch);
+
     p {
       font-size: 1rem;
       line-height: 1.5rem;
       color: rgba(0, 0, 0, 1);
     }
-    a {
-      // color: $primaryColor;
-    }
+
+    a {}
   }
+
   &__oneline {
     margin-bottom: 0.1em;
+    color: rgba(0, 0, 0, 0.8);
+
     &:nth-last-child(1) {
       margin-bottom: 0;
     }
   }
+
   &__bullets {
-    margin: 0 ;
+    margin: 0;
     padding: 0;
     position: relative;
+
     li:nth-last-child(1) {
       margin-bottom: 0;
     }
   }
+
   &__bullet {
     list-style: none;
-    margin-bottom: 0.9em;
     position: relative;
+    margin-bottom: 0.9em;
+
     &:before {
+      top: 2px;
       content: "•";
       position: absolute;
-      top: 2px;
     }
+
     &__icon {
       position: absolute;
       left: 1em;
+
       i {
         font-size: 25px;
       }
     }
+
     &__text {
       margin-left: 50px;
       &__noIcon {
@@ -222,6 +245,7 @@
       }
     }
   }
+
   &__warning {
     padding: 1.0em 0;
     margin: 1.5em 0;
@@ -242,26 +266,27 @@
     }
 
     &:before {
-      content: '';
-      margin: 4px;
-      background: #fff;
-      position: absolute;
-      z-index: 0;
-      left: 0;
       top: 0;
+      left: 0;
       right: 0;
       bottom: 0;
+      z-index: 0;
+      margin: 4px;
+      content: '';
+      background: #fff;
+      position: absolute;
+
       @include transition(0.5s);
       @include border-radius(5px);
     }
 
     &__link {
+      top: 0;
+      left: 0;
+      z-index: 3;
       width: 100%;
       height: 100%;
       position: absolute;
-      z-index: 3;
-      top: 0;
-      left: 0;
     }
 
     &__wrapper {
@@ -271,6 +296,13 @@
       color: rgb(146,45,204);
       text-align: left;
       padding-left: 1em;
+
+      p {
+        color: #8b33ce;
+      }
+      a {
+        color: #8f2fcd;
+      }
     }
   }
 }

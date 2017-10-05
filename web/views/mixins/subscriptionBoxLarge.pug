@@ -6,7 +6,7 @@ mixin subscriptionBoxLarge(opts)
     - title = opts && opts.customTitle ? opts.customTitle : 'Join the JF community!'
     h3.subscriptionBoxLarge__title= title
 
-    - body = opts && opts.customBody ? opts.customBody : 'Get exclusive content, pre-access to tutorials, updates and projects! Join my newsletter and keep up to date!'
+    - body = opts && opts.customBody ? opts.customBody : 'Get exclusive content, early access to tutorials, updates and projects! Join my newsletter and keep up to date!'
     p.subscriptionBoxLarge__text= body
 
     if !opts.displayForm
@@ -16,6 +16,6 @@ mixin subscriptionBoxLarge(opts)
           span(style='color: #000; margin-left: 0.5em;') Subscribed!
         button.subscriptionBoxLarge__submit
           img.subscriptionBoxLarge__loader(src='/images/spinner.svg')
-          span.beta__signup__text Get exclusive materials!
+          span.beta__signup__text Subscribe to the community
     else
       +newsletterForm()

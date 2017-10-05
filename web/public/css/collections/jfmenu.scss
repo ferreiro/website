@@ -24,6 +24,10 @@ $border_color:#cecece;
   height: $headerHeight;
   color: $open_button_color;
 
+  &__wrapper {
+    height: calc(100%);
+  }
+
   &__active {
     color: $open_button_color_active !important;
     background: #f4f4f4 !important;
@@ -38,8 +42,9 @@ $border_color:#cecece;
     position: absolute;
     display: inline-block;
     color: $open_button_color;
-    font-size: 20px !important;
+    font-size: 22px !important;
     text-transform: capitalize !important;
+    padding-top: 3px;
 
     @include translate(0, -50%);
   }
@@ -49,6 +54,7 @@ $border_color:#cecece;
     font-size: 60px;
     top: 50%;
     right: 0;
+    padding-top: 3px;
 
     @include translate(0, -50%);
   }

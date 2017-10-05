@@ -17,8 +17,8 @@
 }
 
 .admin {
-  padding: 3em;
-  margin-top: $headerHeight + (2 * $headerPadding) - 5px;
+  padding: 1em 3em;
+  // margin-top: $headerHeight + (2 * $headerPadding) - 5px;
   &__title {
     margin-bottom: 1em;
     text-align: center;

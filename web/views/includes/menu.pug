@@ -42,14 +42,14 @@
           each item in menu || []
             if !item.hidden
               if item.id == 'home'
-                - item.name = null
-
-              - itemClass = path===item.id ? 'item-selected' : ''
-              a.item(id= item.id, href= item.url, target= item.target || '_self', class= itemClass)
-                if item.icon
-                  p.icon(class= item.icon)
-                if item.name
-                  p= item.name
+                //- Skip home icon on desktop
+              else
+                - itemClass = path===item.id ? 'item-selected' : ''
+                a.item(id= item.id, href= item.url, target= item.target || '_self', class= itemClass)
+                  if item.icon
+                    p.icon(class= item.icon)
+                  if item.name
+                    p= item.name
 
       .menu_right
         if admin
@@ -69,6 +69,7 @@
                     span.dropdown-text #{item.name}
 
       .jfmenu__mobileButton#dropdown-mobiles
-        p.jfmenu__mobileButton__text= path
-        .jfmenu__mobileButton__icon
-          span.icon.ion-navicon
+        .jfmenu__mobileButton__wrapper
+          p.jfmenu__mobileButton__text= path
+          .jfmenu__mobileButton__icon
+            span.icon.ion-navicon
