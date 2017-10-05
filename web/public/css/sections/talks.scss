@@ -70,6 +70,7 @@
       color: #000;
       margin-top: 1em;
     }
+
     &__subtitle {
       margin: 1em 0;
       margin-bottom: 1.4em;
@@ -78,6 +79,7 @@
       color: rgba(0, 0, 0, 0.8);
       display: inline-block;
     }
+
     &__link {
       font-weight: 600;
       padding: 0.9em 1em;
@@ -86,22 +88,31 @@
       margin-bottom: 1.5em;
       border: 3px solid $primaryColor;
       color: $primaryColor;
+
       @include border-radius(60px);
       @include transition(150ms);
+
       &:hover {
         background: $primaryColor;
         color: #fff;
       }
     }
+
     &__link__simple {
-      font-weight: 600;
-      padding: 0; // padding: 0.9em 1em;
+      padding: 0;
       padding-bottom: 5px;
+      font-weight: 600;
       text-decoration: none;
       display: inline-block;
-      // margin-bottom: 1.5em;
-      border-bottom: 2px solid #000; // border: 3px solid $primaryColor;
-      // @include border-radius(60px);
+      border-bottom: 2px solid #000;
+
+      @include transition(200ms);
+
+      &:hover {
+        border-bottom-color: transparent;
+        border-bottom: 2px solid #d83901;
+        color: #d83901;
+      }
     }
   }
   iframe {
