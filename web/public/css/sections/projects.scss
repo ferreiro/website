@@ -296,6 +296,8 @@ $projectLinksTopMargin: 20px;
     position: relative;
     background: #fff;
     padding: $projectBodyPadding_mobile;
+    padding-bottom: $projectBodyPadding_mobile + $projectLinksHeight;
+
     @media all and (min-width:$desktop-screen) {
       padding: $projectBodyPadding_desktop;
       padding-bottom: $projectBodyPadding_desktop + $projectLinksHeight + $projectLinksTopMargin;
