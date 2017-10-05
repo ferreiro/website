@@ -92,14 +92,14 @@
       }
     ],
     "about": [
-      "<b>#ferreiroV2:</b> In 2016, I decided to built from scratch my new personal website. I did everything in <b>6 days</b> and released it as an open source project.",
-      "<b>#ferreiroV3:</b> In late 2017, I wanted to move my website to a whole new level. So I dedicated one week to re-think the vision, improved the design and added new features aligned with my goals.",
-      "Read <a href='/blog/' target='_blank'>my blog article</a> about what's new on version 3, how I've re-built the website and the lessons learned."
+      "<b>#ferreiroV2:</b> In 2016, I decided to build from scratch my new personal website. I did everything in <b>6 days</b> and released it as an open source project.",
+      "<b>#ferreiroV3:</b> In late 2017, I wanted to take my website to a whole new level, so I dedicated one week to re-think the vision, improve the design and add new features aligned with my goals.",
+      "Read <a href='/blog/' target='_blank'>my blog article</a> about what's new on version 3, how I re-built the website and the lessons learned."
     ],
     "features": [
-      "New version created in just 7 days and programmed my own blogging platform.",
+      "New version created in just 7 days including programming my own blogging platform.",
       "Integrated third party services such as AWS (Amazon), Mailchimp, Mailgun.",
-      "Project publicily open source."
+      "Project available open source."
     ],
     "stack": [
       "nodejs",

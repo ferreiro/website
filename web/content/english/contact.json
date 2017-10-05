@@ -7,7 +7,7 @@
   "form" : {
     "name" : "What is your name?",
     "email" : "And your email?",
-    "message" : "Write me your message",
-    "newsletter": "I want to receive new projects of Jorge"
+    "message" : "Write your message",
+    "newsletter": "Subscribe to updates from Jorge"
   }
 }
