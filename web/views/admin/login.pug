@@ -1,6 +1,9 @@
 extends ./layout
 
 block extraScripts
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+
     script(type='text/javascript', async='', src='https://www.gstatic.com/recaptcha/api2/r20170919161736/recaptcha__en.js')
     script(src='//www.google.com/recaptcha/api.js', async='', defer='')
 
@@ -22,8 +25,8 @@ block content
                 label(for='mail') Password:
                 input#password.subscriptionBox__email(type='password', placeholder='Your Password', name='password')
 
-            div(style="margin-top: 1em; margin-bottom: 2em;" data-sitekey="6LflWDIUAAAAAKTIbuWjcRdx6At0hJSulNFH3p-l")
-                .g-recaptcha
+            div(style="margin-top: 1em; margin-bottom: 2em;")
+                .g-recaptcha(data-sitekey="6LflWDIUAAAAAKTIbuWjcRdx6At0hJSulNFH3p-l")
 
             div
                 button.about_resume_button.about_resume_button_view.blogHeader_button(type='submit') Login
