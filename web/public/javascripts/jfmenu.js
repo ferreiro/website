@@ -9,12 +9,14 @@ function setupDesktopMenu () {
     // When click on current section.
     // Scroll to top.
     if (menuItem.hasClass('item-selected')) {
-      event.preventDefault()
+      if (menuItem.find('id').context.id !== 'blog') {
+        event.preventDefault()
 
-      scrollTop({
-        position: 0,
-        speed: 300
-      })
+        scrollTop({
+          position: 0,
+          speed: 300
+        })
+      }
     }
   })
 }
