@@ -59,7 +59,7 @@ block content_large
       img.blogPost__image(src= post.pic, style="width: 100%;")
       .blogPost__content!= post.html
 
-      if post.category
+      if post.category && post.category.lenght > 0
         ul.blogPost__category
           p Post published in
           each category in post.category
