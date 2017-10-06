@@ -9,8 +9,7 @@ function setupScrollEvents () {
   const education = $('#education')
   const experience = $('#experience')
   const aboutActions = $('#aboutActions')
-  const jumpToBlog = $('#jumpToBlog')
-  
+
   const itemDisplayedClass = 'timeline__entries__displayed'
 
   $(window).scroll(function() {
@@ -25,9 +24,6 @@ function setupScrollEvents () {
     }
     if (isScrollCloseToItem(scrollTop, aboutActions, offset)) {
       displayTimelineItem(aboutActions, itemDisplayedClass, 'fadeIn')
-    }
-    if (isScrollCloseToItem(scrollTop, jumpToBlog, offset)) {
-      displayTimelineItem(jumpToBlog, itemDisplayedClass, 'fadeIn')
     }
   })
 }
