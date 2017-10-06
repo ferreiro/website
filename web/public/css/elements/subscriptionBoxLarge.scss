@@ -3,6 +3,10 @@
   padding: 1.5em 1.5em;
   position: relative;
 
+  @media all and (min-width: $desktop-screen) {
+    padding: 2em 0;
+  }
+
   &__title {
     margin: 0;
     padding: 0;
@@ -11,6 +15,10 @@
     font-weight: 500;
     position: relative;
     margin-bottom: -5px;
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 1.8em;
+    }
   }
 
   &__text {
