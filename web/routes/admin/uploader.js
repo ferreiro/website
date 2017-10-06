@@ -18,13 +18,12 @@ const s3 = new aws.S3()
 
 const upload = multer({
   storage: multerS3({
-      s3: s3,
-      bucket: bucketName,
-      acl: 'public-read',
-      key: function (req, file, cb) {
-          console.log(file);
-          cb(null, file.originalname); //use Date.now() for unique file keys
-      }
+    s3: s3,
+    bucket: bucketName,
+    acl: 'public-read',
+    key: function (req, file, cb) {
+        cb(null, file.originalname); //use Date.now() for unique file keys
+    }
   })
 });
 
@@ -33,17 +32,9 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', upload.array('image', 1), function (req, res, next) {
-  console.log('Submitting')
-  console.log('reqFiles', req.files)
   if (req.files.length > 0 ) {
     const location = req.files[0].location
-    console.log('location', location);
-    var html = `<h1>File uploaded!</h1>`
-    var html = `<a href="/form">Upload new</a>`
-    html += `<p>${location}</p>`
-    html += `<img src="${location}" />`
-    console.log(html)
-    // res.send(html)
+
     return res.json({
       permalink: location
     })
