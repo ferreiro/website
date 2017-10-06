@@ -41,17 +41,20 @@ function submitForm(endpoint) {
      encode: true
   })
   .done(function(data) {
-    if (data.error) {
-      displayFailure(data)
-    } else {
-      displaySuccess(data)
-    }
+    loader.fadeOut(1000, function () {
+      if (data.error) {
+        displayFailure(data)
+      } else {
+        displaySuccess(data)
+      }
+    })
   })
   .fail(function(data) {
-    displayFailure(data)
+    loader.fadeOut(1000, function () {
+      displayFailure(data)
+    })
   })
   .always(function() {
-    loader.hide()
     form.show()
   })
 }
