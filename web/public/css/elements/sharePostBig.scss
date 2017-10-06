@@ -1,10 +1,7 @@
 .sharePostBig {
-  padding: 2.5em 0;
-  padding-bottom: 0;
+  padding: 2.5em 1.5em;
   margin-top: 3em;
   text-align: center;
-  border-top: 1px solid #f4f4f4;
-  // border-bottom: 1px solid #f4f4f4;
 
   &__title {
     margin: 0;
@@ -34,6 +31,12 @@
     margin-top: 0.5em;
     max-width: 560px;
     text-align: center;
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 1.2em;
+      line-height: 1.3em;
+      color: rgba(0, 0, 0, .7);
+    }
   }
   &__list {
     display: block;
@@ -88,5 +91,10 @@
     font-size: 0.8em;
     max-width: 350px;
     text-align: center;
+    color: rgba(0, 0, 0, .7);
+
+    @media all and (min-width: $tablet-screen) {
+      font-size: 1em;
+    }
   }
 }
