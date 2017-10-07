@@ -33,40 +33,23 @@ block content
 
             li.slider-navigation-left
                 a
-                    span.icon-angle-left
+                    span.icon.ion-ios-arrow-left
             li.slider-navigation-right
                 a
-                    span.icon-angle-right
+                    span.icon.ion-ios-arrow-right
 
         //- Slides of the slider
         ul.slider-slides
-            //-- <li> last class is the effect (fading, barTop, square)
-            //-- Single Slide
-            //- li.fading.slider-slides-singleSlide
-            //-     //- Content of one slide
-            //-     .slider-slides-singleSlide-content
-            //-         .blackContent
-            //-             //- .slider-slides-singleSlide-content-minilogo
-            //-             //-     div
-            //-             h2.slider-slides-singleSlide-content-title Titulo
-            //-             p.slider-slides-singleSlide-content-text Subtitulo
-            //-             a(href="/nosotros").slider-slides-singleSlide-content-link ¡Descúbrenos!
-            //-     //- White mask
-            //-     .slider-slides-singleSlide-whitemaskIntense
-            //-     //- Wallpaper mask
-            //-     .slider-slides-singleSlide-wallpaper
-            //-         div.blurred(style='background-image:url(/images/photo-1438302292089-1bfacb810383.jpeg);')
 
             //-- Single Slide
             li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
-                        // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
                         h2.slider-slides-singleSlide-content-title Jorge Ferreiro
                         p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
                         a.whiteButton(href="/about").slider-slides-singleSlide-content-link Read about me
-                //- Black mask
+                //- Orange mask
                 .slider-slides-singleSlide-orangemask
 
                 .slider-slides-singleSlide-wallpaper
@@ -76,30 +59,14 @@ block content
             li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
-                    .blackContent
-                        // div(style="width: 100px; margin: 0 auto; height: 100px; margin: 0 auto; margin-bottom: 1.5em; border-radius: 100%; background-image: url(/images/about/avatar_jorge_ferreiro_small.png); background-size: cover;")
-                        h2.slider-slides-singleSlide-content-title Jorge Ferreiro
-                        p.slider-slides-singleSlide-content-text Software Engineer, Entrepreneur and Product manager.
-                        a(href="/about").slider-slides-singleSlide-content-link Read about me
+                    .orangeContent
+                        h2.slider-slides-singleSlide-content-title JF Community!
+                        p.slider-slides-singleSlide-content-text 1 post every month, early access to tutorials, articles and updates... Join my newsletter and be part of the community!
+                        a(href="/newsletter?redirect=/blog&source=home").slider-slides-singleSlide-content-link Join the newsletter!
                 //- Black mask
                 .slider-slides-singleSlide-whitemask
-
                 .slider-slides-singleSlide-wallpaper
-                    div(style='background-image:url(/images/home/header.jpg);')
-
-            //-- Single Slide
-            li.fading.slider-slides-singleSlide
-                //- Content of one slide
-                .slider-slides-singleSlide-content
-                    .whiteContent
-                        h2.slider-slides-singleSlide-content-title JF Community!
-                        p.slider-slides-singleSlide-content-text Exclusive content, early access to tutorials, articles, updates... Join my newsletter and be part of the community!
-                        a(href="/newsletter").slider-slides-singleSlide-content-link Join the newsletter!
-                //- Black mask
-                .slider-slides-singleSlide-blackmask
-
-                .slider-slides-singleSlide-wallpaper
-                    div(style='background-image:url(/images/wallpapers/buildings.jpeg);')
+                    div(style='background-image:url(/images/home/team.jpg);')
 
 
             //-- Single Slide
@@ -107,7 +74,7 @@ block content
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
-                        h2.slider-slides-singleSlide-content-title Dailyfocus beta
+                        h2.slider-slides-singleSlide-content-title Projects
                         p.slider-slides-singleSlide-content-text My new project is already online! Join the beta and let me know your feedback, thanks! #DailyfocusV1
                         a(href="https://dailyfocus.io/beta", target="_blank").slider-slides-singleSlide-content-link Check out my most recent project
 
@@ -117,21 +84,21 @@ block content
                 .slider-slides-singleSlide-wallpaper
                     div(style='background-image:url(/images/wallpapers/wallpaper2.jpg);')
 
+
             //-- Single Slide
-            //- li.fading.slider-slides-singleSlide
+            li.fading.slider-slides-singleSlide
                 //- Content of one slide
                 .slider-slides-singleSlide-content
                     .whiteContent
-                        h2.slider-slides-singleSlide-content-title Keep updated!
-                        p.slider-slides-singleSlide-content-text Subscribe to my newsletter and you'll receive the most amazing resources I find on the web and also updates about my upcoming projects.
-                        a(href='/contact', target='_blank').slider-slides-singleSlide-content-link Yes! Subscribe me
+                        h2.slider-slides-singleSlide-content-title Talks
+                        p.slider-slides-singleSlide-content-text My new project is already online! Join the beta and let me know your feedback, thanks! #DailyfocusV1
+                        a(href="https://dailyfocus.io/beta", target="_blank").slider-slides-singleSlide-content-link Check out my most recent project
 
                 //- Black mask
                 .slider-slides-singleSlide-blackmask
 
                 .slider-slides-singleSlide-wallpaper
-                    div(style='background-image:url(/images/wallpapers/wallpaper3.jpg);')
-
+                    div(style='background-image:url(/images/wallpapers/wallpaper2.jpg);')
 
     //-style.
       .blogHeader_bg:after {

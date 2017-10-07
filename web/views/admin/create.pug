@@ -129,8 +129,18 @@ block content
 
             //-This is not shown to the user
             //-but they are automatically fullfilled
-            .composer.shadow__box(style="display: none; margin-top: 2em;")
+            .composer.shadow__box(style="display: ; margin-top: 2em;")
                 h2 Options
+
+                .composer__entry
+                    label(for='permalink', class="composer__legend")
+                        span.icon.ion-lock-combination
+                        p Secret Password
+                    .composer__right
+                        - secretLink = '/blog/' + post.permalink + '?secretKey=' + post.secretKey
+                        if secretLink
+                            a(href= secretLink, target="_blank")= secretLink
+                        input#permalink.composer__input(type='name', placeholder="Secret key", class="admin__input", name='post_secretKey', value= post && post.secretKey ? post.secretKey : '')
 
                 .composer__entry
                     label(for='permalink', class="composer__legend")

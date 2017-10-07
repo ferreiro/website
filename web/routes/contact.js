@@ -20,7 +20,8 @@ function contact (req, res, next) {
   return res.render('contact', {
     title: 'Contact me',
     path: 'contact',
-    content: content
+    content: content,
+    redirect: req.query.redirect
   })
 }
 
@@ -33,7 +34,8 @@ function contactTalk (req, res, next) {
   res.render('contact', {
     title: 'Jorge at your event',
     content: talkContact,
-    path: 'talks'
+    path: 'talks',
+    redirect: req.query.redirect
   })
 }
 

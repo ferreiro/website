@@ -124,6 +124,7 @@ function createPostComposer (req, res, next) {
 function parseRequestPostData (req) {
   const title = req.body.post_title
   const pic = req.body.post_pic
+  const secretKey = req.body.post_secretKey
   const permalink = req.body.post_permalink
   const authorName = req.body.post_author_name
   const authorPic = req.body.post_author_pic
@@ -136,6 +137,7 @@ function parseRequestPostData (req) {
   return {
     pic,
     title,
+    secretKey,
     summary,
     permalink,
     published,

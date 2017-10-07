@@ -17,6 +17,7 @@ function newsletter (req, res, next) {
     title: 'Newsletter',
     path: 'newsletter',
     newsletter: true,
-    content: content
+    content: content,
+    redirect: req.query.redirect
   })
 }

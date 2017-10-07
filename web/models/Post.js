@@ -17,6 +17,11 @@ const PostSchema = new Schema({
     type: String,
     required: false
   },
+  secretKey: {
+    type: String,
+    required: false,
+    default: Date.now()
+  },
   permalink: {
     type: String,
     index: {

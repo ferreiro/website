@@ -123,13 +123,14 @@ function getPostByPermalink (req, res, next) {
         blogContext.error = 'Post does not exist or you dont have permissions to view.'
         return res.render('blogPost', blogContext)
       }
-      if (post.published || req.user) {
+
+      if (post.published || !isInvalidUser(req) || isValidSecretKey(req.query.secretKey, post.secretKey)) {
         generateRelatedPosts({
           permalinkToSkip: postPermalink,
           count: 3
         }).then(relatedPosts => {
           blogContext.post = post
-          blogContext.post.html = markdownToHtml(post.body)  
+          blogContext.post.html = markdownToHtml(post.body)
           blogContext.relatedPosts = relatedPosts
           return res.render('blogPost', blogContext)
         })
@@ -141,6 +142,17 @@ function getPostByPermalink (req, res, next) {
       blogContext.error = error
       return res.render('blogPost', blogContext)
     })
+}
+
+function isInvalidUser(req) {
+  return !req.user
+}
+
+function isValidSecretKey(srcSecretKey, validSecretKey) {
+  if (!srcSecretKey || !validSecretKey) {
+    return false;
+  }
+  return srcSecretKey === validSecretKey
 }
 
 function markdownToHtml (srcMarkdown) {

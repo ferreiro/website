@@ -7,6 +7,8 @@ mixin newsletterForm(opts)
   .contact_form_result.contact_form_success
     h2 Thank you!
     p= successMessage
+    if redirect
+      a(href= redirect) Discover the blog! :)
 
   center
     img#contactLoader.loaderIcon(src="/images/loading.gif", width="30px", style="display: none;")
