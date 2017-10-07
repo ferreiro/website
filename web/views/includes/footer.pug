@@ -91,10 +91,10 @@ script.
 
 script(type='text/javascript').
   $(function() {
-    $('.loader').hide()
+    // $('.loader').hide()
     FastClick.attach(document.body);
     $('.loader').fadeOut('200', () => {
       //-Animation completed
+      animateMainContainer();
     });
-    animateMainContainer();
   });

@@ -1,8 +1,8 @@
 setupAbout()
 
 function setupAbout() {
-  setupScrollEvents()
   displayBiography()
+  // setupScrollEvents()
 }
 
 function setupScrollEvents () {

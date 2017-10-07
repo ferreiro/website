@@ -87,6 +87,9 @@
       display: block;
     }
 
+
+
+
     p {
       font-size: 18px;
       line-height: 1.58;
@@ -189,7 +192,26 @@
       line-height: 1.15;
       letter-spacing: -.02em;
       color: rgba(0,0,0,.84);
-      font-size: 24px;
+
+      // override
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      // font-family: Lato,sans-serif;
+
+      &::before {
+        background-color: green;
+        padding: 0 20px;
+        content: '#';
+      }
+    }
+    h2 {
+      // color: $primaryColor;
+      // font-family: Lato,sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: rgba(0,0,0,.7);
+      margin-bottom: -15px;
     }
   }
 }

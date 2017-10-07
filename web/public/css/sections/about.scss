@@ -166,7 +166,7 @@
     display: inline-block;
     background: #fff;
 
-    @include opacity(0);
+    // @include opacity(0);
     @include transition(300ms);
 
     @media all and (max-width: $desktop-screen) {

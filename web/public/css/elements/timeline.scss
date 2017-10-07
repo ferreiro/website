@@ -1,6 +1,5 @@
 .timeline {
   margin-top: 1em;
-  @include opacity(0);
 
   @media all and (min-width: $desktop-screen) {
     margin-top: 2em;

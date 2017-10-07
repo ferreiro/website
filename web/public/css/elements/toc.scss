@@ -1,0 +1,10 @@
+.toc {
+  padding: 1.5em;
+  border: 1px solid #f4f4f4;
+  @include border-radius(10px);
+
+  div {
+    margin: 0.5em 0;
+    margin-left: 2em;
+  }
+}

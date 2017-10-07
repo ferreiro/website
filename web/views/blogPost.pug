@@ -20,7 +20,14 @@ block extraScripts
   script(src="/vendors/twentytwenty/js/jquery.twentytwenty.js", type="text/javascript")
   script(src="/javascripts/imageComparator.js")
   script(src="/javascripts/imageResizer.js")
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+  script(src="/vendors/jquery.toc.min.js")
+  //- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+
+  //- script.
+    $("#toc").toc({
+      content: ".blogPost__content",
+      headings: "h1,h2,h3,h4"
+    });
 
 block content_header
   - hasAnimation = false
@@ -62,6 +69,9 @@ block content_large
         h1.blogPost__title= post.title
         h2.blogPost__subtitle= post.summary
         img.blogPost__image(src= post.pic, style="width: 100%;")
+
+        .toc#toc
+
         .blogPost__content!= post.html
 
         if post.category && post.category.lenght > 0
