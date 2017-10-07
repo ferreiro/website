@@ -2,7 +2,8 @@ extends ./includes/layout
 
 block content
 
-  pre #{error.stack}
+  if error && error.stack
+    pre(style="background: #fff;") #{error.stack}
 
   style.
     .warningMessage { max-width: 400px; }
