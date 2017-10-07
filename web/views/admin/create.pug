@@ -137,7 +137,7 @@ block content
                         span.icon.ion-lock-combination
                         p Secret Password
                     .composer__right
-                        - secretLink = '/blog/' + post.permalink + '?secretKey=' + post.secretKey
+                        - secretLink = '/blog/' + (post && post.permalink ? post.permalink : '') + '?secretKey=' + (post && post.secretKey ? post.secretKey : '')
                         if secretLink
                             a(href= secretLink, target="_blank")= secretLink
                         input#permalink.composer__input(type='name', placeholder="Secret key", class="admin__input", name='post_secretKey', value= post && post.secretKey ? post.secretKey : '')
