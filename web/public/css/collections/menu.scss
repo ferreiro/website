@@ -33,8 +33,8 @@
   background: $menuColor;
   vertical-align: middle;
   padding: $headerMenuPadding 0;
-  border-bottom: 1px solid #cecece;
   border-bottom: 1px solid rgba(222, 222, 222, 1);
+  border-bottom: 1px solid #cecece;
 
   &__wrapper {
     height: $headerHeight;
