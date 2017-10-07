@@ -26,13 +26,12 @@ block content_header
   +blogHeader(hasAnimation)
 
 block content_large
-    style.
-        .menu {
-            position: absolute; /* making the header not fixed for better writing */
-        }
+  style.
+    .menu {
+      position: absolute; /* making the header not fixed for better writing */
+    }
 
   .blogPost.animated.fadeInUp
-
     if admin && post
       ul.blog__post__options(style="margin-bottom: 1em;")
         li(style="margin-right: 1em;")
