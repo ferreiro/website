@@ -1,4 +1,5 @@
 const marked = require('marked')
+const replaceall = require("replaceall")
 const sanitizeHtml = require('sanitize-html')
 const validator = require('validator')
 const express = require('express')
@@ -156,8 +157,8 @@ function isValidSecretKey(srcSecretKey, validSecretKey) {
 }
 
 function markdownToHtml (srcMarkdown) {
-  const htmlBody = marked(srcMarkdown)
-  const sanitizedHtml = sanitizeHtml(htmlBody, {
+  const dirtyHtml = marked(srcMarkdown)
+  const htmlSanitized = sanitizeHtml(dirtyHtml, {
     allowedTags: [
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
       'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
@@ -173,7 +174,9 @@ function markdownToHtml (srcMarkdown) {
       h2: [ 'id' ]
     }
   })
-  return sanitizedHtml
+  // Add syntax highlight class to hmtl
+  const outputHtml = replaceall("<pre><code>", "<pre><code class='prettyprint linenums'>", htmlSanitized)
+  return outputHtml
 }
 
 function generateRelatedPosts (opts) {
