@@ -42,10 +42,10 @@ block extraScripts
             simplemde.value('') // reset when creating a new post.
 
 block content
-    //if edit
-        h1.admin__title Edit post
-    //else
-        h1.admin__title Write post
+    style.
+        .menu {
+            position: absolute; /* making the header not fixed for better writing */
+        }
 
     if error
         div(style="background: red; text-align: center; margin-bottom: 2em; padding: 1.5em;")
