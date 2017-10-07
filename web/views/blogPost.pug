@@ -56,18 +56,19 @@ block content_large
       //- Load Social Sharing
       include ./includes/socialSharing
 
-      //- Post metadata
-      h1.blogPost__title= post.title
-      h2.blogPost__subtitle= post.summary
-      img.blogPost__image(src= post.pic, style="width: 100%;")
-      .blogPost__content!= post.html
+      article
+        //- Post metadata
+        h1.blogPost__title= post.title
+        h2.blogPost__subtitle= post.summary
+        img.blogPost__image(src= post.pic, style="width: 100%;")
+        .blogPost__content!= post.html
 
-      if post.category && post.category.lenght > 0
-        ul.blogPost__category
-          p Post published in
-          each category in post.category
-            li
-              a(href= "/blog/category/" + category).action_button= category
+        if post.category && post.category.lenght > 0
+          ul.blogPost__category
+            p Post published in
+            each category in post.category
+              li
+                a(href= "/blog/category/" + category).action_button= category
 
       .separator_no_margin#postFooter
 
