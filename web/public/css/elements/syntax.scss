@@ -1,0 +1,23 @@
+pre {
+  padding: 10px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #292b2d;
+  background-color: rgba(30, 30, 30, 1);
+  border-radius: 3px;
+}
+
+code {
+  color: black;
+}
+
+code ol li {
+  list-style-type: decimal !important;
+  padding-left: 0.5em;
+}
+
+
+pre .kwd, code .kwd {
+  color: #E28964;
+} /* keyword - dark pink */
