@@ -18,16 +18,16 @@
     ],
     "images": [
       {
-        "small": "/images/projects/dailyfocus/dailyfocus_splash_small.png",
-        "large": "/images/projects/dailyfocus/dailyfocus_splash.png"
+        "small": "/images/projects/dailyfocus/dailyfocus_splash_small.jpg",
+        "large": "/images/projects/dailyfocus/dailyfocus_splash.jpg"
       },
       {
-        "small": "/images/projects/dailyfocus/dailyfocus_home_small.png",
+        "small": "/images/projects/dailyfocus/dailyfocus_home_small.jpg",
         "large": "/images/projects/dailyfocus/dailyfocus_home.jpg"
       },
       {
-        "small": "/images/projects/dailyfocus/services_small.png",
-        "large": "/images/projects/dailyfocus/services.png"
+        "small": "/images/projects/dailyfocus/services_small.jpg",
+        "large": "/images/projects/dailyfocus/services.jpg"
       }
     ],
     "highlights": [
@@ -72,23 +72,23 @@
       "rgba_gradient_end": "rgba(109, 38, 13, 0)"
     },
     "avatar": "/images/about/avatar_jorge_ferreiro_small.png",
-    "background": "/images/projects/ferreiro_v2/ferreiro_back.png",
+    "background": "/images/projects/ferreiro_v2/ferreiro_back.jpg",
     "images": [
       {
-        "small": "/images/projects/ferreiro_v2/home_small.png",
-        "large": "/images/projects/ferreiro_v2/home.png"
+        "small": "/images/projects/ferreiro_v2/home_small.jpg",
+        "large": "/images/projects/ferreiro_v2/home.jpg"
       },
       {
-        "small": "/images/projects/ferreiro_v2/about_small.png",
-        "large": "/images/projects/ferreiro_v2/about.png"
+        "small": "/images/projects/ferreiro_v2/about_small.jpg",
+        "large": "/images/projects/ferreiro_v2/about.jpg"
       },
       {
         "small": "/images/projects/ferreiro_v2/portfolio_small.png",
-        "large": "/images/projects/ferreiro_v2/portfolio.png"
+        "large": "/images/projects/ferreiro_v2/portfolio.jpg"
       },
       {
-        "small": "/images/projects/ferreiro_v2/contact_small.png",
-        "large": "/images/projects/ferreiro_v2/contact.png"
+        "small": "/images/projects/ferreiro_v2/contact_small.jpg",
+        "large": "/images/projects/ferreiro_v2/contact.jpg"
       }
     ],
     "about": [
@@ -131,7 +131,7 @@
       "rgba_gradient_end": "rgba(69, 19, 19, 0)"
     },
     "avatar": "/images/projects/music4deejays/m4d_icon.png",
-    "background": "/images/projects/music4deejays/m4d_back.png",
+    "background": null,
     "about": [
       "<b>Music4deejays</b> is a streaming music application for listening, sharing and downloading the best electronic music from emerging artists.",
       "This project started from a problem I identified: novel music producers are not discovered to the mass world since the music industry only promotes the big artits. ",
@@ -139,8 +139,8 @@
     ],
     "images": [
       {
-        "small": "/images/projects/music4deejays/music4deejays_small.png",
-        "large": "/images/projects/music4deejays/music4deejays.png"
+        "small": "/images/projects/music4deejays/music4deejays_small.jpg",
+        "large": "/images/projects/music4deejays/music4deejays.jpg"
       }
     ],
     "highlights": [
@@ -186,15 +186,15 @@
     "images": [
       {
         "small": "/images/projects/sudonotes/signup_small.png",
-        "large": "/images/projects/sudonotes/signup.png"
+        "large": "/images/projects/sudonotes/signup.jpg"
       },
       {
         "small": "/images/projects/sudonotes/welcome_small.png",
-        "large": "/images/projects/sudonotes/welcome.png"
+        "large": "/images/projects/sudonotes/welcome.jpg"
       },
       {
         "small": "/images/projects/sudonotes/profile.png",
-        "large": "/images/projects/sudonotes/profile.png"
+        "large": "/images/projects/sudonotes/profile.jpg"
       },
       {
         "small": "/images/projects/sudonotes/quick_tipping_small.png",
