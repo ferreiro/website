@@ -64,21 +64,26 @@ footer.jfFooter#footer
         a(href="http://github.com/ferreiro/website", target="_blank")  Source code
 
 script(src="/bower_components/jquery/dist/jquery.min.js")
+script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
+
 script(src="/bower_components/fastclick/lib/fastclick.js")
 
-script(src="/javascripts/jfmenu.js")
-script(src="/javascripts/jfmodal.js")
-script(src="/javascripts/contact.js")
-script(src="/javascripts/social.js")
-script(src="/javascripts/projectsFilter.js")
-script(src="/javascripts/animations.js")
-script(src="/javascripts/emails.js")
-script(src="/javascripts/projects.js")
+script(src="/js/commun.main.min.js")
+
 script(src="/vendors/jquery.lazy.min.js")
 
-script.
+script(type='text/javascript').
   $(function() {
       $('.lazy').lazy();
+  });
+
+  $(function() {
+    // $('.loader').hide()
+    FastClick.attach(document.body);
+    $('.loader').fadeOut('200', () => {
+      //-Animation completed
+      animateMainContainer();
+    });
   });
 
 script.
@@ -88,13 +93,3 @@ script.
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-75768739-1', 'auto');
   ga('send', 'pageview');
-
-script(type='text/javascript').
-  $(function() {
-    // $('.loader').hide()
-    FastClick.attach(document.body);
-    $('.loader').fadeOut('200', () => {
-      //-Animation completed
-      animateMainContainer();
-    });
-  });

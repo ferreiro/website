@@ -24,14 +24,16 @@
   "scripts": {
     "check": "npm-check",
     "lint": "standard",
-    "build:css": "gulp css",
-    "build": "npm run build:css",
+    "build": "gulp",
     "watch": "gulp watch",
     "start": "DEBUG=* npm run build && nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
     "aws-sdk": "^2.125.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
@@ -39,18 +41,26 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "debug": "^3.1.0",
+    "del": "^3.0.0",
     "email-templates": "^3.0.3",
     "express": "^4.16.1",
     "express-recaptcha": "^3.0.0",
     "express-session": "^1.15.6",
+    "force-ssl-heroku": "^1.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
+    "gulp-file-cache": "0.0.1",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sass-glob": "^1.0.8",
+    "gulp-uglify": "^3.0.0",
     "helmet": "^3.8.2",
     "html-toc": "^2.0.0",
+    "imagemin": "^5.3.1",
     "install": "^0.10.1",
     "lodash": "^4.17.4",
     "mailchimp-api-v3": "^1.7.1",
@@ -77,6 +87,8 @@
     "validator": "^9.0.0"
   },
   "devDependencies": {
+    "babel-preset-env": "^1.6.0",
+    "gulp-babel": "^7.0.0",
     "npm-check": "^5.4.5"
   }
 }

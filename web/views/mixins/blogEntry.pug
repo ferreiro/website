@@ -11,7 +11,7 @@ mixin blogEntry(post)
           .blog__post__metadata
 
             if !post.published
-              p(style="border: 1px solid #cecece; margin-bottom: 1em; border-radius:3px; padding: 0.2em 0.4em; display: inline-block;") DRAFT
+              p.blog__post__isDraft DRAFT
 
             h1.blog__post__title
               a(href=postUrl, target="_blank").blog__post__title__link= post.title

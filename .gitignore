@@ -1,3 +1,9 @@
+# Ignoring destination static assets
+
+web/public/dst/
+
+.gulp-cache
+
 # Source: https://github.com/github/gitignore/blob/master/Node.gitignore
 
 *.DS_Store

@@ -10,10 +10,6 @@ const express = require('express')
 const env = require('../env')
 
 module.exports = (app) => {
-  if (process.env.NODE_ENV === 'production') {
-    require('newrelic') // Stats for production only
-  }
-
   // Add security layer
   app.use(helmet())
 
@@ -26,9 +22,8 @@ module.exports = (app) => {
   })
 
   // Serve static bower: http://goo.gl/e2nTBf
-  app.use(favicon(path.join(__dirname, '../web', 'public', 'images', 'favicons', 'favicon.ico')))
-  app.use(express.static(path.join(__dirname, '../web/public')))
-  app.use(express.static(__dirname + '../web/public'))
+  app.use(favicon(path.join(__dirname, '../web', 'public', 'dst', 'images', 'favicons', 'favicon.ico')))
+  app.use(express.static(path.join(__dirname, '../web/public/dst')))
   app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')))
   app.use('/semantic',  express.static(path.join(__dirname, '../semantic')))
   app.use(logger('dev'))

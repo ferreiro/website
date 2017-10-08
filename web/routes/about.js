@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
   const skills = about.skills
 
   res.render('about', {
-    title: 'About Jorge Ferreiro',
+    title: 'Biography Jorge Ferreiro',
     path: 'about',
     skills: skills,
     education: education,

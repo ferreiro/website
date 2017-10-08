@@ -18,7 +18,7 @@ block extraMeta
   meta(property="og:site_name", content="Jorge Ferreiro")
   meta(property="og:locale", content="en_US")
 
-link(rel="canonical", href="http://ferreiro.me")
+link(rel="canonical", href="//ferreiro.me")
 
 if post
   title= 'Jorge Ferreiro ' + post.title + ' - Software Engineer, Product Manager & Entrepreneur.'
@@ -56,19 +56,15 @@ meta(name='msapplication-TileImage', content='/images/favicons/mstile-144x144.pn
 link(href='https://fonts.googleapis.com/css?family=Lato:400,300,700, 900', rel='stylesheet', type='text/css')
 
 //- Installed libraries
+link(rel='stylesheet', href='/vendors/animate.min.css')
 link(rel='stylesheet', href='/bower_components/normalize-css/normalize.css')
 link(rel='stylesheet', href='/bower_components/devicon/devicon.min.css')
 link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css')
-link(rel='stylesheet', href='/vendors/hover-min.css')
-link(rel='stylesheet', href='/vendors/animate.min.css')
+//- link(rel='stylesheet', href='/vendors/hover-min.css')
 
 //- Own libraries
-link(rel='stylesheet', href='/css/style.min.css?v=3.0.0')
-link(rel='stylesheet', href='/vendors/checked_box.css')
+link(rel='stylesheet', href='/css/style.min.css?v=3.0.3')
 link(rel='stylesheet', href='/fonts/ferreiro/style.css')
-
-link(rel='stylesheet', href='/vendors/carousel/owl.carousel.css')
-link(rel='stylesheet', href='/vendors/carousel/owl.theme.css')
 
 block extraCss
 block extraHead

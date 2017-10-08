@@ -1,3 +1,4 @@
+const setupSSL = require('./setupSSL')
 const setupDatabase = require('./setupDatabase')
 const setupMiddlewares = require('./setupMiddlewares')
 const setupPassport = require('./setupPassport')
@@ -6,6 +7,7 @@ const setupAdmin = require('./setupAdmin')
 const handleErrors = require('./handleErrors')
 
 module.exports = (app) => {
+  setupSSL(app)
   setupDatabase()
   setupMiddlewares(app)
   setupPassport(app) // Important! after middlewares setup

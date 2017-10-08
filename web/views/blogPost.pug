@@ -15,14 +15,14 @@ block extraCss
   link(rel="stylesheet", href="/vendors/twentytwenty/css/twentytwenty.css", type="text/css", media="screen")
 
 block extraScripts
-  script(src="/javascripts/socialSharing.js")
+  script(src="/js/blog.main.min.js")
+  script(src="/dst/js/blog.vendors.min.js")
+
   script(src="/vendors/twentytwenty/js/jquery.event.move.js", type="text/javascript")
   script(src="/vendors/twentytwenty/js/jquery.twentytwenty.js", type="text/javascript")
-  script(src="/javascripts/imageComparator.js")
-  script(src="/javascripts/imageResizer.js")
-  script(src="/vendors/jquery.toc.min.js")
-  //- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+  script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst")
 
+  //- script(src="/vendors/jquery.toc.min.js")
   //- script.
     $("#toc").toc({
       content: ".blogPost__content",
@@ -31,7 +31,7 @@ block extraScripts
 
 block content_header
   - hasAnimation = false
-  +blogHeader(hasAnimation)
+  +blogHeader(hasAnimation, true)
 
 block content_large
   style.
@@ -70,7 +70,7 @@ block content_large
         h2.blogPost__subtitle= post.summary
         img.blogPost__image(src= post.pic, style="width: 100%;")
 
-        .toc#toc
+        //- .toc#toc
 
         .blogPost__content!= post.html
 
