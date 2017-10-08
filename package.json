@@ -84,11 +84,11 @@
     "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.5",
     "standard": "^10.0.3",
-    "validator": "^9.0.0"
+    "validator": "^9.0.0",
+    "babel-preset-env": "^1.6.0",
+    "gulp-babel": "^7.0.0"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.6.0",
-    "gulp-babel": "^7.0.0",
     "npm-check": "^5.4.5"
   }
 }

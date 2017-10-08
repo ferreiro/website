@@ -27,8 +27,17 @@ gulp.task('clean', function () {
 gulp.task('watch', function () {
   gulp.watch(path.join(SRC, 'css/**/*'), ['sass'])
 
+  gulp.watch(path.join(SRC, 'images/**/*'), ['images'])
+  gulp.watch(path.join(SRC, 'pdf/**/*'), ['pdf'])
+  gulp.watch(path.join(SRC, 'fonts/**/*'), ['fonts'])
+  gulp.watch(path.join(SRC, 'vendors/**/*'), ['vendors'])
+  gulp.watch(path.join(SRC, 'vendors/**/*'), ['vendors'])
+
   // Javascript
-  gulp.watch(path.join(SRC, 'js/shared/**/*'), ['sharedJS'])
+  gulp.watch(path.join(SRC, 'js/jsBlog/**/*.js'), ['jsBlog'])
+  gulp.watch(path.join(SRC, 'js/jsCommun/**/*.js'), ['jsCommun'])
+  gulp.watch(path.join(SRC, 'js/jsProjects/**/*.js'), ['jsProjects'])
+  gulp.watch(path.join(SRC, 'js/jsAdmin/**/*.js'), ['jsAdmin'])
 })
 
 gulp.task('clean', function () {
