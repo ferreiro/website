@@ -31,12 +31,23 @@ module.exports.compileSass = function compileSass(opts) {
 module.exports.optimizeImages = function optimizeImages(opts) {
   return gulp
     .src(opts.src)
-    .pipe(imagemin({
-      optimizationLevel: 3,
-      progressive: true,
-      interlaced: true
-    }))
     .pipe(gulp.dest(opts.dst))
+  /*
+  return gulp
+    .src(opts.src)
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.svgo({
+        plugins: [
+          {removeViewBox: true},
+          {cleanupIDs: false}
+        ]
+      })
+    ]))
+    .pipe(gulp.dest(opts.dst))
+    */
 }
 
 module.exports.copyPdfs = function copyPdfs (opts) {
