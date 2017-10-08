@@ -5,11 +5,12 @@ include ./mixins/subscriptionBoxLarge
 
 block extraMeta
   if post
+    meta(property='og:url', content= 'https://ferreiro.me/blog/' + post.permalink)
     meta(property='og:type', content='article')
     meta(property='og:title', content= post.title)
-    meta(property='og:url', content= '/blog/' + post.permalink)
+    meta(property='og:description', content= post.summary)
     meta(property='og:image', content= post.pic)
-    meta(property='article:author', content= post.author_name)
+    meta(property='og:image:alt', content= post.title)
 
 block extraCss
   link(rel="stylesheet", href="/vendors/twentytwenty/css/twentytwenty.css", type="text/css", media="screen")
