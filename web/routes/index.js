@@ -13,6 +13,7 @@ const contact = require('./contact')
 const newsletter = require('./newsletter')
 
 router.get('/', home) // Home shows about page
+router.get('/coming', (req, res) => { res.render('comingSoon') }) // Home shows about page
 router.use('/about', require('./about'))
 router.use('/blog', require('./blog'))
 router.use('/portfolio', projects)

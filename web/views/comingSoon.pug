@@ -1,1 +1,190 @@
-h1 Coming soon!
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv="Content-Language", content="en-US")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(http-equiv="expires", content="7 * 24 * 60 * 60")
+    meta(name="revisit-after", content="7 days")
+
+    title= 'Jorge Ferreiro - Software Engineer and Product Manager. Node, Javascript, Python, Java, HTML5, CSS3, JQuery. Backend engineer and Frontend engineer.'
+    meta(name='description', content='Jorge Ferreiro is a Software Engineer, Product Manager and Entrepreneur with a solid experience in Backend and Frontend Development. Ferreiro uses the following technologies: Node, Javascript, Python, Java, MongoDB, Redis, HTML5, CSS3, JQuery.')
+
+    meta(name='author', content='Jorge Ferreiro')
+    meta(name='theme-color', content='#9C2901')
+    meta(name="twitter:site", content="@jgferreiro")
+    meta(name="keywords", content="Software Engineer, Product Manager, Entrepreneur, Blog, Tech, Node, Javascript, HTML, Backend, Frontend, Full Stack")
+
+    //- Override by the templates that needs to add more metadata
+    //- such as Open Graph Articles or facebook social links
+    meta(property="og:type", content="website")
+    meta(property="og:title", content="Jorge Ferreiro")
+    meta(property="og:url", content="http://www.ferreiro.me")
+    meta(property="og:site_name", content="Jorge Ferreiro")
+    meta(property="og:locale", content="en_US")
+
+    link(rel="canonical", href="//ferreiro.me")
+
+    link(rel='apple-touch-icon', sizes='57x57', href='/images/favicons/apple-touch-icon-57x57.png')
+    link(rel='apple-touch-icon', sizes='60x60', href='/images/favicons/apple-touch-icon-60x60.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='/images/favicons/apple-touch-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='76x76', href='/images/favicons/apple-touch-icon-76x76.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='/images/favicons/apple-touch-icon-114x114.png')
+    link(rel='apple-touch-icon', sizes='120x120', href='/images/favicons/apple-touch-icon-120x120.png')
+    link(rel='apple-touch-icon', sizes='144x144', href='/images/favicons/apple-touch-icon-144x144.png')
+    link(rel='apple-touch-icon', sizes='152x152', href='/images/favicons/apple-touch-icon-152x152.png')
+    link(rel='apple-touch-icon', sizes='180x180', href='/images/favicons/apple-touch-icon-180x180.png')
+    link(rel='icon', type='image/png', href='/images/favicons/favicon-32x32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='/images/favicons/android-chrome-192x192.png', sizes='192x192')
+    link(rel='icon', type='image/png', href='/images/favicons/favicon-96x96.png', sizes='96x96')
+    link(rel='icon', type='image/png', href='/images/favicons/favicon-16x16.png', sizes='16x16')
+    link(rel='manifest', href='/images/favicons/manifest.json')
+    link(rel='mask-icon', href='/images/favicons/safari-pinned-tab.svg', color='#d83902')
+    meta(name='msapplication-TileColor', content='#9C2901')
+    meta(name='msapplication-TileImage', content='/images/favicons/mstile-144x144.png')
+
+    link(href='https://fonts.googleapis.com/css?family=Lato:400,300,700, 900', rel='stylesheet', type='text/css')
+    link(rel="stylesheet", href="/bower_components/normalize-css/normalize.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css")
+    link(rel="stylesheet", href="/css/style.css")
+
+body
+
+  if message
+    .comingSoon__failure
+      p= message
+
+  .comingSoon__container
+    .comingSoon__inner
+      .comingSoon__header
+        a.logo(href="/").comingSoon__logo
+          img(src="/images/logo.jpg")
+        h1.comingSoon__title
+          a(href="https://twitter.com/search?q=ferreirov3&src=typd", target="_blank").comingSoon__title__link #ferreiroV3
+
+        h2.comingSoon__date Thursday 12th, October 3 PM (CEST)
+
+      .contact_form_result.contact_form_success
+        h2 Thank you so much!
+        p You're now subscribed!
+
+      .comingSoon__form.box_with_shadow#call2Action
+        .comingSoon__daysRemain#clock
+        .comingSoon__extra
+
+        h2.comingSoon__subtitle Be the first to access the website and subscribe to the newsletter!
+        <form class="beta__signup" action="/invite" method="POST">
+          <input type="text" class="beta__signup__email" name="email" autofocus placeholder="Your email address" />
+          <span class="beta__signup__completed">&#10004; <span style="color: #000; margin-left: 0.5em;">Subscribed!</span></span>
+          <button class="beta__signup__submit">
+            <img class="beta__signup__loader" src="images/spinner.svg"/>
+            <span class="beta__signup__text">Be the first!</span>
+          </button>
+        </form>
+
+      ul.comingSoon__footer
+        li
+          a(href="https://www.linkedin.com/in/jgferreiro/" target="_blank") Linkedin
+        li
+          a(href="https://twitter.com/jgferreiro" target="_blank") Twitter
+        li
+          a(href="https://www.instagram.com/jgferreiro/" target="_blank") Instagram
+        li
+          a(href="https://www.github.com/ferreiro" target="_blank") Github
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="//cdn.rawgit.com/hilios/jQuery.countdown/2.2.0/dist/jquery.countdown.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment-with-locales.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.4.0/moment-timezone-with-data-2010-2020.min.js"></script>
+
+  script.
+    var nextYear = moment.tz("2017-10-12 15:00", "Europe/Madrid");
+
+    $('#clock').countdown(nextYear.toDate(), function(event) {
+      var days = parseInt(event.strftime('%D'))
+      var text = days <= 1 ? 'day' : 'days'
+
+      if (days >= 1) {
+        $(this).html('<b>' + days + '</b> ' + text + ' left')
+        $('.comingSoon__extra').html('and... ' + event.strftime('%H:%M:%S') + ' hours 😊')
+      } else {
+        $(this).html('<b>' + event.strftime('%H:%M:%S') + '</b>')
+        $(this).append('<span class="small"></span>')
+      }
+    })
+
+    displayHeader(function (){
+      displayCall2Action()
+      $('.comingSoon__footer').fadeIn(600)
+    })
+
+    function displayCall2Action (next) {
+      setTimeout(function () {
+        $('#call2Action')
+          .css({ opacity: 1 })
+          .addClass('animated bounceIn')
+        return next()
+      }, 1060)
+    }
+
+    function displayHeader (next) {
+      setTimeout(function () {
+        $('.comingSoon__header')
+          .css({ opacity: 1 })
+          .addClass('animated fadeInDown')
+        return next()
+      }, 1000)
+    }
+
+
+  script.
+    setTimeout(function () {
+      $('.comingSoon__failure').fadeOut(500)
+    }, 3000)
+
+    $('form').submit(submitForm)
+
+    function submitForm (event) {
+      const form = $('.beta__signup')
+      const emailInput = $('.beta__signup__email')
+      const submitText = $('.beta__signup__text')
+      const submitLoader = $('.beta__signup__loader')
+      const submitButton = $('.beta__signup__submit')
+      const submitSuccess = $('.beta__signup__completed')
+
+      const url = '/api/v1/contact/subscribe'
+      const formData = {
+        __email: emailInput.val()
+      }
+
+      emailInput.hide(0)
+      submitText.hide(0)
+      submitLoader.show(0)
+
+      $.post(url, formData, function (data, status, xhr) {
+        submitLoader.hide(0)
+
+        if (status === 'success') {
+          if (data.error) {
+            window.alert(data.error)
+            emailInput.show(0)
+            submitText.show(0)
+          } else if (data.success) {
+            form.addClass('beta__signup__subscribed')
+            submitSuccess.addClass('beta__signup__completed__active')
+            submitButton.hide(0)
+          }
+        }
+      })
+
+      return false
+    }
+
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-75768739-1', 'auto');
+    ga('send', 'pageview');

@@ -31,7 +31,9 @@ router.post('/', function (req, res) {
     }
 
     if (message.subscribed) {
-      addUserToMailchimp(message.email)
+      addUserToMailchimp(message.email, (error) => {
+        // ignore if fails to add to mailchimp
+      })
     }
 
     utils.sendMessage(message, function (err, email) {
@@ -47,7 +49,22 @@ router.post('/', function (req, res) {
   })
 })
 
-function addUserToMailchimp (email) {
+router.post('/subscribe', function (req, res) {
+  const email = req.body.__email || null
+  addUserToMailchimp(email, (err) => {
+    if (err) {
+      return res.json({
+        error: err.detail
+      })
+    }
+    return res.json({
+      succes: 'Subscribed! Thanks so much'
+    })
+  })
+})
+
+
+function addUserToMailchimp (email, next) {
   mailchimp.post({
     path : '/lists/3b63288535/members',
     body: {
@@ -55,7 +72,10 @@ function addUserToMailchimp (email) {
       status: 'subscribed'
     }
   }, (err, result) => {
-    if (err) {} // we coudln't add user to machilp
+    if (err) {
+      return next(err)
+    } // we coudln't add user to machilp
+    return next()
   })
 }
 

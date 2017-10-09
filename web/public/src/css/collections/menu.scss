@@ -11,7 +11,7 @@
 }
 
 .logo img {
-  height: $logoHeight;
+  height: 100%;
 
   @include border-radius(5px);
 }

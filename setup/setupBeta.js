@@ -14,18 +14,24 @@ module.exports = (app) => {
   if (process.env.BETA_ACTIVATED && process.env.NODE_ENV === 'production') {
     app.use(setupBetaFirewall)
   }
+  app.use(setupBetaFirewall)
 }
 
 function setupBetaFirewall (req, res, next) {
   const betaSecretToken = process.env.BETA_TOKEN
 
-  // First check if exist a cookie and has a valid beta token
-  if (req.cookies && req.cookies['betaToken'] && req.cookies['betaToken'] === betaSecretToken) {
-    return next() // success!
+  let key = null
+  if (req.query && req.query.beta) {
+    key = req.query.token
+  } else if (req.cookies) {
+    key = req.cookies['betaToken']
   }
 
-  // Otherwise check the url params and validate token
-  if (req.query && req.query.beta && req.query.token === betaSecretToken) {
+  if (!key) {
+    return res.render('comingSoon')
+  }
+
+  if (key === betaSecretToken) {
     // Set the beta cookie
     res.cookie('betaToken', process.env.BETA_TOKEN, {
       maxAge: 7 * (24 * 3600000),
@@ -34,5 +40,7 @@ function setupBetaFirewall (req, res, next) {
     return next()
   }
 
-  return res.render('comingSoon')
+  return res.render('comingSoon', {
+    message: 'Invalid beta token or session has expired...'
+  })
 }

@@ -1,0 +1,234 @@
+body {
+  padding-bottom: 60px;
+}
+
+.comingSoon__footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  // position: fixed;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  display: none;
+  // background: rgba(255, 255, 255, 0.886);
+  text-align: center;
+  li {
+    list-style: none;
+    display: inline-block;
+    a {
+      padding: 5px 7px;
+      display: block;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.comingSoon {
+  &__failure {
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 1.5em 0;
+    position: fixed;
+    text-align: center;
+    background: rgb(205, 2, 2);
+    p {
+      color: rgba(255, 255, 255, 0.886);
+    }
+  }
+
+  &__container {
+
+  }
+
+  &__inner {
+    padding: 1.5em;
+    text-align: center;
+
+    @media all and (min-width: $desktop-screen) {
+      padding: 2em;
+      margin: 0 auto;
+      max-width: 400px;
+    }
+  }
+
+  &__logo {
+    margin: 0;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+
+    @media all and (min-width: $desktop-screen) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__extra {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.6);
+    font-style: italic;
+    margin-bottom: 1em;
+  }
+
+  &__daysRemain {
+    font-size: 40px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.886);
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 75px;
+    }
+    .small {
+      width: 100%;
+      display: block;
+      line-height: 20px;
+      font-size: 22px;
+      margin-top: 0.5em;
+      margin-bottom: 1.5em;
+      font-weight: 400;
+      position: relative;
+      background: #fff;
+      z-index: 10;
+      &:after {
+        padding: 0 10px;
+        height: 2px;
+        background: #fff;
+        content: 'Hours left';
+        position: relative;
+        left: 0;
+        z-index: 2;
+      }
+      &:before {
+        width: 100%;
+        height: 2px;
+        background: #f4f4f4;
+        content: '';
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        left: 0;
+        z-index: 2;
+      }
+    }
+
+    b {
+      color: $primaryColor;
+    }
+  }
+
+  &__date {
+    font-size: 1.2em;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0.5em;
+  }
+
+  &__header {
+    @include opacity(0);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 3em;
+    margin-bottom: 10px;
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 3.8em;
+      // font-size: 3.2em;
+    }
+
+    &__link {
+      text-decoration: none;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.2em;
+  }
+
+  &__form {
+    padding: 1.5em 2em;
+    margin-top: 2em;
+    display: inline-block;
+
+    @media all and (max-width: $desktop-screen) {
+      max-width: 300px;
+    }
+
+    @include opacity(0);
+  }
+}
+
+.beta__signup {
+  border: 0;
+  margin: 0;
+  display: block;
+  margin-top: 20px;
+
+  &__focused {
+    border: 3px solid #963214;
+  }
+  &__subscribed {
+    color: #2dcc7b;
+    border: 3px solid #2dcc7b;
+  }
+  &__email {
+    outline: 0;
+    background: transparent;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    padding: 0.7em 0;
+    margin-bottom: 1em;
+    border-color: #e0e0e0;
+
+    @include border-radius(60px);
+
+    @media all and (min-width: 600px) {
+      margin: 0;
+      padding: 0.7em 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  &__loader {
+    height: 20px;
+    display: none;
+  }
+  &__completed {
+    display: none;
+    padding: 1em;
+    font-weight: 600;
+    &__active {
+      display: block;
+    }
+  }
+
+  &__submit {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: 600;
+    color: $primaryColor;
+    outline: 0;
+    display: inline-block;
+    vertical-align: middle;
+    background: #fff;
+    cursor: pointer;
+    border: 2px solid $primaryColor ;
+
+    padding: 0.9em 1.2em;
+    margin-top: 20px;
+
+    @include border-radius(60px);
+    @include transition(200ms);
+
+    &:hover {
+      color: #fff;
+      background: $primaryColor;
+    }
+  }
+}
