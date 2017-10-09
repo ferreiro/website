@@ -58,7 +58,7 @@ router.post('/subscribe', function (req, res) {
       })
     }
     return res.json({
-      succes: 'Subscribed! Thanks so much'
+      success: 'Subscribed! Thanks so much'
     })
   })
 })
