@@ -1,5 +1,5 @@
 body {
-  padding-bottom: 60px;
+  padding-bottom: 0;
 }
 
 .comingSoon__footer {
@@ -159,6 +159,12 @@ body {
     }
 
     @include opacity(0);
+  }
+
+  &__current {
+    font-weight: 600;
+    margin-top: 1.5em;
+    display: block;
   }
 }
 

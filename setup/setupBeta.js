@@ -14,6 +14,7 @@ module.exports = (app) => {
   if (process.env.BETA_ACTIVATED === 'true' && process.env.NODE_ENV === 'production') {
     app.use(setupBetaFirewall)
   }
+  app.use(setupBetaFirewall)
 }
 
 function setupBetaFirewall (req, res, next) {
@@ -25,10 +26,6 @@ function setupBetaFirewall (req, res, next) {
   } else if (req.cookies) {
     key = req.cookies['betaToken']
   }
-
-  console.log('req.query')
-  console.log(req.query)
-  console.log('key', key)
 
   if (!key) {
     return res.render('comingSoon')
