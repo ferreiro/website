@@ -14,7 +14,6 @@ module.exports = (app) => {
   if (process.env.BETA_ACTIVATED === 'true' && process.env.NODE_ENV === 'production') {
     app.use(setupBetaFirewall)
   }
-  app.use(setupBetaFirewall)
 }
 
 function setupBetaFirewall (req, res, next) {
