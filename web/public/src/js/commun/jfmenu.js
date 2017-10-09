@@ -3,15 +3,23 @@ setupMobileMenu()
 
 function setupDesktopMenu () {
   var menu = $('.menu__nav')
+
   menu.find('a').click(function(event) {
     var menuItem = $(this)
 
     // When click on current section.
     // Scroll to top.
     if (menuItem.hasClass('item-selected')) {
-      if (menuItem.find('id').context.id !== 'blog') {
+      if (menuItem.attr('id') !== 'blog') {
         event.preventDefault()
 
+        // Add effect on current button
+        menuItem
+          .addClass('animated rubberBand', function () {
+            $(this).removeClass('animated rubberBand')
+          })
+
+        // Scroll page to top
         scrollTop({
           position: 0,
           speed: 300
