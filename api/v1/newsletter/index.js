@@ -7,6 +7,7 @@ const env = require('../../../env')
 const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 
 router.post('/', (req, res) => {
+  console.log('posteme')
   const name = req.body.__name || ''
   const email = req.body.__email || ''
   addUserToMailchimp (name, email, (err) => {
@@ -30,7 +31,9 @@ function addUserToMailchimp (name, email, next) {
   mailchimp.post({
     path : '/lists/3b63288535/members',
     body: {
-      name: name,
+      merge_fields: {
+        name: name
+      },
       email_address: email,
       status: 'subscribed'
     }

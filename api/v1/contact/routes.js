@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
     }
 
     if (message.subscribed) {
-      addUserToMailchimp(message.email, (error) => {
+      addUserToMailchimp(message.name, message.email, (error) => {
         // ignore if fails to add to mailchimp
       })
     }
@@ -50,8 +50,10 @@ router.post('/', function (req, res) {
 })
 
 router.post('/subscribe', function (req, res) {
+  const name = req.body.__name || null
   const email = req.body.__email || null
-  addUserToMailchimp(email, (err) => {
+
+  addUserToMailchimp(name, email, (err) => {
     if (err) {
       return res.json({
         error: err.detail
@@ -63,11 +65,13 @@ router.post('/subscribe', function (req, res) {
   })
 })
 
-
-function addUserToMailchimp (email, next) {
+function addUserToMailchimp (name, email, next) {
   mailchimp.post({
     path : '/lists/3b63288535/members',
     body: {
+      merge_fields: {
+        FNAME: name
+      },
       email_address: email,
       status: 'subscribed'
     }

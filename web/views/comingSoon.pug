@@ -74,8 +74,10 @@ body
 
         h2.comingSoon__subtitle Be the first to access the website and subscribe to the newsletter!
         <form class="beta__signup" action="/invite" method="POST">
-          <input type="text" class="beta__signup__email animated pulse infinite" name="email" autofocus placeholder="Your email address" />
           <span class="beta__signup__completed">&#10004; <span style="color: #000; margin-left: 0.5em;">Subscribed! Thank you!</span></span>
+          .formInputs
+            <input type="text" id="name" class="beta__signup__email animated pulse infinite" name="name" style="margin-bottom: 0.5em !important; display: block;" autofocus placeholder="Your name" />
+            <input type="text" id="email" class="beta__signup__email animated" name="email" autofocus placeholder="Your email address" />
           <button class="beta__signup__submit">
             <img class="beta__signup__loader" src="images/spinner.svg"/>
             <span class="beta__signup__text">Subscribe!</span>
@@ -150,7 +152,9 @@ body
 
     function submitForm (event) {
       const form = $('.beta__signup')
-      const emailInput = $('.beta__signup__email')
+      const formInputs = $('.formInputs')
+      const nameInput = $('#name')
+      const emailInput = $('#email')
       const submitText = $('.beta__signup__text')
       const submitLoader = $('.beta__signup__loader')
       const submitButton = $('.beta__signup__submit')
@@ -158,10 +162,11 @@ body
 
       const url = '/api/v1/contact/subscribe'
       const formData = {
-        __email: emailInput.val()
+        __email: emailInput.val(),
+        __name: nameInput.val()
       }
 
-      emailInput.hide(0)
+      formInputs.hide(0)
       submitText.hide(0)
       submitLoader.show(0)
 
@@ -174,11 +179,12 @@ body
             .show(0)
             .delay(200)
             .addClass('animated rubberBand')
+          formInputs.hide(0)
           submitButton.hide(0)
         } else if (status === 'success') {
           if (data.error) {
             window.alert(data.error)
-            emailInput.show(0)
+            formInputs.show(0)
             submitText.show(0)
           }
         }
