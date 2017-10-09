@@ -173,7 +173,7 @@ body {
   }
   &__subscribed {
     color: #2dcc7b;
-    border: 3px solid #2dcc7b;
+    // border: 3px solid #2dcc7b;
   }
   &__email {
     outline: 0;
@@ -201,6 +201,7 @@ body {
     display: none;
     padding: 1em;
     font-weight: 600;
+    font-size: 1.2em;
     &__active {
       display: block;
     }

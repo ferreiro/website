@@ -74,8 +74,8 @@ body
 
         h2.comingSoon__subtitle Be the first to access the website and subscribe to the newsletter!
         <form class="beta__signup" action="/invite" method="POST">
-          <input type="text" class="beta__signup__email" name="email" autofocus placeholder="Your email address" />
-          <span class="beta__signup__completed">&#10004; <span style="color: #000; margin-left: 0.5em;">Subscribed!</span></span>
+          <input type="text" class="beta__signup__email animated pulse infinite" name="email" autofocus placeholder="Your email address" />
+          <span class="beta__signup__completed">&#10004; <span style="color: #000; margin-left: 0.5em;">Subscribed! Thank you!</span></span>
           <button class="beta__signup__submit">
             <img class="beta__signup__loader" src="images/spinner.svg"/>
             <span class="beta__signup__text">Subscribe!</span>
@@ -166,15 +166,19 @@ body
       $.post(url, formData, function (data, status, xhr) {
         submitLoader.hide(0)
 
-        if (status === 'success') {
+        console.log(data)
+        if (data.success) {
+          form.addClass('beta__signup__subscribed')
+          submitSuccess
+            .show(0)
+            .delay(200)
+            .addClass('animated rubberBand')
+          submitButton.hide(0)
+        } else if (status === 'success') {
           if (data.error) {
             window.alert(data.error)
             emailInput.show(0)
             submitText.show(0)
-          } else if (data.success) {
-            form.addClass('beta__signup__subscribed')
-            submitSuccess.addClass('beta__signup__completed__active')
-            submitButton.hide(0)
           }
         }
       })
