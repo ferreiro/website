@@ -37,7 +37,7 @@ function setupBetaFirewall (req, res, next) {
       maxAge: 7 * (24 * 3600000),
       httpOnly: true
     })
-    return next()
+    return res.redirect('/') // return next()
   }
 
   return res.render('comingSoon', {
