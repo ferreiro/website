@@ -62,7 +62,7 @@ body
         h1.comingSoon__title
           a(href="https://twitter.com/search?q=ferreirov3&src=typd", target="_blank").comingSoon__title__link #ferreiroV3
 
-        h2.comingSoon__date Thursday 12th, October 3 PM (CEST)
+        h2.comingSoon__date Tuesday, <b>October 17th</b> at <b>3 PM</b> (CEST)
 
       .contact_form_result.contact_form_success
         h2 Thank you so much!
@@ -99,7 +99,7 @@ body
   <script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.4.0/moment-timezone-with-data-2010-2020.min.js"></script>
 
   script.
-    var nextYear = moment.tz("2017-10-12 15:00", "Europe/Madrid");
+    var nextYear = moment.tz("2017-10-17 15:00", "Europe/Madrid");
 
     $('#clock').countdown(nextYear.toDate(), function(event) {
       var days = parseInt(event.strftime('%D'))
@@ -166,7 +166,6 @@ body
       $.post(url, formData, function (data, status, xhr) {
         submitLoader.hide(0)
 
-        console.log(data)
         if (data.success) {
           form.addClass('beta__signup__subscribed')
           submitSuccess

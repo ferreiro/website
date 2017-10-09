@@ -193,10 +193,12 @@ body {
       vertical-align: middle;
     }
   }
+
   &__loader {
     height: 20px;
     display: none;
   }
+
   &__completed {
     display: none;
     padding: 1em;
