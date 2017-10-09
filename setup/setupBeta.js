@@ -33,7 +33,7 @@ function setupBetaFirewall (req, res, next) {
   if (key === betaSecretToken) {
     // Set the beta cookie
     res.cookie('betaToken', process.env.BETA_TOKEN, {
-      maxAge: 7 * (24 * 3600000),
+      maxAge: 3 * (24 * 3600000),
       httpOnly: true
     })
     return next()
