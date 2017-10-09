@@ -73,6 +73,13 @@ script(src="/js/commun.main.min.js")
 
 script(src="/vendors/jquery.lazy.min.js")
 
+if beta
+  //- In order for the beta version works, we need to
+  //- add to every internal url the parameters to
+  //- validate session with the server
+  input(type="hidden", id="betaToken", value= betaToken)
+  script(src="/vendors/betaLinks.js")
+
 script(type='text/javascript').
   $(function() {
       $('.lazy').lazy();
