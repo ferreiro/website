@@ -11,7 +11,7 @@ module.exports = (app) => {
   // This is only valid for Heroku.
   // Change this if you're using other
   // hosting provider.
-  if (process.env.BETA_ACTIVATED && process.env.NODE_ENV === 'production') {
+  if (process.env.BETA_ACTIVATED === 'true' && process.env.NODE_ENV === 'production') {
     app.use(setupBetaFirewall)
   }
 }
