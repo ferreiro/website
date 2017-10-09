@@ -34,10 +34,10 @@ gulp.task('watch', function () {
   gulp.watch(path.join(SRC, 'vendors/**/*'), ['vendors'])
 
   // Javascript
-  gulp.watch(path.join(SRC, 'js/jsBlog/**/*.js'), ['jsBlog'])
-  gulp.watch(path.join(SRC, 'js/jsCommun/**/*.js'), ['jsCommun'])
-  gulp.watch(path.join(SRC, 'js/jsProjects/**/*.js'), ['jsProjects'])
-  gulp.watch(path.join(SRC, 'js/jsAdmin/**/*.js'), ['jsAdmin'])
+  gulp.watch(path.join(SRC, 'js/blog/**/*.js'), ['jsBlog'])
+  gulp.watch(path.join(SRC, 'js/admin/**/*.js'), ['jsAdmin'])
+  gulp.watch(path.join(SRC, 'js/commun/**/*.js'), ['jsCommun'])
+  gulp.watch(path.join(SRC, 'js/projects/**/*.js'), ['jsProjects'])
 })
 
 gulp.task('clean', function () {
