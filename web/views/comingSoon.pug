@@ -115,8 +115,9 @@ body
     })
 
     displayHeader(function (){
-      displayCall2Action()
-      $('.comingSoon__footer').fadeIn(600)
+      displayCall2Action(() => {
+        $('.comingSoon__footer').fadeIn(600)
+      })
     })
 
     function displayCall2Action (next) {
