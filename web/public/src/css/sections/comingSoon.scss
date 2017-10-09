@@ -212,11 +212,11 @@ body {
     padding: 0;
     border: 0;
     font-weight: 600;
-    color: $primaryColor;
+    background: $primaryColor;
     outline: 0;
     display: inline-block;
     vertical-align: middle;
-    background: #fff;
+    color: #fff;
     cursor: pointer;
     border: 2px solid $primaryColor ;
 
