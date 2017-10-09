@@ -2,7 +2,6 @@ const fs = require('fs')
 const express = require('express')
 const router = express.Router()
 
-const utils = require('../utils') // TODO: Add multilanguage
 const content = require('../content/english.json') // TODO: Add multilanguage
 const blogRepository = require('../repository/blog')
 
@@ -12,9 +11,6 @@ const talks = require('./talks')
 const social = require('./social')
 const contact = require('./contact')
 const newsletter = require('./newsletter')
-
-// Check if application is in beta and user has access keys
-router.get('*', utils.setupBetaFirewall)
 
 router.get('/', home) // Home shows about page
 router.use('/about', require('./about'))

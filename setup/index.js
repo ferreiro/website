@@ -1,4 +1,5 @@
 const setupSSL = require('./setupSSL')
+const setupBeta = require('./setupBeta')
 const setupDatabase = require('./setupDatabase')
 const setupMiddlewares = require('./setupMiddlewares')
 const setupPassport = require('./setupPassport')
@@ -13,6 +14,9 @@ module.exports = (app) => {
   setupPassport(app) // Important! after middlewares setup
   setupAdmin(app)
   setupLocals(app)
+
+  // BETA Firewall
+  setupBeta(app) // Always after assets, etc...
 
   // Setup routes
   app.use('/', require('../web/routes'))

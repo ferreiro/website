@@ -38,11 +38,4 @@ html(lang="en")
 
         script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
 
-        if beta
-            //- In order for the beta version works, we need to
-            //- add to every internal url the parameters to
-            //- validate session with the server
-            input(type="hidden", id="betaToken", value= betaToken)
-            script(src="/vendors/betaLinks.js")
-
         block extraScripts
