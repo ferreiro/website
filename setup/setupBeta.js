@@ -26,6 +26,10 @@ function setupBetaFirewall (req, res, next) {
     key = req.cookies['betaToken']
   }
 
+  console.log('req.query')
+  console.log(req.query)
+  console.log('key', key)
+
   if (!key) {
     return res.render('comingSoon')
   }
