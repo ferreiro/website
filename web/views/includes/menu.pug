@@ -63,10 +63,11 @@
               //-span Social - Let's connect!
               span Social Networks
               .dropdown-content#DropdownSocial
-                each item in social || []
-                  a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
-                    span.dropdown-icon(class="icon-" + item.icon)
-                    span.dropdown-text #{item.name}
+                .dropdown-wrapper
+                  each item in social || []
+                    a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
+                      span.dropdown-icon(class="icon-" + item.icon)
+                      span.dropdown-text #{item.name}
 
       .jfmenu__mobileButton#dropdown-mobiles
         .jfmenu__mobileButton__wrapper

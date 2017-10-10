@@ -34,7 +34,6 @@
   vertical-align: middle;
   padding: $headerMenuPadding 0;
   border-bottom: 1px solid rgba(222, 222, 222, 1);
-  // border-bottom: 1px solid #cecece;
 
   &__wrapper {
     height: $headerHeight;
@@ -122,6 +121,7 @@ span.icon-separated {
   &:hover {
     border-color: $primaryColor;
     background: $primaryColorLight;
+    @include transition(100ms);
 
     p {
       color: #fff;
@@ -161,47 +161,80 @@ span.icon-separated {
 
   &-content {
     right: 0;
-    top: 100%;
+    top: calc(100%);
     z-index: 100;
-    padding: 1em;
     display: none;
     min-width: 150px;
-    background: #fff;
     position: absolute;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    @include transition(100ms);
+  }
+
+  &-wrapper {
+    margin-top: 0;
+    display: block;
+    padding: 1em;
+    background: #fff;
+    box-shadow: 0px 3px 16px 0px rgba(0,0,0,0.2);
+    @include border-radius(10px);
+
+    &:before {
+      top: 0;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 10px;
+      border-color: transparent transparent #fff transparent;
+      line-height: 0px;
+      _border-color: #000000 #000000 #fff #000000;
+      _filter: progid:DXImageTransform.Microsoft.Chroma(color='#000000');
+    }
   }
 
   &-item {
-    margin: 0;
-    margin-bottom: 0.5em;
-    padding: 0;
     width: 100%;
+    padding: 0.2em 0;
+    margin: 0;
+    margin-bottom: 0.1em;
     display: inline-block;
+
+    @include border-radius(10px);
+    @include transition(110ms);
 
     &:hover {
       background: #f4f4f4;
-
-      @include border-radius(10px);
+      background: #dfdfdf;
+      color: #000;
+      span {
+        color: #000;
+      }
     }
   }
 
   &-icon {
-    width: 40px;
-    font-size: 40px;
+    width: 16px;
+    font-size: 16px;
     margin-right: 10px;
     padding: 5px;
     padding-left: 10px;
     display: inline-block;
     vertical-align: middle;
+    @include transition(110ms);
   }
 
   &-text {
     margin: 0;
     padding: 0;
-    font-size: 1.3em;
+    font-size: 1em;
     font-weight: 600;
+    color: rgba(0, 0, 0, .7);
     display: inline-block;
     vertical-align: middle;
+    @include transition(110ms);
   }
 }
 
