@@ -71,7 +71,7 @@
                 {
                    "type":"entry",
                    "icon":"icon-google",
-                   "body":"Integrated the Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses."
+                   "body":"Integrated the Gmail API and added new functionalities on top of it, such as converting all the email into chats and quick responses."
                 },
                 {
                    "type":"entry",
@@ -123,7 +123,7 @@
              "body":[
                 {
                    "type":"entry",
-                   "body":"Created a music player and online streaming service using Soundcloud API.",
+                   "body":"Created a music player and online streaming service using the Soundcloud API.",
                    "icon":"icon-soundcloud"
                 },
                 {

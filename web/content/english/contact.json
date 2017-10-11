@@ -1,7 +1,7 @@
 {
   "config": {
     "title": "Contact Jorge Ferreiro",
-    "claim" : "Do you have a project, job proposal or just want to say hi? Ping me in the form below or send me an email to <a class='email openModalBox'>jorge at ferreiro dot me</a>. I'll reply you in less than 24h.",
+    "claim" : "Do you have a project, job proposal or want to say hi? Ping me in the form below or send me an email to <a class='email openModalBox'>jorge at ferreiro dot me</a>. I'll reply you in less than 24 hours.",
     "sendButton" : "Send message"
   },
   "form" : {

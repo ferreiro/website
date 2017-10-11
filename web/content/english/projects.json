@@ -33,7 +33,7 @@
     "highlights": [
       "College capstone project with the maximum grade (10/10)",
       "Built in 5 months the Backend, Rest API and Frontend systems from scratch, using MVC architecture and creating an extensible modular application with plugins.",
-      "Integrated a Gmail API and added new functionalities on top of it such as: converting all the email into chats and quick responses.",
+      "Integrated the Gmail API and added new functionalities on top of it, such as converting all the email into chats and quick responses.",
       "Designed a responsive interface, took and fulfilled requirements of potential users."
     ],
     "stack": [
@@ -94,11 +94,11 @@
     "about": [
       "<b>#ferreiroV2:</b> In 2016, I decided to build from scratch my new personal website. I did everything in <b>6 days</b> and released it as an open source project.",
       "<b>#ferreiroV3:</b> In late 2017, I wanted to take my website to a whole new level, so I dedicated one week to re-think the vision, improve the design and add new features aligned with my goals.",
-      "Read <a href='/blog/' target='_blank'>my blog article</a> about what's new on version 3, how I re-built the website and the lessons learned."
+      "Read <a href='/blog/' target='_blank'>my blog article</a> about what's new in version 3, how I rebuilt the website and the lessons learned."
     ],
     "features": [
       "New version created in just 7 days including programming my own blogging platform.",
-      "Integrated third party services such as AWS (Amazon), Mailchimp, Mailgun.",
+      "Integrated third-party services such as AWS (Amazon), MailChimp, and Mailgun.",
       "Project available open source."
     ],
     "stack": [
@@ -134,8 +134,8 @@
     "background": null,
     "about": [
       "<b>Music4deejays</b> is a streaming music application for listening, sharing and downloading the best electronic music from emerging artists.",
-      "This project started from a problem I identified: novel music producers are not discovered to the mass world since the music industry only promotes the big artits. ",
-      "I created the whole application: design, backend and frontend. I also designed a strategy to spread the project to our targetted audience."
+      "This project started from a problem I identified: novel music producers are not discovered by the masses since the music industry only promotes the big artists. ",
+      "I created the whole application: design, backend and frontend. I also designed a strategy to spread the project to our targeted audience."
     ],
     "images": [
       {
@@ -146,7 +146,7 @@
     "highlights": [
       "Achieved more than <a href='stats/' target='_blank'><strong>56k downloads</strong></a> on mobile phones by creating a strategy to drive the product to massive reach.",
       "Reached Top #5 music application on FirefoxOS Marketplace.",
-      "Built my own streaming music player using Soundcloud Rest API."
+      "Built my own streaming music player using the Soundcloud Rest API."
     ],
     "stack": [
       "php",
@@ -180,8 +180,8 @@
     "background": "/images/projects/sudonotes/1.png",
     "about": [
       "<b>Sudonotes</b> is the easiest way to keep all your ideas, projects and notes together.",
-      "I worked with other 2 international students (from Italy and Brasil) and we delivered the project in under 3 days.",
-      "It's a <strong>Python</strong> application granted 10/10 (A) in 'GIW' college course."
+      "I worked with other 2 international students (from Italy and Brazil) and we delivered the project in under 3 days.",
+      "It's a <strong>Python</strong> application granted 10/10 (A) in the 'GIW' college course."
     ],
     "images": [
       {

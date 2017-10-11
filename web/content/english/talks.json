@@ -1,7 +1,7 @@
 {
   "config": {
     "title": "Talks and Workshops",
-    "subtitle": "I have experience giving talks in different topics such as <strong>Software</strong>, <strong>Entrepreneurship</strong> and <strong>Product</strong>, as well as workshops. I've organized a technical workshop sponsored by Github and co-organized Iniciador.",
+    "subtitle": "I have experience giving talks on different topics such as <strong>Software</strong>, <strong>Entrepreneurship</strong> and <strong>Product</strong>, as well as conducting workshops. I've organized a technical workshop sponsored by Github and co-organized Iniciador.",
     "wallpaper": "/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg",
     "callToAction": {
       "claim": "Do you have an event and want jorge to be a speaker or co-organiser? Write an email or contact.",
@@ -11,7 +11,7 @@
   "pastTalks": [
     {
       "title": "Introducing Redis by Jorge Ferreiro - May 2017",
-      "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts, features and shared a practical case.",
+      "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
       "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
       "type": "slides",
       "pic": "/images/talks/introducing_redis.png",
@@ -50,7 +50,7 @@
     },
     {
       "title": "Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
-      "summary": "Brief introduction of Dailyfocus at JSDayEs (top Javascript event in Spain). Challenged by the organizer to prepare it in just 5 minutes!",
+      "summary": "Brief introduction of Dailyfocus at JSDayEs (top JavaScript event in Spain). Challenged by the organizer to prepare it in just 5 minutes!",
       "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
       "type": "video",
       "pic": "/images/talks/js_day_es.png",
@@ -67,7 +67,7 @@
     },
     {
       "title": "Dailyfocus presentation (June 2017): vision, product, tech and journey",
-      "summary": "Presensation made for an academic jury from my college. I mainly cover: challenges, vision and goals, development process, lessons learned, etc.",
+      "summary": "Presentation made for an academic jury from my college. I mainly cover: challenges, vision and goals, development process, lessons learned, etc.",
       "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
       "type": "slides",
       "pic": "/images/talks/dailyfocus_ucm.png",
@@ -84,7 +84,7 @@
     },
     {
       "title": "Workshop: Your first professional website (sponsored by Github.com)",
-      "summary": "I organized and run this workshop for more than 50 students in my college. I taught how to create a professional website from scratch to deployment.",
+      "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
       "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
       "type": "slides",
       "pic": "/images/talks/wokshop_fdi.png",
@@ -104,11 +104,28 @@
       "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
     },
     {
+      "title": "Machine Learning: online news prediction in Mashable",
+      "summary": "As a college project, I created a presentation and a report with a ML analysis to predict when is the best time to publish news to gain popularity.",
+      "permalink": null,
+      "type": "slides",
+      "pic": "/images/talks/mashable.png",
+      "date": "Jan 20, 2017",
+      "event": "FDI ML",
+      "buttons": [
+        {
+          "title": "Read Slides",
+          "type": "slides",
+          "url": null
+        }
+      ],
+      "iframeSrc": null
+    },
+    {
       "title": "Webapps: introduction and publishing on Firefox OS",
       "summary": "I was invited by Mozilla Spain to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
       "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
       "type": "slides",
-      "pic": "http://i.imgur.com/hrDnfS3.jpg",
+      "pic": "/images/talks/mozilla_firefox.jpg",
       "date": "Nov 28, 2014",
       "event": "Mozilla Event",
       "buttons": [
