@@ -20,7 +20,7 @@
     color: #fff;
     font-style: bold;
     font-weight: 600;
-    display: online-block;
+    display: block;
     text-decoration: none;
 
     @include box-shadow(2px 3px 10px 0px rgba(0,0,0,0.5));
@@ -156,7 +156,7 @@
       line-height: 1.5;
     }
 
-    b {
+    a {
       color: $primaryColor;
     }
   }
