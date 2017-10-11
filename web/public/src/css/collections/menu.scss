@@ -106,6 +106,8 @@ span.icon-separated {
   height: $headerHeight;
   display: inline-block;
   text-decoration: none;
+
+  @include transition(100ms);
   @include border-radius(60px);
 
   p {
@@ -114,14 +116,15 @@ span.icon-separated {
     font-weight: 600;
     font-size: 1.2em;
     position: relative;
-    transform: translate(-50%, -50%);
     color: rgba(0, 0, 0, .6);
+    transform: translate(-50%, -50%);
+
+    @include transition(100ms);
   }
 
   &:hover {
     border-color: $primaryColor;
     background: $primaryColorLight;
-    @include transition(100ms);
 
     p {
       color: #fff;
@@ -180,14 +183,14 @@ span.icon-separated {
     &:before {
       top: 0;
       left: 50%;
-      margin-left: -10px;
-      margin-top: -10px;
+      margin-left: -8px;
+      margin-top: -8px;
       position: absolute;
       content: '';
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 0 10px 10px 10px;
+      border-width: 0 8px 8px 8px;
       border-color: transparent transparent #fff transparent;
       line-height: 0px;
       _border-color: #000000 #000000 #fff #000000;
