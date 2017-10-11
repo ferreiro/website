@@ -25,9 +25,10 @@ block content
 
       .threeColsGrid
         each talk in pastTalks || []
-          .threeColsGrid__item.lazy
-            .threeColsGrid__item__wrapper
-              +talkCard(talk)
+          if !talk.private
+            .threeColsGrid__item.lazy
+              .threeColsGrid__item__wrapper
+                +talkCard(talk)
 
         // .separator_no_margin
         .threeColsGrid__item

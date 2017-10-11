@@ -104,6 +104,7 @@
       "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
     },
     {
+      "private": true,
       "title": "Machine Learning: online news prediction in Mashable",
       "summary": "As a college project, I created a presentation and a report with a ML analysis to predict when is the best time to publish news to gain popularity.",
       "permalink": null,
