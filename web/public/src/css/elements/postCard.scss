@@ -12,6 +12,12 @@ $postCard_summary_max_height: 57px;
 $postCard_options_margin: 1em;
 $postCard_options_item_margin: 0.8em;
 
+.postCard__withoutSummary {
+  @media all and (min-width: $desktop-screen) {
+    min-height: 293px !important;
+  }
+}
+
 .postCard {
   margin: 0;
   padding: 0;
@@ -27,11 +33,12 @@ $postCard_options_item_margin: 0.8em;
   }
 
   &__header {
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
     width: calc(100% + 2 * $postCard_border);
     height: $postCard_headerHeight_mobile;
-    background-size: cover;
-    position: relative;
-    overflow: hidden;
     margin: -($postCard_border);
     margin-bottom: 0;
 
@@ -63,6 +70,7 @@ $postCard_options_item_margin: 0.8em;
     overflow: hidden;
     font-size: $postCard_title;
     line-height: $postCard_title;
+    height: $postCard_title_max_height;
     max-height: $postCard_title_max_height;
 
     a {
@@ -83,6 +91,7 @@ $postCard_options_item_margin: 0.8em;
     display: block;
     text-decoration: none;
     padding-top: $postCard_summary_margin;
+    color: rgba(0, 0, 0, 0.7);
 
     @media all and (min-width: $desktop-screen) {
       min-height: $postCard_summary_max_height;
