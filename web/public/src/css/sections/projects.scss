@@ -84,6 +84,7 @@ $projectLinksTopMargin: 20px;
     min-height: $projectHeaderHeight;
     padding: $projectHeaderMargin;
     background: rgba(0, 0, 0, 0.3);
+
     @include border-radiuses($projectBorderRadious, $projectBorderRadious, 0, 0);
 
     @media all and (min-width:$desktop-screen) {
@@ -276,6 +277,7 @@ $projectLinksTopMargin: 20px;
       margin-right: 1em;
       display: inline-block;
       background-size: cover;
+      background-position: center center;
 
       @include opacity(0.6);
       @include border-radius($projectHeaderGalleryRadius);
@@ -302,12 +304,14 @@ $projectLinksTopMargin: 20px;
       padding: $projectBodyPadding_desktop;
       padding-bottom: $projectBodyPadding_desktop + $projectLinksHeight + $projectLinksTopMargin;
     }
+
     &_noLinks { // When a card does not have links (we don't put the buttons down)
       padding: $projectBodyPadding_mobile;
       @media all and (min-width:$desktop-screen) {
         padding: $projectBodyPadding_desktop;
       }
     }
+
     &_title {
       color: rgba(0, 0, 0, 1);
       font-size: 1.4em;
@@ -317,6 +321,7 @@ $projectLinksTopMargin: 20px;
         margin-bottom: 0.6em;
       }
     }
+
     &_text {
       font-size: 1em;
       font-weight: 400;
@@ -331,12 +336,14 @@ $projectLinksTopMargin: 20px;
   &_highlight {
     display: block;
     margin-bottom: 1em;
+
     &_list {
       list-style: none;
       vertical-align: top;
       margin: -0.3em 0;
       display: block;
     }
+
     &_entry {
       width: 100%;
       min-height: 18px;
