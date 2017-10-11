@@ -21,6 +21,10 @@ mixin blogHeader(hasAnimation, hideBlogDescription)
             span.icon.ion-android-mail(style="margin-right: 10px;")
             span Subscribe - 1 post each month!
 
+        //- a(href= '/newsletter').optionsMenu__link
+            span.optionsMenu__item__icon.icon.ion-android-mail
+            span Subscribe!
+
     .optionsMenu
       ul.optionsMenu__list
         mixin optionsMenuItem(title, categoryId, url)
@@ -33,7 +37,7 @@ mixin blogHeader(hasAnimation, hideBlogDescription)
         +optionsMenuItem('Product', 'product', '/blog/category/product')
         +optionsMenuItem('Entrepreneurship', 'entrepreneurship', '/blog/category/entrepreneurship')
 
-        li.optionsMenu__item
+        //- li.optionsMenu__item
           a(href= '/newsletter').optionsMenu__link
             span.optionsMenu__item__icon.icon.ion-android-mail
             span Subscribe!
