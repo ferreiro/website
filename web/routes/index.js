@@ -69,7 +69,7 @@ function university (req, res, next) {
 }
 
 function resume (req, res, next) {
-  var filePath = __dirname + '/../public/pdf/13_july_2017_final.pdf'
+  var filePath = __dirname + '/../public/dst/pdf/13_july_2017_final.pdf'
 
   if (req.query.download) {
     return res.download(filePath)
