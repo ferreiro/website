@@ -40,7 +40,7 @@ $action_button_icon_margin: 4px;
   padding-bottom: 1em;
   font-size: 1.3em;
   margin: 0 auto;
-  @include border-radius(5px);
+  @include border-radius(60px);
   @media all and (min-width: $desktop-screen) {
     width: 300px;
     padding: 1.1em 1.8em;
