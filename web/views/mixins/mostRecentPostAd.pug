@@ -1,0 +1,16 @@
+mixin mostRecentPostAd(opts)
+    - lastPost = opts && opts.post ? opts.post : null
+    - sticky = opts && opts.sticky ? opts.sticky : false
+
+    if lastPost
+        .mostRecentPostAd(class= sticky ? 'mostRecentPostAd__fixed' : '')
+            input(type="hidden", class="lastPostId", value= lastPost._id)
+            a(href= '/blog/' + lastPost.permalink).mostRecentPostAd__wrapper
+                .mostRecentPostAd__icon
+                //- .mostRecentPostAd__avatar(style="background-image: url(" + lastPost.pic + ");")
+                .mostRecentPostAd__text
+                    .mostRecentPostAd__inlineAvatar(style="background-image: url(" + lastPost.pic + ");")
+                    //- h2.mostRecentPostAd__title <span>This month post:</span> #{lastPost.title}...
+                    h2.mostRecentPostAd__title #{lastPost.title}...
+                    span.mostRecentPostAd__button Read this month post ➡️
+                //- h2.mostRecentPostAd__text One post every month about Software, Product and Entrepreneurship? Subscribe and support my blog.
