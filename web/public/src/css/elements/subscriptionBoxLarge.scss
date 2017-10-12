@@ -54,6 +54,12 @@
     padding: 0.7em 0;
     @include border-radius(10px);
   }
+
+  &__formWrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
   &__loader {
     height: 30px;
     display: none;
@@ -63,6 +69,7 @@
     text-align: center;
     display: none;
   }
+
   &__submit {
     margin: 0 auto;
     padding: 1em 1.2em;
