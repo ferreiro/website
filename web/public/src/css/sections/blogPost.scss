@@ -14,10 +14,12 @@
 
     @media all and (min-width: $desktop-screen) {
       font-size: 40px;
+      font-size: 36px;
       font-weight: 700;
       font-style: normal;
       letter-spacing: 0;
       line-height: 1.04;
+      line-height: 1.10;
       letter-spacing: -.028em;
     }
   }
@@ -36,6 +38,7 @@
     color: rgba(0,0,0,.54);
     margin: 0;
     margin-top: 7px;
+    margin-top: 13px;
 
     @media all and (min-width: $desktop-screen) {
     }
