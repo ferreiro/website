@@ -1,9 +1,11 @@
 .jfFooter {
   width: 100%;
+  position: relative;
+  background: #fff;
   display: block !important;
   border: 0;
   border-top: 1px solid #f4f4f4;
-  position: relative;
+
 
   @media all and (min-width: $tablet-screen) {
   }
