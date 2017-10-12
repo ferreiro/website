@@ -14,7 +14,7 @@
     "frontend"
   ],
   "engines": {
-    "node": ">=8.6.0"
+    "node": "8.6.0"
   },
   "author": {
     "name": "Jorge Ferreiro",
