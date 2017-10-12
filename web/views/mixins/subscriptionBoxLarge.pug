@@ -3,10 +3,10 @@ include ../mixins/newsletterForm
 mixin subscriptionBoxLarge(opts)
   .subscriptionBoxLarge
 
-    - title = opts && opts.customTitle ? opts.customTitle : 'Join the JF community!'
+    - title = opts && opts.customTitle ? opts.customTitle : 'Join my newsletter'
     h3.subscriptionBoxLarge__title= title
 
-    - body = opts && opts.customBody ? opts.customBody : 'Get exclusive content, early access to tutorials, updates and projects! Join my newsletter and keep up to date!'
+    - body = opts && opts.customBody ? opts.customBody : 'Receive new blog posts, tutorials, updates and new projects. Join my newsletter and help me to share the knowledge. This helps me a lot!'
     p.subscriptionBoxLarge__text= body
 
     if !opts.displayForm
@@ -18,4 +18,5 @@ mixin subscriptionBoxLarge(opts)
           img.subscriptionBoxLarge__loader(src='/images/spinner.svg')
           span.beta__signup__text Subscribe to the community
     else
-      +newsletterForm()
+      .subscriptionBoxLarge__formWrapper
+        +newsletterForm()
