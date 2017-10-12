@@ -3,6 +3,7 @@ include ./mixins/postCard
 include ./mixins/blogHeader
 include ./mixins/blogEntry
 include ./mixins/subscriptionBoxLarge
+include ./mixins/mostRecentPostAd
 
 block content_header
   - hasAnimation = true
@@ -11,6 +12,9 @@ block content_header
 block content_large
 
   .container__middle.animated.fadeInUp
+
+    //- if posts && posts.length > 0
+      +mostRecentPostAd(posts[0])
 
     if !posts || posts.length <= 0
       .warningMessage(style="max-width: 400px; margin: 0 auto;")
@@ -24,13 +28,11 @@ block content_large
         each post, index in posts || []
 
           //- Advertisement: subscribe to blog!
-          if index == 3
+          //- if index == 3
             .threeColsGrid__item__full_width
               .box_with_shadow(style="margin: 0;")
                 +subscriptionBoxLarge({
-                  customTitle: 'Join the JF community!',
-                  customBody: 'Get at least 1 post every month, early access to tutorials, updates and more! Join my newsletter and keep up to date!',
-                  displayForm: false
+                  displayForm: true
                 })
 
           //- Blog Entry
@@ -45,11 +47,9 @@ block content_large
           if nextPageToken != "end"
             a(href= '/blog?next=' + nextPageToken).big_action_button Next page
 
-      if posts.length < 3
-        //- Display the add here too.
-        .box_with_shadow(style="margin: 0;")
-          +subscriptionBoxLarge({
-            customTitle: 'Join the JF community!',
-            customBody: 'Get exclusive content, early access to tutorials, updates and projects! Join my newsletter and keep up to date!',
-            displayForm: false
-          })
+      //- if posts.length < 3
+      //- Display the add here too.
+      //- .box_with_shadow(style="margin: 0;")
+      +subscriptionBoxLarge({
+        displayForm: true
+      })
