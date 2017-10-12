@@ -290,8 +290,10 @@
 					margin-top: 1.5em;
 					letter-spacing: .6px;
 					color: #ffffff;
-					@include border-radius(5px);
 					text-decoration: none;
+
+					@include border-radius(60px);
+
 					@media all and (min-width: $desktop-screen) {
 						margin-top: 1.5em;
 						padding: 0.9em 1.5em;
