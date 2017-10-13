@@ -35,6 +35,8 @@ function setupMobileMenu () {
   var jfmenuContent = $('.jfmenu_content')
   var jfmenuOverlay = $('.jfmenu_overlay')
   var menuButton = $('.jfmenu__mobileButton')
+  var header = $('#menu')
+  var headerInitialTopMargin = $('#menu').position().top
 
   jfmenuOverlay.click(function() {
     if ($('.jfmenu').hasClass('jfmenu_displayed')) {
@@ -76,6 +78,7 @@ function setupMobileMenu () {
 
   function hideMenu () {
     if (jfmenu.hasClass('jfmenu_displayed')) {
+      header.css({ top: headerInitialTopMargin })
       body.removeClass('body_overflow')
       jfmenu.removeClass('jfmenu_displayed')
       jfmenuOverlay.removeClass('fadeIn')
@@ -86,6 +89,8 @@ function setupMobileMenu () {
 
   function displayMenu () {
     if (!jfmenu.hasClass('jfmenu_displayed')) {
+      headerInitialTopMargin = $('#menu').position().top
+      header.css({ top: '0' })
       body.addClass('body_overflow')
       jfmenu.addClass('jfmenu_displayed')
       jfmenuOverlay.addClass('animated fadeIn')
