@@ -1,7 +1,7 @@
 var ss = sessionStorage;
 var menu = $('.menu');
 var sectionHeader = $('.sectionHeader');
-var animations = [ "zoomIn", "fadeInUpBig"]; //  'flipInY', '', 'bounceIn'
+var animations = [ "fadeInUpBig"]; //  'flipInY', '', 'bounceIn'
 
 window.animateMainContainer = function animateMainContainer() {
     var mainContainer = $('.animate_div');
@@ -18,11 +18,11 @@ window.animateMainContainer = function animateMainContainer() {
 
     if (sectionHeader.length) {
       // sectionHeader.addClass('animated flipInX');
-      sectionHeader.addClass('animated flipInX');
+      sectionHeader.addClass('animated ' + animations[randomAnimation])
     }
 
     if (mainContainer.length) {
-      mainContainer.addClass('animated ' + animations[randomAnimation]);
+      mainContainer.addClass('animated ' + animations[randomAnimation])
     }
 };
 
