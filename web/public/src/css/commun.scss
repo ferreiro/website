@@ -24,6 +24,14 @@ a {
   }
 }
 
+.truncate {
+  max-width: 460px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow-multiline: ellipsis;
+}
+
 .link_focus_deactivated {
   &:focus {
     transform: scale(1, 1);

@@ -1,7 +1,7 @@
 {
   "config": {
     "title": "Talks and Workshops",
-    "subtitle": "I have experience giving talks on different topics such as <strong>Software</strong>, <strong>Entrepreneurship</strong> and <strong>Product</strong>, as well as conducting workshops. I've organized a technical workshop sponsored by Github and co-organized Iniciador.",
+    "subtitle": "I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops. I've organized a technical workshop sponsored by Github and volunteered on various tech and entrepreneurship events.",
     "wallpaper": "/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg",
     "callToAction": {
       "claim": "Do you have an event and want jorge to be a speaker or co-organiser? Write an email or contact.",
@@ -49,23 +49,6 @@
       "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
     },
     {
-      "title": "Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
-      "summary": "Brief introduction of Dailyfocus at JSDayEs (top JavaScript event in Spain). Challenged by the organizer to prepare it in just 5 minutes!",
-      "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
-      "type": "video",
-      "pic": "/images/talks/js_day_es.png",
-      "date": "May, 2017",
-      "event": "JS DAY ES 2017",
-      "buttons": [
-        {
-          "title": "Watch the video",
-          "type": "video",
-          "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk"
-        }
-      ],
-      "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
-    },
-    {
       "title": "Dailyfocus presentation (June 2017): vision, product, tech and journey",
       "summary": "Presentation made for an academic jury from my college. I mainly cover: challenges, vision and goals, development process, lessons learned, etc.",
       "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
@@ -81,6 +64,23 @@
         }
       ],
       "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
+    },
+    {
+      "title": "Mini talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+      "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
+      "type": "video",
+      "pic": "/images/talks/js_day_es.png",
+      "date": "May, 2017",
+      "event": "JS DAY ES 2017",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk"
+        }
+      ],
+      "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
     },
     {
       "title": "Workshop: Your first professional website (sponsored by Github.com)",
