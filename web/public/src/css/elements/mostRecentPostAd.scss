@@ -150,7 +150,8 @@ $newsletterAd_avatar: 0;
     margin: 0;
     padding: 0;
     font-size: 1em;
-    margin: 0 1.2em;
+    margin: 0 0.15em;
+    margin-right: 1em;
     margin-top: 1px;
     font-weight: 600;
     align-self: center;
@@ -167,7 +168,7 @@ $newsletterAd_avatar: 0;
   }
 
   &__button {
-    min-width: 90px;
+    min-width: 108px;
     font-size: 11px;
     padding: 7px 10px;
     align-self: center;
