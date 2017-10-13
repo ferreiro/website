@@ -8,6 +8,14 @@
 
   @include flexbox_flex(0, 0, auto);
   @include border-radius(5px);
+  @include transition(167ms);
+
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-delay: 0s;
+
+  &:focus {
+    transform: scale(0.9, 0.9);
+  }
 }
 
 .logo img {
@@ -34,6 +42,8 @@
   vertical-align: middle;
   padding: $headerMenuPadding 0;
   border-bottom: 1px solid rgba(222, 222, 222, 1);
+
+  @include transition(1000ms);
 
   &__wrapper {
     height: $headerHeight;

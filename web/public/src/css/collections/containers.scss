@@ -5,6 +5,8 @@
 .container {
   width: 100%;
   margin: 0 auto;
+
+  @include transition(1000ms);
 }
 
 .container_home {
