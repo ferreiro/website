@@ -1,5 +1,5 @@
 .subscriptionBox
-  h3.subscriptionBox__title Join the community!
+  h3.subscriptionBox__title Join the newsletter!
 
   .subscriptionBox__background
     span.icon.ion-ios-film-outline(style="position: absolute; margin-bottom: -5px; bottom: 0; right: 0;")
@@ -15,13 +15,13 @@
       ul.subscriptionBox__collage__features
         li.subscriptionBox__collage__feature
           span.icon.ion-star
-          |Get exclusive content
+          |Receive my the new posts
         li.subscriptionBox__collage__feature
           span.icon.ion-ios-timer
-          |Early access to tutorials
+          |Get early access to content
         li.subscriptionBox__collage__feature
           span.icon.ion-speakerphone
-          |Updates and projects!
+          |Know my updates &amp; projects
 
   //form.subscriptionBox__form(action="/api/v1/newsletter/subscribe", method="POST")
     input.subscriptionBox__email(type='text', name='email', placeholder='Your email address')
@@ -31,4 +31,4 @@
       span(style='color: #000; margin-left: 0.5em;') Subscribed!
     button.subscriptionBox__submit
       img.subscriptionBox__loader(src='/images/spinner.svg')
-      span.beta__signup__text Get exclusive materials!
+      span.beta__signup__text Subscribe to the blog
