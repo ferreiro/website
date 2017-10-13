@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(window).on('load', function () {
   setupMostRecentPostAd()
 })
 
@@ -7,10 +7,18 @@ async function setupMostRecentPostAd () {
   const mostRecentPostAd = $('.mostRecentPostAd')
   const cacheName = 'mostRecentPostAd'
 
+  if (mostRecentPostAd.length <= 0) {
+    // Don't execute if the ad is not found on the webpage
+    return;
+  }
+
   var _  = await delayDisplayTime()
 
   if (!hasUserClickedOnMostRecentPostAd(mostRecentPostAd, cacheName)) {
-    displayMostRecentPostAd(mostRecentPostAd)
+    const offset = '50px'
+    moveContainersAndMenu(offset, () => {
+      displayMostRecentPostAd(mostRecentPostAd)
+    })
   }
 
   setupScrollListener(mostRecentPostAd, cacheName)
@@ -22,9 +30,7 @@ function setupScrollListener(mostRecentPostAd, cacheName) {
     const scrollTop = $(window).scrollTop()
 
     // If user make scrolls, display ad.
-    if (scrollTop > 100) {
-      
-    }
+    if (scrollTop > 100) {}
   })
 }
 
@@ -57,12 +63,19 @@ function delayDisplayTime () {
   return new Promise(resolve => {
     setTimeout(function () {
       resolve(true)
-    }, 2000)
+    }, 1500)
+  })
+}
+
+function moveContainersAndMenu (offset, next) {
+  $('#menu').css({ top: offset })
+  $('.container').css({ 'padding-top': offset }).promise().done(function () {
+    return next()
   })
 }
 
 function displayMostRecentPostAd (mostRecentPostAd) {
   mostRecentPostAd
-    .show(100)
-    .addClass('animated fadeIn bounceIn')
+    .show(0)
+    .addClass('animated slideInDown')
 }
