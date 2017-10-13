@@ -27,6 +27,46 @@
     top: 0;
   }
 
+  &_buttons {
+    bottom: 0;
+    z-index: 10000;
+    text-align: center;
+    position: relative;
+    text-align: center;
+    margin-top: 1.5em;
+
+    a {
+      color: #fff;
+      padding: 0.7em 1.2em;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.4);
+
+      @include border-radius(60px);
+
+      &:hover {
+        span {
+          color: rgba(255, 255, 255, 1);
+        }
+        border-color: $primaryColor;
+        background: rgba(255, 255, 255, 0.8);
+        background: $primaryColor;
+        // border-color: #7cd802;
+        // background: #7cd802;
+      }
+    }
+
+    span {
+      color: rgba(255, 255, 255, 0.9);
+
+      @include transition(200ms);
+    }
+
+    .icon {
+      color: $primaryColor;
+      color: #d83901;
+    }
+  }
+
   &_bg {
     top: 0;
     left: 0;
