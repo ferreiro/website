@@ -11,6 +11,6 @@ mixin mostRecentPostAd(opts)
                 .mostRecentPostAd__text
                     .mostRecentPostAd__inlineAvatar(style="background-image: url(" + lastPost.pic + ");")
                     //- h2.mostRecentPostAd__title <span>This month post:</span> #{lastPost.title}...
-                    h2.mostRecentPostAd__title.truncate 'sldkjfgsfkd ldjgskdfjg kjsdfhg kjsdhfgk jsdhfgkj sdfhgkj '#{lastPost.title}
+                    h2.mostRecentPostAd__title.truncate= lastPost.title
                     span.mostRecentPostAd__button Read last post
                 //- h2.mostRecentPostAd__text One post every month about Software, Product and Entrepreneurship? Subscribe and support my blog.
