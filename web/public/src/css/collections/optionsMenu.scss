@@ -1,4 +1,4 @@
-$optionsMenuHeight_mobile: 55px;
+$optionsMenuHeight_mobile: 60px;
 $optionsMenuHeight_desktop: 70px;
 $optionsMenuSelectedBorder: 2px;
 $optionsMenuActiveColor: #0084bf;
@@ -42,14 +42,14 @@ $optionsMenuActiveColor: #0084bf;
 
   &__link {
     font-size: 18px;
-    padding: 0 0.5em;
+    padding: 0 0.6em;
     font-weight: 600;
     display: inline-block;
     text-decoration: none;
     border-bottom-width: 4px;
     color: rgba(0, 0, 0, 0.55);
     height: $optionsMenuHeight_mobile;
-    line-height: ($optionsMenuHeight_mobile - $optionsMenuSelectedBorder);
+    line-height: ($optionsMenuHeight_mobile - $optionsMenuSelectedBorder) + 4px;
 
     @include transition(300ms);
 
@@ -57,7 +57,7 @@ $optionsMenuActiveColor: #0084bf;
       padding: 0 24px;
       font-size: 21px;
       height: $optionsMenuHeight_desktop;
-      line-height: ($optionsMenuHeight_desktop - $optionsMenuSelectedBorder);
+      line-height: ($optionsMenuHeight_desktop - $optionsMenuSelectedBorder) + 2px;
     }
   }
 }
