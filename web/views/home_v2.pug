@@ -1,0 +1,56 @@
+extends ./includes/layout
+include ./mixins/postCard
+include ./mixins/subscriptionBoxLarge
+include ./mixins/mostRecentPostAd
+
+block extraScripts
+
+block content
+
+    if recentPosts && recentPosts.length > 0
+        +mostRecentPostAd({
+            sticky: true,
+            post: recentPosts[0]
+        })
+
+    //- Middle Container
+    .container_middle
+
+        .bigHeroeHeader
+            .bigHeroeHeader__wrapper
+                .bigHeroeHeader__background(style="background-image: url(/images/home/jorge_ferreiro_header.jpg);")
+                .bigHeroeHeader__content
+                    h1.bigHeroeHeader__title Jorge Ferreiro
+                    h2.bigHeroeHeader__subtitle Software Engineer, Entrepreneur and Product Manager
+                    a(href="/about").bigHeroeHeader__button Read about me
+
+        style.
+            .newsletterOnelineAd {
+                border-bottom: 1px solid #f4f4f4;
+                padding: 1.5em 0;
+            }
+
+        if recentPosts && recentPosts.length > 0
+            style.
+                h3.blogPostRelated__title {
+                    margin: 1.5em 0;
+                }
+            h3.blogPostRelated__title Most recent posts in my blog!
+
+            .threeColsGrid
+                each post in recentPosts
+                    .threeColsGrid__item
+                        .threeColsGrid__item__wrapper
+                            +postCard(post)
+
+        style.
+            .subscriptionBoxLarge {
+                padding-bottom: 0;
+            }
+
+        .threeColsGrid
+            .threeColsGrid__item__full_width
+                //- .shadow__box
+                +subscriptionBoxLarge({
+                    displayForm: true
+                })

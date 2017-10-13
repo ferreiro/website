@@ -33,6 +33,7 @@ module.exports = router
 
 // FUNCTIONS
 function home (req, res, next) {
+  const viewTemplateName = req.query.v1 ? 'home' : 'home_v2'
   const homeContext = {
     title: 'Home',
     path: 'home',
@@ -45,10 +46,10 @@ function home (req, res, next) {
     count: 3
   }).then(posts => {
     homeContext.recentPosts = posts
-    res.render('home', homeContext)
+    res.render(viewTemplateName, homeContext)
   }).catch(error => {
     homeContext.error = error
-    res.render('home', homeContext)
+    res.render(viewTemplateName, homeContext)
   })
 }
 
