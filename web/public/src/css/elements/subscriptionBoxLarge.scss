@@ -22,9 +22,13 @@
   }
 
   &__text {
-    margin: 1em auto;
     max-width: 300px;
     max-width: 430px;
+
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin: 1.5em auto;
+    color: rgba(0, 0, 0, .7);
   }
 
   &__form {
