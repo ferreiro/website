@@ -24,6 +24,11 @@ a {
   }
 }
 
+.link_focus_deactivated {
+  &:focus {
+    transform: scale(1, 1);
+  }
+}
 
 .icon-red {
   color: #D60000;

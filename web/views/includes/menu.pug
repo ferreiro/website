@@ -11,7 +11,7 @@
       li(id= item.id, class= path===item.id ? 'current_section' : '')
         if item.id == 'home'
           - item.name = 'Home'
-        a(href= item.url, target= item.target || '_self')
+        a(href= item.url, target= item.target || '_self').link_focus_deactivated
           span= item.name
 
     //-Menu block containing links
@@ -28,7 +28,7 @@
         ul
           each item in social || []
             li
-              a(href= item.url, target= item.target || '_blank')
+              a(href= item.url, target= item.target || '_blank').link_focus_deactivated
                 span.icon-separated(class="icon-" + item.icon)
                 span #{item.name}
 
