@@ -38,6 +38,13 @@ function setupMobileMenu () {
   var header = $('#menu')
   var headerInitialTopMargin = $('#menu').position().top
 
+  $(window).resize(function(elem) {
+    const deskstopScreen = 1100
+    if ($(window).width() > deskstopScreen) {
+      hideMenu()
+    }
+  })
+
   jfmenuOverlay.click(function() {
     if ($('.jfmenu').hasClass('jfmenu_displayed')) {
       hideMenu()
