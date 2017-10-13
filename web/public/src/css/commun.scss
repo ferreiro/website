@@ -13,6 +13,17 @@ p {
   text-rendering: optimizeLegibility;
 }
 
+a {
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-delay: 0s;
+
+  @include transition(100ms);
+
+  &:focus {
+    transform: scale(0.9, 0.9);
+  }
+}
+
 
 .icon-red {
   color: #D60000;
