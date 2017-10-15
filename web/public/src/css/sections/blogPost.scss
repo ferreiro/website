@@ -7,7 +7,6 @@
 
   &__title {
     font-size: 32px;
-    margin-left: -2px;
     line-height: 1.04;
     letter-spacing: -.028em;
     color: rgba(0,0,0,.84);
@@ -24,6 +23,8 @@
     }
   }
   &__subtitle {
+    margin: 0;
+    margin-top: 13px;
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
@@ -31,16 +32,15 @@
     font-weight: 300;
     font-style: normal;
     letter-spacing: 0;
-    font-size: 27px;
-    font-size: 24px;
-    line-height: 1.22;
     letter-spacing: -.022em;
     color: rgba(0,0,0,.54);
-    margin: 0;
-    margin-top: 7px;
-    margin-top: 13px;
+    font-size: 18px;
+    line-height: 1.3;
 
     @media all and (min-width: $desktop-screen) {
+      font-size: 27px;
+      font-size: 24px;
+      line-height: 1.22;
     }
   }
   &__image {
@@ -75,7 +75,7 @@
     width: 100%;
     display: inline-block;
     p, ul li, h1, h2, h3, h4, a {
-      font-family: 'Roboto Slab', serif;
+      font-family: 'Source Serif Pro', serif;
       --x-height-multiplier: 0.35;
       --baseline-multiplier: 0.179;
       font-weight: 400;
@@ -146,26 +146,38 @@
     }
 
     blockquote {
-      --x-height-multiplier: 0.363;
-      --baseline-multiplier: 0.157;
-      font-family: medium-content-slab-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
-      font-weight: 400;
-      font-style: italic;
-      font-size: 34px;
-      margin: 24px 0;
-      margin-left: -1.75px;
-      line-height: 1.48;
-      letter-spacing: -.014em;
+      margin: 0;
+      margin-top: 29px;
+      // margin-left: -1.75px;
       color: rgba(0,0,0,.68);
       border: none;
-      padding: 0;
-      margin-left: 50px;
+      padding: 5px 0;
       text-align: left;
       display: inline-block;
+
+      padding-left: 1em;
+      margin-left: -1em;
+      border-left: 3px solid rgba(0,0,0,.84);
+
+
+      @media all and (min-width: $desktop-screen) {
+        padding-left: 20px;
+        margin-left: -23px;
+      }
+
+
+      p {
+        margin-top: 0;
+        font-weight: 400;
+        font-style: italic;
+      }
     }
+
+
     a {
       display: initial;
     }
+
     mark {
       background-color: transparent !important;
       background-image: linear-gradient(to bottom, rgba(203, 255, 186, 1), rgba(203, 255, 186, 1));

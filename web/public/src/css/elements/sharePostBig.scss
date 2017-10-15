@@ -3,6 +3,8 @@
   margin-top: 3em;
   text-align: center;
 
+  @include opacity(0);
+
   &__title {
     margin: 0;
     padding: 0;

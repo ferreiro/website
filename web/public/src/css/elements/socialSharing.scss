@@ -1,7 +1,9 @@
 .socialSharing {
   visibility: hidden;
+
   @include opacity(0);
   @include transition(500ms);
+
   @media all and (max-width: $desktop-screen - 1px) {
     width: 100%;
     padding: 0.5em 0;

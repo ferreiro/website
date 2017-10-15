@@ -19,11 +19,13 @@ module.exports.findById = function findById (query) {
 
 module.exports.findByPermalinkIncrementViews = findByPermalinkIncrementViews
 function findByPermalinkIncrementViews (query) {
+  const incrementViews = query && query.isAdmin ? 0 : 1
+
   return Post.findOneAndUpdate({
     permalink: query.permalink
   }, {
     $inc: {
-      views: 1
+      views: incrementViews
     }
   })
 }

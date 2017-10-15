@@ -115,6 +115,7 @@ function getPostByPermalink (req, res, next) {
   }
 
   const query = {
+    isAdmin: blogContext.admin,
     permalink: postPermalink
   }
   blogRepository
