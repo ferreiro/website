@@ -30,11 +30,9 @@ function submitForm(opts) {
 
   success.hide()
   failure.hide()
-
+  console.log(validateInputs())
   if (!validateInputs()) {
-    console.log(scrollToError)
     if (scrollToError === true) {
-      console.log('Scroll to error')
       $('html, body').animate({
         scrollTop: $('#contactform').offset().top - 120
       }, 300)
@@ -70,6 +68,7 @@ function submitForm(opts) {
     else {
       form.hide()
       success.show()
+      setCacheUserSubscribed()
     }
   })
   .fail(function(objectReturned) {
@@ -86,6 +85,10 @@ function submitForm(opts) {
     failure.show()
     loader.hide()
   }
+}
+
+function setCacheUserSubscribed () {
+  localStorage.userSubscrided = true
 }
 
 function validateInputs() {

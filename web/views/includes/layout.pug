@@ -23,6 +23,12 @@ html
 
 		include ./menu.pug
 
+		block popupNewsletter
+			include ../mixins/popupNewsletter
+			+popupNewsletter({
+				autodisplay: false
+			})
+
 		.ui.container_home
 			block content_full
 			.container#mainContainer

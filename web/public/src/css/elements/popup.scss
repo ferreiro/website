@@ -8,7 +8,7 @@ $popupBorderRadius: 20px;
   width: 100%;
   height: 100%;
   position: fixed;
-  z-index: 1000000000;
+  z-index: 5000000000000000000;
   display: none;
 
   &__close {
@@ -39,7 +39,8 @@ $popupBorderRadius: 20px;
     width: 100%;
     height: 100%;
     z-index: 500;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.82);
+    // background: rgba(0, 0, 0, 0.5);
     position: absolute;
   }
 
@@ -79,8 +80,6 @@ $popupBorderRadius: 20px;
       padding: 0;
     }
   }
-
-
 
   &__wrapper {
     top: 50%;

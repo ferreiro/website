@@ -11,9 +11,19 @@ function setupPopup() {
     return; // popup not defined
   }
 
-  displayPopupWithDelay(popup, popupBackground, popupWrapper, {
-    timeoutMs: poupTimeoutMs
-  })
+  const autodisplay = popup.find('.autodisplay')
+  if (autodisplay.val() === "false") {
+    // Skip and don't autodisplay newsletter
+  } else {
+    // Only autodisplay if the user has not subscribed in this browser
+    if (!localStorage.newsletterSubscribed || localStorage.userSubscrided === false) {
+      displayPopupWithDelay(popup, popupBackground, popupWrapper, {
+        timeoutMs: poupTimeoutMs
+      })
+    }
+  }
+
+  setupOpenNewsletterPopup(popup, popupBackground, popupWrapper)
 
   setupEscape(popup, popupBackground, popupWrapper)
 
@@ -27,6 +37,15 @@ function setupPopup() {
   })
 }
 
+function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
+  const button = $('.openNewsletterSubscription')
+  button.click(function (event) {
+    event.preventDefault()
+    showPopup(popup, popupBackground, popupWrapper)
+  })
+}
+
+
 function displayPopupWithDelay (popup, popupBackground, popupWrapper, opts) {
   const timeoutMs = opts && opts.timeoutMs ? opts.timeoutMs : 10000
   setTimeout(function () {
@@ -39,11 +58,15 @@ function showPopup(popup, popupBackground, popupWrapper) {
     overflow: 'hidden'
   })
   popup
-    .fadeIn(500)
+    .removeClass('animated fadeInUpBig fadeOutDown')
     .addClass('animated fadeInUpBig')
-  popupBackground
+    .fadeIn(500)
+
+  /*popupBackground
     .show(0)
+    .removeClass('animated fadeIn')
     .addClass('animated fadeIn')
+    */
 }
 
 function closePopup(popup, popupBackground, popupWrapper) {
@@ -51,6 +74,7 @@ function closePopup(popup, popupBackground, popupWrapper) {
     overflow: 'initial'
   })
   popup
+    .removeClass('animated fadeInUpBig fadeOutDown')
     .addClass('animated fadeOutDown')
     .fadeOut(500)
 }

@@ -1,6 +1,6 @@
 include ./subscriptionBoxLarge
 
-mixin popupNewsletter()
+mixin popupNewsletter(opts)
   .popup
     .popup__background
     .popup__wrapper.shadow__box
@@ -8,9 +8,13 @@ mixin popupNewsletter()
         h3.popup__header__title The corner of Jorge
       a(href="#").popup__close
         span.icon.ion-android-close
+
+      - autodisplay = opts && opts.autodisplay !== undefined ? String(opts.autodisplay) : 'true'
+      input(type="hidden", name="autodisplay", class="autodisplay", value= autodisplay)
+
       +subscriptionBoxLarge({
         displayForm: true,
         displayTitle: false,
         scrollToError: false,
-        customBody: 'Join my newsletter and receive new blog posts and projects in your inbox. This helps me and motivates me a lot! '
+        customBody: 'Join my newsletter and receive new blog posts and projects in your inbox. This helps me and motivates me a lot! 😊'
       })

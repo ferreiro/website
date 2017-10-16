@@ -84,11 +84,17 @@
 
   &_input {
     text-align: center;
-    width: calc(100% - 2px);
-    border:2px dotted #cecece;
+    min-width: calc(100% - 2px);
+    max-width: calc(100% - 2px);
+    border: 2px dotted #cecece;
     border: 1px solid  #d3d3d3;
 
     @include border-radius(5px);
+  }
+
+  &_textarea {
+    min-height: 46px;
+    max-height: 100px;
   }
 
   &_newsletter {

@@ -2,8 +2,7 @@
   padding: 2.5em 1.5em;
   margin-top: 3em;
   text-align: center;
-
-  @include opacity(0);
+  display: none;
 
   &__title {
     margin: 0;

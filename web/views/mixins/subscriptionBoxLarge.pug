@@ -2,10 +2,10 @@ include ../mixins/newsletterForm
 
 mixin subscriptionBoxLarge(opts)
   .subscriptionBoxLarge
-    - title = opts && opts.customTitle ? opts.customTitle : 'Join my newsletter'
+    - subscriptionTitle = opts && opts.customTitle ? opts.customTitle : 'Join my newsletter'
     - displayTitle = opts && opts.displayTitle !== undefined ? opts.displayTitle : true
     if displayTitle
-      h3.subscriptionBoxLarge__title= title
+      h3.subscriptionBoxLarge__title= subscriptionTitle
 
     - body = opts && opts.customBody ? opts.customBody : 'Creating a blog from the ground is really hard, I need your help! Join my newsletter and receive my new blog posts and projects in your inbox.'
     p.subscriptionBoxLarge__text= body
@@ -15,9 +15,9 @@ mixin subscriptionBoxLarge(opts)
         span.subscriptionBoxLarge__completed
           | ✔
           span(style='color: #000; margin-left: 0.5em;') Subscribed!
-        button.subscriptionBoxLarge__submit
+        button.subscriptionBoxLarge__submit.openNewsletterSubscription
           img.subscriptionBoxLarge__loader(src='/images/spinner.svg')
-          span.beta__signup__text Subscribe to the community
+          span.beta__signup__text Subscribe to my newsletter
     else
       .subscriptionBoxLarge__formWrapper
         +newsletterForm({

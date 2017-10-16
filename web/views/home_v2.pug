@@ -6,7 +6,6 @@ include ./mixins/mostRecentPostAd
 block extraScripts
 
 block content
-
     if recentPosts && recentPosts.length > 0
         +mostRecentPostAd({
             sticky: true,
@@ -51,6 +50,7 @@ block content
         .threeColsGrid
             .threeColsGrid__item__full_width
                 //- .shadow__box
+
                 +subscriptionBoxLarge({
-                    displayForm: true
+                    displayForm: false
                 })
