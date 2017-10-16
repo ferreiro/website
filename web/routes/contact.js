@@ -5,8 +5,6 @@ const express = require('express')
 const router = express.Router()
 const _ = require('lodash')
 
-const content = require('../content/english/contact.json')
-
 // Routes
 router.get('/', contact)
 router.get('/talk', contactTalk)
@@ -17,6 +15,7 @@ module.exports = router
 // FUNCTIONS
 
 function contact (req, res, next) {
+  const content = require('../content/english/contact.json')
   return res.render('contact', {
     title: 'Contact me',
     path: 'contact',
@@ -26,8 +25,9 @@ function contact (req, res, next) {
 }
 
 function contactTalk (req, res, next) {
+  const content = require('../content/english/contact.json')
   let talkContact = _.cloneDeep(content)
-  talkContact.config.claim = "Are you organizing an event and want me to talk? I'll be happy to be part of it! Send me an email with a proposal and let's talk! (<a class='email openModalBox'>jorge at ferreiro dot me</a>)."
+  talkContact.config.claim = "Are you organizing an event and want me to talk? I'll be happy to be part of it! Send me an email to (<a class='email openModalBox'>jorge at ferreiro dot me</a>) or submit the form below."
   talkContact.sendButton = "Submit proposal"
   talkContact.form.message = "What's your event about and when is it?"
 
