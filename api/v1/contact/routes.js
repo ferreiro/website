@@ -50,7 +50,7 @@ router.post('/', function (req, res) {
 })
 
 router.post('/subscribe', function (req, res) {
-  const name = req.body.__name || null
+  const name = req.body.__name || ''
   const email = req.body.__email || null
 
   addUserToMailchimp(name, email, (err) => {
@@ -66,6 +66,7 @@ router.post('/subscribe', function (req, res) {
 })
 
 function addUserToMailchimp (name, email, next) {
+  name = ''.concat(name.replace(/\b\w/g, l => l.toUpperCase())) // first letter in uppercase
   mailchimp.post({
     path : '/lists/3b63288535/members',
     body: {

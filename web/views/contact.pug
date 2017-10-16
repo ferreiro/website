@@ -1,5 +1,8 @@
 extends ./includes/layout
 
+block popupNewsletter
+  //- remove popup
+
 block content
 
   .container_middle
@@ -42,8 +45,8 @@ block content
             fieldset.contact_form_fieldset(style="margin-bottom: 0;")
               p.wrong#wrongMessage
                 span.icon.ion-alert-circled
-                | Error: Hey! Fill some text here ;).
-              textarea.input_not_blank(type="name", style="margin-bottom: 0;", id="message", name="__text", placeholder= content.form.message || 'Write your message').contact_form_input
+                | Error: Hey! Please, fill some text here ;).
+              textarea.input_not_blank(type="name", style="margin-bottom: 0;", id="message", name="__text", placeholder= content.form.message || 'Write your message').contact_form_input.contact_form_textarea
 
             fieldset.contact_form_fieldset(style="margin-bottom: 0;")
               .contact_form_newsletter

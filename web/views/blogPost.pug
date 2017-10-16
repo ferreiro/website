@@ -31,10 +31,17 @@ block extraScripts
       headings: "h1,h2,h3,h4"
     });
 
+
+//- override default behaviour. Here we show the popup after X miliseconds.
+block popupNewsletter
+  include ./mixins/popupNewsletter
+  +popupNewsletter({
+    autodisplay: true
+  })
+
 block content_header
   - hasAnimation = false
   +blogHeader(hasAnimation, true)
-  +popupNewsletter()
 
 block content_large
   style.
@@ -81,8 +88,9 @@ block content_large
           ul.blogPost__category
             //- p Post published in
             each category in post.category
-              li
-                a(href= "/blog/category/" + category).action_button= category
+              if category !== null
+                li
+                  a(href= "/blog/category/" + category).action_button= category
 
       .blogPost__separator
 
