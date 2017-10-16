@@ -1,7 +1,7 @@
 {
   "config": {
     "title": "Talks and Workshops",
-    "subtitle": "I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops. I've organized a technical workshop sponsored by Github and volunteered on various tech and entrepreneurship events.",
+    "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops. I've organized a technical workshop sponsored by Github and volunteered on various tech and entrepreneurship events.",
     "wallpaper": "/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg",
     "callToAction": {
       "claim": "Do you have an event and want jorge to be a speaker or co-organiser? Write an email or contact.",
@@ -123,7 +123,7 @@
     },
     {
       "title": "Webapps: introduction and publishing on Firefox OS",
-      "summary": "I was invited by Mozilla Spain to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
+      "summary": "I was invited by a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
       "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
       "type": "slides",
       "pic": "/images/talks/mozilla_firefox.jpg",
