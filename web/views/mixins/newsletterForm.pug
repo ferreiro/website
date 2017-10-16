@@ -16,6 +16,9 @@ mixin newsletterForm(opts)
   form.contact_form(action="/newsletter/send", method="post", autocomplete="off")#contactform
     input(value="/api/v1/newsletter", type="hidden", id="contactFormEndpoint")
 
+    - scrollToError = opts && opts.scrollToError ? String(opts.scrollToError) : 'true'
+    input(type="hidden", name="scrollToError", class="scrollToError", value= scrollToError)
+
     fieldset.contact_form_fieldset
       p.wrong#wrongName
         span.icon.ion-alert-circled

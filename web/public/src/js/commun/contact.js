@@ -12,20 +12,33 @@ form.submit(function(event){
   if ($('#contactFormEndpoint').length > 0) {
     endpoint = $('#contactFormEndpoint').val()
   }
-  submitForm(endpoint);
+
+  let scrollToError = null
+  if (form.find('.scrollToError').length > 0) {
+    scrollToError = form.find('.scrollToError').val()
+  }
+
+  submitForm({
+    endpoint: endpoint,
+    scrollToError: scrollToError
+  });
 });
 
-function submitForm(endpoint) {
-  var endpoint = endpoint || "/api/v1/contact";
+function submitForm(opts) {
+  var endpoint = opts && opts.endpoint ? opts.endpoint : "/api/v1/contact";
+  var scrollToError = opts && opts.scrollToError ? opts.scrollToError === 'true' : true;
 
   success.hide()
   failure.hide()
 
   if (!validateInputs()) {
-    $('html, body').animate({
+    console.log(scrollToError)
+    if (scrollToError === true) {
+      console.log('Scroll to error')
+      $('html, body').animate({
         scrollTop: $('#contactform').offset().top - 120
-    }, 300)
-
+      }, 300)
+    }
     return
   }
 

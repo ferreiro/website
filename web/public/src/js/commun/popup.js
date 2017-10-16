@@ -5,7 +5,7 @@ function setupPopup() {
   const popupClose = $('.popup__close')
   const popupBackground = $('.popup__background')
   const popupWrapper = $('.popup__wrapper')
-  const poupTimeoutMs = 2000
+  const poupTimeoutMs = 15000
 
   if (popup.length === 0) {
     return; // popup not defined
