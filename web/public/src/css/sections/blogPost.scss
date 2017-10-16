@@ -22,6 +22,7 @@
       letter-spacing: -.028em;
     }
   }
+
   &__subtitle {
     margin: 0;
     margin-top: 13px;
@@ -43,10 +44,20 @@
       line-height: 1.22;
     }
   }
+
   &__image {
     max-width: 100%;
     margin-top: 1.5em;
   }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    display: block;
+    margin-top: 2em;
+    background: #f4f4f4;
+  }
+
   &__category {
     margin-top: 2em;
 
@@ -88,6 +99,30 @@
       word-break: break-word;
       word-wrap: break-word;
       display: block;
+    }
+
+    hr {
+      font-size: 24px;
+      line-height: 1.4;
+      margin-top: 44px;
+      margin-bottom: 34px;
+      display: block;
+      border: 0;
+      text-align: center;
+      overflow: visible;
+      &:before {
+        content: '...';
+        display: inline-block;
+        margin-left: .6em;
+        color: rgba(0,0,0,.68);
+        position: relative;
+        top: -30px;
+
+        font-weight: 400;
+        font-style: italic;
+        font-size: 30px;
+        letter-spacing: .62em;
+      }
     }
 
     p, ul li {

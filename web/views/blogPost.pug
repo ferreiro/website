@@ -2,6 +2,7 @@ extends ./includes/blog_layout_v2_large
 include ./mixins/postCard
 include ./mixins/sharePostBig
 include ./mixins/subscriptionBoxLarge
+include ./mixins/popupNewsletter
 
 block extraMeta
   if post
@@ -33,6 +34,7 @@ block extraScripts
 block content_header
   - hasAnimation = false
   +blogHeader(hasAnimation, true)
+  +popupNewsletter()
 
 block content_large
   style.
@@ -75,12 +77,14 @@ block content_large
 
         .blogPost__content!= post.html
 
-        if post.category && post.category.lenght > 0
+        if post.category && post.category.length > 0
           ul.blogPost__category
-            p Post published in
+            //- p Post published in
             each category in post.category
               li
                 a(href= "/blog/category/" + category).action_button= category
+
+      .blogPost__separator
 
       .separator_no_margin#postFooter
 
