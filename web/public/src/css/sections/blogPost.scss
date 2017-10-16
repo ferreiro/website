@@ -199,6 +199,36 @@
       hyphens: none;
     }
 
+
+    blockquote {
+      margin: 0;
+      margin-top: 29px;
+      // margin-left: -1.75px;
+      color: rgba(0,0,0,.68);
+      border: none;
+      padding: 5px 0;
+      text-align: left;
+      display: inline-block;
+
+      padding-left: 1em;
+      margin-left: -1em;
+      border-left: 3px solid rgba(0,0,0,.84);
+
+
+      @media all and (min-width: $desktop-screen) {
+        padding-left: 20px;
+        margin-left: -23px;
+      }
+
+
+      p {
+        margin-top: 0;
+        font-weight: 400;
+        font-style: italic;
+      }
+    }
+
+    /*
     blockquote {
       margin: 0;
       margin-top: 29px;
@@ -235,7 +265,7 @@
         }
       }
     }
-
+    */
 
     a {
       display: initial;
