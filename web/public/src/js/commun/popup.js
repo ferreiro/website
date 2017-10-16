@@ -5,7 +5,7 @@ function setupPopup() {
   const popupClose = $('.popup__close')
   const popupBackground = $('.popup__background')
   const popupWrapper = $('.popup__wrapper')
-  const poupTimeoutMs = 15000
+  const poupTimeoutMs = 60000
 
   if (popup.length === 0) {
     return; // popup not defined
@@ -16,7 +16,7 @@ function setupPopup() {
     // Skip and don't autodisplay newsletter
   } else {
     // Only autodisplay if the user has not subscribed in this browser
-    if (!localStorage.newsletterSubscribed || localStorage.userSubscrided === false) {
+    if (!localStorage.newsletterSubscribed || localStorage.userSubscribed === false) {
       displayPopupWithDelay(popup, popupBackground, popupWrapper, {
         timeoutMs: poupTimeoutMs
       })

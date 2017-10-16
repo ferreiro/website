@@ -30,7 +30,7 @@ function submitForm(opts) {
 
   success.hide()
   failure.hide()
-  console.log(validateInputs())
+
   if (!validateInputs()) {
     if (scrollToError === true) {
       $('html, body').animate({
@@ -60,15 +60,17 @@ function submitForm(opts) {
      dataType: 'json',
      encode: true
   })
-  .done(function(email) {
-    if (email.error) {
-      failure.html(email.error);
-      failure.show();
-    }
-    else {
+  .done(function(response) {
+    if (response.error) {
+      form.show()
+      failure.html(response.error)
+      failure.show()
+    } else {
       form.hide()
       success.show()
-      setCacheUserSubscribed()
+      if (endpoint.indexOf('newsletter') > 0) {
+        setCacheUserSubscribed()
+      }
     }
   })
   .fail(function(objectReturned) {
@@ -88,7 +90,7 @@ function submitForm(opts) {
 }
 
 function setCacheUserSubscribed () {
-  localStorage.userSubscrided = true
+  localStorage.userSubscribed = true
 }
 
 function validateInputs() {
