@@ -22,9 +22,9 @@ mixin blogHeader(hasAnimation, hideBlogDescription)
           h2.blogHeader_job ― Written by <strong>#{config.author.name}</strong> ―
 
       .blogHeader_buttons
-        a(href="/newsletter").action_button
+        a(href="/newsletter?source=blog").action_button
           span.icon.ion-android-mail(style="margin-right: 10px;")
-          span Subscribe - One post every month
+          span Subscribe to my newsletter
 
     .optionsMenu
       ul.optionsMenu__list
