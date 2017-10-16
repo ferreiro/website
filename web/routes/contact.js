@@ -32,7 +32,7 @@ function contactTalk (req, res, next) {
   talkContact.form.message = "What's your event about and when is it?"
 
   res.render('contact', {
-    title: 'Jorge at your event',
+    title: 'Bring me to your event',
     content: talkContact,
     path: 'talks',
     redirect: req.query.redirect
