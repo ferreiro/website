@@ -6,15 +6,18 @@
   left:0;
   z-index: 400;
   display: none;
+
   &_displayed {
     display: block;
   }
+
   &_overlay {
     width: 100%;
     height: 100%;
     displa: block;
     background: rgba(255,255,255, 0.8);
   }
+
   &_close {
     width: 30px;
     height: 30px;
@@ -35,15 +38,19 @@
         padding: 0;
     }
   }
+
   &_content {
     width: 250px;
-    padding: 1em;
+    padding: 1.5em;
     top: 50% !important;
     left: 50% !important;
     position: absolute;
     background: #fff;
     border: 1px solid #cecece;
+
+    @include border-radius(20px);
     @include translate(-50%, -50%);
+
     h2 {
       color: $primaryColor;
       margin-bottom: 10px;
