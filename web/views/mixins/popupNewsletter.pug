@@ -1,0 +1,16 @@
+include ./subscriptionBoxLarge
+
+mixin popupNewsletter()
+  .popup
+    .popup__background
+    .popup__wrapper.shadow__box
+      .popup__header
+        h3.popup__header__title The corner of Jorge
+      a(href="#").popup__close
+        span.icon.ion-android-close
+      +subscriptionBoxLarge({
+        displayForm: true,
+        displayTitle: false,
+        scrollToError: false,
+        customBody: 'Join my newsletter and receive new blog posts and projects in your inbox. This helps me and motivates me a lot! '
+      })

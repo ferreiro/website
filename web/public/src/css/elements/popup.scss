@@ -1,0 +1,164 @@
+$popupPadding_mobile: 1em;
+$popupPadding_desktop: 2em;
+$popupBorderRadius: 20px;
+
+.popup {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1000000000;
+  display: none;
+
+  &__close {
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+
+    @include border-radius(100%);
+
+    span {
+      top: 50%;
+      left: 50%;
+      font-weight: 300;
+      font-size: 1.3em;
+      font-weight: 600;
+      position: absolute;
+      color: rgba(0, 0, 0, 0.7);
+      @include translate(-50%, -50%);
+    }
+  }
+
+  &__background {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 500;
+    background: rgba(255, 255, 255, 0.7);
+    position: absolute;
+  }
+
+  &__wrapper {
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    background: #fff;
+    position: absolute;
+    min-width: 280px;
+    max-width: calc(400px - 2 * #{$popupPadding_mobile});
+    padding: $popupPadding_mobile;
+    max-height: 100%;
+    overflow-y: scroll;
+
+    @include border-radius($popupBorderRadius);
+    @include translate(-50%, -50%);
+
+    @media all and (min-width: $desktop-screen) {
+      padding: $popupPadding_desktop;
+      max-width: calc(400px - 2 * #{$popupPadding_desktop});
+    }
+
+    .contact_form_input {
+      padding: 17px 0;
+
+      @include border-radius(60px);
+    }
+
+    .subscriptionBoxLarge__text {
+      font-size: 1.1em;
+      line-height: 1.4em;
+      // margin-bottom: 16px;
+    }
+
+    .subscriptionBoxLarge {
+      padding: 0;
+    }
+  }
+
+
+
+  &__wrapper {
+    top: 50%;
+    left: 50%;
+    z-index: 10000;
+    background: #fff;
+    position: absolute;
+    min-width: 280px;
+    max-width: calc(400px - 2 * #{$popupPadding_mobile});
+    padding: $popupPadding_mobile;
+    max-height: 100%;
+    overflow-y: scroll;
+
+    @include translate(-50%, -50%);
+    @include border-radius($popupBorderRadius);
+
+    @media all and (min-width: $desktop-screen) {
+      padding: $popupPadding_desktop;
+      max-width: calc(400px - 2 * #{$popupPadding_desktop});
+    }
+
+    .contact_form_input {
+      padding: 17px 0;
+
+      @include border-radius(60px);
+    }
+
+    .subscriptionBoxLarge__text {
+      font-size: 1.1em;
+      line-height: 1.4em;
+      // margin-bottom: 16px;
+    }
+
+    .subscriptionBoxLarge {
+      padding: 0;
+    }
+  }
+
+  &__header {
+    height: 100px;
+    position: relative;
+    background-size: cover;
+    width: calc(100% + 2 * #{$popupPadding_mobile});
+    background-image: url("/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg");
+    margin: -$popupPadding_mobile;
+    margin-bottom: $popupPadding_mobile + 0.5em;
+
+    @include border-radiuses($popupBorderRadius, $popupBorderRadius, 0, 0);
+
+
+    @media all and (min-width: $desktop-screen) {
+      width: calc(100% + 2 * #{$popupPadding_desktop});
+      margin: -$popupPadding_desktop;
+      margin-bottom: $popupPadding_desktop - 0.2em;
+    }
+
+    &:before {
+      top: 0;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: rgba(0, 0, 0 , 0.3);
+    }
+
+    &__title {
+      top: 50%;
+      left: 50%;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 600;
+      position: absolute;
+      padding-top: 3px;
+
+      @include translate(-50%, -50%);
+    }
+  }
+}
