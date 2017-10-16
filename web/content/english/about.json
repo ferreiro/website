@@ -48,9 +48,9 @@
           {
              "type":"warning",
              "icon":null,
-             "body":"Check out my work! <a href='http://test.dailyfocus.io' target='_blank'>http://test.dailyfocus.io</a>",
+             "body":"Check out my work! <a href='http://test.dailyfocus.io?ref=ferreiro' target='_blank'>http://test.dailyfocus.io</a>",
              "link":{
-                "url":"http://test.dailyfocus.io",
+                "url":"http://test.dailyfocus.io?ref=ferreiro",
                 "target":"blank"
              }
           },
