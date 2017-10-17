@@ -188,6 +188,10 @@
       }
     }
 
+    ol {
+      margin-top: 29px;
+    }
+
     //- https://stackoverflow.com/questions/10428720/how-to-keep-indent-for-second-line-in-ordered-lists-via-css
     ol.linenums {
       counter-reset: foo;

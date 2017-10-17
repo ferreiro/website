@@ -11,11 +11,6 @@ const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 /**
 * @api POST /contact
 * Send a personal email
-*
-* @ name
-* @ message
-* @ email
-* @ subscribed
 */
 router.post('/', function (req, res) {
   var message = ({

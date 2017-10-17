@@ -94,7 +94,7 @@ block content_large
         .blogPost__content!= post.html
 
         if post.category && post.category.length > 0
-          ul.blogPost__category
+          ul.blogPost__category#category
             //- p Post published in
             each category in post.category
               if category !== null
