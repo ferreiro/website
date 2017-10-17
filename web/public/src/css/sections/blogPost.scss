@@ -127,12 +127,12 @@
       display: block;
     }
 
-    p, li, ol li {
+    p, ul li, ol li {
       font-size: 18px;
       line-height: 1.58;
       letter-spacing: -.004em;
 
-      @media all and (min-width: 1000px) {
+      @media all and (min-width: $desktop-screen) {
         font-size: 21px;
         line-height: 32px;
         // line-height: 1.58;
@@ -159,7 +159,7 @@
       margin-left: 2em;
 
       li {
-        margin: 10px 0;
+        margin: 20px 0;
       }
     }
 
