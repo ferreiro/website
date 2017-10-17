@@ -1,0 +1,19 @@
+.stats {
+  &_text {
+
+  }
+  &_images {
+
+    text-align: center;
+
+    &_pic {
+      width: 100%;
+      margin-bottom: 1em;
+      @include border-radius(10px);
+      @media all and (min-width:$desktop-screen) {
+        max-width: $desktop-screen;
+        display: inline-block;
+      }
+    }
+  }
+}

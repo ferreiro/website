@@ -1,0 +1,12 @@
+.imageComparator {
+  width: 100%;
+  max-width: 700px;
+  // min-height: 250px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 29px;
+  background: #f4f4f4 url('../images/loading.gif') 50% 50% no-repeat;
+  background-size: 60px;
+  &__int {}
+}

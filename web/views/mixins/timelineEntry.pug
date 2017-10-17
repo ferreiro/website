@@ -1,0 +1,99 @@
+mixin timelineEntry(dataEntry)
+  .timeline__item
+    .timeline__item__wrapper
+
+      .timeline__item__header
+        .timeline__item__header__wrapper
+          .timeline__item__header__logo
+            img(src= dataEntry.pic)
+          .timeline__item__header__metadata
+            h2.timeline__item__header__position= dataEntry.position
+            h3.timeline__item__header__company= dataEntry.title
+
+            if dataEntry.overrideYears
+              - year = dataEntry.overrideYears
+            else
+              - year = dataEntry.start + ' - ' + dataEntry.end
+            h3.timeline__item__header__date= year
+
+      if dataEntry.description
+        .timeline__item__body
+
+          each item in dataEntry.description || []
+
+            if item.type == "entry"
+              .timeline__item__oneline
+                if item.icon
+                  span.icon(class= item.icon)
+                p.timeline__item__oneline__text= item.body
+
+            else if item.type == "bullets"
+              ul.timeline__item__bullets
+                each bullet in item.body
+                  li.timeline__item__bullet
+                    if bullet.icon
+                      span.timeline__item__bullet__icon
+                        i.icon(class= bullet.icon)
+                      p.timeline__item__bullet__text= bullet.body
+                    else
+                      p.timeline__item__bullet__text.timeline__item__bullet__text__noIcon= bullet.body
+
+            else if item.type == "warning"
+              .timeline__item__warning
+                if item.link
+                  a(href= item.link.url, target= item.link.target || '_blank').timeline__item__warning__link
+                .timeline__item__warning__wrapper
+                  if item.icon
+                    span.icon.timeline__item__warning__icon(class= item.icon)
+                  p.timeline__item__warning__text !{item.body}
+
+//-
+  .resume__entry
+    .resume__entry__left
+      .resume__entry__pic
+        if dataEntry.pic_type == "horizontal"
+          img(src= dataEntry.pic).resume__entry__pic__horizontal
+        else if dataEntry.pic_type == "vertical"
+          img(src= dataEntry.pic).resume__entry__pic__vertical
+        else
+          img(src= dataEntry.pic).resume__entry__pic__default
+    .resume__entry__right
+      .resume__entry__content
+        .resume__entry__header
+          span.resume__entry__title
+            | <b>#{dataEntry.title}</b>
+            | <span class="resume__entry__position">#{dataEntry.position}</span>
+
+          if dataEntry.overrideYears
+            span.resume__entry__date= dataEntry.overrideYears
+          else
+            span.resume__entry__date #{dataEntry.start} - #{dataEntry.end}
+
+        .resume__entry__body
+
+          if dataEntry.description
+            each item in dataEntry.description || []
+
+              if item.type == "entry"
+                .resume__entry__oneline
+                  if item.icon
+                    span.icon(class= item.icon)
+                  span.resume__entry__oneline__text= item.body
+
+              else if item.type == "bullets"
+                ul.resume__entry__bullets
+                  each bullet in item.body
+                    li.resume__entry__bullet
+                      if bullet.icon
+                        span.resume__entry__bullet__icon
+                          i.icon(class= bullet.icon)
+                      span.resume__entry__bullet__text= bullet.body
+
+              else if item.type == "warning"
+                .resume__entry__warning
+                  if item.link
+                    a(href= item.link.url, target= item.link.target || '_blank').resume__entry__warning__link
+                  .resume__entry__warning__wrapper
+                    if item.icon
+                      span.icon.resume__entry__warning__icon(class= item.icon)
+                    span.resume__entry__warning__text= item.body

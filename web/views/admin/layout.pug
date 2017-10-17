@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Admin
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css")
+
+        meta(name='theme-color', content='#9C2901')
+
+        link(href='https://fonts.googleapis.com/css?family=Lato:400,300,700, 900', rel='stylesheet', type='text/css')
+
+        //- Installed libraries
+        link(rel='stylesheet', href='/bower_components/normalize-css/normalize.css')
+        link(rel='stylesheet', href='/bower_components/devicon/devicon.min.css')
+        link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css')
+        link(rel='stylesheet', href='/vendors/hover-min.css')
+        link(rel='stylesheet', href='/vendors/animate.min.css')
+
+        //- Own libraries
+        link(rel='stylesheet', href='/css/style.min.css?v=2.0')
+        link(rel='stylesheet', href='/fonts/ferreiro/style.css')
+
+        style.
+            .loader {
+                display: none;
+            }
+
+    body
+
+        include ./menu
+
+        .container.container_home
+            .container_inner
+                .admin
+                    block content
+
+        script(src="https://code.jquery.com/jquery-3.2.1.min.js", integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", crossorigin="anonymous")
+
+        block extraScripts

@@ -1,0 +1,424 @@
+.blogPost {
+  z-index: 100;
+  margin: 0 auto;
+  margin-top: 1.5em;
+  position: relative;
+  max-width: $blogPostWidth;
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.04;
+    letter-spacing: -.028em;
+    color: rgba(0,0,0,.84);
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 42px;
+      letter-spacing: -.028em;
+
+      color: rgba(0,0,0,.85);
+    }
+  }
+
+  &__subtitle {
+    margin: 0;
+    margin-top: 16px;
+    --x-height-multiplier: 0.363;
+    --baseline-multiplier: 0.157;
+    font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+    letter-spacing: -.02em;
+    font-weight: 300;
+    font-style: normal;
+    letter-spacing: 0;
+    letter-spacing: -.022em;
+    color: rgba(0,0,0,.6);
+    font-size: 20px;
+    line-height: 1.3;
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 27px;
+      font-size: 24px;
+      line-height: 1.22;
+    }
+  }
+
+  &__image {
+    max-width: 100%;
+    margin-top: 1.5em;
+  }
+
+  &__separator {
+    width: 100%;
+    height: 1px;
+    display: block;
+    margin-top: 2em;
+    background: #f4f4f4;
+  }
+
+  &__category {
+    margin-top: 2em;
+
+    ul {
+      display: inline-block;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      margin-right: 1em;
+    }
+
+    a {
+      text-transform: capitalize;
+    }
+
+    p {
+      margin-right: 1em;
+      display: inline-block;
+      text-transform: capitalize;
+    }
+  }
+
+
+  hr {
+    font-size: 24px;
+    line-height: 1.4;
+    margin-top: 44px;
+    margin-bottom: 34px;
+    display: block;
+    border: 0;
+    text-align: center;
+    overflow: visible;
+    &:before {
+      content: '...';
+      display: inline-block;
+      margin-left: .6em;
+      color: rgba(0,0,0,.68);
+      position: relative;
+      top: -30px;
+
+      font-weight: 400;
+      font-style: italic;
+      font-size: 30px;
+      letter-spacing: .62em;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: inline-block;
+    font-family: 'Source Serif Pro', serif;
+
+    p, ul li, h1, h2, h3, h4, a {
+      --x-height-multiplier: 0.35;
+      --baseline-multiplier: 0.179;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 21px;
+      line-height: 1.58;
+      letter-spacing: -.003em;
+      color: rgba(0,0,0,.80);
+      margin-top: 29px;
+      word-break: break-word;
+      word-wrap: break-word;
+      display: block;
+    }
+
+    p, ul li, ol li, a {
+      font-size: 20px;
+      line-height: 1.58;
+      letter-spacing: -.004em;
+
+      @media all and (min-width: $desktop-screen) {
+        font-size: 21px;
+        line-height: 32px;
+        // line-height: 1.58;
+        // letter-spacing: -.003em;
+        letter-spacing: -.003em;
+        color: rgba(0,0,0,.84);
+      }
+    }
+
+    ol, ul {
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      -webkit-margin-start: 0;
+      -webkit-margin-end: 0;
+      -webkit-padding-start: 0;
+      padding: 0;
+      list-style: decimal;
+      list-style-position: inside;
+      // margin-top: 29px;
+      list-style-position: inside;
+      margin: 0;
+      padding: 0;
+      margin: 13px 0;
+      margin-left: 2em;
+
+      li {
+        margin: 20px 0;
+      }
+    }
+
+    ul {
+      li {
+        list-style: none;
+        &:before {
+          padding-right: 10px;
+          font-size: 1.3em;
+          content: '•';
+        }
+      }
+    }
+
+    ul.no_bullets {
+      list-style: none;
+
+      li {
+        span {
+          margin-right: 5px;
+        }
+        &:before {
+          content: '';
+          padding-right: 0;
+        }
+      }
+    }
+
+    ol {
+      margin-top: 29px;
+    }
+
+    //- https://stackoverflow.com/questions/10428720/how-to-keep-indent-for-second-line-in-ordered-lists-via-css
+    ol.linenums {
+      counter-reset: foo;
+      display: table;
+    }
+    ol.linenums > li {
+      counter-increment: foo;
+      display: table-row;
+    }
+    ol.linenums > li::before {
+      content: counter(foo) ".";
+      display: table-cell; /* aha! */
+      text-align: right;
+      padding-right: 0.5em;
+    }
+
+    //- Code syntax highlight
+    ol.linenums > li::before {
+      padding-right: 1em;
+    }
+    ol.linenums {
+      margin-left: 0.5em;
+
+      @media all and (min-width: $desktop-screen) {
+        padding-left: 1em;
+        margin-left: 1em;
+      }
+
+      li {
+        margin: 0;
+        font-size: 18px;
+        line-height: 26px;
+        color: rgba(255, 255, 255, 0.6) !important;
+        padding-left: 0;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+    }
+    pre {
+      tab-size: 2;
+      color: #ddd;
+      margin-top: 19px;
+    }
+    code {
+      padding: 0 5px;
+      color: #2f2f2f;
+      background: #f4f4f4;
+      overflow-wrap: break-word;
+      // color: #c5c8c6;
+      text-shadow: 0 1px rgba(0,0,0,.3);
+      font-family: Inconsolata,Monaco,Consolas,Courier New,Courier,monospace;
+      direction: ltr;
+      text-align: left;
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      line-height: 1.5;
+      -moz-tab-size: 4;
+      tab-size: 4;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+      hyphens: none;
+    }
+
+    blockquote {
+      margin: 0;
+      margin-top: 29px;
+      // margin-left: -1.75px;
+      color: rgba(0,0,0,.68);
+      border: none;
+      padding: 5px 0;
+      text-align: left;
+      display: inline-block;
+
+      padding-left: 1em;
+      margin-left: -1em;
+      border-left: 3px solid rgba(0,0,0,.84);
+
+      @media all and (min-width: $desktop-screen) {
+        padding-left: 20px;
+        margin-left: -23px;
+      }
+
+      p {
+        margin-top: 0;
+        font-weight: 400;
+        font-style: italic;
+        /*
+        &:before {
+          content: '“';
+        }
+        &:after {
+          content: '”';
+        }
+        */
+      }
+    }
+
+    /*
+    blockquote {
+      margin: 0;
+      margin-top: 29px;
+      // margin-left: -1.75px;
+      color: rgba(0,0,0,.68);
+      border: none;
+      padding: 5px 0;
+      text-align: left;
+      display: inline-block;
+
+      // padding-left: 1em;
+      // margin-left: -1em;
+      // border-left: 3px solid rgba(0,0,0,.84);
+
+
+      @media all and (min-width: $desktop-screen) {
+        // padding-left: 20px;
+        // margin-left: -23px;
+      }
+
+      p {
+        margin-top: 0;
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        color: #656565;
+        border-left: 0;
+        font-size: 24px;
+        line-height: 30px;
+
+        @media all and (min-width: $desktop-screen) {
+          line-height: 38px;
+          font-size: 30px;
+        }
+      }
+    }
+    */
+
+    a {
+      display: initial;
+    }
+
+    mark {
+      background-color: transparent !important;
+      background-image: linear-gradient(to bottom, rgba(203, 255, 186, 1), rgba(203, 255, 186, 1));
+      --x-height-multiplier: 0.363;
+      --baseline-multiplier: 0.157;
+      font-family: medium-content-slab-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.48;
+      letter-spacing: -.014em;
+      color: rgba(0,0,0,.68);
+      border: none;
+      padding: 0;
+      margin: 24px 0;
+      margin-left: 50px;
+      text-align: left;
+    }
+    h1 {
+      font-weight: 700;
+      font-style: normal;
+      font-size: 32px;
+      margin-left: -2px;
+      line-height: 1.15;
+      letter-spacing: -.02em;
+      color: rgba(0,0,0,.84);
+
+      // override
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      // font-family: Lato,sans-serif;
+
+      &::before {
+        background-color: green;
+        padding: 0 20px;
+        content: '#';
+      }
+    }
+    h2 {
+      // color: $primaryColor;
+      // font-family: Lato,sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: rgba(0,0,0,.7);
+      margin-bottom: -15px;
+    }
+  }
+}
+
+.blogPostRelated {
+  width: 100%;
+  margin-top: 2em;
+  padding: 1.5em 0;
+  background: #f4f4f4 !important;
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+
+  @media all and (min-width: $desktop-screen) {
+    padding: 0.5em 0;
+    margin-top: 3em;
+    // padding: 2em 0;
+  }
+
+  &__title {
+    font-size: 1.3em;
+    line-height: 1.3em;
+    font-weight: 600;
+    border-right: 0;
+    border-left: 0;
+    text-align: center;
+    color: rgba(0, 0, 0, .6);
+    // padding: 0.9em 0;
+    margin: 0;
+    margin-bottom: 1.8em;
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 1.4em;
+      line-height: 1.4em;
+      margin-bottom: 1.4em;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+extends ./includes/layout
+include ./mixins/resumeEntry
+include ./mixins/timelineEntry
+include ./mixins/subscriptionBoxLarge
+
+block content_full
+  //.profileCard
+    .profileCard_bg
+      // SEO
+      img
+    .profileCard_avatar
+      img(src="/images/jorge_ferreiro_software_engineer_developer_entrepreneur.jpg")
+    .profileCard_userFields
+      h1.profileCard_name Jorge Ferreiro
+      h2.profileCard_job <strong>Software Engineer / Entrepreneur</strong>
+
+      .about_resume
+        a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_resume_button.about_resume_button_download Download my resume
+        a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank").about_resume_button.about_resume_button_view View my resume
+
+block content
+
+  // include ./includes/breadcrumb.pug
+  .animated.animated.fadeInUp
+    center
+      h1.about_bio__large__title Jorge Ferreiro
+      h2.about_bio__large__subtitle Software Engineer, Product Manager &amp; Entrepreneur
+
+    .about_bio__large
+      .about_bio__large__left_v2(style="background-image: url(/images/about/jorge_ferreiro_entrepreneur_and_biography_photo.jpg);")
+        img(src="/images/about/jorge_ferreiro_entrepreneur_and_biography_photo.jpg", width="100%").about_bio__large__pic
+      .about_bio__large__right
+        .about_bio__large__right__content
+          p.about_bio__large__bio <span style="font-size: 1.5em; margin-right: 5px;">Hi!</span> I'm <strong>Jorge Ferreiro</strong>, a 22-year-old Software Engineer, Product Manager and Entrepreneur, with a passion for design and a desire to create software products that solve real problems and improve people's lives.
+          p.about_bio__large__bio In late 2017, I finished my <b>Bachelor's Degree in Computer Science at UCM</b>. In summer 2017, I <b>studied at UC Berkeley</b> <i>(CS 61BL and COLWRIT 9I)</i> and in 2016 I did an <b>internship in China</b> with Huawei.
+          p.about_bio__large__bio I've launched two <a href="/portfolio">personal projects</a> that I'm really proud of: <b>Dailyfocus</b> <i>(a productivity application I'm working right now)</i> and <b>Music4deejays</b> <i>(a music application to promote young artists that reached 56,000 downloads)</i>.
+          p.about_bio__large__bio As the creator and main driver of Dailyfocus, I took requirements and defined the product roadmap, designed the architecture, created prototypes, and built an MVP (backend and frontend) in under 5 months. You can <a href="http://test.dailyfocus.io?ref=ferreiro" target="_blank">review the application here</a>.
+          p.about_bio__large__bio In my next steps, I'm focusing on taking Dailyfocus to the next level and expanding my personal brand while working on viral projects to learn new technologies. I'm always looking for opportunities of any type to expand my technical and business expertise.
+          p.about_bio__large__bio <a href="/contact">Contact me</a> if you want to connect or make a proposal.
+          .about_bio__large__callToAction#aboutActions
+            a(href="/resume/jorge_ferreiro_resume.pdf?pdf=resume&ref=about", style="border: 2px solid #d83901; color: #d83901;", target="_blank").about_bio__large__button
+              span.icon.ion-document
+              | Read Resume
+            a(href="/contact", style="border-width: 2px;").about_bio__large__button
+              span.icon.ion-android-mail
+              | Contact me
+            //- a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_bio__large__button
+              span.icon.ion-ios-cloud-download-outline
+              | Download Resume
+
+  h1.timeline__bigTitle Timeline
+
+  .timeline#education
+    .timeline__wrapper
+      .timeline__badge
+        span.timeline__badge__title Education
+      .timeline__entries
+        each item in education || []
+          +timelineEntry(item)
+
+  .timeline#experience
+    .timeline__wrapper
+      .timeline__badge
+        span.timeline__badge__title Experience
+      .timeline__entries
+        each item in work || []
+          +timelineEntry(item)
+
+block after_content
+
+  .about_hot_links
+    .hotLinks
+      .hotLinks__list
+        a(href="/blog?ref=about").hotLinks__item(style="background-image:url('/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg');")
+          h3 Discover my blog

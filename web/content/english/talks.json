@@ -1,0 +1,142 @@
+{
+  "config": {
+    "title": "Talks and Workshops",
+    "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops. I've organized a technical workshop sponsored by Github and volunteered on various tech and entrepreneurship events.",
+    "wallpaper": "/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg",
+    "callToAction": {
+      "claim": "Do you have an event and want jorge to be a speaker or co-organiser? Write an email or contact.",
+      "button": "Bring me to your event"
+    }
+  },
+  "pastTalks": [
+    {
+      "title": "Introducing Redis by Jorge Ferreiro - May 2017",
+      "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
+      "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
+      "type": "slides",
+      "pic": "/images/talks/redis_introducing_jorge_ferreiro_icon_2.png",
+      "date": "May, 2017",
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/redis-76234580"
+        }
+      ],
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp"
+    },
+    {
+      "title": "Presentación Dailyfocus (incluye DEMO! 🔥) - 16 minutos - FDI UCM",
+      "summary": "Presentation of my personal project Dailyfocus, where I explained the engineering, product design, business and my personal experience.",
+      "permalink": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
+      "type": "video",
+      "pic": "/images/talks/dailyfocus_ucm_video.png",
+      "date": "June 17, 2017",
+      "event": "",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=qlDrZiwkrv0"
+        },
+        {
+          "title": "Slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
+        }
+      ],
+      "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
+    },
+    {
+      "title": "Dailyfocus presentation (June 2017): vision, product, tech and journey",
+      "summary": "Presentation made for an academic jury from my college. I mainly cover: challenges, vision and goals, development process, lessons learned, etc.",
+      "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
+      "type": "slides",
+      "pic": "/images/talks/dailyfocus_ucm.png",
+      "date": "Aug 7, 2017",
+      "event": "",
+      "buttons": [
+        {
+          "title" : "Read presentation",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
+        }
+      ],
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
+    },
+    {
+      "title": "Mini talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+      "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
+      "type": "video",
+      "pic": "/images/talks/js_day_es.png",
+      "date": "May, 2017",
+      "event": "JS DAY ES 2017",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk"
+        }
+      ],
+      "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
+    },
+    {
+      "title": "Workshop: Your first professional website (sponsored by Github.com)",
+      "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
+      "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
+      "type": "slides",
+      "pic": "/images/talks/wokshop_fdi_header.png",
+      "date": "",
+      "event": "",
+      "buttons": [
+        {
+          "title": "Checkout the Slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website"
+        },
+        {
+          "title": "See poster",
+          "url": "https://drive.google.com/file/d/0B5Fp53X_33RqV0V4T3JWNG1WX2s/view"
+        }
+      ],
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
+    },
+    {
+      "private": true,
+      "title": "Machine Learning: online news prediction in Mashable",
+      "summary": "As a college project, I created a presentation and a report with a ML analysis to predict when is the best time to publish news to gain popularity.",
+      "permalink": null,
+      "type": "slides",
+      "pic": "/images/talks/mashable.png",
+      "date": "Jan 20, 2017",
+      "event": "FDI ML",
+      "buttons": [
+        {
+          "title": "Read Slides",
+          "type": "slides",
+          "url": null
+        }
+      ],
+      "iframeSrc": null
+    },
+    {
+      "title": "Webapps: introduction and publishing on Firefox OS",
+      "summary": "I was invited by a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
+      "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
+      "type": "slides",
+      "pic": "/images/talks/mozilla_firefox.jpg",
+      "date": "Nov 28, 2014",
+      "event": "Mozilla Event",
+      "buttons": [
+        {
+          "title": "Read Slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os"
+        }
+      ],
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/i6RWO4Nmrt0eQw"
+    }
+  ]
+}

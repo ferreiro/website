@@ -1,0 +1,127 @@
+extends ./includes/blog_layout_v2_large
+include ./mixins/postCard
+include ./mixins/sharePostBig
+include ./mixins/subscriptionBoxLarge
+include ./mixins/popupNewsletter
+
+block extraMeta
+  if post
+    meta(property='og:url', content= 'https://ferreiro.me/blog/' + post.permalink)
+    meta(property='og:type', content='article')
+    meta(property='og:title', content= post.title)
+    meta(property='og:description', content= post.summary)
+    meta(property='og:image', content= post.pic)
+    meta(property='og:image:alt', content= post.title)
+
+block extraCss
+  link(rel="stylesheet", href="/vendors/twentytwenty/css/twentytwenty.css", type="text/css", media="screen")
+
+block extraScripts
+  script(src="/vendors/twentytwenty/js/jquery.event.move.js", type="text/javascript")
+  script(src="/vendors/twentytwenty/js/jquery.twentytwenty.js", type="text/javascript")
+
+  script(src="/js/blog.main.min.js")
+  script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst")
+
+  //- External links
+  script.
+    // This is the only line you need and should select which area
+    // you want the links to appear be externalized
+    (function($){
+      $(function(){
+        $('#post').externalLinks()
+      });
+    }(jQuery));
+
+  //- script(src="/vendors/jquery.toc.min.js")
+  //- script.
+    $("#toc").toc({
+      content: ".blogPost__content",
+      headings: "h1,h2,h3,h4"
+    });
+
+
+//- override default behaviour. Here we show the popup after X miliseconds.
+block popupNewsletter
+  include ./mixins/popupNewsletter
+  +popupNewsletter({
+    autodisplay: true
+  })
+
+block content_header
+  - hasAnimation = false
+  +blogHeader(hasAnimation, true)
+
+block content_large
+  style.
+    .menu {
+      position: absolute; /* making the header not fixed for better writing */
+    }
+
+  .blogPost.animated.fadeInUp
+    if admin && post
+      ul.blog__post__options(style="margin-bottom: 1em;")
+        li(style="margin-right: 1em;")
+          a(href= post.permalink + '?disableAdmin=true').action_button
+            span.icon.ion-eye
+            | See post as normal user
+        li(style="margin-right: 1em;")
+          a(target="_blank", href= '/admin/edit/' + post.permalink).action_button
+            span.icon.ion-edit
+            | Edit post
+        li
+          a(href= '/admin/delete/' + post.permalink).action_button
+            span.icon.ion-android-delete
+            | Delete post
+
+      //-p= 'Views ' + post.views + ' | Likes: ' + post.likes
+
+    if error
+      h1= error
+
+    if post
+      //- Load Social Sharing
+      include ./includes/socialSharing
+
+      article#post
+        //- Post metadata
+        h1.blogPost__title= post.title
+        h2.blogPost__subtitle= post.summary
+        img.blogPost__image(src= post.pic, style="width: 100%;")
+
+        //- .toc#toc
+
+        .blogPost__content!= post.html
+
+        if post.category && post.category.length > 0
+          ul.blogPost__category#category
+            //- p Post published in
+            each category in post.category
+              if category !== null
+                li
+                  a(href= "/blog/category/" + category).action_button= category
+
+        #showNewsletterBreakPoint
+
+      .blogPost__separator
+
+      .separator_no_margin#postFooter
+
+      +sharePostBig('/blog/' + post.permalink, 'article')
+
+block after_content
+
+  //- This div with ID is used by the Javascript
+  //- To know where to hide the sharing pannel.
+  #relatedPosts
+    if relatedPosts && relatedPosts.length > 0
+      .container.blogPostRelated
+        .container_inner.blogPostRelated__inner
+
+          h3.blogPostRelated__title Related posts
+
+          .threeColsGrid
+            each post, index in relatedPosts
+              .threeColsGrid__item
+                .threeColsGrid__item__wrapper
+                  +postCard(post)

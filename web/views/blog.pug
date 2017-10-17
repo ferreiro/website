@@ -1,0 +1,52 @@
+extends ./includes/blog_layout_v2_large
+include ./mixins/postCard
+include ./mixins/blogHeader
+include ./mixins/blogEntry
+include ./mixins/subscriptionBoxLarge
+include ./mixins/mostRecentPostAd
+
+block content_header
+  - hasAnimation = true
+  +blogHeader(hasAnimation)
+
+block content_large
+
+  .container__middle.animated.fadeInUp
+    if !posts || posts.length <= 0
+      .warningMessage(style="max-width: 400px; margin: 0 auto;")
+        h1.warningMessage__title There are no more posts to show.
+        p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+        .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+          include ./includes/subscriptionBox
+
+    else
+      .threeColsGrid
+        each post, index in posts || []
+
+          //- Advertisement: subscribe to blog!
+          //- if index == 3
+            .threeColsGrid__item__full_width
+              .box_with_shadow(style="margin: 0;")
+                +subscriptionBoxLarge({
+                  displayForm: true
+                })
+
+          //- Blog Entry
+          .threeColsGrid__item
+            .threeColsGrid__item__wrapper
+              +postCard(post)
+
+      if prevPageToken != "start" || nextPageToken != "end"
+        .blog__load_more
+          if prevPageToken != "start" && prevPageToken > 0
+            a(href= '/blog?next=' + prevPageToken).big_action_button Previous page
+          if nextPageToken != "end"
+            a(href= '/blog?next=' + nextPageToken).big_action_button Next page
+
+      //- if posts.length < 3
+      //- Display the add here too.
+      //- .box_with_shadow(style="margin: 0;")
+      //-
+        +subscriptionBoxLarge({
+          displayForm: true
+        })

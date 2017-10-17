@@ -1,0 +1,25 @@
+include ../mixins/newsletterForm
+
+mixin subscriptionBoxLarge(opts)
+  .subscriptionBoxLarge
+    - subscriptionTitle = opts && opts.customTitle ? opts.customTitle : 'Join my newsletter'
+    - displayTitle = opts && opts.displayTitle !== undefined ? opts.displayTitle : true
+    if displayTitle
+      h3.subscriptionBoxLarge__title= subscriptionTitle
+
+    - body = opts && opts.customBody ? opts.customBody : 'Creating a blog from the ground is really hard. Join my newsletter and receive new posts and projects in your inbox. This would make me happy 😊'
+    p.subscriptionBoxLarge__text!= body
+
+    if !opts.displayForm
+      form#subscribeLargeForm.subscriptionBoxLarge__form(action="/newsletter", target="_blank", method="GET")
+        span.subscriptionBoxLarge__completed
+          | ✔
+          span(style='color: #000; margin-left: 0.5em;') Subscribed!
+        button.subscriptionBoxLarge__submit.openNewsletterSubscription
+          img.subscriptionBoxLarge__loader(src='/images/spinner.svg')
+          span.beta__signup__text Subscribe to my newsletter
+    else
+      .subscriptionBoxLarge__formWrapper
+        +newsletterForm({
+          scrollToError: opts && opts.scrollToError !== undefined ? String(opts.scrollToError) : 'true'
+        })

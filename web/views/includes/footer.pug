@@ -1,0 +1,100 @@
+
+footer.jfFooter#footer
+  .jfFooter_content
+
+    //-.jfFooter_entry
+      h2 <span id="githubRespositories"></span> Public repos
+      p <a href="http://www.github.com/ferreiro" target="_blank">Github.com/ferreiro</a>
+
+    //.jfFooter_entry
+      a(href="/contact").jfFooter_entry__link
+      h2 Contact
+      p <a href="/contact">Send a message</a>
+
+    .jfFooter_entry.jfFooter_entry_link
+      a(href="mailto:jorge@ferreiro.me;", target="_blank").jfFooter_entry__link
+      .jfFooter_entry__social
+        span.icon.ion-ios-contact-outline
+        p jorge@ferreiro.me
+
+    .jfFooter_entry.jfFooter_entry_link
+      a(href="/newsletter").jfFooter_entry__link
+      .jfFooter_entry__social
+        span.icon.ion-android-mail
+        p Newsletter
+
+    .jfFooter_entry.jfFooter_entry_link
+      a(href="https://twitter.com/jgferreiro", target="_blank").jfFooter_entry__link
+      .jfFooter_entry__social
+        span.icon.icon-twitter
+        p Twitter
+
+    .jfFooter_entry.jfFooter_entry_link
+      a(href="https://www.linkedin.com/in/jgferreiro/", target="_blank").jfFooter_entry__link
+      .jfFooter_entry__social
+        span.icon.icon-linkedin
+        p Linkedin
+
+    .jfFooter_entry.jfFooter_entry_link
+      a(href="https://www.github.com/ferreiro", target="_blank").jfFooter_entry__link
+      .jfFooter_entry__social
+        span.icon.icon-github
+        p Github
+
+    .jfFooter_entry.jfFooter_entry_link
+      a(href="https://www.instagram.com/jgferreiro/", target="_blank").jfFooter_entry__link
+      .jfFooter_entry__social
+        span.icon.icon-instagram
+        p Instagram
+
+    //-.jfFooter_separator
+
+    //-.container(style="max-width: 330px; text-align: center;")
+      include ./subscriptionBox_minimal
+
+    .jfFooter_separator(style="margin-top: 1.7em;")
+
+    .jfFooter_entry.jfFooter_credits
+      a(href="/").jfFooter__logo
+          img(src="/images/logo.jpg")
+      h2 Designed &amp; Programmed by:
+      h1 Jorge Ferreiro
+      h3
+        | &copy; Jorge Ferreiro |
+        a(href="http://github.com/ferreiro/website", target="_blank")  Source code
+
+
+script(src="/bower_components/jquery/dist/jquery.min.js")
+
+script(src="/bower_components/fastclick/lib/fastclick.js")
+
+script(src="/js/commun.main.min.js")
+
+script(src="/vendors/jquery.lazy.min.js")
+
+script(type='text/javascript').
+  $(function() {
+    $('.lazy').lazy()
+    FastClick.attach(document.body)
+  })
+
+  $('.container').css({
+    opacity: 0
+  })
+  $(window).on("load", function() {
+    $('.loader').fadeOut('100', () => {
+      //- Animation completed
+    })
+    animateMainContainer()
+    $('.container').css({
+      opacity: 1
+    })
+  })
+
+script.
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-75768739-1', 'auto');
+  ga('send', 'pageview');

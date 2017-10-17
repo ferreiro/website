@@ -1,0 +1,55 @@
+mixin blogEntry(post)
+    - var postUrl = '/blog/' + post.permalink
+    .blog__entry.box_with_shadow
+      //.blog__link
+        a(href= postUrl)
+      .blog__post
+        .blog__post__left
+          .blog__post__pic(style="background-image:url(" + post.pic + ");")
+            a(href= postUrl, target="_blank").blog__post__pic__link
+        .blog__post__right
+          .blog__post__metadata
+
+            if !post.published
+              p.blog__post__isDraft DRAFT
+
+            h1.blog__post__title
+              a(href=postUrl, target="_blank").blog__post__title__link= post.title
+
+            .blog__author
+              //-.blog__author__pic
+                img(src= post.author.pic || '')
+              .blog__author__content
+                h2.blog__author__name
+                  | #{post.author_name || 'Jorge'} - #{post.created || ''}
+                //-p.blog__author__date= post.created || ''
+
+            if post.summary
+              p.blog__post__intro= post.summary
+
+            if !admin
+              ul.blog__post__options
+                li
+                  a(href= postUrl, target="_blank").action_button
+                    | Read more
+                li
+                  a(href= postUrl, target="_blank").action_button
+                    span.icon.ion-android-favorite-outline
+                    | Like
+            else
+              hr
+              i= 'Permalink: ' + post.permalink
+              p= 'Views ' + post.views + ' | Likes: ' + post.likes
+
+              ul.blog__post__options
+                li(style="margin-right: 1em;")
+                  a(target="_blank", href= '/blog/' + post.permalink + '?disableAdmin=true').action_button
+                    | See post as a normal user
+                li(style="margin-right: 1em;")
+                  a(href= '/admin/edit/' + post.permalink).action_button
+                    span.icon.ion-edit
+                    | Edit post
+                li(style="margin-right: 0;")
+                  a(href= '/admin/delete/' + post.permalink).action_button
+                    span.icon.ion-android-delete
+                    | Delete post

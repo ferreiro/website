@@ -1,0 +1,90 @@
+.subscriptionBoxLarge {
+  text-align: center;
+  padding: 1.5em 1.5em;
+  position: relative;
+
+  @media all and (min-width: $desktop-screen) {
+    padding: 2em 0;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+    font-size: 1.4em;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: -5px;
+
+    @media all and (min-width: $desktop-screen) {
+      font-size: 1.8em;
+    }
+  }
+
+  &__text {
+    max-width: 300px;
+    max-width: 430px;
+
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin: 1.5em auto;
+    color: rgba(0, 0, 0, .7);
+  }
+
+  &__form {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: none;
+    span:before {
+      font-size: 200px;
+      color: rgba(0, 0, 0, 0.03);
+    }
+    .icon_small:before {
+      font-size: 150px;
+    }
+  }
+
+  &__email {
+    border: 1px solid #cecece;
+    padding: 0.7em 0;
+    @include border-radius(10px);
+  }
+
+  &__formWrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  &__loader {
+    height: 30px;
+    display: none;
+  }
+  &__completed {
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+
+  &__submit {
+    margin: 0 auto;
+    padding: 1em 1.2em;
+    background: $primaryColor;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    @include transition(0.3s);
+    @include border-radius(60px);
+    &:hover {
+      background: #ff4302;
+    }
+  }
+}

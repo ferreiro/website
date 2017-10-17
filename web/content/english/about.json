@@ -1,0 +1,156 @@
+{
+  "education": [
+    {
+       "title":"Summer International Student",
+       "position":"UC Berkeley",
+       "pic":"/images/about/uc_berkeley.png",
+       "pic_type":"horizontal",
+       "start":"Jun 2017",
+       "end":"Aug 2017",
+       "description":[
+          {
+             "type":"entry",
+             "icon":null,
+             "body":"CS 61BL: Data Structures and Programming Methodology."
+          },
+          {
+             "type":"entry",
+             "icon":null,
+             "body":"COLWRIT 9: Conflict Resolution and Communication Skills."
+          }
+       ]
+    },
+    {
+       "title":"Computer Science Student",
+       "position":"Universidad Complutense de Madrid",
+       "pic":"/images/about/universidad_complutense_de_madrid_ucm.jpg",
+       "pic_type":"horizontal",
+       "start":"Sept 2013",
+       "end":"Current",
+       "description":[
+          {
+             "type":"entry",
+             "icon":null,
+             "body":"Bachelor's degree in Computer Science (english group)."
+          }
+       ]
+    }
+  ],
+  "work": [
+    {
+       "title":"Dailyfocus Application",
+       "position":"Software Engineer / Creator",
+       "pic":"/images/projects/dailyfocus/dailyfocus_icon.png",
+       "pic_type":"vertical",
+       "start":"May 2016",
+       "end":"Current",
+       "description":[
+          {
+             "type":"warning",
+             "icon":null,
+             "body":"Check out my work! <a href='http://test.dailyfocus.io?ref=ferreiro' target='_blank'>http://test.dailyfocus.io</a>",
+             "link":{
+                "url":"http://test.dailyfocus.io?ref=ferreiro",
+                "target":"blank"
+             }
+          },
+          {
+             "type":"bullets",
+             "icon":null,
+             "body":[
+                {
+                   "type":"entry",
+                   "icon":"ion-university",
+                   "body":"Best college capstone project with the maximum grade (10/10)."
+                },
+                {
+                   "type":"entry",
+                   "icon":"ion-ios-calendar-outline",
+                   "body":"Built in 5 months the Backend, Rest API and Frontend systems from scratch, using MVC architecture and creating an extensible modular application with plugins."
+                },
+                {
+                   "type":"entry",
+                   "icon":"icon-google",
+                   "body":"Integrated the Gmail API and added new functionalities on top of it, such as converting all the email into chats and quick responses."
+                },
+                {
+                   "type":"entry",
+                   "icon":"ion-ios-flask-outline",
+                   "body":"Designed a polished responsive UI, incorporating feedback, taking requirements from target users and delivering an effective product roadmap."
+                }
+             ]
+          }
+       ]
+    },
+    {
+       "title":"Huawei",
+       "position":"Internship in China",
+       "pic":"/images/about/huawei.png",
+       "pic_type":"vertical",
+       "start":"Dec 2013",
+       "end":"Dec 2015",
+       "overrideYears":"Summer 2016",
+       "description":[
+          {
+             "type":"bullets",
+             "icon":null,
+             "body":[
+                {
+                   "type":"entry",
+                   "body":"Learned to work in a fast-paced and multicultural environment in Shenzhen, China.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Honed my communication and leadership skills, representing my team in key events.",
+                   "icon":null
+                }
+             ]
+          }
+       ]
+    },
+    {
+       "title":"Music4deejays",
+       "position":"Software Engineer & Founder",
+       "pic":"/images/projects/music4deejays/m4d_icon.png",
+       "pic_type":"vertical",
+       "start":"Dec 2013",
+       "end":"Dec 2015",
+       "description": [
+          {
+             "type":"bullets",
+             "icon":null,
+             "body":[
+                {
+                   "type":"entry",
+                   "body":"Created a music player and online streaming service using the Soundcloud API.",
+                   "icon":"icon-soundcloud"
+                },
+                {
+                   "type":"entry",
+                   "body":"Achieved 56k downloads by creating a strategy to drive the product to massive reach.",
+                   "icon":"ion-trophy"
+                }
+             ]
+          }
+       ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "backend",
+      "title" : "Backend",
+      "list" : [ "nodejs", "python", "java", "mongodb", "redis", "mysql" ]
+    },
+    {
+      "id": "frontend",
+      "title" : "Frontend",
+      "list" : [ "javascript", "less", "html5", "gulp", "sass" ]
+    },
+    {
+      "id": "tools",
+      "title" : "Tools",
+      "list" : [ "travis", "git", "bower", "jquery"]
+    }
+  ]
+}

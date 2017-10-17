@@ -1,0 +1,53 @@
+extends ./includes/layout
+
+block content
+
+	include ./includes/breadcrumb.pug
+
+	.sectionWrapper.animate_div
+		.university
+
+			img.university_wall(src="/images/fdi_ucm.jpg", width="100%")
+
+			if content.text
+				for text in content.text
+					p.paragraph !{text}
+
+			.language_icon
+				span.lang_icon.lang_english
+				span.lang_text English course #{englishCourses}/50
+
+			.language_icon
+				span.lang_icon.lang_spanish
+				span.lang_text Spanish course #{spanishCourses}/50
+
+			if content.courses
+				each course, index in content.courses
+					.course
+
+						if course.title
+							h2.course_title
+								span.course_title_year #{index+1}
+								span.course_title_text #{course.title}
+
+						if course.subjects
+							.course_subjects
+								each subject in course.subjects
+									.course_subjects_entry
+										- lang = subject.lang
+										if lang
+											if lang == "es"
+												span.flags
+													span.lang_icon.lang_spanish
+											else if lang == "en"
+												span.flags
+													span.lang_icon.lang_english
+										if subject.title
+											p #{subject.title}
+						else
+							p.course_not_available Next year I will probably study abroad. This webpage will be udpated by Summer 2016.
+				
+				
+				a(href="./projects", class="callToAction").button.button_rounded.centered.margin_top.orange
+					span Discover my Work!
+					span.icon-arrow-right2

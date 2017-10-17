@@ -1,0 +1,61 @@
+$threeColsGrid_bottom_margin_mobile: 1em;
+$threeColsGrid_bottom_margin_desktop: 2em;
+$threeColsGrid_wrapper_margin_mobile: 0.5em;
+$threeColsGrid_wrapper_margin_desktop: 0.7em; // 1em
+
+.threeColsGrid {
+  vertical-align: top;
+  margin: 0 (-$threeColsGrid_wrapper_margin_mobile);
+
+  @include flexbox();
+  @include flexbox_wrap(wrap);
+  @include flexbox_justifyContent(center, center);
+
+  @media all and (min-width: $desktop-screen) {
+    margin: 0 (-$threeColsGrid_wrapper_margin_desktop);
+  }
+
+  &__leftAligned {
+    @include flexbox_justifyContent(start, start);
+  }
+
+  &__item__full_width {
+    width: 100%;
+    display: block;
+    margin-bottom: $threeColsGrid_bottom_margin_mobile;
+
+    @include flexbox_grow(0);
+
+    @media all and (min-width: $desktop-screen) {
+      padding: 0 $threeColsGrid_wrapper_margin_desktop;
+      margin-bottom: $threeColsGrid_bottom_margin_desktop;
+    }
+  }
+
+  &__item {
+    width: 100%; // Mobile with one column
+    margin-bottom: $threeColsGrid_bottom_margin_mobile;
+
+    @include flexbox_grow(1);
+
+    @media all and (min-width: $tablet-screen) {
+      width: 50%;
+    }
+
+    @media all and (min-width: $desktop-screen) {
+      width: 33.3%;
+      max-width: 33.3%;
+      margin-bottom: $threeColsGrid_bottom_margin_desktop;
+    }
+
+    //- Wrapper with margin inside the boxes
+    &__wrapper {
+      height: 100%;
+      padding: 0 $threeColsGrid_wrapper_margin_mobile;
+
+      @media all and (min-width: $desktop-screen) {
+        padding: 0 $threeColsGrid_wrapper_margin_desktop;
+      }
+    }
+  }
+}

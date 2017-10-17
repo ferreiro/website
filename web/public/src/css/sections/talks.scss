@@ -1,0 +1,123 @@
+.talkHeader {
+  @include border-radius(10px);
+}
+
+.talk {
+  width: 100%;
+  height: 230px;
+  border: 1px solid #DFDFDF;
+  position: relative;
+  overflow: hidden;
+  -webkit-column-break-inside: avoid;
+  column-break-inside: avoid;
+  @include border-radius(10px);
+  &__link {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    position: absolute;
+  }
+  &__title {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1em;
+    position: absolute;
+    z-index: 1;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.65+0,0+100;Neutral+Density */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    h1 {
+      color: #fff;
+      font-size: 1.2em;
+      line-height: 1.3em;
+    }
+  }
+  &__callToAction {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    &__button {
+      padding: 0.8em 1em;
+      background: rgba(214, 214, 214, 0.4);
+      color: rgba(0, 0, 0, 0.8);
+      display: block;
+      @include border-radius(60px);
+    }
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-size: cover;
+    background-position: center center;
+    // background-repeat: no-repeat;
+    // background: url('/images/loading.gif') 50% 50% no-repeat;
+    // background-size: 30px;
+  }
+  &__ad {
+    height: 100%;
+    padding: 0 1.5em;
+    position: relative;
+    &__title {
+      font-size: 1.5em;
+      color: #000;
+      margin-top: 1em;
+    }
+
+    &__subtitle {
+      margin: 1em 0;
+      margin-bottom: 1.4em;
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      color: rgba(0, 0, 0, 0.8);
+      display: inline-block;
+    }
+
+    &__link {
+      font-weight: 600;
+      padding: 0.9em 1em;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 1.5em;
+      border: 3px solid $primaryColor;
+      color: $primaryColor;
+
+      @include border-radius(60px);
+      @include transition(150ms);
+
+      &:hover {
+        background: $primaryColor;
+        color: #fff;
+      }
+    }
+
+    &__link__simple {
+      padding: 0;
+      padding-bottom: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      border-bottom: 2px solid #000;
+
+      @include transition(200ms);
+
+      &:hover {
+        border-bottom-color: transparent;
+        border-bottom: 2px solid #d83901;
+        color: #d83901;
+      }
+    }
+  }
+  iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0  !important;
+  }
+}

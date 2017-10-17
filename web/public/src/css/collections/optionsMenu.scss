@@ -1,0 +1,63 @@
+$optionsMenuHeight_mobile: 60px;
+$optionsMenuHeight_desktop: 70px;
+$optionsMenuSelectedBorder: 2px;
+$optionsMenuActiveColor: #0084bf;
+
+.optionsMenu {
+  background: #fff;
+  border-bottom: 1px solid #e6e9ec;
+
+  &__list {
+    text-align: center;
+  }
+
+  &__item {
+    display: inline-block;
+    height: $optionsMenuHeight_mobile !important;
+
+    @media all and (min-width: $desktop-screen) {
+      height: $optionsMenuHeight_desktop !important;
+    }
+
+    &[aria-selected="true"] a {
+      color: $optionsMenuActiveColor;
+      height: ($optionsMenuHeight_mobile - $optionsMenuSelectedBorder) !important;
+      border-bottom: $optionsMenuSelectedBorder solid $optionsMenuActiveColor;
+
+      @media all and (min-width: $desktop-screen) {
+        height: ($optionsMenuHeight_desktop - $optionsMenuSelectedBorder) !important;
+      }
+    }
+
+    &:hover {
+      a {
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    &__icon {
+      margin-right: 9px;
+    }
+  }
+
+  &__link {
+    font-size: 18px;
+    padding: 0 0.6em;
+    font-weight: 600;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom-width: 4px;
+    color: rgba(0, 0, 0, 0.55);
+    height: $optionsMenuHeight_mobile;
+    line-height: ($optionsMenuHeight_mobile - $optionsMenuSelectedBorder) + 4px;
+
+    @include transition(300ms);
+
+    @media all and (min-width: $desktop-screen) {
+      padding: 0 24px;
+      font-size: 21px;
+      height: $optionsMenuHeight_desktop;
+      line-height: ($optionsMenuHeight_desktop - $optionsMenuSelectedBorder) + 2px;
+    }
+  }
+}

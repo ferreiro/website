@@ -1,0 +1,161 @@
+// Margins - Padding
+$website_desktop_width:$desktop-screen; // Width of your desktop container
+$website_header: $headerHeight; // Header size of your website
+$menu_padding:20px; // Used on titles and li's
+// Text Size
+$title_size:2em;
+$links_size:20px;
+// Colors
+$main_color:$primaryColor;
+$text_color:$secundaryColor;
+$submenu_color:#f4f4f4;
+$active_menu_color:#FFECE6;
+$overlay_color: rgba(0, 0, 0, 0.6);
+$open_button_color:#949494;
+$open_button_color_active:#545454;
+// Borders
+$border_type:dotted;
+$border_size:1px;
+$border_color:#cecece;
+
+.jfmenu__mobileButton {
+  display: block;
+  position: relative;
+  height: $headerHeight;
+  color: $open_button_color;
+
+  &__wrapper {
+    height: calc(100%);
+  }
+
+  &__active {
+    color: $open_button_color_active !important;
+    background: #f4f4f4 !important;
+    .jfmenu__mobileButton__text {
+      color: $open_button_color_active !important;
+    }
+  }
+
+  &__text {
+    top: 50%;
+    right: 55px;
+    position: absolute;
+    display: inline-block;
+    color: $open_button_color;
+    font-size: 22px !important;
+    text-transform: capitalize !important;
+    padding-top: 3px;
+
+    @include translate(0, -50%);
+  }
+
+  &__icon {
+    position: absolute;
+    font-size: 60px;
+    top: 50%;
+    right: 0;
+    padding-top: 3px;
+
+    @include translate(0, -50%);
+  }
+}
+
+.jfmenu {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  position: fixed;
+  overflow-y: auto;
+  display: none;
+
+  &_displayed {
+    display: block !important; // Don't change !important
+
+    @media all and (min-width: $website_desktop_width) {
+      display: none !important; // Hide opened menu if window resizes
+    }
+  }
+
+  &_overlay {
+    top: 0;
+    left: 0;
+    z-index: 0; // Overlay behind our content
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: $overlay_color;
+  }
+
+  &_content {
+    width: 100%; // Ocuppy all the screen
+    height: auto; // 100%=ocuppy all the height | auto=adjust to menu content
+    background: #fff; // Background of the menu
+    position: absolute;
+    z-index: 10;
+    top: 0;
+  }
+
+  // Start the menu after the header of your website
+  &_top_separator {
+    height:$website_header + 2 * $headerPadding - 6px; // Header size of your website
+  }
+
+  &_title {
+    font-size: $title_size;
+    padding: $menu_padding;
+    color:$main_color;
+    font-weight: 400;
+  }
+
+  // A block is a bunch of links
+  // When a block itself, does not container another block
+  // it's considered as normal block
+  // When a block, contains another block, it's considered a parent block
+  // So the title will not have any link
+
+  ul {
+    // border-left:5px solid $border_color;
+    border-top:$border_size $border_type $border_color;
+  }
+
+  ul ul {
+    display: none; // Never put !important - Hide Submenus - Submenus will be shown when user click on the menu link via javascript
+  }
+
+  ul > li.submenu > a {
+    background: $submenu_color; // Apply color to parent link to the block
+  }
+
+  li {
+    width: 100%;
+    border-bottom:$border_size $border_type $border_color;
+    display: inline-block;
+
+    &.current_section {
+      a {
+        background: $active_menu_color;
+        border-left-color: $main_color;
+        // border-left: 5px solid #000;
+        // margin-left: -5px;
+      }
+    }
+
+    span.icon-separated {
+      margin-right: 0.7em;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: $links_size;
+      border-left:5px solid $border_color;
+      display: block; // Don't change this
+      padding: $menu_padding $menu_padding;
+      cursor: pointer;
+    }
+  }
+
+}

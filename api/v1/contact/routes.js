@@ -1,49 +1,82 @@
-var utils = require('../utils')
-var errors = require('../../errors')
 
-var express = require('express')
-var router = express.Router()
+const MailchimpApi = require('mailchimp-api-v3')
+const express = require('express')
+const router = express.Router()
 
-router.get('/', function (req, res) {
-  res.json({
-    'title': '',
-    'body': ''
-  })
-})
+const env = require('../../../env')
+const utils = require('../utils')
+const errors = require('../../errors')
+const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 
 /**
 * @api POST /contact
-* Sends emails
-*
-* @ name
-* @ message
-* @ email
-* @ subscribed
+* Send a personal email
 */
 router.post('/', function (req, res) {
-  
   var message = ({
-    'name': req.body.__name || null,
-    'email': req.body.__email || null,
-    'msg': req.body.__msg || null,
-    'subscribed': req.body.__subscribed || null
+    name: req.body.__name || null,
+    email: req.body.__email || null,
+    msg: req.body.__msg || null,
+    subscribed: req.body.__subscribed || null
   })
 
   utils.validateMessage(message, function(valid) {
-    console.log(valid);
     if (!valid) {
-      errors.formNotValid(req, res)
+      return errors.formNotValid(req, res)
     }
-    else {
-      utils.sendMessage(message, function (err, email) {
-        if (err) {
-          errors.emailNotSend(req, res)
-        } else {
-          res.status(200).json(email)
-        }
+
+    if (message.subscribed) {
+      addUserToMailchimp(message.name, message.email, (error) => {
+        // ignore if fails to add to mailchimp
       })
     }
+
+    utils.sendMessage(message, function (err, email) {
+      if (err) {
+        errors.emailNotSend(req, res)
+        return res.json({
+          error: err
+        })
+      } else {
+        res.status(200).json(email)
+      }
+    })
   })
 })
+
+router.post('/subscribe', function (req, res) {
+  const name = req.body.__name || ''
+  const email = req.body.__email || null
+
+  addUserToMailchimp(name, email, (err) => {
+    if (err) {
+      return res.json({
+        error: err.detail
+      })
+    }
+    return res.json({
+      success: 'Subscribed! Thanks so much'
+    })
+  })
+})
+
+function addUserToMailchimp (name, email, next) {
+  name = ''.concat(name.replace(/\b\w/g, l => l.toUpperCase())) // first letter in uppercase
+  mailchimp.post({
+    path : '/lists/3b63288535/members',
+    body: {
+      merge_fields: {
+        FNAME: name
+      },
+      email_address: email,
+      status: 'subscribed'
+    }
+  }, (err, result) => {
+    if (err) {
+      return next(err)
+    } // we coudln't add user to machilp
+    return next()
+  })
+}
 
 module.exports = router

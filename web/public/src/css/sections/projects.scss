@@ -1,0 +1,480 @@
+$projectBorderRadious: 10px;
+$projectHeaderHeight: 60px;
+$projectHeaderMargin: 1em;
+$projectHeaderAvatarSize: 60px;
+$projectHeaderTitleSize: 1.2em;
+$projectHeaderDateSize: 1em;
+$projectHeaderGalleryHeight: 122px;
+$projectHeaderGalleryGradientWidth: 2em;
+$projectHeaderGalleryRadius: 7px;
+$projectBodyPadding_mobile: 16px;
+$projectBodyPadding_desktop: 24px;
+$projectLinksHeight: 52px;
+$projectLinksTopMargin: 20px;
+
+.projects {
+  @media all and (min-width:$desktop-screen) {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 1.5em;
+    -moz-column-count: 2;
+    -moz-column-gap: 1.5em;
+    column-count: 2;
+    column-gap: 1.5em;
+  }
+}
+
+.project {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  vertical-align: top;
+  margin-bottom: 1.5em;
+  padding: 0 !important;
+  border: 1px solid #f0f0f0;
+  @include border-radius($projectBorderRadious);
+
+  @media all and (min-width: $tablet-screen) {}
+  @media all and (min-width: $desktop-screen) {
+    display: inline-block;
+    background: #FEFEFE;
+    margin: 0;
+  }
+  @media all and (min-width:$big-screen) {}
+
+  &_bg {
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    @include border-radius($projectBorderRadious);
+
+    &_image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      -webkit-filter: blur($projectBorderRadious);
+      -moz-filter: blur($projectBorderRadious);
+      -ms-filter: blur($projectBorderRadious);
+      -o-filter: blur($projectBorderRadious);
+      filter: blur($projectBorderRadious);
+
+      &::before {
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    &_solid {
+      width: 100%;
+      height: 100%;
+      opacity: 0.9;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  &_header {
+    z-index: 3;
+    position: relative;
+    min-height: $projectHeaderHeight;
+    padding: $projectHeaderMargin;
+    background: rgba(0, 0, 0, 0.3);
+
+    @include border-radiuses($projectBorderRadious, $projectBorderRadious, 0, 0);
+
+    @media all and (min-width:$desktop-screen) {
+      padding: $projectHeaderMargin;
+    }
+
+    &_left {
+      left: 1em;
+      position: absolute;
+      width: $projectHeaderHeight;
+      max-width: $projectHeaderHeight;
+    }
+
+    &_right {
+      margin-left: $projectHeaderHeight + 14px;
+    }
+
+    &_avatar {
+      width: $projectHeaderAvatarSize;
+      height: $projectHeaderAvatarSize;
+      overflow: hidden;
+      background-size: cover;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: $projectHeaderMargin;
+      @include border-radius(100%);
+
+      @media all and (min-width:$desktop-screen) {
+        width: $projectHeaderAvatarSize;
+        height: $projectHeaderAvatarSize;
+      }
+    }
+
+    &_data {
+      width: 100%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 5px;
+      @media all and (min-width:$desktop-screen) {
+      }
+      @media all and (min-width:$desktop-screen) {
+        // margin-left: 1$projectBorderRadious;
+      }
+
+    }
+
+    &_title {
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: 600;
+      margin-bottom: 0.3em;
+      text-decoration: none;
+
+      @media all and (min-width:$desktop-screen) {
+        font-size: $projectHeaderTitleSize;
+      }
+
+      &_clickable:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &_date {
+      color: #fff;
+      font-weight: 300;
+      @media all and (min-width:$desktop-screen) {
+        font-size: $projectHeaderDateSize;
+      }
+    }
+
+    &_share {
+      cursor: pointer;
+
+      top: 50%;
+      right: 1em;
+      padding: 10px;
+      display: none;
+      position: absolute;
+      transform: translate(0, -50%);
+      background: rgba(255, 255, 255, 0.3);
+      // border: 1px solid rgba(255, 255, 255, 0.7);
+      @include border-radius($projectBorderRadious);
+      &:hover {
+
+      }
+
+      @media all and (min-width:$desktop-screen) {
+        font-size: 1.2em;
+        padding: 1em;
+      }
+    }
+
+  }
+
+  &_gallery {
+    z-index: 10;
+    position: relative;
+    height: $projectHeaderGalleryHeight;
+    background: rgba(0, 0, 0, 0.5);
+
+    &_gradient {
+      width: $projectHeaderGalleryGradientWidth;
+      height: 100%;
+      position: absolute;
+      z-index: 100;
+      right: 0;
+      top: 0;
+      display: none;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+      // background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 80%); /* FF3.6-15 */
+      // background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* Chrome10-25,Safari5.1-6 */
+      // background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
+
+      &_solid {
+        width: $projectHeaderGalleryGradientWidth;
+        height: 100%;
+        position: absolute;
+        z-index: 100;
+        right: 0;
+        top: 0;
+        opacity: 0.4;
+      }
+      &:after {
+        width: $projectHeaderGalleryGradientWidth;
+        height: 100%;
+        position: absolute;
+        z-index: 100;
+        right: 0;
+        top: 0;
+        // background: rgba(0, 0, 0, 0.4);
+
+        content: '';
+      }
+    }
+
+
+    @media all and (min-width:$desktop-screen) {}
+
+    &_next {
+      width: 50px;
+      height: 100%;
+      display: none;
+      position: absolute;
+      right: 0;
+      background: blue;
+      z-index: 10;
+    }
+
+    &_wrapper {
+      // width: calc(100% - 2em - #{$projectHeaderGalleryGradientWidth});
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      // padding-right: calc(1em + #{$projectHeaderGalleryGradientWidth});
+      overflow-y: scroll;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &_list {
+      width: calc(100% - 2em);
+      padding: 1em;
+      height: calc(100% - 2em);
+      position: relative;
+      overflow-y: scroll;
+
+      @include flexbox();
+      @include flexbox_direction(row);
+      @include flexbox_wrap(nowrap);
+      @include flexbox_justifyContent(flex-start, start);
+      @include flexbox_alignItems(center, center);
+
+      &__offset {
+        height: 100%;
+        display: block;
+        visibility: hidden;
+        width: $projectHeaderGalleryGradientWidth - 1em !important;
+        display: inline-block;
+      }
+      @media all and (min-width:$desktop-screen) {}
+    }
+
+    &_entry {
+      width: 115px;
+      height: 100%;
+      cursor: pointer;
+      overflow: hidden;
+      margin-right: 1em;
+      display: inline-block;
+      background-size: cover;
+      background-position: center center;
+
+      @include transition(100ms);
+      @include opacity(0.6);
+      @include border-radius($projectHeaderGalleryRadius);
+      @include flexbox_flex(0, 0, auto);
+      @include flexbox_alignSelf(auto);
+
+      &:hover {
+        @include opacity(0.8);
+      }
+
+      @media all and (min-width:$desktop-screen) {}
+    }
+  }
+
+  &_body {
+    z-index: 12;
+    height: 100%;
+    position: relative;
+    background: #fff;
+    padding: $projectBodyPadding_mobile;
+    padding-bottom: $projectBodyPadding_mobile + $projectLinksHeight;
+
+    @media all and (min-width:$desktop-screen) {
+      padding: $projectBodyPadding_desktop;
+      padding-bottom: $projectBodyPadding_desktop + $projectLinksHeight + $projectLinksTopMargin;
+    }
+
+    &_noLinks { // When a card does not have links (we don't put the buttons down)
+      padding: $projectBodyPadding_mobile;
+      @media all and (min-width:$desktop-screen) {
+        padding: $projectBodyPadding_desktop;
+      }
+    }
+
+    &_title {
+      color: rgba(0, 0, 0, 1);
+      font-size: 1.4em;
+      font-weight: 500;
+      margin-bottom: 0.5em;
+      @media all and (min-width:$desktop-screen) {
+        margin-bottom: 0.6em;
+      }
+    }
+
+    &_text {
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 1.2em;
+      color: rgba(0,0,0,.8);
+      color: rgba(0, 0, 0, .7);
+      margin-bottom: 1em;
+      line-height: 1.3em;
+    }
+  }
+
+  &_highlight {
+    display: block;
+    margin-bottom: 1em;
+
+    &_list {
+      list-style: none;
+      vertical-align: top;
+      margin: -0.3em 0;
+      display: block;
+    }
+
+    &_entry {
+      width: 100%;
+      min-height: 18px;
+      // max-height: 36px;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      margin: 0.5em 0;
+      margin-right: 0;
+
+      @media all and (min-width:$desktop-screen) {}
+
+      &_icon {
+        left: 0;
+        top: 3px;
+        position: absolute;
+        display: inline-block;
+        color: $primaryColor;
+        vertical-align: top;
+      }
+      &_text {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 25px;
+        font-size: 1em;
+        line-height: 1.3em;
+        position: relative;
+        color: #333;
+        color: rgba(0, 0, 0, .7);
+
+         a {
+           font-weight: 300;
+           color: rgba(255, 255, 255, 0.8);
+           color: $primaryColor;
+         }
+      }
+    }
+  }
+
+  &_stack {
+    // margin-bottom: 0.5em;
+    margin-top: 1.3em;
+    display: block;
+
+    &_list {
+      list-style: none;
+      display: block;
+      margin-top: -1em; // remove first entry margin top
+    }
+    &_entry {
+      margin-top: 1em;
+      margin-right: 1em;
+      display: inline-block;
+      color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      font-size: 0.8em;
+    }
+    &_title {
+      font-size: 0.9em;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &_people {
+    display: inline-block;
+    margin-top: 0.5em;
+    vertical-align: top;
+    display: none;
+
+    &_list {
+      list-style: none;
+      display: block;
+    }
+    &_entry {
+      margin-right: 1em;
+      display: inline-block;
+
+      &_avatar {
+        width: 50px;
+        height: 50px;
+        @include border-radius(100%);
+      }
+    }
+    &_title {
+      color: rgba(255, 108, 57, 1);
+    }
+  }
+
+  &_links {
+    z-index: 12;
+    overflow: hidden;
+    position: absolute;
+    min-height: $projectLinksHeight;
+    left: $projectBodyPadding_mobile;
+    bottom: $projectBodyPadding_mobile;
+    @media all and (min-width:$desktop-screen) {
+      left: $projectBodyPadding_desktop;
+      bottom: $projectBodyPadding_desktop;
+    }
+    a:last-child {
+      margin-bottom: 0;
+    }
+    a {
+      color: #fff;
+      font-weight: 600;
+      margin-right: 1em;
+      padding: 0.8em 1em;
+      position: relative;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      border: 2px solid #d83902;
+      @include border-radius(60px);
+      @include transition(all 0.5s);
+      &:hover {
+        background: #f7f7f7;
+      }
+    }
+    &_website {
+
+    }
+    &_code {
+      // background: #f4f4f4 !important;
+      color: #8b8b8b !important;
+      border-color:#cecece !important;
+      &:hover {
+        background: #ebebeb !important;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,255 @@
+.about {
+  display: block;
+}
+.about_resume {
+  padding: 1em 0;
+  text-align: center;
+  display: inline-block;
+  margin-top: 2em;
+
+  @media all and (min-width:$desktop-screen) {
+    padding: 1em 0;
+  }
+
+  &_button {
+    margin: 0 0.5em;
+    padding: 1em;
+    font-size: 1em;
+    background: #d83902;
+    border: 2px solid #d83902;
+    color: #fff;
+    font-style: bold;
+    font-weight: 600;
+    display: block;
+    text-decoration: none;
+
+    @include box-shadow(2px 3px 10px 0px rgba(0,0,0,0.5));
+    @include border-radius(60px);
+
+    &_download {
+      background: transparent;
+      border-color: #fff;
+      color: #fff;
+    }
+  }
+}
+
+.about_bio__large {
+  width: 100%;
+  margin-top: 0;
+  @include flexbox();
+  @include flexbox_wrap(nowrap);
+  @include flexbox_justifyContent(center, center);
+  @include flexbox_alignContent(center, center);
+  @include flexbox_alignItems(center, center);
+  @include flexbox_direction(column);
+
+  @media all and (min-width: $desktop-screen) {
+    @include flexbox_direction(row);
+  }
+
+  &__left {
+    max-width: 50%;
+    overflow: hidden;
+    margin-left: 2em;
+    @include flexbox_flex(0, 1, auto);
+    @include flexbox_alignSelf(stretch);
+  }
+  &__left_v2 {
+    width: 100%;
+    overflow: hidden;
+    min-height: 210px;
+    background: #e7e5e6;
+    background-image: url('/images/jorge_big_2.png');
+    background-size: 100% auto;
+    background-position: 50% 14%;
+
+    @include opacity(0);
+    @include transition(2000ms);
+
+    @include border-radius(5px);
+    @include flexbox_flex(0, 0, auto);
+    @include flexbox_alignSelf(stretch);
+    @include flexbox_order(0);
+
+    @media all and (min-width: $tablet-screen) {
+      height: 280px;
+      background-position: 50% 26%;
+    }
+
+    @media all and (min-width: $desktop-screen) {
+      width: 500px;
+      width: 40%;
+      height: auto;
+      margin-right: 2em;
+      background-size: cover;
+    }
+  }
+  &__right {
+    // max-width: 70%;
+    @include flexbox_flex(1, 1, auto);
+    @include flexbox_alignSelf(stretch);
+    @include flexbox_order(1);
+    &__content {
+      // padding: 0 2.5em;
+      // padding-left: 2.5em;
+    }
+  }
+  &__pic {
+    //- SEO friendly!
+    display: none;
+    @include border-radius(10px);
+  }
+
+  &__title {
+    font-size: 2.2em;
+    color: $primaryColor;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    display: block;
+    @media all and (min-width: $tablet-screen) {
+      font-size: 3em;
+    }
+    @media all and (min-width: $desktop-screen) {
+      line-height: 35px;
+      font-size: 3.4em;
+      margin-top: 10px;
+    }
+  }
+
+  &__subtitle {
+    display: block;
+    max-width: 300px;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    color: rgba(0, 0, 0, 0.7);
+
+    @media all and (min-width: $tablet-screen) {
+      font-size: 1.3em;
+    }
+    @media all and (min-width: $desktop-screen) {
+      font-size: 1.3em;
+      max-width: 330px;
+      margin-top: 0.9em;
+    }
+  }
+
+  &__bio {
+    margin: 1rem 0;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    text-align: left;
+    color: rgba(0,0,0,.85);
+
+    @include transition(300ms);
+    @include opacity(0);
+
+    @media all and (min-width: $tablet-screen) {
+      font-size: 1.125rem;
+    }
+    @media all and (min-width: $desktop-screen) {
+      margin: 1em 0;
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+
+    a {
+      color: $primaryColor;
+    }
+  }
+
+  &__callToAction {
+    margin-top: 0.5rem;
+    display: inline-block;
+    background: #fff;
+
+    // @include opacity(0);
+    @include transition(300ms);
+
+    @media all and (max-width: $desktop-screen) {
+      a {
+        margin-bottom: 1.5em;
+      }
+      a:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__button {
+    padding: 0.8em 1em;
+    display: inline-block;
+    border: 1px solid #D8D8D8;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    margin-right: 1em;
+
+    @include border-radius(60px);
+    @include transition(0.5s);
+    &:hover {
+      background: #f4f4f4;
+    }
+    @media all and (min-width: $tablet-screen) {
+      margin-right: 1.4em;
+    }
+    @media all and (min-width: $desktop-screen) {
+      line-height: 1.2em;
+      padding: 1.2em 1.5em;
+      padding-bottom: 1.1em;
+      font-size: 1em;
+    }
+    span {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.about_bio {
+  padding: 1em;
+  display: inline-block;
+
+  @media all and (min-width:$desktop-screen) {
+    padding: 2em;
+    padding-bottom: 1em;
+  }
+
+  &_title {
+    text-align: left;
+    letter-spacing:1px;
+    font-size: 2em !important;
+    padding: 0;
+    margin: 0;
+
+    @media all and (min-width: $tablet-screen) {
+      font-size: 2.7em !important;
+    }
+    @media all and (min-width:$desktop-screen) {
+      font-size: 3em !important;
+      text-align: left;
+    }
+  }
+
+  &_text {
+    margin:1em 0;
+    font-size: 1em;
+    font-weight: 300;
+    display: block;
+    @media all and (min-width:$desktop-screen) {
+      margin:1em 0;
+      letter-spacing:1px;
+      font-size: 1.3em;
+      line-height: 1.3em;
+      text-align: justify;
+    }
+  }
+}
+
+.about_hot_links {
+  margin: 2em 0;
+  margin-bottom: 2em;
+}
