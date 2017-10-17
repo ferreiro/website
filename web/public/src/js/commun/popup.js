@@ -44,7 +44,7 @@ function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
 }
 
 function setupScrollEvents (popup, popupBackground, popupWrapper) {
-  const category = $('#category')
+  const breakpointItem = $('#showNewsletterBreakPoint')
   let popup_displayed = false
 
   //- const itemDisplayedClass = 'timeline__entries__displayed'
@@ -53,11 +53,11 @@ function setupScrollEvents (popup, popupBackground, popupWrapper) {
     const scrollTop = $(window).scrollTop()
     const offset = getScrollOffset()
 
-    if (isScrollCloseToItem(scrollTop, category, offset)) {
+    if (isScrollCloseToItem(scrollTop, breakpointItem, offset)) {
       if (!popup_displayed) {
         showPopup(popup, popupBackground, popupWrapper)
+        popup_displayed = true
       }
-      popup_displayed = true
     }
   })
 }
