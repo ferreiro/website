@@ -192,6 +192,7 @@ $projectLinksTopMargin: 20px;
       z-index: 100;
       right: 0;
       top: 0;
+      display: none;
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
       // background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 80%); /* FF3.6-15 */
       // background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* Chrome10-25,Safari5.1-6 */
@@ -279,6 +280,7 @@ $projectLinksTopMargin: 20px;
       background-size: cover;
       background-position: center center;
 
+      @include transition(100ms);
       @include opacity(0.6);
       @include border-radius($projectHeaderGalleryRadius);
       @include flexbox_flex(0, 0, auto);
