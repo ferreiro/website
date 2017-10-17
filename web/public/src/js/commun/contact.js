@@ -68,7 +68,7 @@ function submitForm(opts) {
     } else {
       form.hide()
       success.show()
-      if (endpoint.indexOf('newsletter') > 0) {
+      if (endpoint.indexOf('subscribe') >= 0) {
         setCacheUserSubscribed()
       }
     }
