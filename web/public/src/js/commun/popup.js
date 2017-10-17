@@ -62,6 +62,13 @@ function showPopup(popup, popupBackground, popupWrapper) {
     .addClass('animated fadeInUpBig')
     .fadeIn(500)
 
+  // Autofocus on the first input
+  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    // no autofocus.
+  } else {
+    popup.find('*').filter(':input:visible:first').focus()
+  }
+
   /*popupBackground
     .show(0)
     .removeClass('animated fadeIn')
