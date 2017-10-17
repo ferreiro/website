@@ -252,7 +252,8 @@ $projectLinksTopMargin: 20px;
       padding: 1em;
       height: calc(100% - 2em);
       position: relative;
-      overflow-y: scroll;
+      overflow-x: scroll;
+      overflow-y: hidden;
 
       @include flexbox();
       @include flexbox_direction(row);
