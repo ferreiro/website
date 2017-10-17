@@ -142,34 +142,58 @@
       }
     }
 
-    ul {
-      margin: 0;
+    ol, ul {
+      -webkit-margin-before: 0;
+      -webkit-margin-after: 0;
+      -webkit-margin-start: 0;
+      -webkit-margin-end: 0;
+      -webkit-padding-start: 0;
+      padding: 0;
+      list-style: decimal;
+      list-style-position: inside;
       // margin-top: 29px;
-      margin-top: 13px;
+      list-style-position: inside;
+      margin: 0;
+      padding: 0;
+      margin: 13px 0;
+      margin-left: 2em;
 
       li {
-        margin: 13px 0;
+        margin: 10px 0;
+      }
+    }
+
+    ul {
+      li {
         list-style: none;
         &:before {
-          margin-right: 10px;
+          margin-right: 13px;
           font-size: 1.3em;
           content: '•';
         }
       }
     }
 
-    ol {
-      -webkit-margin-before: 1em;
-      -webkit-margin-after: 1em;
-      -webkit-margin-start: 0px;
-      -webkit-margin-end: 0px;
-      -webkit-padding-start: 40px;
+    ul.no_bullets {
+      list-style: none;
 
       li {
-        margin: 0.8em 0;
+        span {
+          margin-right: 5px;
+        }
+        &:before {
+          content: '';
+          margin-right: 0;
+        }
       }
     }
 
+    ol.linenums li {
+      margin: 0;
+      font-size: 18px;
+      line-height: 26px;
+      color: rgba(255, 255, 255, 0.6) !important;
+    }
 
     img {
       max-width: 100%;
@@ -182,8 +206,11 @@
       color: #ddd;
     }
     code {
+      padding: 0 5px;
+      color: #2f2f2f;
+      background: #f4f4f4;
       overflow-wrap: break-word;
-      color: #c5c8c6;
+      // color: #c5c8c6;
       text-shadow: 0 1px rgba(0,0,0,.3);
       font-family: Inconsolata,Monaco,Consolas,Courier New,Courier,monospace;
       direction: ltr;
@@ -199,7 +226,6 @@
       hyphens: none;
     }
 
-
     blockquote {
       margin: 0;
       margin-top: 29px;
@@ -214,17 +240,23 @@
       margin-left: -1em;
       border-left: 3px solid rgba(0,0,0,.84);
 
-
       @media all and (min-width: $desktop-screen) {
         padding-left: 20px;
         margin-left: -23px;
       }
 
-
       p {
         margin-top: 0;
         font-weight: 400;
         font-style: italic;
+        /*
+        &:before {
+          content: '“';
+        }
+        &:after {
+          content: '”';
+        }
+        */
       }
     }
 
