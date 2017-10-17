@@ -169,7 +169,8 @@ function editPostPage (req, res, next) {
     return res.render('admin/create', {
       edit: true,
       post: post,
-      admin: true
+      admin: true,
+      success: 'Post updated!'
     })
   }).catch((err) => {
     return res.render('admin/home', {
