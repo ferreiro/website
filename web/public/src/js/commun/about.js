@@ -1,7 +1,7 @@
-setupAbout()
+// setupAbout()
 
 function setupAbout() {
-  displayBiography()
+  // displayBiography()
   // setupScrollEvents()
 }
 
@@ -53,14 +53,20 @@ async function displayBiography () {
   const photo = $('.about_bio__large__left_v2')
   const texts = $('.about_bio__large__bio')
 
-  hideContent([ photo, texts ])
+  const content = [ photo, texts ]
+
+  hideContent(content)
 
   var _ = await waitBeforeAnimation()
+
+  displayContent(content)
+
+  /*
   displayPhoto(photo)
-
-  var _ = await waitBeforeAnimation()
   displayBiographyTexts(texts)
-
+  // var _ = await waitBeforeAnimation()
+  // var _ = await waitBeforeAnimation()
+  */
   return 0
 }
 
@@ -70,19 +76,40 @@ function hideContent (contents) {
   })
 }
 
+function displayContent (contents) {
+  contents.forEach(function (selector) {
+    selector.css({
+      opacity: 1
+    })
+    .addClass('animated fadeInBig')
+  })
+}
+
 function displayPhoto (photo) {
+  photo.css({
+    opacity: 1
+  })
+  /*
+  var delayTime = 200
   setTimeout(function () {
     photo
       .css({ opacity: 1 })
-      .addClass('animated fadeInRight')
-  }, 500)
+      // .addClass('animated fadeInUp')
+      // .addClass('animated fadeInRight')
+  }, delayTime)
+  */
 }
 
 async function displayBiographyTexts(bioTexts) {
+  bioTexts.css({
+    opacity: 1
+  })
+  /*
     var lastDisplayedItem = 0
     var delayTime = 200
+
     $.each(bioTexts, function (index, textSelector) {
-      delayTime += 400
+      // delayTime += 400
       setTimeout(() => {
         $(textSelector)
           .css({
@@ -91,12 +118,13 @@ async function displayBiographyTexts(bioTexts) {
           .addClass('animated fadeInUp')
       }, delayTime)
     })
+  */
 }
 
 function waitBeforeAnimation () {
   return new Promise(resolve => {
     setTimeout(function () {
       resolve(true)
-    }, 500)
+    }, 1200)
   })
 }
