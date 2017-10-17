@@ -85,7 +85,7 @@ function displayPopupWithDelay (popup, popupBackground, popupWrapper, opts) {
 
 function showPopup(popup, popupBackground, popupWrapper) {
   $('body').css({
-    overflow: 'hidden'
+    // overflow: 'hidden'
   })
   popup
     .removeClass('animated fadeInUpBig fadeOutDown')
