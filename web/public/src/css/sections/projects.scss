@@ -240,7 +240,7 @@ $projectLinksTopMargin: 20px;
       height: 100%;
       padding: 0;
       // padding-right: calc(1em + #{$projectHeaderGalleryGradientWidth});
-      overflow-y: scroll;
+      overflow: hidden;
       display: inline-block;
       position: absolute;
       top: 0;
