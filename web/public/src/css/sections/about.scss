@@ -64,8 +64,8 @@
     background-size: 100% auto;
     background-position: 50% 14%;
 
-    @include opacity(0);
-    @include transition(2000ms);
+    // @include opacity(0);
+    // @include transition(600ms);
 
     @include border-radius(5px);
     @include flexbox_flex(0, 0, auto);
@@ -142,8 +142,8 @@
     text-align: left;
     color: rgba(0,0,0,.85);
 
-    @include transition(300ms);
-    @include opacity(0);
+    // @include transition(300ms);
+    // @include opacity(0);
 
     @media all and (min-width: $tablet-screen) {
       font-size: 1.125rem;
