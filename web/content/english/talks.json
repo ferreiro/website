@@ -14,7 +14,7 @@
       "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
       "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
       "type": "slides",
-      "pic": "/images/talks/redis_introducing_jorge_ferreiro_icon_2.jpg",
+      "pic": "/images/talks/redis_introducing_jorge_ferreiro_icon_2.png",
       "date": "May, 2017",
       "event": "",
       "buttons": [
@@ -87,7 +87,7 @@
       "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
       "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
       "type": "slides",
-      "pic": "/images/talks/wokshop_fdi.png",
+      "pic": "/images/talks/wokshop_fdi_header.png",
       "date": "",
       "event": "",
       "buttons": [
