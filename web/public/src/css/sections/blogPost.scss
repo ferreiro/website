@@ -12,20 +12,20 @@
     color: rgba(0,0,0,.84);
 
     @media all and (min-width: $desktop-screen) {
-      font-size: 40px;
       font-size: 36px;
-      font-weight: 700;
       font-style: normal;
+      font-weight: 600;
       letter-spacing: 0;
-      line-height: 1.04;
-      line-height: 1.10;
+      line-height: 42px;
       letter-spacing: -.028em;
+
+      color: rgba(0,0,0,.85);
     }
   }
 
   &__subtitle {
     margin: 0;
-    margin-top: 13px;
+    margin-top: 16px;
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
@@ -34,8 +34,8 @@
     font-style: normal;
     letter-spacing: 0;
     letter-spacing: -.022em;
-    color: rgba(0,0,0,.54);
-    font-size: 18px;
+    color: rgba(0,0,0,.6);
+    font-size: 20px;
     line-height: 1.3;
 
     @media all and (min-width: $desktop-screen) {
@@ -127,8 +127,8 @@
       display: block;
     }
 
-    p, ul li, ol li {
-      font-size: 18px;
+    p, ul li, ol li, a {
+      font-size: 20px;
       line-height: 1.58;
       letter-spacing: -.004em;
 
@@ -414,6 +414,7 @@
     // padding: 0.9em 0;
     margin: 0;
     margin-bottom: 1.8em;
+
     @media all and (min-width: $desktop-screen) {
       font-size: 1.4em;
       line-height: 1.4em;
