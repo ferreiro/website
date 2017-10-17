@@ -60,7 +60,7 @@ function setupScrollListener () {
 function displayEmergentSharing () {
     const sharePostEmergent = $('#sharePostEmergent')
     sharePostEmergent.show(0, () => {
-        sharePostEmergent.addClass('animated bounceIn')
+        sharePostEmergent.addClass('animated pulse')
     })
 }
 
