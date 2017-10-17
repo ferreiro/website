@@ -1,6 +1,9 @@
 extends ./includes/layout
 include ./mixins/newsletterForm
 
+block popupNewsletter
+  //- remove popup
+
 block content
 
   .container_middle
@@ -13,13 +16,32 @@ block content
       .contact_form_wrapper.box_with_shadow
         .contact_form_container
 
-          if content.config.claim
-            h2.contact_form_title Would you like to help me with the blog? Join my newsletter and keep up to date, get exclusive content, and receive updates &amp; projects. This help me a lot 😊
-
-          +newsletterForm({
-            namePlaceholder: content && content.form && content.form.name ? content.form.name : null,
-            emailPlaceholder: content && content.form && content.form.email ? content.form.email : null,
-            successMessage: 'You\'re now subscribed to the community!',
-            submitButtonText: 'Join Community!',
-            scrollToError: true
+          //-if content.config.claim
+            h2.contact_form_title Creating a blog from the ground is really hard, so I'd appreciate your support! Please join my newsletter to receive my new blog posts and projects in your inbox. This would help me a lot 😊
+          style.
+            .contact_form_wrapper {
+              border-radius: 20px;
+              -webkit-border-radius: 20px;
+              -moz-border-raius: 20px;
+              overflow: hidden;
+            }
+            .breadcrumb {
+              display: none;
+            }
+            .popup__header__title {
+              font-size: 2em;
+            }
+            .popup__header {
+              margin-bottom: 0;
+            }
+            .subscriptionBoxLarge {
+              padding-top: 1em;
+            }
+            .subscriptionBoxLarge__text {
+              max-width: 500px;
+              font-size: 1.3em;
+            }
+          include ./mixins/popupNewsletterForm
+          +popupNewsletterForm({
+            customBody: 'Creating a blog from the ground is really hard, so I\'d appreciate your support! Please join my newsletter to <b>receive my new blog posts and projects</b> in your inbox. This would help me a lot 😊'
           })

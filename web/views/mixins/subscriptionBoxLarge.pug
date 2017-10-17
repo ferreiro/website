@@ -7,8 +7,8 @@ mixin subscriptionBoxLarge(opts)
     if displayTitle
       h3.subscriptionBoxLarge__title= subscriptionTitle
 
-    - body = opts && opts.customBody ? opts.customBody : 'Creating a blog from the ground is really hard, I need your help! Join my newsletter and receive my new blog posts and projects in your inbox.'
-    p.subscriptionBoxLarge__text= body
+    - body = opts && opts.customBody ? opts.customBody : 'Creating a blog from the ground is really hard. Join my newsletter and receive new posts and projects in your inbox. This would make me happy 😊'
+    p.subscriptionBoxLarge__text!= body
 
     if !opts.displayForm
       form#subscribeLargeForm.subscriptionBoxLarge__form(action="/newsletter", target="_blank", method="GET")

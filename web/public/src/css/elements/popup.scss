@@ -107,6 +107,7 @@ $popupBorderRadius: 20px;
     background-image: url("/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg");
     margin: -$popupPadding_mobile;
     margin-bottom: $popupPadding_mobile + 0.5em;
+    background-position: 50% 30%;
 
     @include border-radiuses($popupBorderRadius, $popupBorderRadius, 0, 0);
 
