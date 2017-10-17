@@ -167,7 +167,7 @@
       li {
         list-style: none;
         &:before {
-          margin-right: 13px;
+          padding-right: 0.5em;
           font-size: 1.3em;
           content: '•';
         }
@@ -183,16 +183,46 @@
         }
         &:before {
           content: '';
-          margin-right: 0;
+          padding-right: 0;
         }
       }
     }
 
-    ol.linenums li {
-      margin: 0;
-      font-size: 18px;
-      line-height: 26px;
-      color: rgba(255, 255, 255, 0.6) !important;
+    //- https://stackoverflow.com/questions/10428720/how-to-keep-indent-for-second-line-in-ordered-lists-via-css
+    ol.linenums {
+      counter-reset: foo;
+      display: table;
+    }
+    ol.linenums > li {
+      counter-increment: foo;
+      display: table-row;
+    }
+    ol.linenums > li::before {
+      content: counter(foo) ".";
+      display: table-cell; /* aha! */
+      text-align: right;
+      padding-right: 0.5em;
+    }
+
+    //- Code syntax highlight
+    ol.linenums > li::before {
+      padding-right: 1em;
+    }
+    ol.linenums {
+      margin-left: 0.5em;
+
+      @media all and (min-width: $desktop-screen) {
+        padding-left: 1em;
+        margin-left: 1em;
+      }
+
+      li {
+        margin: 0;
+        font-size: 18px;
+        line-height: 26px;
+        color: rgba(255, 255, 255, 0.6) !important;
+        padding-left: 0;
+      }
     }
 
     img {
@@ -204,6 +234,7 @@
     pre {
       tab-size: 2;
       color: #ddd;
+      margin-top: 19px;
     }
     code {
       padding: 0 5px;
