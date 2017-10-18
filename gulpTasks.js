@@ -56,9 +56,25 @@ module.exports.copyPdfs = function copyPdfs (opts) {
     .pipe(gulp.dest(opts.dst))
 }
 
-module.exports.copyVendors = function copyVendors (opts) {
+module.exports.compressVendorsCss = function compressVendorsCss (opts) {
   return gulp
     .src(opts.src)
+    .pipe(concat(opts.filename))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(minifycss())
+    .pipe(gulp.dest(opts.dst))
+}
+
+module.exports.compressVendorsJs = function compressVendorsJs (opts) {
+  return gulp
+    .src(opts.src)
+    .pipe(concat(opts.filename))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    //.pipe(uglify())
     .pipe(gulp.dest(opts.dst))
 }
 

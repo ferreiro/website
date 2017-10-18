@@ -77,9 +77,15 @@ gulp.task('fonts', function () {
 })
 
 gulp.task('vendors', function () {
-  return gulpTasks.copyVendors({
-    src: path.join(SRC, 'vendors/**/*'),
-    dst: path.join(DST, 'vendors')
+  gulpTasks.compressVendorsCss({
+    src: path.join(SRC, 'vendors/**/*.css'),
+    dst: path.join(DST, 'vendors'),
+    filename: 'vendors.css'
+  })
+  gulpTasks.compressVendorsJs({
+    src: path.join(SRC, 'vendors/**/*.js'),
+    dst: path.join(DST, 'vendors'),
+    filename: 'vendors.js'
   })
 })
 
