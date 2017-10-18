@@ -1,6 +1,6 @@
 var ss = sessionStorage;
 var menu = $('.menu');
-var sectionHeader = $('.sectionHeader');
+var targetDivToAnimate = $('.animate');
 var animations = [ "fadeInUpBig"]; //  'flipInY', '', 'bounceIn'
 
 window.animateMainContainer = function animateMainContainer() {
@@ -16,9 +16,9 @@ window.animateMainContainer = function animateMainContainer() {
     // }
 
 
-    if (sectionHeader.length) {
-      // sectionHeader.addClass('animated flipInX');
-      sectionHeader.addClass('animated ' + animations[randomAnimation])
+    if (targetDivToAnimate.length) {
+      // targetDivToAnimate.addClass('animated flipInX');
+      targetDivToAnimate.addClass('animated ' + animations[randomAnimation])
     }
 
     if (mainContainer.length) {

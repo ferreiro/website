@@ -47,7 +47,9 @@ function setupScrollEvents (popup, popupBackground, popupWrapper) {
   const breakpointItem = $('#showNewsletterBreakPoint')
   let popup_displayed = false
 
-  //- const itemDisplayedClass = 'timeline__entries__displayed'
+  if (breakpointItem.length === 0) {
+    return; // skip.
+  }
 
   $(window).scroll(function() {
     const scrollTop = $(window).scrollTop()

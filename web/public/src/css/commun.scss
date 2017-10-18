@@ -9,6 +9,15 @@ body {
   -moz-font-feature-settings: "liga" on;
 }
 
+button, input, optgroup, select, textarea {
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
 p {
   text-rendering: optimizeLegibility;
 }
