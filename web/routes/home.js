@@ -6,7 +6,7 @@ const content = require('../content/english.json') // TODO: Add multilanguage
 router.get('/', function (req, res, next) {
   const viewTemplateName = req.query.v1 ? 'home' : 'home_v2'
   const homeContext = {
-    title: 'Home',
+    title: '',
     path: 'home',
     content: content.about,
     recentPosts: []
