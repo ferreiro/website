@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const content = require('../content/english.json') // TODO: Add multilanguage
+const blogRepository = require('../repository/blog')
 
 router.get('/', function (req, res, next) {
   const viewTemplateName = req.query.v1 ? 'home' : 'home_v2'
