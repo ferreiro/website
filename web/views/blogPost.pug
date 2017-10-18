@@ -6,6 +6,9 @@ include ./mixins/popupNewsletter
 
 block extraMeta
   if post
+    title= post.title + ' - Jorge Ferreiro Blog'
+    meta(name='description', content= post.summary)
+
     meta(property='og:url', content= 'https://ferreiro.me/blog/' + post.permalink)
     meta(property='og:type', content='article')
     meta(property='og:title', content= post.title)

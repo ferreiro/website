@@ -36,13 +36,9 @@ block extraMeta
   meta(name="twitter:description", content=description ? description : defaultDescription)
   meta(name="twitter:image", content=defaultImage)
 
-if post
-  title= post.title + ' - Jorge Ferreiro - Software Engineer, Product Manager & Entrepreneur.'
-  meta(name='description', content= post.summary)
-else
-  - titleExtra = ' - Jorge Ferreiro - Software Engineer, Product Manager & Entrepreneur.'
-  title= title ? title + titleExtra : defaultTitle
-  meta(name='description', content=description ? description : defaultDescription)
+- titleExtra = ' - Jorge Ferreiro - Software Engineer, Product Manager & Entrepreneur.'
+title= title ? title + titleExtra : defaultTitle
+meta(name='description', content=description ? description : defaultDescription)
 
 link(rel='apple-touch-icon', sizes='57x57', href='/images/favicons/apple-touch-icon-57x57.png')
 link(rel='apple-touch-icon', sizes='60x60', href='/images/favicons/apple-touch-icon-60x60.png')
