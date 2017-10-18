@@ -27,7 +27,9 @@ module.exports = (app) => {
 
   // Serve static bower: http://goo.gl/e2nTBf
   app.use(favicon(path.join(__dirname, '../web', 'public', 'dst', 'images', 'favicons', 'favicon.ico')))
-  app.use(express.static(path.join(__dirname, '../web/public/dst')))
+  app.use(express.static(path.join(__dirname, '../web/public/dst')), {
+    maxage: process.env.NODE_ENV === 'production' ? '5h' : 0
+  })
   app.use('/bower_components', express.static(path.join(__dirname, '../bower_components')))
   app.use('/semantic',  express.static(path.join(__dirname, '../semantic')))
   app.use(logger('dev'))
