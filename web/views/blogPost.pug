@@ -13,6 +13,13 @@ block extraMeta
     meta(property='og:image', content= post.pic)
     meta(property='og:image:alt', content= post.title)
 
+    meta(name="twitter:site", content="@jgferreiro")
+    meta(name="twitter:creator", content="@jgferreiro")
+    meta(name="twitter:card", content="summary_large_image")
+    meta(name="twitter:title", content= post.title)
+    meta(name="twitter:description", content= post.summary)
+    meta(name="twitter:image", content= post.pic)
+
 block extraCss
   link(rel="stylesheet", href="/vendors/twentytwenty/css/twentytwenty.css", type="text/css", media="screen")
 

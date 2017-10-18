@@ -1,19 +1,21 @@
 meta(charset='UTF-8')
 meta(http-equiv="Content-Language", content="en-US")
-meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
 meta(http-equiv="expires", content="7 * 24 * 60 * 60")
-meta(name="revisit-after", content="7 days")
 
+link(rel="canonical", href="https://www.ferreiro.me")
+
+meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+meta(name="revisit-after", content="7 days")
 meta(name='author', content='Jorge Ferreiro')
-meta(name='theme-color', content='#9C2901')
-meta(name="twitter:site", content="@jgferreiro")
 meta(name="keywords", content="Software Engineer, Product Manager, Entrepreneur, Blog, Tech, Node, Javascript, HTML, Backend, Frontend, Full Stack")
+meta(name='google', content='notranslate')
+meta(name='theme-color', content='#9C2901')
 
 block extraMeta
   //- Override by the templates that needs to add more metadata
   //- such as Open Graph Articles or facebook social links
   meta(property="og:type", content="website")
-  meta(property="og:title", content= title + " - Jorge Ferreiro")
+  meta(property="og:title", content= title + " - Jorge Ferreiro: Software Engineer, Product Manager & Entrepreneur.")
   meta(property='og:description', content= description)
   meta(property="og:url", content="http://www.ferreiro.me")
   meta(property="og:site_name", content="Jorge Ferreiro")
@@ -21,7 +23,12 @@ block extraMeta
   meta(property='og:image', content="https://www.ferreiro.me/images/home/header.jpg")
   meta(property='og:image:alt', content= title ? title : 'Jorge Ferreiro - Software Engineer and Product Manager. Node, Javascript, Python, Java, HTML5, CSS3, JQuery. Backend engineer and Frontend engineer.')
 
-link(rel="canonical", href="https://ferreiro.me")
+  meta(name="twitter:site", content="@jgferreiro")
+  meta(name="twitter:creator", content="@jgferreiro")
+  meta(name="twitter:card", content="summary")
+  meta(name="twitter:title", content= title + ' - Jorge Ferreiro: Software Engineer, Product Manager & Entrepreneur.')
+  meta(name="twitter:description", content= description)
+  meta(name="twitter:image", content="https://www.ferreiro.me/images/home/header.jpg")
 
 if post
   title= 'Jorge Ferreiro ' + post.title + ' - Software Engineer, Product Manager & Entrepreneur.'
