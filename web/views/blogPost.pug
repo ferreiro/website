@@ -64,6 +64,9 @@ block content_header
 
 block content_large
   style.
+    .optionsMenu {
+      display: none;
+    }
     .menu {
       position: absolute; /* making the header not fixed for better writing */
     }
@@ -83,8 +86,6 @@ block content_large
           a(href= '/admin/delete/' + post.permalink).action_button
             span.icon.ion-android-delete
             | Delete post
-
-      //-p= 'Views ' + post.views + ' | Likes: ' + post.likes
 
     if error
       h1= error

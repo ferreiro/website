@@ -1,7 +1,7 @@
 .blogPost {
   z-index: 100;
   margin: 0 auto;
-  margin-top: 1.5em;
+  margin-top: 1em;
   position: relative;
   max-width: $blogPostWidth;
 
@@ -47,7 +47,7 @@
 
   &__image {
     max-width: 100%;
-    margin-top: 1.5em;
+    margin-top: 2em;
   }
 
   &__separator {
