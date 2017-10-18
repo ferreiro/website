@@ -14,7 +14,7 @@ block extraScripts
 block content
 
   //- Container middle
-  .container_middle.animated.fadeInUp
+  .container_middle.animate
     include ./includes/breadcrumb.pug
 
     .projectsFilter
@@ -38,9 +38,9 @@ block content
           a(href="/projects/bash").projectsFilter_entry_link Bash
 
   //- Right Container
-  .container_middle
+  .container_middle.animate
     if projects
-      .threeColsGrid.animated.fadeInUp
+      .threeColsGrid
         each project, index in projects || []
 
           .threeColsGrid__item

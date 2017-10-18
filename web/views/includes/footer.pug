@@ -66,21 +66,22 @@ footer.jfFooter#footer
 
 script(src="/bower_components/jquery/dist/jquery.min.js")
 
-script(src="/bower_components/fastclick/lib/fastclick.js")
+//- Orther matters here
+script(src="/vendors/vendors.min.js")
 
 script(src="/js/commun.main.min.js")
 
-script(src="/vendors/jquery.lazy.min.js")
+script(src="/bower_components/fastclick/lib/fastclick.js")
 
 script(type='text/javascript').
   $(function() {
-    $('.lazy').lazy()
     FastClick.attach(document.body)
   })
 
   $('.container').css({
     opacity: 0
   })
+
   $(window).on("load", function() {
     $('.loader').fadeOut('100', () => {
       //- Animation completed

@@ -15,7 +15,7 @@ block content
     //- Middle Container
     .container_middle
 
-        .bigHeroeHeader
+        .bigHeroeHeader.animate
             .bigHeroeHeader__wrapper
                 .bigHeroeHeader__background(style="background-image: url(/images/home/jorge_ferreiro_header.jpg);")
                 .bigHeroeHeader__content
@@ -34,9 +34,9 @@ block content
                 h3.blogPostRelated__title {
                     margin: 1.5em 0;
                 }
-            h3.blogPostRelated__title Most recent posts in my blog!
+            h3.blogPostRelated__title.animate Most recent posts in my blog!
 
-            .threeColsGrid
+            .threeColsGrid.animate
                 each post in recentPosts
                     .threeColsGrid__item
                         .threeColsGrid__item__wrapper

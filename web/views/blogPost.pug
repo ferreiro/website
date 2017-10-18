@@ -24,14 +24,12 @@ block extraMeta
     meta(name="twitter:image", content= post.pic)
 
 block extraCss
-  link(rel="stylesheet", href="/vendors/twentytwenty/css/twentytwenty.css", type="text/css", media="screen")
+  //- Loading post fonts!
+  link(href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600", rel="stylesheet")
 
 block extraScripts
-  script(src="/vendors/twentytwenty/js/jquery.event.move.js", type="text/javascript")
-  script(src="/vendors/twentytwenty/js/jquery.twentytwenty.js", type="text/javascript")
-
   script(src="/js/blog.main.min.js")
-  script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst")
+  script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst", async)
 
   //- External links
   script.
