@@ -14,7 +14,7 @@ module.exports = router
 // FUNCTIONS
 function newsletter (req, res, next) {
   res.render('newsletter', {
-    title: 'Newsletter',
+    title: 'Newsletter - Jorge Ferreiro',
     path: 'newsletter',
     newsletter: true,
     content: content,

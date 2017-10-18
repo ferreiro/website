@@ -17,7 +17,8 @@ module.exports = router
 function contact (req, res, next) {
   const content = require('../content/english/contact.json')
   return res.render('contact', {
-    title: 'Contact me',
+    title: 'Contact - Jorge Ferreiro',
+    headline: 'Contact me',
     path: 'contact',
     content: content,
     redirect: req.query.redirect
@@ -34,7 +35,7 @@ function contactTalk (req, res, next) {
   res.render('contact', {
     title: 'Bring me to your event',
     content: talkContact,
-    path: 'talks',
+    path: 'contact/talks',
     redirect: req.query.redirect
   })
 }
@@ -43,7 +44,7 @@ function feedback(req, res, next) {
   const feedbackContent = require('../content/english/feedback.json')
   res.render('feedback', {
     title: 'Feeback',
-    path: 'feedback',
+    path: 'contact/feedback',
     content: feedbackContent,
     redirect: req.query.redirect
   })

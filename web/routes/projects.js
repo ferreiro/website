@@ -5,8 +5,9 @@ const projects = require('../content/english/projects')
 
 router.get('/', function(req, res) {
   res.render('projects', {
+    title: 'Portfolio and Projects - Jorge Ferreiro',
+    headline: 'Portfolio',
     path: 'portfolio',
-    title: 'Portfolio',
     filtered: false, /* If projects are filtered by some category */
     projects: projects
   })
@@ -25,7 +26,8 @@ router.get('/:category', function(req, res) {
 
   res.render('projects', {
     path: 'projects',
-    title: 'Portfolio',
+    title: 'Portfolio - Jorge Ferreiro',
+    headline: 'Portfolio',
     filtered: true,
     filtered_by: category,
     projects: projectsFiltered

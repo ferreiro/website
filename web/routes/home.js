@@ -7,7 +7,8 @@ const blogRepository = require('../repository/blog')
 router.get('/', function (req, res, next) {
   const viewTemplateName = req.query.v1 ? 'home' : 'home_v2'
   const homeContext = {
-    title: '',
+    title: 'Jorge Ferreiro - Software Engineer, Product Manager and Entrepreneur',
+    image: 'https://www.ferreiro.me/images/home/welcome_to_ferreiro_v3.jpg',
     path: 'home',
     content: content.about,
     recentPosts: []

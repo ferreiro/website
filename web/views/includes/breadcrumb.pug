@@ -5,7 +5,4 @@
   h2.breadcrumb_parent
     a(href="/").primaryColor Jorge Ferreiro
   .breadcrumb_divider /
-  h1.breadcrumb_current.secundaryColor !{title}
-
-
-//.separator
+  h1.breadcrumb_current.secundaryColor= headline ? headline : title

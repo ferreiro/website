@@ -9,9 +9,10 @@ module.exports = router
 
 function getTalks (req, res, next) {
   res.render('talks', {
-    title: 'Talks and Workshops',
-    image: 'https://www.ferreiro.me/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg',
     path: 'talks',
+    title: 'Talks and Workshops - Jorge Ferreiro',
+    headline: 'Talks and Workshops',
+    image: 'https://www.ferreiro.me/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg',
     config: talks.config,
     pastTalks: talks.pastTalks
   })
