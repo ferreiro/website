@@ -22,7 +22,8 @@ module.exports = router
 function getBlogContext (req) {
   const disableAdmin = req.query.disableAdmin
   return {
-    title: 'Jorge Ferreiro Blog',
+    title: 'Blog',
+    description: 'A personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.',
     path: 'blog',
     blogCategory: 'all',
     config: blog.config,
