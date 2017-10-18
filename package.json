@@ -39,6 +39,7 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
     "bower": "^1.8.2",
+    "compression": "^1.7.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "debug": "^3.1.0",

@@ -6,12 +6,16 @@ const bodyParser = require('body-parser')
 const helmet = require('helmet')
 const session = require('express-session')
 const express = require('express')
+const compression = require('compression')
 
 const env = require('../env')
 
 module.exports = (app) => {
   // Add security layer
   app.use(helmet())
+
+  // Compression!
+  app.use(compression())
 
   // Search engines
   app.get('/robots.txt', (req, res) => {
