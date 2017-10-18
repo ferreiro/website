@@ -88,8 +88,16 @@
     max-width: calc(100% - 2px);
     border: 2px dotted #cecece;
     border: 1px solid  #d3d3d3;
+    outline: 0;
 
+    @include transition(200ms);
     @include border-radius(5px);
+
+    &:focus {
+      border-color: $primaryColor;
+      border-color: rgba(0,0,0,0.35);
+      background: rgba(0, 0, 0, 0.01);
+    }
   }
 
   &_textarea {
