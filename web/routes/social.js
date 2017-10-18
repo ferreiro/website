@@ -30,7 +30,7 @@ function githubFollowers(req, res, next) {
       public_repos = user.public_repos
     }
 
-    res.setHeader('Content-Type', 'application/json')
+    res.set('Cache-Control', 'max-age=' + 24 * 3600)
     res.json({
       "public_repos": public_repos // We return form object we created before
     })
