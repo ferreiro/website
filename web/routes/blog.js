@@ -23,7 +23,7 @@ function getBlogContext (req) {
   const disableAdmin = req.query.disableAdmin
   return {
     title: 'Blog',
-    description: 'A personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.',
+    description: 'Personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.',
     path: 'blog',
     blogCategory: 'all',
     config: blog.config,
