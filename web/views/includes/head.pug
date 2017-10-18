@@ -57,21 +57,45 @@ link(rel='mask-icon', href='/images/favicons/safari-pinned-tab.svg', color='#d83
 meta(name='msapplication-TileColor', content='#9C2901')
 meta(name='msapplication-TileImage', content='/images/favicons/mstile-144x144.png')
 
-//- This should be loaded synchronously (since contains normalize and more stuff)
-
-link(rel='stylesheet', href='/vendors/vendors.min.css', type='text/css')
-link(rel="stylesheet", href="/css/style.min.css?v=3.0.3", type='text/css')
-
 //- Loading async css
 //- https://stackoverflow.com/questions/32759272/how-to-load-css-asynchronously
 
+link(rel='stylesheet', href='/vendors/vendors.min.css', media="none", onload="if(media!='all')media='all'", type='text/css')
+link(rel="stylesheet", href="/css/style.min.css?v=3.0.3", media="none", onload="if(media!='all')media='all'", type='text/css')
 link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,300,700, 900', media="none", onload="if(media!='all')media='all'", type='text/css')
 link(rel="stylesheet", href="/fonts/ferreiro/style.css", media="none", onload="if(media!='all')media='all'", type='text/css')
 link(rel="stylesheet", href="/bower_components/Ionicons/css/ionicons.min.css", media="none", onload="if(media!='all')media='all'", type='text/css')
 
 noscript
+  link(rel='stylesheet', href='/vendors/vendors.min.css', type='text/css')
+  link(rel='stylesheet', href='/css/style.min.css?v=3.0.3', type='text/css')
+  link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:400,300,700, 900', type='text/css')
   link(rel='stylesheet', href='/fonts/ferreiro/style.css', type='text/css')
   link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css', type='text/css')
+
+//- This should be loaded synchronously (since contains normalize and more stuff)
+
+style.
+  .loader {
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255, 1) url("/images/three-dots.svg");
+    background-repeat: no-repeat;
+    background-size: 60px auto;
+    background-position: 50% 50%;
+    position: fixed;
+    z-index: 1000000000000;
+    left: 0;
+    top: 0;
+    // display: none !important;
+  }
+
+  .contactLoader {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+  }
+
 
 block extraCss
 block extraHead
