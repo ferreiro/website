@@ -8,8 +8,14 @@ block content_full
       .imagePopup_content
         img(src= )
 
+block extraCss
+  //- Loading the font for dev icons
+  link(rel="stylesheet", href="/bower_components/devicon/devicon.min.css", type='text/css', media="none", onload="if(media!='all')media='all'")
+  noscript
+    link(rel="stylesheet", href="/bower_components/devicon/devicon.min.css", type='text/css')
+
 block extraScripts
-  script(src="/js/projects.main.min.js")
+  script(src="/js/projects.main.min.js", async)
 
 block content
 
