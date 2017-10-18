@@ -10,6 +10,7 @@ const sassGlob = require('gulp-sass-glob')
 const minifycss = require('gulp-cssnano')
 const minifyCSS = require('gulp-minify-css')
 const autoprefixer = require('gulp-autoprefixer')
+const minifyJs = require('gulp-minify')
 
 module.exports.compileSass = function compileSass(opts) {
   return gulp
@@ -71,10 +72,12 @@ module.exports.compressVendorsJs = function compressVendorsJs (opts) {
   return gulp
     .src(opts.src)
     .pipe(concat(opts.filename))
-    .pipe(rename({
-      suffix: '.min'
+    .pipe(minifyJs({
+      ext:{
+          min: '.min.js'
+      },
+      ignoreFiles: []
     }))
-    //.pipe(uglify())
     .pipe(gulp.dest(opts.dst))
 }
 
@@ -87,8 +90,12 @@ module.exports.buildJs = function buildJs (opts) {
       presets: ['es2015'] // compile ne ones
     }))
     .pipe(concat(opts.filename))
-    .pipe(rename({ suffix: '.min' }))
-    // .pipe(uglify())
+    .pipe(minifyJs({
+      ext:{
+          min: '.min.js'
+      },
+      ignoreFiles: []
+    }))
     .pipe(cache.cache()) // cache them
     .pipe(gulp.dest(opts.dst)) // write them
 }
