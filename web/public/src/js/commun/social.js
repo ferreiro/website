@@ -1,8 +1,9 @@
-var githubRepostiries = $('#githubRespositories')
+//- updateGithubRepositories()
 
 function updateGithubRepositories() {
-  var apiEndPoint = '/social/github'
+  const githubRepositories = $('#githubRespositories')
 
+  const apiEndPoint = '/social/github'
   $.ajax({
     url: apiEndPoint,
     type: 'GET',
@@ -10,8 +11,8 @@ function updateGithubRepositories() {
     encode: true
   })
   .done(function(apiObject) {
-    var public_repos = apiObject.public_repos
-    githubRepostiries.html(public_repos) // Update github repositories
+    const publicRepositoriesCount = apiObject.public_repos
+    githubRepositories.html(publicRepositoriesCount) // Update github repositories
   })
   .fail(function(apiObject) {
     console.log('footer.js > Fail to load number of repositories')
@@ -19,5 +20,3 @@ function updateGithubRepositories() {
   .always(function(apiObject) {
   })
 }
-
-updateGithubRepositories()
