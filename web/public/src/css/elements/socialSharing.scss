@@ -1,3 +1,5 @@
+$topOffset: 0; // $headerTotalHeight
+
 .socialSharing {
   visibility: hidden;
 
@@ -14,7 +16,7 @@
     left: 0;
   }
   @media all and (min-width: $desktop-screen) {
-    top: $headerTotalHeight; // header Height
+    top: $topOffset; // header Height
     bottom: 0;
     width: 50px;
     z-index: 0;

@@ -34,14 +34,18 @@ function setupLinkedinButton (url, title, summary) {
 function setupScrollListener () {
     const offsetFromBreakPoint = 300
     const headerHeight = $('.menu').outerHeight()
-    const targetContainer = $('#mainContainer')
+    const targetContainer = $('#socialSharingBreakpoint')
     const targetHeader = $('#blogHeader')
     const targetFooter = $('#postFooter')
     const socialSharing = $('#socialSharing')
 
+    if (targetContainer.length === 0) {
+        return; // skip if container does not exist
+    }
+
     $(window).scroll(function() {
-        const currentScroll = $(window).scrollTop() + headerHeight
-        const targetPositionY = targetContainer.position().top
+        const currentScroll = $(window).scrollTop()
+        const targetPositionY = targetContainer.offset().top
         const targetSocialOffsetY = socialSharing.offset().top
         const targetFooterOffsetY = targetFooter.offset().top
 
