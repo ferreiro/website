@@ -24,22 +24,14 @@ block extraMeta
     meta(name="twitter:image", content= post.pic)
 
 block extraCss
-  //- Loading post fonts!
-  link(href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600", rel="stylesheet")
+  //- Loading post fonts async!
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600", media="none", onload="if(media!='all')media='all'", type='text/css')
+  noscript
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600', type='text/css')
 
 block extraScripts
-  script(src="/js/blog.main.min.js")
   script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst", async)
-
-  //- External links
-  script.
-    // This is the only line you need and should select which area
-    // you want the links to appear be externalized
-    (function($){
-      $(function(){
-        $('#post').externalLinks()
-      });
-    }(jQuery));
+  script(src="/js/blog.main.min.js", async)
 
   //- script(src="/vendors/jquery.toc.min.js")
   //- script.
