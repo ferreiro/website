@@ -27,7 +27,7 @@
       "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp"
     },
     {
-      "title": "Dailyfocus presentation (with DEMO! 🔥): 16 minutes - FDI UCM",
+      "title": "Dailyfocus presentation (with DEMO! 🔥): 16 minutes - FDI UCM - #helloDailyfocus",
       "summary": "Presentation of my personal project Dailyfocus, where I explained the engineering, product design, business and my personal experience.",
       "permalink": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
       "type": "video",
@@ -49,8 +49,8 @@
       "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
     },
     {
-      "title": "Dailyfocus presentation (June 2017): vision, product, tech and journey",
-      "summary": "Presentation made for an academic jury from my college. I mainly cover: challenges, vision and goals, development process, lessons learned, etc.",
+      "title": "Dailyfocus presentation (June 2017): Vision, product, tech and journey.",
+      "summary": "Presentation made for an academic jury from my college. I mainly cover: Challenges, vision and goals, development process, lessons learned, etc.",
       "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
       "type": "slides",
       "pic": "/images/talks/dailyfocus_ucm.png",
@@ -123,7 +123,7 @@
     },
     {
       "title": "Webapps: introduction and publishing on Firefox OS",
-      "summary": "I was invited by a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
+      "summary": "I was invited to a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
       "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
       "type": "slides",
       "pic": "/images/talks/mozilla_firefox.jpg",
