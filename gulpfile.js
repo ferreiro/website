@@ -55,8 +55,11 @@ gulp.task('images', function () {
   const excludePsd = path.join(SRC, 'images/**/*.psd')
   return gulpTasks.optimizeImages({
     src: [
-      path.join(SRC, 'images/**/*'),
-      excludePsd
+      path.join(SRC, 'images/**/*.jpg'),
+      path.join(SRC, 'images/**/*.jpeg'),
+      path.join(SRC, 'images/**/*.png'),
+      path.join(SRC, 'images/**/*.gif'),
+      path.join(SRC, 'images/**/*.svg')
     ],
     dst: path.join(DST, '/images')
   })
@@ -128,20 +131,3 @@ gulp.task('jsAdmin', function () {
     filename: 'admin.main.js'
   })
 })
-
-/*
-gulp.task('cssVendors', function () {
-  return gulp
-    .src([
-      path.join(__dirname, '/bower_components/normalize-css/normalize.css'),
-      path.join(__dirname, '/bower_components/devicon/devicon.min.css'),
-      path.join(__dirname, '/bower_components/Ionicons/css/ionicons.min.css'),
-      path.join(__dirname, SRC, '/vendors/animate.min.css')
-    ])
-    //.src('/bower_components/normalize-css/normalize.css')
-    .pipe(minifyCSS())
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
-    .pipe(concat('vendors.min.css'))
-    .pipe(gulp.dest(path.join(__dirname, DST + '/css')))
-})
-*/

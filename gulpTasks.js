@@ -32,6 +32,19 @@ module.exports.compileSass = function compileSass(opts) {
 module.exports.optimizeImages = function optimizeImages(opts) {
   return gulp
     .src(opts.src)
+    .pipe(imagemin([
+      imagemin.gifsicle({
+        interlaced: true
+      }),
+      imagemin.jpegtran({
+        progressive: true
+      }),
+      imagemin.optipng({
+        optimizationLevel: 1
+      }),
+    ], {
+      verbose: true
+    }))
     .pipe(gulp.dest(opts.dst))
   /*
   return gulp
