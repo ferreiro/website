@@ -4,7 +4,7 @@ $topOffset: 0; // $headerTotalHeight
   visibility: hidden;
 
   @include opacity(0);
-  @include transition(500ms);
+  @include transition(250ms);
 
   @media all and (max-width: $desktop-screen - 1px) {
     width: 100%;

@@ -5,27 +5,30 @@ $action_button_icon_size: 15px;
 $action_button_icon_margin: 4px;
 
 .action_button {
-  display: inline-block;
-  border: 1px solid #cecece;
+  font-weight: 600;
   padding: 0.6em 0.8em;
+  display: inline-block;
   text-decoration: none;
+  color: #616161 !important;
+  border: 1px solid #cecece;
   line-height: $action_button_font_size;
 
-  font-weight: 600;
-  color: #616161 !important;
-
   @include border-radius(3px);
-  @include transition(500ms);
+  @include transition(250ms);
+
   &:hover {
     background: #f4f4f4;
   }
+
   &__hidden {
     display: none;
   }
+
   span {
+    line-height: 0;
     height: $action_button_icon_size;
     margin-right: $action_button_icon_margin;
-    line-height: 0;
+
     &:before {
       padding-top: 1px;
       font-size: $action_button_icon_size;
@@ -36,11 +39,14 @@ $action_button_icon_margin: 4px;
 // This extends from action_button
 .big_action_button {
   @extend .action_button;
+
   padding: 1.2em 1.8em;
   padding-bottom: 1em;
   font-size: 1.3em;
   margin: 0 auto;
+
   @include border-radius(60px);
+
   @media all and (min-width: $desktop-screen) {
     width: 300px;
     padding: 1.1em 1.8em;
@@ -53,6 +59,7 @@ $action_button_icon_margin: 4px;
   &_block {
     text-align: center;
   }
+
   a {
     display: block;
     padding: 3em 0;
