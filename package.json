@@ -26,7 +26,8 @@
     "lint": "standard",
     "build": "gulp",
     "watch": "gulp watch",
-    "start": "DEBUG=ferreiro:* npm run build && nodemon ./bin/www",
+    "heroku-prebuild": "npm run build",
+    "start": "DEBUG=ferreiro:* nodemon ./bin/www",
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
