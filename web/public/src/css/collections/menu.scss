@@ -43,7 +43,7 @@
   padding: $headerMenuPadding 0;
   border-bottom: 1px solid rgba(222, 222, 222, 1);
 
-  @include transition(1000ms);
+  @include transition(500ms);
 
   &__wrapper {
     height: $headerHeight;
