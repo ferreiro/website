@@ -139,7 +139,7 @@ block content
                             p.project_highlight_entry_text !{feature}
 
                   if project.stack
-                    h4.project_body_title Technologies stack
+                    h4.project_body_title Technology stack
                     .project_stack
                       ul.project_stack_list
                         for technology in project.stack
@@ -166,7 +166,7 @@ block content
                   //-a.action_button(href= project.links.website, target="_blank") Check out the project!
                   .project_links
                     if project.links.website
-                      a(href= project.links.website, target="_blank").project_links_website(style="color: " + project.color.hex + "; border-color:" + project.color.hex + ";") Checkout project
+                      a(href= project.links.website, target="_blank").project_links_website(style="color: " + project.color.hex + "; border-color:" + project.color.hex + ";") Check this out
                     if project.links.code
                       a(href= project.links.code, target="_blank").project_links_code Source code
 

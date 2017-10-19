@@ -192,12 +192,13 @@ $projectLinksTopMargin: 20px;
       z-index: 100;
       right: 0;
       top: 0;
-      display: none;
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
       // background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 80%); /* FF3.6-15 */
       // background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* Chrome10-25,Safari5.1-6 */
       // background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.40) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
       // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
+
+      @include opacity(0.3);
 
       &_solid {
         width: $projectHeaderGalleryGradientWidth;
@@ -206,7 +207,6 @@ $projectLinksTopMargin: 20px;
         z-index: 100;
         right: 0;
         top: 0;
-        opacity: 0.4;
       }
       &:after {
         width: $projectHeaderGalleryGradientWidth;
