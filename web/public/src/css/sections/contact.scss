@@ -10,24 +10,24 @@
 }
 
 
-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
   color:    rgba(0,0,0,0.5);
 }
-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+input:-moz-placeholder,
+textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
  color:    rgba(0,0,0,0.5);
  opacity:  1;
 }
-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+input::-moz-placeholder,
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
  color:    rgba(0,0,0,0.5);
  opacity:  1;
 }
-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+input:-ms-input-placeholder,
+textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
  color:    rgba(0,0,0,0.5);
 }
-input::-ms-input-placeholder { /* Microsoft Edge */
- color:    #909;
-}
-
 
 .contact_form {
   margin: 1em 0;
@@ -114,9 +114,12 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     @include border-radius(5px);
 
     &:focus {
-      border-color: $primaryColor;
-      border-color: rgba(0,0,0,0.35);
+      // border-color: $primaryColor;
+      border-color: rgba(0,0,0,0.28);
+      border-color: #c4c2c2;
       background: rgba(0, 0, 0, 0.01);
+
+      @include box-shadow(1px 1px 4px 1px rgba(0, 0, 0, 0.076));
     }
   }
 
@@ -155,7 +158,7 @@ input::-ms-input-placeholder { /* Microsoft Edge */
   }
 
   &_submit {
-    width: 240px;
+    width: 260px;
     padding: 1em;
     display: block;
     margin: 0 auto;
@@ -166,7 +169,7 @@ input::-ms-input-placeholder { /* Microsoft Edge */
     @include border-radius(60px);
 
     @media all and (min-width:$desktop-screen) {
-      padding: 25px 20px;
+      padding: 1.2em 0;
       margin-bottom: 0;
     }
 
@@ -174,6 +177,9 @@ input::-ms-input-placeholder { /* Microsoft Edge */
       color: #fff;
       background: #000;
       border-color: #000;
+
+      background: #d83901;
+      border-color: #b73507;
     }
 
     &_disabled {

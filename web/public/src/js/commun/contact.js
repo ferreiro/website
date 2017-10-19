@@ -99,6 +99,8 @@ function validateInputs() {
   var userEmail = input_email.val()
   var valid = true
 
+  $('input').removeClass('wrongInput') // Hide previous messages
+  $('textarea').removeClass('wrongInput') // Hide previous messages
   $('.wrong').hide(0) // Hide previous messages
 
   // Check the email
@@ -106,6 +108,7 @@ function validateInputs() {
 
   if (!valid) {
     $('#wrongEmail').show()
+    $('#contactform input[name=__email]').addClass('wrongInput')
   }
 
   // Check fields that can not be empty
@@ -115,9 +118,11 @@ function validateInputs() {
     if (! notEmpty(aValue)) {
       if (this.id == "the_name") {
         $('#wrongName').show()
+        $('#contactform input[name=__name]').addClass('wrongInput')
       }
       if (this.id == "message") {
         $('#wrongMessage').show()
+        $('#contactform textarea[name=__text]').addClass('wrongInput')
       }
     }
   })
