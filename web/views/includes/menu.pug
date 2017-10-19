@@ -52,22 +52,28 @@
                     p= item.name
 
       .menu_right
-        if admin
-          a.item(href="/admin/")
-            p Admin
+        nav.menu__options
+          if admin
+            a.item(href="/admin/")
+              p Admin
 
-        .dropdown.dropdown-social
-          .item.with-icon
+          a.item.with-icon(href="/newsletter").openNewsletterSubscription
             p
-              i(class="icon ion-chatbox-working").dropdown-top-icon
-              //-span Social - Let's connect!
-              span Social Networks
-              .dropdown-content#DropdownSocial
-                .dropdown-wrapper
-                  each item in social || []
-                    a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
-                      span.dropdown-icon(class="icon-" + item.icon)
-                      span.dropdown-text #{item.name}
+              i(class="icon ion-android-mail").dropdown-top-icon
+              span Subscribe
+
+          .dropdown.dropdown-social
+            .item.with-icon
+              p
+                i(class="icon ion-chatbox-working").dropdown-top-icon
+                //-span Social - Let's connect!
+                span Social Networks
+                .dropdown-content#DropdownSocial
+                  .dropdown-wrapper
+                    each item in social || []
+                      a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
+                        span.dropdown-icon(class="icon-" + item.icon)
+                        span.dropdown-text #{item.name}
 
       .jfmenu__mobileButton#dropdown-mobiles
         .jfmenu__mobileButton__wrapper

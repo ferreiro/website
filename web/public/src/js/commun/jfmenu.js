@@ -36,7 +36,6 @@ function setupMobileMenu () {
   var jfmenuOverlay = $('.jfmenu_overlay')
   var menuButton = $('.jfmenu__mobileButton')
   var header = $('#menu')
-  var headerInitialTopMargin = $('#menu').position().top
 
   $(window).resize(function(elem) {
     const deskstopScreen = 1100
@@ -84,8 +83,9 @@ function setupMobileMenu () {
   })
 
   function hideMenu () {
+    const headerTopMargin = hasMenuAboveItem() ? getHeaderAboveItemHeigth() : 0
     if (jfmenu.hasClass('jfmenu_displayed')) {
-      header.css({ top: headerInitialTopMargin })
+      header.css({ top: headerTopMargin })
       body.removeClass('body_overflow')
       jfmenu.removeClass('jfmenu_displayed')
       jfmenuOverlay.removeClass('fadeIn')
@@ -96,14 +96,23 @@ function setupMobileMenu () {
 
   function displayMenu () {
     if (!jfmenu.hasClass('jfmenu_displayed')) {
-      headerInitialTopMargin = $('#menu').position().top
-      header.css({ top: '0' })
+      header.css({ top: 0 })
       body.addClass('body_overflow')
       jfmenu.addClass('jfmenu_displayed')
       jfmenuOverlay.addClass('animated fadeIn')
       jfmenuContent.addClass('animated fadeInDownBig')
       menuButton.addClass('jfmenu__mobileButton__active')
     }
+  }
+
+  function hasMenuAboveItem () {
+    const aboveItem = $('.mostRecentPostAd')
+    return aboveItem.length > 0
+  }
+
+  function getHeaderAboveItemHeigth () {
+    const aboveItem = $('.mostRecentPostAd')
+    return hasMenuAboveItem() ? aboveItem.outerHeight() : 0
   }
 }
 

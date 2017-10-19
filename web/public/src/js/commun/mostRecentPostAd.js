@@ -68,14 +68,20 @@ function delayDisplayTime () {
 }
 
 function moveContainersAndMenu (offset, next) {
-  $('#menu').css({ top: offset })
+  $('#menu').css({ top: isMobileMenuShown() ? 0 : offset })
   $('.container').css({ 'padding-top': offset }).promise().done(function () {
     return next()
   })
 }
 
+function isMobileMenuShown () {
+  const mobileMenu = $('.jfmenu')
+  return mobileMenu.length > 0 && mobileMenu.hasClass('jfmenu_displayed')
+}
+
 function displayMostRecentPostAd (mostRecentPostAd) {
   mostRecentPostAd
     .show(0)
-    .addClass('animated slideInDown')
+    // .addClass('animated slideInDown')
+    .slideDown('500')
 }
