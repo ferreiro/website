@@ -3,7 +3,7 @@
 (function($){
 	var baseDomain;
 	var externalPath;
-	
+
 	$.externalLinks = {
 		baseDomain: window.location.host,
 		ignoreClass: 'ignoreExternal',
@@ -64,3 +64,7 @@
 		return false;
 	}
 }(jQuery));
+
+$(function(){
+	$('body').externalLinks()
+});
