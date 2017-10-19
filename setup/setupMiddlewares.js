@@ -26,7 +26,7 @@ module.exports = (app) => {
   })
 
   // Serve static bower: http://goo.gl/e2nTBf
-  app.use(favicon(path.join(__dirname, '../web', 'public', 'dst', 'images', 'favicons', 'favicon.ico'), {
+  app.use(favicon(path.join(__dirname, '../web', 'public', 'src', 'images', 'favicons', 'favicon.ico'), {
     maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0
   }))
   app.use(express.static(path.join(__dirname, '../web/public/dst'), {
