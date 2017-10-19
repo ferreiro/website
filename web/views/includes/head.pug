@@ -73,13 +73,11 @@ noscript
   link(rel='stylesheet', href='/fonts/ferreiro/style.css', type='text/css')
   link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css', type='text/css')
 
-//- This should be loaded synchronously (since contains normalize and more stuff)
-
 style.
   .loader {
     width: 100%;
     height: 100%;
-    background: rgba(255,255,255, 1) url("/images/three-dots.svg");
+    background: rgba(255,255,255, 0) url("/images/loading_squares.svg");
     background-repeat: no-repeat;
     background-size: 60px auto;
     background-position: 50% 50%;
@@ -96,6 +94,9 @@ style.
     left: 0;
   }
 
-
 block extraCss
 block extraHead
+
+script(type="text/javascript").
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("1236822890");
