@@ -77,6 +77,9 @@
       margin-bottom: 0;
       padding: 2.5em 0;
     }
+    a {
+      margin: 0 0.5em;
+    }
   }
   &__post {
     @include flexbox();
