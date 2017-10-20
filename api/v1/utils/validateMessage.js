@@ -1,23 +1,18 @@
-var validator = require('validator')
+const validator = require('validator')
 
 validateMessage = function (message, cb) {
-  var valid = false
-  var emailCorrect = false
-  var messageFilled = false
+  let valid = false
 
-  if (message === null)
+  if (message === null) {
     return cb(valid)
-
-  if (message.email === null || message.msg === null)
+  }
+  if (message.email === null || message.msg === null) {
     return cb(valid)
+  }
 
-  var email = message.email
-  var msg = message.msg
-
-  emailCorrect = validator.isEmail(String(email))
-  messageFilled = (msg !== undefined)
-
-  valid = emailCorrect && messageFilled
+  const isValidEmail = validator.isEmail(String(message.email))
+  const isMessageFilled = (message.msg !== undefined)
+  valid = isValidEmail && isMessageFilled
 
   cb(valid)
 }
