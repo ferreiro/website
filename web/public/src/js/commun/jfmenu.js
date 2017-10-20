@@ -106,8 +106,9 @@ function setupMobileMenu () {
   }
 
   function hasMenuAboveItem () {
+    // Check if above item exists and is displayed.
     const aboveItem = $('.mostRecentPostAd')
-    return aboveItem.length > 0
+    return aboveItem.length > 0 && aboveItem.is(":visible")
   }
 
   function getHeaderAboveItemHeigth () {
