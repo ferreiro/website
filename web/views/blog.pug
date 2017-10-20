@@ -38,10 +38,15 @@ block content_large
 
       if prevPageToken != "start" || nextPageToken != "end"
         .blog__load_more
+          //- Add the category id (only if is not the main page)
+          - blogLink = '/blog'
+          if blogCategory !== 'all'
+            - blogLink += '/category/' + (blogCategory ? blogCategory : '')
+
           if prevPageToken != "start" && prevPageToken > 0
-            a(href= '/blog?next=' + prevPageToken).big_action_button Previous page
+            a(href= blogLink + '?next=' + prevPageToken).big_action_button Previous page
           if nextPageToken != "end"
-            a(href= '/blog?next=' + nextPageToken).big_action_button Next page
+            a(href= blogLink + '?next=' + nextPageToken).big_action_button Next page
 
       //- if posts.length < 3
       //- Display the add here too.
