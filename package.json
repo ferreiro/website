@@ -24,11 +24,12 @@
   "scripts": {
     "check": "npm-check",
     "lint": "standard",
-    "build": "gulp",
+    "build:bower": "./node_modules/bower/bin/bower install",
+    "build:gulp": "gulp",
+    "build": "npm run build:gulp && npm run build:bower",
     "watch": "gulp watch",
-    "heroku-postbuild": "npm run build",
-    "start": "DEBUG=ferreiro:* nodemon ./bin/www",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "heroku-postbuild": "npm run build && npm run build:bower",
+    "start": "DEBUG=ferreiro:* nodemon ./bin/www"
   },
   "dependencies": {
     "aws-sdk": "^2.125.0",
