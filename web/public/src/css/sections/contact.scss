@@ -43,6 +43,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
     @media all and (max-width:$desktop-screen) {
       @include box-shadow(none !important);
     }
+
     @media all and (min-width:$desktop-screen) {
       max-width: 660px;
       margin: 0 auto;
