@@ -1,16 +1,16 @@
 
-.tags {
+.tagLists {
   list-style: none;
   margin: 0;
   overflow: hidden;
   padding: 0;
 }
 
-.tags li {
+.tagLists li {
   float: left;
 }
 
-.tag {
+.tagList {
   background: #eee;
   border-radius: 3px 0 0 3px;
   color: #999;
@@ -25,7 +25,7 @@
   -webkit-transition: color 0.2s;
 
 }
-.tag-first {
+.tagList-first {
 
   width: 100%; // Break the tags in two on mobiles
 
@@ -42,7 +42,7 @@
   }
 }
 
-.tag-transparent {
+.tagList-transparent {
   padding-left:  5px !important;
   padding-right:  5px !important;
   margin-left:  0 !important;
@@ -58,7 +58,7 @@
   }
 }
 
-.tag::before {
+.tagList::before {
   background: #fff;
   border-radius: 10px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
@@ -70,7 +70,7 @@
   top: 10px;
 }
 
-.tag::after {
+.tagList::after {
   background: #fff;
   border-bottom: 13px solid transparent;
   border-left: 10px solid #eee;
@@ -81,12 +81,3 @@
   right: 0;
   top: 0;
 }
-
-// .tag:hover {
-//   background-color: crimson;
-//   color: white;
-// }
-//
-// .tag:hover::after {
-//    border-left-color: crimson;
-// }

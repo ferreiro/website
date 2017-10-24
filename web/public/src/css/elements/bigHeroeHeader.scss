@@ -88,7 +88,7 @@
     text-decoration: none;
     background: $primaryColor;
 
-    @include transition(150ms);
+    @include transition(100ms !important);
     @include border-radius(60px);
 
     @media all and (min-width: $tablet-screen) {
