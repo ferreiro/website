@@ -1,4 +1,4 @@
-mixin blogHeader(hasAnimation, hideBlogDescription)
+mixin blogHeader(hasAnimation, hideBlogDescription, displaySubscriptionButton)
   - headerClass = ''
   if hasAnimation
     - headerClass = 'animate'
@@ -20,10 +20,11 @@ mixin blogHeader(hasAnimation, hideBlogDescription)
           h2.blogHeader_job !{config.subtitle}
           //- h2.blogHeader_job ― Written by <strong>#{config.author.name}</strong> ―
 
-      //- .blogHeader_buttons
-        a(href="/newsletter?source=blog").action_button.openNewsletterSubscription
-          span.icon.ion-ios-paper-outline(style="margin-right: 10px;")
-          span Subscribe to my newsletter
+      if displaySubscriptionButton
+        .blogHeader_buttons
+          a(href="/newsletter?source=blog").action_button.openNewsletterSubscription
+            span.icon.ion-ios-paper-outline(style="margin-right: 10px;")
+            span Subscribe to my newsletter
 
     .optionsMenu
       ul.optionsMenu__list
