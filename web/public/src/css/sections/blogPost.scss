@@ -223,7 +223,7 @@
       display: table-row;
     }
     ol.linenums > li::before {
-      content: counter(foo) ".";
+      content: '';  /* Removed counter content: counter(foo) "."; */
       display: table-cell; /* aha! */
       text-align: right;
       padding-right: 0.5em;
@@ -260,6 +260,9 @@
       tab-size: 2;
       color: #ddd;
       margin-top: 19px;
+      padding: 0;
+
+      @include border-radius(7px);
     }
     code {
       padding: 0 5px;
