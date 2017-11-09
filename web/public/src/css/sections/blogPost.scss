@@ -83,7 +83,6 @@
     }
   }
 
-
   hr {
     font-size: 24px;
     line-height: 1.4;
@@ -128,6 +127,12 @@
       display: block;
     }
 
+    .warningText {
+      padding: 1em;
+      border: 1px solid #969696;
+      border-radius: 10px;
+    }
+
     h1, h2, h3, h4, h5 {
       font-family: 'Lato', sans-serif;
     }
@@ -136,7 +141,7 @@
       font-size: 1.2em;
       content: '#';
       position: absolute;
-      margin-left: -0.9em;
+      margin-left: -1.1em;
       margin-top: -3px;
       opacity: 0.2;
     }
@@ -234,11 +239,11 @@
       padding-right: 1em;
     }
     ol.linenums {
-      margin-left: 0.5em;
+      margin-left: 0;
 
       @media all and (min-width: $desktop-screen) {
-        padding-left: 1em;
-        margin-left: 1em;
+        padding-left: 0;
+        margin-left: 0;
       }
 
       li {
@@ -360,6 +365,8 @@
 
     a {
       display: initial;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.7);
     }
 
     mark {
