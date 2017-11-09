@@ -129,8 +129,12 @@
 
     .warningText {
       padding: 1em;
-      border: 1px solid #969696;
+      border: 1px solid #d93901;
       border-radius: 10px;
+      margin-top: 29px;
+      p {
+        margin: 0;
+      }
     }
 
     h1, h2, h3, h4, h5 {
@@ -185,10 +189,14 @@
     ul {
       li {
         list-style: none;
+        position: relative;
+        margin-left: 1em;
         &:before {
-          padding-right: 10px;
-          font-size: 1.3em;
+          left: -1em;
           content: '•';
+          padding-right: 10px;
+          position: absolute;
+          font-size: 1.3em;
         }
 
         p {
