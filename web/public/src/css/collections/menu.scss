@@ -78,8 +78,39 @@
 
     @media all and (min-width: $desktop-screen) {
       display: block;
+      @include flexbox_flex(1, 1, auto);
+      @include flexbox_alignSelf(auto);
+    }
+  }
+
+  &__nav {
+    @include flexbox();
+
+    .item {
       @include flexbox_flex(0, 0, auto);
       @include flexbox_alignSelf(auto);
+    }
+  }
+
+  &__separator {
+    height: 100%;
+    border-left: 1px solid #cecece;
+    display: inline-block;
+  }
+
+  &__options {
+    text-align: right;
+    .dropdown-top-icon {
+      margin-right: .6em;
+    }
+    .item {
+      padding: 0 1.2em;
+      margin-right: 0.1 !important;
+      text-align: left;
+
+      &:hover {
+        //- @include border-radius(0 !important);
+      }
     }
   }
 }
@@ -139,6 +170,10 @@ span.icon-separated {
     p {
       color: #fff;
     }
+
+    .dropdown-top-icon {
+      color: #fff;
+    }
   }
 }
 
@@ -154,10 +189,6 @@ span.icon-separated {
 
   &:hover .dropdown-content {
     display: block;
-  }
-
-  &:hover .dropdown-top-icon {
-    color: #fff;
   }
 
   &-social {
@@ -236,6 +267,7 @@ span.icon-separated {
     padding-left: 10px;
     display: inline-block;
     vertical-align: middle;
+
     @include transition(110ms);
   }
 

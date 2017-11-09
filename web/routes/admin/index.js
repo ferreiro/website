@@ -91,13 +91,21 @@ function getPublishedPosts (req, res, next) {
     path: 'admin',
     admin: true
   }
-  blogRepository.getAllPublished().then(posts => {
-    locals.posts = posts
-    res.render('admin/home', locals)
-  }).catch(err => {
-    locals.error = err
-    res.render('admin/home', locals)
-  })
+  const opts = {
+    nextPage: 0,
+    maxPagePosts: 10
+  }
+
+  blogRepository.getAllPublished({}, opts)
+    .then(posts => {
+      console.log(posts)
+      locals.posts = posts
+      res.render('admin/home', locals)
+    })
+    .catch(error => {
+      locals.error = error
+      res.render('admin/home', locals)
+    })
 }
 function getDraftsPosts (req, res, next) {
   var locals = {

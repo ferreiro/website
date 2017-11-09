@@ -185,6 +185,13 @@
           font-size: 1.3em;
           content: '•';
         }
+
+        p {
+          display: inline-block;
+          width: calc(100% - 25px);
+          vertical-align: top;
+          margin: 0;
+        }
       }
     }
 
@@ -394,10 +401,11 @@
     h2 {
       // color: $primaryColor;
       // font-family: Lato,sans-serif;
-      font-weight: 400;
+      font-weight: 600;
       font-size: 26px;
-      font-size: 24px;
+      /* font-size: 24px; */
       color: rgba(0,0,0,.7);
+      color: rgba(0,0,0,.9);
       margin-bottom: -15px;
     }
   }
