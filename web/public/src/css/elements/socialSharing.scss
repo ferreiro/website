@@ -15,6 +15,7 @@ $topOffset: 0; // $headerTotalHeight
     bottom: 0;
     left: 0;
   }
+
   @media all and (min-width: $desktop-screen) {
     top: $topOffset; // header Height
     bottom: 0;
@@ -23,10 +24,12 @@ $topOffset: 0; // $headerTotalHeight
     position: fixed;
     margin-left: calc(-80px + -3em);
   }
+
   &__displayed {
     visibility: visible;
     @include opacity(1);
   }
+
   &__list {
     margin: 0 0.5em;
     text-align: center;
@@ -41,11 +44,13 @@ $topOffset: 0; // $headerTotalHeight
       @include translate(0, -50%);
     }
   }
+
   &__entry {
     cursor: pointer;
     list-style: none;
     display: inline-block;
   }
+
   &__item {
     border: 0;
     width: 30px;
@@ -53,6 +58,10 @@ $topOffset: 0; // $headerTotalHeight
     margin: 0 6px;
     position: relative;
     display: inline-block;
+    background-size: 24px auto;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
     @include transition(300ms);
     @include border-radius(100%);
     @include opacity(0.5);
