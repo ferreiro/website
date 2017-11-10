@@ -20,7 +20,7 @@ $topOffset: 0; // $headerTotalHeight
   @media all and (min-width: $desktop-screen) {
     top: $topOffset; // header Height
     bottom: 0;
-    width: 50px;
+    width: 55px;
     z-index: 0;
     position: fixed;
     margin-left: calc(-80px + -3em);
@@ -34,14 +34,17 @@ $topOffset: 0; // $headerTotalHeight
   &__list {
     margin: 0 0.5em;
     text-align: center;
+
     @media all and (min-width: $desktop-screen) {
       left: 0;
       top: 50%;
       margin: 0;
-      width: 50px;
+      width: 55px;
       height: auto;
       position: absolute;
       text-align: center;
+      min-height: 190px;
+
       @include translate(0, -50%);
     }
   }
