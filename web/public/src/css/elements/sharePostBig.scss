@@ -46,7 +46,7 @@
     width: 100%;
     display: inline-block;
     @media all and (min-width: $tablet-screen) {
-      width: 48%;
+      width: 33%;
     }
   }
   &__link {
@@ -57,6 +57,8 @@
     padding: 1.2em 0;
     text-align: center;
     background: #767676;
+    text-decoration: none;
+
     @include transition(200ms);
     @include border-radius(5px);
 
@@ -74,6 +76,12 @@
     background: #2E92E9;
     &:hover {
       background: #2885D2;
+    }
+  }
+  &__feedback {
+    background: #737373;
+    &:hover {
+      background: #5d5d5d;
     }
   }
   &__icon {
