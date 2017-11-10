@@ -2,8 +2,7 @@ $(window).on('load', function () {
   setupMostRecentPostAd()
 })
 
-
-async function setupMostRecentPostAd () {
+function setupMostRecentPostAd () {
   const mostRecentPostAd = $('.mostRecentPostAd')
   const cacheName = 'mostRecentPostAd'
 
@@ -12,17 +11,17 @@ async function setupMostRecentPostAd () {
     return;
   }
 
-  var _  = await delayDisplayTime()
+  delayDisplayTime().then(sucess => {
+    if (!hasUserClickedOnMostRecentPostAd(mostRecentPostAd, cacheName)) {
+      const offset = '50px'
+      moveContainersAndMenu(offset, () => {
+        displayMostRecentPostAd(mostRecentPostAd)
+      })
+    }
 
-  if (!hasUserClickedOnMostRecentPostAd(mostRecentPostAd, cacheName)) {
-    const offset = '50px'
-    moveContainersAndMenu(offset, () => {
-      displayMostRecentPostAd(mostRecentPostAd)
-    })
-  }
-
-  setupScrollListener(mostRecentPostAd, cacheName)
-  setupAdClickListener(mostRecentPostAd, cacheName)
+    setupScrollListener(mostRecentPostAd, cacheName)
+    setupAdClickListener(mostRecentPostAd, cacheName)
+  })
 }
 
 function setupScrollListener(mostRecentPostAd, cacheName) {
