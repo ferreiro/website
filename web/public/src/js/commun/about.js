@@ -48,6 +48,7 @@ function displayTimelineItem (itemSelector, displayedClass, animationCss) {
     .addClass(displayedClass)
     .addClass(animationStyle)
 }
+/*
 
 async function displayBiography () {
   const photo = $('.about_bio__large__left_v2')
@@ -61,14 +62,13 @@ async function displayBiography () {
 
   displayContent(content)
 
-  /*
   displayPhoto(photo)
   displayBiographyTexts(texts)
   // var _ = await waitBeforeAnimation()
   // var _ = await waitBeforeAnimation()
-  */
   return 0
 }
+*/
 
 function hideContent (contents) {
   contents.forEach(function (selector) {
