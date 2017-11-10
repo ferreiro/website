@@ -1,6 +1,7 @@
 $topOffset: 0; // $headerTotalHeight
 
 .socialSharing {
+  z-index: 10000;
   visibility: hidden;
 
   @include opacity(0);
@@ -58,7 +59,7 @@ $topOffset: 0; // $headerTotalHeight
     margin: 0 6px;
     position: relative;
     display: inline-block;
-    background-size: 24px auto;
+    background-size: 22px auto;
     background-repeat: no-repeat;
     background-position: 50% 50%;
 
