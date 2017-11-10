@@ -5,6 +5,8 @@ function setupAbout() {
   // setupScrollEvents()
 }
 
+/*
+
 function setupScrollEvents () {
   const education = $('#education')
   const experience = $('#experience')
@@ -27,6 +29,7 @@ function setupScrollEvents () {
     }
   })
 }
+*/
 
 function getScrollOffset () {
   // We want to make our divs to appear when scroll on 70% of the screen
@@ -100,11 +103,12 @@ function displayPhoto (photo) {
   */
 }
 
+/*
 async function displayBiographyTexts(bioTexts) {
   bioTexts.css({
     opacity: 1
   })
-  /*
+  
     var lastDisplayedItem = 0
     var delayTime = 200
 
@@ -118,8 +122,8 @@ async function displayBiographyTexts(bioTexts) {
           .addClass('animated fadeInUp')
       }, delayTime)
     })
-  */
 }
+  */
 
 function waitBeforeAnimation () {
   return new Promise(resolve => {
