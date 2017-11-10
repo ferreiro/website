@@ -43,7 +43,7 @@ $topOffset: 0; // $headerTotalHeight
       height: auto;
       position: absolute;
       text-align: center;
-      min-height: 190px;
+      min-height: 160px;
 
       @include translate(0, -50%);
     }
@@ -70,17 +70,25 @@ $topOffset: 0; // $headerTotalHeight
     @include border-radius(100%);
     @include opacity(0.5);
 
-    &:hover {
-      animation: pulse 2s infinite;
-      @include box-shadow(0 0 10px 0 rgba(0, 0, 0, 0.8));
-      @include opacity(0.8);
+    @media all and (min-width: $desktop-screen) {
+      width:  30px;
+      height:  30px;
+      margin: 0.3em 0;
     }
 
-    @media all and (min-width: $desktop-screen) {
-      width:  48px;
-      height:  48px;
-      border: 1px solid #cecece;
-      margin: 0.3em 0;
+    &__bordered {
+      @media all and (min-width: $desktop-screen) {
+        width: 48px;
+        height: 48px;
+        border: 1px solid #cecece;
+        margin-bottom: 0.6em;
+
+        &:hover {
+          animation: pulse 2s infinite;
+          @include box-shadow(0 0 10px 0 rgba(0, 0, 0, 0.8));
+          @include opacity(0.8);
+        }
+      }
     }
 
     span {
