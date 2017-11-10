@@ -14,8 +14,8 @@ block content
 
     //- Middle Container
     .container_middle
-        //-.animate
-        .bigHeroeHeader
+
+        .bigHeroeHeader.animate
             .bigHeroeHeader__wrapper
                 .bigHeroeHeader__background(style="background-image: url(/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_product_manager.jpg);")
                 .bigHeroeHeader__content
@@ -36,11 +36,10 @@ block content
                 h3.blogPostRelated__title {
                     margin: 1.5em 0;
                 }
-            //- .animate
-            h3.blogPostRelated__title Most recent posts in my <a href="/blog">blog</a>!
 
-            //- .animate
-            .threeColsGrid
+            h3.blogPostRelated__title.animate Most recent posts in my <a href="/blog">blog</a>!
+
+            .threeColsGrid.animate
                 each post in recentPosts
                     .threeColsGrid__item
                         .threeColsGrid__item__wrapper
