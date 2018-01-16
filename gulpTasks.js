@@ -8,7 +8,6 @@ const rename = require('gulp-rename')
 const imagemin = require('gulp-imagemin')
 const sassGlob = require('gulp-sass-glob')
 const minifycss = require('gulp-cssnano')
-const minifyCSS = require('gulp-minify-css')
 const autoprefixer = require('gulp-autoprefixer')
 const minifyJs = require('gulp-minify')
 

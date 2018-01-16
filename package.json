@@ -89,6 +89,7 @@
     "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.5",
     "standard": "^10.0.3",
+    "turbolinks": "^5.0.3",
     "validator": "^9.0.0"
   },
   "devDependencies": {
