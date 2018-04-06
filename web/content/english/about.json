@@ -37,6 +37,15 @@
     }
   ],
   "work": [
+     {
+       "title":"Amazon",
+       "position":"Software Engineer Intern",
+       "pic":"/images/about/amazon.png",
+       "pic_type":"vertical",
+       "start":"Jan 2018",
+       "end":"Jul 2018",
+       "description": []
+    },
     {
        "title":"Dailyfocus Application",
        "position":"Software Engineer / Creator",
