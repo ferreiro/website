@@ -51,20 +51,20 @@ block content
 
   h4.timeline__bigTitle Timeline
 
-  .timeline#education
-    .timeline__wrapper
-      .timeline__badge
-        span.timeline__badge__title Education
-      .timeline__entries
-        each item in education || []
-          +timelineEntry(item)
-
   .timeline#experience
     .timeline__wrapper
       .timeline__badge
         span.timeline__badge__title Experience
       .timeline__entries
         each item in work || []
+          +timelineEntry(item)
+
+  .timeline#education
+    .timeline__wrapper
+      .timeline__badge
+        span.timeline__badge__title Education
+      .timeline__entries
+        each item in education || []
           +timelineEntry(item)
 
 block after_content
