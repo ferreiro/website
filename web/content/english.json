@@ -11,7 +11,7 @@
     {
       "id": "about",
       "icon": null,
-      "name" : "Biography",
+      "name" : "About me",
       "url" : "/about",
       "target": "_self"
     },

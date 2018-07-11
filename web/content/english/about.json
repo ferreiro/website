@@ -26,7 +26,7 @@
        "pic":"/images/about/universidad_complutense_de_madrid_ucm.jpg",
        "pic_type":"horizontal",
        "start":"Sept 2013",
-       "end":"Current",
+       "end":"Sept 2017",
        "description":[
           {
              "type":"entry",
@@ -44,7 +44,49 @@
        "pic_type":"vertical",
        "start":"Jan 2018",
        "end":"Jul 2018",
-       "description": []
+       "description": [
+          {
+             "type":"bullets",
+             "icon":null,
+             "body":[
+                {
+                   "type":"entry",
+                   "body":"Working in a newly created team of 7 engineers to automate the translation of Amazon product descriptions across the European and global marketplaces.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Developed, tested, documented and launched an extension to the translation system to identify root causes for product rejections, optimizing translation acceptance rate.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Led the collection of requirements, and facilitated the communication with an external development team, agreeing to standardized formats for interface between systems.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Created 3 Hackathon projects, submitted 2 patent requests to Amazon intellectual property.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Added new functionality to a distributed system using Amazon cloud technologies (DynamoDB, SQS, Redshift), applying software best practices to rollout features safely in critical live systems.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Ensured operational excellence by implementing multiple levels of testing (unit tests, integration tests and end-to-end tests) in our CD and CI pipelines.",
+                   "icon":null
+                },
+                {
+                   "type":"entry",
+                   "body":"Tech: Java 8, Mockito, JUnit, DynamoDB, Queuing Services (AWS SQS), AWS Redshift, Guice. Hackhathons tech: ReactJS, Node.JS, Javascript, HTML5, Greasemonkey",
+                   "icon":null
+                }
+             ]
+          }
+       ]
     },
     {
        "title":"Dailyfocus Application",
