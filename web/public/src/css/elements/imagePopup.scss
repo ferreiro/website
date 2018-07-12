@@ -32,6 +32,7 @@
 
   &_content {
 
+    max-width: 1300px;
     min-width: 300px;
     overflow: hidden;
     position: absolute;
@@ -52,8 +53,8 @@
     }
 
     @media all and (min-width: 1000px) {
-      width: 900px;
-      margin: 1em auto;
+      width: auto;
+      margin: 1em center;
     }
   }
 }
