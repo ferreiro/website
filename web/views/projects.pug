@@ -154,7 +154,9 @@ block content
                       ul.project_stack_list
                         for technology in project.stack
                           li.project_stack_entry
-                            if technology == "bower"
+                            if technology == "phonegap"
+                              img(src="/images/projects/phonegap.svg", style="opacity: 0.6; width:24px;")
+                            else if technology == "bower"
                               i(class="cbp-ig-icon devicon-bower-line")
                             else if technology == "less"
                               i(class="cbp-ig-icon devicon-less-plain-wordmark")
