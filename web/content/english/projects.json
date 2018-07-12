@@ -306,12 +306,12 @@
         {
           "name" : "Tommaso Innocenti",
           "avatar" : "images/projects/people/tommy.jpg",
-          "website" : "https://github.com/innotommy91"
+          "url" : "https://www.linkedin.com/in/tommaso-innocenti-0450708b/"
         },
         {
           "name" : "Luis Felipe",
           "avatar" : "images/projects/people/luis.jpg",
-          "website" : "https://www.linkedin.com/in/luisdeol/"
+          "url" : "https://www.linkedin.com/in/luisdeol/"
         }
       ]
     },
