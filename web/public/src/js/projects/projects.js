@@ -28,6 +28,9 @@ var changePopupImage = function(src) {
 }
 
 var hidepopup = function () {
+  const webpageBody = $('body')
+  webpageBody.css({ overflow: 'auto' })
+
   if (popupDisplayed) {
     popup.hide(0)
     popupDisplayed = false
@@ -35,10 +38,13 @@ var hidepopup = function () {
 }
 
 var displayPopup = function (elem) {
+  const webpageBody = $('body')
   const imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
   const bigImageUrl = elem
-    .find('.bigImage')
-    .attr('value')
+      .find('.bigImage')
+      .attr('value')
+
+  webpageBody.css({ overflow: 'hidden' })
 
   if (!popupDisplayed) {
     popup.fadeIn('400')
@@ -47,6 +53,7 @@ var displayPopup = function (elem) {
   // change the image shown in the popup
   changePopupImage(bigImageUrl)
   popupDisplayed = true
+
 }
 
 // Listening when the user press a key

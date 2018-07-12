@@ -118,6 +118,16 @@ block content
                     else
                       p.project_body_text !{project.about}
 
+                  if project.people && project.people.hidden == false
+                    .project_people
+                      h4.project_body_subtitle Team
+                      ul.project_people_list
+                        each person in project.people.entries
+                          li.project_people_entry
+                            a(href= person.url, target="_blank").project_people_link
+                              img(src= person.avatar).project_people_entry_avatar
+                              span.project_people_title= person.name
+
                   if project.highlights
                     h4.project_body_title Highlights
                     .project_highlight
@@ -152,15 +162,6 @@ block content
                               i.cbp-ig-icon(class="devicon-" + technology + "-plain")
                             p.project_stack_title #{technology}
 
-                  if project.people
-                    .project_people
-                      h4.project_body_title People
-                      ul.project_people_list
-                        each person in project.people
-                          li.project_people_entry
-                            img(src="#{person.avatar}").project_people_entry_avatar
-                            p #{person.name}
-
                 //- Project Body
                 if project.links
                   //-a.action_button(href= project.links.website, target="_blank") Check out the project!
@@ -173,12 +174,13 @@ block content
           if index == projects.length - 1
             .threeColsGrid__item
               .threeColsGrid__item__wrapper
-                .talk__ad.shadow__box(style="height: auto !important; margin-bottom: 2em;")
-                  h1.talk__ad__title My next project?
-                  p.talk__ad__subtitle Want to be the first to know my next project or adventure? Join my newsltter and be up to date!
-                  include includes/subscriptionBox
 
                 .talk__ad.shadow__box(style="height: auto !important; padding-bottom: 2em; margin-bottom: 0;")
                   h1.talk__ad__title Do you have a project or idea?
                   p.talk__ad__subtitle Let's keep in touch! Ping me or contact me and I'll try to provide you feedback or maybe team up to make it happen :).
                   a(href="/contact").talk__ad__link__simple Contact me
+
+                .talk__ad.shadow__box(style="height: auto !important; margin-top: 2em;")
+                  h1.talk__ad__title My next project?
+                  p.talk__ad__subtitle Want to be the first to know my next project or adventure? Join my newsltter and be up to date!
+                  include includes/subscriptionBox

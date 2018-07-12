@@ -1,7 +1,80 @@
 [
   {
+    "title": "Clotim",
+    "date": "Oct 2017 - present",
+    "type" : [
+      "backend",
+      "frontend"
+    ],
+    "color": {
+      "hex": "#f70143",
+      "rgba_gradient_start": "rgba(60, 42, 63, 0.8)",
+      "rgba_gradient_end": "rgba(60, 42, 63, 0)"
+    },
+    "avatar": "/images/projects/clotim/clotim_icon.png",
+    "background": null,
+    "about": [
+      "<b>Clotim</b> is an android and web app that recommends clothes to wear based on the weather around you.",
+      "I teamed up with a talented spanish icon designer to create our own icon pack for Clotim, and it was the first time I publiched an Android application in the <a href=\"https://play.google.com/store/apps/details?id=com.clotim\" target=\"_blank\">Play Store</a>"
+    ],
+    "images": [
+      {
+        "small": "/images/projects/clotim/home.png",
+        "large": "/images/projects/clotim/home.png"
+      },
+      {
+        "small": "/images/projects/clotim/results.png",
+        "large": "/images/projects/clotim/results.png"
+      },
+      {
+        "small": "/images/projects/clotim/results_2.png",
+        "large": "/images/projects/clotim/results_2.png"
+      },
+      {
+        "small": "/images/projects/clotim/results_3.png",
+        "large": "/images/projects/clotim/results_3.png"
+      },
+      {
+        "small": "/images/projects/clotim/splash.png",
+        "large": "/images/projects/clotim/splash.png"
+      }
+    ],
+    "highlights": [
+      "Top Featured app in ProductHunt in November 23th 2017 <a href=\"https://twitter.com/JGFerreiro/status/933783472279302144\" target=\"_blank\">See Tweet</a>",
+      "Reached 100 votes on ProductHunt page in less than 24 hours <a href=\"https://www.producthunt.com/posts/clotim\" target=\"_blank\">See webpage</a>"
+    ],
+    "stack": [
+      "phonegap",
+      "nodejs",
+      "javascript",
+      "html5",
+      "css3",
+      "sass",
+      "gulp"
+    ],
+    "people": {
+      "hidden": false,
+      "entries": [
+        {
+          "name": "Jorge Ferreiro",
+          "avatar": "/images/projects/people/jorge.jpg",
+          "url": "https://www.linkedin.com/in/jgferreiro/"
+        },
+        {
+          "name": "Angela Duarte",
+          "avatar": "/images/projects/people/angela_duarte.jpg",
+          "url": "https://www.linkedin.com/in/angeladuartepestana/"
+        }
+      ]
+    },
+    "links": {
+      "website": "https://www.clotim.com/",
+      "code": null
+    }
+  },
+  {
     "title": "Dailyfocus",
-    "date": "May 2016 - current",
+    "date": "May 2016 - Dec 2017",
     "type" : [
       "backend",
       "frontend"
@@ -47,13 +120,16 @@
       "redis",
       "gulp"
     ],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      }
-    ],
+    "people": {
+      "hidden": true,
+      "entries": [
+        {
+          "name": "Jorge Ferreiro",
+          "avatar": "/images/projects/people/jorge.jpg",
+          "url": "https://github.com/ferreiro"
+        }
+      ]
+    },
     "links": {
       "website": "http://test.dailyfocus.io",
       "code": null
@@ -109,13 +185,16 @@
       "sass",
       "mongodb"
     ],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      }
-    ],
+    "people": {
+      "hidden": true,
+      "entries": [
+        {
+          "name": "Jorge Ferreiro",
+          "avatar": "/images/projects/people/jorge.jpg",
+          "url": "https://github.com/ferreiro"
+        }
+      ]
+    },
     "links": {
       "website": "http://ferreiro.me/",
       "code": "https://github.com/ferreiro/website"
@@ -155,13 +234,16 @@
       "html5",
       "css3"
     ],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      }
-    ],
+    "people": {
+      "hidden": true,
+      "entries": [
+        {
+          "name": "Jorge Ferreiro",
+          "avatar": "/images/projects/people/jorge.jpg",
+          "url": "https://github.com/ferreiro"
+        }
+      ]
+    },
     "links": null
   },
   {
@@ -213,18 +295,26 @@
       "jquery",
       "SQLite3"
     ],
-    "people": [
-      {
-        "name": "Jorge Ferreiro",
-        "avatar": "/images/avatar.png",
-        "url": "https://github.com/ferreiro"
-      },
-      {
-        "name" : "Tommaso Innocenti",
-        "avatar" : "images/projects/people/tommy.jpg",
-        "website" : "https://github.com/innotommy91"
-      }
-    ],
+    "people": {
+      "hidden": false,
+      "entries": [
+        {
+          "name": "Jorge Ferreiro",
+          "avatar": "/images/projects/people/jorge.jpg",
+          "url": "https://github.com/ferreiro"
+        },
+        {
+          "name" : "Tommaso Innocenti",
+          "avatar" : "images/projects/people/tommy.jpg",
+          "website" : "https://github.com/innotommy91"
+        },
+        {
+          "name" : "Luis Felipe",
+          "avatar" : "images/projects/people/luis.jpg",
+          "website" : "https://www.linkedin.com/in/luisdeol/"
+        }
+      ]
+    },
     "links": {
       "website": "http://github.com/sudonotes",
       "code": "http://github.com/ferreiro/sudonotes"

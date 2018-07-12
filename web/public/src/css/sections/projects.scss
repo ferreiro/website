@@ -325,6 +325,16 @@ $projectLinksTopMargin: 20px;
       }
     }
 
+    &_subtitle {
+      color: rgba(0, 0, 0, 1);
+      font-size: 1em;
+      font-weight: 500;
+      margin-bottom: 0.5em;
+      @media all and (min-width:$desktop-screen) {
+        margin-bottom: 0.6em;
+      }
+    }
+
     &_text {
       font-size: 1em;
       font-weight: 400;
@@ -412,26 +422,38 @@ $projectLinksTopMargin: 20px;
 
   &_people {
     display: inline-block;
-    margin-top: 0.5em;
+    margin-bottom: 1.5em;
     vertical-align: top;
-    display: none;
 
     &_list {
       list-style: none;
       display: block;
     }
     &_entry {
-      margin-right: 1em;
+      margin: 0.3em;
+      margin-right: 0.4em;
       display: inline-block;
 
       &_avatar {
-        width: 50px;
-        height: 50px;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        vertical-align: middle;
         @include border-radius(100%);
       }
     }
+    &_link {
+      display: block;
+      border: 1px solid #f4f4f4;
+      @include border-radius(60px);
+    }
     &_title {
-      color: rgba(255, 108, 57, 1);
+      margin-left: 10px;
+      margin-right: 12px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, .8);
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 
