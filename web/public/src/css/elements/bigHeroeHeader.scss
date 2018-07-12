@@ -24,7 +24,14 @@
     position: absolute;
     background: #f4f4f4;
     background-size: cover;
-    background-position: 50% 5%;
+    background-position: 50% 50%;
+    background-image: url(/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer_small.jpg);
+
+    @media all and (min-width: $tablet-screen) {}
+
+    @media all and (min-width: $desktop-screen) {
+      background-image: url(/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer.jpg);
+    }
 
     &:before {
       content: '';
