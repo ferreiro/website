@@ -10,6 +10,14 @@ mixin postCard(post)
       a(href= postUrl).postCard__header__link
       img(src= post.pic).lazy
     .postCard__body
+
+      if post.category && post.category.length > 0
+        .postCard__categories
+          each category in post.category
+            if category !== null
+              li.postCard__category
+                a(href= "/blog/category/" + category).postCard__category__link= category
+
       h1.postCard__title
         a(href= postUrl)= post.title
       //-a.postCard__date(href= postUrl)= 'Jorge Ferreiro - ' + (post.createdAt || 'Some days ago')
