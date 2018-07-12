@@ -15,11 +15,16 @@ $newsletterAd_avatar: 0;
     &:hover {
       background: #fbfbfb;
       .mostRecentPostAd__button {
-        background: $primaryColor;
+        //- background: $primaryColor;
         color: #fff;
+      }
+      .mostRecentPostAd__arrow {
+        opacity: 1;
       }
       .mostRecentPostAd__title {
         color: #000;
+        color: $primaryColor;
+        border-color: $primaryColor;
       }
       .mostRecentPostAd__inlineAvatar {
         @include opacity(1);
@@ -42,21 +47,18 @@ $newsletterAd_avatar: 0;
     background: rgba(216, 1, 70, 0.9);
     border-bottom: 1px solid #e9e9e9;
 
+    background: rgb(245, 245, 245);
+
     @include border-radius(0 !important);
 
     .mostRecentPostAd__text {
-      // padding: 0.5em 0;
       padding-top:.7em !important;
       padding-bottom:.7em !important;
     }
 
     .mostRecentPostAd__title {
         color: rgba(255, 255, 255, 0.8);
-    }
-
-    .mostRecentPostAd__button {
-      color: rgba(255, 255, 255, 0.8);
-      border-color: rgba(255, 255, 255, 0.8);
+        color: rgba(0, 0, 0, 0.8);
     }
   }
 
@@ -77,6 +79,7 @@ $newsletterAd_avatar: 0;
 
     .mostRecentPostAd__title {
       color: rgba(255, 255, 255, 0.8);
+      color: rgba(0, 0, 0, 0.5);
     }
 
     .mostRecentPostAd__button {
@@ -148,18 +151,47 @@ $newsletterAd_avatar: 0;
     @include transition(300ms);
   }
 
+  &__icon {
+    width: 20px;
+    display: inline-block;
+    margin-right: 0.8em;
+  }
+
+  &__button {
+    font-size: 11px;
+    padding: 7px 1em;
+    align-self: center;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px dashed rgba(0, 0, 0, 0.2) !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    margin-right: 1em;
+
+    @include border-radius(60px);
+    @include transition(300ms);
+  }
+
+  &__arrow {
+    opacity: 0;
+    font-weight: 600;
+    color: $primaryColor;
+    @include transition(300ms);
+  }
+
   &__title {
     margin: 0;
     padding: 0;
     font-size: 1em;
     margin: 0 0.15em;
-    margin-right: 1em;
-    margin-top: 1px;
+    margin-right: 0.3em;
+    margin-top: 2px;
     font-weight: 600;
     align-self: center;
     display: inline-block;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid transparent;
 
     @include transition(300ms);
 
@@ -167,20 +199,5 @@ $newsletterAd_avatar: 0;
       font-weight: 500;
       color: rgba(0, 0, 0, 0.5);
     }
-  }
-
-  &__button {
-    min-width: 108px;
-    font-size: 11px;
-    padding: 7px 10px;
-    align-self: center;
-    display: inline-block;
-    text-decoration: none;
-    text-transform: uppercase;
-    border: 1px solid #f1c9bc;
-    color: rgba(0, 0, 0, 0.6);
-
-    @include border-radius(5px);
-    @include transition(300ms);
   }
 }
