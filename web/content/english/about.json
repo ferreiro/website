@@ -2,27 +2,17 @@
   "bio": [
     {
       "type": "entry",
-      "body": "<span style=\"font-size: 1.5em; margin-right: 5px;\">Hi!</span> I'm <strong>Jorge Ferreiro</strong>, a 22-year-old Software Engineer, Product Manager and Entrepreneur, with a passion for design and a desire to create software products that solve real problems and improve people's lives.",
+      "body": "<span style=\"font-size: 1.5em; margin-right: 5px;\">Hi!</span> I'm <strong>Jorge Ferreiro</strong>, a 23-year-old Software Engineer and Entrepreneur, with a passion for design and a desire to create software products that solve real problems and improve people's lives.",
       "icon": null
     },
     {
       "type": "entry",
-      "body": "In late 2017, I finished my <b>Bachelor's Degree in Computer Science at UCM</b>. In summer 2017, I <b>studied at UC Berkeley</b> <i>(CS 61BL and COLWRIT 9I)</i> and in 2016 I did an <b>internship in China</b> with Huawei.",
+      "body": "In 2018, I did a <b>Software Development Engineer internship at Amazon</b> in Luxembourg (their HQ offices). In late 2017, I finished my <b>Bachelor's Degree in Computer Science at UCM</b>. In summer 2017, I <b>studied at UC Berkeley</b> <i>(CS 61BL and COLWRIT 9I)</i> and in 2016 I did an scholarship in China with Huawei.",
       "icon": null
     },
     {
       "type": "entry",
-      "body": "I've launched two <a href=\"/portfolio\">personal projects</a> that I'm really proud of: <b>Dailyfocus</b> <i>(a productivity application I'm working right now)</i> and <b>Music4deejays</b> <i>(a music application to promote young artists that reached 56,000 downloads)</i>.",
-      "icon": null
-    },
-    {
-      "type": "entry",
-      "body": "As the creator and main driver of Dailyfocus, I took requirements and defined the product roadmap, designed the architecture, created prototypes, and built an MVP (backend and frontend) in under 5 months. You can <a href=\"http://test.dailyfocus.io?ref=ferreiro\" target=\"_blank\">review the application here</a>.",
-      "icon": null
-    },
-    {
-      "type": "entry",
-      "body": "In my next steps, I'm focusing on taking Dailyfocus to the next level and expanding my personal brand while working on viral projects to learn new technologies. I'm always looking for opportunities of any type to expand my technical and business expertise.",
+      "body": "I've launched two <a href=\"/portfolio\">personal projects</a> that I'm really proud of: <b>Dailyfocus</b> <i>(a productivity application for busy people)</i> and <b>Music4deejays</b> <i>(a music application to promote young artists that reached 56,000 downloads)</i>.",
       "icon": null
     },
     {

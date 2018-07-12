@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
   const education = about.education
 
   res.render('about', {
-    title: 'Biography - Jorge Ferreiro',
+    title: 'About me - Jorge Ferreiro - Biography',
     path: 'about',
     bio: bio,
     work: work,
