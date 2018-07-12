@@ -26,7 +26,7 @@ mixin blogHeader(hasAnimation, hideBlogDescription, displaySubscriptionButton)
             span.icon.ion-ios-paper-outline(style="margin-right: 10px;")
             span Subscribe to my newsletter
 
-    .optionsMenu
+    //- .optionsMenu
       ul.optionsMenu__list
         mixin optionsMenuItem(title, categoryId, url)
           li.optionsMenu__item(aria-selected= blogCategory===categoryId ? 'true' : 'false')
