@@ -417,6 +417,7 @@ $projectLinksTopMargin: 20px;
     &_title {
       font-size: 0.9em;
       color: rgba(0, 0, 0, 0.6);
+      text-transform: capitalize;
     }
   }
 
@@ -454,6 +455,7 @@ $projectLinksTopMargin: 20px;
       color: rgba(0, 0, 0, .8);
       display: inline-block;
       vertical-align: middle;
+      text-transform: capitalize;
     }
   }
 
