@@ -26,6 +26,10 @@ $newsletterAd_avatar: 0;
         color: $primaryColor;
         border-color: $primaryColor;
       }
+      .mostRecentPostAd__button {
+        color: $primaryColor !important;
+        border-color: $primaryColor !important;
+      }
       .mostRecentPostAd__inlineAvatar {
         @include opacity(1);
       }
@@ -89,7 +93,13 @@ $newsletterAd_avatar: 0;
   }
 
   &__wrapper {
+    padding: 0 1em;
     text-decoration: none!important;
+    display: block;
+
+    @media all and (min-width: $desktop-screen) {
+      padding: 0 0.8em;
+    }
   }
 
   &__avatar {
@@ -120,7 +130,7 @@ $newsletterAd_avatar: 0;
 
   &__text {
     right: 0;
-    padding: 0.8em;
+    padding: 0.8em 0;
     position: relative;
     left: $newsletterAd_avatar;
     display: inline-block;
@@ -132,7 +142,7 @@ $newsletterAd_avatar: 0;
     justify-content: center;
 
     @media all and (min-width: $desktop-screen) {
-      padding-right: 2.5em!important;
+      //- padding-right: 2.5em!important;
     }
   }
 
@@ -153,23 +163,32 @@ $newsletterAd_avatar: 0;
 
   &__icon {
     width: 20px;
-    display: inline-block;
+    display: none;
     margin-right: 0.8em;
+
+    @media all and (min-width: $desktop-screen) {
+      //- display: inline-block;
+    }
   }
 
   &__button {
     font-size: 11px;
     padding: 7px 1em;
+    min-width: 90px;
     align-self: center;
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase;
     border: 1px dashed rgba(0, 0, 0, 0.2) !important;
     color: rgba(0, 0, 0, 0.6) !important;
-    margin-right: 1em;
+    margin-right: 0.8em;
 
     @include border-radius(60px);
     @include transition(300ms);
+
+    @media all and (min-width: $desktop-screen) {
+      margin-right: 1em;
+    }
   }
 
   &__arrow {
@@ -177,6 +196,12 @@ $newsletterAd_avatar: 0;
     font-weight: 600;
     color: $primaryColor;
     @include transition(300ms);
+    display: none;
+
+    @media all and (min-width: $desktop-screen) {
+      display: inline-block;
+      margin-right: 1em;
+    }
   }
 
   &__title {
@@ -184,8 +209,8 @@ $newsletterAd_avatar: 0;
     padding: 0;
     font-size: 1em;
     margin: 0 0.15em;
-    margin-right: 0.3em;
     margin-top: 2px;
+    margin-right: 0;
     font-weight: 600;
     align-self: center;
     display: inline-block;
@@ -194,6 +219,10 @@ $newsletterAd_avatar: 0;
     border-bottom: 2px solid transparent;
 
     @include transition(300ms);
+
+    @media all and (min-width: $desktop-screen) {
+      margin-right: 0.3em;
+    }
 
     span {
       font-weight: 500;
