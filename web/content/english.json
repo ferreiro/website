@@ -53,6 +53,13 @@
       "target": "_blank"
     },
     {
+      "id": "github",
+      "icon": "github",
+      "name" : "Github",
+      "url": "https://www.github.com/ferreiro",
+      "target": "_blank"
+    },
+    {
       "id": "twitter",
       "icon": "twitter",
       "name" : "Twitter",
@@ -64,13 +71,6 @@
       "icon": "instagram",
       "name" : "Instagram",
       "url": "https://www.instagram.com/jgferreiro/",
-      "target": "_blank"
-    },
-    {
-      "id": "github",
-      "icon": "github",
-      "name" : "Github",
-      "url": "https://www.github.com/ferreiro",
       "target": "_blank"
     }
   ],
