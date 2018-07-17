@@ -49,8 +49,8 @@ block popupNewsletter
   })
 
 block content_header
-  - hasAnimation = false
-  +blogHeader(hasAnimation, true)
+  // - hasAnimation = false
+  // +blogHeader(hasAnimation, true)
 
 block content_large
   style.
@@ -89,9 +89,9 @@ block content_large
         #socialSharingBreakpoint
 
         //- Post metadata
+        img.blogPost__image(src= post.pic, style="width: 100%;")
         h1.blogPost__title= post.title
         h2.blogPost__subtitle= post.summary
-        img.blogPost__image(src= post.pic, style="width: 100%;")
 
         //- .toc#toc
 
