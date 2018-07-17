@@ -1,7 +1,6 @@
 .blogPost {
   z-index: 100;
-  margin: 0 auto;
-  margin-top: 1em;
+  margin: 1em auto 0;
   position: relative;
   max-width: $blogPostWidth;
 
@@ -19,14 +18,12 @@
       letter-spacing: 0;
       line-height: 42px;
       letter-spacing: -.028em;
-
       color: rgba(0,0,0,.85);
     }
   }
 
   &__subtitle {
-    margin: 0;
-    margin-top: 16px;
+    margin: 16px 0 0;
     --x-height-multiplier: 0.363;
     --baseline-multiplier: 0.157;
     font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
@@ -48,7 +45,7 @@
 
   &__image {
     max-width: 100%;
-    margin-top: 2em;
+    margin-bottom: 2em;
   }
 
   &__separator {
@@ -128,17 +125,12 @@
     }
 
     .warningText {
-      border: 2px solid #f5a98e;
       padding: 1em;
+      border: 2px solid #f5a98e;
       border: 1px solid #d93901;
       margin-top: 29px;
-
       @include border-radius(10px);
-      /*
-      border-left: 5px solid #dedede;
-      padding-left: 1.2em;
-      margin-top: 29px;
-      */
+
       p {
         margin: 0;
       }

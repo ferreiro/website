@@ -13,7 +13,7 @@ $action_button_icon_margin: 4px;
   border: 1px solid #cecece;
   line-height: $action_button_font_size;
 
-  @include border-radius(3px);
+  @include border-radius(60px);
   @include transition(250ms);
 
   &:hover {
