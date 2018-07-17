@@ -8,69 +8,71 @@ const mongooseOptions = {
 }
 
 const Schema = mongoose.Schema
-const PostSchema = new Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  pic: {
-    type: String,
-    required: false
-  },
-  secretKey: {
-    type: String,
-    required: false,
-    default: Date.now()
-  },
-  permalink: {
-    type: String,
-    index: {
-      unique: true
+const PostSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true
     },
-    required: true
+    pic: {
+      type: String,
+      required: false
+    },
+    secretKey: {
+      type: String,
+      required: false,
+      default: Date.now()
+    },
+    permalink: {
+      type: String,
+      index: {
+        unique: true
+      },
+      required: true
+    },
+    author_name: {
+      type: String,
+      required: false
+    },
+    author_pic: {
+      type: String,
+      required: false
+    },
+    summary: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    body: {
+      type: String,
+      required: true
+    },
+    category: {
+      type: [String],
+      default: []
+    },
+    tags: {
+      type: [String],
+      required: false,
+      default: []
+    },
+    published: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    likes: {
+      type: Number,
+      required: false,
+      default: 0
+    },
+    views: {
+      type: Number,
+      required: false,
+      default: 0
+    }
   },
-  author_name: {
-    type: String,
-    required: false
-  },
-  author_pic: {
-    type: String,
-    required: false
-  },
-  summary: {
-    type: String,
-    required: false,
-    default: ''
-  },
-  body: {
-    type: String,
-    required: true
-  },
-  category: {
-    type: [String],
-    default: []
-  },
-  tags: {
-    type: [String],
-    required: false,
-    default: []
-  },
-  published: {
-    type: Boolean,
-    required: true,
-    default: false
-  },
-  likes: {
-    type: Number,
-    required: false,
-    default: 0
-  },
-  views: {
-    type: Number,
-    required: false,
-    default: 0
-  }
-}, mongooseOptions)
+  mongooseOptions)
 
 PostSchema.plugin(random)
 PostSchema.plugin(paginate)
