@@ -1,5 +1,7 @@
 extends ./layout
 
+include ../mixins/seriesSelector
+
 block extraScripts
     script(src="/js/admin.main.min.js")
 
@@ -85,7 +87,6 @@ block content
                 .composer__entry
                     //-label(for='title', class="composer__legend") Title:
                     textarea.title#title.blogPost__title.composer__title(rows="2", placeholder="Title", name='post_title')= (post && post.title ? post.title : '')
-
                 .composer__entry
                     textarea.summary.blogPost__subtitle.composer__subtitle#summary(rows="3", placeholder="Summary", name='post_summary')= (post && post.summary ? post.summary : '')
                     //label(for='summary', class="composer__legend")
@@ -162,6 +163,12 @@ block content
                         input#author.composer__input(type='author_pic', placeholder="Author Pic", class="admin__input", name='post_author_pic', value= post && post.author_pic ? post.author_pic : '')
 
             .composer.shadow__box(style="margin-top: 2em;")
+
+                .composer__entry
+                    h2 Post Series
+
+                    +seriesSelector()
+
                 .composer__entry
                     h2 Category
 
