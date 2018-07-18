@@ -1,11 +1,17 @@
 const express = require('express')
 const router = express.Router()
+
+const mongoose = require('mongoose')
 const passport = require('passport')
 const Recaptcha = require('express-recaptcha')
-
 const env = require('../../../env')
+
+const utils = require('./utils')
 const blogRepository = require('../../repository/blog')
 const adminUploader = require('./uploader')
+const seriesRouter = require('./series')
+
+const isAuthenticated = utils.isAuthenticated
 const recaptcha = new Recaptcha(env.RECAPTCHA_PUBLIC, env.RECAPTCHA_SECRET)
 
 // Application resources routes
@@ -19,6 +25,7 @@ router.post('/edit/:permalink', isAuthenticated, editPostSubmit)
 router.get('/delete/:permalink', isAuthenticated, deletePostConfirmation)
 router.get('/delete/:permalink/confirm', isAuthenticated, deletePost)
 
+router.use('/series', isAuthenticated, seriesRouter)
 router.use('/uploader', isAuthenticated, adminUploader)
 
 // General access routes
@@ -31,16 +38,6 @@ router.post('/login', recaptcha.middleware.verify, postLogin, passport.authentic
 }))
 
 module.exports = router
-
-function isAuthenticated (req, res, next) {
-  // If not logged user, ask for login.
-  if (!req.user) {
-    return res.redirect('/admin/login')
-  }
-
-  // User is logged In
-  return next()
-}
 
 function logout (req, res, next) {
   req.logout();
@@ -129,34 +126,9 @@ function createPostComposer (req, res, next) {
   res.render('admin/create', context)
 }
 
-function parseRequestPostData (req) {
-  const title = req.body.post_title
-  const pic = req.body.post_pic
-  const secretKey = req.body.post_secretKey
-  const permalink = req.body.post_permalink
-  const authorName = req.body.post_author_name
-  const authorPic = req.body.post_author_pic
-  const summary = req.body.post_summary
-  const body = req.body.post_body
-  const published = req.body.post_isPublished
-  const category = [].concat(req.body.post_category)
-
-  const bodySanitized = body
-  return {
-    pic,
-    title,
-    secretKey,
-    summary,
-    permalink,
-    published,
-    category,
-    author_name: authorName,
-    author_pic: authorPic,
-    body: bodySanitized,
-  }
-}
 function postNewBlog (req, res, next) {
   const postData = parseRequestPostData(req)
+
   blogRepository.create(postData).then((post) => {
     return res.json({
       post: post,
@@ -169,6 +141,35 @@ function postNewBlog (req, res, next) {
   })
 }
 
+function parseRequestPostData (req) {
+  const title = req.body.post_title
+  const pic = req.body.post_pic
+  const secretKey = req.body.post_secretKey
+  const permalink = req.body.post_permalink
+  const authorName = req.body.post_author_name
+  const authorPic = req.body.post_author_pic
+  const summary = req.body.post_summary
+  const body = req.body.post_body
+  const published = req.body.post_isPublished
+  const category = [].concat(req.body.post_category)
+  const bodySanitized = body
+  const seriesId = req.body.post_seriesId
+
+  return {
+    pic,
+    title,
+    secretKey,
+    summary,
+    permalink,
+    published,
+    category,
+    author_name: authorName,
+    author_pic: authorPic,
+    body: bodySanitized,
+    series: !seriesId || seriesId === 'null' ? null : new mongoose.mongo.ObjectId(seriesId)
+  }
+}
+
 function editPostPage (req, res, next) {
   const postPermalink = req.params.permalink
   blogRepository.findByPermalink({
@@ -177,8 +178,7 @@ function editPostPage (req, res, next) {
     return res.render('admin/create', {
       edit: true,
       post: post,
-      admin: true,
-      success: 'Post updated!'
+      admin: true
     })
   }).catch((err) => {
     return res.render('admin/home', {
@@ -190,11 +190,13 @@ function editPostPage (req, res, next) {
 function editPostSubmit (req, res, next) {
   const postPermalink = req.params.permalink
   const postData = parseRequestPostData(req)
+
   blogRepository.findAndUpdateByPermalink(postPermalink, postData).then(post => {
     return res.json({
       post: post
     })
   }).catch((err) => {
+    console.log(err)
     return res.json({
       error: 'Failed to update post.'
     })
