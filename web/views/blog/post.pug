@@ -1,8 +1,8 @@
-extends ./includes/blog_layout_v2_large
-include ./mixins/postCard
-include ./mixins/sharePostBig
-include ./mixins/subscriptionBoxLarge
-include ./mixins/popupNewsletter
+extends ../includes/blog_layout_v2_large
+include ../mixins/postCard
+include ../mixins/sharePostBig
+include ../mixins/subscriptionBoxLarge
+include ../mixins/popupNewsletter
 
 block extraMeta
   if post
@@ -43,7 +43,7 @@ block extraScripts
 
 //- override default behaviour. Here we show the popup after X miliseconds.
 block popupNewsletter
-  include ./mixins/popupNewsletter
+  include ../mixins/popupNewsletter
   +popupNewsletter({
     autodisplay: true
   })
@@ -82,7 +82,7 @@ block content_large
 
     if post
       //- Load Social Sharing
-      include ./includes/socialSharing
+      include ../includes/socialSharing
 
       article#post
 
@@ -93,7 +93,12 @@ block content_large
         h1.blogPost__title= post.title
         h2.blogPost__subtitle= post.summary
 
-        //- .toc#toc
+        if post.series
+            .seriesBox
+                .seriesBox__wrapper
+                    p.seriesBox__text This blog is part of the <strong>#{post.series.title}</strong> series <a class="seriesBox__button" href="/blog/series/#{post.series.permalink}">See series</a>
+
+        // .toc#toc
 
         .blogPost__content!= post.html
 
