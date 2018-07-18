@@ -1,5 +1,5 @@
 mixin seriesEntry(series)
-    - var postUrl = '/blog/' + series.permalink
+    - var postUrl = '/blog/series/' + series.permalink
     .blog__entry.box_with_shadow
       //.blog__link
         a(href= postUrl)
@@ -16,15 +16,7 @@ mixin seriesEntry(series)
             h1.blog__post__title
               a(href=postUrl, target="_blank").blog__post__title__link= series.title
 
-            .blog__author
-              //-.blog__author__pic
-                img(src= series.author.pic || '')
-              .blog__author__content
-                h2.blog__author__name
-                  | #{post.author_name || 'Jorge'} - #{post.created || ''}
-                //-p.blog__author__date= series.created || ''
-
-            if post.summary
+            if series.description
               p.blog__post__intro= series.description
 
             if !admin
@@ -37,19 +29,17 @@ mixin seriesEntry(series)
                     span.icon.ion-android-favorite-outline
                     | Like
             else
-              hr
-              i= 'Permalink: ' + post.permalink
-              p= 'Views ' + post.views + ' | Likes: ' + post.likes
+              i= 'Permalink: ' + series.permalink
 
               ul.blog__post__options
                 li(style="margin-right: 1em;")
-                  a(target="_blank", href= '/blog/' + post.permalink + '?disableAdmin=true').action_button
-                    | See post as a normal user
+                  a(target="_blank", href= '/blog/series/' + series.permalink + '?disableAdmin=true').action_button
+                    | See series page
                 li(style="margin-right: 1em;")
-                  a(href= '/admin/edit/' + post.permalink).action_button
+                  a(href= '/admin/series/update/' + series.permalink).action_button
                     span.icon.ion-edit
                     | Edit post
                 li(style="margin-right: 0;")
-                  a(href= '/admin/delete/' + post.permalink).action_button
+                  a(href= '/admin/series/delete/' + series.permalink).action_button
                     span.icon.ion-android-delete
                     | Delete post
