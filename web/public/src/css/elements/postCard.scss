@@ -112,7 +112,7 @@ $postCard_options_item_margin: 0.8em;
       vertical-align: middle;
       margin-right: 0.5em;
 
-      @include border-radius(5px);
+      @include border-radius(100%);
     }
     &__text {
       display: inline-block;
