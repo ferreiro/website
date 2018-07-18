@@ -1,4 +1,3 @@
-
 const MailchimpApi = require('mailchimp-api-v3')
 const express = require('express')
 const router = express.Router()
