@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const permalink = require('mongoose-permalink')
+
 const Schema = mongoose.Schema
 
 const Series = {
@@ -10,6 +12,10 @@ const Series = {
     type: String,
     required: false
   },
+  favicon: {
+    type: String,
+    required: false
+  },
   permalink: {
     type: String,
     index: {
@@ -17,15 +23,20 @@ const Series = {
     },
     required: true
   },
+  description: {
+    type: String,
+    required: false,
+    default: ''
+  },
   published: {
     type: Boolean,
     required: true,
     default: false
   },
-  description: {
+  secretKey: {
     type: String,
     required: false,
-    default: ''
+    default: Date.now()
   }
 }
 
@@ -33,4 +44,10 @@ const options = {
   timestamps: true // createdAt and updatedAt automatically
 }
 
-module.exports = mongoose.model('Series', new Schema(Series, options))
+const SeriesSchema = new Schema(Series, options)
+
+SeriesSchema.plugin(permalink.default, {
+  sources: ['title']
+})
+
+module.exports = mongoose.model('Series', SeriesSchema)
