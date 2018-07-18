@@ -25,11 +25,17 @@ module.exports.findById = function findById (query) {
  *
  * NOTE> No necessary to populate('series'), because the information is going to be the same
  */
-module.exports.findSeries = function findById (seriesId) {
+module.exports.findSeriesPublishedPosts = function findSeriesPublishedPosts (seriesId) {
   const _id = mongoose.mongo.ObjectId(seriesId)
 
-  const query = { series: _id }
-  const fieldsToExcluded = { body: 0, secretKey: 0 }
+  const query = {
+    series: _id,
+    published: true
+  }
+  const fieldsToExcluded = {
+    body: 0,
+    secretKey: 0
+  }
 
   return Post.find(query, fieldsToExcluded)
 }
