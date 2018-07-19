@@ -13,6 +13,10 @@ module.exports.getAll = function () {
       .sort({ createdAt: -1 })
 }
 
+/**
+ * Returns all the published Series
+ * @param query.permalink - the permalink of the serie
+ */
 module.exports.getAllPublished = function () {
   const fieldsToExclude = {
     secretKey: 0,
@@ -43,7 +47,7 @@ module.exports.findByPermalink = function (query) {
       }
 
       if (!series) {
-          return resolve(EMPTY_SERIES)
+        return resolve(EMPTY_SERIES)
       }
 
       return fetchPostSeries(series._id)

@@ -7,11 +7,14 @@ const router = express.Router()
 
 const MAX_PAGE_POSTS = 9
 const blogRepository = require('../repository/blog')
+const seriesRepository = require('../repository/series')
 const blog = require('../content/english/blog.json')
 
 router.get('/', getBlogPosts)
-router.get('/:permalink', getPostByPermalink)
+router.get('/series', getBlogSeries)
+router.get('/series/:permalink', getSingleBlogSeries)
 router.get('/category/:category', getBlogPosts)
+router.get('/:permalink', getPostByPermalink)
 
 module.exports = router
 
@@ -61,6 +64,28 @@ function getBlogPosts (req, res, next) {
 
     return res.render('blog/home', blogContext)
   })
+}
+
+function getBlogSeries (req, res, next) {
+  seriesRepository.getAllPublished()
+      .then(publishedSeries => {
+        let blogContext = getBlogContext(req)
+        blogContext.series = publishedSeries
+
+        return res.render('blog/series/home', blogContext)
+      })
+      .catch(error => next(error))
+}
+
+function getSingleBlogSeries (req, res, next) {
+  seriesRepository.findByPermalink({ permalink: req.params.permalink })
+      .then(singleSeries => {
+        let blogContext = getBlogContext(req)
+        blogContext.series = singleSeries
+
+        return res.render('blog/series/detail', blogContext)
+      })
+      .catch(error => next(error))
 }
 
 /**
