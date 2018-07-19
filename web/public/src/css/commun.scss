@@ -33,6 +33,21 @@ a {
   }
 }
 
+.blurred {
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+}
+
+.sectionBigTitle {
+  font-size: 1.7em;
+  margin-bottom: 1em;
+  color: rgba(0, 0, 0, 0.62);
+  font-weight: 400;
+}
+
 .truncate {
   max-width: 460px;
   white-space: nowrap;

@@ -9,7 +9,7 @@
             .item.with-icon
               p
                 span.icon.ion-ios-arrow-back
-                span.social_network_text Go back to website
+                span.social_network_text Go website
 
       .menu_right
 
@@ -20,9 +20,8 @@
             p Published
           a.item(href="/admin/drafts")
             p Drafts
-          //-each item in menu || []
-            a.item(id= item.id, href= item.url, target= item.target || '_self', class= path===item.id ? 'item-selected' : '')
-              p= item.name
+          a.item(href="/admin/series")
+            p Series
 
           .dropdown
             a(href='/admin/create')

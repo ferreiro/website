@@ -1,5 +1,5 @@
 const marked = require('marked')
-const replaceall = require("replaceall")
+const replaceall = require('replaceall')
 const sanitizeHtml = require('sanitize-html')
 const validator = require('validator')
 const express = require('express')
@@ -7,11 +7,14 @@ const router = express.Router()
 
 const MAX_PAGE_POSTS = 9
 const blogRepository = require('../repository/blog')
+const seriesRepository = require('../repository/series')
 const blog = require('../content/english/blog.json')
 
 router.get('/', getBlogPosts)
-router.get('/:permalink', getPostByPermalink)
+router.get('/series', getBlogSeries)
+router.get('/series/:permalink', getSingleBlogSeries)
 router.get('/category/:category', getBlogPosts)
+router.get('/:permalink', getPostByPermalink)
 
 module.exports = router
 
@@ -27,7 +30,7 @@ function getBlogContext (req) {
     path: 'blog',
     blogCategory: 'all',
     config: blog.config,
-    admin: req.user && !disableAdmin ? true : false,
+    admin: !!(req.user && !disableAdmin),
     posts: []
   }
 }
@@ -48,7 +51,7 @@ function getBlogPosts (req, res, next) {
 
   const query = category ? { category } : {}
 
-  fetchPosts (query, opts, (error, result) => {
+  fetchPosts(query, opts, (error, result) => {
     if (error) {
       return next(new Error(error))
     }
@@ -57,10 +60,81 @@ function getBlogPosts (req, res, next) {
     blogContext.posts = result.docs
     blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page - 1 : 'start') // getNextPageTokenFromPosts(posts)
     blogContext.nextPageToken = (result.page + 1 <= result.pages ? result.page + 1 : 'end') // getNextPageTokenFromPosts(posts)
-    blogContext.blogCategory = category ? category : blogContext.blogCategory
+    blogContext.blogCategory = category || blogContext.blogCategory
 
-    return res.render('blog', blogContext)
+    return res.render('blog/home', blogContext)
   })
+}
+
+function getBlogSeries (req, res, next) {
+  seriesRepository.getAllPublished()
+      .then(publishedSeries => {
+        let blogContext = getBlogContext(req)
+        blogContext.series = publishedSeries
+
+        return res.render('blog/series/home', blogContext)
+      })
+      .catch(error => next(error))
+}
+
+function getSingleBlogSeries (req, res, next) {
+  seriesRepository.findByPermalink({ permalink: req.params.permalink })
+      .then(singleSeries => {
+        let blogContext = getBlogContext(req)
+        blogContext.series = singleSeries
+
+        return res.render('blog/series/detail', blogContext)
+      })
+      .catch(error => next(error))
+}
+
+/**
+ * Finds and returns a blog post if is valid
+ * and the user has the right credentials.
+ */
+function getPostByPermalink (req, res, next) {
+  let blogContext = getBlogContext(req)
+  blogContext.blogCategory = '' // no menu selected
+
+  let postPermalink = null
+  if (req.params.permalink) {
+    postPermalink = validator.blacklist(
+      req.params.permalink, "<|>|&|\'|\"|'|,|/|")
+  } else {
+    blogContext.error = 'Post not found or invalid url'
+    return res.render('blog/post', blogContext)
+  }
+
+  const query = {
+    isAdmin: blogContext.admin,
+    permalink: postPermalink
+  }
+  blogRepository
+    .findByPermalinkIncrementViews(query)
+    .then(post => {
+      if (!post) {
+        blogContext.error = 'Post does not exist or you dont have permissions to view.'
+        return res.render('blog/post', blogContext)
+      }
+
+      if (post.published || !isInvalidUser(req) || isValidSecretKey(req.query.secretKey, post.secretKey)) {
+        generateRelatedPosts({
+          permalinkToSkip: postPermalink,
+          count: 3
+        }).then(relatedPosts => {
+          blogContext.post = post
+          blogContext.post.html = markdownToHtml(post.body)
+          blogContext.relatedPosts = relatedPosts
+          return res.render('blog/post', blogContext)
+        })
+      } else {
+        return next(new Error('Post does not exist or you dont have permissions to view.'))
+      }
+    })
+    .catch(error => {
+      blogContext.error = error
+      return res.render('blog/post', blogContext)
+    })
 }
 
 /**
@@ -98,62 +172,13 @@ function fetchPosts (query, opts, callback) {
     })
 }
 
-/**
- * Finds and returns a blog post if is valid
- * and the user has the right credentials.
- */
-function getPostByPermalink (req, res, next) {
-  let blogContext = getBlogContext(req)
-  blogContext.blogCategory = '' // no menu selected
-
-  let postPermalink = null
-  if (req.params.permalink) {
-    postPermalink = validator.blacklist(
-      req.params.permalink, "<|>|&|\'|\"|'|,|/|")
-  } else {
-    blogContext.error = 'Post not found or invalid url'
-    return res.render('blogPost', blogContext)
-  }
-
-  const query = {
-    isAdmin: blogContext.admin,
-    permalink: postPermalink
-  }
-  blogRepository
-    .findByPermalinkIncrementViews(query)
-    .then(post => {
-      if (!post) {
-        blogContext.error = 'Post does not exist or you dont have permissions to view.'
-        return res.render('blogPost', blogContext)
-      }
-
-      if (post.published || !isInvalidUser(req) || isValidSecretKey(req.query.secretKey, post.secretKey)) {
-        generateRelatedPosts({
-          permalinkToSkip: postPermalink,
-          count: 3
-        }).then(relatedPosts => {
-          blogContext.post = post
-          blogContext.post.html = markdownToHtml(post.body)
-          blogContext.relatedPosts = relatedPosts
-          return res.render('blogPost', blogContext)
-        })
-      } else {
-        return next(new Error('Post does not exist or you dont have permissions to view.'))
-      }
-    })
-    .catch(error => {
-      blogContext.error = error
-      return res.render('blogPost', blogContext)
-    })
-}
-
-function isInvalidUser(req) {
+function isInvalidUser (req) {
   return !req.user
 }
 
-function isValidSecretKey(srcSecretKey, validSecretKey) {
-  if (!srcSecretKey || !validSecretKey) {
-    return false;
+function isValidSecretKey (srcSecretKey, validSecretKey) {
+  if (!srcSecretKey || !validSecretKey) {
+    return false
   }
   return srcSecretKey === validSecretKey
 }
@@ -171,19 +196,19 @@ function markdownToHtml (srcMarkdown) {
       '*': [ 'id', 'href', 'align', 'alt', 'center', 'bgcolor' ],
       div: [ 'class' ],
       a: [ 'href', 'name', 'target' ],
-      img: [ 'src' , 'style' ],
+      img: [ 'src', 'style' ],
       h1: [ 'id' ],
       h2: [ 'id' ],
       ul: [ 'class' ]
     }
   })
   // Add syntax highlight class to hmtl
-  const outputHtml = replaceall("<pre><code>", "<pre><code class='prettyprint linenums'>", htmlSanitized)
+  const outputHtml = replaceall('<pre><code>', "<pre><code class='prettyprint linenums'>", htmlSanitized)
   return outputHtml
 }
 
 function generateRelatedPosts (opts) {
-  return new Promise (resolve => {
+  return new Promise(resolve => {
     return blogRepository
       .getRandomPosts(opts)
       .then(posts => resolve(posts))

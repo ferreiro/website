@@ -1,9 +1,9 @@
-extends ./includes/blog_layout_v2_large
-include ./mixins/postCard
-include ./mixins/blogHeader
-include ./mixins/blogEntry
-include ./mixins/subscriptionBoxLarge
-include ./mixins/mostRecentPostAd
+extends ../includes/blog_layout_v2_large
+include ../mixins/postCard
+include ../mixins/blogHeader
+include ../mixins/blogEntry
+include ../mixins/subscriptionBoxLarge
+include ../mixins/mostRecentPostAd
 
 block content_header
   - hasAnimation = true
@@ -17,7 +17,7 @@ block content_large
         h1.warningMessage__title There are no more posts to show.
         p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
         .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
-          include ./includes/subscriptionBox
+          include ../includes/subscriptionBox
 
     else
       .threeColsGrid

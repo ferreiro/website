@@ -14,7 +14,7 @@ $postCard_options_item_margin: 0.8em;
 
 .postCard__withoutSummary {
   @media all and (min-width: $desktop-screen) {
-    min-height: 293px !important;
+    // min-height: 293px !important;
   }
 }
 
@@ -29,7 +29,7 @@ $postCard_options_item_margin: 0.8em;
   @include border-radius($postCard_radius);
 
   @media all and (min-width: $desktop-screen) {
-    min-height: $postCard_height_desktop;
+    // min-height: $postCard_height_desktop;
   }
 
   &__header {
@@ -58,6 +58,109 @@ $postCard_options_item_margin: 0.8em;
       width: 100%;
       height: 100%;
       position: absolute;
+    }
+  }
+
+  &__fixedTitleWithGradient {
+    width: calc(100% - 3em);
+    margin: 0;
+    padding: 1.5em;
+    padding-top: 3em;
+    display: block;
+    position: absolute;
+    bottom: 0;
+
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,0.50) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.50) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 10%,rgba(0,0,0,0.50) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#75000000',GradientType=0 );
+
+    &__favicon {
+      width: 40px;
+      height: 40px;
+      background-size: cover;
+      background-position: center center;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 1em;
+      @include border-radius(100%);
+    }
+
+    &__text {
+      color: #fff;
+      font-size: 1.5em;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &__headerBig {
+    @include border-radius($postCard_radius);
+
+    @media all and (min-width: $desktop-screen) {
+      height: $postCard_headerHeight_desktop * 1.2 !important;
+    }
+  }
+  
+  &__series {
+    position: absolute;
+    top: 1em;
+    right: 0;
+
+    &:before,
+    &:after {
+      width: 100%;
+      height: 100%;
+      content: '';
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      z-index: 0;
+      @include border-radiuses(60px, 0, 60px, 0);
+    }
+
+    &:before {
+      top: -3px;
+      right: -3px;
+      z-index: 3;
+    }
+
+    &:after {
+      top: -6px;
+      right: -6px;
+      z-index: 1;
+    }
+
+    &__button {
+      display: inline-block;
+      padding: 0.4em 0.4em;
+      padding-right: 1em;
+      background: rgba(0, 0, 0, 0.46);
+      border: 1px solid #000000;
+      position: relative;
+      z-index: 10;
+      color: #fff !important;
+      @include border-radiuses(60px, 0, 60px, 0);
+    }
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      background-size: cover;
+      background-position: center center;
+      vertical-align: middle;
+      margin-right: 0.5em;
+
+      @include border-radius(100%);
+    }
+    &__text {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
     }
   }
 

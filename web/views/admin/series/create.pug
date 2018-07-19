@@ -1,0 +1,131 @@
+extends ../layout
+
+block extraScripts
+    script(src="/js/admin.main.min.js")
+
+block content
+    style.
+        .menu {
+            position: absolute; /* making the header not fixed for better writing */
+        }
+
+    if error
+        div(style="background: red; text-align: center; margin-bottom: 2em; padding: 1.5em;")
+            p !{error}
+
+    if success
+        div(style="background: green; text-align: center; margin-bottom: 2em; padding: 1.5em;")
+            p !{success}
+
+    if edit == true & series == null
+        p Post does not exist
+    else
+        style.
+            #headerImageUploaderForm { display: none; }
+            #imageUploader { display: none; }
+
+        form#headerImageUploaderForm(class="uploader", action= '/admin/uploader', method='post', enctype="multipart/form-data")
+            input.composer__input(type='file', name="image")
+            input(type="submit", value="Upload Image", name="submit")
+
+        form#imageUploader(class="uploader", action= '/admin/uploader', method='post', enctype="multipart/form-data")
+            input.composer__input(type='file', name="image")
+            input(type="submit", value="Upload Image", name="submit")
+
+        div#errorPostCreate(style="width: 100%; padding: 1em 0; display: none; background: #d40f0f; z-index: 100000000; position: fixed; left: 0; bottom: 0;")
+            div(style="max-width: 500px; margin: 0 auto; text-align: center; font-size: 1.6em; font-weight: 600; color: #fff;")
+                span.successMessage Error creating post
+
+        div#successPostCreate(style="width: 100%; padding: 1.5em 0; display: none; background: #08b908; z-index: 100000000; position: fixed; left: 0; bottom: 0;")
+            div(style="max-width: 500px; margin: 0 auto; text-align: center; font-size: 1.6em; font-weight: 600; color: #fff;")
+                span.errorMessage Post Created! Hooray!
+
+        div#createPostLoader.loaderCreatePost(style="width: 100%; height: 100%; display: none; z-index: 100; background:rgba(255, 255, 255, 0.8); position: fixed; top: 0; left: 0;")
+            img(src="/images/loading.gif", width="50px", style="position: absolute; margin: -15px; top: 50%; left: 50%;")
+
+        form#createPostForm(method='post', action= (edit==true ? '/admin/series/update/' + series.permalink : '/admin/series/create'))
+
+            .composer.shadow__box
+                .composer__entry
+                    //-label(for='title', class="composer__legend") Title:
+                    textarea.title#title.blogPost__title.composer__title(rows="2", placeholder="Series title", name='series_title')= (series && series.title ? series.title : '')
+
+                .composer__entry
+                    textarea.summary.blogPost__subtitle.composer__subtitle#description(rows="3", placeholder="Description", name='series_description')= (series && series.description ? series.description : '')
+
+                .composer__entry
+                    textarea.summary.blogPost__subtitle.composer__subtitle#favicon(rows="3", placeholder="Favicon url", name='series_favicon')= (series && series.favicon ? series.favicon : '')
+
+                .composer__entry(style="margin: 0.8em 0; margin-bottom: 1.5em;")
+                    //-label(for='pic', class="composer__legend")
+                        span.icon.ion-image
+                        p Image
+                    //.composer__right
+                    .headerImage
+                        input.composer__input#picInput(style="display: none;", type='name', placeholder="Image", class="admin__input", name='series_pic', value= series && series.pic ? series.pic : '')
+                        //-div(style="display:inline-block; min-width: 200px; min-height: 120px; background: #f4f4f4; margin: 15px 0;")
+                        img#picImage(src= series && series.pic ? series.pic : '', width="200px")
+                        div(style="width: 100%;")
+                        img#headerImageUploaderLoading(src="/images/loading.gif", width="30px", style="display: none; margin: 15px 0;")
+                        div(style="width: 100%;")
+                        a.action_button(id="headerImageUploaderButton", style="margin-top: 5px; margin-bottom: 1em;") Upload series image
+
+                .stickyUploader
+                    .composer__entry
+
+                        #imageUploaderWrapper(style="margin-bottom: 1em;")
+                            img#imageUploaded(src= '', width="200px")
+                            div(style="width: 100%;")
+                            img#imageUploaderLoader(src="/images/loading.gif", width="30px", style="display: none; margin: 15px 0;")
+                            div(style="width: 100%;")
+                            span#imageUploadedUrl(style="font-size: 11px; line-height: 12px; margin-top: 1em; overflow-wrap: break-word; text-align: justify;")
+
+                        a.action_button(id="imageUploaderButton", style="margin: 0; float: left; display: inline-block;") Upload Image
+                        a.action_button(id="imageUploaderClear", style="margin: 0; float: right; display: inline-block;")
+                            span.icon.ion-android-remove
+
+            //-This is not shown to the user
+            //-but they are automatically fullfilled
+            .composer.shadow__box(style="display: ; margin-top: 2em;")
+                h2 Options
+
+                if series && series._id
+                    p _id: #{series._id}
+                    <br /><br />
+
+                .composer__entry
+                    label(for='permalink', class="composer__legend")
+                        span.icon.ion-lock-combination
+                        p Secret Password
+                    .composer__right
+                        - secretLink = '/blog/series' + (series && series.permalink ? series.permalink : '') + '?secretKey=' + (series && series.secretKey ? series.secretKey : '')
+                        if secretLink
+                            a(href= secretLink, target="_blank")= secretLink
+                        input#permalink.composer__input(type='name', placeholder="Secret key", class="admin__input", name='series_secretKey', value= series && series.secretKey ? series.secretKey : '')
+
+                .composer__entry
+                    label(for='permalink', class="composer__legend")
+                        span.icon.ion-link
+                        p Permalink
+                    .composer__right
+                        input#permalink.composer__input(type='name', placeholder="Permalink", class="admin__input", name='series_permalink', value= series && series.permalink ? series.permalink : '')
+
+            .composer.shadow__box(style="margin-top: 2em;")
+                .composer__entry
+                    h2 Privacy
+
+                    .threeColsGrid.selectionBox
+                        .threeColsGrid__item
+                            .threeColsGrid__item__wrapper
+                                li.selectionBox__item
+                                    .selectionBox__left
+                                        .toggleWrapper
+                                            input(type="checkbox", id= 'isPublished', name= 'series_isPublished', checked= (series && series.published ? true : false))
+                                            .toggle
+                                                label(for= 'isPublished')
+                                                    i
+                                    .selectionBox__right
+                                        span Is published?
+
+                .composer__entry(style="margin: 0; margin-top: 1em;")
+                    button.about_resume_button.about_resume_button_view.blogHeader_button(type="submit", style="margin: 0;") Submit post

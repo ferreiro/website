@@ -1,0 +1,25 @@
+mixin seriesSelector(opts)
+    .seriesSelector#seriesSelector
+        .seriesSelector__current#seriesSelector__current
+            input.seriesSelector__current__input(
+                    name="post_seriesId",
+                    type="hidden"
+                    value= post && post.series ? post.series._id : '',
+                    id="seriesSelector__currentId")
+            .seriesSelector__current__favicon#seriesSelector__currentPic(style="background-image: url(" + (post && post.series ? post.series.pic : '') + ");")
+            .seriesSelector__current__name#seriesSelector__currentName= post && post.series ? post.series.title : 'No series selected'
+        .seriesSelector__selectButton.seriesSelector__openDropdown(href="#") Select series
+        .seriesSelector__dropdown#seriesSelector__dropdown
+            .seriesSelector__dropdown__list#seriesSelector__list
+                .seriesSelector__dropdown__item
+                    .seriesSelector__dropdown__link
+                    input.seriesSelector__dropdown__id(type="text", value="null", name="selector_series_id")
+                    .seriesSelector__dropdown__favicon
+                    .seriesSelector__dropdown__text No selection
+
+                div#seriesSelector__loader(style="width: 100%; height: 100%; display: ; z-index: 100; background:rgba(255, 255, 255, 0.8); position: absolute; top: 0; left: 0;")
+                    img(src="/images/loading.gif", width="50px", style="position: absolute; margin: -25px; top: 50%; left: 50%;")
+
+            .seriesSelector__dropdown__options
+                a(href="/admin/series/create/", target="_blank") + Create
+                a(href="#", id="seriesSelector__refresh") Refresh list

@@ -1,3 +1,5 @@
+const mongoose = require('mongoose')
+
 const Post = require('../models/Post')
 
 module.exports.create = function (postData) {
@@ -8,13 +10,34 @@ module.exports.create = function (postData) {
 module.exports.findByPermalink = function (query) {
   return Post.findOne({
     permalink: query.permalink
-  })
+  }).populate('series')
 }
 
 module.exports.findById = function findById (query) {
   return Post.findOne({
     _id: query.id
-  })
+  }).populate('series')
+}
+
+/*
+ * Given a Series Id, returns the list of Post belonging to
+ * that series.
+ *
+ * NOTE> No necessary to populate('series'), because the information is going to be the same
+ */
+module.exports.findSeriesPublishedPosts = function findSeriesPublishedPosts (seriesId) {
+  const _id = mongoose.mongo.ObjectId(seriesId)
+
+  const query = {
+    series: _id,
+    published: true
+  }
+  const fieldsToExcluded = {
+    body: 0,
+    secretKey: 0
+  }
+
+  return Post.find(query, fieldsToExcluded)
 }
 
 module.exports.findByPermalinkIncrementViews = findByPermalinkIncrementViews
@@ -27,7 +50,7 @@ function findByPermalinkIncrementViews (query) {
     $inc: {
       views: incrementViews
     }
-  })
+  }).populate('series')
 }
 
 module.exports.incrementLike = function (query) {
@@ -35,13 +58,16 @@ module.exports.incrementLike = function (query) {
     permalink: query.permalink
   }, {
     $inc: { likes: 1 }
-  })
+  }).populate('series')
 }
 
 module.exports.findAndUpdateByPermalink = function (postPermalink, postData) {
   return Post.findOneAndUpdate({
     permalink: postPermalink
-  },postData, { new: true })
+  },
+  postData, {
+      new: true
+  }).populate('series')
 }
 
 module.exports.findAndDeleteByPermalink = function (postPermalink) {
@@ -51,14 +77,19 @@ module.exports.findAndDeleteByPermalink = function (postPermalink) {
 }
 
 module.exports.getAll = function () {
-  return Post.find()
+  const query = {}
+  const fieldsToExclude = { body: 0 }
+
+  return Post.find(query, fieldsToExclude)
     .sort({ createdAt: -1 })
+    .populate('series')
 }
 
 module.exports.getAllDrafts = function (options) {
   return Post.find({
     published: false
   }).sort({ createdAt: -1 })
+    .populate('series')
 }
 
 module.exports.getAllPublished = function (extraQueryFields, opts) {
@@ -76,7 +107,9 @@ module.exports.getAllPublished = function (extraQueryFields, opts) {
     },
     lean: true,
     page: opts && opts.nextPage ? opts.nextPage : 1,
-    limit: maxLimit
+    limit: maxLimit,
+    populate: 'series',
+    select: { body: 0 }
   }
 
   var query = {
@@ -102,6 +135,7 @@ module.exports.getMostRecentPosts = function (opts) {
   return Post.find(query)
     .limit(limit)
     .sort({ createdAt: -1 })
+    .populate('series')
 }
 
 module.exports.getRandomPosts = function (opts) {
@@ -115,10 +149,14 @@ module.exports.getRandomPosts = function (opts) {
         $ne: permalinkToSkip
       }
     }
-    const fields = {}
-    const options = {
-      limit: limit
+    const fields = {
+      body: 0 // Exclude post body to reduce size of the response
     }
+    const options = {
+      limit: limit,
+      populate: 'series'
+    }
+
     Post.findRandom(filter, fields, options, (err, posts) => {
       if (err) {
         return reject(err)

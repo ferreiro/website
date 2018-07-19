@@ -1,0 +1,45 @@
+mixin seriesEntry(series)
+    - var postUrl = '/blog/series/' + series.permalink
+    .blog__entry.box_with_shadow
+      //.blog__link
+        a(href= postUrl)
+      .blog__post
+        .blog__post__left
+          .blog__post__pic(style="background-image:url(" + series.pic + ");")
+            a(href= postUrl, target="_blank").blog__post__pic__link
+        .blog__post__right
+          .blog__post__metadata
+
+            if !series.published
+              p.blog__post__isDraft DRAFT
+
+            h1.blog__post__title
+              a(href=postUrl, target="_blank").blog__post__title__link= series.title
+
+            if series.description
+              p.blog__post__intro= series.description
+
+            if !admin
+              ul.blog__post__options
+                li
+                  a(href= postUrl, target="_blank").action_button
+                    | Read more
+                li
+                  a(href= postUrl, target="_blank").action_button
+                    span.icon.ion-android-favorite-outline
+                    | Like
+            else
+              i= 'Permalink: ' + series.permalink
+
+              ul.blog__post__options
+                li(style="margin-right: 1em;")
+                  a(target="_blank", href= '/blog/series/' + series.permalink + '?disableAdmin=true').action_button
+                    | See series page
+                li(style="margin-right: 1em;")
+                  a(href= '/admin/series/update/' + series.permalink).action_button
+                    span.icon.ion-edit
+                    | Edit post
+                li(style="margin-right: 0;")
+                  a(href= '/admin/series/delete/' + series.permalink).action_button
+                    span.icon.ion-android-delete
+                    | Delete post

@@ -1,0 +1,20 @@
+.seriesBox {
+  padding: 1.2em 0;
+  border: 1px solid #f4f4f4;
+  border-left: 0;
+  border-right: 0;
+  @include border-radius(10px);
+
+  &__text {
+
+  }
+
+  &__button {
+    padding: 0.5em 1em;
+    display: inline-block;
+    border: 1px solid #f4f4f4;
+    text-decoration: none;
+    margin-left: 1em;
+    @include border-radius(60px);
+  }
+}

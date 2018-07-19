@@ -5,18 +5,18 @@ var formValidInputs = [] // Array of bools that has length of tototal inputs in 
 var success = $('#successPostCreate')
 var failure = $('#errorPostCreate')
 
-form.submit(function(event){
-  event.preventDefault(); // Stop change webpage
+form.submit(function (event) {
+  event.preventDefault() // Stop change webpage
 
   let endpoint = null
   if (form.length > 0) {
     endpoint = form.attr('action').valueOf()
   }
-  submitForm(endpoint);
-});
+  submitForm(endpoint)
+})
 
-function submitForm(endpoint) {
-  var endpoint = endpoint || "/admin/create";
+function submitForm (endpoint) {
+  var endpoint = endpoint || '/admin/create'
 
   success.hide()
   failure.hide()
@@ -34,13 +34,13 @@ function submitForm(endpoint) {
   loader.show()
 
   $.ajax({
-     url: endpoint,
-     data: $(form).serializeArray(),
-     type: 'POST',
-     dataType: 'json',
-     encode: true
+    url: endpoint,
+    data: $(form).serializeArray(),
+    type: 'POST',
+    dataType: 'json',
+    encode: true
   })
-  .done(function(data) {
+  .done(function (data) {
     loader.fadeOut(1000, function () {
       if (data.error) {
         displayFailure(data)
@@ -49,12 +49,12 @@ function submitForm(endpoint) {
       }
     })
   })
-  .fail(function(data) {
+  .fail(function (data) {
     loader.fadeOut(1000, function () {
       displayFailure(data)
     })
   })
-  .always(function() {
+  .always(function () {
     form.show()
   })
 }
@@ -62,9 +62,11 @@ function submitForm(endpoint) {
 function displaySuccess (data) {
   success.find('span').html(`Post created!<br ><a href="/blog/${data.post.permalink}" target="_blank">See it here</a>`)
   success.show()
+  /*
   setTimeout(function () {
     success.fadeOut(300)
   }, 3000)
+  */
 }
 
 function displayFailure (data) {
@@ -75,7 +77,7 @@ function displayFailure (data) {
   }, 3000)
 }
 
-function validateInputs() {
+function validateInputs () {
   var input_not_blank = $('.input_not_blank')
   var input_email = $('.input_email')
   var userEmail = input_email.val()
@@ -91,14 +93,14 @@ function validateInputs() {
   }
 
   // Check fields that can not be empty
-  input_not_blank.each(function() {
+  input_not_blank.each(function () {
     var aValue = $(this).val()
     valid &= notEmpty(aValue)
-    if (! notEmpty(aValue)) {
-      if (this.id == "the_name") {
+    if (!notEmpty(aValue)) {
+      if (this.id == 'the_name') {
         $('#wrongName').show()
       }
-      if (this.id == "message") {
+      if (this.id == 'message') {
         $('#wrongMessage').show()
       }
     }
@@ -107,11 +109,11 @@ function validateInputs() {
   return valid
 }
 
-function notEmpty(text) {
-    return text.length > 0
+function notEmpty (text) {
+  return text.length > 0
 }
 
-function validEmail(email) {
-    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
-    return re.test(email)
+function validEmail (email) {
+  var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+  return re.test(email)
 }
