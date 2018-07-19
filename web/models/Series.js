@@ -10,11 +10,13 @@ const Series = {
   },
   pic: {
     type: String,
-    required: false
+    required: false,
+    default: ''
   },
   favicon: {
     type: String,
-    required: false
+    required: false,
+    default: ''
   },
   permalink: {
     type: String,
