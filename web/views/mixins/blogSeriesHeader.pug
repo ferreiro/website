@@ -1,0 +1,40 @@
+mixin blogSeriesHeader(series, hasAnimation)
+  - headerClass = ''
+  if hasAnimation
+    - headerClass = 'animate'
+
+  #blogHeader.blogHeaderWrapper(class= headerClass)
+    .blogHeader(style="padding-top: 3em; background-color: #505050;")
+      .blogHeader_bg.blurred(style="opacity:0.6; background-size: 100%; background-image: url(" + series.pic + ");")
+        //-SEO
+        img(src= config.wallpaper)
+
+      .blogHeader_userFields
+        h1.blogHeader_name
+          span.blogHeader_name_border= series.title
+
+        h2.blogHeader_job= series.description
+        h2.blogHeader_job!= '<strong>' + series.posts.length + '</strong> post(s)'
+
+      .blogHeader_buttons
+         a(href="/newsletter?source=blog").action_button.openNewsletterSubscription
+           span.icon.ion-ios-paper-outline(style="margin-right: 10px;")
+           span Subscribe
+
+    //- .optionsMenu
+      ul.optionsMenu__list
+        mixin optionsMenuItem(title, categoryId, url)
+          li.optionsMenu__item(aria-selected= blogCategory===categoryId ? 'true' : 'false')
+            a(href= url).optionsMenu__link
+              span= title
+
+        +optionsMenuItem('All', 'all', '/blog')
+        +optionsMenuItem('Software', 'software', '/blog/category/software')
+        +optionsMenuItem('Product', 'product', '/blog/category/product')
+        +optionsMenuItem('Entrepreneurship', 'entrepreneurship', '/blog/category/entrepreneurship')
+
+        //- li.optionsMenu__item
+          a(href= '/newsletter').optionsMenu__link
+            span.optionsMenu__item__icon.icon.ion-android-mail
+            span Subscribe!
+

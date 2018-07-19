@@ -1,0 +1,9 @@
+mixin seriesBlogList(posts)
+  ul.seriesBlogList
+    each post, index in posts
+      if post.published
+          li.seriesBlogList__entry
+            a(href="/blog/" + post.permalink).seriesBlogList__link
+            .seriesBlogList__index= index + 1
+            .seriesBlogList__pic(style="background-image: url(" + post.pic + ");")
+            .seriesBlogList__text= post.title
