@@ -14,7 +14,7 @@ mixin postCard(post)
       if post.series
         a(href= '/blog/series/' + post.series.permalink).postCard__series
           .postCard__series__button
-            span.postCard__series__icon(style="background-image:url(" + post.series.pic + ");")
+            span.postCard__series__icon(style="background-image:url(" + post.series.favicon + ");")
             span.postCard__series__text= post.series.title + ' series'
 
     .postCard__body
