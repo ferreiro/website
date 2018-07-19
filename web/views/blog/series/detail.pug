@@ -1,23 +1,37 @@
-extends ../layout
-include ../../mixins/seriesEntry
+extends ../../includes/blog_layout_v2_large
+include ../../mixins/seriesCard
+include ../../mixins/blogSeriesHeader
+include ../../mixins/blogEntry
+include ../../mixins/subscriptionBoxLarge
+include ../../mixins/mostRecentPostAd
+include ../../mixins/seriesBlogList
 
-block content
-    if success
-        .success(style="background: green; padding: 1em;")
-            h1= success
+block content_header
+  - hasAnimation = true
+  +blogSeriesHeader(series, hasAnimation)
+  // +blogHeader(series, hasAnimation)
 
-    if error
-        .error(style="background: red; padding: 1em;")
-            h1= error
 
-    center
-        h1(style="margin-bottom: 1em;") Series <br /><a class="action_button" style=" font-size: 14px;" href="/admin/series/create/">Create new series</a>
+block content_large
 
-    if series
 
-        .blog__entries
-            if series.length == 0
-                h1 There are no posts currently. Come back sortly, I'm creating exclusive content!
+  .container__middle.animate
+    if !series || series.posts.length <= 0
+      .warningMessage(style="max-width: 400px; margin: 0 auto;")
+        h1.warningMessage__title There are no any available series to show.
+        p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+        .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+          include ../../includes/subscriptionBox
 
-            each singleSeries in series || []
-                +seriesEntry(singleSeries)
+    else
+
+      // div(style="width: 40%; display: inline-block; vertical-align: top;")
+          div(style="margin-right: 2em;  border-radius: 10px; overflow: hidden;")
+            +blogSeriesHeader(series, hasAnimation)
+
+      // div(style="width: 60%; display: inline-block;  vertical-align: top;")
+
+      center
+        h1.sectionBigTitle List of blog posts
+
+      +seriesBlogList(series.posts)

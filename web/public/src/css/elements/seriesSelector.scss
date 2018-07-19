@@ -19,9 +19,9 @@
       height: 16px;
       display: inline-block;
       vertical-align: middle;
-      background: #f4f4f4;
+      background-color: #f4f4f4;
       background-size: cover;
-      background-position: 50% 50%;
+      background-position: center center;
     }
     &__name {
       display: inline-block;
@@ -80,10 +80,12 @@
     &__favicon {
       width: 20px;
       height: 20px;
-      background: #fffbff;
       margin-right: 1em;
       display: inline-block;
       vertical-align: middle;
+      background-color: #fffbff;
+      background-size: cover;
+      background-position: center center;
       @include border-radius(5px);
     }
     &__text {

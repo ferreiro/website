@@ -3,6 +3,7 @@ include ../mixins/postCard
 include ../mixins/sharePostBig
 include ../mixins/subscriptionBoxLarge
 include ../mixins/popupNewsletter
+include ../mixins/seriesBlogList
 
 block extraMeta
   if post
@@ -81,6 +82,10 @@ block content_large
       h1= error
 
     if post
+
+      // div(style="width: 300px; left: 100%; margin-left: 1em; position: absolute; display: inline-block; vertical-align: top;")
+        <ul class="seriesBlogList"><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/welcome-to-my-new-digital-space-welcome-to-the"></a><div class="seriesBlogList__index">1</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/jorge_ferreiro_blog_welcome_post.jpg);"></div><div class="seriesBlogList__text">Welcome to my new digital space. Welcome to the #ferreiroV3 blog.</div></li><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/amazon-on-sites-interviews-8-practical-tips-that-i"></a><div class="seriesBlogList__index">2</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/on-sites-interviews-5_b.jpg);"></div><div class="seriesBlogList__text">5 tips to crush on-site interviews - Lessons learned from my own experience</div></li></ul>
+
       //- Load Social Sharing
       include ../includes/socialSharing
 
