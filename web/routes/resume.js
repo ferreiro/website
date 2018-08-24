@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', function (req, res, next) {
-  var filePath = __dirname + '/../public/dst/pdf/01_january_2018.pdf'
+  var filePath = __dirname + '/../public/dst/pdf/Jorge_Ferreiro_August_2018_web_version.pdf'
 
   if (req.query.download) {
     return res.download(filePath)
