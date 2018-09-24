@@ -18,53 +18,60 @@ block content_full
         a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_resume_button.about_resume_button_download Download my resume
         a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank").about_resume_button.about_resume_button_view View my resume
 
+block content_full
+    +Header({
+      title: 'About me',
+      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D) and Entrepreneur',
+      paragraphs: bio,
+      hasBorder: true,
+      buttons: [
+        {
+          type: 'big',
+          text: 'Read resume',
+          path: '/about',
+          icon: 'ion-document',
+        },
+        {
+          type: 'big',
+          text: 'See profile on Linkedin',
+          path: '/contact',
+          icon: 'icon-linkedin',
+        },
+      ],
+      padding: '5em 0',
+      mainColor: '#000',
+      buttonColor: '#d83901',
+      backgroundColor: '#ffffff',
+      backgroundSize: '80% auto',
+      backgroundPosition: 'center center',
+      backgroundImage: '',
+      layoverImage: '/images/about/collage_jorge_ferreiro_software_development_internship_at_Amazon_SDE_without_borders.jpg',
+    })
+
 block content
 
-  // include ./includes/breadcrumb.pug
-  .animate
-    center
-      h1.about_bio__large__title Jorge Ferreiro
-      h2.about_bio__large__subtitle Software Engineer &amp; Entrepreneur
+    h4.timeline__bigTitle Timeline
 
-  .animate
-    .about_bio__large
-      .about_bio__large__left_v2(style="background-image: url(/images/about/collage_jorge_ferreiro_software_development_internship_at_Amazon_SDE_without_borders.jpg);")
-        img(src="/images/about/collage_jorge_ferreiro_software_development_internship_at_Amazon_SDE_without_borders.jpg", width="100%").about_bio__large__pic
-      .about_bio__large__right
-        .about_bio__large__right__content
+    .twoColsGrid
+        .twoColsGrid__item
+            .twoColsGrid__item__wrapper
+                .timeline#education
+                    .timeline__wrapper
+                        .timeline__badge
+                            span.timeline__badge__title Education
+                        .timeline__entries
+                            each item in education || []
+                                +timelineEntry(item)
 
-          if bio
-            each bulletPoint in bio || []
-              p.about_bio__large__bio !{bulletPoint.body}
-
-          .about_bio__large__callToAction#aboutActions
-            a(href="/resume/jorge_ferreiro_resume.pdf?pdf=resume&ref=about", style="border: 2px solid #d83901; color: #d83901;", target="_blank").about_bio__large__button
-              span.icon.ion-document
-              | Read Resume
-            a(href="/contact", style="border-width: 2px;").about_bio__large__button
-              span.icon.ion-android-mail
-              | Contact me
-            //- a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_bio__large__button
-              span.icon.ion-ios-cloud-download-outline
-              | Download Resume
-
-  h4.timeline__bigTitle Timeline
-
-  .timeline#experience
-    .timeline__wrapper
-      .timeline__badge
-        span.timeline__badge__title Experience
-      .timeline__entries
-        each item in work || []
-          +timelineEntry(item)
-
-  .timeline#education
-    .timeline__wrapper
-      .timeline__badge
-        span.timeline__badge__title Education
-      .timeline__entries
-        each item in education || []
-          +timelineEntry(item)
+        .twoColsGrid__item
+            .twoColsGrid__item__wrapper
+                .timeline#experience
+                    .timeline__wrapper
+                        .timeline__badge
+                            span.timeline__badge__title Experience
+                        .timeline__entries
+                            each item in work || []
+                                +timelineEntry(item)
 
 block after_content
 

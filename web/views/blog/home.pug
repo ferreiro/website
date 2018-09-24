@@ -5,10 +5,6 @@ include ../mixins/blogEntry
 include ../mixins/subscriptionBoxLarge
 include ../mixins/mostRecentPostAd
 
-block content_header
-  - hasAnimation = true
-  +blogHeader(hasAnimation, false, true)
-
 block content_large
 
   .container__middle.animate
@@ -20,38 +16,45 @@ block content_large
           include ../includes/subscriptionBox
 
     else
-      .threeColsGrid
-        each post, index in posts || []
 
-          //- Advertisement: subscribe to blog!
-          //- if index == 3
-            .threeColsGrid__item__full_width
-              .box_with_shadow(style="margin: 0;")
-                +subscriptionBoxLarge({
-                  displayForm: true
-                })
 
-          //- Blog Entry
-          .threeColsGrid__item
-            .threeColsGrid__item__wrapper
-              +postCard(post)
+      .blogTwoColumnsGrid
+        .blogTwoColumnsGrid__left
 
-      if prevPageToken != "start" || nextPageToken != "end"
-        .blog__load_more
-          //- Add the category id (only if is not the main page)
-          - blogLink = '/blog'
-          if blogCategory !== 'all'
-            - blogLink += '/category/' + (blogCategory ? blogCategory : '')
+          .twoColsGrid
+            each post, index in posts || []
 
-          if prevPageToken != "start" && prevPageToken > 0
-            a(href= blogLink + '?next=' + prevPageToken).big_action_button Previous page
-          if nextPageToken != "end"
-            a(href= blogLink + '?next=' + nextPageToken).big_action_button Next page
+              //- Advertisement: subscribe to blog!
+              //- if index == 3
+                .twoColsGrid__item__full_width
+                  .box_with_shadow(style="margin: 0;")
+                    +subscriptionBoxLarge({
+                      displayForm: true
+                    })
 
-      //- if posts.length < 3
-      //- Display the add here too.
-      //- .box_with_shadow(style="margin: 0;")
-      //-
-        +subscriptionBoxLarge({
-          displayForm: true
-        })
+              //- Blog Entry
+              .twoColsGrid__item
+                .twoColsGrid__item__wrapper
+                  +postCard(post)
+
+          if prevPageToken != "start" || nextPageToken != "end"
+            .blog__load_more
+              //- Add the category id (only if is not the main page)
+              - blogLink = '/blog'
+              if blogCategory !== 'all'
+                - blogLink += '/category/' + (blogCategory ? blogCategory : '')
+
+              if prevPageToken != "start" && prevPageToken > 0
+                a(href= blogLink + '?next=' + prevPageToken).big_action_button Previous page
+              if nextPageToken != "end"
+                a(href= blogLink + '?next=' + nextPageToken).big_action_button Next page
+
+          //- if posts.length < 3
+          //- Display the add here too.
+          //- .box_with_shadow(style="margin: 0;")
+          //-
+            +subscriptionBoxLarge({
+              displayForm: true
+            })
+        .blogTwoColumnsGrid__right
+          p fsdfsd

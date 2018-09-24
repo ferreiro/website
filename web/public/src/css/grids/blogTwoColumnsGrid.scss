@@ -1,0 +1,33 @@
+.blogTwoColumnsGrid {
+  @include flexbox();
+
+  &__left {
+    @include flexbox_flex(1, 1, auto);
+    display: inline-block;
+    vertical-align: top;
+  }
+  &__right {
+    @include flexbox_flex(0, 0, 400px);
+    margin-left: 2em;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+@media all and (min-width: $tablet-screen) {
+  .blogTwoColumnsGrid__left {
+
+  }
+  .blogTwoColumnsGrid__right {
+
+  }
+}
+
+@media all and (min-width: $desktop-screen) {
+  .blogTwoColumnsGrid__left {
+
+  }
+  .blogTwoColumnsGrid__right {
+
+  }
+}

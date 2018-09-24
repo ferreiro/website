@@ -5,6 +5,40 @@ include ./mixins/mostRecentPostAd
 
 block extraScripts
 
+block content_full
+    +Header({
+      padding: '5em 0',
+      mainColor: '#000',
+      buttonColor: '#d83901',
+      backgroundColor: '#ffffff',
+      backgroundSize: '80% auto',
+      backgroundPosition: 'top center',
+      layoverImage: '/images/home/header_jorge_ferreiro_face.png',
+
+      title: 'Jorge Ferreiro',
+      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D) and Entrepreneur\n',
+      hasBorder: true,
+      paragraphs: [
+        {
+          "type": 'entry',
+          "body": 'Hi! I\'m Jorge Ferreiro, a 23-year-old Software Engineer and Entrepreneur, with a passion for design and a desire to create software products that solve real problems and improve people\'s lives.\n',
+          "icon": null
+        },
+      ],
+      buttons: [
+        {
+          type: 'normal',
+          text: 'Read about me',
+          path: '/about'
+        },
+        {
+          type: 'normal',
+          text: 'Contact',
+          path: '/contact'
+        },
+      ]
+    })
+
 block content
     if recentPosts && recentPosts.length > 0
         +mostRecentPostAd({
@@ -15,15 +49,16 @@ block content
     //- Middle Container
     .container_middle
 
-        .bigHeroeHeader.animate
-            .bigHeroeHeader__wrapper
-                .bigHeroeHeader__background
-                .bigHeroeHeader__content
-                    h1.bigHeroeHeader__title Jorge Ferreiro
-                    h2.bigHeroeHeader__subtitle Software Engineer intern @Amazon, Web Developer and Entrepreneur
-                    a(href="/about").bigHeroeHeader__button Read about me
-                //- SEO pic
-                img(style="display: none;", src="/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_product_manager.jpg")
+        //
+            .bigHeroeHeader.animate
+                .bigHeroeHeader__wrapper
+                    .bigHeroeHeader__background
+                    .bigHeroeHeader__content
+                        h1.bigHeroeHeader__title Jorge Ferreiro
+                        h2.bigHeroeHeader__subtitle Software Engineer intern @Amazon, Web Developer and Entrepreneur
+                        a(href="/about").bigHeroeHeader__button Read about me
+                    //- SEO pic
+                    img(style="display: none;", src="/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_product_manager.jpg")
 
         style.
             .newsletterOnelineAd {

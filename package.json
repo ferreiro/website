@@ -2,7 +2,7 @@
   "name": "ferreiro",
   "description": "Jorge Ferreiro's personal website developed in Node.JS, ES6, and MongoDB",
   "homepage": "http://www.github.com/ferreiro/website",
-  "version": "3.0.2",
+  "version": "3.5.0",
   "private": true,
   "license": "",
   "keywords": [
@@ -80,17 +80,20 @@
     "multer-s3": "^2.7.0",
     "nodemailer": "^2.3.0",
     "nodemon": "^1.12.1",
-    "npm": "^5.4.2",
+    "npm": "^6.4.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta6",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "replaceall": "^0.1.6",
     "request": "^2.83.0",
     "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.5",
     "standard": "^10.0.3",
     "turbolinks": "^5.0.3",
-    "validator": "^9.0.0"
+    "validator": "^9.0.0",
+    "webpack": "^4.19.1"
   },
   "devDependencies": {
     "npm-check": "^5.4.5"

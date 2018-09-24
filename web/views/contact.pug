@@ -3,16 +3,26 @@ extends ./includes/layout
 block popupNewsletter
   //- remove popup
 
-block content
+block content_full
+  +Header({
+    mainColor: '#000',
+    buttonColor: '#d83901',
+    backgroundColor: '#ffffff',
+    backgroundSize: '80% auto',
+    backgroundPosition: 'center center',
+    backgroundImage: '',
+    layoverImage: '',
+    hasBorder: true,
 
-  .container_middle
-    .animate
-      include ./includes/breadcrumb.pug
+    title: headline ? headline : title,
+  })
+
+block content
 
   .container_middle
 
     .contact.animate
-      .contact_form_wrapper.box_with_shadow
+      .contact_form_wrapper
         .contact_form_container
 
           if content.config.claim

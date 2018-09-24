@@ -1,3 +1,5 @@
+include ../mixins/new/Header
+
 doctype html
 html
 	head
@@ -29,9 +31,9 @@ html
 				autodisplay: false
 			})
 
-		.ui.container_home
-			block content_full
-			.container#mainContainer
+		.ui.container_home#mainContainer
+			.container
+				block content_full
 				.container_inner
 					block content
 

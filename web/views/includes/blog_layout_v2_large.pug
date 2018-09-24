@@ -3,8 +3,32 @@ include ../mixins/blogHeader
 
 block content_full
   block content_header
-    - hasAnimation = false
-    +blogHeader(hasAnimation)
+    +Header({
+      title: 'The corner of Jorge',
+      subtitle: 'A blog about... ',
+      paragraphs: [
+        'Subscribe!'
+      ],
+      buttons: [
+        {
+          type: 'normal',
+          text: 'Subscribe to the newsletter',
+          path: '/about',
+          icon: 'ion-document',
+          className: 'openNewsletterSubscription'
+        },
+      ],
+
+      mainColor: '#fff',
+      buttonColor: '#d83901',
+      backgroundColor: '#253246',
+      backgroundSize: '80% auto',
+      backgroundPosition: 'top center',
+      backgroundImage: '/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer.jpg',
+
+      layoverImage: '',
+
+    })
 
 block content
   block content_large
