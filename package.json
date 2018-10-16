@@ -1,8 +1,8 @@
 {
   "name": "ferreiro",
-  "description": "Jorge Ferreiro's personal website developed in Node.JS",
+  "description": "Jorge Ferreiro's personal website developed in Node.JS, ES6, and MongoDB",
   "homepage": "http://www.github.com/ferreiro/website",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": true,
   "license": "",
   "keywords": [
@@ -19,7 +19,7 @@
   "author": {
     "name": "Jorge Ferreiro",
     "email": "jorge@ferreiro.me",
-    "url": "http://www.ferreiro.me/"
+    "url": "https://www.ferreiro.me/"
   },
   "scripts": {
     "check": "npm-check",
