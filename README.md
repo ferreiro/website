@@ -4,6 +4,18 @@ Disclaimer: This README has some notes, but it's not fully documented yet.
 
 ## Changelog
 
+### Version 3.5 (spring 2018)
+
+Release date: unknown
+
+* [v3.5.0 Download](https://github.com/ferreiro/website/releases/tag/v3.5.0)
+
+V3.5, unifiying and adding consistency to Jorge Ferreiro.
+
+* Unify website headers and design.
+* Updating pictures with the new book session.
+* WIP
+
 ### Version 3 (fall 2017)
 
 Release date: 17th October 2017
