@@ -1,0 +1,13 @@
+.companies {
+    &__title {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    &__list {
+        text-align: left;
+    }
+    &__item {
+        margin-right: 1em;
+        display: inline-block;
+    }
+}

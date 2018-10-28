@@ -1,0 +1,42 @@
+{
+    "companies": [
+        {
+            "name": "Eventbrite",
+            "image": "images/companies/eventbrite.png",
+            "role": "Software Engineer",
+            "time": "Sept 2018 - present"
+        },
+        {
+            "name": "Amazon",
+            "image": "images/companies/amazon.png",
+            "role": "Intern Software Engineer",
+            "time": "Jun 2018 - Jul 2018"
+        },
+        {
+            "name": "Huawei",
+            "image": "images/companies/huawei.png",
+            "role": "Summer scholarship",
+            "time": "Jul 2017"
+        }
+    ],
+    "projects": [
+        {
+            "name": "Virality",
+            "image": "images/companies/virality.png",
+            "role": "Founder",
+            "time": "Oct 2017 - present"
+        },
+        {
+            "name": "Dailyfocus",
+            "image": "images/companies/dailyfocus.png",
+            "role": "Software Engineer and Creator",
+            "time": "Jul 2017"
+        },
+        {
+            "name": "Music4deejays",
+            "image": "images/companies/music4deejays.png",
+            "role": "Software Engineer and Creator",
+            "time": "Jul 2017"
+        }
+    ]
+}

@@ -1,0 +1,11 @@
+.experience {
+    display: flex;
+
+    &__pic {
+        width: 400px;
+        flex: 0 0 auto;
+    }
+    &__content {
+        flex: 1 1 auto;
+    }
+}

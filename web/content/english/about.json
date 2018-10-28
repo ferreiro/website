@@ -2,17 +2,32 @@
   "bio": [
     {
       "type": "entry",
-      "body": "<span style=\"font-size: 1.5em; margin-right: 5px;\">Hi!</span> I'm <strong>Jorge Ferreiro</strong>, a 23-year-old Software Engineer and Entrepreneur, with a passion for design and a desire to create software products that solve real problems and improve people's lives.",
+      "body": "Hi! I'm Jorge, former Software Engineer <strong>intern at Amazon</strong> and <strong>Software Engineer at Eventbrite</strong> (mainly frontend). I'm working in the R&D business unit, and we're launching our own startup inside the company. I'm extremely excited about it!",
       "icon": null
     },
     {
       "type": "entry",
-      "body": "In 2018, I did a <b>Software Development Engineer internship at Amazon</b> in Luxembourg (their european HQ offices). In summer 2017, I <b>studied at UC Berkeley</b> <i>(CS 61BL and COLWRIT 9I)</i> and prior to that, I finished my <b>Bachelor's Degree in Computer Science at UCM</b>. In 2016 I did an scholarship in China with Huawei.",
+      "body": "I started coding when I was 10, and at the age of 17 I created Music4deejays, one of my first <a href=\"/portfolio\">personal project</a>. We got more than 56k downloads in a few months and I was shocked. I  discovered that <strong>my passion is to build projects to solve human problems.</strong>",
       "icon": null
     },
     {
       "type": "entry",
-      "body": "I've launched two <a href=\"/portfolio\">personal projects</a> that I'm really proud of: <b>Dailyfocus</b> <i>(a productivity application for busy people)</i> and <b>Music4deejays</b> <i>(a music application to promote young artists that reached 56,000 downloads)</i>.",
+      "body": "In 2017, I launched <b>Dailyfocus</b>, which was an ambitious and technical challenging project. It was a hard journey where I worked from requirements to design and coding. I learned a lot and that helped me to solidify my knowledge on web development.",
+      "icon": null
+    },
+    {
+      "type": "entry",
+      "body": "I've lived in 3 countries so far (Spain, US and Luxembourg), I've done a scholarship in China with Huawei and I've studied during the summer at UC Berkeley. I love travelling and I also like to take pictures and post them on my instagram.",
+      "icon": null
+    },
+    {
+      "type": "entry",
+      "body": "Apart from coding, I'm extremely curious about design, marketing and business. I'd like to be in the intersection of those worlds and build bridges between them and make ideas happpen.",
+      "icon": null
+    },
+    {
+      "type": "entry",
+      "body": "Connect with me and shape the future!",
       "icon": null
     }
   ],

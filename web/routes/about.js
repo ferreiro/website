@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', function (req, res, next) {
-  const about = require('../content/english/about.json')
+const about = require('../content/english/about.json')
+const experience = require('../content/english/experience.json')
 
+router.get('/', function (req, res, next) {
   const bio = about.bio
   const work = about.work
   const skills = about.skills
@@ -12,10 +13,11 @@ router.get('/', function (req, res, next) {
   res.render('about', {
     title: 'About me - Jorge Ferreiro - Biography',
     path: 'about',
-    bio: bio,
-    work: work,
-    skills: skills,
-    education: education
+    bio,
+    work,
+    skills,
+    education,
+    experience,
   })
 })
 

@@ -1,10 +1,11 @@
 extends ./includes/layout
 include ./mixins/resumeEntry
 include ./mixins/timelineEntry
+include ./mixins/experienceEntry
 include ./mixins/subscriptionBoxLarge
 
 block content_full
-  //-.profileCard
+ .profileCard
     .profileCard_bg
       // SEO
       img
@@ -21,38 +22,91 @@ block content_full
 block content_full
     +Header({
       title: 'About me',
-      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D) and Entrepreneur',
-      paragraphs: bio,
-      hasBorder: true,
-      buttons: [
-        {
-          type: 'big',
-          text: 'Read resume',
-          path: '/about',
-          icon: 'ion-document',
-        },
-        {
-          type: 'big',
-          text: 'See profile on Linkedin',
-          path: '/contact',
-          icon: 'icon-linkedin',
-        },
+      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D), Entrepreneur, blog writer and self-taught learner',
+      paragraphs: [
+          ...bio,
+          {
+              type: 'companies'
+          },
+          {
+              type: 'projects'
+          }
       ],
+      experience,
+      hasBorder: true,
+      buttons: [],
       padding: '5em 0',
-      mainColor: '#000',
+      mainColor: '#fff',
+      titleColor: 'rgba(255, 255, 255, 1)',
+      subtitleColor: 'rgba(255, 255, 255, 0.9)',
+      paragraphColor: 'rgba(255, 255, 255, 0.8)',
       buttonColor: '#d83901',
-      backgroundColor: '#ffffff',
+      linkColor: '#ab8882',
+      backgroundColor: '#13103c',
       backgroundSize: '80% auto',
       backgroundPosition: 'center center',
       backgroundImage: '',
-      layoverImage: '/images/about/collage_jorge_ferreiro_software_development_internship_at_Amazon_SDE_without_borders.jpg',
-    })
+      layoverImage: '/images/about/face_2.png',
+    }) //#1d1c40
 
-block content
 
-    h4.timeline__bigTitle Timeline
+    .bigButtons
+        a(
+            href="/resume/jorge_ferreiro_resume.pdf?pdf=resume&ref=about",
+            class="bigButtons__item bigButtons__resume"
+        )
+            .bigButtons__item__content
+                span.icon.icon-cloud-download
+                span.margin-left-1.bigButtons__item__text Download resume
 
-    .twoColsGrid
+        .bigButtons__separator-horizontal
+
+        a(
+            target="_blank",
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/jgferreiro/",
+            class="bigButtons__item bigButtons__linkedin"
+        )
+            .bigButtons__item__content
+                span.icon.icon-linkedin
+                span.margin-left-1.bigButtons__item__text Connect on Linkedin
+
+block content_wrapped
+
+    //- script.
+        function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName("companies-selector__item");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none"; 
+            }
+            document.getElementById(cityName).style.display = "block"; 
+        }
+
+    //- .companies-selector
+        .companies-selector__header
+            <div class="w3-bar w3-black">
+                <button class="w3-bar-item w3-button" onclick="openCity('Amazon')">London</button>
+                <button class="w3-bar-item w3-button" onclick="openCity('Dailyfocus Application')">Paris</button>
+                <button class="w3-bar-item w3-button" onclick="openCity('Virality')">Tokyo</button>
+            </div>
+            each company in companies
+                <img class="companies__item" height="30px" src="#{company.image}" alt="#{company.name}" />
+
+        .companies-selector__body
+            each item in work || []
+                .companies-selector__item(id= item.title)
+                    +experienceEntry(item)
+
+            each item in education || []
+                .companies-selector__item(id= item.title)
+                    +experienceEntry(item)
+
+
+
+    // h4.timeline__bigTitle Timeline
+
+    //-.twoColsGrid
         .twoColsGrid__item
             .twoColsGrid__item__wrapper
                 .timeline#education
@@ -74,8 +128,6 @@ block content
                                 +timelineEntry(item)
 
 block after_content
-
-  .about_hot_links
     .hotLinks
       .hotLinks__list
         a(href="/blog?ref=about").hotLinks__item(style="background-image:url('/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_entrepreneur.jpg');")
