@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const content = require('../content/english.json') // TODO: Add multilanguage
+const experience = require('../content/english/experience.json')
 const blogRepository = require('../repository/blog')
 
 router.get('/', function (req, res, next) {
@@ -11,7 +12,8 @@ router.get('/', function (req, res, next) {
     image: 'https://www.ferreiro.me/images/home/welcome_to_ferreiro_v3.jpg',
     path: 'home',
     content: content.about,
-    recentPosts: []
+    recentPosts: [],
+    experience,
   }
 
   // Get related posts
