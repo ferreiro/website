@@ -70,6 +70,14 @@
   &__button {
     margin-right: 1em;
     padding: 0.8em 1.2em;
+
+    &-home {
+      border-width: 2px;
+      border-color: $primaryColor !important;
+      .text {
+        color: $primaryColor !important;
+      }
+    }
   }
 
   &__button__big {

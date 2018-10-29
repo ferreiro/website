@@ -1,5 +1,9 @@
 mixin Header(data)
     - mainColor = data.mainColor || 'color: rgba(0, 0, 0, 0.9)'
+    - titleColor = data.titleColor || mainColor
+    - subtitleColor = data.subtitleColor || mainColor
+    - paragraphColor = data.paragraphColor || mainColor
+    - linkColor = data.linkColor || mainColor
     - buttonColor = data.buttonColor
     - layoverImage = data.layoverImage
     - layoverSize = data.layoverSize || 'cover'
@@ -10,6 +14,10 @@ mixin Header(data)
     - backgroundPosition = data.backgroundPosition || 'center center'
     - padding = data.padding || '2em 0'
     - margin = data.margin || '0'
+
+    - isExperienceIconsDark = data.isExperienceIconsDark || false
+    - experience = data.experience || null
+    - includeBorders = data.includeBorders || false
 
     - title = data.title || ''
     - subtitle = data.subtitle || ''
@@ -24,9 +32,10 @@ mixin Header(data)
             margin: #{margin};
         }
         .fullHeader__content { padding: #{padding}; }
-        .fullHeader__title { color: #{mainColor} }
-        .fullHeader__subtitle { color: #{mainColor} }
-        .fullHeader__paragraph { color: #{mainColor} }
+        .fullHeader__title { color: #{titleColor} }
+        .fullHeader__subtitle { color: #{subtitleColor} }
+        .fullHeader__paragraph { color: #{paragraphColor} }
+        .fullHeader__paragraph a { color: #{linkColor} }
         .fullHeader__content .button { background: #{buttonColor} }
         .fullHeader__background {
             background-image: url(#{backgroundImage});
@@ -41,54 +50,51 @@ mixin Header(data)
             background-repeat: no-repeat;
         }
 
-        layoverSize:
-
-        'cover'
-        ,
-        layoverPosition:
-
-        'center center'
-        ,
-        layoverImage:
-
-        ''
-        ,
-
-
-        .fullHeader__button,
-        .fullHeader__button span {
-            color: #{mainColor};
-            border-color: #{mainColor};
-        }
-
     .fullHeader
         .fullHeader__background
         .fullHeader__wrapper.container_inner
             .fullHeader__content
                 h1.fullHeader__title(style='')= title
-                h2.fullHeader__subtitle= subtitle
+                h2.fullHeader__subtitle!= subtitle
+
+                mixin experienceList(listItems, height = "30px", isDark = false)
+                    each item in listItems
+                        - alt = item.name ? item.name : ''
+                        - image = isDark ? item.image.dark : item.image.light
+                        - classname = isDark ? 'companies__item companies__item__dark' : 'companies__item'
+                        <img class="#{classname}" height="#{height}" src="#{image}" alt="#{alt}" />
 
                 each paragraph in paragraphs
-                    p.fullHeader__paragraph !{paragraph.body}
+                    if (paragraph.type === 'title' && paragraph.title !== null)
+                        .companies__title.margin-bottom-1= paragraph.title
+                    else if (paragraph.type === 'companies' && experience.companies !== null)
+                        - companies = experience.companies || null
 
-                .fullHeader__links
-                    each button in buttons
-                        - classnameButton = button.type === 'big' ? 'fullHeader__button__big' : ''
-                        a(href= button.path, class= classnameButton + ' ' + button.className).fullHeader__button.action_button
-                            span.icon(style="font-size: 20px;", class= button.icon)
-                            span.text= button.text
+                        .companies.margin-top-1-5
+                            if paragraph.title
+                                .companies__title.margin-bottom-1= paragraph.title
+                            .companies__list
+                                +experienceList(companies, '35px', isExperienceIconsDark)
+                    else if (paragraph.type === 'projects' && experience.projects !== null)
+                        - projects = experience.projects || null
+
+                        .companies.margin-top-1-5
+                            if paragraph.title
+                                .companies__title.margin-bottom-1= paragraph.title
+                            .companies__list
+                                +experienceList(projects, '25px', isExperienceIconsDark)
+                    else
+                        p.fullHeader__paragraph !{paragraph.body}
+
+                if buttons && buttons.length >= 1
+                    .fullHeader__links
+                        each button in buttons
+                            - classnameButton = button.type === 'big' ? 'fullHeader__button__big' : ''
+                            - target = button.target || '_self'
+                            - color = button.color || mainColor
+                            - borderColor = button.borderColor || mainColor
+                            a(href= button.path, class= classnameButton + ' ' + button.className, style='border-color:' + color + ';', target= target).fullHeader__button.action_button
+                                span.icon(style='color:' + color + '; font-size: 20px;', class= button.icon)
+                                span.text(style='color:' + color + ';')= button.text
 
             .fullHeader__image
-
-
-//
-    .about_bio__large__callToAction#aboutActions
-    a(href="/resume/jorge_ferreiro_resume.pdf?pdf=resume&ref=about", style="border: 2px solid #d83901; color: #d83901;", target="_blank").about_bio__large__button
-        span.icon.'
-    | Read Resume
-    a(href="/contact", style="border-width: 2px;").about_bio__large__button
-        span.icon.ion-android-mail
-        | Contact me
-    //- a(href="/resume/jorge_ferreiro_resume.pdf?download=true", target="_blank").about_bio__large__button
-      span.icon.ion-ios-cloud-download-outline
-      | Download Resume

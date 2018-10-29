@@ -9,5 +9,9 @@
     &__item {
         margin-right: 1em;
         display: inline-block;
+
+        &__dark {
+            opacity: 0.7;
+        }
     }
 }
