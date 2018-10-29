@@ -48,6 +48,22 @@ a {
   font-weight: 400;
 }
 
+.subtile {
+  margin: 0;
+  font-size: 1.3em;
+  line-height: 1.3em;
+  font-weight: 600;
+  border-right: 0;
+  border-left: 0;
+  text-align: center;
+  color: rgba(0, 0, 0, .6);
+
+  @media all and (min-width: $desktop-screen) {
+    font-size: 1.4em;
+    line-height: 1.4em;
+  }
+}
+
 .truncate {
   max-width: 460px;
   white-space: nowrap;
@@ -175,6 +191,58 @@ a {
 }
 .margin_top {
   margin-top: 2em !important;
+}
+
+.margin-top-0-5 {
+  margin-top: .5em;
+}
+.margin-top-1 {
+  margin-top: 1em;
+}
+.margin-top-1-5 {
+  margin-top: 1.5em;
+}
+.margin-top-2 {
+  margin-top: 2em;
+}
+
+.margin-left-0-5 {
+  margin-left: .5em;
+}
+.margin-left-1 {
+  margin-left: 1em;
+}
+.margin-left-1-5 {
+  margin-left: 1.5em;
+}
+.margin-left-2 {
+  margin-left: 2em;
+}
+
+.margin-bottom-0-5 {
+  margin-bottom: .5em;
+}
+.margin-bottom-1 {
+  margin-bottom: 1em;
+}
+.margin-bottom-1-5 {
+  margin-bottom: 1.5em;
+}
+.margin-bottom-2 {
+  margin-bottom: 2em;
+}
+
+.margin-right-0-5 {
+  margin-right: .5em;
+}
+.margin-right-1 {
+  margin-right: 1em;
+}
+.margin-right-1-5 {
+  margin-right: 1.5em;
+}
+.margin-right-2 {
+  margin-right: 2em;
 }
 .separator {
   width: 100%;

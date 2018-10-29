@@ -16,14 +16,14 @@ block content_full
       layoverImage: '/images/home/_T8A1899b.jpg',
 
       title: 'Jorge Ferreiro',
-      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D), Entrepreneur, blog writer and self-taught learner\n',
+      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D), Entrepreneur, blog writer and self-taught learner',
       hasBorder: true,
       experience,
-      isExperienceIconsDark: false,
+      isExperienceIconsDark: true,
       paragraphs: [
         {
           "type": 'entry',
-          "body": 'Hi! I\'m Jorge, a 23-year-old guy living in Madrid, Spain. I\'m passionate to solve real world problems with software, and build products people love. I like to be in the intersection of design, business, marketing and engineering.\n',
+          "body": 'Hi! I\'m Jorge, a 23-year-old guy living in Madrid, Spain. I\'m passionate to build products that people love and solve real world problems with software. I like to be in the intersection of design, business, marketing and engineering.',
           "icon": null
         },
         {
@@ -77,12 +77,7 @@ block content
             }
 
         if recentPosts && recentPosts.length > 0
-            style.
-                h3.blogPostRelated__title {
-                    margin: 1.5em 0;
-                }
-
-            h3.blogPostRelated__title.animate Most recent posts in my <a href="/blog">blog</a>!
+            h3.subtile.animate.margin-bottom-2.margin-top-1 Most recent posts in my <a href="/blog">blog</a>!
 
             .threeColsGrid.animate
                 each post in recentPosts
