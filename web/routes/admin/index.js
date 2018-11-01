@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-const mongoose = require('mongoose')
 const passport = require('passport')
 const Recaptcha = require('express-recaptcha')
 const env = require('../../../env')
@@ -10,6 +9,7 @@ const utils = require('./utils')
 const blogRepository = require('../../repository/blog')
 const adminUploader = require('./uploader')
 const seriesRouter = require('./series')
+const {parseRequestPostData} = require('./parse-request-post-data')
 
 const isAuthenticated = utils.isAuthenticated
 const recaptcha = new Recaptcha(env.RECAPTCHA_PUBLIC, env.RECAPTCHA_SECRET)
@@ -127,7 +127,7 @@ function createPostComposer (req, res, next) {
 }
 
 function postNewBlog (req, res, next) {
-  const postData = parseRequestPostData(req)
+  const postData = parseRequestPostData(req.body)
 
   blogRepository.create(postData).then((post) => {
     return res.json({
@@ -139,35 +139,6 @@ function postNewBlog (req, res, next) {
       error: 'Failed to create new post.<br />' + error
     })
   })
-}
-
-function parseRequestPostData (req) {
-  const title = req.body.post_title
-  const pic = req.body.post_pic
-  const secretKey = req.body.post_secretKey
-  const permalink = req.body.post_permalink
-  const authorName = req.body.post_author_name
-  const authorPic = req.body.post_author_pic
-  const summary = req.body.post_summary
-  const body = req.body.post_body
-  const published = req.body.post_isPublished
-  const category = [].concat(req.body.post_category)
-  const bodySanitized = body
-  const seriesId = req.body.post_seriesId
-
-  return {
-    pic,
-    title,
-    secretKey,
-    summary,
-    permalink,
-    published,
-    category,
-    author_name: authorName,
-    author_pic: authorPic,
-    body: bodySanitized,
-    series: !seriesId || seriesId === 'null' ? null : new mongoose.mongo.ObjectId(seriesId)
-  }
 }
 
 function editPostPage (req, res, next) {
@@ -189,17 +160,13 @@ function editPostPage (req, res, next) {
 
 function editPostSubmit (req, res, next) {
   const postPermalink = req.params.permalink
-  const postData = parseRequestPostData(req)
+  const postData = parseRequestPostData(req.body)
 
   blogRepository.findAndUpdateByPermalink(postPermalink, postData).then(post => {
-    return res.json({
-      post: post
-    })
+    return res.json({post})
   }).catch((err) => {
     console.log(err)
-    return res.json({
-      error: 'Failed to update post.'
-    })
+    return res.json({error: 'Failed to update post.'})
   })
 }
 
@@ -213,7 +180,7 @@ function deletePostConfirmation (req, res, next) {
 
 function deletePost (req, res, next) {
   const postPermalink = req.params.permalink
-  blogRepository.findAndDeleteByPermalink(postPermalink).then(post => {
+  blogRepository.findAndDeleteByPermalink(postPermalink).then((post) => {
     return res.redirect('/admin')
   }).catch((err) => {
     return res.render('admin/home', {
