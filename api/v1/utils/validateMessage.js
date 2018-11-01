@@ -1,20 +1,19 @@
 const validator = require('validator')
+const {isEmpty} = require('lodash')
 
-validateMessage = function (message, cb) {
-  let valid = false
-
+const validateMessage = (message, cb) => {
   if (message === null) {
-    return cb(valid)
+    return cb(false)
   }
   if (message.email === null || message.msg === null) {
-    return cb(valid)
+    return cb(false)
   }
 
   const isValidEmail = validator.isEmail(String(message.email))
-  const isMessageFilled = (message.msg !== undefined)
-  valid = isValidEmail && isMessageFilled
+  const isMessageFilled = !isEmpty(message.msg)
+  const isValid = isValidEmail && isMessageFilled;
 
-  cb(valid)
+  cb(isValid)
 }
 
 module.exports = validateMessage

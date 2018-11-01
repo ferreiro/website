@@ -6,53 +6,56 @@ const env = require('../../../env')
 
 const MAILGUN_USER = env.MAILGUN_USER
 const MAILGUN_PASS = env.MAILGUN_PASS
+const CONTACT_EMAIL = env.CONTACT_EMAIL
+const EMAIL_TEMPLATE_PATH = path.join(__dirname,'template.pug');
+
 if (!MAILGUN_USER || !MAILGUN_PASS) {
   throw new Error('MAILGUN ENV TOKENS NOT PROVIDED')
 }
-
-const CONTACT_EMAIL = env.CONTACT_EMAIL
 if (!CONTACT_EMAIL) {
   throw new Error('CONTACT_EMAIL ENV TOKENS NOT PROVIDED')
 }
 
-sendMessage = function (message, cb) {
+const compiledEmailTemplate = pug.compileFile(EMAIL_TEMPLATE_PATH)
 
-  var transporter;
-  var emailHTML;
-  var mailOptions;
+const sendMessage = (message, cb) => {
+  const emailHtml = generateEmailHtml(message);
+  const emailOptions = getEmailOptions(message, emailHtml);
+  const emailTransporter = generateMailgunEmailTransporter();
 
-  transporter = nodemailer.createTransport({
-    service: 'Mailgun',
-    auth: {
-      user: MAILGUN_USER, // postmaster@sandbox[base64 string].mailgain.org
-      pass: MAILGUN_PASS // You set this.
-    }
-  })
-
-  try {
-    var compiledFunction = pug.compileFile(path.join(__dirname,'template.pug'))
-    emailHMTL = compiledFunction({
-      form: message
-    })
-  }
-  catch(err) {
-      emailHMTL = '' + JSON.stringify(message)
-  }
-
-  mailOptions = {
-    from: message.name + '<' + MAILGUN_USER + '>', // sender address
-    to: CONTACT_EMAIL, // list of receivers
-    subject: '[Ferreiro.me] New message', // Subject line
-    html: emailHMTL // html body
-  }
-
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, email) {
+  emailTransporter.sendMail(emailOptions, (error, email) => {
     if (error) {
       return cb(error, null)
     }
     return cb(null, email)
   })
 }
+
+const generateEmailHtml = (form) => {
+  try {
+    return compiledEmailTemplate({form})
+  }
+  catch(err) {
+      return JSON.stringify(message)
+  }
+}
+
+const getEmailOptions = (message, html) => ({
+  from: message.name + '<' + MAILGUN_USER + '>', // sender address
+  to: CONTACT_EMAIL, // list of receivers
+  subject: '[Ferreiro.me] New message', // Subject line
+  html
+})
+
+const generateMailgunEmailTransporter = () => (
+  generateEmailTransporter('MAILGUN', MAILGUN_USER, MAILGUN_PASS)
+)
+
+const generateEmailTransporter = (service, user, pass) => (
+  nodemailer.createTransport({
+    service: service,
+    auth: {user, pass}
+  })
+)
 
 module.exports = sendMessage
