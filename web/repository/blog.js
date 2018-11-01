@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
+const {isEmpty} = require('lodash')
 
 const Post = require('../models/Post')
 
 module.exports.create = function (postData) {
-  const newPost = new Post(postData)
-  return newPost.save()
+  const newPost = new Post(postData);
+  return newPost.save();
 }
 
 module.exports.findByPermalink = function (query) {
@@ -53,21 +54,19 @@ function findByPermalinkIncrementViews (query) {
   }).populate('series')
 }
 
-module.exports.incrementLike = function (query) {
-  return Post.findOneAndUpdate({
-    permalink: query.permalink
-  }, {
-    $inc: { likes: 1 }
-  }).populate('series')
+/**
+ * query.permalink
+ */
+module.exports.incrementLike = function ({permalink}) {
+  return Post
+    .findOneAndUpdate({permalink}, {$inc: {likes: 1}})
+    .populate('series')
 }
 
-module.exports.findAndUpdateByPermalink = function (postPermalink, postData) {
-  return Post.findOneAndUpdate({
-    permalink: postPermalink
-  },
-  postData, {
-      new: true
-  }).populate('series')
+module.exports.findAndUpdateByPermalink = function (permalink, postData) {
+  return Post
+    .findOneAndUpdate({permalink}, postData, {new: true})
+    .populate('series')
 }
 
 module.exports.findAndDeleteByPermalink = function (postPermalink) {

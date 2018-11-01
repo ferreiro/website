@@ -1,11 +1,9 @@
-const marked = require('marked')
-const replaceall = require('replaceall')
-const sanitizeHtml = require('sanitize-html')
 const validator = require('validator')
 const express = require('express')
 const router = express.Router()
 
 const MAX_PAGE_POSTS = 9
+const {markdownToHtml} = require('../utils/markdownToHtml')
 const blogRepository = require('../repository/blog')
 const seriesRepository = require('../repository/series')
 const blog = require('../content/english/blog.json')
@@ -181,30 +179,6 @@ function isValidSecretKey (srcSecretKey, validSecretKey) {
     return false
   }
   return srcSecretKey === validSecretKey
-}
-
-function markdownToHtml (srcMarkdown) {
-  const dirtyHtml = marked(srcMarkdown)
-  const htmlSanitized = sanitizeHtml(dirtyHtml, {
-    allowedTags: [
-      'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
-      'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
-      'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre',
-      'img', 'span'
-    ],
-    allowedAttributes: {
-      '*': [ 'id', 'href', 'align', 'alt', 'center', 'bgcolor' ],
-      div: [ 'class' ],
-      a: [ 'href', 'name', 'target' ],
-      img: [ 'src', 'style' ],
-      h1: [ 'id' ],
-      h2: [ 'id' ],
-      ul: [ 'class' ]
-    }
-  })
-  // Add syntax highlight class to hmtl
-  const outputHtml = replaceall('<pre><code>', "<pre><code class='prettyprint linenums'>", htmlSanitized)
-  return outputHtml
 }
 
 function generateRelatedPosts (opts) {
