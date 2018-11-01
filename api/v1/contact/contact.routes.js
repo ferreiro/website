@@ -1,10 +1,11 @@
-const MailchimpApi = require('mailchimp-api-v3')
-const express = require('express')
-const router = express.Router()
+import env from '../../../env';
+import errors from '../../errors';
+import express from 'express';
+import MailchimpApi from 'mailchimp-api-v3';
+import {sendMessage} from './sendMessage';
+import {validateMessage} from './validateMessage';
 
-const env = require('../../../env')
-const utils = require('../utils')
-const errors = require('../../errors')
+const router = express.Router()
 const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 
 /**
@@ -12,14 +13,21 @@ const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
 * Send a personal email
 */
 router.post('/', function (req, res) {
-  var message = ({
-    name: req.body.__name || null,
-    email: req.body.__email || null,
-    msg: req.body.__msg || null,
-    subscribed: req.body.__subscribed || null
-  })
+  const {
+    __name = null,
+    __email = null,
+    __msg = null,
+    __subscribed = null
+  } = req.body;
 
-  utils.validateMessage(message, function(valid) {
+  const message = {
+    name: __name,
+    email: __email,
+    msg: __msg,
+    subscribed: __subscribed
+  }
+
+  validateMessage(message, (valid) => {
     if (!valid) {
       return errors.formNotValid(req, res)
     }
@@ -30,7 +38,7 @@ router.post('/', function (req, res) {
       })
     }
 
-    utils.sendMessage(message, function (err, email) {
+    sendMessage(message, function (err, email) {
       if (err) {
         errors.emailNotSend(req, res)
         return res.json({
