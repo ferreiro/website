@@ -29,7 +29,7 @@
     "build": "npm run build:gulp && npm run build:bower",
     "watch": "gulp watch",
     "heroku-postbuild": "npm run build && npm run build:bower",
-    "start": "DEBUG=ferreiro:* nodemon ./bin/www"
+    "start": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www"
   },
   "dependencies": {
     "aws-sdk": "^2.125.0",
