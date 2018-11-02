@@ -19,7 +19,7 @@ form.submit(function(event){
   }
 
   submitForm({
-    endpoint: endpoint,
+    endpoint,
     scrollToError: scrollToError
   });
 });
