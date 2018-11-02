@@ -1,0 +1,39 @@
+$comments-pannel-width: 420px;
+
+.comments-pannel {
+    width: $comments-pannel-width;
+    height: 100%;
+    background: #fbfbfb;
+    border-left: 5px solid rgb(243, 243, 243);
+    position: fixed;
+    z-index: 10000000;
+    right: 0;
+    margin-right: -$comments-pannel-width;
+    top: 0;
+    bottom: 0;
+
+    &__open {
+        
+    }
+
+    &__close {
+        width: 100%;
+        padding: 1em 0;
+        display: block;
+        text-align: center;
+        background: #fff;
+        border-bottom: 2px solid rgb(243, 243, 243);
+    }
+
+    &-displayed {
+        margin-right: 0;
+        -webkit-box-shadow: 0 0px 5px 0px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0 0px 5px 0px rgba(0,0,0,0.15);
+        box-shadow: 0 0px 5px 0px rgba(0,0,0,0.15);
+    
+    }
+
+    &__wrapper {
+        padding: 2em;
+    }
+}
