@@ -23,7 +23,8 @@ mixin Header(data)
     - subtitle = data.subtitle || ''
     - paragraphs = data.paragraphs || []
     - buttons = data.buttons || []
-    - borderBottomSize = data.hasBorder ? '1px' : 0
+    - borderBottomSize = data.hasBottomBorder ? '1px' : 0
+    - buttonBorderSize = data.buttonBorderSize ? data.buttonBorderSize : '1px'
 
     style.
         .fullHeader {
@@ -54,15 +55,17 @@ mixin Header(data)
         .fullHeader__background
         .fullHeader__wrapper.container_inner
             .fullHeader__content
-                h1.fullHeader__title(style='')= title
-                h2.fullHeader__subtitle!= subtitle
+                if title
+                    h1.fullHeader__title(style='')= title
+                if subtitle
+                    h2.fullHeader__subtitle!= subtitle
 
                 mixin experienceList(listItems, height = "30px", isDark = false)
                     each item in listItems
                         - alt = item.name ? item.name : ''
                         - image = isDark ? item.image.dark : item.image.light
-                        - classname = isDark ? 'companies__item companies__item__dark' : 'companies__item'
-                        <img class="#{classname}" height="#{height}" src="#{image}" alt="#{alt}" />
+                        - imageClassname = isDark ? 'companies__item companies__item__dark' : 'companies__item'
+                        <img class="#{imageClassname}" height="#{height}" src="#{image}" alt="#{alt}" />
 
                 each paragraph in paragraphs
                     if (paragraph.type === 'title' && paragraph.title !== null)
@@ -91,9 +94,9 @@ mixin Header(data)
                         each button in buttons
                             - classnameButton = button.type === 'big' ? 'fullHeader__button__big' : ''
                             - target = button.target || '_self'
-                            - color = button.color || mainColor
                             - borderColor = button.borderColor || mainColor
-                            a(href= button.path, class= classnameButton + ' ' + button.className, style='border-color:' + color + ';', target= target).fullHeader__button.action_button
+                            - color = button.color || mainColor
+                            a(href= button.path, class= classnameButton + ' ' + button.className, style='border-width:' + buttonBorderSize + '; border-color:' + borderColor + ';', target= target).fullHeader__button.action_button
                                 span.icon(style='color:' + color + '; font-size: 20px;', class= button.icon)
                                 span.text(style='color:' + color + ';')= button.text
 

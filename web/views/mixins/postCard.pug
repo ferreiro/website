@@ -18,7 +18,6 @@ mixin postCard(post)
             span.postCard__series__text= post.series.title + ' series'
 
     .postCard__body
-
       if post.category && post.category.length > 0
         .postCard__categories
           each category in post.category

@@ -9,7 +9,6 @@ block content_full
     backgroundSize: 'auto 100%',
     backgroundPosition: '100% 50%',
     backgroundImage: '/images/talks/talks_jorge_ferreiro.jpg',
-    hasBorder: true,
 
     layoverSize: 'cover',
     layoverPosition: 'center center',
@@ -27,9 +26,13 @@ block content_full
       {
         type: 'normal',
         text: 'Bring me to your event',
-        path: '/contact/talk'
+        path: '/contact/talk',
+        color: '#000',
+        borderColor: '#cacaca'
       },
-    ]
+    ],
+    hasBottomBorder: true,
+    buttonBorderSize: '2px',
   })
 
 block content
