@@ -50,8 +50,11 @@ block popupNewsletter
   })
 
 block content_header
-  // - hasAnimation = false
-  // +blogHeader(hasAnimation, true)
+  .comments-pannel
+    .comments-pannel__close
+      span Close comments
+    .comments-pannel__wrapper
+      #disqus_thread
 
 block content_large
   style.
@@ -85,82 +88,51 @@ block content_large
     // div(style="width: 300px; left: 100%; margin-left: 1em; position: absolute; display: inline-block; vertical-align: top;")
       <ul class="seriesBlogList"><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/welcome-to-my-new-digital-space-welcome-to-the"></a><div class="seriesBlogList__index">1</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/jorge_ferreiro_blog_welcome_post.jpg);"></div><div class="seriesBlogList__text">Welcome to my new digital space. Welcome to the #ferreiroV3 blog.</div></li><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/amazon-on-sites-interviews-8-practical-tips-that-i"></a><div class="seriesBlogList__index">2</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/on-sites-interviews-5_b.jpg);"></div><div class="seriesBlogList__text">5 tips to crush on-site interviews - Lessons learned from my own experience</div></li></ul>
 
-    //- Load Social Sharing
-    include ../includes/socialSharing
+    .blogPost
+      //- Load Social Sharing
+      include ../includes/socialSharing
 
-    .blogTwoColumnsGrid
-      .blogTwoColumnsGrid__left
+      article#post
 
-        article#post
+        #socialSharingBreakpoint
 
-          #socialSharingBreakpoint
+        //- Post metadata
+        img.blogPost__image(src= post.pic, style="width: 100%;")
+        h1.blogPost__title= post.title
+        h2.blogPost__subtitle= post.summary
 
-          //- Post metadata
-          img.blogPost__image(src= post.pic, style="width: 100%;")
-          h1.blogPost__title= post.title
-          h2.blogPost__subtitle= post.summary
+        // .toc#toc
 
-          // .toc#toc
+        .blogPost__content!= post.html
 
-          .blogPost__content!= post.html
+        if post.category && post.category.length > 0
+          ul.blogPost__category#category
+            //- p Post published in
+            each category in post.category
+              if category !== null
+                li
+                  a(href= "/blog/category/" + category).action_button= category
 
-          if post.category && post.category.length > 0
-            ul.blogPost__category#category
-              //- p Post published in
-              each category in post.category
-                if category !== null
-                  li
-                    a(href= "/blog/category/" + category).action_button= category
+        #showNewsletterBreakPoint
 
-          #showNewsletterBreakPoint
+      .blogPost__separator
 
-        .blogPost__separator
+      .separator_no_margin#postFooter
 
-        .separator_no_margin#postFooter
+      +sharePostBig('/blog/' + post.permalink, 'article')
 
-        +sharePostBig('/blog/' + post.permalink, 'article')
+      .separator_no_margin
 
-        .separator_no_margin
+      #comments(style="padding-top: 3em;")
+        a(id="openCommentsPannel", class="action_button comments-pannel__open") Open comments
 
-        #comments(style="padding-top: 3em;")
-          #disqus_thread
+      input#canonicalUrl(type='hidden', value='https://www.ferreiro.me/' + (path ? path : '') + (post ? '/' + post.permalink : ''))
+      input#postIdentifier(type='hidden', value= post.permalink)
 
-        input#canonicalUrl(type='hidden', value='https://www.ferreiro.me/' + (path ? path : '') + (post ? '/' + post.permalink : ''))
-        input#postIdentifier(type='hidden', value= post.permalink)
+      //- <script id="dsq-count-scr" src="//ferreiro-1.disqus.com/count.js" async></script>
+      //- <a href="/blog/how-to-speed-up-your-web-site-6-practical-tips-4ekpwhg5yw00#disqus_thread">Link</a>
 
-        //- <script id="dsq-count-scr" src="//ferreiro-1.disqus.com/count.js" async></script>
-        //- <a href="/blog/how-to-speed-up-your-web-site-6-practical-tips-4ekpwhg5yw00#disqus_thread">Link</a>
-
-        script.
-          /**
-          *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-          *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-          var disqus_config = function () {
-            var PAGE_URL = document.getElementById('canonicalUrl').value
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-
-            var PAGE_IDENTIFIER = document.getElementById('postIdentifier').value
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-          };
-          (function() { // DON'T EDIT BELOW THIS LINE
-          var d = document, s = d.createElement('script');
-          s.src = 'https://ferreiro-1.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-          })();
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-      .blogTwoColumnsGrid__right
-        h4 About the author
-        p Jorge Ferreiro is a .... at @Eventbrite
-
-        if post.series
-          .seriesBox
-            .seriesBox__wrapper
-              p.seriesBox__text This blog is part of the <strong>#{post.series.title}</strong> series <a class="seriesBox__button" href="/blog/series/#{post.series.permalink}">See series</a>
-
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

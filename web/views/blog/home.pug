@@ -4,10 +4,13 @@ include ../mixins/blogHeader
 include ../mixins/blogEntry
 include ../mixins/subscriptionBoxLarge
 include ../mixins/mostRecentPostAd
+include ../mixins/seriesBlogList
 
 block content_large
+  .container__middle
+    if blogCategory !== 'all'
+      h2= blogCategory + ' posts'
 
-  .container__middle.animate
     if !posts || posts.length <= 0
       .warningMessage(style="max-width: 400px; margin: 0 auto;")
         h1.warningMessage__title There are no more posts to show.
@@ -17,8 +20,8 @@ block content_large
 
     else
 
-
       .blogTwoColumnsGrid
+
         .blogTwoColumnsGrid__left
 
           .twoColsGrid
@@ -49,12 +52,35 @@ block content_large
               if nextPageToken != "end"
                 a(href= blogLink + '?next=' + nextPageToken).big_action_button Next page
 
-          //- if posts.length < 3
-          //- Display the add here too.
-          //- .box_with_shadow(style="margin: 0;")
-          //-
+        .blogTwoColumnsGrid__right.margin-left-2
+
+          .about-me
+            p About the author
+            .about-me__avatar(style="background-image: url(https://pbs.twimg.com/profile_images/1053341684782850052/K8XzdqA9_400x400.jpg);")
+            .about-me__text I love build products! Former Software Engineer intern @Amazon. Now doing Udacity #reactJS nanodegree. EDM, Avid traveller, Tennis player, Music addict and 📸
+            ul.about-me__links
+              li.about-me__link
+                a(href="", target="_blank") Twitter @jgferreiro
+              li.about-me__link
+                a(href="", target="_blank") Linkedin
+              li.about-me__link
+                a(href="", target="_blank") Github
+
+          .blog-categories
+            p Blog categories
+            ul
+              each category in categories
+                if category !== null
+                  li
+                    a(href="/blog/category/" + category)= category
+          .blog-follow
+            p Follow new blog post
             +subscriptionBoxLarge({
-              displayForm: true
+              displayForm: true,
+              customTitle: 'New posts in your inbox'
             })
-        .blogTwoColumnsGrid__right
-          p fsdfsd
+          .blog-top-articles
+            p top articles.
+          .blog-series
+            p List of series
+            +seriesBlogList(series, {showPic: false})
