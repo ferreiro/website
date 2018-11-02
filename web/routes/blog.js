@@ -3,9 +3,11 @@ const express = require('express')
 const router = express.Router()
 
 const MAX_PAGE_POSTS = 9
+const {isEmpty} = require('lodash')
 const {markdownToHtml} = require('../utils/markdownToHtml')
 const blogRepository = require('../repository/blog')
 const seriesRepository = require('../repository/series')
+const {getCategories} = require('../repository/categories')
 const blog = require('../content/english/blog.json')
 
 router.get('/', getBlogPosts)
@@ -29,8 +31,54 @@ function getBlogContext (req) {
     blogCategory: 'all',
     config: blog.config,
     admin: !!(req.user && !disableAdmin),
-    posts: []
+    posts: [],
+    categories: [],
   }
+}
+
+const createBlogContextBuilder = (req) => {
+  let defaultContext = {
+    title: 'Blog - Jorge Ferreiro',
+    description: 'Personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.',
+    path: 'blog',
+    blogCategory: 'all',
+    config: blog.config,
+    admin: false,
+    posts: [],
+    categories: [],
+  }
+
+  class BlogContextBuilder {
+    constructor(req) {
+      const disableAdmin = req.query.disableAdmin
+
+      defaultContext.admin = !!(req.user && !disableAdmin);
+    }
+
+    get(key) {
+      return defaultContext[key];
+    }
+
+    with(key, value) {
+      if (!isEmpty(value)) {
+        defaultContext[key] = value;
+      }
+      return this;
+    }
+
+    withNested(key1, key2, value) {
+      if (!isEmpty(value)) {
+        defaultContext[key1][key2] = value;
+      }
+      return this;
+    }
+
+    build() {
+      return defaultContext;
+    }
+  }
+
+  return new BlogContextBuilder(req);
 }
 
 /**
@@ -40,28 +88,48 @@ function getBlogContext (req) {
  * @param {*=} req.params.category - You can provide a post category to query
  */
 function getBlogPosts (req, res, next) {
-  const opts = getBlogPostsOptions(req)
+  const {category} = req.params
 
-  let category = req.params.category || null
   if (category && category.length === 0) {
     return next(new Error('No valid category'))
   }
 
-  const query = category ? { category } : {}
+  const fetchPostsPromise = new Promise((resolve, reject) => {
+    const opts = getBlogPostsOptions(req)
+    const query = isEmpty(category) ? {} : {category} 
+  
+    fetchPosts(query, opts, (error, result) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(result);
+    });
+  });
+  const fetchBlogCategoriesPromise = getCategories();
+  const fetchBlogSeriesPromise = seriesRepository.getAllPublished();
+  
+  Promise.all([
+    fetchPostsPromise,
+    fetchBlogCategoriesPromise,
+    fetchBlogSeriesPromise,
+  ]).then(function(values) {
+    const [postsResult, categories, series] = values;
+    const {docs, page, pages} = postsResult;
 
-  fetchPosts(query, opts, (error, result) => {
-    if (error) {
-      return next(new Error(error))
-    }
-
-    let blogContext = getBlogContext(req)
-    blogContext.posts = result.docs
-    blogContext.prevPageToken = (result.page - 1 >= 1 ? result.page - 1 : 'start') // getNextPageTokenFromPosts(posts)
-    blogContext.nextPageToken = (result.page + 1 <= result.pages ? result.page + 1 : 'end') // getNextPageTokenFromPosts(posts)
-    blogContext.blogCategory = category || blogContext.blogCategory
+    const blogContext =
+      createBlogContextBuilder(req)
+        .with('posts', docs)
+        .with('prevPageToken', (page - 1 >= 1 ? page - 1 : 'start'))
+        .with('nextPageToken', (page + 1 <= pages ? page + 1 : 'end'))
+        .with('blogCategory', category)
+        .with('categories', categories)
+        .with('series', series)
+        .build();
 
     return res.render('blog/home', blogContext)
-  })
+  }).catch((error) => {
+    return next(error)
+  });
 }
 
 function getBlogSeries (req, res, next) {
@@ -91,47 +159,56 @@ function getSingleBlogSeries (req, res, next) {
  * and the user has the right credentials.
  */
 function getPostByPermalink (req, res, next) {
-  let blogContext = getBlogContext(req)
-  blogContext.blogCategory = '' // no menu selected
+  const blogContext = createBlogContextBuilder(req)
 
-  let postPermalink = null
-  if (req.params.permalink) {
-    postPermalink = validator.blacklist(
-      req.params.permalink, "<|>|&|\'|\"|'|,|/|")
-  } else {
-    blogContext.error = 'Post not found or invalid url'
-    return res.render('blog/post', blogContext)
+  const {permalink} = req.params;
+
+  if (isEmpty(permalink)) {
+    blogContext.with('blogCategory', '')
+    blogContext.with('error', 'Post not found or invalid url')
+    return res.render('blog/post', blogContext.build())
   }
+
+  const sanitizedPermalink =
+    validator.blacklist(permalink, "<|>|&|\'|\"|'|,|/|")
 
   const query = {
-    isAdmin: blogContext.admin,
-    permalink: postPermalink
+    isAdmin: blogContext.get('admin'),
+    permalink: sanitizedPermalink
   }
+
   blogRepository
     .findByPermalinkIncrementViews(query)
-    .then(post => {
-      if (!post) {
-        blogContext.error = 'Post does not exist or you dont have permissions to view.'
-        return res.render('blog/post', blogContext)
+    .then((post) => {
+      if (isEmpty(post)) {
+        blogContext.with('blogCategory', '') // no menu selected
+        blogContext.with('error', 'Post does not exist or you dont have permissions to view.')
+        return res.render('blog/post', blogContext.build())
       }
 
-      if (post.published || !isInvalidUser(req) || isValidSecretKey(req.query.secretKey, post.secretKey)) {
+      const isPostVisible =
+        post.published
+        || isValidSecretKey(req.query.secretKey, post.secretKey)
+        || (isValidUser(req) && blogContext.get('admin'))
+
+      if (isPostVisible) {
         generateRelatedPosts({
-          permalinkToSkip: postPermalink,
+          permalinkToSkip: sanitizedPermalink,
           count: 3
         }).then(relatedPosts => {
-          blogContext.post = post
-          blogContext.post.html = markdownToHtml(post.body)
-          blogContext.relatedPosts = relatedPosts
-          return res.render('blog/post', blogContext)
+          post.html = markdownToHtml(post.body)
+
+          blogContext.with('post', post)
+          blogContext.with('relatedPosts', relatedPosts)
+          return res.render('blog/post', blogContext.build())
         })
       } else {
         return next(new Error('Post does not exist or you dont have permissions to view.'))
       }
     })
     .catch(error => {
-      blogContext.error = error
-      return res.render('blog/post', blogContext)
+      blogContext.with('error', error)
+      return res.render('blog/post', blogContext.build())
     })
 }
 
@@ -174,15 +251,19 @@ function isInvalidUser (req) {
   return !req.user
 }
 
+function isValidUser (req) {
+  return !isEmpty(req.user)
+}
+
 function isValidSecretKey (srcSecretKey, validSecretKey) {
-  if (!srcSecretKey || !validSecretKey) {
+  if (isEmpty(srcSecretKey) || isEmpty(validSecretKey)) {
     return false
   }
   return srcSecretKey === validSecretKey
 }
 
 function generateRelatedPosts (opts) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     return blogRepository
       .getRandomPosts(opts)
       .then(posts => resolve(posts))
