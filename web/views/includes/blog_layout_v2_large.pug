@@ -5,7 +5,7 @@ block content_full
   block content_header
     +Header({
       title: 'The corner of Jorge',
-      subtitle: 'A blog about... ',
+      subtitle: config.subtitle,
       paragraphs: [
         'Subscribe!'
       ],
@@ -22,13 +22,15 @@ block content_full
       mainColor: '#fff',
       buttonColor: '#d83901',
       backgroundColor: '#253246',
-      backgroundSize: '80% auto',
-      backgroundPosition: 'top center',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
       backgroundImage: '/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer.jpg',
 
-      layoverImage: '',
-
     })
+
+    // layoverSize: 'cover',
+    // layoverPosition: 'center center',
+    // layoverImage: '/images/talks/talk.png',
 
 block content
   block content_large
