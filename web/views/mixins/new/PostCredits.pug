@@ -1,0 +1,8 @@
+mixin PostCredits({author, publishedDate} = {})
+    .postCredits
+        .postCredits__author
+            p
+                <strong>#{author}</strong> - <span>Published #{publishedDate.toLocaleDateString("en-US", {})}</span>
+        .postCredits__comments
+            a(href="#comments", class="open-comments-pannel") Comments
+    

@@ -1,16 +1,20 @@
 let alreadyLoadedCommments = false
 
 const commentsPannel = $('.comments-pannel');
+const commentsPannelOverlay = $('.comments-pannel__overlay');
+
 const closeCommentsPannelButton = $('.comments-pannel__close');
-const openCommentsPannelButton = $('.comments-pannel__open')
+const openCommentsPannelButton = $('.open-comments-pannel')
 
 openCommentsPannelButton.click(handleOpenCommentsPannel);
 closeCommentsPannelButton.click(handleCloseCommentsPannel);
+commentsPannelOverlay.click(handleCloseCommentsPannel);
 
 function handleOpenCommentsPannel (event) {
     event.preventDefault();
 
     commentsPannel.addClass('comments-pannel-displayed')
+    commentsPannelOverlay.addClass('comments-pannel__overlay-displayed')
 
     if (alreadyLoadedCommments === false) {
         alreadyLoadedCommments = true
@@ -21,6 +25,7 @@ function handleOpenCommentsPannel (event) {
 function handleCloseCommentsPannel (event) {
     event.preventDefault();
     commentsPannel.removeClass('comments-pannel-displayed')
+    commentsPannelOverlay.removeClass('comments-pannel__overlay-displayed')
 }
 
 /**

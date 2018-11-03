@@ -4,6 +4,7 @@ include ../mixins/sharePostBig
 include ../mixins/subscriptionBoxLarge
 include ../mixins/popupNewsletter
 include ../mixins/seriesBlogList
+include ../mixins/new/PostCredits
 
 block extraMeta
   if post
@@ -51,10 +52,12 @@ block popupNewsletter
 
 block content_header
   .comments-pannel
-    .comments-pannel__close
-      span Close comments
-    .comments-pannel__wrapper
-      #disqus_thread
+    .comments-pannel__overlay
+    .comments-pannel__content
+      .comments-pannel__close
+        span Close comments
+      .comments-pannel__wrapper
+        #disqus_thread
 
 block content_large
   style.
@@ -97,8 +100,14 @@ block content_large
         #socialSharingBreakpoint
 
         //- Post metadata
-        img.blogPost__image(src= post.pic, style="width: 100%;")
+        img.blogPost__image(src= post.pic)
         h1.blogPost__title= post.title
+
+        +PostCredits({
+          author: 'Jorge Ferreiro',
+          publishedDate: post.createdAt
+        })
+
         h2.blogPost__subtitle= post.summary
 
         // .toc#toc
@@ -123,9 +132,6 @@ block content_large
 
       .separator_no_margin
 
-      #comments(style="padding-top: 3em;")
-        a(id="openCommentsPannel", class="action_button comments-pannel__open") Open comments
-
       input#canonicalUrl(type='hidden', value='https://www.ferreiro.me/' + (path ? path : '') + (post ? '/' + post.permalink : ''))
       input#postIdentifier(type='hidden', value= post.permalink)
 
@@ -133,8 +139,6 @@ block content_large
       //- <a href="/blog/how-to-speed-up-your-web-site-6-practical-tips-4ekpwhg5yw00#disqus_thread">Link</a>
 
       <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
 
 block after_content
 

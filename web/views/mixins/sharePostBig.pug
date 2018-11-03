@@ -5,7 +5,7 @@ mixin sharePostBig(redirectUrl, source)
   .sharePostBig#sharePostEmergent.shadow__box
     h3.sharePostBig__title <span>Did you like my post?</span>
     //- p.sharePostBig__subtitle Help me to spread the knowledge and share this post with your community. This helps me a lot! 😊
-    p.sharePostBig__subtitle Spread the knowledge, this helps me a lot! 😊
+    p.sharePostBig__subtitle Spread the knowledge with your community 😊
 
     ul.sharePostBig__list
       li.sharePostBig__entry
@@ -23,5 +23,9 @@ mixin sharePostBig(redirectUrl, source)
           span.sharePostBig__text Send Feedback
 
     
+      #comments(style="padding-top: 2em;")
+        center
+          a(id="openCommentsPannel", class="open-comments-pannel action_button comments-pannel__open") Add a comment
+
     //- p.sharePostBig__dissapointed Sorry Jorge, I didn't like the post. I'd like you to <a href="#{feedbackUrl}"  target="_blank">give you feedback</a> to improve for the next time.
     //- p.sharePostBig__dissapointed I'd like you to <a href="#{feedbackUrl}"  target="_blank">give you feedback</a> to improve.

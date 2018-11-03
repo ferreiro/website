@@ -44,8 +44,17 @@
   }
 
   &__image {
-    max-width: 100%;
+    margin-left: -16px;
     margin-bottom: 2em;
+    width: calc(100% + 32px);
+    max-width: calc(100% + 32px);
+
+    @media all and (min-width: $desktop-screen) {
+      float: none;
+      width: 125%;
+      max-width: 125%;
+      margin-left: -12.5%;
+    }
   }
 
   &__separator {
