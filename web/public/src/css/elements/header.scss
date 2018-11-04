@@ -6,6 +6,15 @@
   position: relative;
   z-index: 0;
 
+  &__link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 12;
+    left: 0;
+    top: 0;
+  }
+
   &__wrapper {
     margin: 0 auto;
     padding-top: 0;

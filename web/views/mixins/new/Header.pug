@@ -1,4 +1,5 @@
 mixin Header(data)
+    - link = data.link || null
     - mainColor = data.mainColor || 'color: rgba(0, 0, 0, 0.9)'
     - titleColor = data.titleColor || mainColor
     - subtitleColor = data.subtitleColor || mainColor
@@ -52,6 +53,9 @@ mixin Header(data)
         }
 
     .fullHeader
+        if link
+            a(href= link).fullHeader__link
+
         .fullHeader__background
         .fullHeader__wrapper.container_inner
             .fullHeader__content

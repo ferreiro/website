@@ -1,0 +1,15 @@
+.blog-categories {
+    &__list {
+        list-style: none;
+    }
+    &__item {
+        &:before {
+            content: '> ';
+        }
+
+        text-transform: capitalize;
+    }
+    &__link {
+        
+    }
+}

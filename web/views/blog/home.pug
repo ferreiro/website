@@ -1,4 +1,4 @@
-extends ../includes/blog_layout_v2_large
+extends ./blog_layout_v2_large
 include ../mixins/postCard
 include ../mixins/blogHeader
 include ../mixins/blogEntry
@@ -8,22 +8,21 @@ include ../mixins/seriesBlogList
 
 block content_large
   .container__middle
-    if blogCategory !== 'all'
-      h2= blogCategory + ' posts'
 
-    if !posts || posts.length <= 0
-      .warningMessage(style="max-width: 400px; margin: 0 auto;")
-        h1.warningMessage__title There are no more posts to show.
-        p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
-        .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
-          include ../includes/subscriptionBox
+    .blogTwoColumnsGrid
 
-    else
+      .blogTwoColumnsGrid__left
 
-      .blogTwoColumnsGrid
+        if blogCategory !== 'all'
+          h2.category__title.margin-bottom-1= blogCategory + ' posts'
 
-        .blogTwoColumnsGrid__left
-
+        if !posts || posts.length <= 0
+          .warningMessage(style="max-width: 400px; margin: 0 auto;")
+            h1.warningMessage__title There are no more posts to show.
+            p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+            .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+              include ../includes/subscriptionBox
+        else
           .twoColsGrid
             each post, index in posts || []
 
@@ -52,35 +51,53 @@ block content_large
               if nextPageToken != "end"
                 a(href= blogLink + '?next=' + nextPageToken).big_action_button Next page
 
-        .blogTwoColumnsGrid__right.margin-left-2
+      .blogTwoColumnsGrid__right.margin-left-2
 
-          .about-me
-            p About the author
-            .about-me__avatar(style="background-image: url(https://pbs.twimg.com/profile_images/1053341684782850052/K8XzdqA9_400x400.jpg);")
-            .about-me__text I love build products! Former Software Engineer intern @Amazon. Now doing Udacity #reactJS nanodegree. EDM, Avid traveller, Tennis player, Music addict and 📸
-            ul.about-me__links
-              li.about-me__link
-                a(href="", target="_blank") Twitter @jgferreiro
-              li.about-me__link
-                a(href="", target="_blank") Linkedin
-              li.about-me__link
-                a(href="", target="_blank") Github
+        .about-me.margin-top-0-5
+          h3.aside__title About the author
 
-          .blog-categories
-            p Blog categories
-            ul
-              each category in categories
-                if category !== null
-                  li
-                    a(href="/blog/category/" + category)= category
-          .blog-follow
-            p Follow new blog post
-            +subscriptionBoxLarge({
-              displayForm: true,
-              customTitle: 'New posts in your inbox'
-            })
-          .blog-top-articles
-            p top articles.
-          .blog-series
-            p List of series
-            +seriesBlogList(series, {showPic: false})
+          .about-me__user.margin-top-1-5
+            .about-me__avatar.margin-right-1(style="background-image: url(https://pbs.twimg.com/profile_images/1053341684782850052/K8XzdqA9_400x400.jpg);")
+            .about-me__name
+              h2.about-me__title.margin-bottom-0-5 Jorge Ferreiro
+              p.about-me__intro Software Engineer and Entrepreneur
+
+          p.about-me__text.margin-top-1 I love build products! Former Software Engineer intern @Amazon. Now doing Udacity #reactJS nanodegree. EDM, Avid traveller, Tennis player, Music addict and 📸
+
+          ul.about-me__items.margin-top-1
+            li.about-me__item.margin-bottom-0-5
+              a.about-me__item(href="https://twitter.com/JGFerreiro", target="_blank")
+                span.icon.icon-twitter.margin-right-1
+                span Twitter @jgferreiro
+
+            li.about-me__item.margin-bottom-0-5
+              a.about-me__item(href="https://www.linkedin.com/in/jgferreiro/", target="_blank")
+                span.icon.icon-linkedin.margin-right-1
+                span Linkedin
+
+            li.about-me__item
+              a.about-me__item(href="http://github.com/ferreiro", target="_blank")
+                span.icon.icon-github.margin-right-1
+                span Github ferreiro
+
+        .blog-categories.margin-top-1-5
+          h3.aside__title Blog categories
+          ul.blog-categories__list.margin-top-1
+            each category in categories
+              if category !== null
+                li.blog-categories__item
+                  a.blog-categories__link(href="/blog/category/" + category)= category
+
+        .blog-follow.margin-top-1-5
+          h3.aside__title.margin-top-0-5.margin-bottom-1 Follow the blog
+          +subscriptionBoxLarge({
+            displayForm: true,
+            customTitle: 'New posts in your inbox'
+          })
+
+        .blog-top-articles.margin-top-1-5
+          h3.aside__title.margin-top-0-5.margin-bottom-1 Top articles
+
+        .blog-series.margin-top-1-5
+          h3.aside__title.margin-top-0-5.margin-bottom-1 List of series
+          +seriesBlogList(series, {showPic: false})

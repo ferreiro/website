@@ -4,7 +4,7 @@
 
     @media all and (min-width: $tablet-screen) {}
     @media all and (min-width:$desktop-screen) {
-        flex-direction: row;
+        flex-direction: column;
     }
     @media all and (min-width:$big-screen) {}
 
