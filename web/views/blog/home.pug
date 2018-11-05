@@ -90,14 +90,16 @@ block content_large
 
         .blog-follow.margin-top-1-5
           h3.aside__title.margin-top-0-5.margin-bottom-1 Follow the blog
-          +subscriptionBoxLarge({
-            displayForm: true,
-            customTitle: 'New posts in your inbox'
-          })
 
-        .blog-top-articles.margin-top-1-5
-          h3.aside__title.margin-top-0-5.margin-bottom-1 Top articles
+          p.margin-top-1 Join the newsletter and receive new blog posts and projects directly in your inbox 😊
 
-        .blog-series.margin-top-1-5
+          a(href="/newsletter?source=blog").action_button.openNewsletterSubscription.margin-top-1
+            span.icon.ion-ios-paper-outline(style="margin-right: 10px;")
+            span Subscribe to the blog
+
+        //- .blog-top-articles.margin-top-1-5
+        //-  h3.aside__title.margin-top-0-5.margin-bottom-1 Top articles
+
+        //- .blog-series.margin-top-1-5
           h3.aside__title.margin-top-0-5.margin-bottom-1 List of series
           +seriesBlogList(series, {showPic: false})

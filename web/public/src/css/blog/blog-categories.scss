@@ -2,14 +2,17 @@
     &__list {
         list-style: none;
     }
-    &__item {
-        &:before {
-            content: '> ';
-        }
 
+    &__item {
         text-transform: capitalize;
+        margin-bottom: 1em;
     }
+
     &__link {
+        display: block;
+        padding: 0.5em 1em;
+        border: 1px solid #cecece;
         
+        @include border-radius(5px);
     }
 }
