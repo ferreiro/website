@@ -3,11 +3,11 @@ const router = express.Router()
 
 const content = require('../content/english.json') // TODO: Add multilanguage
 
-const home = require('./home')
-const blog = require('./blog')
-const about = require('./about')
-const stats = require('./stats')
 const admin = require('./admin')
+const about = require('../about.routes')
+const home = require('../home.routes')
+const blog = require('../blog.routes')
+const stats = require('./stats')
 const talks = require('./talks')
 const social = require('./social')
 const resume = require('./resume')

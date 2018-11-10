@@ -1,10 +1,7 @@
-const express = require('express')
-const router = express.Router()
-
 const about = require('../content/english/about.json')
 const experience = require('../content/english/experience.json')
 
-router.get('/', function (req, res, next) {
+export const getAboutPage = (req, res, next) => {
   const bio = about.bio
   const work = about.work
   const skills = about.skills
@@ -19,6 +16,4 @@ router.get('/', function (req, res, next) {
     education,
     experience,
   })
-})
-
-module.exports = router
+}

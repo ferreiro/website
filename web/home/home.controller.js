@@ -1,11 +1,8 @@
-const express = require('express')
-const router = express.Router()
-
 const content = require('../content/english.json') // TODO: Add multilanguage
 const experience = require('../content/english/experience.json')
 const blogRepository = require('../repository/blog')
 
-router.get('/', (req, res, next) => {
+export const getHomePage = (req, res, next) => {
   const viewTemplateName = req.query.v1 ? 'home' : 'home_v2'
   const homeContext = {
     title: 'Jorge Ferreiro - Software Engineer, Product Manager and Entrepreneur',
@@ -26,6 +23,4 @@ router.get('/', (req, res, next) => {
     homeContext.error = error
     res.render(viewTemplateName, homeContext)
   })
-})
-
-module.exports = router
+}
