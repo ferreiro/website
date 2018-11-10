@@ -1,8 +1,5 @@
-const validator = require('validator')
-const express = require('express')
-const router = express.Router()
+import {MAX_PAGE_POSTS} from './constants';
 
-const MAX_PAGE_POSTS = 9
 const {isEmpty} = require('lodash')
 const {markdownToHtml} = require('../utils/markdownToHtml')
 const blogRepository = require('../repository/blog')
@@ -10,19 +7,11 @@ const seriesRepository = require('../repository/series')
 const {getCategories} = require('../repository/categories')
 const blog = require('../content/english/blog.json')
 
-router.get('/', getBlogPosts)
-router.get('/series', getBlogSeries)
-router.get('/series/:permalink', getSingleBlogSeries)
-router.get('/category/:category', getBlogPosts)
-router.get('/:permalink', getPostByPermalink)
-
-module.exports = router
-
 /**
  * Returns a context object with data to feed the views.
  * This object can be updated before return it to view.
  */
-function getBlogContext (req) {
+export const getBlogContext = (req) => {
   const disableAdmin = req.query.disableAdmin
   return {
     title: 'Blog - Jorge Ferreiro',
@@ -87,7 +76,7 @@ const createBlogContextBuilder = (req) => {
  * categories (optional argument)
  * @param {*=} req.params.category - You can provide a post category to query
  */
-function getBlogPosts (req, res, next) {
+export const getBlogPosts = (req, res, next) => {
   const {category} = req.params
 
   if (category && category.length === 0) {
@@ -132,7 +121,7 @@ function getBlogPosts (req, res, next) {
   });
 }
 
-function getBlogSeries (req, res, next) {
+export const getBlogSeries = (req, res, next) => {
   seriesRepository.getAllPublished()
       .then(publishedSeries => {
         let blogContext = getBlogContext(req)
@@ -143,7 +132,7 @@ function getBlogSeries (req, res, next) {
       .catch(error => next(error))
 }
 
-function getSingleBlogSeries (req, res, next) {
+export const getSingleBlogSeries = (req, res, next) => {
   seriesRepository.findByPermalink({ permalink: req.params.permalink })
       .then(singleSeries => {
         let blogContext = getBlogContext(req)
@@ -158,7 +147,7 @@ function getSingleBlogSeries (req, res, next) {
  * Finds and returns a blog post if is valid
  * and the user has the right credentials.
  */
-function getPostByPermalink (req, res, next) {
+export const getPostByPermalink = (req, res, next) => {
   const blogContext = createBlogContextBuilder(req)
 
   const {permalink} = req.params;
