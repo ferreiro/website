@@ -9,7 +9,6 @@ import talks from './pages/talks/talks.routes'
 import contact from './pages/contact/contact.routes'
 
 const stats = require('./routes/stats')
-const social = require('./routes/social')
 const resume = require('./routes/resume')
 const newsletter = require('./routes/newsletter')
 const university = require('./routes/university')
@@ -39,7 +38,6 @@ router.use('/talks', talks)
 router.use('/newsletter', newsletter)
 router.use('/contact', contact)
 router.get('/feedback', redirectFeedbackToContact)
-router.use('/social', social)
 router.use('/admin', admin)
 router.use('/stats', stats)
 router.use('/university', university)
