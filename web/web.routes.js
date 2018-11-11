@@ -5,11 +5,11 @@ import about from './pages/about/about.routes'
 import home from './pages/home/home.routes'
 import blog from './pages/blog/blog.routes'
 import portfolio from './pages/portfolio/portfolio.routes'
+import resume from './pages/resume/resume.routes'
 import talks from './pages/talks/talks.routes'
 import contact from './pages/contact/contact.routes'
 
 const stats = require('./routes/stats')
-const resume = require('./routes/resume')
 const newsletter = require('./routes/newsletter')
 const university = require('./routes/university')
 
