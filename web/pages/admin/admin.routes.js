@@ -2,7 +2,7 @@ import express from 'express'
 import passport from 'passport'
 import Recaptcha from 'express-recaptcha'
 
-import adminUploader from './uploader'
+import imageUploader from './imageUploader'
 import seriesRouter from './admin.series.routes'
 import env from '../../../env'
 import {isAuthenticated} from './is-authenticated'
@@ -36,7 +36,7 @@ router.get('/delete/:permalink', isAuthenticated, deletePostConfirmation)
 router.get('/delete/:permalink/confirm', isAuthenticated, deletePost)
 
 router.use('/series', isAuthenticated, seriesRouter)
-router.use('/uploader', isAuthenticated, adminUploader)
+router.use('/uploader', isAuthenticated, imageUploader)
 
 // General access routes
 router.get('/logout', logout)

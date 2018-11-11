@@ -1,5 +1,6 @@
-import blogRepository from '../../repository/blog'
+import {createViewPath} from '../create-view-path'
 import {parseRequestPostData} from './parse-request-post-data'
+import blogRepository from '../../repository/blog'
 
 export const logout = (req, res, next) => {
     req.logout();
@@ -16,7 +17,7 @@ export const login = (req, res, next) => {
         message = 'Invalid password or email.'
     }
 
-    res.render('admin/login', {
+    res.render(createViewPath('admin', 'views/login.pug'), {
         message: message
     })
 }
@@ -26,8 +27,8 @@ export const postLogin = (req, res, next) => {
         return next()
     }
 
-    return res.render('admin/login', {
-        error: 'Recaptcha not valid.'
+    return res.render(createViewPath('admin', 'views/login.pug'), {
+        error: 'Recaptcha is not valid.'
     })
 }
   
@@ -40,10 +41,10 @@ export const getAllPosts = (req, res, next) => {
 
     return blogRepository.getAll().then(posts => {
         locals.posts = posts
-        res.render('admin/home', locals)
+        res.render(createViewPath('admin', 'views/home.pug'), locals)
     }).catch(err => {
         locals.error = err
-        res.render('admin/home', locals)
+        res.render(createViewPath('admin', 'views/home.pug'), locals)
     })
 }
 
@@ -62,11 +63,11 @@ export const getPublishedPosts = (req, res, next) => {
         .then(posts => {
             console.log(posts)
             locals.posts = posts
-            res.render('admin/home', locals)
+            res.render(createViewPath('admin', 'views/home.pug'), locals)
         })
         .catch(error => {
             locals.error = error
-            res.render('admin/home', locals)
+            res.render(createViewPath('admin', 'views/home.pug'), locals)
         })
 }
 
@@ -79,10 +80,10 @@ export const getDraftsPosts = (req, res, next) => {
 
     return blogRepository.getAllDrafts().then(posts => {
         locals.posts = posts
-        res.render('admin/home', locals)
+        res.render(createViewPath('admin', 'views/home.pug'), locals)
     }).catch(err => {
         locals.error = err
-        res.render('admin/home', locals)
+        res.render(createViewPath('admin', 'views/home.pug'), locals)
     })
 }
 
@@ -91,7 +92,7 @@ export const createPostComposer = (req, res, next) => {
         admin: true
     }
 
-    res.render('admin/create', context)
+    res.render(createViewPath('admin', 'views/create.pug'), context)
 }
 
 export const postNewBlog = (req, res, next) => {
@@ -99,12 +100,12 @@ export const postNewBlog = (req, res, next) => {
 
     return blogRepository.create(postData).then((post) => {
         return res.json({
-        post: post,
-        success: 'Post created!'
+            post: post,
+            success: 'Post created!'
         })
     }).catch((error) => {
         return res.json({
-        error: 'Failed to create new post.<br />' + error
+            error: 'Failed to create new post.<br />' + error
         })
     })
 }
@@ -115,13 +116,13 @@ export const editPostPage = (req, res, next) => {
     return blogRepository.findByPermalink({
         permalink: postPermalink
     }).then(post => {
-        return res.render('admin/create', {
+        return res.render(createViewPath('admin', 'views/create.pug'), {
             edit: true,
             post: post,
             admin: true
         })
     }).catch((err) => {
-        return res.render('admin/home', {
+        return res.render(createViewPath('admin', 'views/home.pug'), {
             error: 'Failed to create new post.'
         })
     })
@@ -155,7 +156,7 @@ export const deletePost = (req, res, next) => {
     blogRepository.findAndDeleteByPermalink(postPermalink).then((post) => (
         res.redirect('/admin')
     )).catch((err) => (
-        res.render('admin/home', {
+        res.render(createViewPath('admin', 'home.pug'), {
             error: 'Failed to update post.'
         })
     ))

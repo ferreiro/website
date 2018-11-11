@@ -1,3 +1,4 @@
+import {createViewPath} from '../create-view-path'
 import seriesRepository from '../../repository/series'
 import {parseRequestSeriesData} from './parse-request-series-data'
 
@@ -7,15 +8,15 @@ import {parseRequestSeriesData} from './parse-request-series-data'
 export const getAllSeries = (req, res) => {
   seriesRepository.getAll()
     .then(series => {
-      res.render('admin/series/home', {
+      res.render(createViewPath('admin', 'views/series.home.pug'), {
         series
       })
     })
-    .catch(error => res.render('error', { error }))
+    .catch(error => res.render('views/error', { error }))
 }
 
 export const createSeriesPage = (req, res) => {
-  res.render('admin/series/create')
+  res.render(createViewPath('admin', 'views/series.create.pug'))
 }
 
 /**
@@ -37,6 +38,7 @@ export const createSeries = (req, res) => {
 
 export const deleteSeriesConfirmationPage = (req, res) => {
   const postPermalink = req.params.permalink
+
   res.send('Are you sure you want to delete the post?<br /><a href="/admin/series">Cancel</a> | <a href="/admin/series/delete/' + postPermalink + '/confirm">Yes. I know this action can not be undo</a>')
 }
 
@@ -46,45 +48,49 @@ export const deleteSeriesConfirmationPage = (req, res) => {
 export const deleteSeries = (req, res) => {
   const postPermalink = req.params.permalink
 
-  seriesRepository.findAndDeleteByPermalink(postPermalink)
-    .then(post => res.redirect('/admin/series'))
+  seriesRepository
+    .findAndDeleteByPermalink(postPermalink)
+    .then((post) => res.redirect('/admin/series'))
     .catch((err) => {
-      return res.render('admin/series/home', {
+      return res.render(createViewPath('admin', 'views/series.home.pug'), {
         error: 'Failed to update post.'
       })
     })
 }
 
 export const editPostPage = (req, res) => {
-  const postPermalink = req.params.permalink
+  const permalink = req.params.permalink
 
-  seriesRepository.findByPermalink({
-    permalink: postPermalink
-  }).then(series => {
-    return res.render('admin/series/create', {
-      edit: true,
-      series: series,
-      admin: true
+  seriesRepository
+    .findByPermalink({permalink})
+    .then(series => {
+      return res.render(createViewPath('admin', 'views/series.create.pug'), {
+        edit: true,
+        series: series,
+        admin: true
+      })
     })
-  }).catch((err) => {
-    return res.render('admin/series/home', {
-      error: 'Failed to create new post.'
+    .catch((err) => {
+      return res.render(createViewPath('admin', 'views/series.home.pug'), {
+        error: 'Failed to create new post.'
+      })
     })
-  })
 }
 
 export const editPostSubmit = (req, res) => {
   const postPermalink = req.params.permalink
   const seriesData = parseRequestSeriesData(req)
 
-  seriesRepository.findAndUpdateByPermalink(postPermalink, seriesData).then(post => {
-    return res.json({
-      post: post
+  seriesRepository
+    .findAndUpdateByPermalink(postPermalink, seriesData)
+    .then(post => {
+      return res.json({
+        post: post
+      })
+    }).catch((err) => {
+      console.log(err)
+      return res.json({
+        error: 'Failed to update post.'
+      })
     })
-  }).catch((err) => {
-    console.log(err)
-    return res.json({
-      error: 'Failed to update post.'
-    })
-  })
 }
