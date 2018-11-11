@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 
-const utils = require('../../../web/routes/admin/utils')
+import {isAuthenticated} from '../../../web/pages/admin/is-authenticated'
 const seriesRepository = require('../../../web/repository/series')
 
 /**
  * @api get /blog/series - Retrieves the list of series (published and unpublished)
  * @required authentication
  */
-router.get('/series', utils.isAuthenticated, function (req, res) {
+router.get('/series', isAuthenticated, function (req, res) {
   seriesRepository.getAll()
       .then(series => res.json(series))
       .catch(err => res.send(err))

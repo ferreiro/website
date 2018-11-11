@@ -1,0 +1,158 @@
+extends ./blog.layout.large.pug
+include ../../views/mixins/postCard
+include ../../views/mixins/sharePostBig
+include ../../views/mixins/subscriptionBoxLarge
+include ../../views/mixins/popupNewsletter
+include ../../views/mixins/seriesBlogList
+include ../../views/mixins/socialSharing
+include ../../views/mixins/new/PostCredits
+
+block extraMeta
+  if post
+    title= post.title + ' - Jorge Ferreiro Blog'
+    meta(name='description', content= post.summary)
+
+    meta(property='og:url', content= 'https://ferreiro.me/blog/' + post.permalink)
+    meta(property='og:type', content='article')
+    meta(property='og:title', content= post.title)
+    meta(property='og:description', content= post.summary)
+    meta(property='og:image', content= post.pic)
+    meta(property='og:image:alt', content= post.title)
+
+    meta(name="twitter:site", content="@jgferreiro")
+    meta(name="twitter:creator", content="@jgferreiro")
+    meta(name="twitter:card", content="summary_large_image")
+    meta(name="twitter:title", content= post.title)
+    meta(name="twitter:description", content= post.summary)
+    meta(name="twitter:image", content= post.pic)
+
+block extraCss
+  //- Loading post fonts async!
+  link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600", media="none", onload="if(media!='all')media='all'", type='text/css')
+  noscript
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600', type='text/css')
+
+block extraScripts
+  script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst", async)
+  script(src="/js/blog.main.min.js", async)
+
+  //- script(src="/vendors/jquery.toc.min.js")
+  //- script.
+    $("#toc").toc({
+      content: ".blogPost__content",
+      headings: "h1,h2,h3,h4"
+    });
+
+
+//- override default behaviour. Here we show the popup after X miliseconds.
+block popupNewsletter
+  +popupNewsletter({
+    autodisplay: true
+  })
+
+block content_header
+  .comments-pannel
+    .comments-pannel__overlay
+    .comments-pannel__content
+      .comments-pannel__close
+        span Close comments
+      .comments-pannel__wrapper
+        #disqus_thread
+
+block content_large
+  style.
+    .optionsMenu {
+      display: none;
+    }
+    .menu {
+      position: absolute; /* making the header not fixed for better writing */
+    }
+
+  if admin && post
+    ul.blog__post__options(style="margin-bottom: 1em;")
+      li(style="margin-right: 1em;")
+        a(href= post.permalink + '?disableAdmin=true').action_button
+          span.icon.ion-eye
+          | See post as normal user
+      li(style="margin-right: 1em;")
+        a(target="_blank", href= '/admin/edit/' + post.permalink).action_button
+          span.icon.ion-edit
+          | Edit post
+      li
+        a(href= '/admin/delete/' + post.permalink).action_button
+          span.icon.ion-android-delete
+          | Delete post
+
+  if error
+    h1= error
+
+  if post
+
+    // div(style="width: 300px; left: 100%; margin-left: 1em; position: absolute; display: inline-block; vertical-align: top;")
+      <ul class="seriesBlogList"><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/welcome-to-my-new-digital-space-welcome-to-the"></a><div class="seriesBlogList__index">1</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/jorge_ferreiro_blog_welcome_post.jpg);"></div><div class="seriesBlogList__text">Welcome to my new digital space. Welcome to the #ferreiroV3 blog.</div></li><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/amazon-on-sites-interviews-8-practical-tips-that-i"></a><div class="seriesBlogList__index">2</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/on-sites-interviews-5_b.jpg);"></div><div class="seriesBlogList__text">5 tips to crush on-site interviews - Lessons learned from my own experience</div></li></ul>
+
+    .blogPost
+      //- Load Social Sharing
+      +socialSharing()
+
+      article#post
+
+        #socialSharingBreakpoint
+
+        //- Post metadata
+        img.blogPost__image(src= post.pic)
+        h1.blogPost__title= post.title
+
+        +PostCredits({
+          author: 'Jorge Ferreiro',
+          publishedDate: post.createdAt
+        })
+
+        h2.blogPost__subtitle= post.summary
+
+        // .toc#toc
+
+        .blogPost__content!= post.html
+
+        if post.category && post.category.length > 0
+          ul.blogPost__category#category
+            //- p Post published in
+            each category in post.category
+              if category !== null
+                li
+                  a(href= "/blog/category/" + category).action_button= category
+
+        #showNewsletterBreakPoint
+
+      .blogPost__separator
+
+      .separator_no_margin#postFooter
+
+      +sharePostBig('/blog/' + post.permalink, 'article')
+
+      .separator_no_margin
+
+      input#canonicalUrl(type='hidden', value='https://www.ferreiro.me/' + (path ? path : '') + (post ? '/' + post.permalink : ''))
+      input#postIdentifier(type='hidden', value= post.permalink)
+
+      //- <script id="dsq-count-scr" src="//ferreiro-1.disqus.com/count.js" async></script>
+      //- <a href="/blog/how-to-speed-up-your-web-site-6-practical-tips-4ekpwhg5yw00#disqus_thread">Link</a>
+
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+block after_content
+
+  //- This div with ID is used by the Javascript
+  //- To know where to hide the sharing pannel.
+  #relatedPosts
+    if relatedPosts && relatedPosts.length > 0
+      .container.blogPostRelated
+        .container_inner.blogPostRelated__inner
+
+          h3.subtile.blogPostRelated__title Related posts
+
+          .threeColsGrid
+            each post, index in relatedPosts
+              .threeColsGrid__item
+                .threeColsGrid__item__wrapper
+                  +postCard(post)

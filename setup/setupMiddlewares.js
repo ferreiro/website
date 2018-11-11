@@ -53,6 +53,9 @@ module.exports = (app) => {
   }))
 
   // view engine setup
-  app.set('views', path.join(__dirname, '../web/views'))
+  // NB: Since we're starting to use a duck structure, we'll point to the /web folder,
+  // Later on you, you can decide where to load the views using:
+  // Eg: return res.render('home/home.pug')
+  app.set('views', path.join(__dirname, '../web'))
   app.set('view engine', 'pug')
 }

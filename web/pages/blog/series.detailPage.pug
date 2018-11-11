@@ -1,0 +1,36 @@
+extends ./blog.layout.large.pug
+include ../../views/mixins/seriesCard
+include ../../views/mixins/blogSeriesHeader
+include ../../views/mixins/blogEntry
+include ../../views/mixins/subscriptionBox
+include ../../views/mixins/subscriptionBoxLarge
+include ../../views/mixins/mostRecentPostAd
+include ../../views/mixins/seriesBlogList
+
+block content_header
+  - hasAnimation = true
+  +blogSeriesHeader(series, hasAnimation)
+  // +blogHeader(series, hasAnimation)
+
+block content_large
+
+  .container__middle.animate
+    if !series || series.posts.length <= 0
+      .warningMessage(style="max-width: 400px; margin: 0 auto;")
+        h1.warningMessage__title There are no any available series to show.
+        p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+        .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+          +subscriptionBox()
+
+    else
+
+      // div(style="width: 40%; display: inline-block; vertical-align: top;")
+          div(style="margin-right: 2em;  border-radius: 10px; overflow: hidden;")
+            +blogSeriesHeader(series, hasAnimation)
+
+      // div(style="width: 60%; display: inline-block;  vertical-align: top;")
+
+      center
+        h1.sectionBigTitle List of blog posts
+
+      +seriesBlogList(series.posts)

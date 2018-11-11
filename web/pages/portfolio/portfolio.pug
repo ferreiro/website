@@ -1,0 +1,201 @@
+extends ../../views/includes/layout
+
+block content_full
+  .imagePopup
+    .imagePopup_wrap
+      .imagePopup_close
+        span.icon.ion-ios-close
+      .imagePopup_content
+        img(src= '')
+
+  +Header({
+    margin: '0 0 -2em 0',
+    padding: '2em 0 0 0',
+    mainColor: '#000',
+    buttonColor: '#d83901',
+    backgroundColor: '#ffffff',
+    backgroundSize: '80% auto',
+    backgroundPosition: 'top center',
+    backgroundImage: '',
+    title: 'Porfolio',
+    subtitle: 'Webs, apps and personal projects',
+  })
+
+
+block extraCss
+  //- Loading the font for dev icons
+  link(rel="stylesheet", href="/bower_components/devicon/devicon.min.css", type='text/css', media="none", onload="if(media!='all')media='all'")
+  noscript
+    link(rel="stylesheet", href="/bower_components/devicon/devicon.min.css", type='text/css')
+
+block extraScripts
+  script(src="/js/projects.main.min.js", async)
+
+block content
+
+  //- Container middle
+  .container_middle.animate
+
+    .projectsFilter
+      .projectsFilter_options#projectsFilter_button
+        .projectsFilter_title Filter projects by
+          .projectsFilter_arrow
+            span.icon-circle-down
+
+      ul.projectsFilter_list#projectsFilter_list
+        if filtered
+          li.projectsFilter_entry
+            a(href="/projects").projectsFilter_entry_link < Clear filter
+
+        li.projectsFilter_entry
+          a(href="/projects/backend").projectsFilter_entry_link Backend
+
+        li.projectsFilter_entry
+          a(href="/projects/frontend").projectsFilter_entry_link Frontend
+
+        li.projectsFilter_entry
+          a(href="/projects/bash").projectsFilter_entry_link Bash
+
+  //- Right Container
+  .container_middle.animate
+    if projects
+      .threeColsGrid
+        each project, index in projects || []
+
+          .threeColsGrid__item
+            .threeColsGrid__item__wrapper
+
+              .project.shadow__box
+
+                .project_bg
+                  if project.background
+                    .project_bg_image(style="background-image:url(" + project.background + ");")
+                  if project.color
+                    .project_bg_solid(style="background-color:" + project.color.hex + ";")
+
+                //- Project Header
+                .project_header
+                  .project_header_left
+                    if project.avatar
+                      .project_header_avatar(style="background-image:url(" + project.avatar + ");")
+                  .project_header_right
+                    .project_header_data
+                      if project.title
+                        .project_header_title
+                          if project.links
+                            a(href= project.links.website, target="_blank").project_header_title.project_header_title_clickable #{project.title}
+                          else
+                            a.project_header_title #{project.title}
+                      if project.date
+                        a.project_header_date #{project.date}
+
+                  .project_header_right
+
+                    //- //- Project Body
+                    //- if project.links
+                    //-   .project_links
+                    //-     if project.links.website
+                    //-       a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Website
+                    //-     if project.links.code
+                    //-       a(href="#{project.links.code}", target="_blank").project_links_code Code
+
+                    .project_header_share
+                      span.icon-share
+
+                //- Project Body
+                if project.images
+                  .project_gallery
+                    .project_gallery_gradient(style="background-image: linear-gradient(to left, " + project.color.rgba_gradient_start + ", " + project.color.rgba_gradient_end + ");")
+                      //-.project_gallery_gradient_solid(style="background-color:" + project.color.hex + ";")
+                    .project_gallery_wrapper
+                      .project_gallery_next
+                        p
+                          span.icon-next
+
+                      .project_gallery_list
+                        //- .owl-carousel
+                        for image in project.images
+                          .project_gallery_entry(style="background-image: url(" + image.small + ");")
+                            input.bigImage(type="hidden", value= image.large, name="bigImage")
+
+                        //- Ghost offset of the size of right gradient.
+                        .project_gallery_entry.project_gallery_list__offset
+                //- Project Body
+                .project_body
+
+                  if project.about
+                    h4.project_body_title About #{project.title}
+                    if project.about.length > 0
+                      each paragraph in project.about
+                        p.project_body_text !{paragraph}
+                    else
+                      p.project_body_text !{project.about}
+
+                  if project.people && project.people.hidden == false
+                    .project_people
+                      h4.project_body_subtitle Team
+                      ul.project_people_list
+                        each person in project.people.entries
+                          li.project_people_entry
+                            a(href= person.url, target="_blank").project_people_link
+                              img(src= person.avatar).project_people_entry_avatar
+                              span.project_people_title= person.name
+
+                  if project.highlights
+                    h4.project_body_title Highlights
+                    .project_highlight
+                      ul.project_highlight_list
+                        for highlight in project.highlights
+                          li.project_highlight_entry
+                            .project_highlight_entry_icon
+                              span.icon-trophy(style="color:" + project.color.hex + "!important;")
+                            p.project_highlight_entry_text !{highlight}
+
+                  if project.features
+                    h4.project_body_title Features
+                    .project_highlight
+                      ul.project_highlight_list
+                        for feature in project.features
+                          li.project_highlight_entry
+                            .project_highlight_entry_icon
+                              span.icon-trophy(style="color:" + project.color.hex + "!important;")
+                            p.project_highlight_entry_text !{feature}
+
+                  if project.stack
+                    h4.project_body_title Technology stack
+                    .project_stack
+                      ul.project_stack_list
+                        for technology in project.stack
+                          li.project_stack_entry
+                            if technology == "phonegap"
+                              img(src="/images/projects/phonegap.svg", style="opacity: 0.6; width:24px;")
+                            else if technology == "bower"
+                              i(class="cbp-ig-icon devicon-bower-line")
+                            else if technology == "less"
+                              i(class="cbp-ig-icon devicon-less-plain-wordmark")
+                            else
+                              i.cbp-ig-icon(class="devicon-" + technology + "-plain")
+                            p.project_stack_title #{technology}
+
+                //- Project Body
+                if project.links
+                  //-a.action_button(href= project.links.website, target="_blank") Check out the project!
+                  .project_links
+                    if project.links.website
+                      a(href= project.links.website, target="_blank").project_links_website(style="color: " + project.color.hex + "; border-color:" + project.color.hex + ";") Check this out
+                    if project.links.code
+                      a(href= project.links.code, target="_blank").project_links_code Source code
+
+          if index == projects.length - 1
+            .threeColsGrid__item
+              .threeColsGrid__item__wrapper
+
+                .talk__ad.shadow__box.margin-bottom-1-5(style="height: auto !important;")
+                  h1.talk__ad__title My next project?
+                  p.talk__ad__subtitle Want to be the first to know my next project or adventure? Join my newsltter and be up to date!
+                  +subscriptionBox()
+
+                .talk__ad.shadow__box(style="height: auto !important; padding-bottom: 2em;")
+                  h1.talk__ad__title Do you have a project or idea?
+                  p.talk__ad__subtitle Let's keep in touch! Ping me or contact me and I'll try to provide you feedback or maybe team up to make it happen :).
+                  a(href="/contact").talk__ad__link__simple Contact me

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const {isEmpty} = require('lodash')
 
 const Post = require('../models/Post')
 

@@ -19,7 +19,7 @@ module.exports = (app) => {
   app.use('/api', require('../api'))
 
   setupBeta(app) // Setup beta firewall for web version
-  app.use('/', require('../web/routes'))
+  app.use('/', require('../web/web.routes.js'))
 
   // Handle Application Errors
   // This must be placed at the end of app code.

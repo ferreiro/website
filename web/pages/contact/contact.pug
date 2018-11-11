@@ -1,0 +1,73 @@
+extends ../../views/includes/layout
+
+block popupNewsletter
+  //- remove popup
+
+block content_full
+  +Header({
+    mainColor: '#000',
+    buttonColor: '#d83901',
+    backgroundColor: '#ffffff',
+    backgroundSize: '80% auto',
+    backgroundPosition: 'center center',
+    backgroundImage: '',
+    layoverImage: '',
+    hasBottomBorder: true,
+    buttonBorderSize: '2px',
+
+    title: headline ? headline : title,
+    subtitle: content.config.claim,
+  })
+
+block content
+
+  .container_middle
+
+    .contact.animate
+      .contact_form_wrapper
+        .contact_form_container
+
+          .contact_form_result.contact_form_success
+            h2 Thank you!
+            p Your message has been sent.<br />
+            | I'll send you a reply asap.<br />
+            | Would you like to send me another? <br /><a href="/contact">Write new message</a>
+
+          center
+            img#contactLoader.loaderIcon(src="/images/loading.gif", width="30px", style="display: none;")
+
+          form.contact_form(action="/contact/send", method="post", autocomplete="off")#contactform
+            input(value="/api/v1/contact", type="hidden", id="contactFormEndpoint")
+
+            fieldset.contact_form_fieldset
+              p.wrong#wrongName
+                span.icon.ion-alert-circled
+                | Error: Your name can not be blank
+              input.input_not_blank(type="name", id="the_name", name="__name", placeholder= content.form.name || 'What is your name?').contact_form_input
+
+            fieldset.contact_form_fieldset
+              p.wrong#wrongEmail
+                span.icon.ion-alert-circled
+                | Error: The email you introduced is not valid. Try again.
+              input.input_email(type="name", id="email", name="__email", placeholder= content.form.email || 'And your email?').contact_form_input
+
+            fieldset.contact_form_fieldset(style="margin-bottom: 0;")
+              p.wrong#wrongMessage
+                span.icon.ion-alert-circled
+                | Error: Hey! Please, fill some text here ;).
+              textarea.input_not_blank(type="name", style="margin-bottom: 0;", id="message", name="__text", placeholder= content.form.message || 'Write your message').contact_form_input.contact_form_textarea
+
+            fieldset.contact_form_fieldset(style="margin-bottom: 0;")
+              .contact_form_newsletter
+                span.contact_form_newsletter_check
+                  .mk-trc(data-style="check")
+                    input(id="checkbox1.1", class="newsletter", type="checkbox", name="__subscribed", value="Subscribed", checked)
+                    label(for="checkbox1.1")
+                      i
+                span.contact_form_newsletter_text #{content.form.newsletter || 'Subscribe to updates from Jorge'}
+
+            .contact_form_result.contact_form_failure
+              p Sorry. Your message couldn't been sent.<br /> Try again or <u><a class="openModalBox">contact me directly</a></u>
+
+            fieldset.contact_form_fieldset.contact_fieldset_nomargin
+              input(type="submit", value= content.sendButton || 'Send message').button.send.send_margin.contact_form_submit#formSendButton
