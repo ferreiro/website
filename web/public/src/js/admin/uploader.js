@@ -79,7 +79,7 @@ function setupImageUploader(opts) {
     const errorCallback = opts.error
     const alwaysCallback = opts.always
 
-    submitImage('/admin/uploader', uploaderForm)
+    submitImage('/api/v1/upload-image', uploaderForm)
       .done(function (data, statusCode) {
         if (successCallback) {
           successCallback(uploaderLoader,

@@ -61,11 +61,11 @@ block content
             #headerImageUploaderForm { display: none; }
             #imageUploader { display: none; }
 
-        form#headerImageUploaderForm(class="uploader", action= '/admin/uploader', method='post', enctype="multipart/form-data")
+        form#headerImageUploaderForm(class="uploader", action= '/api/v1/upload-image', method='post', enctype="multipart/form-data")
             input.composer__input(type='file', name="image")
             input(type="submit", value="Upload Image", name="submit")
 
-        form#imageUploader(class="uploader", action= '/admin/uploader', method='post', enctype="multipart/form-data")
+        form#imageUploader(class="uploader", action= '/api/v1/upload-image', method='post', enctype="multipart/form-data")
             input.composer__input(type='file', name="image")
             input(type="submit", value="Upload Image", name="submit")
 
