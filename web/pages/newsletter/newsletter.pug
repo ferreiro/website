@@ -1,5 +1,6 @@
-extends ./includes/layout
-include ./mixins/newsletterForm
+extends ../../views/includes/layout
+include ../../views/mixins/newsletterForm
+include ../../views/mixins/popupNewsletterForm
 
 block popupNewsletter
   //- remove popup
@@ -8,7 +9,7 @@ block content
 
   .container_middle
     .animated.fadeInUp
-      include ./includes/breadcrumb.pug
+      include ../../views/includes/breadcrumb.pug
 
   .container_middle
 
@@ -45,7 +46,6 @@ block content
               max-width: 500px;
               font-size: 1.3em;
             }
-          include ./mixins/popupNewsletterForm
           +popupNewsletterForm({
             customBody: 'Creating a blog from the ground is really hard, so I\'d appreciate your support! Please join my newsletter to <b>receive my new blog posts and projects</b> in your inbox. This would help me a lot 😊'
           })
