@@ -1,6 +1,7 @@
-const _ = require('underscore')
+import {clone} from 'underscore'
+import blogRepository from './blog'
+
 const Series = require('../models/Series')
-const blogRepository = require('./blog')
 
 const EMPTY_SERIES = []
 
@@ -9,8 +10,10 @@ module.exports.getAll = function () {
     secretKey: 0,
     __v: 0
   }
-  return Series.find({}, fieldsToExclude)
-      .sort({ createdAt: -1 })
+
+  return Series
+    .find({}, fieldsToExclude)
+    .sort({ createdAt: -1 })
 }
 
 /**
@@ -22,12 +25,15 @@ module.exports.getAllPublished = function () {
     secretKey: 0,
     __v: 0
   }
-  return Series.find({ published: true }, fieldsToExclude)
-      .sort({ createdAt: -1 })
+
+  return Series
+    .find({published: true}, fieldsToExclude)
+    .sort({createdAt: -1})
 }
 
 module.exports.create = function (data) {
   const newSeries = new Series(data)
+
   return newSeries.save()
 }
 
@@ -36,7 +42,7 @@ module.exports.create = function (data) {
  * @param query.permalink - the permalink of the serie
  */
 module.exports.findByPermalink = function (query) {
-  let seriesQuery = {
+  const seriesQuery = {
     permalink: query.permalink
   }
 
@@ -52,7 +58,7 @@ module.exports.findByPermalink = function (query) {
 
       return fetchPostSeries(series._id)
         .then(seriesPosts => {
-          let combinedResponse = _.clone(series)['_doc']
+          let combinedResponse = clone(series)['_doc']
           combinedResponse['posts'] = seriesPosts
 
           return resolve(combinedResponse)

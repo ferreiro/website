@@ -1,6 +1,6 @@
 import {createViewPath} from '../create-view-path'
 import {parseRequestPostData} from './parse-request-post-data'
-import blogRepository from '../../repository/blog'
+import blogRepository from '../../../api/repository/blog'
 
 export const logout = (req, res, next) => {
     req.logout();

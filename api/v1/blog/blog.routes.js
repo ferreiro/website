@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 import {isAuthenticated} from '../../../web/pages/admin/is-authenticated'
-const seriesRepository = require('../../../web/repository/series')
+import seriesRepository from '../../../api/repository/series'
 
 /**
  * @api get /blog/series - Retrieves the list of series (published and unpublished)

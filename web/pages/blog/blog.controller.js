@@ -1,11 +1,11 @@
 import validator from 'validator'
 import {isEmpty} from 'lodash'
 
+import blogRepository from '../../../api/repository/blog'
+import seriesRepository from '../../../api/repository/series'
+import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
 import {markdownToHtml} from '../../utils/markdownToHtml'
-import {getCategories} from '../../repository/categories'
-import blogRepository from '../../repository/blog'
-import seriesRepository from '../../repository/series'
 
 import {MAX_PAGE_POSTS} from './constants';
 import blog from '../../content/english/blog.json'

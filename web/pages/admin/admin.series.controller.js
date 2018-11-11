@@ -1,6 +1,6 @@
 import {createViewPath} from '../create-view-path'
-import seriesRepository from '../../repository/series'
 import {parseRequestSeriesData} from './parse-request-series-data'
+import seriesRepository from '../../../api/repository/series'
 
 /**
  * Return all the available series
@@ -15,9 +15,9 @@ export const getAllSeries = (req, res) => {
     .catch(error => res.render('views/error', { error }))
 }
 
-export const createSeriesPage = (req, res) => {
+export const createSeriesPage = (req, res) => (
   res.render(createViewPath('admin', 'views/series.create.pug'))
-}
+)
 
 /**
  * Creates a new series of articles

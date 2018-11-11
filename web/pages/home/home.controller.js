@@ -1,8 +1,8 @@
 import {createViewPath} from '../create-view-path'
+import blogRepository from '../../../api/repository/blog'
 
 const content = require('../../content/english.json') // TODO: Add multilanguage
 const experience = require('../../content/english/experience.json')
-const blogRepository = require('../../repository/blog')
 
 export const getHomePage = (req, res, next) => {
   const viewTemplateName = req.query.v1 ? 'home.pug' : 'home.v2.pug'
