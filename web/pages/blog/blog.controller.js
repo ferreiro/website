@@ -5,7 +5,7 @@ import blogRepository from '../../../api/repository/blog'
 import seriesRepository from '../../../api/repository/series'
 import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
-import {markdownToHtml} from '../../utils/markdownToHtml'
+import {markdownToHtml} from './markdown-to-html'
 
 import {MAX_PAGE_POSTS} from './constants';
 import blog from '../../content/english/blog.json'

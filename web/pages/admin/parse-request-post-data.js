@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const {isEmpty} = require('lodash')
-const {sanitizeHtml} = require('../../utils/sanitizeHtml')
+const {sanitizeHtml} = require('../sanitize-html')
 
 export const parseRequestPostData = ({
     post_title,
