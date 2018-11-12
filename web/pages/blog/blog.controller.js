@@ -119,7 +119,7 @@ export const getBlogPosts = (req, res, next) => {
         .with('series', series)
         .build();
 
-    return res.render(createViewPath('blog', 'home.pug'), blogContext)
+    return res.render(createViewPath('blog', 'blog.home.pug'), blogContext)
   }).catch((error) => {
     return next(error)
   });
@@ -132,7 +132,7 @@ export const getBlogSeries = (req, res, next) => {
         blogContext.series = publishedSeries
 
         return res.render(
-          createViewPath('blog', 'series.home.pug'),
+          createViewPath('blog', 'blog.series.home.pug'),
           blogContext,
         )
       })
@@ -146,7 +146,7 @@ export const getSingleBlogSeries = (req, res, next) => {
         blogContext.series = singleSeries
 
         return res.render(
-          createViewPath('blog', 'series.detailPage.pug'),
+          createViewPath('blog', 'blog.series.detailPage.pug'),
           blogContext,
         )
       })
@@ -167,7 +167,7 @@ export const getPostByPermalink = (req, res, next) => {
     blogContext.with('error', 'Post not found or invalid url')
 
     return res.render(
-      createViewPath('blog', 'post.pug'),
+      createViewPath('blog', 'blog.post.pug'),
       blogContext.build()
     )
   }
@@ -188,7 +188,7 @@ export const getPostByPermalink = (req, res, next) => {
         blogContext.with('error', 'Post does not exist or you dont have permissions to view.')
         
         return res.render(
-          createViewPath('blog', 'post.pug'),
+          createViewPath('blog', 'blog.post.pug'),
           blogContext.build()
         )
       }
@@ -210,7 +210,7 @@ export const getPostByPermalink = (req, res, next) => {
 
                   
           return res.render(
-            createViewPath('blog', 'post.pug'),
+            createViewPath('blog', 'blog.post.pug'),
             blogContext.build()
           )
         })
@@ -222,7 +222,7 @@ export const getPostByPermalink = (req, res, next) => {
       blogContext.with('error', error)
              
       return res.render(
-        createViewPath('blog', 'post.pug'),
+        createViewPath('blog', 'blog.post.pug'),
         blogContext.build()
       )
     })

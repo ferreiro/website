@@ -1,11 +1,11 @@
 extends ./blog.layout.large.pug
-include ../../views/mixins/postCard
-include ../../views/mixins/sharePostBig
-include ../../views/mixins/subscriptionBoxLarge
-include ../../views/mixins/popupNewsletter
-include ../../views/mixins/seriesBlogList
-include ../../views/mixins/socialSharing
-include ../../views/mixins/new/PostCredits
+include ../../UIComponents/mixins/postCard
+include ../../UIComponents/mixins/sharePostBig
+include ../../UIComponents/mixins/subscriptionBoxLarge
+include ../../UIComponents/mixins/popupNewsletter
+include ../../UIComponents/mixins/seriesBlogList
+include ../../UIComponents/mixins/socialSharing
+include ../../UIComponents/mixins/PostCredits
 
 block extraMeta
   if post
@@ -88,12 +88,14 @@ block content_large
 
   if post
 
-    // div(style="width: 300px; left: 100%; margin-left: 1em; position: absolute; display: inline-block; vertical-align: top;")
-      <ul class="seriesBlogList"><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/welcome-to-my-new-digital-space-welcome-to-the"></a><div class="seriesBlogList__index">1</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/jorge_ferreiro_blog_welcome_post.jpg);"></div><div class="seriesBlogList__text">Welcome to my new digital space. Welcome to the #ferreiroV3 blog.</div></li><li class="seriesBlogList__entry"><a class="seriesBlogList__link" href="/blog/amazon-on-sites-interviews-8-practical-tips-that-i"></a><div class="seriesBlogList__index">2</div><div class="seriesBlogList__pic" style="background-image: url(https://ferreirov3.s3.eu-west-2.amazonaws.com/on-sites-interviews-5_b.jpg);"></div><div class="seriesBlogList__text">5 tips to crush on-site interviews - Lessons learned from my own experience</div></li></ul>
-
     .blogPost
       //- Load Social Sharing
       +socialSharing()
+
+      //-if post.series
+        .seriesBox
+            .seriesBox__wrapper
+                p.seriesBox__text This blog is part of the <strong>#{post.series.title}</strong> series <a class="seriesBox__button" href="/blog/series/#{post.series.permalink}">See series</a>
 
       article#post
 
@@ -128,7 +130,7 @@ block content_large
 
       .separator_no_margin#postFooter
 
-      +sharePostBig('/blog/' + post.permalink, 'article')
+      +sharePostBig('/blog/' + post.permalink, 'article', post.title, post.summary)
 
       .separator_no_margin
 

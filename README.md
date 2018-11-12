@@ -4,6 +4,14 @@ Disclaimer: This README has some notes, but it's not fully documented yet.
 
 ## Changelog
 
+### Version 3.5 (December 2018)
+
+* Fully refactor the codebase to use a Ducks pattern. Instead of controllers.js, routes.js, you'll find one folder per functionality. Also, there were some refactors from the web server to the API.
+
+* Revamp completely sections headers and the following sections: home, about and talks.
+* Now the blog has a sidebar with useful links, extra information.
+* Added new biography.
+
 ### Version 3 (fall 2017)
 
 Release date: 17th October 2017

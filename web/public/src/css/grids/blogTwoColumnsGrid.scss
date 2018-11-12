@@ -2,14 +2,31 @@
   @include flexbox();
 
   &__left {
+    display: inline-block;
+    vertical-align: top;
+    justify-content: left;
+
     @include flexbox_flex(1, 1, auto);
-    display: inline-block;
-    vertical-align: top;
   }
+
   &__right {
-    @include flexbox_flex(0, 0, 400px);
-    display: inline-block;
-    vertical-align: top;
+    display: none;
+
+    @media all and (min-width: $desktop-screen) {
+      display: inline-block;
+      vertical-align: top;
+  
+      @include flexbox_flex(0, 0, 400px);
+    }
+  }
+
+  &__aside {
+    height: 100%;
+    background: #f3f3f3;
+    padding: 2em;
+    @include border-radius(8px);
+    // margin-top: calc(-2em - 5px);
+    // border-top: 5px solid #3f3c6d;
   }
 }
 

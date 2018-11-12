@@ -12,6 +12,7 @@ function setupSocialButtons () {
 
 function setupTwitterButton (url, title, summary) {
     const twitterShareButton = $('.tweetShare')
+
     twitterShareButton.click(function (event) {
         event.preventDefault()
 
@@ -22,6 +23,7 @@ function setupTwitterButton (url, title, summary) {
 
 function setupLinkedinButton (url, title, summary) {
     const linkedinShareButton = $('.linkedinShare')
+
     linkedinShareButton.click(function (event) {
         event.preventDefault();
 

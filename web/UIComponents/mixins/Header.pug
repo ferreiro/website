@@ -20,6 +20,7 @@ mixin Header(data)
     - experience = data.experience || null
     - includeBorders = data.includeBorders || false
 
+    - hasImage = data.hasImage || true
     - title = data.title || ''
     - subtitle = data.subtitle || ''
     - paragraphs = data.paragraphs || []
@@ -104,4 +105,5 @@ mixin Header(data)
                                 span.icon(style='color:' + color + '; font-size: 20px;', class= button.icon)
                                 span.text(style='color:' + color + ';')= button.text
 
-            .fullHeader__image
+            if hasImage === true
+                .fullHeader__image

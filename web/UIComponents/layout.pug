@@ -1,5 +1,5 @@
-include ../mixins/new/Header
-include ../mixins/subscriptionBox
+include ./mixins/Header
+include ./mixins/subscriptionBox
 
 doctype html
 html
@@ -27,7 +27,7 @@ html
 		include ./menu.pug
 
 		block popupNewsletter
-			include ../mixins/popupNewsletter
+			include ./mixins/popupNewsletter
 			+popupNewsletter({
 				autodisplay: false
 			})

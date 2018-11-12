@@ -1,6 +1,5 @@
-extends ../../views/includes/layout
-include ../../views/mixins/newsletterForm
-include ../../views/mixins/popupNewsletterForm
+extends ../..//UIComponents/layout
+include ../../UIComponents/mixins/popupNewsletterForm
 
 block popupNewsletter
   //- remove popup
@@ -9,7 +8,7 @@ block content
 
   .container_middle
     .animated.fadeInUp
-      include ../../views/includes/breadcrumb.pug
+      include ../..//UIComponents/breadcrumb.pug
 
   .container_middle
 

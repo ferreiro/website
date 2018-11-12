@@ -1,3 +1,6 @@
+include shareLinkedinButton
+include shareTwitterButton
+
 mixin postCard(post)
   - postUrl = '/blog/' + post.permalink
   - postBackground = 'background-image: url(' + post.pic + ');'
@@ -7,7 +10,7 @@ mixin postCard(post)
 
     //- <img> is only for seo :). To set
     //- background, use background-image
-    .postCard__header(style= postBackground)
+    .postCard__header.postCard__header-radiuses(style= postBackground)
       a(href= postUrl).postCard__header__link
       img(src= post.pic).lazy
 
@@ -18,21 +21,22 @@ mixin postCard(post)
             span.postCard__series__text= post.series.title + ' series'
 
     .postCard__body
-      if post.category && post.category.length > 0
-        .postCard__categories
-          each category in post.category
-            if category !== null
-              li.postCard__category
-                a(href= "/blog/category/" + category).postCard__category__link= category
-
       h1.postCard__title
         a(href= postUrl)= post.title
+      p.postCard__summary= post.summary
       //-a.postCard__date(href= postUrl)= 'Jorge Ferreiro - ' + (post.createdAt || 'Some days ago')
       // a.postCard__summary(href= postUrl)= post.summary
       ul.postCard__options
         li.postCard__options__item
           a.action_button(href= postUrl) Read more
-        //-li#likePost.postCard__options__item
-          a.action_button(href="#")
-            span.icon.ion-android-favorite-outline
-            | Like
+        li.postCard__options__item
+          +shareLinkedinButton(post.permalink, post.title, post.summary)
+        li.postCard__options__item
+          +shareTwitterButton(post.permalink, post.title, post.summary)
+
+      // if post.category && post.category.length > 0
+        .postCard__categories
+          each category in post.category
+            if category !== null
+              li.postCard__category
+                a(href= "/blog/category/" + category).postCard__category__link= category

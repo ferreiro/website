@@ -1,0 +1,136 @@
+extends ./blog.layout.large.pug
+include ../../UIComponents/mixins/postCard
+include ../../UIComponents/mixins/postCardFull
+include ../../UIComponents/mixins/subscriptionBox
+include ../../UIComponents/mixins/subscriptionBoxLarge
+include ../../UIComponents/mixins/mostRecentPostAd
+include ../../UIComponents/mixins/seriesBlogList
+
+block content_full
+  .imagePopup
+    .imagePopup_wrap
+      .imagePopup_close
+        span.icon.ion-ios-close
+      .imagePopup_content
+        img(src= '')
+
+  style.
+    .fullHeader {
+      margin: 0 !important;
+    }
+
+  +Header({
+    margin: '0 0 -2em 0',
+    padding: '2em 0 0 0',
+    mainColor: '#000',
+    buttonColor: '#d83901',
+    backgroundColor: '#ffffff',
+    backgroundSize: '80% auto',
+    backgroundPosition: 'top center',
+    backgroundImage: '',
+    title: 'Jorge\'s corner',
+    subtitle: config.subtitle,
+  })
+
+block content_large
+  .container__middle
+
+    .blogTwoColumnsGrid
+
+      .blogTwoColumnsGrid__left
+
+        if blogCategory !== 'all'
+          h2.category__title.margin-bottom-1= blogCategory + ' posts'
+
+        if !posts || posts.length <= 0
+          .warningMessage(style="max-width: 400px; margin: 0 auto;")
+            h1.warningMessage__title There are no more posts to show.
+            p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+            .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+              +subscriptionBox()
+        else
+          .twoColsGrid
+            each post, index in posts || []
+
+              //- Advertisement: subscribe to blog!
+              //- if index == 3
+                .twoColsGrid__item__full_width
+                  .box_with_shadow(style="margin: 0;")
+                    +subscriptionBoxLarge({
+                      displayForm: true
+                    })
+
+              if index === 0
+                .oneColGrid__item
+                  .oneColGrid__item__wrapper
+                    +postCardFull(post)
+              else
+                //- Blog Entry
+                .twoColsGrid__item
+                  .twoColsGrid__item__wrapper
+                    +postCard(post)
+
+          if prevPageToken != "start" || nextPageToken != "end"
+            .blog__load_more
+              //- Add the category id (only if is not the main page)
+              - blogLink = '/blog'
+              if blogCategory !== 'all'
+                - blogLink += '/category/' + (blogCategory ? blogCategory : '')
+
+              if prevPageToken != "start" && prevPageToken > 0
+                a(href= blogLink + '?next=' + prevPageToken).big_action_button Previous page
+              if nextPageToken != "end"
+                a(href= blogLink + '?next=' + nextPageToken).big_action_button Next page
+
+      .blogTwoColumnsGrid__right.margin-left-2
+        .blogTwoColumnsGrid__aside        
+          .about-me
+            h3.aside__title About the author
+
+            .about-me__user.margin-top-1-5
+              .about-me__avatar.margin-right-1(style="background-image: url(https://pbs.twimg.com/profile_images/1053341684782850052/K8XzdqA9_400x400.jpg);")
+              .about-me__name
+                h2.about-me__title Jorge Ferreiro
+                p.about-me__intro Software Engineer and Entrepreneur
+
+            p.about-me__text.margin-top-1 I love build products! Former Software Engineer intern @Amazon. Now doing Udacity #reactJS nanodegree. EDM, Avid traveller, Tennis player, Music addict and 📸
+
+            ul.about-me__items.margin-top-1
+              li.about-me__item.margin-bottom-0-5
+                a.about-me__item(href="https://twitter.com/JGFerreiro", target="_blank")
+                  span.icon.icon-twitter.margin-right-1
+                  span Twitter @jgferreiro
+
+              li.about-me__item.margin-bottom-0-5
+                a.about-me__item(href="https://www.linkedin.com/in/jgferreiro/", target="_blank")
+                  span.icon.icon-linkedin.margin-right-1
+                  span Linkedin
+
+              li.about-me__item
+                a.about-me__item(href="http://github.com/ferreiro", target="_blank")
+                  span.icon.icon-github.margin-right-1
+                  span Github ferreiro
+
+          .blog-categories.margin-top-1-5
+            h3.aside__title Blog categories
+            ul.blog-categories__list.margin-top-1
+              each category in categories
+                if category !== null
+                  li.blog-categories__item
+                    a.blog-categories__link(href="/blog/category/" + category)= category
+
+          .blog-follow.margin-top-1-5
+            h3.aside__title.margin-top-0-5.margin-bottom-1 Follow the blog
+
+            p.margin-top-1 Join the newsletter and receive new blog posts and projects directly in your inbox 😊
+
+            a(href="/newsletter?source=blog").action_button.openNewsletterSubscription.margin-top-1
+              span.icon.ion-ios-paper-outline(style="margin-right: 10px;")
+              span Subscribe to the blog
+
+          //- .blog-top-articles.margin-top-1-5
+          //-  h3.aside__title.margin-top-0-5.margin-bottom-1 Top articles
+
+          //- .blog-series.margin-top-1-5
+            h3.aside__title.margin-top-0-5.margin-bottom-1 List of series
+            +seriesBlogList(series, {showPic: false})

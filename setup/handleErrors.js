@@ -13,7 +13,7 @@ module.exports = (app) => {
   if (process.env.NODE_ENV === 'DEV') {
     app.use(function (err, req, res, next) {
       res.status(err.status || 500)
-      res.render('./views/error', {
+      res.render('./UIComponents/error', {
         message: err.message,
         error: err
       })
@@ -24,7 +24,7 @@ module.exports = (app) => {
   // No stacktraces leaked to user
   app.use(function (err, req, res, next) {
     res.status(err.status || 500)
-    res.render('./views/error', {
+    res.render('./UIComponents/error', {
       message: err.message,
       error: {}
     })
