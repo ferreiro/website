@@ -15,6 +15,7 @@ mixin Header(data)
     - backgroundPosition = data.backgroundPosition || 'center center'
     - padding = data.padding || '2em 0'
     - margin = data.margin || '0'
+    - contentOrder = data.contentOrder || 0
 
     - isExperienceIconsDark = data.isExperienceIconsDark || false
     - experience = data.experience || null
@@ -34,7 +35,10 @@ mixin Header(data)
             border-bottom: #{borderBottomSize} solid #dedede;
             margin: #{margin};
         }
-        .fullHeader__content { padding: #{padding}; }
+        .fullHeader__content {
+            padding: #{padding};
+            order: #{contentOrder};
+        }
         .fullHeader__title { color: #{titleColor} }
         .fullHeader__subtitle { color: #{subtitleColor} }
         .fullHeader__paragraph { color: #{paragraphColor} }
@@ -75,6 +79,13 @@ mixin Header(data)
                 each paragraph in paragraphs
                     if (paragraph.type === 'title' && paragraph.title !== null)
                         .companies__title.margin-bottom-1= paragraph.title
+
+                    else if (paragraph.type === 'heading' && paragraph.title !== null)
+                        .fullHeader__date.margin-top-1-5.margin-bottom-1-5= paragraph.body
+
+                    else if paragraph.type === 'break'
+                        .margin-bottom-1
+
                     else if (paragraph.type === 'companies' && experience.companies !== null)
                         - companies = experience.companies || null
 
@@ -91,6 +102,10 @@ mixin Header(data)
                                 .companies__title.margin-bottom-1= paragraph.title
                             .companies__list
                                 +experienceList(projects, '25px', isExperienceIconsDark)
+                    else if paragraph.type === 'paragraphWithImage'
+                        .fullHeader__paragraphWithImage
+                            .image.margin-right-1-5(style="background-image: url("+paragraph.image+")")
+                            p.fullHeader__paragraph !{paragraph.body}
                     else
                         p.fullHeader__paragraph !{paragraph.body}
 

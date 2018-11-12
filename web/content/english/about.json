@@ -1,18 +1,55 @@
 {
   "bio": [
     {
-      "type": "entry",
-      "body": "Hi! I'm Jorge, former <strong>Software Engineer intern at Amazon</strong> and current <strong>Software Engineer at Eventbrite</strong>. I'm working in the R&D business unit, and we're launching our own startup inside the company. I'm extremely excited about it!",
+      "type": "heading",
+      "body": "2018 - present",
+      "icon": null
+    },
+    {
+      "type": "paragraphWithImage",
+      "image": "images/companies/eventbrite.png",
+      "body": "Currently: I'm a <strong>Software Engineer at Eventbrite</strong>, working in Incubation (R&D) to launch new startups inside the company). I'm extremely excited about it!",
+      "icon": null
+    },
+    {
+      "type": "break"
+    },
+    {
+      "type": "paragraphWithImage",
+      "image": "images/companies/amazon.png",
+      "body": "Early this year I did a <strong>Software Engineer internship at Amazon</strong>. It was a quite intense experience where I learnt a lot from Backend and how to build features in a live critical system.",
+      "icon": null
+    },
+    {
+      "type": "heading",
+      "body": "2017",
+      "icon": null
+    },
+    {
+      "type": "paragraphWithImage",
+      "image": "images/companies/dailyfocus.png",
+      "body": "<a href='http://dailyfocus.io' target='_blank' rel='noopener norel'><strong>Dailyfocus</strong></a>, was an ambitious and technically challenging project. I worked from requirements to design and coding. I consolidated my knowledge on web development and got the best grade.",
+      "icon": null
+    },
+    {
+      "type": "heading",
+      "body": "2016",
+      "icon": null
+    },
+    {
+      "type": "paragraphWithImage",
+      "image": "images/companies/huawei.png",
+      "body": "Summer scholarship in China with Huawei 'Seeds for the future' program.",
+      "icon": null
+    },
+    {
+      "type": "heading",
+      "body": "1995 - 2012",
       "icon": null
     },
     {
       "type": "entry",
       "body": "I started coding when I was 10, and at the age of 17 I created Music4deejays, one of my first <a href=\"/portfolio\">personal projects</a>. I was shocked to get more than 56k downloads in a few months. I discovered that <strong>my passion is to build projects to solve human problems.</strong>",
-      "icon": null
-    },
-    {
-      "type": "entry",
-      "body": "In 2017, I launched <a href='http://dailyfocus.io' target='_blank' rel='noopener norel'><strong>Dailyfocus</strong></a>, which was an ambitious and technically challenging project. It was an intense journey where I worked from requirements to design and coding. I learned a lot and consolidated my knowledge on web development.",
       "icon": null
     },
     {
