@@ -1,0 +1,23 @@
+extends ./admin.layout.pug
+include ../../../UIComponents/mixins/seriesEntry
+
+block content
+    if success
+        .success(style="background: green; padding: 1em;")
+            h1= success
+
+    if error
+        .error(style="background: red; padding: 1em;")
+            h1= error
+
+    center
+        h1(style="margin-bottom: 1em;") Series <br /><a class="action_button" style=" font-size: 14px;" href="/admin/series/create/">Create new series</a>
+
+    if series
+
+        .blog__entries
+            if series.length == 0
+                h1 There are no posts currently. Come back sortly, I'm creating exclusive content!
+
+            each singleSeries in series || []
+                +seriesEntry(singleSeries)

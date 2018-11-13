@@ -1,0 +1,104 @@
+mixin HeaderCentered(data)
+    - link = data.link || null
+    - mainColor = data.mainColor || 'color: rgba(0, 0, 0, 0.9)'
+    - titleColor = data.titleColor || mainColor
+    - subtitleColor = data.subtitleColor || mainColor
+    - paragraphColor = data.paragraphColor || mainColor
+    - linkColor = data.linkColor || mainColor
+    - buttonColor = data.buttonColor
+    - layoverImage = data.layoverImage
+    - layoverSize = data.layoverSize || 'cover'
+    - layoverPosition = data.layoverPosition || 'center center'
+    - backgroundColor = data.backgroundColor
+    - backgroundImage = data.backgroundImage
+    - backgroundSize = data.backgroundSize || 'cover'
+    - backgroundPosition = data.backgroundPosition || 'center center'
+    - padding = data.padding || '1.5em 0'
+    - margin = data.margin || '0'
+
+    - isExperienceIconsDark = data.isExperienceIconsDark || false
+    - experience = data.experience || null
+    - includeBorders = data.includeBorders || false
+
+    - hasImage = data.hasImage || true
+    - title = data.title || ''
+    - subtitle = data.subtitle || ''
+    - paragraphs = data.paragraphs || []
+    - buttons = data.buttons || []
+    - borderBottomSize = data.hasBottomBorder ? '1px' : 0
+    - buttonBorderSize = data.buttonBorderSize ? data.buttonBorderSize : '1px'
+
+    style.
+        .fullHeader {
+            background-color: #{backgroundColor} !important;
+            border-bottom: #{borderBottomSize} solid #dedede;
+            margin: #{margin};
+        }
+        .fullHeader__content {
+            padding: #{padding};
+            margin: 0 auto;
+            text-align: center;
+        }
+        .fullHeader__title { color: #{titleColor} }
+        .fullHeader__subtitle { color: #{subtitleColor} }
+        .fullHeader__paragraph { color: #{paragraphColor} }
+        .fullHeader__paragraph a { color: #{linkColor} }
+        .fullHeader__content .button { background: #{buttonColor} }
+        .fullHeader__background {
+            background-image: url(#{backgroundImage});
+            background-size: #{backgroundSize};
+            background-position: #{backgroundPosition};
+            background-repeat: no-repeat;
+        }
+
+    .fullHeader
+        if link
+            a(href= link).fullHeader__link
+
+        .fullHeader__background
+        .fullHeader__wrapper.container_inner
+            .fullHeader__content
+                if title
+                    h1.fullHeader__title(style='')= title
+                if subtitle
+                    h2.fullHeader__subtitle!= subtitle
+
+                mixin experienceList(listItems, height = "30px", isDark = false)
+                    each item in listItems
+                        - alt = item.name ? item.name : ''
+                        - image = isDark ? item.image.dark : item.image.light
+                        - imageClassname = isDark ? 'companies__item companies__item__dark' : 'companies__item'
+                        <img class="#{imageClassname}" height="#{height}" src="#{image}" alt="#{alt}" />
+
+                each paragraph in paragraphs
+                    if (paragraph.type === 'title' && paragraph.title !== null)
+                        .companies__title.margin-bottom-1= paragraph.title
+                    else if (paragraph.type === 'companies' && experience.companies !== null)
+                        - companies = experience.companies || null
+
+                        .companies.margin-top-1-5
+                            if paragraph.title
+                                .companies__title.margin-bottom-1= paragraph.title
+                            .companies__list
+                                +experienceList(companies, '35px', isExperienceIconsDark)
+                    else if (paragraph.type === 'projects' && experience.projects !== null)
+                        - projects = experience.projects || null
+
+                        .companies.margin-top-1-5
+                            if paragraph.title
+                                .companies__title.margin-bottom-1= paragraph.title
+                            .companies__list
+                                +experienceList(projects, '25px', isExperienceIconsDark)
+                    else
+                        p.fullHeader__paragraph !{paragraph.body}
+
+                if buttons && buttons.length >= 1
+                    .fullHeader__links
+                        each button in buttons
+                            - classnameButton = button.type === 'big' ? 'fullHeader__button__big' : ''
+                            - target = button.target || '_self'
+                            - borderColor = button.borderColor || mainColor
+                            - color = button.color || mainColor
+                            a(href= button.path, class= classnameButton + ' ' + button.className, style='border-width:' + buttonBorderSize + '; border-color:' + borderColor + ';', target= target).fullHeader__button.action_button
+                                span.icon(style='color:' + color + '; font-size: 20px;', class= button.icon)
+                                span.text(style='color:' + color + ';')= button.text

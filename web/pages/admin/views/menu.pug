@@ -1,0 +1,50 @@
+.menu.fixed
+  .menu__wrapper.container_inner
+      a.logo(href="/")
+        img(src="/images/logo.jpg").logo__image
+        .logo__text Jorge Ferreiro
+
+      .menu_left
+        .dropdown
+          a(href='/', target='_blank')
+            .item.with-icon
+              p
+                span.icon.ion-ios-arrow-back
+                span.social_network_text Go website
+
+      .menu_right
+
+        if admin
+          a.item(href="/admin/")
+            p All blog posts
+          a.item(href="/admin/published")
+            p Published
+          a.item(href="/admin/drafts")
+            p Drafts
+          a.item(href="/admin/series")
+            p Series
+
+          .dropdown
+            a(href='/admin/create')
+              .item.with-icon(style="background: #f9764f; border-color: #d83902; ")
+                p
+                  span.icon.ion-android-create(style="color: #fff;")
+                  span.social_network_text(style="color: #fff;") Write post
+
+        .jfmenu_open_button#dropdown-mobiles
+          span.icon-paragraph-justify
+
+        if admin
+          .dropdown
+            a(href='/admin/logout')
+              .item.with-icon
+                p
+                  span.icon.ion-log-out
+                  span.social_network_text Logout
+        else
+          .dropdown
+            a(href='/admin/login')
+              .item.with-icon
+                p
+                  span.icon.ion-log-in
+                  span.social_network_text Login

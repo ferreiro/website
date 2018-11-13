@@ -1,0 +1,9 @@
+mixin shareLinkedinButton(blogUrl, title, summary)
+    .shareLinkedinButton
+        input(type="hidden", class="blogUrl", value= blogUrl)
+        input(type="hidden", class="summary", value= summary)
+        input(type="hidden", class="title", value= title)
+
+        a.action_button(href="#")
+            span.icon.icon-linkedin
+            | Share

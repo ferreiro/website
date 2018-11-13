@@ -45,14 +45,14 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
     }
 
     @media all and (min-width:$desktop-screen) {
-      max-width: 660px;
+      // max-width: 660px;
       margin: 0 auto;
     }
   }
 
   &_container {
     @media all and (min-width:$desktop-screen) {
-      padding: 2em;
+      // padding: 2em;
     }
   }
 
@@ -105,11 +105,13 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
 
   &_input {
     text-align: center;
-    min-width: calc(100% - 2px);
-    max-width: calc(100% - 2px);
+    // min-width: calc(100% - 2px);
+    // max-width: calc(100% - 2px);
     border: 2px dotted #cecece;
     border: 1px solid  #d3d3d3;
     outline: 0;
+    padding: 25px 0;
+    margin-bottom: 0.5em;
 
     @include transition(200ms);
     @include border-radius(5px);
@@ -125,7 +127,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
   }
 
   &_textarea {
-    min-height: 46px;
+    min-height: 60px;
     max-height: 100px;
   }
 

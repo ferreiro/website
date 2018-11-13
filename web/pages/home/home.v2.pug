@@ -1,0 +1,93 @@
+extends ../..//UIComponents/layout
+include ../../UIComponents/mixins/postCard
+include ../../UIComponents/mixins/subscriptionBoxLarge
+include ../../UIComponents/mixins/mostRecentPostAd
+
+block extraScripts
+
+block content_full
+    +Header({
+      padding: '5em 0',
+      mainColor: '#12113c',
+      buttonColor: '#d83901',
+      backgroundColor: '#ffffff',
+      backgroundSize: '80% auto',
+      backgroundPosition: 'top center',
+      layoverImage: '/images/home/_T8A1899b.jpg',
+      contentOrder: 0,
+
+      title: 'Jorge Ferreiro',
+      subtitle: 'Software Engineer @ Eventbrite Incubation (R&D), Entrepreneur, blog writer and self-taught learner',
+      experience,
+      isExperienceIconsDark: true,
+      paragraphs: [
+        {
+          "type": 'entry',
+          "body": 'Hi! I\'m Jorge, a 23-year-old guy living in Madrid, Spain. I\'m passionate about building products that people love, and solving real world problems with software. I like to be in the intersection of design, business, marketing and engineering.',
+          "icon": null
+        },
+        {
+          "type": 'title',
+          "title": 'Work experience and projects',
+          "includeBorders": true,
+        },
+        {
+          "type": 'companies',
+          "includeBorders": true,
+        },
+        {
+          "type": 'projects',
+          "includeBorders": true,
+        },
+      ],
+      hasBottomBorder: true,
+      buttonBorderSize: '2px',
+      buttons: [
+        {
+          type: 'normal',
+          text: 'Read more about me',
+          path: '/about',
+          className: 'fullHeader__button-home'
+        },
+      ]
+    })
+
+block content
+    if recentPosts && recentPosts.length > 0
+        +mostRecentPostAd({
+            sticky: true,
+            post: recentPosts[0]
+        })
+
+    //- Middle Container
+    .container_middle
+
+        //.bigHeroeHeader.animate
+            .bigHeroeHeader__wrapper
+                .bigHeroeHeader__background
+                .bigHeroeHeader__content
+                    h1.bigHeroeHeader__title Jorge Ferreiro
+                    h2.bigHeroeHeader__subtitle Software Engineer intern @Amazon, Web Developer and Entrepreneur
+                    a(href="/about").bigHeroeHeader__button Read about me
+                //- SEO pic
+                img(style="display: none;", src="/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_product_manager.jpg")
+
+        style.
+            .newsletterOnelineAd {
+                border-bottom: 1px solid #f4f4f4;
+                padding: 1.5em 0;
+            }
+
+        if recentPosts && recentPosts.length > 0
+            h3.subtile.animate.margin-bottom-2.margin-top-1 Most recent posts in my <a href="/blog">blog</a>!
+
+            .threeColsGrid.animate
+                each post in recentPosts
+                    .threeColsGrid__item
+                        .threeColsGrid__item__wrapper
+                            +postCard(post)
+
+        style.
+            .subscriptionBoxLarge {
+                padding-bottom: 0;
+            }

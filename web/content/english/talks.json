@@ -10,7 +10,7 @@
   },
   "pastTalks": [
     {
-      "title": "Introducing Redis by Jorge Ferreiro - May 2017",
+      "title": "Introducing Redis by Jorge Ferreiro - NoSQL database course at UCM",
       "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
       "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
       "type": "slides",
@@ -88,7 +88,7 @@
       "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
       "type": "slides",
       "pic": "/images/talks/wokshop_fdi_header.png",
-      "date": "",
+      "date": "May, 2016",
       "event": "",
       "buttons": [
         {

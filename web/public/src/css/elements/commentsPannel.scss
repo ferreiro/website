@@ -1,0 +1,63 @@
+$comments-pannel-width: 420px;
+$comments-pannel-border-left-width: 5px;
+
+.comments-pannel {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 10000000;
+    width: $comments-pannel-width;
+    border-left: $comments-pannel-border-left-width solid rgb(243, 243, 243);
+    margin-right: -($comments-pannel-width + $comments-pannel-border-left-width);
+
+    &-displayed {
+        margin-right: 0;
+        -webkit-box-shadow: 0 0px 5px 0px rgba(0,0,0,0.15);
+        -moz-box-shadow: 0 0px 5px 0px rgba(0,0,0,0.15);
+        box-shadow: 0 0px 5px 0px rgba(0,0,0,0.15);
+    }
+
+    &__overlay {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+        display: none;
+        position: fixed;
+        background: rgba(0,0,0,0.15);
+
+        &-displayed {
+            display: block;
+        }
+    }
+
+    &__content {
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: #fbfbfb;
+    }
+
+    &__open {
+        border: 0;
+        cursor: pointer;
+    }
+
+    &__close {
+        width: 100%;
+        padding: 1em 0;
+        display: block;
+        text-align: center;
+        background: #fff;
+        border-bottom: 2px solid rgb(243, 243, 243);
+    }
+
+    &__wrapper {
+        padding: 2em;
+    }
+
+}

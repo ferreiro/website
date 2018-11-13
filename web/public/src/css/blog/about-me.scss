@@ -1,0 +1,47 @@
+.about-me {
+    &__user {
+        @include flexbox();
+    }
+
+    &__title {
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    &__intro {
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    &__avatar {
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        background: #f4f4f4;
+        background-size: cover;
+        background-position: center;
+        
+        @include flexbox_flex(0, 0, auto);
+        @include border-radius(100%);
+    }
+
+    &__name {
+        @include flexbox_flex(1, 1, auto);
+    }
+
+    &__text {
+        /* letter-spacing: 0.1px; */
+        color: rgba(0, 0, 0, 0.8);
+        line-height: 1.3em;
+    }
+
+    &__items {
+        list-style: none;
+    }
+
+    &__item {
+        text-decoration: none;
+        
+        &>.icon {
+            color: rgba(0, 0, 0, 0.7);
+        }
+    }
+}

@@ -1,0 +1,28 @@
+extends ./admin.layout.pug
+
+block extraScripts
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+block content
+    if message
+        div(style="background: red; padding: 1em;")
+            p= message
+
+    .composer.shadow__box(style="max-width: 350px;")
+        if error
+            div(style="background: red; margin-bottom: 2.5em; padding: 1em;")
+                p= error
+
+        form(action='/admin/login', method='post')
+            div
+                label(for='mail') E-mail:
+                input#mail.subscriptionBox__email(type='name', placeholder='Your Email address', name='email')
+            div
+                label(for='mail') Password:
+                input#password.subscriptionBox__email(type='password', placeholder='Your Password', name='password')
+
+            div(style="margin-top: 1em; margin-bottom: 2em;")
+                <div class="g-recaptcha" data-sitekey="6LflWDIUAAAAAKTIbuWjcRdx6At0hJSulNFH3p-l"></div>
+
+            div
+                button.about_resume_button.about_resume_button_view.blogHeader_button(type='submit') Login

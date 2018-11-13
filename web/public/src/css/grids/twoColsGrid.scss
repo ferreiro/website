@@ -1,0 +1,61 @@
+$twoColsGrid_bottom_margin_mobile: 1em;
+$twoColsGrid_bottom_margin_desktop: 1.5em;
+$twoColsGrid_wrapper_margin_mobile: 0.5em;
+$twoColsGrid_wrapper_margin_desktop: 0.7em; // 1em
+
+.twoColsGrid {
+  vertical-align: top;
+  margin: 0 (-$twoColsGrid_wrapper_margin_mobile);
+
+  @include flexbox();
+  @include flexbox_wrap(wrap);
+  @include flexbox_justifyContent(center, center);
+
+  @media all and (min-width: $desktop-screen) {
+    margin: 0 (-$twoColsGrid_wrapper_margin_desktop);
+  }
+
+  &__leftAligned {
+    @include flexbox_justifyContent(start, start);
+  }
+
+  &__item__full_width {
+    width: 100%;
+    display: block;
+    margin-bottom: $twoColsGrid_bottom_margin_mobile;
+
+    @include flexbox_grow(0);
+
+    @media all and (min-width: $desktop-screen) {
+      padding: 0 $twoColsGrid_wrapper_margin_desktop;
+      margin-bottom: $twoColsGrid_bottom_margin_desktop;
+    }
+  }
+
+  &__item {
+    width: 100%; // Mobile with one column
+    margin-bottom: $twoColsGrid_bottom_margin_mobile;
+
+    @include flexbox_grow(1);
+
+    @media all and (min-width: $tablet-screen) {
+      width: 50%;
+    }
+
+    @media all and (min-width: $desktop-screen) {
+      width: 50%;
+      max-width: 50%;
+      margin-bottom: $twoColsGrid_bottom_margin_desktop;
+    }
+
+    //- Wrapper with margin inside the boxes
+    &__wrapper {
+      height: 100%;
+      padding: 0 $twoColsGrid_wrapper_margin_mobile;
+
+      @media all and (min-width: $desktop-screen) {
+        padding: 0 $twoColsGrid_wrapper_margin_desktop;
+      }
+    }
+  }
+}

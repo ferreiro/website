@@ -2,7 +2,8 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash')
 
-const User = require('../web/models/User')
+// TODO: Remove this. It should call the repository
+const User = require('../api/models/User')
 
 module.exports = (app) => {
   app.use(flash()) // before passport!
@@ -11,6 +12,7 @@ module.exports = (app) => {
       passwordField: 'password'
     },
     function(email, password, done) {
+      // TODO: Remove this. It should call the repository
       User.findOne({ email: email }, (err, user) => {
         if (err) { return done(err); }
         if (!user) {

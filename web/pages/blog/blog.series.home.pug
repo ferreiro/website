@@ -1,0 +1,33 @@
+extends ./blog.layout.large.pug
+include ../../UIComponents/mixins/seriesCard
+include ../../UIComponents/mixins/blogHeader
+include ../../UIComponents/mixins/blogEntry
+include ../../UIComponents/mixins/subscriptionBox
+include ../../UIComponents/mixins/subscriptionBoxLarge
+include ../../UIComponents/mixins/mostRecentPostAd
+
+block content_header
+  - hasAnimation = true
+  +blogHeader(hasAnimation, false, true)
+
+block content_large
+
+  center
+    h1.sectionBigTitle Blog series
+
+  .container__middle.animate
+    if !series || series.length <= 0
+      .warningMessage(style="max-width: 400px; margin: 0 auto;")
+        h1.warningMessage__title There are no any available series to show.
+        p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
+        .warningMessage__call2Action.box_with_shadow(style="margin-top: 3em;")
+          +subscriptionBox()
+
+    else
+      .threeColsGrid
+        each post, index in series || []
+          //- Blog Entry
+          .threeColsGrid__item
+            .threeColsGrid__item__wrapper
+              if (post.published)
+                +seriesCard(post)

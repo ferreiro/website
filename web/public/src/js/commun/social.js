@@ -1,22 +1,23 @@
-//- updateGithubRepositories()
+// updateGithubRepositories()
 
 function updateGithubRepositories() {
-  const githubRepositories = $('#githubRespositories')
+  const githubRepositoriesSelector = $('#githubRespositories')
+  const apiEndPoint = '/api/v1/github/public_repositories'
 
-  const apiEndPoint = '/social/github'
   $.ajax({
     url: apiEndPoint,
     type: 'GET',
     dataType: 'json',
     encode: true
   })
-  .done(function(apiObject) {
-    const publicRepositoriesCount = apiObject.public_repos
-    githubRepositories.html(publicRepositoriesCount) // Update github repositories
+  .done((response) => {
+    const {public_repos} = response;
+
+    githubRepositoriesSelector.html(public_repos) // Update github repositories
   })
-  .fail(function(apiObject) {
+  .fail((error) => {
     console.log('footer.js > Fail to load number of repositories')
   })
-  .always(function(apiObject) {
+  .always((apiObject) => {
   })
 }

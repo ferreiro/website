@@ -1,0 +1,14 @@
+mixin seriesBlogList(posts, opts = {})
+  - layoverSize = opts.showIndex || true
+  - showPic = opts.showPic || true
+
+  ul.seriesBlogList
+    each post, index in posts
+      if post.published
+          li.seriesBlogList__entry
+            a(href="/blog/" + post.permalink).seriesBlogList__link
+            if showIndex
+              .seriesBlogList__index= index + 1
+            if showPic
+              .seriesBlogList__pic(style="background-image: url(" + post.pic + ");")
+            .seriesBlogList__text= post.title

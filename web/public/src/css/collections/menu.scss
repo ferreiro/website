@@ -4,7 +4,7 @@
   position: relative;
   display: inline-block;
   height: $logoHeight;
-  width: $logoHeight;
+  // width: $logoHeight;
 
   @include flexbox_flex(0, 0, auto);
   @include border-radius(5px);
@@ -16,12 +16,22 @@
   &:focus {
     transform: scale(0.9, 0.9);
   }
-}
 
-.logo img {
-  height: 100%;
+  &__image {
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1.3em;
+    @include border-radius(5px);
+  }
 
-  @include border-radius(5px);
+  &__text {
+    font-size: 22px;
+    font-weight: 800;
+    display: inline-block;
+    vertical-align: middle;
+    color: $primaryColor;
+  }
 }
 
 .social_network_text {
@@ -54,9 +64,20 @@
     @include flexbox_justifyContent(flex-start, start);
     @include flexbox_alignContent(stretch, stretch);
     @include flexbox_alignItems(flex-start, start);
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 
     padding-bottom: 0;
     padding-top: 0;
+  }
+
+  &__space__between {
+    display: none;
+    @media all and (min-width: $desktop-screen) {
+      @include flexbox_flex(1, 1, auto);
+      @include flexbox_alignSelf(auto);
+    }
   }
 
   &_left {
@@ -107,9 +128,21 @@
       padding: 0 1.2em;
       margin-right: 0.1 !important;
       text-align: left;
+      vertical-align: middle;
 
       &:hover {
         //- @include border-radius(0 !important);
+      }
+    }
+  }
+
+  &-socialLinks {
+    display: inline-block;
+    &__item {
+      display: inline-block;
+      padding: 1em 0;
+      span {
+        color: rgba(0, 0, 0, .6);
       }
     }
   }

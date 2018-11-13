@@ -1,0 +1,35 @@
+mixin talkCard(post)
+  - url = post.permalink
+  - postBackground = 'background-image: url(' + post.pic + ');'
+
+  .postCard.shadow__box.lazy
+    input(type="hidden", name="post_permalink", value= post.permalink)
+    //- <img> is only for seo :). To set
+    //- background, use background-image
+    .postCard__header(style= postBackground + "background-size: 100% auto; background-position: 50% 50%; background-repeat: no-repeat;")
+      a(target="_blank", href= url).postCard__header__link
+      img(src= post.pic)
+    .postCard__body
+      h1.postCard__title
+        a(target="_blank", href= url)= post.title
+      a.postCard__summary(target="_blank", href= url)= post.date + ' - ' + post.summary
+      ul.postCard__options
+        each button in post.buttons || []
+          li.postCard__options__item
+            if button.type == "video"
+              a.action_button(target="_blank", href= button.url)
+                span.icon.ion-ios-film-outline
+                | #{button.title}
+
+            else if button.type == "slides"
+              a.action_button(target="_blank", href= button.url)
+                span.icon.ion-ios-browsers-outline
+                | Read slides
+
+            else if button.type == "image"
+              a.action_button(target="_blank", href= button.url)
+                span.icon.ion-image
+                | #{button.title}
+
+            else
+              a.action_button(target="_blank", href= button.url)= button.title

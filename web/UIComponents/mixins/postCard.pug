@@ -1,0 +1,42 @@
+include shareLinkedinButton
+include shareTwitterButton
+
+mixin postCard(post)
+  - postUrl = '/blog/' + post.permalink
+  - postBackground = 'background-image: url(' + post.pic + ');'
+
+  .postCard.postCard__withoutSummary.shadow__box.lazy
+    input(type="hidden", name="post_permalink", value= post.permalink)
+
+    //- <img> is only for seo :). To set
+    //- background, use background-image
+    .postCard__header.postCard__header-radiuses(style= postBackground)
+      a(href= postUrl).postCard__header__link
+      img(src= post.pic).lazy
+
+      if post.series
+        a(href= '/blog/series/' + post.series.permalink).postCard__series
+          .postCard__series__button
+            span.postCard__series__icon(style="background-image:url(" + post.series.favicon + ");")
+            span.postCard__series__text= post.series.title + ' series'
+
+    .postCard__body
+      h1.postCard__title
+        a(href= postUrl)= post.title
+      p.postCard__summary= post.summary
+      //-a.postCard__date(href= postUrl)= 'Jorge Ferreiro - ' + (post.createdAt || 'Some days ago')
+      // a.postCard__summary(href= postUrl)= post.summary
+      ul.postCard__options
+        li.postCard__options__item
+          a.action_button(href= postUrl) Read more
+        li.postCard__options__item
+          +shareLinkedinButton(post.permalink, post.title, post.summary)
+        li.postCard__options__item
+          +shareTwitterButton(post.permalink, post.title, post.summary)
+
+      // if post.category && post.category.length > 0
+        .postCard__categories
+          each category in post.category
+            if category !== null
+              li.postCard__category
+                a(href= "/blog/category/" + category).postCard__category__link= category

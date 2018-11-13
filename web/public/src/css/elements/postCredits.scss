@@ -1,0 +1,22 @@
+.postCredits {
+    @include flexbox();
+    padding: 1em 0;
+
+    &__author {
+        @include flexbox_flex(1, 1, auto);
+
+        span {
+            color: rgba(#000000, 0.5);
+        }
+    }
+
+    &__comments {
+        display: none;
+        @include flexbox_flex(0, 0, auto);
+
+        a {
+            text-decoration: none;
+            color: rgba(#000000, 0.5);
+        }
+    }
+}

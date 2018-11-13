@@ -44,8 +44,17 @@
   }
 
   &__image {
-    max-width: 100%;
+    margin-left: -16px;
     margin-bottom: 2em;
+    width: calc(100% + 32px);
+    max-width: calc(100% + 32px);
+
+    @media all and (min-width: $desktop-screen) {
+      float: none;
+      width: 125%;
+      max-width: 125%;
+      margin-left: -12.5%;
+    }
   }
 
   &__separator {
@@ -445,20 +454,10 @@
   }
 
   &__title {
-    font-size: 1.3em;
-    line-height: 1.3em;
-    font-weight: 600;
-    border-right: 0;
-    border-left: 0;
-    text-align: center;
-    color: rgba(0, 0, 0, .6);
-    // padding: 0.9em 0;
     margin: 0;
     margin-bottom: 1.8em;
 
     @media all and (min-width: $desktop-screen) {
-      font-size: 1.4em;
-      line-height: 1.4em;
       margin-bottom: 1.4em;
     }
   }

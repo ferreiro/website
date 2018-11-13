@@ -6,6 +6,7 @@ $newsletterAd_avatar: 0;
   text-align: center;
   margin-bottom: 2em;
   display: none;
+  z-index: 1000;
   // border: 1px solid #e6e6e6;
 
   @include transition(300ms);

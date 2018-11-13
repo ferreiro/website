@@ -1,0 +1,49 @@
+.blogTwoColumnsGrid {
+  @include flexbox();
+
+  &__left {
+    display: inline-block;
+    vertical-align: top;
+    justify-content: left;
+
+    @include flexbox_flex(1, 1, auto);
+  }
+
+  &__right {
+    display: none;
+
+    @media all and (min-width: $desktop-screen) {
+      display: inline-block;
+      vertical-align: top;
+  
+      @include flexbox_flex(0, 0, 400px);
+    }
+  }
+
+  &__aside {
+    height: 100%;
+    background: #f3f3f3;
+    padding: 1.5em;
+    @include border-radius(8px);
+    // margin-top: calc(-2em - 5px);
+    // border-top: 5px solid #3f3c6d;
+  }
+}
+
+@media all and (min-width: $tablet-screen) {
+  .blogTwoColumnsGrid__left {
+
+  }
+  .blogTwoColumnsGrid__right {
+
+  }
+}
+
+@media all and (min-width: $desktop-screen) {
+  .blogTwoColumnsGrid__left {
+
+  }
+  .blogTwoColumnsGrid__right {
+
+  }
+}
