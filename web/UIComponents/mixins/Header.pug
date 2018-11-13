@@ -1,4 +1,6 @@
 mixin Header(data)
+    - headerContentClass = data.headerContentClass || ''
+
     - link = data.link || null
     - mainColor = data.mainColor || 'color: rgba(0, 0, 0, 0.9)'
     - titleColor = data.titleColor || mainColor
@@ -63,7 +65,7 @@ mixin Header(data)
 
         .fullHeader__background
         .fullHeader__wrapper.container_inner
-            .fullHeader__content
+            .fullHeader__content(class= headerContentClass)
                 if title
                     h1.fullHeader__title(style='')= title
                 if subtitle

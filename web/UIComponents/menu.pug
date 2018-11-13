@@ -67,16 +67,23 @@ header.menu.fixed#menu
                   if item.name
                     p= item.name
 
+          .menu-socialLinks
+            each item in social || []
+              a.menu-socialLinks__item(id= item.id, href= item.url, target= item.target || '_target')
+                span.dropdown-icon(class="icon-" + item.icon)
+                //- span.dropdown-text #{item.name}
+
           if admin
             a.item(href="/admin/")
               p Admin
 
+         
           //- a.item.with-icon(href="/newsletter").openNewsletterSubscription
             p
               //- i(class="icon ion-android-mail").dropdown-top-icon
               span Subscribe
 
-          .dropdown.dropdown-social
+          //-.dropdown.dropdown-social
             .item.with-icon
               p
                 i(class="icon ion-chatbox-working").dropdown-top-icon

@@ -128,9 +128,21 @@
       padding: 0 1.2em;
       margin-right: 0.1 !important;
       text-align: left;
+      vertical-align: middle;
 
       &:hover {
         //- @include border-radius(0 !important);
+      }
+    }
+  }
+
+  &-socialLinks {
+    display: inline-block;
+    &__item {
+      display: inline-block;
+      padding: 1em 0;
+      span {
+        color: rgba(0, 0, 0, .6);
       }
     }
   }

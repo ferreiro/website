@@ -40,6 +40,12 @@
     }
   }
 
+  &__content__about {
+    @media all and (min-width: $desktop-screen) {
+      @include flexbox_flex(0, 1, 690px);
+    }
+  }
+
   &__image {
     z-index: 1;
     position: relative;
