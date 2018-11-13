@@ -20,19 +20,20 @@ block content_full
         a(href="/resume/jorge_ferreiro_resume.pdf", target="_blank").about_resume_button.about_resume_button_view View my resume
 
 block content_full
-    //-
-        {
-            type: 'companies'
-        },
-        {
-            type: 'projects'
+
+    style.
+        @media (max-width: 1060px) {
+            .fullHeader__image {
+                margin-bottom: -3.5em;
+            }
         }
+
     +Header({
       headerContentClass: 'fullHeader__content__about',
       title: 'About me',
       subtitle: 'Software Engineer @ Eventbrite Incubation (R&D), Entrepreneur, blog writer and self-taught learner',
       paragraphs: [
-          ...bio,
+        ...bio,
       ],
       contentOrder: 1,
       isExperienceIconsDark: false,
@@ -48,10 +49,12 @@ block content_full
       buttonColor: '#d83901',
       linkColor: '#ab8882',
       backgroundColor: '#13103c',
-      backgroundSize: '80% auto',
       backgroundPosition: 'center center',
+      backgroundPositionDesktop: '55% 10%',
       backgroundImage: '',
       layoverImage: '/images/about/test_2.png',
+      layoverSizeMobile: 'auto 100%',
+      layoverSizeDesktop: 'auto 80%',
     })
 
     style.

@@ -9,12 +9,14 @@ mixin Header(data)
     - linkColor = data.linkColor || mainColor
     - buttonColor = data.buttonColor
     - layoverImage = data.layoverImage
-    - layoverSize = data.layoverSize || 'cover'
+    - layoverSizeMobile = data.layoverSizeMobile || 'cover'
+    - layoverSizeDesktop = data.layoverSizeDesktop || 'cover'
     - layoverPosition = data.layoverPosition || 'center center'
     - backgroundColor = data.backgroundColor
     - backgroundImage = data.backgroundImage
     - backgroundSize = data.backgroundSize || 'cover'
     - backgroundPosition = data.backgroundPosition || 'center center'
+    - backgroundPositionDesktop = data.backgroundPositionDesktop || 'center center'
     - padding = data.padding || '2em 0'
     - margin = data.margin || '0'
     - contentOrder = data.contentOrder || 0
@@ -53,10 +55,17 @@ mixin Header(data)
             background-repeat: no-repeat;
         }
         .fullHeader__image {
+            background-size: #{layoverSizeMobile};
             background-image: url(#{layoverImage});
-            background-size: #{layoverSize};
             background-position: #{layoverPosition};
             background-repeat: no-repeat;
+        }
+
+        @media (min-width: 1060px) {
+            .fullHeader__image {
+                background-size: #{layoverSizeDesktop};
+                background-position: #{backgroundPositionDesktop};
+            }
         }
 
     .fullHeader
