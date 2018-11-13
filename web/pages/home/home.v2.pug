@@ -6,6 +6,23 @@ include ../../UIComponents/mixins/mostRecentPostAd
 block extraScripts
 
 block content_full
+    style.
+        @media (max-width: 700px) {
+            .fullHeader__image { order: 0 !important; margin-bottom: -3em; }
+            .fullHeader__content { order: 1  !important; padding-bottom: 3em  !important; }
+        }
+
+        @media (min-width: 700px) and (max-width: 1060px) {
+            .fullHeader__image { order: 0 !important;  margin-bottom: -3em; height: 350px; }
+            .fullHeader__content { order: 1  !important; }
+        }
+
+        @media (min-width: 1060px) {
+            .fullHeader__image { order: 1 !important; margin-bottom: 0; }
+            .fullHeader__content { order: 0 !important; padding-bottom: 5em  !important;  }
+        }
+
+
     +Header({
       padding: '5em 0',
       mainColor: '#12113c',
