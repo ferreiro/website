@@ -67,6 +67,14 @@ block content_large
     .menu {
       position: absolute; /* making the header not fixed for better writing */
     }
+    .blogPost {
+      margin-top: -2em;
+    }
+    @media (min-width: 1060px) {
+      .blogPost {
+        margin-top: 1em;
+      }
+    }
 
   if admin && post
     ul.blog__post__options(style="margin-bottom: 1em;")
