@@ -45,6 +45,11 @@
         margin: 0  !important;
         position: relative !important;
         bottom: 0 !important;
+        display: none;
+
+        @media all and (min-width: $desktop-screen) {
+            display: block;
+        }
     }
 
     .action_button {

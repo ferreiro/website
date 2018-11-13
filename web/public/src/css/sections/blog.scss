@@ -1,3 +1,13 @@
+.blog-divider {
+  width: 100%;
+  height: 1px;
+  display: block;
+  background: #e0e0e0;
+  margin-left: -1.5em;
+  margin-top: 1.5em;
+  display: none;
+}
+
 .blog {
   position: relative;
   &__link {
