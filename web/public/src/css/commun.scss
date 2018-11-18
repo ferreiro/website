@@ -33,6 +33,22 @@ a {
   }
 }
 
+.icon-english {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background: url('/images/english.png');
+  background-size: cover;
+}
+
+.icon-spanish {
+  width: 1em;
+  height: 1em;
+  background: url('/images/spanish.jpg');
+  background-size: cover;
+  font-size: 11px;
+}
+
 .blurred {
   -webkit-filter: blur(10px);
   -moz-filter: blur(10px);

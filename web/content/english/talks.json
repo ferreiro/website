@@ -10,11 +10,65 @@
   },
   "pastTalks": [
     {
+      "title": "Learn and grow in the tech world - #DjangoGirlsMadrid 2018-11-17",
+      "summary": "My personal story when I started programming, and 6 lessons learned during those years",
+      "permalink": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117",
+      "type": "slides",
+      "pic": "/images/talks/jorge-ferreiro-learn-and-grow-in-the-tech-world-django-girls-madrid-2018.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "November, 19th 2018",
+      "location": {
+        "venue": "spaces works",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117"
+        }
+      ],
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/vhVVEX9yujQ8Kt"
+    },
+    {
+      "title": "Aprende y crece en el mundo tech - Django girls madrid 2018 - #DjangoGirlsMadrid",
+      "summary": "Mi historia personal cuando comencé a programar, y 6 lecciones aprendidas",
+      "permalink": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018",
+      "type": "slides",
+      "pic": "/images/talks/jorge-ferreiro-aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "November, 19th 2018",
+      "location": {
+        "venue": "spaces works",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
+        }
+      ],
+      "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
+    },
+    {
       "title": "Introducing Redis by Jorge Ferreiro - NoSQL database course at UCM",
       "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
       "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
       "type": "slides",
-      "pic": "/images/talks/redis_introducing_jorge_ferreiro_icon_2.png",
+      "pic": "/images/talks/introducing_redis_database_jorge_ferreiro_ucm.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
       "date": "May, 2017",
       "event": "",
       "buttons": [
@@ -31,7 +85,11 @@
       "summary": "Presentation of my personal project Dailyfocus, where I explained the engineering, product design, business and my personal experience.",
       "permalink": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
       "type": "video",
-      "pic": "/images/talks/dailyfocus_ucm_video.png",
+      "pic": "/images/talks/presentation_introducing_dailyfocus_project_jorge_ferreiro_ucm.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
       "date": "June 17, 2017",
       "event": "",
       "buttons": [
@@ -53,7 +111,11 @@
       "summary": "Presentation made for an academic jury from my college. I mainly cover: Challenges, vision and goals, development process, lessons learned, etc.",
       "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
       "type": "slides",
-      "pic": "/images/talks/dailyfocus_ucm.png",
+      "pic": "/images/talks/introducing_dailyfocus_project_jorge_ferreiro_ucm.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
       "date": "Aug 7, 2017",
       "event": "",
       "buttons": [
@@ -70,7 +132,11 @@
       "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
       "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
       "type": "video",
-      "pic": "/images/talks/js_day_es.png",
+      "pic": "/images/talks/dailyfocus_project_by_jorge_ferreiro_at_jsdayes_2017_yellow.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
       "date": "May, 2017",
       "event": "JS DAY ES 2017",
       "buttons": [
@@ -87,7 +153,11 @@
       "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
       "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
       "type": "slides",
-      "pic": "/images/talks/wokshop_fdi_header.png",
+      "pic": "/images/talks/github_workshop_your_first_professional_website.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
       "date": "May, 2016",
       "event": "",
       "buttons": [
@@ -110,6 +180,10 @@
       "permalink": null,
       "type": "slides",
       "pic": "/images/talks/mashable.png",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
       "date": "Jan 20, 2017",
       "event": "FDI ML",
       "buttons": [
@@ -126,7 +200,11 @@
       "summary": "I was invited to a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
       "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
       "type": "slides",
-      "pic": "/images/talks/mozilla_firefox.jpg",
+      "pic": "/images/talks/jorge_ferreiro_mozilla_firefox_os_meetup.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
       "date": "Nov 28, 2014",
       "event": "Mozilla Event",
       "buttons": [

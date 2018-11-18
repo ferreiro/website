@@ -65,6 +65,33 @@ $postCard_options_item_margin: 0.8em;
       height: 100%;
       position: absolute;
     }
+
+    &__language {
+      background: rgba(0, 0, 0, 0.3);
+      bottom: 10px;
+      left: 10px;
+      padding: 3px 5px;
+      position: absolute;
+
+      @include flexbox();
+      @include flexbox_alignItems(center, center);
+      @include border-radius(6px);
+
+      .icon {
+        font-size: 1em;
+        margin-right: 0.5em;
+
+        @include flexbox_flex(0, 0, auto);
+        @include border-radius(100%);
+      }
+
+      .display {
+        color: #fff;
+        font-size: 0.8em;
+
+        @include flexbox_flex(0, 0, auto);
+      }
+    }
   }
 
   &__fixedTitleWithGradient {
