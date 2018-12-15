@@ -4,8 +4,12 @@ import './App.css';
 
 class App extends Component {
   componentDidMount = () => {
-      fetch('/')
-        .then((response) => console.log(response))
+      // This code should call: http://localhost:3000/api/status
+      // and return {"response":"Everything is working correctly"}
+      fetch('/api/status')
+        .then((response) => {
+          console.log(response)
+        })
         .catch((error) => console.log(error));
   }
 
