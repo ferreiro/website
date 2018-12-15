@@ -2,7 +2,7 @@
   "name": "ferreiro",
   "description": "Jorge Ferreiro's personal website developed in Node.JS, ES6, and MongoDB",
   "homepage": "http://www.github.com/ferreiro/website",
-  "version": "3.5.0",
+  "version": "4.0.0",
   "private": true,
   "license": "",
   "keywords": [
@@ -22,14 +22,16 @@
     "url": "https://www.ferreiro.me/"
   },
   "scripts": {
-    "check": "npm-check",
-    "lint": "standard",
     "build:bower": "./node_modules/bower/bin/bower install",
     "build:gulp": "gulp",
     "build": "npm run build:gulp && npm run build:bower",
-    "watch": "gulp watch",
+    "check": "npm-check",
+    "lint": "standard",
+    "client": "cd web-app && yarn start",
+    "server": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "heroku-postbuild": "npm run build && npm run build:bower",
-    "start": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www"
+    "watch": "gulp watch"
   },
   "dependencies": {
     "aws-sdk": "^2.125.0",
@@ -97,6 +99,7 @@
     "webpack": "^4.19.1"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "npm-check": "^5.4.5"
   }
 }
