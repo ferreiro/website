@@ -6,30 +6,31 @@ Disclaimer: This README has some notes, but it's not fully documented yet.
 
 We have all the configuration for beta and prod inside `./env/index.js`, there we load 2 files, the production or the development.
 
-You'll need to create a `.env` file to set the required variables:
+1. You'll need to create a `.env` file to set the required variables:
+  ```
+  NODE_ENV='DEV'
+  SESSION_SECRET='keyboard cat'
 
-```
-NODE_ENV='DEV'
-SESSION_SECRET='keyboard cat'
+  PORT=''
+  MONGODB_URI=''
+  ADMIN_EMAIL=''
+  ADMIN_PASS=''
+  MAILCHIMP_API_TOKEN=''
 
-PORT=''
-MONGODB_URI=''
-ADMIN_EMAIL=''
-ADMIN_PASS=''
-MAILCHIMP_API_TOKEN=''
+  S3_REGION=''
+  S3_BUCKET=''
+  AWS_ACCESS_KEY_ID=''
+  AWS_SECRET_ACCESS_KEY=''
 
-S3_REGION=''
-S3_BUCKET=''
-AWS_ACCESS_KEY_ID=''
-AWS_SECRET_ACCESS_KEY=''
-
-CONTACT_EMAIL=''
-MAILGUN_USER=''
-MAILGUN_PASS=''
-RECAPTCHA_PUBLIC=''
-RECAPTCHA_SECRET=''
-NEW_RELIC_LICENSE_KEY=''
-```
+  CONTACT_EMAIL=''
+  MAILGUN_USER=''
+  MAILGUN_PASS=''
+  RECAPTCHA_PUBLIC=''
+  RECAPTCHA_SECRET=''
+  NEW_RELIC_LICENSE_KEY=''
+  ```
+2. Source `.env`
+3. Run the server `yarn dev`
 
 ## Changelog
 
