@@ -9,6 +9,9 @@ We have all the configuration for beta and prod inside `./env/index.js`, there w
 You'll need to create a `.env` file to set the required variables:
 
 ```
+NODE_ENV='DEV'
+SESSION_SECRET='keyboard cat'
+
 PORT=''
 MONGODB_URI=''
 ADMIN_EMAIL=''
