@@ -3,7 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  render() {
+  componentDidMount = () => {
+      fetch('/')
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+  }
+
+  render = () => {
     return (
       <div className="App">
         <header className="App-header">
