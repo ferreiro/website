@@ -1,3 +1,6 @@
+# Ignoring enviroment variables
+*.env
+
 # Ignoring destination static assets
 
 web/public/dst/
