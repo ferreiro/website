@@ -2,6 +2,32 @@
 
 Disclaimer: This README has some notes, but it's not fully documented yet.
 
+## Env variables
+
+We have all the configuration for beta and prod inside `./env/index.js`, there we load 2 files, the production or the development.
+
+You'll need to create a `.env` file to set the required variables:
+
+```
+PORT=''
+MONGODB_URI=''
+ADMIN_EMAIL=''
+ADMIN_PASS=''
+MAILCHIMP_API_TOKEN=''
+
+S3_REGION=''
+S3_BUCKET=''
+AWS_ACCESS_KEY_ID=''
+AWS_SECRET_ACCESS_KEY=''
+
+CONTACT_EMAIL=''
+MAILGUN_USER=''
+MAILGUN_PASS=''
+RECAPTCHA_PUBLIC=''
+RECAPTCHA_SECRET=''
+NEW_RELIC_LICENSE_KEY=''
+```
+
 ## Changelog
 
 ### Version 3.5 (December 2018)
