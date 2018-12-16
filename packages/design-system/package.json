@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "@ferreiro/design-system",
+  "version": "1.0.0",
+  "description": "A minimalistic and powerful design system to start using in your projects",
+  "main": "index.js",
+  "repository": "https://github.com/ferreiro/design-system.git",
+  "author": "Jorge Ferreiro <jorge@ferreiro.me>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}

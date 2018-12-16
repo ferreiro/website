@@ -770,6 +770,11 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
+"@ferreiro/design-system@/Users/ferreiro/Documents/website/packages/design-system":
+  version "1.0.0"
+  dependencies:
+    react "^16.6.3"
+
 "@ladjs/i18n@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@ladjs/i18n/-/i18n-0.2.0.tgz#dfc30eaa6a99918471aa9b69128f255a1267f29b"
