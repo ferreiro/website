@@ -4,6 +4,7 @@
   "homepage": "http://www.github.com/ferreiro/website",
   "version": "4.0.0",
   "private": false,
+  "license": "MIT",
   "keywords": [
     "software engineer",
     "programmer",
