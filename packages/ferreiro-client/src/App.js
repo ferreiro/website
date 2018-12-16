@@ -4,6 +4,7 @@ import './App.css';
 
 class App extends Component {
   componentDidMount = () => {
+    console.log('fetching...')
       // This code should call: http://localhost:3000/api/status
       // and return {"response":"Everything is working correctly"}
       fetch('/api/status')

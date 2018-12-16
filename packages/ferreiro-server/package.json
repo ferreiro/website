@@ -1,9 +1,9 @@
 {
-  "name": "ferreiro",
+  "name": "@ferreiro/server",
   "description": "Jorge Ferreiro's personal website developed in Node.JS, ES6, and MongoDB",
   "homepage": "http://www.github.com/ferreiro/website",
   "version": "4.0.0",
-  "private": true,
+  "private": false,
   "license": "",
   "keywords": [
     "software engineer",
