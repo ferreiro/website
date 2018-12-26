@@ -5,11 +5,11 @@
         "node": "8.10.0"
     },
     "scripts": {
-        "client": "cd packages/ferreiro-client && PORT=5000 yarn start",
-        "server": "cd packages/ferreiro-server && yarn start",
-        "devClient": "cd packages/ferreiro-client && PORT=5000 yarn dev",
-        "devServer": "cd packages/ferreiro-server && yarn dev ",
-        "buildAssets": "cd packages/ferreiro-server && yarn build",
+        "client": "PORT=5000 yarn workspace @ferreiro/client start",
+        "server": "yarn workspace @ferreiro/server start",
+        "devClient": "PORT=5000 yarn workspace @ferreiro/client dev",
+        "devServer": "yarn workspace @ferreiro/server dev",
+        "buildAssets": "yarn workspace @ferreiro/server build",
         "dev": "yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\" \"yarn devClient\"",
         "start": "yarn install && yarn buildAssets && concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
         "heroku-postbuild": "npm run build && npm run build:bower"
