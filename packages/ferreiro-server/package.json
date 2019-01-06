@@ -46,6 +46,7 @@
     "bower": "^1.8.2",
     "compression": "^1.7.1",
     "connect-flash": "^0.1.1",
+    "concurrently": "^4.1.0",
     "cookie-parser": "^1.4.3",
     "debug": "^3.1.0",
     "del": "^3.0.0",
@@ -96,7 +97,6 @@
     "validator": "^9.0.0"
   },
   "devDependencies": {
-    "concurrently": "^4.1.0",
     "npm-check": "^5.4.5"
   }
 }
