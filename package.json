@@ -8,11 +8,11 @@
         "client": "PORT=5000 yarn workspace @ferreiro/client start",
         "server": "yarn workspace @ferreiro/server start",
         "devClient": "PORT=5000 yarn workspace @ferreiro/client dev",
-        "devServer": "yarn workspace @ferreiro/server dev",
+        "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
         "buildAssets": "yarn workspace @ferreiro/server build",
         "dev": "yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\" \"yarn devClient\"",
-        "start": "yarn install && yarn buildAssets && concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
-        "heroku-postbuild": ""
+        "start": "yarn install && concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
+        "heroku-postbuild": "npm run buildAssets"
     },
     "workspaces": [
         "packages/*"
