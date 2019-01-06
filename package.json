@@ -11,7 +11,7 @@
         "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
         "buildAssets": "yarn workspace @ferreiro/server build",
         "dev": "yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\" \"yarn devClient\"",
-        "start": "yarn install && yarn server",
+        "start": "yarn install && yarn server && yarn client",
         "heroku-postbuild": "npm run buildAssets"
     },
     "workspaces": [
