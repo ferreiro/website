@@ -26,7 +26,7 @@
   "scripts": {
     "build:bower": "bower install",
     "build:gulp": "gulp",
-    "build": "concurrently --kill-others-on-fail \"yarn build:gulp\" \"yarn build:bower\"",
+    "build-assets": "concurrently --kill-others-on-fail \"yarn build:gulp\" \"yarn build:bower\"",
     "lint": "echo $'[TODO:] Implement the linter here'",
     "server": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www",
     "dev": "yarn server && yarn watch",

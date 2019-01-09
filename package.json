@@ -10,7 +10,7 @@
         "server": "yarn workspace @ferreiro/server start",
         "devClient": "PORT=5000 yarn workspace @ferreiro/client dev",
         "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
-        "buildAssets": "yarn workspace @ferreiro/server build",
+        "buildAssets": "yarn workspace @ferreiro/server build-assets",
         "dev": "yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\" \"yarn devClient\"",
         "start": "yarn install && yarn server",
         "heroku-postbuild": "npm run buildAssets"
