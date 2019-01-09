@@ -5,6 +5,7 @@
         "node": "8.10.0"
     },
     "scripts": {
+        "check": "npm-check",
         "client": "PORT=5000 yarn workspace @ferreiro/client start",
         "server": "yarn workspace @ferreiro/server start",
         "devClient": "PORT=5000 yarn workspace @ferreiro/client dev",
@@ -17,8 +18,9 @@
     "workspaces": [
         "packages/*"
     ],
-    "devDependencies": {},
-    "dependencies": {
-        "concurrently": "^4.1.0"
-    }
+    "devDependencies": {
+        "concurrent": "0.3.2",
+        "npm-check": "5.9.0"
+    },
+    "dependencies": {}
 }
