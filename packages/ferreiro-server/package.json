@@ -24,7 +24,7 @@
     "url": "https://www.ferreiro.me/"
   },
   "scripts": {
-    "build:bower": "./node_modules/bower/bin/bower install",
+    "build:bower": "bower install",
     "build:gulp": "gulp",
     "build": "concurrently --kill-others-on-fail \"yarn build:gulp\" \"yarn build:bower\"",
     "lint": "echo $'[TODO:] Implement the linter here'",
