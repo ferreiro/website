@@ -24,13 +24,13 @@
     "url": "https://www.ferreiro.me/"
   },
   "scripts": {
-    "build:bower": "bower install",
-    "build:gulp": "gulp",
-    "build-assets": "concurrently --kill-others-on-fail \"yarn build:gulp\" \"yarn build:bower\"",
+    "build-assets": "concurrently --kill-others-on-fail \"yarn build-assets:bower\" \"yarn build-assets:gulp\"",
+    "build-assets:bower": "bower install",
+    "build-assets:gulp": "gulp",
     "lint": "echo $'[TODO:] Implement the linter here'",
     "server": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www",
     "dev": "yarn server && yarn watch",
-    "start": "yarn lint && yarn build && yarn server",
+    "start": "yarn lint && yarn build-assets && yarn server",
     "watch": "gulp watch"
   },
   "dependencies": {

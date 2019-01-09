@@ -1,13 +1,9 @@
 {
   "name": "@ferreiro/client",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": false,
   "dependencies": {
-    "@ferreiro/design-system": "1.0.0",
-    "http-proxy-middleware": "^0.19.1",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "@ferreiro/design-system": "1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -16,15 +12,5 @@
     "eject": "react-scripts eject",
     "dev": "yarn start"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {},
-  "proxy": "http://localhost:3000"
+  "devDependencies": {}
 }
