@@ -2,7 +2,8 @@
     "private": true,
     "name": "ferreiro.me",
     "engines": {
-        "node": "8.10.0"
+        "node": "8.x",
+        "yarn": "1.x"
     },
     "scripts": {
         "check": "npm-check",
@@ -12,7 +13,7 @@
         "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
         "buildAssets": "yarn workspace @ferreiro/server build-assets",
         "dev": "yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\" \"yarn devClient\"",
-        "start": "yarn install && yarn server",
+        "start": "yarn server",
         "heroku-postbuild": "npm run buildAssets"
     },
     "workspaces": [
