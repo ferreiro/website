@@ -29,12 +29,16 @@
     "build-assets:gulp": "gulp",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn watch\"",
     "lint": "echo $'[TODO:] Implement the linter here'",
-    "server": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www",
+    "server": "DEBUG=ferreiro:* nodemon ./bin/www --exec babel-node --presets babel-preset-env",
     "start": "yarn server",
     "watch": "gulp watch"
   },
   "dependencies": {
     "aws-sdk": "^2.125.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-loader": "8.0.5",
+    "babel-preset-env": "1.7.0",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.2",
@@ -70,10 +74,6 @@
     "validator": "^9.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015": "^6.24.1",
     "bower": "^1.8.2",
     "concurrently": "^4.1.0",
     "del": "^3.0.0",

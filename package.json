@@ -10,7 +10,7 @@
         "server": "yarn workspace @ferreiro/server start",
         "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
         "buildAssets": "yarn workspace @ferreiro/server build-assets",
-        "dev": "yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\"",
+        "dev": "yarn install && yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\"",
         "start": "yarn server",
         "heroku-postbuild": "npm run buildAssets"
     },
