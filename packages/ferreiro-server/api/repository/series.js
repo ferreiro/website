@@ -1,4 +1,4 @@
-import {clone} from 'underscore'
+import {cloneDeep} from 'lodash'
 import blogRepository from './blog'
 
 const Series = require('../models/Series')

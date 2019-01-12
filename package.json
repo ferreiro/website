@@ -1,102 +1,25 @@
 {
-  "name": "ferreiro",
-  "description": "Jorge Ferreiro's personal website developed in Node.JS, ES6, and MongoDB",
-  "homepage": "http://www.github.com/ferreiro/website",
-  "version": "3.5.0",
-  "private": true,
-  "license": "",
-  "keywords": [
-    "software engineer",
-    "programmer",
-    "developer",
-    "full-stack",
-    "backend",
-    "frontend"
-  ],
-  "engines": {
-    "node": "8.6.0"
-  },
-  "author": {
-    "name": "Jorge Ferreiro",
-    "email": "jorge@ferreiro.me",
-    "url": "https://www.ferreiro.me/"
-  },
-  "scripts": {
-    "check": "npm-check",
-    "lint": "standard",
-    "build:bower": "./node_modules/bower/bin/bower install",
-    "build:gulp": "gulp",
-    "build": "npm run build:gulp && npm run build:bower",
-    "watch": "gulp watch",
-    "heroku-postbuild": "npm run build && npm run build:bower",
-    "start": "DEBUG=ferreiro:* nodemon --exec babel-node ./bin/www"
-  },
-  "dependencies": {
-    "aws-sdk": "^2.125.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015": "^6.24.1",
-    "bcrypt": "^1.0.3",
-    "bluebird": "^3.5.0",
-    "body-parser": "^1.18.2",
-    "bower": "^1.8.2",
-    "compression": "^1.7.1",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.3",
-    "debug": "^3.1.0",
-    "del": "^3.0.0",
-    "email-templates": "^3.0.3",
-    "express": "^4.16.1",
-    "express-recaptcha": "^3.0.0",
-    "express-session": "^1.15.6",
-    "force-ssl-heroku": "^1.0.2",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-babel": "^7.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-file-cache": "0.0.1",
-    "gulp-imagemin": "^3.4.0",
-    "gulp-minify": "^1.0.0",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sass-glob": "^1.0.8",
-    "gulp-uglify": "^3.0.0",
-    "helmet": "^3.8.2",
-    "html-toc": "^2.0.0",
-    "imagemin": "^5.3.1",
-    "install": "^0.10.1",
-    "lodash": "^4.17.11",
-    "mailchimp-api-v3": "^1.7.1",
-    "marked": "^0.3.6",
-    "mongoose": "^4.11.13",
-    "mongoose-paginate": "^5.0.3",
-    "mongoose-permalink": "^2.0.0",
-    "mongoose-simple-random": "^0.4.1",
-    "morgan": "^1.9.0",
-    "multer": "^1.3.0",
-    "multer-s3": "^2.7.0",
-    "nodemailer": "^2.3.0",
-    "nodemon": "^1.12.1",
-    "npm": "^6.4.1",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "pug": "^2.0.0-beta6",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "replaceall": "^0.1.6",
-    "request": "^2.83.0",
-    "sanitize-html": "^1.14.1",
-    "serve-favicon": "^2.4.5",
-    "standard": "^10.0.3",
-    "turbolinks": "^5.0.3",
-    "validator": "^9.0.0",
-    "webpack": "^4.19.1"
-  },
-  "devDependencies": {
-    "npm-check": "^5.4.5"
-  }
+    "private": true,
+    "name": "ferreiro.me",
+    "engines": {
+        "node": "8.x",
+        "yarn": "1.x"
+    },
+    "scripts": {
+        "check": "npm-check",
+        "server": "yarn workspace @ferreiro/server start",
+        "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
+        "buildAssets": "yarn workspace @ferreiro/server build-assets",
+        "dev": "yarn install && yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\"",
+        "start": "yarn server",
+        "heroku-postbuild": "yarn buildAssets"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "devDependencies": {
+        "concurrently": "4.1.0",
+        "npm-check": "5.9.0"
+    },
+    "dependencies": {}
 }
