@@ -12,13 +12,13 @@
         "buildAssets": "yarn workspace @ferreiro/server build-assets",
         "dev": "yarn install && yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\"",
         "start": "yarn server",
-        "heroku-postbuild": "npm run buildAssets"
+        "heroku-postbuild": "yarn buildAssets"
     },
     "workspaces": [
         "packages/*"
     ],
     "devDependencies": {
-        "concurrent": "0.3.2",
+        "concurrently": "4.1.0",
         "npm-check": "5.9.0"
     },
     "dependencies": {}
