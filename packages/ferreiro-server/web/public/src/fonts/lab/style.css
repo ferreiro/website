@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'lab';
-  src:  url('./fonts/lab.eot?pk66ge');
-  src:  url('./fonts/lab.eot?pk66ge#iefix') format('embedded-opentype'),
-    url('./fonts/lab.ttf?pk66ge') format('truetype'),
-    url('./fonts/lab.woff?pk66ge') format('woff'),
-    url('./fonts/lab.svg?pk66ge#lab') format('svg');
+  src:  url('https://www.ferreiro.me/fonts/lab/fonts/lab.eot?pk66ge');
+  src:  url('https://www.ferreiro.me/fonts/lab/fonts/lab.eot?pk66ge#iefix') format('embedded-opentype'),
+    url('https://www.ferreiro.me/fonts/lab/fonts/lab.ttf?pk66ge') format('truetype'),
+    url('https://www.ferreiro.me/fonts/lab/fonts/lab.woff?pk66ge') format('woff'),
+    url('https://www.ferreiro.me/fonts/lab/fonts/lab.svg?pk66ge#lab') format('svg');
   font-weight: normal;
   font-style: normal;
 }
