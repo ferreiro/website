@@ -1,0 +1,34 @@
+extends ../..//UIComponents/layout
+include ../../UIComponents/mixins/talkCard
+
+block content_full
+  +Header({
+    mainColor: '#000',
+    buttonColor: '#d83902',
+    backgroundColor: '#ffffff',
+    backgroundSize: 'auto 100%',
+    backgroundPosition: '100% 50%',
+    backgroundImage: '/images/talks/talks_jorge_ferreiro.jpg',
+
+    layoverSize: 'cover',
+    layoverPosition: 'center center',
+    layoverImage: '/images/talks/talk.png',
+
+    title: 'Talks Testimonials',
+    subtitle: 'Engaging, energetic, funny and oozing with charisma. Can\'t wait to talk at your event!' ,
+    paragraphs: [],
+    buttons: [
+      {
+        type: 'normal',
+        text: 'Bring me to your event',
+        path: '/contact/talk',
+        color: '#d83902',
+        borderColor: '#d83902'
+      },
+    ],
+    hasBottomBorder: true,
+    buttonBorderSize: '2px',
+  })
+
+block content
+  img(src="/images/talks/testimonials.jpg", width="100%")

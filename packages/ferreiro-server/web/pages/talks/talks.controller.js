@@ -12,3 +12,14 @@ export const getTalks = (req, res) => (
     pastTalks: talks.pastTalks
   })
 )
+
+export const getTalksTestimonials = (req, res) => (
+  res.render(createViewPath('talks', 'talksTestimonials.pug'), {
+    path: 'talks',
+    title: 'Talks and Workshops - Jorge Ferreiro',
+    headline: 'Talks and Workshops',
+    image: 'https://www.ferreiro.me/images/talks/jorge_ferreiro_speaker_talks_workshops.jpg',
+    config: talks.config,
+    pastTalks: talks.pastTalks
+  })
+) 
