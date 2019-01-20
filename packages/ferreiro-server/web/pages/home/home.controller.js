@@ -7,7 +7,7 @@ const experience = require('../../content/english/experience.json')
 export const getHomePage = (req, res, next) => {
   const viewTemplateName = req.query.v1 ? 'home.pug' : 'home.v2.pug'
   const homeContext = {
-    title: 'Jorge Ferreiro - Software Engineer, Product Manager and Entrepreneur',
+    title: 'Jorge Ferreiro - Frontend Software Engineer at Eventbrite, Former Backend Software Engineer at Amazon and Entrepreneur',
     image: 'https://www.ferreiro.me/images/home/welcome_to_ferreiro_v3.jpg',
     path: 'home',
     content: content.about,
