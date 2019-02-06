@@ -10,6 +10,78 @@
   },
   "pastTalks": [
     {
+      "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
+      "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
+      "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_definitive_guide_to_get_your_first_job.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "February, 6th 2019",
+      "location": {
+        "venue": "FDI UCM",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo"
+        }
+      ]
+    },
+    {
+      "title": "#futuroFDI - El CV y Github: El momento de jugar como pros 2019",
+      "summary": "Tips, ideas and suggestions on how to get the most out of your Social Networks. Also, learn how to do the most amazing resumes.",
+      "permalink": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_fdi_ucm_github_resume.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "February, 6th 2019",
+      "location": {
+        "venue": "FDI UCM",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros"
+        }
+      ]
+    },
+    {
+      "title": "#futuroFDI - Mi historia hasta 2019",
+      "summary": "Mi historia personal cuando comencé a programar, y 6 lecciones aprendidas",
+      "permalink": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_professional_career.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "February, 6th 2019",
+      "location": {
+        "venue": "FDI UCM",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019"
+        }
+      ]
+    },
+    {
       "title": "Learn and grow in the tech world - #DjangoGirlsMadrid 2018-11-17",
       "summary": "My personal story when I started programming, and 6 lessons learned during those years",
       "permalink": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117",
@@ -55,6 +127,11 @@
           "title": "Read slides",
           "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
+        },
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
         }
       ],
       "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
