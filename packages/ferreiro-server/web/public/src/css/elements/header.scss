@@ -64,6 +64,10 @@
     font-size: 2em;
     margin-bottom: 6px;
     color: rgba(0, 0, 0, 0.9);
+
+    .heart {
+      font-size: 24px;
+    }
   }
 
   &__subtitle {
@@ -168,6 +172,10 @@
   .fullHeader__title {
     font-size: 4em;
     margin-bottom: 12px;
+
+    .heart {
+      font-size: 40px;
+    }
   }
 }
 @media all and (min-width:$big-screen) {

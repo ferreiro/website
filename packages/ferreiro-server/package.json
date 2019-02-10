@@ -24,9 +24,9 @@
     "url": "https://www.ferreiro.me/"
   },
   "scripts": {
-    "build-assets": "yarn lint && concurrently --kill-others-on-fail \"yarn build-assets:bower\" \"yarn build-assets:gulp\"",
-    "build-assets:bower": "bower install",
-    "build-assets:gulp": "gulp",
+    "build": "yarn lint && concurrently --kill-others-on-fail \"yarn build:bower\" \"yarn build:gulp\"",
+    "build:bower": "bower install",
+    "build:gulp": "gulp",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn watch\"",
     "lint": "echo $'[TODO:] Implement the linter here'",
     "server": "DEBUG=ferreiro:* nodemon ./bin/www --exec babel-node --presets babel-preset-env",

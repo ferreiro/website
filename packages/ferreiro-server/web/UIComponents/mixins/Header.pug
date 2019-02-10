@@ -76,7 +76,7 @@ mixin Header(data)
         .fullHeader__wrapper.container_inner
             .fullHeader__content(class= headerContentClass)
                 if title
-                    h1.fullHeader__title(style='')= title
+                    h1.fullHeader__title(style='') !{title}
                 if subtitle
                     h2.fullHeader__subtitle!= subtitle
 

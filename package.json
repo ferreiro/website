@@ -8,11 +8,11 @@
     "scripts": {
         "check": "npm-check",
         "server": "yarn workspace @ferreiro/server start",
-        "devServer": "yarn buildAssets && yarn workspace @ferreiro/server dev",
-        "buildAssets": "yarn workspace @ferreiro/server build-assets",
-        "dev": "yarn install && yarn buildAssets && concurrently --kill-others-on-fail \"yarn devServer\"",
+        "devServer": "yarn build && yarn workspace @ferreiro/server dev",
+        "build": "yarn workspace @ferreiro/server build",
+        "dev": "yarn install && yarn build && concurrently --kill-others-on-fail \"yarn devServer\"",
         "start": "yarn server",
-        "heroku-postbuild": "yarn buildAssets"
+        "heroku-postbuild": "yarn build"
     },
     "workspaces": [
         "packages/*"
