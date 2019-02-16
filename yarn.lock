@@ -316,9 +316,9 @@ autoprefixer@^7.0.0:
     postcss "^6.0.17"
     postcss-value-parser "^3.2.3"
 
-aws-sdk@^2.125.0:
-  version "2.377.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.377.0.tgz#34220a844070c85fa266427128d2f70ddac63c53"
+aws-sdk@^2.404.0:
+  version "2.404.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.404.0.tgz#f657db41bc4dab759e897eaa55bc377ac3e15f45"
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -327,7 +327,7 @@ aws-sdk@^2.125.0:
     querystring "0.2.0"
     sax "1.2.1"
     url "0.10.3"
-    uuid "3.1.0"
+    uuid "3.3.2"
     xml2js "0.4.19"
 
 aws-sign2@~0.7.0:
@@ -7290,17 +7290,13 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
 
-uuid@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
+uuid@3.3.2, uuid@^3.0.1, uuid@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
 uuid@^2.0.1:
   version "2.0.3"
   resolved "http://registry.npmjs.org/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
-
-uuid@^3.0.1, uuid@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
 v8flags@^2.0.2, v8flags@^2.1.1:
   version "2.1.1"
