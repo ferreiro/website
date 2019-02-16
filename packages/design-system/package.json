@@ -8,6 +8,6 @@
   "author": "Jorge Ferreiro <jorge@ferreiro.me>",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.6.3"
+    "react": "^16.8.2"
   }
 }
