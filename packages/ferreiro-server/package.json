@@ -51,7 +51,7 @@
     "express-recaptcha": "^3.0.0",
     "express-session": "^1.15.6",
     "force-ssl-heroku": "^1.0.2",
-    "helmet": "^3.8.2",
+    "helmet": "^3.15.1",
     "install": "^0.10.1",
     "lodash": "^4.17.11",
     "mailchimp-api-v3": "^1.7.1",
