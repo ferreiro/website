@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- "10"
+- node
+
+notifications:
+  email:
+    recipients:
+    - github@ferreiro.me
+    on_success: change
+    on_failure: always
