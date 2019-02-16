@@ -6,13 +6,14 @@
         "yarn": "1.x"
     },
     "scripts": {
-        "check": "npm-check",
-        "server": "yarn workspace @ferreiro/server start",
-        "devServer": "yarn build && yarn workspace @ferreiro/server dev",
         "build": "yarn workspace @ferreiro/server build",
+        "check": "npm-check",
+        "devServer": "yarn build && yarn workspace @ferreiro/server dev",
         "dev": "yarn install && yarn build && concurrently --kill-others-on-fail \"yarn devServer\"",
+        "heroku-postbuild": "yarn build",
+        "server": "yarn workspace @ferreiro/server start",
         "start": "yarn server",
-        "heroku-postbuild": "yarn build"
+        "test": "echo $'[TODO] Implement tests'"
     },
     "workspaces": [
         "packages/*"
