@@ -162,6 +162,11 @@
       "event": "",
       "buttons": [
         {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+        },
+        {
           "title": "Read slides",
           "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117"
@@ -187,14 +192,14 @@
       "event": "",
       "buttons": [
         {
-          "title": "Read slides",
-          "type": "slides",
-          "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
-        },
-        {
           "title": "Watch the video",
           "type": "video",
           "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+        },
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
         }
       ],
       "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
