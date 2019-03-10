@@ -5,7 +5,7 @@ $postCard_height_desktop: 400px;
 $postCard_headerHeight_mobile: 150px;
 $postCard_headerHeight_desktop: 160px;
 $postCard_body_margin: 1em;
-$postCard_title_max_height: 46px;
+$postCard_title_max_height: 53px;
 $postCard_summary_margin: 0.5em;
 $postCard_summary_min_height: 40px;
 $postCard_summary_max_height: 55px;
@@ -67,29 +67,28 @@ $postCard_options_item_margin: 0.8em;
     }
 
     &__language {
-      background: rgba(0, 0, 0, 0.3);
+      background: #989898;
       bottom: 10px;
-      left: 10px;
-      padding: 3px 5px;
-      position: absolute;
+      display: inline-block;
+      padding: 1px 8px;
+      margin-right: 0.5em;
 
-      @include flexbox();
-      @include flexbox_alignItems(center, center);
       @include border-radius(6px);
 
       .icon {
-        font-size: 1em;
+        display: inline-block;
+        font-size: 14px;
         margin-right: 0.5em;
+        vertical-align: middle;
 
-        @include flexbox_flex(0, 0, auto);
         @include border-radius(100%);
       }
 
       .display {
         color: #fff;
-        font-size: 0.8em;
-
-        @include flexbox_flex(0, 0, auto);
+        display: inline-block;
+        font-size: 14px;
+        vertical-align: middle;
       }
     }
   }
@@ -204,6 +203,7 @@ $postCard_options_item_margin: 0.8em;
   &__category {
     display: inline-block;
     list-style: none;
+
     &__link {
       text-transform: capitalize;
       border: 1px solid #f4f4f4;
@@ -219,7 +219,7 @@ $postCard_options_item_margin: 0.8em;
     padding: $postCard_body_margin;
 
     @media all and (min-width: $desktop-screen) {
-      height: 160px;
+      height: 170px;
     }
   }
 

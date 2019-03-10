@@ -10,11 +10,35 @@
   },
   "pastTalks": [
     {
-      "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
-      "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
+      "title": "#futuroFiumers - Los 10 consejos para lanzar tu carrera en tecnología",
+      "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
+      "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_codecamp_2019_murcia_consejos_para_junior_engineers.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "February, 23th 2019",
+      "location": {
+        "venue": "Codecamp",
+        "city": "Murcia"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software"
+        }
+      ]
+    },
+    {
+      "title": "#futuroFDI - Entrevista con César Puerta, Senior Staff en Twitter",
+      "summary": "Jorge Ferreiro does a live video interview with César Puerta who is currently leading Twitter for Android application and who is Senior Staff Engineer.",
       "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
       "type": "slides",
-      "pic": "/images/talks/jorge_ferreiro_definitive_guide_to_get_your_first_job.jpg",
+      "pic": "/images/talks/entrevista_cesar_puerta_twitter_hq_por_jorge_ferreiro_fdi_ucm.jpg",
       "language": {
         "display": "Spanish",
         "icon": "icon-spanish"
@@ -26,6 +50,35 @@
       },
       "event": "",
       "buttons": [
+        {
+          "title": "Watch the interview",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=-Di5O7dGKNc&t=17s"
+        }
+      ]
+    },
+    {
+      "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
+      "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
+      "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
+      "type": "slides",
+      "pic": "/images/talks/guia_para_encontrar_trabajo_jorge_ferreiro_fdi_ucm.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "February, 6th 2019",
+      "location": {
+        "venue": "FDI UCM",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": ""
+        },
         {
           "title": "Read slides",
           "type": "slides",
@@ -38,7 +91,7 @@
       "summary": "Tips, ideas and suggestions on how to get the most out of your Social Networks. Also, learn how to do the most amazing resumes.",
       "permalink": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros",
       "type": "slides",
-      "pic": "/images/talks/jorge_ferreiro_fdi_ucm_github_resume.jpg",
+      "pic": "/images/talks/critica_my_resume_jorge_ferreiro_fdi_ucm.jpg",
       "language": {
         "display": "Spanish",
         "icon": "icon-spanish"
@@ -51,6 +104,11 @@
       "event": "",
       "buttons": [
         {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=evGZ2yGpqxk&t=45s"
+        },
+        {
           "title": "Read slides",
           "type": "slides",
           "url": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros"
@@ -59,10 +117,10 @@
     },
     {
       "title": "#futuroFDI - Mi historia hasta 2019",
-      "summary": "Mi historia personal cuando comencé a programar, y 6 lecciones aprendidas",
+      "summary": "Comparto mi historia personal desde cuando comencé a programar con 10 años hasta la actualidad. Haciendou un repaso de las lecciones aprendidas en las diferentes empresas que he estado.",
       "permalink": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019",
       "type": "slides",
-      "pic": "/images/talks/jorge_ferreiro_professional_career.jpg",
+      "pic": "/images/talks/mi_historia_jorge_ferreiro.jpg",
       "language": {
         "display": "Spanish",
         "icon": "icon-spanish"
@@ -74,6 +132,11 @@
       },
       "event": "",
       "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=qgwNuMQJcjo"
+        },
         {
           "title": "Read slides",
           "type": "slides",
