@@ -34,6 +34,35 @@
       ]
     },
     {
+      "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
+      "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
+      "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
+      "type": "slides",
+      "pic": "/images/talks/guia_para_encontrar_trabajo_jorge_ferreiro_fdi_ucm.jpg",
+      "language": {
+        "display": "Spanish",
+        "icon": "icon-spanish"
+      },
+      "date": "February, 6th 2019",
+      "location": {
+        "venue": "FDI UCM",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=Js-av-zysWs&t=573s"
+        },
+        {
+          "title": "Read slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo"
+        }
+      ]
+    },
+    {
       "title": "#futuroFDI - Entrevista con César Puerta, Senior Staff en Twitter",
       "summary": "Jorge Ferreiro does a live video interview with César Puerta who is currently leading Twitter for Android application and who is Senior Staff Engineer.",
       "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
@@ -54,35 +83,6 @@
           "title": "Watch the interview",
           "type": "video",
           "url": "https://www.youtube.com/watch?v=-Di5O7dGKNc&t=17s"
-        }
-      ]
-    },
-    {
-      "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
-      "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
-      "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
-      "type": "slides",
-      "pic": "/images/talks/guia_para_encontrar_trabajo_jorge_ferreiro_fdi_ucm.jpg",
-      "language": {
-        "display": "Spanish",
-        "icon": "icon-spanish"
-      },
-      "date": "February, 6th 2019",
-      "location": {
-        "venue": "FDI UCM",
-        "city": "Madrid"
-      },
-      "event": "",
-      "buttons": [
-        {
-          "title": "Watch the video",
-          "type": "video",
-          "url": ""
-        },
-        {
-          "title": "Read slides",
-          "type": "slides",
-          "url": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo"
         }
       ]
     },
