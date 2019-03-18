@@ -31,6 +31,10 @@ const redirectToGifts = (req, res) => (
   res.redirect('/gifts')
 );
 
+const redirectMeetupLondon = (req, res) => (
+  res.redirect('https://www.meetup.com/es-ES/The-JS-Roundabout/events/259864908/')
+);
+
 // Mounting more subroutes.
 router.get('/', home) // Home shows about page
 router.use('/about', about)
@@ -40,6 +44,7 @@ router.get('/coming', comingSoon) // Home shows about page
 router.use('/contact', contact)
 router.get('/feedback', redirectFeedbackToContact)
 router.use('/gifts', gifts)
+router.use('/london', redirectMeetupLondon)
 router.use('/newsletter', newsletter)
 router.use('/portfolio', portfolio)
 router.get('/projects', redirectProjectsToPortfolio)
