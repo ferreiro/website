@@ -6,7 +6,7 @@ export const sanitizeHtml = (dirtyHtml) => {
             'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
             'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div',
             'table', 'thead', 'caption', 'tbody', 'tr', 'th', 'td', 'pre',
-            'img', 'span'
+            'img', 'span', 'iframe'
         ],
         allowedAttributes: {
             '*': [ 'id', 'href', 'align', 'alt', 'center', 'bgcolor' ],
@@ -15,7 +15,8 @@ export const sanitizeHtml = (dirtyHtml) => {
             img: [ 'src', 'style' ],
             h1: [ 'id' ],
             h2: [ 'id' ],
-            ul: [ 'class' ]
+            ul: [ 'class' ],
+            iframe: [ 'width', 'height', 'src', 'frameborder', 'allow', 'allowfullscreen' ]
         }
     };
 
