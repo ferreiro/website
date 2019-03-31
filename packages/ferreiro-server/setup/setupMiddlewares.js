@@ -35,6 +35,9 @@ module.exports = (app) => {
   app.use('/bower_components', express.static(path.join(__dirname, '../bower_components'), {
     maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0
   }))
+  app.use('/favicons', express.static(path.join(__dirname, '../web/public/src/images/favicons'), {
+    maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0
+  }))
   app.use(logger('dev'))
 
   // order matters here for passport
