@@ -2,16 +2,17 @@ import express from 'express'
 
 import admin from './pages/admin/admin.routes'
 import about from './pages/about/about.routes'
-import home from './pages/home/home.routes'
 import blog from './pages/blog/blog.routes'
+import contact from './pages/contact/contact.routes'
+import gifts from './pages/landings/gifts.routes';
+import go from './pages/go/go.routes';
+import home from './pages/home/home.routes'
+import newsletter from './pages/newsletter/newsletter.routes'
 import portfolio from './pages/portfolio/portfolio.routes'
 import resume from './pages/resume/resume.routes'
-import talks from './pages/talks/talks.routes'
-import contact from './pages/contact/contact.routes'
-import university from './pages/university/university.routes'
 import stats from './pages/stats/stats.routes'
-import newsletter from './pages/newsletter/newsletter.routes'
-import gifts from './pages/landings/gifts.routes';
+import talks from './pages/talks/talks.routes'
+import university from './pages/university/university.routes'
 
 const router = express.Router()
   
@@ -40,6 +41,7 @@ router.get('/coming', comingSoon) // Home shows about page
 router.use('/contact', contact)
 router.get('/feedback', redirectFeedbackToContact)
 router.use('/gifts', gifts)
+router.use('/go', go)
 router.use('/newsletter', newsletter)
 router.use('/portfolio', portfolio)
 router.get('/projects', redirectProjectsToPortfolio)
