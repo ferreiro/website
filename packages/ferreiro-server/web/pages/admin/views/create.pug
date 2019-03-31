@@ -131,14 +131,14 @@ block content
                 h2 Options
 
                 .composer__entry
-                    label(for='permalink', class="composer__legend")
+                    label(for='permalinkPassword', class="composer__legend")
                         span.icon.ion-lock-combination
                         p Secret Password
                     .composer__right
                         - secretLink = '/blog/' + (post && post.permalink ? post.permalink : '') + '?secretKey=' + (post && post.secretKey ? post.secretKey : '')
                         if secretLink
                             a(href= secretLink, target="_blank")= secretLink
-                        input#permalink.composer__input(type='name', placeholder="Secret key", class="admin__input", name='post_secretKey', value= post && post.secretKey ? post.secretKey : '')
+                        input#permalinkPassword.composer__input(type='name', placeholder="Secret key", class="admin__input", name='post_secretKey', value= post && post.secretKey ? post.secretKey : '')
 
                 .composer__entry
                     label(for='permalink', class="composer__legend")
