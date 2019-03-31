@@ -72,7 +72,8 @@
     "request": "^2.83.0",
     "sanitize-html": "^1.14.1",
     "serve-favicon": "^2.4.5",
-    "validator": "^10.11.0"
+    "validator": "^10.11.0",
+    "xss-filters": "1.2.7"
   },
   "devDependencies": {
     "bower": "^1.8.8",
