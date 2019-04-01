@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ferreiro';
-    src:    url('fonts/ferreiro.eot?s9am4p');
-    src:    url('fonts/ferreiro.eot?s9am4p#iefix') format('embedded-opentype'),
-        url('fonts/ferreiro.ttf?s9am4p') format('truetype'),
-        url('fonts/ferreiro.woff?s9am4p') format('woff'),
-        url('fonts/ferreiro.svg?s9am4p#ferreiro') format('svg');
+    src:    url('./fonts/ferreiro.eot?s9am4p');
+    src:    url('./fonts/ferreiro.eot?s9am4p#iefix') format('embedded-opentype'),
+        url('./fonts/ferreiro.ttf?s9am4p') format('truetype'),
+        url('./fonts/ferreiro.woff?s9am4p') format('woff'),
+        url('./fonts/ferreiro.svg?s9am4p#ferreiro') format('svg');
     font-weight: normal;
     font-style: normal;
 }
