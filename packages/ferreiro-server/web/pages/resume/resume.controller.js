@@ -2,7 +2,7 @@ import {renderPdf} from './render-pdf'
 import {join} from 'path'
 
 const PDF_PUBLIC_ASSETS_PATH = '/../../public/dst/pdf'
-const RESUME_FILE_NAME = 'Jorge_Ferreiro_August_2018_web_version.pdf'
+const RESUME_FILE_NAME = 'Jorge_Ferreiro_resume_april_2019.pdf'
 
 export const getResume = (req, res, next) => {
     const {download = false} = req.query;
