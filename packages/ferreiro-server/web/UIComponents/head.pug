@@ -57,23 +57,20 @@ link(rel='mask-icon', href='/favicons/safari-pinned-tab.svg', color='#d83902')
 meta(name='msapplication-TileColor', content='#9C2901')
 meta(name='msapplication-TileImage', content='/favicons/mstile-144x144.png')
 
-//- Loading async css
-//- https://stackoverflow.com/questions/32759272/how-to-load-css-asynchronously
-//- Removed async loading: , onload="if(media!='all')media='all'", type='text/css'
-
-link(rel='stylesheet', href='/css/style.min.css?v=3.5.3', type='text/css')
-link(rel='stylesheet', href='/fonts/ferreiro/style.css?v=3.5.3', type='text/css')
-
-// ASYNC CSS
-// NB: Vendors is just animation and a utility for comparing images that I use in the blog.
-// Also, the IonIcons are ones that are used in smaller parts of the apps
-// This should be async, since it's not the critical path.
+//- ASYNC CSS
+//- NB: Vendors is just animation and a utility for comparing images that I use in the blog.
+//- Also, the IonIcons are ones that are used in smaller parts of the apps
+//- This should be async, since it's not the critical path.
 link(rel='preload', href='/vendors/vendors.min.css?v=3.5.3', as='style', onload='this.rel=\'stylesheet\'')
 link(rel='preload', href='/bower_components/Ionicons/css/ionicons.min.css?v=3.5.3', as='style', onload='this.rel=\'stylesheet\'')
 
 noscript
   link(rel='stylesheet', href='/vendors/vendors.min.css?v=3.5.3', type='text/css')
   link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css?v=3.5.3', type='text/css')
+
+link(rel='stylesheet', href='/vendors/vendors.min.css?v=3.5.3', type='text/css')
+link(rel='stylesheet', href='/css/style.min.css?v=3.5.3', type='text/css')
+link(rel='stylesheet', href='/fonts/ferreiro/style.css?v=3.5.3', type='text/css')
 
 style.
 
