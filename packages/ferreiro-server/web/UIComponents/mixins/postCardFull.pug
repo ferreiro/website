@@ -7,9 +7,8 @@ mixin postCardFull(post)
 
     //- <img> is only for seo :). To set
     //- background, use background-image
-    .postCard__header.postCard__header-full.postCard__header-all-radius(src= post.pic)
+    .postCard__header.postCard__header-full.postCard__header-all-radius(class="lazy", data-src= post.pic)
       a(href= postUrl).postCard__header__link
-      img(src= post.pic).lazy
 
       if post.series
         a(href= '/blog/series/' + post.series.permalink).postCard__series

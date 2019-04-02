@@ -6,7 +6,7 @@ mixin talkCard(post)
     input(type="hidden", name="post_permalink", value= post.permalink)
     //- <img> is only for seo :). To set
     //- background, use background-image
-    .postCard__header.postCard__header-radiuses(src= post.pic, style="background-size: 100% auto; background-position: 50% 50%; background-repeat: no-repeat;")
+    .postCard__header.postCard__header-radiuses(class="lazy", data-src= post.pic, style="background-size: 100% auto; background-position: 50% 50%; background-repeat: no-repeat;")
       a(target="_blank", href= url).postCard__header__link
     .postCard__body
       h1.postCard__title
