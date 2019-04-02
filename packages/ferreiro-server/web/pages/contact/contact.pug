@@ -34,7 +34,7 @@ block content
             | Would you like to send me another? <br /><a href="/contact">Write new message</a>
 
           center
-            img#contactLoader.loaderIcon(class="lazy", data-src="/images/loading.gif", width="30px", style="display: none;")
+            img#contactLoader.loaderIcon(src="/images/loading.gif", width="30px", style="display: none;")
 
           form.contact_form(action="/contact/send", method="post", autocomplete="off")#contactform
             input(value="/api/v1/contact", type="hidden", id="contactFormEndpoint")

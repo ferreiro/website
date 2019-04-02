@@ -9,7 +9,7 @@ mixin postCard(post)
 
     //- <img> is only for seo :). To set
     //- background, use background-image
-    .postCard__header.postCard__header-radiuses(class="lazy", data-src= post.pic)
+    .postCard__header.postCard__header-radiuses(src= post.pic)
       a(href= postUrl).postCard__header__link
 
       if post.series

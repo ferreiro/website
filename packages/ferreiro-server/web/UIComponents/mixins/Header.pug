@@ -56,7 +56,6 @@ mixin Header(data)
         }
         .fullHeader__image {
             background-size: #{layoverSizeMobile};
-            background-image: url(#{layoverImage});
             background-position: #{layoverPosition};
             background-repeat: no-repeat;
         }
@@ -85,7 +84,7 @@ mixin Header(data)
                         - alt = item.name ? item.name : ''
                         - image = isDark ? item.image.dark : item.image.light
                         - imageClassname = isDark ? 'companies__item companies__item__dark' : 'companies__item'
-                        <img class="#{imageClassname}" height="#{height}" src="#{image}" alt="#{alt}" />
+                        <img class="#{imageClassname} lazy" height="#{height}" data-src="#{image}" alt="#{alt}" />
 
                 each paragraph in paragraphs
                     if (paragraph.type === 'title' && paragraph.title !== null)
@@ -115,7 +114,7 @@ mixin Header(data)
                                 +experienceList(projects, '25px', isExperienceIconsDark)
                     else if paragraph.type === 'paragraphWithImage'
                         .fullHeader__paragraphWithImage
-                            .image.margin-right-1-5(style="background-image: url("+paragraph.image+")")
+                            .image.margin-right-1-5(data-src= paragraph.image, class="lazy")
                             p.fullHeader__paragraph !{paragraph.body}
                     else
                         p.fullHeader__paragraph !{paragraph.body}
@@ -132,4 +131,4 @@ mixin Header(data)
                                 span.text(style='color:' + color + ';')= button.text
 
             if hasImage === true
-                .fullHeader__image
+                .fullHeader__image.lazy(data-src= layoverImage)
