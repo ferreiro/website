@@ -68,6 +68,17 @@ script(src="/bower_components/jquery/dist/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js")
 
 //- Orther matters here
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+
+script.
+  $(function() {
+      $('.lazy').lazy({
+        effect: "fadeIn",
+        effectTime: 500,
+        threshold: 1000
+      });
+  });
+
 script(src="/vendors/vendors.min.js?v=3.0.0")
 
 script(src="/js/commun.main.min.js?v=3.0.0", async)

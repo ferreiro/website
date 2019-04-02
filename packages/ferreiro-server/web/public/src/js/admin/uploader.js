@@ -10,8 +10,8 @@ setupImageUploader({
     image.attr('src', data.permalink)
     imageInput.attr('value', data.permalink)
   },
-  error: function (loader, form) {
-    window.alert('Can not upload the image', error )
+  error: function (error, loader, form) {
+    window.alert('Can not upload the image', error)
   },
   always: function (loader, form) {
     loader.hide()
@@ -37,7 +37,7 @@ setupImageUploader({
       $('#imageUploaderWrapper').fadeIn(0)
     })
   },
-  error: function (loader, form) {
+  error: function (error, loader, form) {
     window.alert('Can not upload the image', error )
   },
   always: function (loader, form) {
@@ -88,8 +88,7 @@ function setupImageUploader(opts) {
       })
       .fail(function (error) {
         if (errorCallback) {
-          errorCallback(
-            uploaderLoader, uploaderForm)
+          errorCallback(error, uploaderLoader, uploaderForm)
         }
       })
       .always(function () {

@@ -68,7 +68,7 @@ block content
               .project.shadow__box
 
                 .project_bg
-                  if project.background
+                  //- if project.background
                     .project_bg_image(style="background-image:url(" + project.background + ");")
                   if project.color
                     .project_bg_solid(style="background-color:" + project.color.hex + ";")
@@ -77,7 +77,7 @@ block content
                 .project_header
                   .project_header_left
                     if project.avatar
-                      .project_header_avatar(style="background-image:url(" + project.avatar + ");")
+                      .project_header_avatar(data-src= project.avatar, class="lazy", style="background-color: rgba(0, 0, 0, 0.1);")
                   .project_header_right
                     .project_header_data
                       if project.title
@@ -90,15 +90,6 @@ block content
                         a.project_header_date #{project.date}
 
                   .project_header_right
-
-                    //- //- Project Body
-                    //- if project.links
-                    //-   .project_links
-                    //-     if project.links.website
-                    //-       a(href="#{project.links.website}", target="_blank").project_links_website(style="border-color:#{project.color}; color:#{project.color};") Website
-                    //-     if project.links.code
-                    //-       a(href="#{project.links.code}", target="_blank").project_links_code Code
-
                     .project_header_share
                       span.icon-share
 
@@ -115,7 +106,7 @@ block content
                       .project_gallery_list
                         //- .owl-carousel
                         for image in project.images
-                          .project_gallery_entry(style="background-image: url(" + image.small + ");")
+                          .project_gallery_entry(data-src= image.small, class="lazy", style="background-color: rgba(0, 0, 0, .1);")
                             input.bigImage(type="hidden", value= image.large, name="bigImage")
 
                         //- Ghost offset of the size of right gradient.
@@ -138,7 +129,7 @@ block content
                         each person in project.people.entries
                           li.project_people_entry
                             a(href= person.url, target="_blank").project_people_link
-                              img(src= person.avatar).project_people_entry_avatar
+                              img(data-src= person.avatar, class="lazy").project_people_entry_avatar
                               span.project_people_title= person.name
 
                   if project.highlights
@@ -168,7 +159,7 @@ block content
                         for technology in project.stack
                           li.project_stack_entry
                             if technology == "phonegap"
-                              img(src="/images/projects/phonegap.svg", style="opacity: 0.6; width:24px;")
+                              img(data-src="/images/projects/phonegap.svg", class="lazy", style="opacity: 0.6; width:24px;")
                             else if technology == "bower"
                               i(class="cbp-ig-icon devicon-bower-line")
                             else if technology == "less"
