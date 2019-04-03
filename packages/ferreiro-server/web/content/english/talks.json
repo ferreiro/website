@@ -10,6 +10,30 @@
   },
   "pastTalks": [
     {
+      "title": "Web Perfomance: Expectations Vs Reality - JSRoundabout by Jorge Ferreiro - #TwitterPerf",
+      "summary": "“Why is my website slow?”, “How can I improve the loading time?”, “How does the browser render a website?”, “What techniques can I apply to boost the speed of my website?”.",
+      "permalink": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_web_perfomance_expectations_vs_reality.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "April, 2th 2019",
+      "location": {
+        "venue": "Twitter London",
+        "city": "London"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout"
+        }
+      ]
+    },
+    {
       "title": "#futuroFiumers - Los 10 consejos para lanzar tu carrera en tecnología",
       "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
       "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
