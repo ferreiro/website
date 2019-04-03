@@ -9,6 +9,7 @@ const SHORT_URL_TO_URL = {
     perfomance: 'https://www.ferreiro.me/blog/speed-up-your-website-frontend-8-practical-tips',
     redis: 'https://www.slideshare.net/jgferreiro/redis-76234580?qid=4408d51d-497d-44b1-8a7a-b688dbd51f83&v=&b=',
     roundabout: 'https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout',
+    'roundabout-feedback': 'https://forms.gle/8uiSR2wz2VEs8qp47',
     dailyfocus: 'https://www.slideshare.net/jgferreiro/redis-76234580?qid=4408d51d-497d-44b1-8a7a-b688dbd51f83&v=&b='
 }
 
