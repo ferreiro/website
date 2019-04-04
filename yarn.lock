@@ -2271,9 +2271,9 @@ expect-ct@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/expect-ct/-/expect-ct-0.1.1.tgz#de84476a2dbcb85000d5903737e9bc8a5ba7b897"
 
-express-recaptcha@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/express-recaptcha/-/express-recaptcha-3.0.1.tgz#6ff6b6e6ed43e6ef78643f56e3aa8ffe280394c8"
+express-recaptcha@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/express-recaptcha/-/express-recaptcha-4.2.0.tgz#f5a66af3d65b6f9a52eb0fdee5d785914f071f57"
 
 express-session@^1.15.6:
   version "1.15.6"

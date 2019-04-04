@@ -48,7 +48,7 @@
     "cookie-parser": "^1.4.4",
     "debug": "^3.1.0",
     "express": "^4.16.1",
-    "express-recaptcha": "^3.0.0",
+    "express-recaptcha": "^4.2.0",
     "express-session": "^1.15.6",
     "force-ssl-heroku": "^1.0.2",
     "helmet": "^3.15.1",
