@@ -1,3 +1,5 @@
+const TIME_MILISECONDS_TO_OPEN_POPUP = 30000
+
 setupPopup()
 
 function setupPopup() {
@@ -17,7 +19,7 @@ function setupPopup() {
   } else {
     // Only autodisplay if the user has not subscribed in this browser
     if (!localStorage.userSubscribed || localStorage.userSubscribed === "false") {
-      setupScrollEvents(popup, popupBackground, popupWrapper)
+      setupOpenScrollbarAfterSeconds(popup, popupBackground, popupWrapper)
     }
   }
 
@@ -35,6 +37,12 @@ function setupPopup() {
   })
 }
 
+function setupOpenScrollbarAfterSeconds (popup, popupBackground, popupWrapper) {
+  setTimeout(function () {
+    showPopup(popup, popupBackground, popupWrapper)
+  }, TIME_MILISECONDS_TO_OPEN_POPUP)
+}
+
 function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
   const button = $('.openNewsletterSubscription')
   button.click(function (event) {
@@ -43,7 +51,10 @@ function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
   })
 }
 
-function setupScrollEvents (popup, popupBackground, popupWrapper) {
+// NB: No longer used. This was really annoying.
+// This opens the popup based on the current scrollbar position
+// so at certain height, the popup is opened.
+function setupOpenOnScrollbarPosition (popup, popupBackground, popupWrapper) {
   const breakpointItem = $('#showNewsletterBreakPoint')
   let popup_displayed = false
 

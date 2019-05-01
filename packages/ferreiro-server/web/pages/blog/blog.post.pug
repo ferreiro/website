@@ -34,7 +34,16 @@ block extraCss
 
 block extraScripts
   script(src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst", async)
-  script(src="/js/blog.main.min.js", async)
+  script(src="/js/blog.main.min.js?v=3.6.0", async)
+
+  script.
+    $(function() {
+      $('img').lazy({
+        effect: "fadeIn",
+        effectTime: 500,
+        threshold: 1000
+      });
+    });
 
   //- script(src="/vendors/jquery.toc.min.js")
   //- script.
