@@ -196,10 +196,8 @@ const start = (options) => (
     })
 )
 
-const SitemapGenerator = () => {
-    return {
-        start,
-    }
+const SitemapGenerator = {
+    start,
 }
 
 module.exports = SitemapGenerator
