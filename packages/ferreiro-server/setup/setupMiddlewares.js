@@ -11,47 +11,11 @@ const rateLimit = require('express-rate-limit');
 
 const crawlersRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 15 // limit each IP to 100 requests per windowMs
+  max: 15 // limit each IP to 15 requests per windowMs
 });
 
 // TODO: Move to it's own repository and deploy...
 const sitemapGenerator = require('../../fancy-sitemap/index')
-const sitemap = sitemapGenerator({
-    hostname: process.env.NODE_ENV === 'DEV' ? 'localhost:3000' : 'https://www.ferreiro.me',
-    path: 'sitemap.xml',
-    maxCacheDays: 10,
-    stripQuerystring: false,
-    filepath: 'sitemap.xml',
-    defaultPriority: 0.8,
-    defaultChangeFreq: 'yearly',
-    rules: [
-      {
-        path: '/$',
-        changeFreq: 'monthly',
-        priority: 1,
-      },
-      {
-        path: '/about$',
-        changeFreq: 'monthly',
-        priority: 1,
-      },
-      {
-        path: '/blog$',
-        changeFreq: 'monthly',
-        priority: 1,
-      },
-      {
-        path: '/blog/*',
-        changeFreq: 'monthly',
-        priority: 0.9,
-      },
-      {
-        path: '/talks$',
-        changeFreq: 'monthly',
-        priority: 1,
-      },
-    ],
-})
 
 const env = require('../env')
 
@@ -68,13 +32,44 @@ module.exports = (app) => {
   })
 
   app.get('/sitemap.xml', crawlersRateLimit, (req, res) => {
-    // TODO: Extend the library (or maybe here)
-    // to get a cached version of the file...
-
-    // TODO: Once we get the file returned, we can save it here...
-
-    sitemap
-      .start()
+    // TODO: Move the sitemap configuration to it's own file...
+    sitemapGenerator
+      .start({
+        hostname: process.env.NODE_ENV === 'DEV' ? 'localhost:3000' : 'https://www.ferreiro.me',
+        path: 'sitemap.xml',
+        maxCacheDays: env.MAX_CACHE_DAYS_SITEMAP || 0,
+        stripQuerystring: false,
+        filepath: 'sitemap.xml',
+        defaultPriority: 0.8,
+        defaultChangeFreq: 'yearly',
+        rules: [
+          {
+            path: '/$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+          {
+            path: '/about$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+          {
+            path: '/blog$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+          {
+            path: '/blog/*',
+            changeFreq: 'monthly',
+            priority: 0.9,
+          },
+          {
+            path: '/talks$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+        ],
+      })
       .then((sitemap) => {
         res.header('Content-Type', 'application/xml');
         return res.send(sitemap)

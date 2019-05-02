@@ -132,7 +132,15 @@ const getFileXmlSitemap = (path) => (
     ))
 )
 
-const _start = (options) => (
+const start = (options) => (
+    // TODO: Check validity of the options object.
+    // Example: hostname is provided and required!
+
+    // TODO: Also check if user default values are valid:
+    // priority should be [0-1]
+    // changeFreq should be one of the constants above
+    // otherwise, sets the default values: DEFAULT_CHANGE_FREQ and DEFAULT_PRIORITY
+
     new Promise(async (resolve, reject) => {
         const {maxCacheDays} = options;
 
@@ -188,17 +196,9 @@ const _start = (options) => (
     })
 )
 
-const SitemapGenerator = (options) => {
-    // TODO: Check validity of the options object.
-    // Example: hostname is provided and required!
-
-    // TODO: Also check if user default values are valid:
-    // priority should be [0-1]
-    // changeFreq should be one of the constants above
-    // otherwise, sets the default values: DEFAULT_CHANGE_FREQ and DEFAULT_PRIORITY
-
+const SitemapGenerator = () => {
     return {
-        start: () => _start(options)
+        start,
     }
 }
 
