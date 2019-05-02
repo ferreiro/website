@@ -7,6 +7,43 @@ const helmet = require('helmet')
 const session = require('express-session')
 const express = require('express')
 const compression = require('compression')
+// TODO: Move to it's own repository and deploy...
+const sitemapGenerator = require('../../fancy-sitemap/index')
+const sitemap = sitemapGenerator({
+    hostname: process.env.NODE_ENV === 'DEV' ? 'localhost:3000' : 'https://www.ferreiro.me',
+    path: 'sitemap.xml',
+    stripQuerystring: false,
+    filepath: 'sitemap.xml',
+    defaultPriority: 0.8,
+    defaultChangeFreq: 'yearly',
+    rules: [
+      {
+        path: '/$',
+        changeFreq: 'monthly',
+        priority: 1,
+      },
+      {
+        path: '/about$',
+        changeFreq: 'monthly',
+        priority: 1,
+      },
+      {
+        path: '/blog$',
+        changeFreq: 'monthly',
+        priority: 1,
+      },
+      {
+        path: '/blog/*',
+        changeFreq: 'monthly',
+        priority: 0.9,
+      },
+      {
+        path: '/talks$',
+        changeFreq: 'monthly',
+        priority: 1,
+      },
+    ],
+})
 
 const env = require('../env')
 
@@ -21,8 +58,22 @@ module.exports = (app) => {
   app.get('/robots.txt', (req, res) => {
     res.sendFile(path.join(__dirname + '/../robots.txt'))
   })
+
   app.get('/sitemap.xml', (req, res) => {
-    res.sendFile(path.join(__dirname + '/../sitemap.xml'))
+    // TODO: Extend the library (or maybe here)
+    // to get a cached version of the file...
+
+    // TODO: Once we get the file returned, we can save it here...
+
+    sitemap
+      .start()
+      .then((sitemap) => {
+        res.header('Content-Type', 'application/xml');
+        return res.send(sitemap)
+      })
+      .catch((error) => (
+        res.status(500).send(error).end()
+      ))
   })
 
   // Serve static bower: http://goo.gl/e2nTBf
