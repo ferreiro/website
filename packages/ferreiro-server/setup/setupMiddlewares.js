@@ -38,7 +38,7 @@ module.exports = (app) => {
         hostname: process.env.NODE_ENV === 'DEV' ? 'localhost:3000' : 'https://www.ferreiro.me',
         path: 'sitemap.xml',
         maxCacheDays: env.MAX_CACHE_DAYS_SITEMAP || 0,
-        stripQuerystring: false,
+        stripQuerystring: true,
         filepath: 'sitemap.xml',
         defaultPriority: 0.8,
         defaultChangeFreq: 'yearly',

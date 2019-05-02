@@ -32,7 +32,7 @@ const runCrawler = (options) => {
     // NB: We use SitemapCrawler generator to create all the sitemap tree.
     // filepath should be null, so it doesn't generate an xml file.
     const crawlerOptions = {
-        stripQuerystring: options.stripQuerystring || false,
+        stripQuerystring: options.stripQuerystring || true,
         filepath: null,
     }
 
