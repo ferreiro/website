@@ -9,7 +9,7 @@ const express = require('express')
 const compression = require('compression')
 const rateLimit = require('express-rate-limit');
 
-const sitemapLimit = rateLimit({
+const crawlersRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10 // limit each IP to 100 requests per windowMs
 });
@@ -62,11 +62,11 @@ module.exports = (app) => {
   app.use(compression())
 
   // Search engines
-  app.get('/robots.txt', (req, res) => {
+  app.get('/robots.txt', crawlersRateLimit, (req, res) => {
     res.sendFile(path.join(__dirname + '/../robots.txt'))
   })
 
-  app.get('/sitemap.xml', sitemapLimit, (req, res) => {
+  app.get('/sitemap.xml', crawlersRateLimit, (req, res) => {
     // TODO: Extend the library (or maybe here)
     // to get a cached version of the file...
 
