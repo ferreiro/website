@@ -1,5 +1,4 @@
 import fs from 'fs';
-import {isEmpty} from 'lodash';
 
 const SitemapCrawler = require('sitemap-generator');
 const Generator = require('sitemap')

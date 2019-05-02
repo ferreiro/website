@@ -7,6 +7,13 @@ const helmet = require('helmet')
 const session = require('express-session')
 const express = require('express')
 const compression = require('compression')
+const rateLimit = require('express-rate-limit');
+
+const sitemapLimit = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10 // limit each IP to 100 requests per windowMs
+});
+
 // TODO: Move to it's own repository and deploy...
 const sitemapGenerator = require('../../fancy-sitemap/index')
 const sitemap = sitemapGenerator({
@@ -59,7 +66,7 @@ module.exports = (app) => {
     res.sendFile(path.join(__dirname + '/../robots.txt'))
   })
 
-  app.get('/sitemap.xml', (req, res) => {
+  app.get('/sitemap.xml', sitemapLimit, (req, res) => {
     // TODO: Extend the library (or maybe here)
     // to get a cached version of the file...
 
