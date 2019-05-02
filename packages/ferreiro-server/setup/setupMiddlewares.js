@@ -11,7 +11,7 @@ const rateLimit = require('express-rate-limit');
 
 const crawlersRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10 // limit each IP to 100 requests per windowMs
+  max: 15 // limit each IP to 100 requests per windowMs
 });
 
 // TODO: Move to it's own repository and deploy...
@@ -19,6 +19,7 @@ const sitemapGenerator = require('../../fancy-sitemap/index')
 const sitemap = sitemapGenerator({
     hostname: process.env.NODE_ENV === 'DEV' ? 'localhost:3000' : 'https://www.ferreiro.me',
     path: 'sitemap.xml',
+    maxCacheDays: 10,
     stripQuerystring: false,
     filepath: 'sitemap.xml',
     defaultPriority: 0.8,

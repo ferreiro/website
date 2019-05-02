@@ -1,4 +1,6 @@
 import fs from 'fs';
+import util from 'util';
+import moment from 'moment';
 
 const SitemapCrawler = require('sitemap-generator');
 const Generator = require('sitemap')
@@ -31,7 +33,7 @@ const runCrawler = (options) => {
     // filepath should be null, so it doesn't generate an xml file.
     const crawlerOptions = {
         stripQuerystring: options.stripQuerystring || false,
-        filepath: options.filepath || null,
+        filepath: null,
     }
 
     const crawler = SitemapCrawler(hostname, crawlerOptions);
@@ -91,8 +93,70 @@ const generateXmlSitemap = (options, generatedUrls = []) => {
     })
 }
 
+const createSitemapFile = (path, fileContent) => (
+    new Promise((resolve, reject) => (
+        fs.writeFile(path, fileContent, (err) => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve();
+        })
+    ))
+)
+
+const shouldReturnCachedFile = (path, maxCacheDays) => (
+    new Promise((resolve, reject) => (
+        fs.stat(path, (err, stats) => {
+            if (err) {
+                return resolve(false)
+            }
+
+            const today = moment(new Date(), 'YYYY-MM-DD')
+            const fileModifiedDate = moment(new Date(util.inspect(stats.mtime)), 'YYYY-MM-DD')
+            const creationDays = moment.duration(today.diff(fileModifiedDate)).asDays()
+
+            return resolve(parseInt(creationDays) < maxCacheDays)
+        })
+    ))
+)
+
+const getFileXmlSitemap = (path) => (
+    new Promise((resolve, reject) => (
+        fs.readFile(path, (error, fileContent) => {
+            if (error) {
+                return reject(error)
+            }
+
+            return resolve(fileContent)
+        })
+    ))
+)
+
 const _start = (options) => (
     new Promise(async (resolve, reject) => {
+        const {maxCacheDays} = options;
+
+        // TODO: Clean this logic... Probably put it inside a method?
+        if (maxCacheDays && maxCacheDays > 0) {
+            const {path} = options;
+
+            try {
+                const hasCachedFile = await shouldReturnCachedFile(path, maxCacheDays)
+
+                if (hasCachedFile) {
+                    const fileXmlSitemap = await getFileXmlSitemap(path);
+                    return resolve(fileXmlSitemap);
+                }
+
+                // SKIP Cached version: Generate the file again
+            } catch (error) {
+                console.log('Trying to get file from cached failed...')
+                console.log('error', error)
+                // SKIP Cached version: Generate the file again
+            }
+        }
+
+        // Generate file...
         let urls;
         let errors;    
 
@@ -109,12 +173,10 @@ const _start = (options) => (
             const {path} = options;
 
             if (path) {
-                fs.writeFile(path, generatedXmlSitemap, (err) => {
-                    if (err) {
-                        throw err;
-                    }
-                    return resolve(generatedXmlSitemap);
-                });
+                // NB: If it returns an error, we don't care.
+                await createSitemapFile(path, generatedXmlSitemap);
+
+                return resolve(generatedXmlSitemap);
             } else {
                 return resolve(generatedXmlSitemap);
             }
@@ -123,7 +185,6 @@ const _start = (options) => (
             console.log(error)
             return reject(error);
         }
-
     })
 )
 
@@ -135,10 +196,6 @@ const SitemapGenerator = (options) => {
     // priority should be [0-1]
     // changeFreq should be one of the constants above
     // otherwise, sets the default values: DEFAULT_CHANGE_FREQ and DEFAULT_PRIORITY
-    
-    // TOOD: If hasCacheActivated
-    // 1) Read the file...
-    // 2) Check last time generated the file...
 
     return {
         start: () => _start(options)
