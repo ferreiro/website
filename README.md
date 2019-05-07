@@ -1,17 +1,19 @@
 # Jorge Ferreiro website
 
+Open source project that runs the website for Jorge Ferreiro, including the blog and the admin panel.
+
+**Features:**
+
+- Blog.
+- Adming panel.
+- Projects/Portfolio.
+- Contact form.
+- Subscription modal with Mailchimp.
+- Image uploader with AWS.
+
 ![](./ferreiro.png)
 
 **Disclaimer:** This documentation is a Work In Progress.
-
-## Project description
-
-[WIP] TO be added
-
-
-## Screenshots
-
-[WIP] TO be added
 
 ## Cross browser testing with BrowserStack
 
@@ -19,7 +21,7 @@
 
 The blog post is getting thousands of readers. In order to make sure that we are able to offer the best possible experience across multiple devices we have teamed up with BrowserStack, a really powerful tool for performing cross browser testing.
 
-## Env variables
+## Run the server
 
 We have all the configuration for beta and prod inside `./env/index.js`, there we load 2 files, the production or the development.
 
@@ -89,61 +91,3 @@ V3, level up Jorge Ferreiro: The content has arrived.
 
 ### Version 1 (Early 2016 - Sep 25, 2016)
 
-
-## Biography types
-
-I created a system to define my own datatypes so the view can parse and behave differently given the data type.
-
-Attributes:
-
-* icon*: the name of the icon
-* body*: text or description of the entry.
-* type: my own data types for each entry in the description.
-  * entry: a single line.
-  * bullets: 1 or more entries.
-  * warning: a special type, when you want to highlight something on your entry.
-    Warnings have extra attributes:
-    
-```js
-link: {
-  url: "http://test.dailyfocus.io",
-  target: "blank"
-}
-```
-
-(*) means this attribute can be nullable. In this case, just set the value to null.
-
-``` js
-description: [
-  {
-    type: "warning",
-    icon: null,
-    body: "Test out my work! http://test.dailyfocus.io",
-    link: {
-      url: "http://test.dailyfocus.io",
-      target: "blank"
-    }
-  },
-  {
-    type: "entry",
-    icon: "ion-chatbox-working",
-    body: "Bachelor's degree in Computer Science."
-  },
-  {
-    type: "bullets",
-    icon: null,
-    body: [
-      {
-        type: "entry",
-        icon: "ion-chatbox-working",
-        body: "CS 61BL: Data Structures and Programming Methodology."
-      },
-      {
-        type: "entry",
-        icon: null,
-        body: "COLWRIT 9: Conflict Resolution and Communication Skills."
-      }
-    ]
-  }
-]
-```
