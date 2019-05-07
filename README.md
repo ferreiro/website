@@ -1,6 +1,8 @@
 # Jorge Ferreiro website
 
-Disclaimer: This README has some notes, but it's not fully documented yet.
+![](./ferreiro.png)
+
+**Disclaimer:** This documentation is a Work In Progress.
 
 ## Project description
 
@@ -16,9 +18,6 @@ Disclaimer: This README has some notes, but it's not fully documented yet.
 <img src="https://i1.wp.com/www.diogonunes.com/blog/wp-content/uploads/2016/07/browserstack-logo.png?resize=840%2C276" width="200px" style="float: left;" />
 
 The blog post is getting thousands of readers. In order to make sure that we are able to offer the best possible experience across multiple devices we have teamed up with BrowserStack, a really powerful tool for performing cross browser testing.
-
-
-
 
 ## Env variables
 
