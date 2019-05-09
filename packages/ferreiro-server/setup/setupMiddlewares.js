@@ -55,7 +55,7 @@ module.exports = (app) => {
           },
           {
             path: '/blog$',
-            changeFreq: 'monthly',
+            changeFreq: 'weekly',
             priority: 1,
           },
           {
