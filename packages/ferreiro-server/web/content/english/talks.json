@@ -10,6 +10,30 @@
   },
   "pastTalks": [
     {
+      "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp #adalabGithub @Google Campus Madrid",
+      "summary": "Why I ❤️ Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
+      "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_creating_github_profile_like_pro.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "May, 7th 2019",
+      "location": {
+        "venue": "London",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid"
+        }
+      ]
+    },
+    {
       "title": "Web Perfomance: Expectations Vs Reality - JSRoundabout by Jorge Ferreiro - #TwitterPerf",
       "summary": "“Why is my website slow?”, “How can I improve the loading time?”, “How does the browser render a website?”, “What techniques can I apply to boost the speed of my website?”.",
       "permalink": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout",
