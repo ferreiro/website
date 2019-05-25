@@ -6,11 +6,12 @@ const router = express.Router()
 // TODO: Move this into a database and let the admin of ferreiro.me to
 // create more urls as they need on the go
 const SHORT_URL_TO_URL = {
+    dailyfocus: 'https://www.slideshare.net/jgferreiro/redis-76234580?qid=4408d51d-497d-44b1-8a7a-b688dbd51f83&v=&b=',
     perfomance: 'https://www.ferreiro.me/blog/speed-up-your-website-frontend-8-practical-tips',
+    rahma: 'https://www.youtube.com/playlist?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
     redis: 'https://www.slideshare.net/jgferreiro/redis-76234580?qid=4408d51d-497d-44b1-8a7a-b688dbd51f83&v=&b=',
     roundabout: 'https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout',
-    'roundabout-feedback': 'https://forms.gle/8uiSR2wz2VEs8qp47',
-    dailyfocus: 'https://www.slideshare.net/jgferreiro/redis-76234580?qid=4408d51d-497d-44b1-8a7a-b688dbd51f83&v=&b='
+    'roundabout-feedback': 'https://forms.gle/8uiSR2wz2VEs8qp47'
 }
 
 const MOVED_PERMANETLY_STATUS_CODE = 301
