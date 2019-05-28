@@ -1,0 +1,23 @@
+{
+  "name": "fancy-sitemap",
+  "description": "PUT A FANCY DESCRIPTION",
+  "homepage": "http://www.github.com/ferreiro/fancy-sitemap",
+  "version": "0.0.9",
+  "private": false,
+  "license": "MIT",
+  "keywords": [],
+  "author": {
+    "name": "Jorge Ferreiro",
+    "email": "jorge@ferreiro.me",
+    "url": "https://www.ferreiro.me/"
+  },
+  "scripts": {
+    "start": ""
+  },
+  "dependencies": {
+    "lodash": "4.17.11",
+    "sitemap": "2.1.0",
+    "sitemap-generator": "8.3.3"
+  },
+  "devDependencies": {}
+}

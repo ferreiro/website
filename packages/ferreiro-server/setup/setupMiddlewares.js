@@ -7,6 +7,15 @@ const helmet = require('helmet')
 const session = require('express-session')
 const express = require('express')
 const compression = require('compression')
+const rateLimit = require('express-rate-limit');
+
+const crawlersRateLimit = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 15 // limit each IP to 15 requests per windowMs
+});
+
+// TODO: Move to it's own repository and deploy...
+const sitemapGenerator = require('../../fancy-sitemap/index')
 
 const env = require('../env')
 
@@ -18,11 +27,56 @@ module.exports = (app) => {
   app.use(compression())
 
   // Search engines
-  app.get('/robots.txt', (req, res) => {
+  app.get('/robots.txt', crawlersRateLimit, (req, res) => {
     res.sendFile(path.join(__dirname + '/../robots.txt'))
   })
-  app.get('/sitemap.xml', (req, res) => {
-    res.sendFile(path.join(__dirname + '/../sitemap.xml'))
+
+  app.get('/sitemap.xml', crawlersRateLimit, (req, res) => {
+    // TODO: Move the sitemap configuration to it's own file...
+    sitemapGenerator
+      .start({
+        hostname: process.env.NODE_ENV === 'DEV' ? 'localhost:3000' : 'https://www.ferreiro.me',
+        path: 'sitemap.xml',
+        maxCacheDays: env.MAX_CACHE_DAYS_SITEMAP || 0,
+        stripQuerystring: true,
+        filepath: 'sitemap.xml',
+        defaultPriority: 0.8,
+        defaultChangeFreq: 'yearly',
+        rules: [
+          {
+            path: '/$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+          {
+            path: '/about$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+          {
+            path: '/blog$',
+            changeFreq: 'weekly',
+            priority: 1,
+          },
+          {
+            path: '/blog/*',
+            changeFreq: 'monthly',
+            priority: 0.9,
+          },
+          {
+            path: '/talks$',
+            changeFreq: 'monthly',
+            priority: 1,
+          },
+        ],
+      })
+      .then((sitemap) => {
+        res.header('Content-Type', 'application/xml');
+        return res.send(sitemap)
+      })
+      .catch((error) => (
+        res.status(500).send(error).end()
+      ))
   })
 
   // Serve static bower: http://goo.gl/e2nTBf

@@ -5,6 +5,7 @@ module.exports = {
   ADMIN_EMAIL: process.env.ADMIN_EMAIL,
   ADMIN_PASS: process.env.ADMIN_PASS,
   MAILCHIMP_API_TOKEN: process.env.MAILCHIMP_API_TOKEN,
+  MAX_CACHE_DAYS_SITEMAP: process.env.MAX_CACHE_DAYS_SITEMAP,
 
   // AMAZON WEB SERVICES
   S3_REGION: process.env.S3_REGION,
