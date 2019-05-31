@@ -1,16 +1,38 @@
 {
   "name": "@ferreiro/client",
-  "version": "1.0.0",
-  "private": false,
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "start:dev": "webpack-dev-server --mode development",
+    "start": "yarn build"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
   "dependencies": {
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "5.0.0",
     "@ferreiro/design-system": "1.0.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev": "yarn start"
-  },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "7.4.3",
+    "@babel/preset-env": "7.4.3",
+    "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.5",
+    "copy-webpack-plugin": "5.0.2",
+    "css-loader": "2.1.1",
+    "imagemin-webpack-plugin": "2.4.2",
+    "mini-css-extract-plugin": "0.6.0",
+    "node-sass": "4.11.0",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
+    "postcss-loader": "3.0.0",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.1",
+    "webpack": "4.30.0",
+    "webpack-cli": "3.3.0",
+    "webpack-dev-server": "3.3.1"
+  }
 }
