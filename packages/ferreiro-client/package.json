@@ -8,8 +8,14 @@
     "start:dev": "webpack-dev-server --mode development",
     "start": "yarn build"
   },
+  "author": {
+    "name": "Jorge Ferreiro",
+    "email": "jorge@ferreiro.me",
+    "url": "https://www.ferreiro.me/"
+  },
   "engines": {
-    "node": ">=10.16.0"
+    "node": "10.16.x",
+    "yarn": "1.x"
   },
   "dependencies": {
     "react": "16.8.6",

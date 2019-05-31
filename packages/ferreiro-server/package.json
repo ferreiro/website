@@ -5,6 +5,10 @@
   "version": "4.0.0",
   "private": false,
   "license": "MIT",
+  "engines": {
+    "node": "10.16.x",
+    "yarn": "1.x"
+  },
   "keywords": [
     "software engineer",
     "programmer",
@@ -15,9 +19,6 @@
     "eventbrite",
     "amazon"
   ],
-  "engines": {
-    "node": ">=8.0.0"
-  },
   "author": {
     "name": "Jorge Ferreiro",
     "email": "jorge@ferreiro.me",
