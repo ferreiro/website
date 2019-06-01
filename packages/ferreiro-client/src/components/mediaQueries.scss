@@ -1,0 +1,39 @@
+@import './variables.scss';
+
+@mixin mobile {
+    @media all and (max-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media all and (min-width: $tablet) and (max-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media all and (min-width: $desktop) and (max-width: $desktop-large) {
+        @content;
+    }
+}
+
+@mixin desktop-down {
+    @media all and (max-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media all and (min-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-large {
+    @media all and (min-width: $desktop-large) {
+        @content;
+    }
+}
+
+    

@@ -34,7 +34,7 @@ module.exports = (app) => {
   }))
   // NB: We generate this from the web client. It contains
   // the react bundles...
-  app.use(express.static(path.join(__dirname, '../dst'), {
+  app.use(express.static(path.join(__dirname, '../dist'), {
     maxAge: process.env.NODE_ENV === 'production' ? '2h' : '10h'
   }))
   app.use('/bower_components', express.static(path.join(__dirname, '../bower_components'), {

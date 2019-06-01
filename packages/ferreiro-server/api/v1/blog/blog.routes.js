@@ -3,6 +3,29 @@ const router = express.Router()
 
 import {isAuthenticated} from '../../../web/pages/admin/is-authenticated'
 import seriesRepository from '../../../api/repository/series'
+import blogRepository from '../../../api/repository/blog'
+
+// TODO: Refactor and create specific methods
+const createBlogListJsonResponse = (posts) => ({
+  title: 'Blog',
+  intro: 'A blog by Jorge Ferreiro about Web Development, Career growth and life adventures.',
+  posts,
+})
+
+/**
+ * @api get /blog/series - Retrieves the list of series (published and unpublished)
+ * @required authentication
+ */
+router.get('/list', function (req, res) {
+  blogRepository.getAllPublished()
+      .then((posts) => (
+        res.json(
+          createBlogListJsonResponse(posts.docs)
+        )
+      ))
+      .catch(err => res.send(err))
+})
+
 
 /**
  * @api get /blog/series - Retrieves the list of series (published and unpublished)

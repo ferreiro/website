@@ -1,0 +1,24 @@
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 2em 0 2em; 
+
+    &__item {
+        list-style: none;
+        margin-left: 1em;
+        flex: 1 1 auto;
+
+        a {
+            display: block;
+            padding: 1em;
+        }
+    }
+
+    .selected {
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        width: calc(100% + 5px);
+        background: #f4f4f4;
+    }
+}

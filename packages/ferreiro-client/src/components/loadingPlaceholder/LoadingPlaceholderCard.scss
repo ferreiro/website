@@ -1,0 +1,9 @@
+@import '../variables.scss';
+@import '../mediaQueries.scss';
+
+.loading-placeholder-card {
+    background: #fff;
+    border-radius: $card-radius;
+    height: 260px;
+    margin-top: 25px;
+}
