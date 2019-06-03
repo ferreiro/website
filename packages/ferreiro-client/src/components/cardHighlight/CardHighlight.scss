@@ -18,6 +18,7 @@
 
     &__image {
         object-fit: cover;
+        object-position: center;
 
         @include desktop-down {
             width: 100%;

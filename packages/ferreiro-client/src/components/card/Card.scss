@@ -9,15 +9,23 @@
     @include desktop-down {
         flex-direction: column;
         margin-bottom: 1.5em;
+
+        border: 1px solid #e8e8e8;
+        border-radius: $card-radius;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,.05);
     }
 
     @include desktop-up {
         flex-direction: row;
         margin-bottom: 1.5em;
+        padding: 1em;
+        // 1: Aligning left images to highlight card
+        margin-left: -1em; // 1
     }
 
     &__image {
         object-fit: cover;
+        object-position: center;
 
         @include desktop-down {
             width: 100%;
@@ -30,8 +38,7 @@
             flex: 0 0 auto;
             width: 400px;
             height: 260px;
-            border-top-left-radius: $card-radius;
-            border-bottom-left-radius: $card-radius;
+            border-radius: $card-radius;
         }
     }
 

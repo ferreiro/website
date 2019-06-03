@@ -5,7 +5,7 @@ import './SidebarMenu.scss'
 
 export const SidebarMenu = ({
     onClick,
-    selectedPath,
+    selectedCategory,
     items,
 }) => {
     return (
@@ -13,14 +13,14 @@ export const SidebarMenu = ({
             {items.map(({
                 text,
                 icon,
-                path
+                path,
+                category
             }) => {
-                const classNames = path === selectedPath && 'selected'
+                const classNames = category === selectedCategory && 'selected'
 
                 return (
                     <li key={icon} className={`sidebar-menu__item ${classNames}`}>
                         <Link to={path}>
-                            {icon}
                             {text}
                         </Link>
                     </li>  

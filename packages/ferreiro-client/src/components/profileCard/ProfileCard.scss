@@ -1,0 +1,49 @@
+.profile-card {
+    padding: 2em 1.5em;
+    text-align: center;
+
+    &__image {
+        border-radius: 100%;
+    }
+
+    &__title {
+        margin: .5em 0;
+        font-weight: 600;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        margin-top: 2em;
+        padding: 0;
+    }
+
+    &__link {
+        list-style: none;
+        text-align: left;
+
+        &:last-child a {
+            // padding-bottom: 0;
+        }
+
+        a {
+            align-items: center;
+            display: flex;
+            width: 100%;
+            padding-bottom: .8em;
+
+            span {
+                flex: 0 0 auto;
+                border-radius: 100%;
+                border: 1px solid #585858;
+                padding: .3em;
+                margin-right: 1em;
+            }
+
+            p {
+                flex: 1 1 auto;
+            }
+        }
+    }
+}

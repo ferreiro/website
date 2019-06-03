@@ -1,13 +1,18 @@
 import React, {PureComponent} from 'react'
 
+import {Footer} from '../footer/Footer'
+
 import './LayoutWithSidebar.scss'
 
 export const LayoutWithSidebar = ({
     header,
     isHeaderFullWidth,
+    afterContent,
+    beforeContent,
     panel,
     content,
     contentHeader,
+    showFooter = true,
 }) => {
     class LayoutWithSidebar extends PureComponent {
         render() {
@@ -22,14 +27,26 @@ export const LayoutWithSidebar = ({
                     )}
 
                     <div className="layout-with-sidebar__wrapper">
-                        <div className="layout-with-sidebar__sidebar">
-                            {panel}
-                        </div>
+                        {panel && (
+                            <div className="layout-with-sidebar__sidebar">
+                                {panel}
+                            </div>
+                        )}
                         <div className="layout-with-sidebar__content">
-                            {contentHeader}
-                            {content}
+                            {beforeContent}
+
+                            <div className="layout-with-sidebar__content-wrapper">
+                                {contentHeader}
+                                {content}
+                            </div>
+
+                            {afterContent}
                         </div>
                     </div>
+
+                    {showFooter && (
+                        <Footer />
+                    )}
                 </div>
             )
         }

@@ -2,33 +2,36 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import LazyLoad from 'react-lazy-load'
 
-// import {Link} from '../atoms/link/Link'
+import './CardRelatedPost.scss'
 
-import './Card.scss'
 const DEFAULT_MAX_SUMMARY_LENGTH = 150
 
-export const Card = ({
-    permalink,
-    title,
-    summary = '',
+export const CardRelatedPost = ({
     maxSummaryLength = DEFAULT_MAX_SUMMARY_LENGTH,
-    image,
+    post,
 }) => {
+    const {
+        permalink,
+        pic,
+        summary,
+        title,
+    } = post
+
     const summaryShortened = summary.substr(0, maxSummaryLength)
 
     return (
         <Link
             to={permalink}
         >
-            <div className="card">
+            <div className="card-related-post">
                 <LazyLoad debounce={false}>
-                    <img className="card__image" src={image} alt={title} />
+                    <img className="card-related-post__image" src={pic} alt={title} />
                 </LazyLoad>
-                <div className="card__content">
-                    <h2 className="card__title">
+                <div className="card-related-post__content">
+                    <h2 className="card-related-post__title">
                         {title}
                     </h2>
-                    <p className="card__summary">
+                    <p className="card-related-post__summary">
                         {summaryShortened}
                     </p>
                 </div>

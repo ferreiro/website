@@ -1,0 +1,49 @@
+@import '../variables.scss';
+@import '../mediaQueries.scss';
+
+.card-related-post {
+    height: 100%;
+    background: #fff;
+    border-radius: $card-radius;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+    border: 1px solid #e8e8e8;
+    border-radius: $card-radius;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .05);
+
+    &__image {
+        object-fit: cover;
+        object-position: center;
+        height: 200px;
+        border-top-left-radius: $card-radius;
+        border-top-right-radius: $card-radius;
+        width: 100%;
+    }
+
+    &__content {
+        padding: 1em;
+        flex: 1 1 auto;
+    }
+
+    &__title {
+        @include desktop-down {
+            font-size: $font-size-title;
+            font-weight: 600;    
+        }
+
+        @include desktop-up {
+            max-width: 600px;
+            font-size: 1.3em;
+            line-height: 1.4em;
+            font-weight: 600;
+        }
+    }
+
+    &__summary {
+        margin-top: .7rem;
+        opacity: 0.7;
+        font-size: $font-size-paragraph;
+        line-height: $font-size-paragraph * 1.4;
+    }
+}

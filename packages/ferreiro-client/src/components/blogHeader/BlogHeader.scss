@@ -1,0 +1,58 @@
+@import '../mediaQueries.scss';
+
+.blog-header {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    @include mobile {
+        margin-bottom: 1.5em;
+    }
+
+    @include tablet {
+        margin-bottom: 2rem;
+    }
+
+    @include desktop-up {
+        margin: 1.5em 0 3em;
+    }
+
+    &__title {
+        color: #525252;
+        // font-family: "aktiv-grotesk", "sans-serif";
+
+        @include tablet-down {
+            font-size: 30px;
+        }
+
+        @include tablet {
+            font-size: 60px;
+        }
+
+        @include desktop-up {
+            font-size: 105px;
+        }
+    }
+
+    &__subtitle {
+        max-width: 700px;
+        color: #525252;
+        margin-top: 1rem;
+        // font-family: "aktiv-grotesk", "sans-serif";
+
+        @include tablet-down {
+            font-size: 18px;
+            margin-bottom: 1.5rem;
+        }
+
+        @include tablet {
+            font-size: 24px;
+            margin-bottom: 1.5rem;
+        }
+
+        @include desktop-up {
+            font-size: 30px;
+        }
+    }
+}
+

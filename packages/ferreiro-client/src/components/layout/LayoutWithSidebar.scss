@@ -11,6 +11,7 @@
     &__sidebar {
         background: #fff;
         min-height: 100vh;
+        z-index: 10;
 
         @include desktop-down {
             display: none;
@@ -24,22 +25,26 @@
     }
 
     &__content {
+        min-height: 100vh;
         flex: 1 1 auto;
-        padding: 1.5em;
 
-        @include tablet {
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        &-wrapper {
+            padding: 1.5em;
 
-        @include desktop {
-            padding: 1.5em 2em;
-        }
-
-        @include desktop-large {
-            padding: 1.5em 2em;
-            max-width: 1300px;
-            margin: 0 auto;
+            @include tablet {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+    
+            @include desktop {
+                padding: 1.5em 2em;
+            }
+    
+            @include desktop-large {
+                padding: 1.5em 2em;
+                max-width: 1300px;
+                margin: 0 auto;
+            }
         }
     }
 }
