@@ -384,9 +384,6 @@ export class BlogPost extends PureComponent {
     render() {
         const {isLoading, post} = this.state;
 
-        const afterContent = getAfterContent({
-            post,
-        });
         const blogPanel = getBlogPanel(post);
 
         const blogContent = getBlogPostContent({
@@ -394,6 +391,10 @@ export class BlogPost extends PureComponent {
             post: post
         })
     
+        const afterContent = getAfterContent({
+            post,
+        });
+
         return (
             <LayoutWithSidebar
                 afterContent={afterContent}

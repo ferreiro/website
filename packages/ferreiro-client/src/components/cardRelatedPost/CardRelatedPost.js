@@ -24,9 +24,11 @@ export const CardRelatedPost = ({
             to={permalink}
         >
             <div className="card-related-post">
-                <LazyLoad debounce={false}>
-                    <img className="card-related-post__image" src={pic} alt={title} />
-                </LazyLoad>
+                <div className="card-related-post__image">
+                    <LazyLoad debounce={false}>
+                        <img src={pic} alt={title} />
+                    </LazyLoad>
+                </div>
                 <div className="card-related-post__content">
                     <h2 className="card-related-post__title">
                         {title}

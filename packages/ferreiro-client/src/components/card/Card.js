@@ -21,9 +21,11 @@ export const Card = ({
             to={permalink}
         >
             <div className="card">
-                <LazyLoad debounce={false}>
-                    <img className="card__image" src={image} alt={title} />
-                </LazyLoad>
+                <div className="card__image">
+                    <LazyLoad debounce={false}>
+                        <img src={image} alt={title} />
+                    </LazyLoad>
+                </div>
                 <div className="card__content">
                     <h2 className="card__title">
                         {title}

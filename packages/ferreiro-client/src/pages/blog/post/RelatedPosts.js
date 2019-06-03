@@ -39,18 +39,16 @@ export class RelatedPosts extends PureComponent {
     }
 
     renderRelatedPosts = (posts) => (
-        <div className="post-related__items">
-            {posts.map((post) => (
-                <div
-                    className="post-related__item"
-                    key={post.permalink}
-                >
-                    <CardRelatedPost
-                        post={post}
-                    />
-                </div>
-            ))}
-        </div>
+        posts.map((post) => (
+            <div
+                className="post-related__item"
+                key={post.permalink}
+            >
+                <CardRelatedPost
+                    post={post}
+                />
+            </div>
+        ))
     )
 
     render() {
@@ -66,13 +64,15 @@ export class RelatedPosts extends PureComponent {
                             Related posts
                         </h3>
 
-                        {isLoading && (
-                            <p>Loading...</p>
-                        )}
-
-                        {relatedPosts.length > 0 && (
-                            this.renderRelatedPosts(relatedPosts)
-                        )}
+                        
+                        <div className="post-related__items">
+                            {isLoading && (
+                                <p>Loading...</p>
+                            )}
+                            {relatedPosts.length > 0 && (
+                                this.renderRelatedPosts(relatedPosts)
+                            )}
+                        </div>
                     </div>
                 </div>
             </Waypoint>

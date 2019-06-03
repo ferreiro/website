@@ -18,6 +18,7 @@
 
         @include desktop-up {
             flex-direction: row;
+            min-height: 370px;
         }
     }
 
