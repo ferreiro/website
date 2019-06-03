@@ -1,0 +1,14 @@
+export const SidebarNewsletterAd = () => (
+    <a
+        className="action_button openNewsletterSubscription margin-top-1"
+        href="/newsletter?source=blog"
+    >
+        <span
+            className="icon ion-ios-paper-outline"
+            style={{marginRight: '10px'}}
+        />
+        <span>
+            Subscribe to the blog
+        </span>
+    </a>
+)

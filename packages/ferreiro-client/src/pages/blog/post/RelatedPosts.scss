@@ -1,0 +1,35 @@
+@import '../../../components/mediaQueries.scss';
+
+.post-related {
+    // TODO: Generalize this style, the sharing block is also using this
+    background: rgb(237, 237, 237);
+    padding: 2em 0;
+    min-height: 300px;
+    display: block;
+
+    &__items {
+        align-items: stretch;
+        flex-wrap: wrap;
+        display: flex;
+
+        @include desktop-down {
+            flex-direction: column;
+        }
+
+        @include desktop-up {
+            flex-direction: row;
+        }
+    }
+
+    &__item {
+        flex: 1 1 auto;
+
+        @include desktop-up {
+            max-width: 33%;
+
+            .card-related-post {
+                margin: 0 .8em;
+            }
+        }
+    }
+}
