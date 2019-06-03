@@ -94,7 +94,7 @@ const createBlogContextBuilder = (req) => {
  * @param {*=} req.params.category - You can provide a post category to query
  */
 export const getBlogPosts = (req, res, next) => {
-  if (isReactEnabled(process.env)) {
+  if (isReactEnabled(req, process.env)) {
     return res.render(createViewPath('blog', 'blog.react.pug'), {
         path: 'blog',
         admin: isAuthorizedAdmin(req)
@@ -187,7 +187,7 @@ export const getPostByPermalink = (req, res, next) => {
   // NB: Check the isPostVisible before returning this... 
   // or maybe we can just update the API to check if the user
   // has permissions to view the post...
-  if (isReactEnabled(process.env)) {
+  if (isReactEnabled(req, process.env)) {
     return res.render(createViewPath('blog', 'blog.react.pug'), {
       admin: isAuthorizedAdmin(req),
       path: 'blog',
