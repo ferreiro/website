@@ -1,6 +1,6 @@
 const marked = require('marked')
 const replaceall = require('replaceall')
-const {sanitizeHtml} = require('../sanitize-html')
+const {sanitizeHtml} = require('./sanitize-html')
 
 export const markdownToHtml = (srcMarkdown) => {
     const dirtyHtml = marked(srcMarkdown)
