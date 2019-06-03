@@ -1,0 +1,41 @@
+include ./mixins/Header
+include ./mixins/HeaderCentered
+include ./mixins/subscriptionBox
+
+doctype html
+html
+	head
+		include ./head.pug
+
+	body(class="pushable")
+		.jfmodalbox
+			.jfmodalbox_overlay
+			.jfmodalbox_content
+				.jfmodalbox_close#closeModal
+					span X
+				h2 Email
+				p You can send me an email to the following address:
+				p.email <span class="email">jorge AT ferreiro DOT me</span>
+
+		include ./menu.pug
+
+		block popupNewsletter
+			include ./mixins/popupNewsletter
+			+popupNewsletter({
+				autodisplay: false
+			})
+
+		.ui.container_home#mainContainer
+			.container
+				block container
+
+		//- include ./footer.pug
+
+		script(src="http://localhost:9000/client.bundle.js", async)
+		script.
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-75997945-1', 'auto');
+			ga('send', 'pageview');
