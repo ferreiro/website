@@ -6,10 +6,13 @@ import {
 
 // import {App} from './App';
 import {Blog} from './pages/blog/Blog';
+import {ScrollToTop} from './ScrollToTop'
 
 ReactDOM.render(
 	<BrowserRouter>
-		<Blog />
+		<ScrollToTop>
+			<Blog />
+		</ScrollToTop>
 	</BrowserRouter>
 	, document.getElementById('blogApp')
 );
