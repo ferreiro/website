@@ -12,7 +12,6 @@ export const LayoutWithSidebar = ({
     panel,
     content,
     contentHeader,
-    showFooter = true,
 }) => {
     class LayoutWithSidebar extends PureComponent {
         render() {
@@ -43,10 +42,6 @@ export const LayoutWithSidebar = ({
                             {afterContent}
                         </div>
                     </div>
-
-                    {showFooter && (
-                        <Footer />
-                    )}
                 </div>
             )
         }

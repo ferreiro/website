@@ -13,10 +13,11 @@ import {ProfileCard} from '../../../components/profileCard/ProfileCard';
 import {SidebarNewsletterAd} from '../../../components/sidebarNewsletterAd/SidebarNewsletterAd';
 import {SidebarSeparator} from '../../../components/sidebarSeparator/SidebarSeparator';
 import {BUTTON_SIZE_SMALL} from '../../../components/constants';
+import {PostLoader} from './PostLoader';
+import {PageLayout} from '../../../components/layout/PageLayout';
 
 import './Post.scss'
 import './PostReader.scss'
-import { PostLoader } from './PostLoader';
 
 const renderPost = ({
     body,
@@ -396,14 +397,19 @@ export class BlogPost extends PureComponent {
         });
 
         return (
-            <LayoutWithSidebar
-                afterContent={afterContent}
-                header={null}
-                isHeaderFullWidth={true}
-                panel={blogPanel}
-                contentHeader={null}
-                content={blogContent}
-            />
+            <PageLayout
+                showHeader={true}
+                isHeaderFix={false}
+            >
+                <LayoutWithSidebar
+                    afterContent={afterContent}
+                    header={null}
+                    isHeaderFullWidth={true}
+                    panel={blogPanel}
+                    contentHeader={null}
+                    content={blogContent}
+                />
+            </PageLayout>
         )
     }
 }

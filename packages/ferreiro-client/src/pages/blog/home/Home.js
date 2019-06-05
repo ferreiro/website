@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import get from 'lodash/get'
 
+import {PageLayout} from '../../../components/layout/PageLayout';
 import {LayoutWithSidebar} from '../../../components/layout/LayoutWithSidebar';
 import {BlogHeader} from '../../../components/blogHeader/BlogHeader';
 import {Card} from '../../../components/card/Card';
@@ -166,13 +167,18 @@ export class BlogHome extends PureComponent {
         })
     
         return (
-            <LayoutWithSidebar
-                header={null}
-                isHeaderFullWidth={true}
-                panel={blogPanel}
-                contentHeader={blogContentHeader}
-                content={blogContent}
-            />
+            <PageLayout
+                showHeader={true}
+                isHeaderFix={false}
+            >
+                <LayoutWithSidebar
+                    header={null}
+                    isHeaderFullWidth={true}
+                    panel={blogPanel}
+                    contentHeader={blogContentHeader}
+                    content={blogContent}
+                />
+            </PageLayout>
         )
     }
 }

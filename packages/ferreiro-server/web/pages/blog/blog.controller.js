@@ -1,5 +1,6 @@
 import validator from 'validator'
 import isEmpty from 'lodash/isEmpty'
+// import {renderToString} from "react-dom/server";
 
 import {generateRelatedPosts} from '../../../api/v1/blog/generate-related-posts';
 import blogRepository from '../../../api/repository/blog'
@@ -8,10 +9,11 @@ import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
 import {markdownToHtml} from '../../../api/markdown-to-html'
 
+// TODO: replace by 'ferreiro-client/src/App';
+// import {App} from '@ferreiro/client/src/App';
 import {isReactEnabled} from '../is-react-enabled'
 
 import {MAX_PAGE_POSTS} from './constants';
-import blog from '../../content/english/blog.json'
 
 const isAuthorizedAdmin = (req) => {
   const disableAdmin = req.query.disableAdmin
@@ -188,10 +190,14 @@ export const getPostByPermalink = (req, res, next) => {
   // or maybe we can just update the API to check if the user
   // has permissions to view the post...
   if (isReactEnabled(req, process.env)) {
+    // const jsx = (<App />);
+    // const ssrHtml = renderToString(jsx);
+    
     return res.render(createViewPath('blog', 'blog.react.pug'), {
       admin: isAuthorizedAdmin(req),
       path: 'blog',
       permalink,
+      // ssrHtml: renderToString(<App />),
     })
   }
 

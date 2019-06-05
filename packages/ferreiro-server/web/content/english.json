@@ -19,7 +19,7 @@
       "id": "blog",
       "icon": null,
       "name" : "Blog",
-      "url" : "/blog",
+      "url" : "/blog?react=true",
       "target": "_self"
     },
     {
