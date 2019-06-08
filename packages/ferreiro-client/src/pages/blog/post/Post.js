@@ -19,6 +19,15 @@ import {PageLayout} from '../../../components/layout/PageLayout';
 import './Post.scss'
 import './PostReader.scss'
 
+const PostNofFound = () => (
+    <div className="post-not-found">
+        <div className="post-not-found__icon">
+            404
+        </div>
+        <p>The post is currently not available...</p>
+    </div>
+)
+
 const renderPost = ({
     body,
     html,
@@ -267,41 +276,22 @@ const getBlogPostContent = ({
 }) => {
     if (isLoading === true) {
         return (
-            <div className="blogPost">
+            <div className="post__loading">
                 <PostLoader />
-
-                {/* <div className="" style={{
-                    background: 'blue',
-                    height: '85px',
-                    marginBottom: '1em'
-                }} />
-
-                <div className="" style={{
-                    background: 'blue',
-                    height: '55px',
-                    marginBottom: '1em'
-                }} />
-
-                <div style={{
-                    background: 'red',
-                    height: '400px'
-                }} /> */}
-
-                {/* Loading post... */}
             </div>
         )
     }
 
     if (isEmpty(post)) {
         return (
-            <div className="blogPost">
-                The post is currently not available...
+            <div className="post__not-found">
+                <PostNofFound />
             </div>
         )
     }
 
     return (
-        <div className="">
+        <div className="post">
             {renderPost(post)}
         </div>
     );

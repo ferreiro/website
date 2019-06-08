@@ -16,11 +16,11 @@ const renderItem = (item, currentPath) => {
 
     if (item.hidden === true) {
         // SKIP: do not add hide items
-        return;
+        return null
     }
     if (item.id === 'home') {
         // SKIP to add home menu
-        return
+        return null
     }
 
     // TODO: Remove this once all the migration into react
@@ -30,6 +30,7 @@ const renderItem = (item, currentPath) => {
             <Link
                 to={item.path}
                 className={className}
+                key={item.name}
             >
                 {item.icon && (
                     <p className={`icon ${item.icon}`} />
@@ -73,8 +74,7 @@ export const Header = ({
 
                 <div className="menu_right">
                     <nav className="menu__options">
-
-
+                        <p>pene</p>
                     </nav>
                 </div>
             </div>
