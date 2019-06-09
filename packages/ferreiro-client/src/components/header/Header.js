@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {MENU_ITEMS} from '../constants'
 
 const isReactEnabledForPage = (item) => (
-    item.id === 'blog'
+    item.id === 'blog' || item.id === 'portfolio'
 )
 
 const renderItem = (item, currentPath) => {

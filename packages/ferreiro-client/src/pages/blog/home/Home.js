@@ -1,18 +1,19 @@
 import React, {PureComponent} from 'react'
 import get from 'lodash/get'
+import isEmpty from 'lodash/isEmpty'
 
-import {PageLayout} from '../../../components/layout/PageLayout';
-import {LayoutWithSidebar} from '../../../components/layout/LayoutWithSidebar';
-import {BlogHeader} from '../../../components/blogHeader/BlogHeader';
+import {ContentHeader} from '../../../components/contentHeader/ContentHeader';
 import {Card} from '../../../components/card/Card';
 import {CardHighlight} from '../../../components/cardHighlight/CardHighlight';
+import {getPostPermalink} from '../get-post-permalink'
+import {LayoutWithSidebar} from '../../../components/layout/LayoutWithSidebar';
+import {LoadingPlaceholderCard} from '../../../components/loadingPlaceholder/LoadingPlaceholderCard'
+import {PageLayout} from '../../../components/layout/PageLayout';
 import {Pagination} from '../../../components/pagination/Pagination';
 import {ProfileCard} from '../../../components/profileCard/ProfileCard';
 import {SidebarMenu} from '../../../components/sidebarMenu/SidebarMenu';
 import {SidebarNewsletterAd} from '../../../components/sidebarNewsletterAd/SidebarNewsletterAd';
 import {SidebarSeparator} from '../../../components/sidebarSeparator/SidebarSeparator';
-import {getPostPermalink} from '../get-post-permalink'
-import {LoadingPlaceholderCard} from '../../../components/loadingPlaceholder/LoadingPlaceholderCard'
 
 import {
     BLOG_CATEGORY_TO_CONTENT,
@@ -98,7 +99,7 @@ export class BlogHome extends PureComponent {
         posts: [],
         category: 'blog',
         intro: null,
-        isLoading: true,
+        isLoading: false,
     }
 
     componentDidUpdate() {
@@ -108,8 +109,13 @@ export class BlogHome extends PureComponent {
     }
 
     componentDidMount() {
-        // TODO: Cache results and check that first.header
+        if (!isEmpty(this.state.posts)) {
+            // NB: Skip loading posts if they are already loaded.
+            return
+        }
 
+        // TODO: Cache results and check that first.header
+        this.setState({isLoading: true})
         fetch('/api/v1/blog/list')
             .then(res => res.json())
             .then(({title, intro, posts}) => (
@@ -123,9 +129,7 @@ export class BlogHome extends PureComponent {
                 alert('error', error)
             })
             .finally(() => {
-                this.setState({
-                    isLoading: false,
-                })
+                this.setState({isLoading: false})
             })
     }
 
@@ -153,7 +157,7 @@ export class BlogHome extends PureComponent {
 
         const {title, description} = BLOG_CATEGORY_TO_CONTENT[this.state.category]
         const blogContentHeader = (
-            <BlogHeader
+            <ContentHeader
                 title={title}
                 subtitle={description}
             />
