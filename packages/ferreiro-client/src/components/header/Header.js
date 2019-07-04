@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 
 import {
     MENU_ITEMS,
+    MOBILE_MENU_ITEMS,
     SOCIAL_NETWORKS,
 } from '../constants'
 
@@ -21,10 +22,6 @@ const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName)
 
     if (item.hidden === true) {
         // SKIP: do not add hide items
-        return null
-    }
-    if (item.id === 'home') {
-        // SKIP to add home menu
         return null
     }
 
@@ -77,10 +74,7 @@ const renderSocialItem = (item, itemClassName) => {
             key={item.url}
         >
             {item.icon && (
-                <span className={`icon ${item.icon}`} />
-            )}
-            {item.text && (
-                <p>{item.text}</p>
+                <span className={item.icon} />
             )}
         </a>
     );
@@ -109,7 +103,7 @@ export class Header extends PureComponent {
                 {this.state.isShown && (
                     <div className="main-header-dropdown">
                         <nav className="main-header-dropdown__links">
-                            {MENU_ITEMS.map((item) =>
+                            {MOBILE_MENU_ITEMS.map((item) =>
                                 renderMenuItem(item, currentPath, 'main-header-dropdown__item', 'main-header-dropdown__item--selected'))
                             }
                         </nav>
@@ -130,7 +124,7 @@ export class Header extends PureComponent {
                     </a>
     
                     <nav className="main-header__menu">
-                        {MENU_ITEMS.map((item) => renderMenuItem(item, currentPath))}
+                        {MENU_ITEMS.map((item) => renderMenuItem(item, currentPath, 'main-header__item', 'main-header__item--selected'))}
                     </nav>
     
                     <div className="main-header__social">

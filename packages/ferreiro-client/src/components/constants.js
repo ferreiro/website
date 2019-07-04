@@ -5,22 +5,22 @@ export const SOCIAL_NETWORKS = [
     {
         url: 'https://www.linkedin.com/in/jgferreiro/',
         text: 'Linkedin',
-        icon: 'linkedin',
+        icon: 'icon-linkedin',
     },
     {
         url: 'https://twitter.com/JGFerreiro',
         text: 'Twitter',
-        icon: 'twitter',
+        icon: 'icon-twitter',
     },
     {
         url: 'https://www.instagram.com/jgferreiro/',
         text: 'Instagram',
-        icon: 'instagram',
+        icon: 'icon-instagram',
     },
     {
         url: 'https://github.com/ferreiro',
         text: 'Github',
-        icon: 'github',
+        icon: 'icon-github',
     },
 ]
 
@@ -35,25 +35,31 @@ export const BUTTON_SIZE_BIG = 'big';
 // MENU
 export const MENU_ITEMS = [
     {
-      "id": "home",
-      "hidden": false,
-      "icon": "ion-ios-home",
-      "name" : null,
-      "path" : "/",
+      "id": "blog",
+      "icon": null,
+      "name" : "Blog",
+      "path" : "/blog",
+      "target": "_self"
+    },
+    {
+      "id": "video",
+      "icon": null,
+      "name" : "Videos",
+      "path" : "/videos",
+      "target": "_self"
+    },
+    {
+      "id": "talks",
+      "icon": null,
+      "name" : "Conferences",
+      "path" : "/talks",
       "target": "_self"
     },
     {
       "id": "about",
       "icon": null,
-      "name" : "About me",
+      "name" : "About",
       "path" : "/about",
-      "target": "_self"
-    },
-    {
-      "id": "blog",
-      "icon": null,
-      "name" : "Blog",
-      "path" : "/blog",
       "target": "_self"
     },
     {
@@ -64,17 +70,21 @@ export const MENU_ITEMS = [
       "target": "_self"
     },
     {
-      "id": "talks",
-      "icon": null,
-      "name" : "Talks",
-      "path" : "/talks",
-      "target": "_self"
-    },
-    {
       "id": "contact",
       "icon": null,
       "name" : "Contact",
       "path" : "/contact",
       "target": "_self"
     }
+]
+
+export const MOBILE_MENU_ITEMS = [
+  {
+    "id": "home",
+    "hidden": false,
+    "name" : "Home",
+    "path" : "/",
+    "target": "_self"
+  },
+  ...MENU_ITEMS
 ]

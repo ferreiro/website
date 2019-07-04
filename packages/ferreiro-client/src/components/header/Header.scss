@@ -11,7 +11,7 @@
         position: fixed;
         top: 77px;
         bottom: 0;
-        z-index: 100;
+        z-index: 1000;
         padding: 2em 0;
 
         @include desktop-large-up {
@@ -50,10 +50,23 @@
         }
 
         &__social {
+            display: flex;
             flex: 0 0 auto;
+            justify-content: center;
+            flex-wrap: wrap;
 
             &-item {
-                
+                align-self: center;
+                width: 60px;
+                height: 60px;
+                border-radius: 100%;
+                border: 2px solid #cecece;
+                margin-left: 12px;
+                flex: 0 0 auto;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
@@ -79,7 +92,6 @@
 
     &__menu {
         align-items: stretch;
-        background: red;
         display: flex;
 
         @include desktop-large-down {
@@ -88,10 +100,22 @@
     }
 
     &__item {
+        font-size: 16px;
+        padding: 18px 24px;
         display: block;
+        border-radius: 60px;
+
+        p {
+            color: rgba(0,0,0,.6);
+            font-weight: 600;
+            font-size: 1.2em;
+        }
 
         &--selected {
-            background: blue;
+            p {
+                color: rgba(0,0,0,.8);
+            }
+            background: #f7f7f7;
         }
     }
 
@@ -105,8 +129,11 @@
         }
 
         &-item {
+            align-items: center;
             border-radius: 100%;
             border: 2px solid #cecece;
+            display: flex;
+            justify-content: center;
             height: 50px;
             margin-left: 12px;
             width: 50px;

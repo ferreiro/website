@@ -35,7 +35,7 @@ export const ProfileCard = () => (
                         url={url}
                         target={TARGET_BLANK}
                     >
-                        <span className={`icon-${icon}`} />
+                        <span className={icon} />
                         <p>{text}</p>
                     </Link>
                 </li>
