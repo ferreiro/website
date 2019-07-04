@@ -1,5 +1,11 @@
 @import '../mediaQueries.scss';
 
+// This class is added to the body
+// and it's used to hide scrolling on mobile
+.mobile-header-is-showing {
+    overflow: hidden;
+}
+
 .main-header {
     border-bottom: 1px solid #dedede;
 
@@ -114,6 +120,7 @@
         &--selected {
             p {
                 color: rgba(0,0,0,.8);
+                color: rgb(201, 70, 33);
             }
             background: #f7f7f7;
         }

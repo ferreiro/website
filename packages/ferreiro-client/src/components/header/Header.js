@@ -82,16 +82,24 @@ const renderSocialItem = (item, itemClassName) => {
 
 export class Header extends PureComponent {
     state = {
-        isShown: true,
+        isShown: false,
     }
 
     toggleMenu = () => {
+        const isShown = this.state.isShown
+
         // TODO: Set body to not have overflow, and don't 
         // allow scrolling.
 
         this.setState((prevState, props) => ({
             isShown: !prevState.isShown
         }))
+
+        if (isShown) {
+            document.body.classList.remove('mobile-header-is-showing');
+        } else {
+            document.body.classList.add('mobile-header-is-showing');
+        }
     }
 
     render() {
