@@ -7,6 +7,7 @@ import {Footer} from '../footer/Footer'
 import './PageLayout.scss'
 
 export const PageLayout = ({
+    currentPath = null,
     showHeader = true,
     isHeaderFix = true,
     children
@@ -22,7 +23,9 @@ export const PageLayout = ({
                 <div className="page-layout">
                     {showHeader === true && (
                         <div className={headerClassName}>
-                            <Header />
+                            <Header
+                                currentPath={currentPath}
+                            />
                         </div>
                     )}
 

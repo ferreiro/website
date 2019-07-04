@@ -276,8 +276,10 @@ const getBlogPostContent = ({
 }) => {
     if (isLoading === true) {
         return (
-            <div className="post__loading">
-                <PostLoader />
+            <div className="post">
+                <div className="post__loading">
+                    <PostLoader />
+                </div>
             </div>
         )
     }
@@ -388,6 +390,7 @@ export class BlogPost extends PureComponent {
 
         return (
             <PageLayout
+                currentPath="blog"
                 showHeader={true}
                 isHeaderFix={false}
             >

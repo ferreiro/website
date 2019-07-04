@@ -173,6 +173,7 @@ export class BlogHome extends PureComponent {
     
         return (
             <PageLayout
+                currentPath="blog"
                 showHeader={true}
                 isHeaderFix={false}
             >

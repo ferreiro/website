@@ -8,6 +8,7 @@ import {
 import {BlogHome} from './pages/blog/home/Home'
 import {BlogPost} from './pages/blog/post/Post'
 import {Portfolio} from './pages/portfolio/Portfolio'
+import {VideosHome} from './pages/videos/Home'
 
 const NoMatch = ({ location }) => (
     <div>
@@ -36,6 +37,11 @@ export const AppWithRoutes = () => (
             path='/blog/:permalink'
             exact
             component={BlogPost}
+        />
+        <Route
+            path='/videos'
+            exact
+            component={VideosHome}
         />
         <Route
             component={NoMatch}

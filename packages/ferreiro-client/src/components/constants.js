@@ -42,7 +42,7 @@ export const MENU_ITEMS = [
       "target": "_self"
     },
     {
-      "id": "video",
+      "id": "videos",
       "icon": null,
       "name" : "Videos",
       "path" : "/videos",

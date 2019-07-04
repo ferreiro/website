@@ -11,7 +11,9 @@ import {
 import './Header.scss';
 
 const isReactEnabledForPage = (item) => (
-    item.id === 'blog' || item.id === 'portfolio'
+    item.id === 'blog'
+        || item.id === 'portfolio'
+        || item.id === 'videos'
 )
 
 const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName) => {
@@ -103,7 +105,7 @@ export class Header extends PureComponent {
     }
 
     render() {
-        const currentPath = 'blog'
+        const {currentPath} = this.props
 
         // TODO: delete menu, menu__wrapper and container_inner
         return (
