@@ -54,7 +54,7 @@ const renderItem = (project) => {
             hex,
             rgba_gradient_start,
             rgba_gradient_end,
-        },
+        } = {},
         date,
         images,
         title,

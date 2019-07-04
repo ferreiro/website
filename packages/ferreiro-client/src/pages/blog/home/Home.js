@@ -139,13 +139,13 @@ export class BlogHome extends PureComponent {
 
         const blogPanel = (
             <div className="">
-                <SidebarMenu
+                {/* <SidebarMenu
                     onClick={null}
                     selectedCategory={this.state.category}
                     items={BLOG_NAVIGATION}
-                />
+                /> */}
 
-                <SidebarSeparator />
+                {/* <SidebarSeparator /> */}
 
                 <ProfileCard />
 
@@ -160,6 +160,7 @@ export class BlogHome extends PureComponent {
             <ContentHeader
                 title={title}
                 subtitle={description}
+                showSubscribeButton={true}
             />
         )
 

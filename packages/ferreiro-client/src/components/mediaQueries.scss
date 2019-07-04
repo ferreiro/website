@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 @mixin mobile {
-    @media all and (max-width: $tablet) {
+    @media all and (max-width: $tablet - 1px) {
         @content;
     }
 }
@@ -13,7 +13,7 @@
 }
 
 @mixin tablet-down {
-    @media all and (max-width: $tablet) {
+    @media all and (max-width: $tablet - 1px) {
         @content;
     }
 }
@@ -25,13 +25,13 @@
 }
 
 @mixin desktop {
-    @media all and (min-width: $desktop) and (max-width: $desktop-large) {
+    @media all and (min-width: $desktop) and (max-width: $desktop-large - 1px) {
         @content;
     }
 }
 
 @mixin desktop-down {
-    @media all and (max-width: $desktop) {
+    @media all and (max-width: $desktop - 1px) {
         @content;
     }
 }
@@ -48,4 +48,14 @@
     }
 }
 
-    
+@mixin desktop-large-down {
+    @media all and (max-width: $desktop-large - 1px) {
+        @content;
+    }
+}
+
+@mixin desktop-large-up {
+    @media all and (min-width: $desktop-large) {
+        @content;
+    }
+}

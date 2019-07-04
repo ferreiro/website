@@ -1,0 +1,148 @@
+meta(charset='UTF-8')
+meta(http-equiv="Content-Language", content="en-US")
+meta(http-equiv="expires", content="7 * 24 * 60 * 60")
+
+link(rel="canonical", href="https://www.ferreiro.me/" + (path ? path : '') + (post ? '/' + post.permalink : ''))
+
+meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+meta(name="revisit-after", content="7 days")
+meta(name='author', content='Jorge Ferreiro')
+meta(name="keywords", content="Software Engineer, Product Manager, Entrepreneur, Blog, Tech, Node, Javascript, HTML, Backend, Frontend, Full Stack")
+meta(name='google', content='notranslate')
+meta(name='theme-color', content='#9C2901')
+meta(property="fb:app_id", content='1677477615658040')
+
+- defaultTitle = 'Jorge Ferreiro - Frontend Software Engineer at Eventbrite, Former Backend Software Engineer at Amazon and Entrepreneur. Node, Javascript, Python, Java, HTML5, CSS3, JQuery. Backend engineer and Frontend engineer.'
+- defaultDescription = 'Jorge Ferreiro is a Frontend Software Engineer at Eventbrite, Former Backend Software Engineer at Amazon and Entrepreneur with a solid experience in web development. Ferreiro uses the following technologies: Node, Javascript, Python, Java, MongoDB, Redis, HTML5, CSS3, JQuery.'
+- defaultImage = image ? image : 'https://www.ferreiro.me/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_product_manager.jpg'
+
+block extraMeta
+  //- Override by the templates that needs to add more metadata
+  //- such as Open Graph Articles or facebook social links
+
+  meta(property="og:type", content="website")
+  meta(property="og:title", content= title ? title : defaultTitle)
+  meta(property='og:description', content= description ? description : defaultDescription)
+  meta(property="og:url", content="http://www.ferreiro.me")
+  meta(property="og:site_name", content="Jorge Ferreiro")
+  meta(property="og:locale", content="en_US")
+  meta(property='og:image', content= defaultImage)
+  meta(property='og:image:alt', content= title + ' ' + defaultTitle)
+
+  meta(name="twitter:site", content="@jgferreiro")
+  meta(name="twitter:creator", content="@jgferreiro")
+  meta(name="twitter:card", content="summary")
+  meta(name="twitter:title", content= title ? title : defaultTitle)
+  meta(name="twitter:description", content=description ? description : defaultDescription)
+  meta(name="twitter:image", content=defaultImage)
+
+title= title ? title : defaultTitle
+meta(name='description', content=description ? description : defaultDescription)
+
+link(rel='apple-touch-icon', sizes='57x57', href='/favicons/apple-touch-icon-57x57.png')
+link(rel='apple-touch-icon', sizes='60x60', href='/favicons/apple-touch-icon-60x60.png')
+link(rel='apple-touch-icon', sizes='72x72', href='/favicons/apple-touch-icon-72x72.png')
+link(rel='apple-touch-icon', sizes='76x76', href='/favicons/apple-touch-icon-76x76.png')
+link(rel='apple-touch-icon', sizes='114x114', href='/favicons/apple-touch-icon-114x114.png')
+link(rel='apple-touch-icon', sizes='120x120', href='/favicons/apple-touch-icon-120x120.png')
+link(rel='apple-touch-icon', sizes='144x144', href='/favicons/apple-touch-icon-144x144.png')
+link(rel='apple-touch-icon', sizes='152x152', href='/favicons/apple-touch-icon-152x152.png')
+link(rel='apple-touch-icon', sizes='180x180', href='/favicons/apple-touch-icon-180x180.png')
+link(rel='icon', type='image/png', href='/favicons/favicon-32x32.png', sizes='32x32')
+link(rel='icon', type='image/png', href='/favicons/android-chrome-192x192.png', sizes='192x192')
+link(rel='icon', type='image/png', href='/favicons/favicon-96x96.png', sizes='96x96')
+link(rel='icon', type='image/png', href='/favicons/favicon-16x16.png', sizes='16x16')
+link(rel='manifest', href='/favicons/manifest.json')
+link(rel='mask-icon', href='/favicons/safari-pinned-tab.svg', color='#d83902')
+meta(name='msapplication-TileColor', content='#9C2901')
+meta(name='msapplication-TileImage', content='/favicons/mstile-144x144.png')
+
+//- ASYNC CSS
+//- NB: Vendors is just animation and a utility for comparing images that I use in the blog.
+//- Also, the IonIcons are ones that are used in smaller parts of the apps
+//- This should be async, since it's not the critical path.
+link(rel='preload', href='/vendors/vendors.min.css?v=3.5.5', as='style', onload='this.rel=\'stylesheet\'')
+link(rel='preload', href='/bower_components/Ionicons/css/ionicons.min.css?v=3.5.5', as='style', onload='this.rel=\'stylesheet\'')
+
+noscript
+  link(rel='stylesheet', href='/vendors/vendors.min.css?v=3.5.5', type='text/css')
+  link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css?v=3.5.5', type='text/css')
+
+//- link(rel='stylesheet', href='/vendors/vendors.min.css?v=3.5.5', type='text/css')
+link(rel='stylesheet', href='/css/style.min.css?v=3.5.5', type='text/css')
+
+style.
+
+  // WN: Inlining google fonts to avoid server requests.
+  // The following lines are a copy/paste of this page: https://fonts.googleapis.com/css?family=Lato:400,300,700, 900
+  /* latin-ext */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh7USSwaPGQ3q5d0N7w.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh7USSwiPGQ3q5d0.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v15/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin-ext */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v15/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  .loader {
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255, 1) url("/images/three-dots.svg");
+    background-repeat: no-repeat;
+    background-size: 60px auto;
+    background-position: 50% 50%;
+    position: fixed;
+    z-index: 1000000000000;
+    left: 0;
+    top: 0;
+    // display: none !important;
+  }
+
+  .contactLoader {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+  }
+
+block extraCss
+block extraHead

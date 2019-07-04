@@ -1,0 +1,135 @@
+@import '../mediaQueries.scss';
+
+.main-header {
+    border-bottom: 1px solid #dedede;
+
+    &-dropdown {
+        background: rgba(255, 255, 255, .98);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: fixed;
+        top: 77px;
+        bottom: 0;
+        z-index: 100;
+        padding: 2em 0;
+
+        @include desktop-large-up {
+            display: none;
+        }
+
+        &__links {
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            flex: 1 1 auto;
+            overflow-y: scroll;
+            justify-content: center;
+            padding-bottom: 2em;
+        }
+
+        &__item {
+            padding: 1em;
+            display: flex;
+            text-align: center;
+            font-size: 1.6em;
+            font-weight: 600;
+            width: 100%;
+
+            p {
+                text-align: center;
+                margin: 0 2em;
+                width: calc(100%  - 4em);
+            }
+
+            &--selected {
+                p {
+                    color: #c94621;
+                }
+            }
+        }
+
+        &__social {
+            flex: 0 0 auto;
+
+            &-item {
+                
+            }
+        }
+    }
+
+    &-wrapper {
+        align-items: center;
+        display: flex;
+        padding: .8em 1.5em;
+
+        @include tablet-up {
+            padding: .8em 1.5em;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        flex: 1 1 auto;
+
+        img {
+            height: 50px;
+        }
+    }
+
+    &__menu {
+        align-items: stretch;
+        background: red;
+        display: flex;
+
+        @include desktop-large-down {
+            display: none;
+        }
+    }
+
+    &__item {
+        display: block;
+
+        &--selected {
+            background: blue;
+        }
+    }
+
+    &__social {
+        height: 50px;
+        align-items: center;
+        display: flex;
+
+        @include desktop-large-down {
+            display: none;
+        }
+
+        &-item {
+            border-radius: 100%;
+            border: 2px solid #cecece;
+            height: 50px;
+            margin-left: 12px;
+            width: 50px;
+        }
+    }
+
+    &__mobile-button {
+        align-items: flex-start;
+        display: flex;
+        flex: 0 0 auto;
+
+        button {
+            width: 80px;
+            height: 50px;
+            border: 0;
+            background: url('/images/burger-icon.svg');
+            background-size: 40px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @include desktop-large-up {
+            display: none;
+        }
+    }
+}

@@ -5,7 +5,7 @@ include ./mixins/subscriptionBox
 doctype html
 html
 	head
-		include ./head.pug
+		include ./head.react.pug
 
 	body(class="pushable")
 		.jfmodalbox
@@ -23,10 +23,9 @@ html
 				autodisplay: false
 			})
 
-		.ui.container_home#mainContainer
-			.container
-				block container
-				div!=ssrHtml
+		.container
+			block container
+			div!=ssrHtml
 
 		//- include ./footer.pug
 

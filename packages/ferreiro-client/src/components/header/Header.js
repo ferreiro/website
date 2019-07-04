@@ -1,17 +1,22 @@
-import React from 'react'
+import React, {PureComponent} from 'react'
 import classNames from 'classnames'
 import {Link} from 'react-router-dom'
 
-import {MENU_ITEMS} from '../constants'
+import {
+    MENU_ITEMS,
+    SOCIAL_NETWORKS,
+} from '../constants'
+
+import './Header.scss';
 
 const isReactEnabledForPage = (item) => (
     item.id === 'blog' || item.id === 'portfolio'
 )
 
-const renderItem = (item, currentPath) => {
+const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName) => {
     const className = classNames({
-        'item': true,
-        'item--selected': item.id === currentPath
+        [itemClassName]: true,
+        [selectedItemClassName]: item.id === currentPath
     })
 
     if (item.hidden === true) {
@@ -43,7 +48,11 @@ const renderItem = (item, currentPath) => {
     }
 
     return (
-        <a className={className} href={item.path}>
+        <a
+            className={className}
+            href={item.path}
+            key={item.path}
+        >
             {item.icon && (
                 <p className={`icon ${item.icon}`} />
             )}
@@ -54,32 +63,89 @@ const renderItem = (item, currentPath) => {
     )
 }
 
-export const Header = ({
-    
-}) => {
-    const currentPath = 'home'
+const renderSocialItem = (item, itemClassName) => {
+    const className = classNames({
+        [itemClassName]: true
+    })
 
-    // TODO: delete menu, menu__wrapper and container_inner
     return (
-        <div className="header menu">
-            <div className="menu__wrapper container_inner header__wrapper">
-                <a className="logo" href="/">
-                    <img src="/images/logo.jpg" className="logo__image" />
-                    <div className="logo__text">Jorge Ferreiro</div>
-                </a>
+        <a
+            className={className}
+            href={item.url}
+            rel="noopener noreferrer"
+            target="_blank"
+            key={item.url}
+        >
+            {item.icon && (
+                <span className={`icon ${item.icon}`} />
+            )}
+            {item.text && (
+                <p>{item.text}</p>
+            )}
+        </a>
+    );
+}
 
-                <nav className="menu__nav">
-                    {MENU_ITEMS.map((item) => renderItem(item, currentPath))}
-                </nav>
+export class Header extends PureComponent {
+    state = {
+        isShown: true,
+    }
 
-                <div className="menu_right">
-                    <nav className="menu__options">
-                        <p>pene</p>
+    toggleMenu = () => {
+        // TODO: Set body to not have overflow, and don't 
+        // allow scrolling.
+
+        this.setState((prevState, props) => ({
+            isShown: !prevState.isShown
+        }))
+    }
+
+    render() {
+        const currentPath = 'blog'
+
+        // TODO: delete menu, menu__wrapper and container_inner
+        return (
+            <div className="main-header">
+                {this.state.isShown && (
+                    <div className="main-header-dropdown">
+                        <nav className="main-header-dropdown__links">
+                            {MENU_ITEMS.map((item) =>
+                                renderMenuItem(item, currentPath, 'main-header-dropdown__item', 'main-header-dropdown__item--selected'))
+                            }
+                        </nav>
+                        <div className="main-header-dropdown__social">
+                            {SOCIAL_NETWORKS.map((item) =>
+                                renderSocialItem(item, 'main-header-dropdown__social-item')
+                            )}
+                        </div>
+                    </div>
+                )}
+
+                <div className="main-header-wrapper">
+                    <a
+                        className="main-header__logo"
+                        href="/"
+                    >
+                        <img src="/images/logo_jorge_ferreiro.png" />
+                    </a>
+    
+                    <nav className="main-header__menu">
+                        {MENU_ITEMS.map((item) => renderMenuItem(item, currentPath))}
                     </nav>
+    
+                    <div className="main-header__social">
+                        {SOCIAL_NETWORKS.map((item) => renderSocialItem(item, 'main-header__social-item'))}
+                    </div>
+                    
+                    <div className="main-header__mobile-button">
+                        <button
+                            onClick={this.toggleMenu}
+                        />
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 

@@ -395,7 +395,7 @@ export class BlogPost extends PureComponent {
                     afterContent={afterContent}
                     header={null}
                     isHeaderFullWidth={true}
-                    panel={blogPanel}
+                    panel={null}
                     contentHeader={null}
                     content={blogContent}
                 />
