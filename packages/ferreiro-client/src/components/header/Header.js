@@ -15,6 +15,7 @@ const isReactEnabledForPage = (item) => (
         || item.id === 'portfolio'
         || item.id === 'videos'
         || item.id === 'talks'
+        || item.id === 'contact'
 )
 
 const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName) => {

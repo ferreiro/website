@@ -727,6 +727,10 @@ export const content = {
                 "code": "http://github.com/ferreiro/sudonotes"
             }
         }
-    ]
+    ],
+    contact: {
+        "title": "Contact",
+        "subtitle" : "Do you have a project, job proposal or want to say hi? Just ping me in the form below or shoot an email at <a class='email openModalBox'>jorge at ferreiro dot me</a>. I'll reply as soon as possible!",
+    }   
 }
 

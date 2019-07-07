@@ -83,9 +83,6 @@ export const CardTalk = ({
         title,
     } = talk
 
-    console.log('talk');
-    console.log(talk);
-
     const summaryShortened = summary.substr(0, maxSummaryLength)
 
     return (
