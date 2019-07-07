@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react'
 import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
 
+import {BUTTON_SIZE_BIG} from '../../../components/constants';
+import {ButtonSubscribe} from '../../../components/buttons/ButtonSubscribe';
 import {ContentHeader} from '../../../components/contentHeader/ContentHeader';
 import {Card} from '../../../components/card/Card';
 import {CardHighlight} from '../../../components/cardHighlight/CardHighlight';
@@ -156,11 +158,16 @@ export class BlogHome extends PureComponent {
         );
 
         const {title, description} = BLOG_CATEGORY_TO_CONTENT[this.state.category]
+        const extraContent = (
+            <ButtonSubscribe
+                size={BUTTON_SIZE_BIG}
+            />
+        )        
         const blogContentHeader = (
             <ContentHeader
                 title={title}
                 subtitle={description}
-                showSubscribeButton={true}
+                extraContent={extraContent}
             />
         )
 

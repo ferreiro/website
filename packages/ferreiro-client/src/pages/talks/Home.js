@@ -1,23 +1,38 @@
 import React, {PureComponent} from 'react'
 
+import {BUTTON_SIZE_BIG} from '../../components/constants';
+import {ButtonSubscribe} from '../../components/buttons/ButtonSubscribe';
+import {CardTalk} from '../../components/cardTalks/CardTalk';
 import {ContentHeader} from '../../components/contentHeader/ContentHeader';
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar';
 import {PageLayout} from '../../components/layout/PageLayout';
-import {CardTalk} from '../../components/cardTalks/CardTalk';
+import {ThreeColumnLayout} from '../../components/threeColumnLayout/ThreeColumnLayout';
+
+import {content} from '../../content/english';
+
+const {
+    title,
+    subtitle,
+    items = [],
+} = content.talks;
 
 import {
     BLOG_CATEGORY_TO_CONTENT,
 } from '../constants'
 
 const currentPath = 'talks'
-const description = 'Foo'
-const title = 'Conferences'
+
+const extraContent = (
+    <ButtonSubscribe
+        size={BUTTON_SIZE_BIG}
+    />
+)
 
 const header = (
     <ContentHeader
         title={title}
-        subtitle={description}
-        showSubscribeButton={true}
+        subtitle={subtitle}
+        extraContent={extraContent}
     />
 )
 
@@ -32,15 +47,11 @@ export class TalksHome extends PureComponent {
     state = {}
 
     render() {
-        const talks = [
-            {
-                
-            }
-        ]
         const content = (
-            <div>
-                {talks.map(renderTalk)}
-            </div>
+            <ThreeColumnLayout
+                items={items}
+                renderingCallback={renderTalk}
+            />
         )
 
         return (

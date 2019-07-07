@@ -1,5 +1,10 @@
 @import '../variables.scss';
 @import '../mediaQueries.scss';
+@import '../mixins.scss';
+
+$action_button_font_size: 1.2em;
+$action_button_icon_size: 15px;
+$action_button_icon_margin: 4px;
 
 .card-talk {
     height: 100%;
@@ -7,7 +12,6 @@
     border-radius: $card-radius;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5em;
     border: 1px solid #e8e8e8;
     border-radius: $card-radius;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .05);
@@ -52,4 +56,44 @@
         font-size: $font-size-paragraph;
         line-height: $font-size-paragraph * 1.4;
     }
+    &__options {
+        margin: 0 1em 1em;
+    }
 }
+
+.card-talk-button {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    padding: 0.6em 1em;
+    text-decoration: none;
+    color: #616161 !important;
+    margin-right: .5em;
+    // border: 1px solid #cecece;
+  
+    @include border-radius(60px);
+    @include transition(250ms);
+  
+    &:hover {
+      background: #f4f4f4;
+    }
+  
+    &__hidden {
+      display: none;
+    }
+  
+    span {
+      line-height: 0;
+      margin-right: 14px;
+  
+      &:before {
+        color: $color-main;
+        font-size: 22px;
+      }
+    }
+
+    .legend {
+        text-transform: uppercase;
+        color: $color-main;
+    }
+  }

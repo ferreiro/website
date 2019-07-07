@@ -33,7 +33,7 @@
       "id": "talks",
       "icon": null,
       "name" : "Talks",
-      "url" : "/talks",
+      "url" : "/talks?react=true",
       "target": "_self"
     },
     {

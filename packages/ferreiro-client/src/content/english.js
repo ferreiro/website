@@ -1,4 +1,410 @@
 export const content = {
+    talks: {
+        "title": "Conferences",
+        "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops. I've organized a technical workshop sponsored by Github and volunteered on various tech and entrepreneurship events.",
+        "items": [
+            {
+                "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp #adalabGithub @Google Campus Madrid",
+                "summary": "Why I ❤️ Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
+                "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
+                "type": "slides",
+                "pic": "/images/talks/jorge_ferreiro_creating_github_profile_like_pro.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "May, 7th 2019",
+                "location": {
+                    "venue": "London",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Read the slides",
+                        "type": "slides",
+                        "url": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid"
+                    }
+                ]
+            },
+            {
+                "title": "Web Perfomance: Expectations Vs Reality - JSRoundabout by Jorge Ferreiro - #TwitterPerf",
+                "summary": "“Why is my website slow?”, “How can I improve the loading time?”, “How does the browser render a website?”, “What techniques can I apply to boost the speed of my website?”.",
+                "permalink": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout",
+                "type": "slides",
+                "pic": "/images/talks/jorge_ferreiro_web_perfomance_expectations_vs_reality.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "April, 2th 2019",
+                "location": {
+                    "venue": "Twitter London",
+                    "city": "London"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Read the slides",
+                        "type": "slides",
+                        "url": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout"
+                    }
+                ]
+            },
+            {
+                "title": "#futuroFiumers - Los 10 consejos para lanzar tu carrera en tecnología",
+                "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
+                "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
+                "type": "slides",
+                "pic": "/images/talks/jorge_ferreiro_codecamp_2019_murcia_consejos_para_junior_engineers.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "February, 23th 2019",
+                "location": {
+                    "venue": "Codecamp",
+                    "city": "Murcia"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Read the slides",
+                        "type": "slides",
+                        "url": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software"
+                    }
+                ]
+            },
+            {
+                "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
+                "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
+                "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
+                "type": "slides",
+                "pic": "/images/talks/guia_para_encontrar_trabajo_jorge_ferreiro_fdi_ucm.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "February, 6th 2019",
+                "location": {
+                    "venue": "FDI UCM",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=Js-av-zysWs"
+                    },
+                    {
+                        "title": "Read slides",
+                        "type": "slides",
+                        "url": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo"
+                    }
+                ]
+            },
+            {
+                "title": "#futuroFDI - Entrevista con César Puerta, Senior Staff en Twitter",
+                "summary": "Jorge Ferreiro does a live video interview with César Puerta who is currently leading Twitter for Android application and who is Senior Staff Engineer.",
+                "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
+                "type": "slides",
+                "pic": "/images/talks/entrevista_cesar_puerta_twitter_hq_por_jorge_ferreiro_fdi_ucm.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "February, 6th 2019",
+                "location": {
+                    "venue": "FDI UCM",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the interview",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=-Di5O7dGKNc&t=17s"
+                    }
+                ]
+            },
+            {
+                "title": "#futuroFDI - El CV y Github: El momento de jugar como pros 2019",
+                "summary": "Tips, ideas and suggestions on how to get the most out of your Social Networks. Also, learn how to do the most amazing resumes.",
+                "permalink": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros",
+                "type": "slides",
+                "pic": "/images/talks/critica_my_resume_jorge_ferreiro_fdi_ucm.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "February, 6th 2019",
+                "location": {
+                    "venue": "FDI UCM",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=evGZ2yGpqxk&t=45s"
+                    },
+                    {
+                        "title": "Read slides",
+                        "type": "slides",
+                        "url": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros"
+                    }
+                ]
+            },
+            {
+                "title": "#futuroFDI - Mi historia hasta 2019",
+                "summary": "Comparto mi historia personal desde cuando comencé a programar con 10 años hasta la actualidad. Haciendou un repaso de las lecciones aprendidas en las diferentes empresas que he estado.",
+                "permalink": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019",
+                "type": "slides",
+                "pic": "/images/talks/mi_historia_jorge_ferreiro.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "February, 6th 2019",
+                "location": {
+                    "venue": "FDI UCM",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=qgwNuMQJcjo"
+                    },
+                    {
+                        "title": "Read slides",
+                        "type": "slides",
+                        "url": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019"
+                    }
+                ]
+            },
+            {
+                "title": "Learn and grow in the tech world - #DjangoGirlsMadrid 2018-11-17",
+                "summary": "My personal story when I started programming, and 6 lessons learned during those years",
+                "permalink": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117",
+                "type": "slides",
+                "pic": "/images/talks/jorge-ferreiro-learn-and-grow-in-the-tech-world-django-girls-madrid-2018.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "November, 19th 2018",
+                "location": {
+                    "venue": "spaces works",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+                    },
+                    {
+                        "title": "Read slides",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117"
+                    }
+                ],
+                "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/vhVVEX9yujQ8Kt"
+            },
+            {
+                "title": "Aprende y crece en el mundo tech - Django girls madrid 2018 - #DjangoGirlsMadrid",
+                "summary": "Mi historia personal cuando comencé a programar, y 6 lecciones aprendidas",
+                "permalink": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018",
+                "type": "slides",
+                "pic": "/images/talks/jorge-ferreiro-aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "November, 19th 2018",
+                "location": {
+                    "venue": "spaces works",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+                    },
+                    {
+                        "title": "Read slides",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
+                    }
+                ],
+                "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
+            },
+            {
+                "title": "Introducing Redis by Jorge Ferreiro - NoSQL database course at UCM",
+                "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
+                "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
+                "type": "slides",
+                "pic": "/images/talks/introducing_redis_database_jorge_ferreiro_ucm.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "May, 2017",
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Read slides",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/redis-76234580"
+                    }
+                ],
+                "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp"
+            },
+            {
+                "title": "Dailyfocus presentation (with DEMO! 🔥): 16 minutes - FDI UCM - #helloDailyfocus",
+                "summary": "Presentation of my personal project Dailyfocus, where I explained the engineering, product design, business and my personal experience.",
+                "permalink": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
+                "type": "video",
+                "pic": "/images/talks/presentation_introducing_dailyfocus_project_jorge_ferreiro_ucm.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "June 17, 2017",
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=qlDrZiwkrv0"
+                    },
+                    {
+                        "title": "Slides",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
+                    }
+                ],
+                "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
+            },
+            {
+                "title": "Dailyfocus presentation (June 2017): Vision, product, tech and journey.",
+                "summary": "Presentation made for an academic jury from my college. I mainly cover: Challenges, vision and goals, development process, lessons learned, etc.",
+                "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
+                "type": "slides",
+                "pic": "/images/talks/slides_introducing_dailyfocus_project_jorge_ferreiro_ucm.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "Aug 7, 2017",
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Read presentation",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
+                    }
+                ],
+                "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
+            },
+            {
+                "title": "Mini talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+                "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
+                "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
+                "type": "video",
+                "pic": "/images/talks/dailyfocus_project_by_jorge_ferreiro_at_jsdayes_2017_yellow.jpg",
+                "language": {
+                    "display": "Spanish",
+                    "icon": "icon-spanish"
+                },
+                "date": "May, 2017",
+                "event": "JS DAY ES 2017",
+                "buttons": [
+                    {
+                        "title": "Watch the video",
+                        "type": "video",
+                        "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk"
+                    }
+                ],
+                "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
+            },
+            {
+                "title": "Workshop: Your first professional website (sponsored by Github.com)",
+                "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
+                "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
+                "type": "slides",
+                "pic": "/images/talks/github_workshop_your_first_professional_website.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "May, 2016",
+                "event": "",
+                "buttons": [
+                    {
+                        "title": "Checkout the Slides",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website"
+                    },
+                    {
+                        "title": "See poster",
+                        "url": "https://drive.google.com/file/d/0B5Fp53X_33RqV0V4T3JWNG1WX2s/view"
+                    }
+                ],
+                "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
+            },
+            {
+                "private": true,
+                "title": "Machine Learning: online news prediction in Mashable",
+                "summary": "As a college project, I created a presentation and a report with a ML analysis to predict when is the best time to publish news to gain popularity.",
+                "permalink": null,
+                "type": "slides",
+                "pic": "/images/talks/mashable.png",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "Jan 20, 2017",
+                "event": "FDI ML",
+                "buttons": [
+                    {
+                        "title": "Read Slides",
+                        "type": "slides",
+                        "url": null
+                    }
+                ],
+                "iframeSrc": null
+            },
+            {
+                "title": "Webapps: introduction and publishing on Firefox OS",
+                "summary": "I was invited to a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
+                "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
+                "type": "slides",
+                "pic": "/images/talks/jorge_ferreiro_mozilla_firefox_os_meetup.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "Nov 28, 2014",
+                "event": "Mozilla Event",
+                "buttons": [
+                    {
+                        "title": "Read Slides",
+                        "type": "slides",
+                        "url": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os"
+                    }
+                ],
+                "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/i6RWO4Nmrt0eQw"
+            }
+        ]
+    },
     portfolio: [
         {
             "title": "Clotim",

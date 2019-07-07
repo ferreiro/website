@@ -26,12 +26,13 @@ export const ContentHeader = ({
             </h1>
             <h2
                 className="blog-header__subtitle"
+                dangerouslySetInnerHTML={{
+                    __html: subtitle,
+                }}
                 style={{
                     fontFamily: 'aktiv-grotesk, sans-serif',
                 }}
-            >
-                {subtitle}
-            </h2>
+            />
         </div>
 
         {showSubscribeButton && (
