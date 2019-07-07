@@ -12,11 +12,17 @@ import {
 const title = 'Videos'
 const description = 'Youtube Show hosted by @jgferreiro with interviews to top tech leaders ⚡ Propose the next interview or ask for an interview here: www.devsindepth.com'
 
+const extraContent = (
+    <div>
+        Subscribe to channel
+    </div>
+)
+
 const header = (
     <ContentHeader
+        extraContent={extraContent}
         title={title}
         subtitle={description}
-        showSubscribeButton={true}
     />
 )
 

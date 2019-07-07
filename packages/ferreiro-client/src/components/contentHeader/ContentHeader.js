@@ -6,6 +6,7 @@ import {BUTTON_SIZE_BIG} from '../constants';
 import './ContentHeader.scss'
 
 export const ContentHeader = ({
+    extraContent = null,
     title,
     subtitle,
     showSubscribeButton = false,
@@ -35,10 +36,6 @@ export const ContentHeader = ({
             />
         </div>
 
-        {showSubscribeButton && (
-            <ButtonSubscribe
-                size={BUTTON_SIZE_BIG}
-            />
-        )}
+        {extraContent}
     </div>
 )
