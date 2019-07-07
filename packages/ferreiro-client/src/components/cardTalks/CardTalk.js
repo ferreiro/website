@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import LazyLoad from 'react-lazy-load'
 
 import './CardTalk.scss'
@@ -17,6 +16,7 @@ const renderButton = ({
                 <a
                     className="card-talk-button"
                     href={url}
+                    rel="noopener noreferrer"
                     target="_blank"
                 >
                     <span className="icon ion-ios-film-outline" />
@@ -30,6 +30,7 @@ const renderButton = ({
                 <a
                     className="card-talk-button"
                     href={url}
+                    rel="noopener noreferrer"
                     target="_blank"
                 >
                     <span className="icon ion-ios-browsers-outline" />
@@ -43,6 +44,7 @@ const renderButton = ({
                 <a
                     className="card-talk-button"
                     href={url}
+                    rel="noopener noreferrer"
                     target="_blank"
                 >
                     <span className="icon ion-image" />
@@ -52,7 +54,7 @@ const renderButton = ({
                 </a>
             )
         default:
-            return <p>Hi</p>
+            return null
     }
 
     // else if button.type == "slides"
@@ -87,8 +89,10 @@ export const CardTalk = ({
     const summaryShortened = summary.substr(0, maxSummaryLength)
 
     return (
-        <Link
-            to={permalink}
+        <a
+            href={permalink}
+            rel="noopener noreferrer"
+            target="_blank"
         >
             <div className="card-talk">
                 <div className="card-talk__image">
@@ -110,6 +114,6 @@ export const CardTalk = ({
                     {buttons.map(renderButton)}
                 </ul>
             </div>
-        </Link>
+        </a>
     )
 }

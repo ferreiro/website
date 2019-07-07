@@ -12,9 +12,9 @@
     }
 
     &__item {
-        width: 100%;
-        
         align-content: stretch;
+        margin-bottom: 1.5em;
+        width: 100%;
 
         @include large-up {
             width: 50%;
