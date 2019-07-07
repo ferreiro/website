@@ -37,60 +37,57 @@ const renderPost = ({
     pic,
     summary,
     title,
-}) => {
+}) => (
+    <article className="post-reader">
+        <input id="canonicalUrl" type="hidden" value="https://www.ferreiro.me/" />
 
-    return (
-        <article className="post-reader">
-            <input id="canonicalUrl" type="hidden" value="https://www.ferreiro.me/" />
+        <h1 className="post-reader__title">
+            {title}
+        </h1>
 
-            <h1 className="post-reader__title">
-                {title}
-            </h1>
+        {summary && (
+            <h2 className="post-reader__subtitle">
+                {summary}
+            </h2>
+        )}
 
-            {summary && (
-                <h2 className="post-reader__subtitle">
-                    {summary}
-                </h2>
-            )}
-
-            <div className="post-author">
-                <div className="post-author__content">
-                    <img
-                        alt="Author pic"
-                        className="post-author__image"
-                        src="https://pbs.twimg.com/profile_images/1062169454413578243/z_WY3jdh_400x400.jpg"
-                    />
-                    <span>
-                        {authorName}
-                    </span>
-                </div>
-                <div className="post-author__options">
-                    <ButtonSubscribe
-                        text="Subscribe"
-                        size={BUTTON_SIZE_SMALL}
-                    />
-                </div>
-            </div>
-            
-            {pic && (
+        <div className="post-author">
+            <div className="post-author__content">
                 <img
-                    alt="blog post header image"
-                    className="post-reader__image"
-                    src={pic}
+                    alt="Author pic"
+                    className="post-author__image"
+                    src="https://pbs.twimg.com/profile_images/1062169454413578243/z_WY3jdh_400x400.jpg"
                 />
-            )}
-
-            <div
-                className="post-reader-content"
-                dangerouslySetInnerHTML={{
-                    // We already get the HTML sanitized from the backend.
-                    // This is just to be extra safe...
-                    __html: DOMPurify.sanitize(html)
-                }}
+                <span>
+                    {authorName}
+                </span>
+            </div>
+            <div className="post-author__options">
+                <ButtonSubscribe
+                    text="Subscribe"
+                    size={BUTTON_SIZE_SMALL}
+                />
+            </div>
+        </div>
+        
+        {pic && (
+            <img
+                alt="blog post header image"
+                className="post-reader__image"
+                src={pic}
             />
-        </article>
-    )
-}
+        )}
+
+        <div
+            className="post-reader-content"
+            dangerouslySetInnerHTML={{
+                // We already get the HTML sanitized from the backend.
+                // This is just to be extra safe...
+                __html: DOMPurify.sanitize(html)
+            }}
+        />
+    </article>
+)
 
 const getAfterContent = ({
     post,
@@ -277,8 +274,10 @@ const getBlogPostContent = ({
     if (isLoading === true) {
         return (
             <div className="post">
-                <div className="post__loading">
-                    <PostLoader />
+                <div className="post-reader">
+                    <div className="post__loading">
+                        <PostLoader />
+                    </div>
                 </div>
             </div>
         )

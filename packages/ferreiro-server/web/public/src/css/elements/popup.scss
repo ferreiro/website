@@ -63,7 +63,7 @@ $popupBorderRadius: 20px;
     @include translate(0, -50%);
     @include border-radius($popupBorderRadius);
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       top: 50%;
       left: 50%;
       bottom: initial;
@@ -77,7 +77,7 @@ $popupBorderRadius: 20px;
       @include translate(-50%, -50%);
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: $popupPadding_desktop;
       max-width: calc(400px - 2 * #{$popupPadding_desktop});
     }
@@ -112,7 +112,7 @@ $popupBorderRadius: 20px;
     @include border-radiuses($popupBorderRadius, $popupBorderRadius, 0, 0);
 
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: calc(100% + 2 * #{$popupPadding_desktop});
       margin: -$popupPadding_desktop;
       margin-bottom: $popupPadding_desktop - 0.2em;

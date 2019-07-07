@@ -10,12 +10,12 @@
   background: #fff;
   @include box-shadow(0px 0px 5px 0px rgba(0,0,0,0.13));
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     padding: 2.1em 0;
   }
 
   &__large {
-    @media all and (min-width: $desktop-screen) {}
+    @media all and (min-width: $large-screen) {}
   }
 
   &_link {
@@ -118,8 +118,8 @@
       display: none !important; /** Only use this for SEO LOL **/
     }
 
-    @media all and (min-width: $tablet-screen) {}
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width: $medium-screen) {}
+    @media all and (min-width:$large-screen) {
       width: 140px;
       height: 140px;
     }
@@ -140,7 +140,7 @@
     text-decoration: none;
     margin: 0;
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       font-size: 2.8em;
       margin-bottom: 0.1em;
       // font-size: 2.5em;
@@ -170,13 +170,13 @@
     font-size: 1.3em;
     color: rgba(255, 255, 255, 0.9);
 
-    @media all and (min-width:$tablet-screen) {
+    @media all and (min-width:$medium-screen) {
       max-width: 450px;
       font-size: 1.3em;
       padding: 0 1.2em;
     }
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       padding: 0;
       max-width: 530px;
       max-width: 460px;
@@ -195,11 +195,11 @@
     font-weight: 300;
     font-size: 1.3em;
 
-    @media all and (min-width:$tablet-screen) {
+    @media all and (min-width:$medium-screen) {
       padding: 0 1.2em;
     }
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       padding: 0;
       font-size: 1.5em;
       margin-bottom: 0.25em;
@@ -213,7 +213,7 @@
 
     @include transition(250ms);
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       font-size: 1.2em!important;
       padding: 0.9em 1.2em!important;
     }

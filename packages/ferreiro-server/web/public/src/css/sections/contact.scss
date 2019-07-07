@@ -4,7 +4,7 @@
 }
 
 .contact {
-  @media all and (min-width:$desktop-screen) {
+  @media all and (min-width:$large-screen) {
     margin-bottom: 3em;
   }
 }
@@ -33,25 +33,25 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
   margin: 1em 0;
   position: relative;
 
-  @media all and (min-width:$desktop-screen) {
+  @media all and (min-width:$large-screen) {
     margin-bottom: 0;
   }
 
   &_wrapper {
     display: block;
 
-    @media all and (max-width:$desktop-screen) {
+    @media all and (max-width:$large-screen) {
       @include box-shadow(none !important);
     }
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       // max-width: 660px;
       margin: 0 auto;
     }
   }
 
   &_container {
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       // padding: 2em;
     }
   }
@@ -59,7 +59,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
   &_title {
     margin-bottom: 2em;
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       margin-bottom: 1.5em;
     }
 
@@ -78,7 +78,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
     text-align: center;
     @include border-radius(5px);
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       margin: 2em 0;
       margin-top: 0;
     }
@@ -92,7 +92,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
     margin-top: 1em;
     background-color: #B2E682;
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       margin-top: 2em;
     }
   }
@@ -138,7 +138,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
     text-align: center;
     vertical-align: top;
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       margin: 1.8em 0;
     }
 
@@ -171,7 +171,7 @@ textarea::-ms-input-placeholder { /* Internet Explorer 10-11 */
 
     @include border-radius(60px);
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       padding: 1.2em 0;
       margin-bottom: 0;
     }

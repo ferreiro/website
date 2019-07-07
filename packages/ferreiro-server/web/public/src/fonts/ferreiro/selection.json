@@ -2528,7 +2528,7 @@
 					"mobile",
 					"cell-phone",
 					"handheld",
-					"tablet",
+					"medium",
 					"phablet"
 				],
 				"grid": 16
@@ -2554,7 +2554,7 @@
 				"attrs": [],
 				"isMulticolor": false,
 				"tags": [
-					"tablet",
+					"medium",
 					"mobile"
 				],
 				"grid": 16
@@ -2563,8 +2563,8 @@
 			"properties": {
 				"order": 93,
 				"prevSize": 16,
-				"ligatures": "tablet, mobile3",
-				"name": "tablet",
+				"ligatures": "medium, mobile3",
+				"name": "medium",
 				"id": 91,
 				"code": 59738
 			},

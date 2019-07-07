@@ -13,8 +13,8 @@
     text-decoration: none;
 
     &:hover:before {
-      // only on desktop. Mobile does not need hover animation
-      @media all and (min-width: $desktop-screen) {
+      // only on large. Mobile does not need hover animation
+      @media all and (min-width: $large-screen) {
         background: rgba(218,59,1,.7);
       }
     }
@@ -40,7 +40,7 @@
       position: relative;
       text-align: center;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         font-size: 3.5em;
       }
     }

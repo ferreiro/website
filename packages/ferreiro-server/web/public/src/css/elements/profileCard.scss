@@ -8,7 +8,7 @@
   padding: 1.1em 0;
   // min-height: 130px;
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     padding: 3em 0;
     // padding-bottom: 2.5em;
     // min-height: 250px;
@@ -30,8 +30,8 @@
       display: none !important; /** Only use this for SEO LOL **/
     }
 
-    @media all and (min-width: $tablet-screen) {}
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width: $medium-screen) {}
+    @media all and (min-width:$large-screen) {
       width: 140px;
       height: 140px;
     }
@@ -48,7 +48,7 @@
     color: #fff;
     font-weight: 400;
     font-size: 1.4em;
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       font-size: 2em;
     }
   }
@@ -59,7 +59,7 @@
     font-size: 1em;
     margin: 0;
     margin-top:0.3em;
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       font-size: 1.3em;
     }
   }

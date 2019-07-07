@@ -1,7 +1,7 @@
 .timeline {
   margin-top: 1em;
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     margin-top: 2em;
   }
 
@@ -12,7 +12,7 @@
     font-size: 2em;
     font-weight: 500;
     color: $primaryColor;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-top: 2em;
       font-size: 3em;
     }
@@ -26,7 +26,7 @@
     font-weight: 500;
     text-align: center;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-top: 1.5em;
       margin-bottom: 2em;
       font-size: 1.5em;
@@ -41,7 +41,7 @@
     margin-top: -0.5em;
     text-align: center;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: 0;
       margin-top: 0;
     }
@@ -57,7 +57,7 @@
       border: 0;
 
       @include border-radius(5px);
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         font-size: 1.4em;
         padding: 0.5em 0;
       }
@@ -70,7 +70,7 @@
     @include flexbox_direction(column);
     @include transition(300ms);
 
-    @media all and (min-width: $desktop-screen) {}
+    @media all and (min-width: $large-screen) {}
 
     &__displayed {
       @include opacity(1 !important);
@@ -83,7 +83,7 @@
   @include flexbox_wrap(nowrap);
   @include flexbox_direction(column);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     &:nth-child(1) {
       &:before {
         height: 30px;
@@ -112,7 +112,7 @@
     @include border-radius(5px);
     @include box-shadow(0px 0px 10px 0 rgba(0,0,0,0.05));
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: 550px;
       margin: 0 auto;
       padding: 1.5em;
@@ -128,7 +128,7 @@
     @include flexbox_flex(1, 1, auto);
     @include flexbox_alignSelf(stretch);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-bottom: 1.5em;
       padding-bottom: 1.5em;
     }
@@ -146,7 +146,7 @@
       @include flexbox_flex(0, 0, auto);
       @include flexbox_alignSelf(stretch);
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         width: 80px;
         margin-right: 1.5em;
       }
@@ -172,7 +172,7 @@
       font-weight: 600;
       margin-bottom: 0.2em;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
        font-size: 1.2em;
       }
     }

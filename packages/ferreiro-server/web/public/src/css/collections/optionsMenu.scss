@@ -15,7 +15,7 @@ $optionsMenuActiveColor: #0084bf;
     display: inline-block;
     height: $optionsMenuHeight_mobile !important;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       height: $optionsMenuHeight_desktop !important;
     }
 
@@ -24,7 +24,7 @@ $optionsMenuActiveColor: #0084bf;
       height: ($optionsMenuHeight_mobile - $optionsMenuSelectedBorder) !important;
       border-bottom: $optionsMenuSelectedBorder solid $optionsMenuActiveColor;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         height: ($optionsMenuHeight_desktop - $optionsMenuSelectedBorder) !important;
       }
     }
@@ -53,7 +53,7 @@ $optionsMenuActiveColor: #0084bf;
 
     @include transition(300ms);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: 0 24px;
       font-size: 21px;
       height: $optionsMenuHeight_desktop;

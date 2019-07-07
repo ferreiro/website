@@ -20,7 +20,7 @@
         z-index: 1000;
         padding: 2em 0;
 
-        @include desktop-large-up {
+        @include extra-large-up {
             display: none;
         }
 
@@ -82,7 +82,7 @@
         display: flex;
         padding: .8em 1.5em;
 
-        @include tablet-up {
+        @include medium-up {
             padding: .8em 1.5em;
         }
     }
@@ -100,7 +100,7 @@
         align-items: stretch;
         display: flex;
 
-        @include desktop-large-down {
+        @include extra-large-down {
             display: none;
         }
     }
@@ -131,7 +131,7 @@
         align-items: center;
         display: flex;
 
-        @include desktop-large-down {
+        @include extra-large-down {
             display: none;
         }
 
@@ -162,7 +162,7 @@
             background-repeat: no-repeat;
         }
 
-        @include desktop-large-up {
+        @include extra-large-up {
             display: none;
         }
     }

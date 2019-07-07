@@ -29,13 +29,13 @@
     &--size-small {
         border-radius: 60px;
 
-        @include desktop-down {
+        @include large-down {
             border-width: 2px;
             font-size: 14px;
             padding: .4rem .8rem;
         }
     
-        @include desktop-up {
+        @include large-up {
             border-width: 2px;
             font-size: 14px;
             padding: .5rem .8rem;
@@ -45,13 +45,13 @@
     &--size-medium {
         border-radius: 60px;
 
-        @include desktop-down {
+        @include large-down {
             border-width: 2px;
             font-size: 14px;
             padding: .9rem 1rem;
         }
     
-        @include desktop-up {
+        @include large-up {
             border-width: 2px;
             font-size: 16px;
             padding: 0.6rem 1rem;
@@ -61,13 +61,13 @@
     &--size-big {
         border-radius: 2px;
 
-        @include desktop-down {
+        @include large-down {
             border-width: 3px;
             font-size: 16px;
             padding: .9rem 1rem;
         }
     
-        @include desktop-up {
+        @include large-up {
             border-width: 4px;
             font-size: 18px;
             padding: 1.2rem 1.8rem;

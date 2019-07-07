@@ -11,7 +11,7 @@ $twoColsGrid_wrapper_margin_desktop: 0.7em; // 1em
   @include flexbox_wrap(wrap);
   @include flexbox_justifyContent(center, center);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     margin: 0 (-$twoColsGrid_wrapper_margin_desktop);
   }
 
@@ -21,7 +21,7 @@ $twoColsGrid_wrapper_margin_desktop: 0.7em; // 1em
 
     @include flexbox_grow(1);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-bottom: $twoColsGrid_bottom_margin_desktop;
     }
 
@@ -30,7 +30,7 @@ $twoColsGrid_wrapper_margin_desktop: 0.7em; // 1em
       height: 100%;
       padding: 0 $twoColsGrid_wrapper_margin_mobile;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         padding: 0 $twoColsGrid_wrapper_margin_desktop;
       }
     }

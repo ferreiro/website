@@ -48,7 +48,7 @@ body {
     padding: 1.5em;
     text-align: center;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: 2em;
       margin: 0 auto;
       max-width: 400px;
@@ -61,7 +61,7 @@ body {
     height: 80px;
     margin-bottom: 20px;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: 100px;
       height: 100px;
     }
@@ -79,7 +79,7 @@ body {
     font-weight: 300;
     color: rgba(0, 0, 0, 0.886);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 75px;
     }
     .small {
@@ -135,7 +135,7 @@ body {
     font-size: 3em;
     margin-bottom: 10px;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 3.8em;
       // font-size: 3.2em;
     }
@@ -154,7 +154,7 @@ body {
     margin-top: 2em;
     display: inline-block;
 
-    @media all and (max-width: $desktop-screen) {
+    @media all and (max-width: $large-screen) {
       max-width: 300px;
     }
 

@@ -25,7 +25,7 @@
     @include flexbox();
     flex-direction: column;
     
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       flex-direction: row;
     }
   }
@@ -35,13 +35,13 @@
     position: relative;
     order: 1;
       
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       @include flexbox_flex(0, 1, 580px);
     }
   }
 
   &__content__about {
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       @include flexbox_flex(0, 1, 690px);
     }
   }
@@ -54,7 +54,7 @@
     height: 260px;
     order: 0;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       height: auto;
       @include flexbox_flex(1, 1, auto);
     }
@@ -165,10 +165,10 @@
   }
 }
 
-@media all and (min-width: $tablet-screen) {
+@media all and (min-width: $medium-screen) {
   .fullHeader__title { font-size: 3em; }
 }
-@media all and (min-width: $desktop-screen) {
+@media all and (min-width: $large-screen) {
   .fullHeader__title {
     font-size: 4em;
     margin-bottom: 12px;

@@ -14,13 +14,13 @@ $post-reader-width: 700px;
         font-style: normal;
         font-weight: 600;
 
-        @include desktop-down {
+        @include large-down {
             font-size: 32px;
             letter-spacing: -.028em;
             line-height: 1.04;
         }
     
-        @include desktop-up {
+        @include large-up {
           font-size: 36px;
           letter-spacing: -.028em;
           line-height: 42px;
@@ -36,13 +36,13 @@ $post-reader-width: 700px;
         font-style: normal;
         letter-spacing: -.022em;
 
-        @include desktop-down {
+        @include large-down {
             font-size: 20px;
             line-height: 1.3;
             margin-top: 16px;
         }
     
-        @include desktop-up {
+        @include large-up {
             font-size: 24px;
             line-height: 1.22;
             margin-top: 16px;
@@ -163,7 +163,7 @@ $post-reader-width: 700px;
 		font-size: 20px;
 		line-height: 1.58;
 		letter-spacing: -.004em;
-		@include desktop-up {
+		@include large-up {
 			font-size: 21px;
 			line-height: 32px;
 			// line-height: 1.58;
@@ -250,7 +250,7 @@ $post-reader-width: 700px;
 	}
 	ol.linenums {
 		margin-left: 0;
-		@include desktop-up {
+		@include large-up {
 			padding-left: 0;
 			margin-left: 0;
 		}
@@ -307,7 +307,7 @@ $post-reader-width: 700px;
 		padding-left: 1em;
 		margin-left: -1em;
 		border-left: 3px solid rgba(0, 0, 0, .84);
-		@include desktop-up {
+		@include large-up {
 			padding-left: 20px;
 			margin-left: -23px;
 		}

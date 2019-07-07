@@ -13,7 +13,7 @@ $postCard_options_margin: 1em;
 $postCard_options_item_margin: 0.8em;
 
 .postCard__withoutSummary {
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     // min-height: 293px !important;
   }
 }
@@ -28,7 +28,7 @@ $postCard_options_item_margin: 0.8em;
 
   @include border-radius($postCard_radius);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     // min-height: $postCard_height_desktop;
   }
 
@@ -50,7 +50,7 @@ $postCard_options_item_margin: 0.8em;
       @include border-radius($postCard_radius);
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       height: $postCard_headerHeight_desktop;
     }
 
@@ -129,7 +129,7 @@ $postCard_options_item_margin: 0.8em;
   &__headerBig {
     @include border-radius($postCard_radius);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       height: $postCard_headerHeight_desktop * 1.2 !important;
     }
   }
@@ -218,7 +218,7 @@ $postCard_options_item_margin: 0.8em;
   &__body {
     padding: $postCard_body_margin;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       height: 170px;
     }
   }
@@ -251,7 +251,7 @@ $postCard_options_item_margin: 0.8em;
     padding-top: $postCard_summary_margin;
     color: rgba(0, 0, 0, 0.7);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       min-height: $postCard_summary_max_height;
       max-height: $postCard_summary_max_height;
       overflow: hidden;
@@ -266,7 +266,7 @@ $postCard_options_item_margin: 0.8em;
       margin-bottom: 0;
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       position: absolute;
       bottom: $postCard_body_margin;
     }
@@ -277,7 +277,7 @@ $postCard_options_item_margin: 0.8em;
       vertical-align: middle;
       margin-right: $postCard_options_item_margin;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         margin-bottom: 0;
       }
 

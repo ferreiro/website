@@ -1,61 +1,61 @@
 @import './variables.scss';
 
-@mixin mobile {
-    @media all and (max-width: $tablet - 1px) {
+@mixin small {
+    @media all and (max-width: $medium - 1px) {
         @content;
     }
 }
 
-@mixin tablet {
-    @media all and (min-width: $tablet) and (max-width: $desktop) {
+@mixin medium {
+    @media all and (min-width: $medium) and (max-width: $large) {
         @content;
     }
 }
 
-@mixin tablet-down {
-    @media all and (max-width: $tablet - 1px) {
+@mixin medium-down {
+    @media all and (max-width: $medium - 1px) {
         @content;
     }
 }
 
-@mixin tablet-up {
-    @media all and (min-width: $tablet) {
+@mixin medium-up {
+    @media all and (min-width: $medium) {
         @content;
     }
 }
 
-@mixin desktop {
-    @media all and (min-width: $desktop) and (max-width: $desktop-large - 1px) {
+@mixin large {
+    @media all and (min-width: $large) and (max-width: $extra-large - 1px) {
         @content;
     }
 }
 
-@mixin desktop-down {
-    @media all and (max-width: $desktop - 1px) {
+@mixin large-down {
+    @media all and (max-width: $large - 1px) {
         @content;
     }
 }
 
-@mixin desktop-up {
-    @media all and (min-width: $desktop) {
+@mixin large-up {
+    @media all and (min-width: $large) {
         @content;
     }
 }
 
-@mixin desktop-large {
-    @media all and (min-width: $desktop-large) {
+@mixin extra-large {
+    @media all and (min-width: $extra-large) {
         @content;
     }
 }
 
-@mixin desktop-large-down {
-    @media all and (max-width: $desktop-large - 1px) {
+@mixin extra-large-down {
+    @media all and (max-width: $extra-large - 1px) {
         @content;
     }
 }
 
-@mixin desktop-large-up {
-    @media all and (min-width: $desktop-large) {
+@mixin extra-large-up {
+    @media all and (min-width: $extra-large) {
         @content;
     }
 }

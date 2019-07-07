@@ -5,15 +5,15 @@
     display: flex;
     flex-wrap: wrap;
 
-    @include mobile {
+    @include small {
         margin-bottom: 1.5em;
     }
 
-    @include tablet {
+    @include medium {
         margin-bottom: 2rem;
     }
 
-    @include desktop-up {
+    @include large-up {
         margin: 1.5em 0 3em;
     }
 
@@ -21,15 +21,15 @@
         color: #525252;
         // font-family: "aktiv-grotesk", "sans-serif";
 
-        @include tablet-down {
+        @include medium-down {
             font-size: 30px;
         }
 
-        @include tablet {
+        @include medium {
             font-size: 60px;
         }
 
-        @include desktop-up {
+        @include large-up {
             font-size: 105px;
         }
     }
@@ -40,17 +40,17 @@
         margin-top: 1rem;
         // font-family: "aktiv-grotesk", "sans-serif";
 
-        @include tablet-down {
+        @include medium-down {
             font-size: 18px;
             margin-bottom: 1.5rem;
         }
 
-        @include tablet {
+        @include medium {
             font-size: 24px;
             margin-bottom: 1.5rem;
         }
 
-        @include desktop-up {
+        @include large-up {
             font-size: 30px;
         }
     }

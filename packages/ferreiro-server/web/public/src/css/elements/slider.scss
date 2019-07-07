@@ -7,19 +7,19 @@
 	overflow: hidden;
 	@include border-radius(10px);
 
-	@media all and (max-width: $tablet-screen) {
+	@media all and (max-width: $medium-screen) {
 		.slider-selector {
 			display: none;
 		}
 	}
-	@media all and (min-width: $tablet-screen) {
-		height: 350px;		 	// Ocupy all the window height on desktop-screen
+	@media all and (min-width: $medium-screen) {
+		height: 350px;		 	// Ocupy all the window height on large-screen
 		.slider-selector {
 			display: none;
 		}
 	}
-	@media all and (min-width: $desktop-screen) {
-		height: 450px !important;		 	// Ocupy all the window height on desktop-screen
+	@media all and (min-width: $large-screen) {
+		height: 450px !important;		 	// Ocupy all the window height on large-screen
 		margin-top: 0;		 	// Restart margin to 0
 		.slider-selector {
 			display: block;
@@ -53,7 +53,7 @@
 			cursor: pointer;
 			@include transition(.3s);
 
-			@media all and (min-width: $desktop-screen) {
+			@media all and (min-width: $large-screen) {
 				margin-right: 10px;
 			}
 
@@ -87,7 +87,7 @@
 	// Buttons to go previous and right on slide
 	ul.slider-navigation {
 
-		@media all and (max-width:$tablet-screen) {
+		@media all and (max-width:$medium-screen) {
 			display: none;
 		}
 
@@ -100,7 +100,7 @@
 			z-index: 3;			// Put it in front of all elements
       list-style: none;
 
-			@media all and (min-width: $desktop-screen) {
+			@media all and (min-width: $large-screen) {
 				width: 70px;
 			}
 
@@ -212,18 +212,18 @@
 				z-index: 3;
 				position: absolute;
 
-				@media all and (min-width: $tablet-screen) {
+				@media all and (min-width: $medium-screen) {
 					bottom: 50%;
 					left: 50%;
 					right: inherit;
 					text-align: center;
 					@include translate(-50%, 50%);
 				}
-				@media all and (min-width: 800px) and (max-width: $desktop-screen) {
+				@media all and (min-width: 800px) and (max-width: $large-screen) {
 					width: 700px;
 					height: 200px;
 				}
-				@media all and (min-width: $desktop-screen) {
+				@media all and (min-width: $large-screen) {
 					bottom: auto;
 					left: auto;
 					right: auto;
@@ -250,7 +250,7 @@
 						background:url(../images/iso.png) 50% 50% no-repeat;
 						background-size: auto 100%;
 					}
-					@media all and (max-width: $tablet-screen) {
+					@media all and (max-width: $medium-screen) {
 						div {
 							display: none;
 						}
@@ -260,7 +260,7 @@
 					font-size: 2em;
 					line-height: 1em;
 					font-weight: 400;
-					@media all and (min-width: $desktop-screen) {
+					@media all and (min-width: $large-screen) {
 						font-weight: 300;
 						font-weight: 600;
 						font-size: 3em;
@@ -275,7 +275,7 @@
 					a {
 						color: $primaryColorLight;
 					}
-					@media all and (min-width: $desktop-screen) {
+					@media all and (min-width: $large-screen) {
 						width: 430px;
 						font-size: 1.6em;
 						margin: 0 auto;
@@ -294,7 +294,7 @@
 
 					@include border-radius(60px);
 
-					@media all and (min-width: $desktop-screen) {
+					@media all and (min-width: $large-screen) {
 						margin-top: 1.5em;
 						padding: 0.9em 1.5em;
 						font-size: 1.3em;

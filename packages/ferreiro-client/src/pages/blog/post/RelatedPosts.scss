@@ -12,11 +12,11 @@
         flex-wrap: wrap;
         display: flex;
 
-        @include desktop-down {
+        @include large-down {
             flex-direction: column;
         }
 
-        @include desktop-up {
+        @include large-up {
             flex-direction: row;
             min-height: 370px;
         }
@@ -25,7 +25,7 @@
     &__item {
         flex: 1 1 auto;
 
-        @include desktop-up {
+        @include large-up {
             max-width: 33%;
 
             .card-related-post {

@@ -1,46 +1,35 @@
 @import '../variables.scss';
 @import '../mediaQueries.scss';
 
-.card-highlight {
+.card-talk {
+    height: 100%;
     background: #fff;
     border-radius: $card-radius;
     display: flex;
-    
-    @include large-down {
-        flex-direction: column;
-        margin-bottom: 1.5em;
-    }
-
-    @include large-up {
-        flex-direction: row;
-        margin-bottom: 1.5em;
-    }
+    flex-direction: column;
+    margin-bottom: 1.5em;
+    border: 1px solid #e8e8e8;
+    border-radius: $card-radius;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .05);
 
     &__image {
-        object-fit: cover;
-        object-position: center;
+        flex: 0 0 auto;
+        height: 200px;
+        width: 100%;
 
-        @include large-down {
-            width: 100%;
-            max-height: 260px;
+        img {
             border-top-left-radius: $card-radius;
             border-top-right-radius: $card-radius;
-        }
-
-        @include large-up {
-            width: 60%;
-            height: 400px;
-            border-top-left-radius: $card-radius;
-            border-bottom-left-radius: $card-radius;
+            object-fit: cover;
+            object-position: center;            
+            height: 200px;
+            width: 100%;
         }
     }
 
     &__content {
         padding: 1em;
-
-        @include large-up {
-            padding: 2em;
-        }
+        flex: 1 1 auto;
     }
 
     &__title {
@@ -50,8 +39,9 @@
         }
 
         @include large-up {
-            font-size: 40px;
-            line-height: 50px;
+            max-width: 600px;
+            font-size: 1.3em;
+            line-height: 1.4em;
             font-weight: 600;
         }
     }

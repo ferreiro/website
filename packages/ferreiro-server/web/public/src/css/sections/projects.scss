@@ -13,7 +13,7 @@ $projectLinksHeight: 52px;
 $projectLinksTopMargin: 20px;
 
 .projects {
-  @media all and (min-width:$desktop-screen) {
+  @media all and (min-width:$large-screen) {
     -webkit-column-count: 2;
     -webkit-column-gap: 1.5em;
     -moz-column-count: 2;
@@ -33,8 +33,8 @@ $projectLinksTopMargin: 20px;
   border: 1px solid #f0f0f0;
   @include border-radius($projectBorderRadious);
 
-  @media all and (min-width: $tablet-screen) {}
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $medium-screen) {}
+  @media all and (min-width: $large-screen) {
     display: inline-block;
     background: #FEFEFE;
     margin: 0;
@@ -87,7 +87,7 @@ $projectLinksTopMargin: 20px;
 
     @include border-radiuses($projectBorderRadious, $projectBorderRadious, 0, 0);
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       padding: $projectHeaderMargin;
     }
 
@@ -112,7 +112,7 @@ $projectLinksTopMargin: 20px;
       margin-right: $projectHeaderMargin;
       @include border-radius(100%);
 
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         width: $projectHeaderAvatarSize;
         height: $projectHeaderAvatarSize;
       }
@@ -123,9 +123,9 @@ $projectLinksTopMargin: 20px;
       display: inline-block;
       vertical-align: middle;
       margin-top: 5px;
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
       }
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         // margin-left: 1$projectBorderRadious;
       }
 
@@ -138,7 +138,7 @@ $projectLinksTopMargin: 20px;
       margin-bottom: 0.3em;
       text-decoration: none;
 
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         font-size: $projectHeaderTitleSize;
       }
 
@@ -150,7 +150,7 @@ $projectLinksTopMargin: 20px;
     &_date {
       color: #fff;
       font-weight: 300;
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         font-size: $projectHeaderDateSize;
       }
     }
@@ -171,7 +171,7 @@ $projectLinksTopMargin: 20px;
 
       }
 
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         font-size: 1.2em;
         padding: 1em;
       }
@@ -222,7 +222,7 @@ $projectLinksTopMargin: 20px;
     }
 
 
-    @media all and (min-width:$desktop-screen) {}
+    @media all and (min-width:$large-screen) {}
 
     &_next {
       width: 50px;
@@ -268,7 +268,7 @@ $projectLinksTopMargin: 20px;
         width: $projectHeaderGalleryGradientWidth - 1em !important;
         display: inline-block;
       }
-      @media all and (min-width:$desktop-screen) {}
+      @media all and (min-width:$large-screen) {}
     }
 
     &_entry {
@@ -291,7 +291,7 @@ $projectLinksTopMargin: 20px;
         @include opacity(0.8);
       }
 
-      @media all and (min-width:$desktop-screen) {}
+      @media all and (min-width:$large-screen) {}
     }
   }
 
@@ -303,14 +303,14 @@ $projectLinksTopMargin: 20px;
     padding: $projectBodyPadding_mobile;
     padding-bottom: $projectBodyPadding_mobile + $projectLinksHeight;
 
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       padding: $projectBodyPadding_desktop;
       padding-bottom: $projectBodyPadding_desktop + $projectLinksHeight + $projectLinksTopMargin;
     }
 
     &_noLinks { // When a card does not have links (we don't put the buttons down)
       padding: $projectBodyPadding_mobile;
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         padding: $projectBodyPadding_desktop;
       }
     }
@@ -320,7 +320,7 @@ $projectLinksTopMargin: 20px;
       font-size: 1.4em;
       font-weight: 500;
       margin-bottom: 0.5em;
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         margin-bottom: 0.6em;
       }
     }
@@ -330,7 +330,7 @@ $projectLinksTopMargin: 20px;
       font-size: 1em;
       font-weight: 500;
       margin-bottom: 0.5em;
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width:$large-screen) {
         margin-bottom: 0.6em;
       }
     }
@@ -367,7 +367,7 @@ $projectLinksTopMargin: 20px;
       margin: 0.5em 0;
       margin-right: 0;
 
-      @media all and (min-width:$desktop-screen) {}
+      @media all and (min-width:$large-screen) {}
 
       &_icon {
         left: 0;
@@ -467,7 +467,7 @@ $projectLinksTopMargin: 20px;
     min-height: $projectLinksHeight;
     left: $projectBodyPadding_mobile;
     bottom: $projectBodyPadding_mobile;
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       left: $projectBodyPadding_desktop;
       bottom: $projectBodyPadding_desktop;
     }

@@ -10,7 +10,7 @@
     border: 0;
     border-top: 1px solid #f4f4f4;
   
-    @include desktop-up {
+    @include large-up {
       padding:1.7em 0;
     }
 
@@ -29,12 +29,12 @@
       border-top: 2px solid #f4f4f4;
       margin: 0;
 
-      @include tablet {
+      @include medium {
         margin: 2em 0;
         display: block;
       }
 
-      @include desktop-up {
+      @include large-up {
           display: block;
           margin-bottom: 2em;
       }
@@ -79,11 +79,11 @@
         top: 0;
       }
   
-      @include tablet {
+      @include medium {
         width: 33%;
       }
 
-      @include desktop-up {
+      @include large-up {
         border: 0;
         width: auto !important;
         padding:0 2em;

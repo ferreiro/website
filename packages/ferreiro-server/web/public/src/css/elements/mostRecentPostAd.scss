@@ -12,7 +12,7 @@ $newsletterAd_avatar: 0;
   @include transition(300ms);
   @include border-radius(10px);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     &:hover {
       background: #fbfbfb;
       .mostRecentPostAd__button {
@@ -98,7 +98,7 @@ $newsletterAd_avatar: 0;
     text-decoration: none!important;
     display: block;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: 0 0.8em;
     }
   }
@@ -142,7 +142,7 @@ $newsletterAd_avatar: 0;
     align-items: center;
     justify-content: center;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       //- padding-right: 2.5em!important;
     }
   }
@@ -167,7 +167,7 @@ $newsletterAd_avatar: 0;
     display: none;
     margin-right: 0.8em;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       //- display: inline-block;
     }
   }
@@ -187,7 +187,7 @@ $newsletterAd_avatar: 0;
     @include border-radius(60px);
     @include transition(300ms);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-right: 1em;
     }
   }
@@ -199,7 +199,7 @@ $newsletterAd_avatar: 0;
     @include transition(300ms);
     display: none;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       display: inline-block;
       margin-right: 1em;
     }
@@ -221,7 +221,7 @@ $newsletterAd_avatar: 0;
 
     @include transition(300ms);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-right: 0.3em;
     }
 

@@ -9,6 +9,7 @@ import {BlogHome} from './pages/blog/home/Home'
 import {BlogPost} from './pages/blog/post/Post'
 import {Portfolio} from './pages/portfolio/Portfolio'
 import {VideosHome} from './pages/videos/Home'
+import {TalksHome} from './pages/talks/Home'
 
 const NoMatch = ({ location }) => (
     <div>
@@ -42,6 +43,11 @@ export const AppWithRoutes = () => (
             path='/videos'
             exact
             component={VideosHome}
+        />
+        <Route
+            path='/talks'
+            exact
+            component={TalksHome}
         />
         <Route
             component={NoMatch}

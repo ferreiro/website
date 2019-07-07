@@ -6,7 +6,7 @@
     border-radius: $card-radius;
     display: flex;
     
-    @include desktop-down {
+    @include large-down {
         flex-direction: column;
         margin-bottom: 1.5em;
 
@@ -15,7 +15,7 @@
         box-shadow: 0 0 10px 0 rgba(0,0,0,.05);
     }
 
-    @include desktop-up {
+    @include large-up {
         flex-direction: row;
         margin-bottom: 1.5em;
         padding: 1em;
@@ -29,7 +29,7 @@
             object-position: center;
         }
 
-        @include desktop-down {
+        @include large-down {
             width: 100%;
             max-height: 260px;
 
@@ -41,7 +41,7 @@
             }
         }
 
-        @include desktop-up {
+        @include large-up {
             flex: 0 0 auto;
             width: 400px;
             height: 260px;
@@ -57,19 +57,19 @@
     &__content {
         padding: 1em;
 
-        @include desktop-up {
+        @include large-up {
             padding: 2em;
             flex: 1 1 auto;
         }
     }
 
     &__title {
-        @include desktop-down {
+        @include large-down {
             font-size: $font-size-title;
             font-weight: 600;    
         }
 
-        @include desktop-up {
+        @include large-up {
             max-width: 600px;
             font-size: 2em;
             line-height: 1.4em;

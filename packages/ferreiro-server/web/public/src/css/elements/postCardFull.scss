@@ -32,7 +32,7 @@
     .postCard__header {
         height: 250px;
   
-        @media all and (min-width: $desktop-screen) {
+        @media all and (min-width: $large-screen) {
           height: 300px;
         }
     }
@@ -47,7 +47,7 @@
         bottom: 0 !important;
         display: none;
 
-        @media all and (min-width: $desktop-screen) {
+        @media all and (min-width: $large-screen) {
             display: block;
         }
     }

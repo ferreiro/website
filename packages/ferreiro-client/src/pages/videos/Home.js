@@ -9,30 +9,23 @@ import {
     BLOG_CATEGORY_TO_CONTENT,
 } from '../constants'
 
+const title = 'Videos'
+const description = 'Youtube Show hosted by @jgferreiro with interviews to top tech leaders ⚡ Propose the next interview or ask for an interview here: www.devsindepth.com'
+
+const header = (
+    <ContentHeader
+        title={title}
+        subtitle={description}
+        showSubscribeButton={true}
+    />
+)
+
 export class VideosHome extends PureComponent {
-    state = {
-        // posts: [],
-        // category: 'blog',
-        // intro: null,
-        // isLoading: false,
-    }
+    state = {}
 
     render() {
-        const title = 'Videos'
-        const description = 'Youtube Show hosted by @jgferreiro with interviews to top tech leaders ⚡ Propose the next interview or ask for an interview here: www.devsindepth.com'
-
-        const blogContentHeader = (
-            <ContentHeader
-                title={title}
-                subtitle={description}
-                showSubscribeButton={true}
-            />
-        )
-
         const content = (
             <div>
-                Hola videos!
-
                 <div style={{backgroundColor: '#000', padding: '2em', display: 'flex'}}>
                     <div style={{flex: '1 1 auto'}}>
                         <img height="120px" src="https://www.devsindepth.com/static/logo_developers_in_depth_by_jorge_ferreiro.svg" />
@@ -60,7 +53,7 @@ export class VideosHome extends PureComponent {
                     header={null}
                     isHeaderFullWidth={true}
                     panel={null}
-                    contentHeader={blogContentHeader}
+                    contentHeader={header}
                     content={content}
                 />
             </PageLayout>

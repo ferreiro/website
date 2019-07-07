@@ -33,12 +33,12 @@
     }
 
     &__title {
-        @include desktop-down {
+        @include large-down {
             font-size: $font-size-title;
             font-weight: 600;    
         }
 
-        @include desktop-up {
+        @include large-up {
             max-width: 600px;
             font-size: 1.3em;
             line-height: 1.4em;
