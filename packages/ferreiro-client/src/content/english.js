@@ -1,7 +1,7 @@
 export const content = {
     talks: {
         "title": "Conferences",
-        "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops. I've organized a technical workshop sponsored by Github and volunteered on various tech and entrepreneurship events.",
+        "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops.",
         "items": [
             {
                 "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp #adalabGithub @Google Campus Madrid",
@@ -730,7 +730,7 @@ export const content = {
     ],
     contact: {
         "title": "Contact",
-        "subtitle" : "Do you have a project, job proposal or want to say hi? Just ping me in the form below or shoot an email at <a class='email openModalBox'>jorge at ferreiro dot me</a>. I'll reply as soon as possible!",
+        "subtitle" : "Do you have a project, job proposal or want to say hi? Just ping me in the form below or shoot an email at <a class='email openModalBox'>jorge at ferreiro dot me</a>.",
     }   
 }
 

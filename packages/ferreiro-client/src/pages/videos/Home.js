@@ -34,11 +34,12 @@ export class VideosHome extends PureComponent {
             <div>
                 <div style={{backgroundColor: '#000', padding: '2em', display: 'flex'}}>
                     <div style={{flex: '1 1 auto'}}>
-                        <img height="120px" src="https://www.devsindepth.com/static/logo_developers_in_depth_by_jorge_ferreiro.svg" />
-                        <br />
-                        <img width="50%" src="/images/videos/rahma_javed_engineering_director_deliveroo_microsoft_wealthfront.png" />
+
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8REUs0k_pVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div style={{flex: '1 1 auto', color: 'white'}}>
+                        <img height="120px" src="https://www.devsindepth.com/static/logo_developers_in_depth_by_jorge_ferreiro.svg" />
+                        <br />
                         <h1>Rahma Javed</h1>
                         <h2>Engineering Director at Deliveroo. Former @Microsoft, Wealthfront</h2>
                         <p>Poner logos</p>
