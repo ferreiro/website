@@ -13,6 +13,7 @@ import resume from './pages/resume/resume.routes'
 import stats from './pages/stats/stats.routes'
 import talks from './pages/talks/talks.routes'
 import university from './pages/university/university.routes'
+import videos from './pages/videos/videos.routes'
 
 const router = express.Router()
   
@@ -55,5 +56,6 @@ router.use('/resume/jorge_ferreiro_resume.pdf', resume)
 router.use('/stats', stats)
 router.use('/talks', talks)
 router.use('/university', university)
+router.use('/videos', videos)
 
 module.exports = router

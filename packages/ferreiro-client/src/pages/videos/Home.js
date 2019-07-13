@@ -1,67 +1,131 @@
 import React, {PureComponent} from 'react'
 
 import {ContentHeader} from '../../components/contentHeader/ContentHeader';
+import {getQueryParamValue} from '../../common/getQueryParam';
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar';
 import {PageLayout} from '../../components/layout/PageLayout';
+import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu';
+import {SidebarSeparator} from '../../components/sidebarSeparator/SidebarSeparator';
+import {VideoCard, VideoCardDID} from '../../components/videoCard/VideoCardDID';
 
+import {getPageData, VIDEO_CATEGORIES_ALL, VIDEO_TYPE_DID, PAGE_SIDEBAR_MENU, VIDEO_CATEGORIES_DID, PAGE_CONTENT} from '../../content/english';
 
 import {
-    BLOG_CATEGORY_TO_CONTENT,
+    PATH_VIDEOS,
 } from '../constants'
 
-const title = 'Videos'
-const description = 'Youtube Show hosted by @jgferreiro with interviews to top tech leaders ⚡ Propose the next interview or ask for an interview here: www.devsindepth.com'
-
-const extraContent = (
-    <div>
-        Subscribe to channel
-    </div>
-)
-
-const header = (
-    <ContentHeader
-        extraContent={extraContent}
-        title={title}
-        subtitle={description}
-    />
-)
-
 export class VideosHome extends PureComponent {
-    state = {}
+    renderHeader = ({pageData, activeCategory}) => {
+        const content = pageData[PAGE_CONTENT][activeCategory]
+        const extraContent = <div>Subscribe to channel</div>
+
+        return (
+            <ContentHeader
+                extraContent={extraContent}
+                title={content.title}
+                subtitle={content.subtitle}
+            />
+        )
+    }
+
+    // NB: Is this a factory? I wanna know this pattern :P
+    renderVideoCard = (video) => {
+        switch (video.type) {
+            case VIDEO_TYPE_DID:
+                return (
+                    <VideoCardDID
+                        {...video}
+                    />
+                )
+        
+            default:
+                return null
+        }
+    }
+
+    renderContent = ({pageData, activeCategory}) => {
+        const entities = pageData.entities
+        const filteredEntities = Object.values(entities).filter((entity) => {
+            const categories = entity.categories
+
+            return categories.includes(activeCategory)
+        })
+
+        return (
+            <div>
+                {this.renderHeader({pageData, activeCategory})}
+
+                {filteredEntities.length === 0 && (
+                    <p>No videos available :(</p>
+                )}
+
+                {filteredEntities.map(this.renderVideoCard)}
+            </div>
+        )
+    }
+
+    getActiveCategory = ({
+        properties,
+        menuKeys = [],
+        defaultCategory,
+    }) => {
+        const categoryKey = getQueryParamValue({
+            defaultValue : 'all',
+            key: 'category',
+            properties: properties,
+        })
+        
+        return menuKeys.includes(categoryKey)
+            ? categoryKey
+            : defaultCategory
+    }
 
     render() {
-        const content = (
-            <div>
-                <div style={{backgroundColor: '#000', padding: '2em', display: 'flex'}}>
-                    <div style={{flex: '1 1 auto'}}>
+        // TODO: Create an abstraction over this?
+        const pageData = getPageData(PATH_VIDEOS)
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8REUs0k_pVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div style={{flex: '1 1 auto', color: 'white'}}>
-                        <img height="120px" src="https://www.devsindepth.com/static/logo_developers_in_depth_by_jorge_ferreiro.svg" />
-                        <br />
-                        <h1>Rahma Javed</h1>
-                        <h2>Engineering Director at Deliveroo. Former @Microsoft, Wealthfront</h2>
-                        <p>Poner logos</p>
-                        <p>Algo mas description.</p>
-                    </div>
+        const menu = pageData[PAGE_SIDEBAR_MENU]
+        const menuKeys = Object.keys(menu.entities)
+        const menuItems = Object.values(menu.entities)
+
+        const activeCategory = this.getActiveCategory({
+            defaultCategory: VIDEO_CATEGORIES_ALL,
+            menuKeys,
+            properties: this.props.location.search
+        })
+
+        const beforeContent = activeCategory === VIDEO_CATEGORIES_DID
+            && (
+                <div>
+                    <img width="100%" src="https://yt3.ggpht.com/pNVRRJvvHM-jGbdUstBlJqj2zn3QRn0Fjo70RPGyAWC55-y8xGaJh0Pn0OACh0TpzByHwCaAvJk=w2560-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no" />
                 </div>
+            )
 
+        const panel = (
+            <div className="">
+                <SidebarMenu
+                    title={menu.title}
+                    onClick={this.changeCategory}
+                    selectedCategory={activeCategory}
+                    items={menuItems}
+                />
+
+                <SidebarSeparator />
             </div>
         )
 
         return (
             <PageLayout
-                currentPath='videos'
+                currentPath={PATH_VIDEOS}
                 showHeader={true}
                 isHeaderFix={false}
             >
                 <LayoutWithSidebar
+                    beforeContent={beforeContent}
                     header={null}
                     isHeaderFullWidth={true}
-                    panel={null}
-                    contentHeader={header}
-                    content={content}
+                    panel={panel}
+                    content={this.renderContent({pageData, activeCategory})}
                 />
             </PageLayout>
         )

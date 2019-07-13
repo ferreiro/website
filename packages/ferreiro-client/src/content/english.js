@@ -1,4 +1,101 @@
+import {
+    PATH_VIDEOS,
+    FILTER_MENU_KEY
+} from "../pages/constants";
+
+export const PAGE_TITLE = 'title'
+export const PAGE_SUBTITLE = 'subtitle'
+export const PAGE_CATEGORIES = 'categories'
+export const PAGE_CONTENT = 'content'
+export const PAGE_SIDEBAR_MENU = 'sidebarMenu'
+export const PAGE_SIDEBAR_MENU_ITEMS = 'sidebarMenuItems'
+export const PAGE_ENTITIES = 'entities'
+
+export const VIDEO_CATEGORIES_ALL = 'all'
+export const VIDEO_CATEGORIES_DID = 'developersInDepth'
+export const VIDEO_CATEGORIES_CONFERENCES = 'conferences'
+
+export const VIDEO_TYPE_DID = 'didVideo'
+export const VIDEO_TYPE_CONFERENCE = 'conferenceVideo'
+
+export const getPageData = (path) => (
+    content[path]
+)
+
 export const content = {
+    [PATH_VIDEOS]: {
+        [PAGE_CONTENT]: {
+            [VIDEO_CATEGORIES_ALL]: {
+                [PAGE_TITLE]: 'Videos',
+                [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
+            },
+            [VIDEO_CATEGORIES_DID]: {
+                [PAGE_TITLE]: 'Developers In Depth',
+                [PAGE_SUBTITLE]: 'Youtube Show hosted by Jorge Ferreiro with interviews to top tech leaders ⚡ Propose the next interview or ask for an interview here: www.devsindepth.com',
+            },
+            [VIDEO_CATEGORIES_CONFERENCES]: {
+                [PAGE_TITLE]: 'Videos',
+                [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
+            },
+        },
+        [PAGE_SIDEBAR_MENU]: {
+            title: 'Video categories',
+            entities: {
+                [VIDEO_CATEGORIES_ALL]: {
+                    category: VIDEO_CATEGORIES_ALL,
+                    text: 'All',
+                    icon: 'home',
+                    path: '/videos',
+                },
+                [VIDEO_CATEGORIES_DID]: {
+                    category: VIDEO_CATEGORIES_DID,
+                    text: 'Developers In Depth',
+                    icon: 'home',
+                    path: `/videos?category=${VIDEO_CATEGORIES_DID}`,
+                },
+                [VIDEO_CATEGORIES_CONFERENCES]: {
+                    category: VIDEO_CATEGORIES_CONFERENCES,
+                    text: 'Conferences',
+                    icon: 'home',
+                    path: `/videos?category=${VIDEO_CATEGORIES_CONFERENCES}`,
+                },
+            }
+        },
+        [PAGE_ENTITIES]: {
+            ianDID: {
+                id: 'ianDID',
+                type: VIDEO_TYPE_DID,
+                title: 'Ian Fuller',
+                subtitle: 'VP Engineering at Freetrade',
+                categories: [VIDEO_CATEGORIES_ALL, VIDEO_CATEGORIES_DID],
+                cta: 'Watch now',
+                companies: [
+                    '/images/companies/freetrade.png',
+                    '/images/companies/snapchat.png',
+                    '/images/companies/amazon_comp.png',
+                ],
+                description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
+                image: '/images/videos/ian_fuller_vp_freetrade_former_amazon_snapchat.png',
+                url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj'
+            },
+            rahmaDid: {
+                id: 'rahmaDid',
+                type: VIDEO_TYPE_DID,
+                title: 'Rahma Javed',
+                subtitle: 'Engineering Director at Deliveroo',
+                categories: [VIDEO_CATEGORIES_ALL, VIDEO_CATEGORIES_DID],
+                cta: 'Watch now',
+                companies: [
+                    '/images/companies/freetrade.png',
+                    '/images/companies/snapchat.png',
+                    '/images/companies/amazon_comp.png',
+                ],
+                description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
+                image: '/images/videos/rahma_javed_engineering_director_deliveroo_microsoft_wealthfront.png',
+                url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj'
+            }
+        }
+    },
     talks: {
         "title": "Conferences",
         "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops.",
