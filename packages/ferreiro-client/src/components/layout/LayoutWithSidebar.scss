@@ -10,7 +10,6 @@
 
     &__sidebar {
         background: #fff;
-        min-height: 100vh;
         z-index: 10;
 
         @include extra-large-down {
@@ -20,6 +19,7 @@
         @include large-up {
             box-shadow: 5px 0px 5px -2px rgba(0, 0, 0, .1);
             flex: 0 0 auto;
+            min-height: 100vh;
             width: 240px;
         }
     }

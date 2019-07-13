@@ -27,8 +27,6 @@ export class RelatedPosts extends PureComponent {
 
     loadRelatedPosts = () => {
         const {permalink} = this.props
-        
-        console.log('loadRelatedPosts')
 
         this.setState({isLoading: true})
         fetch(`/api/v1/blog/post/${permalink}/related`)
@@ -58,22 +56,30 @@ export class RelatedPosts extends PureComponent {
             <Waypoint
                 onEnter={this.onEnterWaypoint}
             >
-                <div className="post-related">
-                    <div className="layout-with-sidebar__content-wrapper">
-                        <h3 className="post-share__title">
-                            Related posts
-                        </h3>
+                <div>
+                    {isLoading && (
+                        <p>Loading...</p>
+                    )}
 
-                        
-                        <div className="post-related__items">
-                            {isLoading && (
-                                <p>Loading...</p>
-                            )}
-                            {relatedPosts.length > 0 && (
-                                this.renderRelatedPosts(relatedPosts)
-                            )}
+                    {relatedPosts.length === 0 && (
+                        <p>Currently we don't have more related posts.</p>
+                    )}
+                    
+                    {relatedPosts.length > 0 && (
+                        <div className="post-related">
+                            <div className="layout-with-sidebar__content-wrapper">
+                                <h3 className="post-share__title">
+                                    Related posts
+                                </h3>
+
+                                <div className="post-related__items">
+                                    {relatedPosts.length > 0 && (
+                                        this.renderRelatedPosts(relatedPosts)
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </Waypoint>
         )

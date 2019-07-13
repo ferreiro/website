@@ -20,6 +20,7 @@ import {SidebarSeparator} from '../../../components/sidebarSeparator/SidebarSepa
 import {
     BLOG_CATEGORY_TO_CONTENT,
     BLOG_NAVIGATION,
+    SIDEBAR_MENU_BLOG_TITLE,
 } from '../../constants'
 
 const DEFAULT_CATEGORY = 'blog'
@@ -141,13 +142,14 @@ export class BlogHome extends PureComponent {
 
         const blogPanel = (
             <div className="">
-                {/* <SidebarMenu
+                <SidebarMenu
+                    title={SIDEBAR_MENU_BLOG_TITLE}
                     onClick={null}
                     selectedCategory={this.state.category}
                     items={BLOG_NAVIGATION}
-                /> */}
+                />
 
-                {/* <SidebarSeparator /> */}
+                <SidebarSeparator />
 
                 <ProfileCard />
 

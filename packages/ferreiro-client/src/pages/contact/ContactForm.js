@@ -1,25 +1,42 @@
 import React, {PureComponent} from 'react'
 import isEmpty from 'lodash/isEmpty'
+import isBoolean from 'lodash/isBoolean'
+import get from 'lodash/get'
+import merge from 'lodash/merge'
 import validator from 'email-validator'
 
-
+// Merge initial State and validators...
 const VALIDATORS = {
-    name: (text) => !isEmpty(text),
-    email: (text) => !isEmpty(text) && validator.validate(text),
-    message: (text) => !isEmpty(text),
+    name: (value) => isEmpty(value),
+    email: (value) => isEmpty(value) || validator.validate(value),
+    message: (value) => isEmpty(value),
+    subscribed: (value) => !isBoolean(value)
 }
-
 
 const API = '/api/v1/contact'
 
 const initialState = {
-    name: '',
-    email: '',
-    message: '',
-    subscribed: true,
-    isValidName: true,
-    isValidEmail: true,
-    isValidMessage: true,
+    fields: {
+        name: {
+            hasError: false,
+            value: '',
+        },
+        email: {
+            hasError: false,
+            value: '',
+        },
+        message: {
+            hasError: false,
+            value: '',
+        },
+        subscribed: {
+            hasError: false,
+            value: true,
+        },
+    },
+    isLoading: false,
+    isSentSucess: false,
+    isSentError: false,
 }
 
 export class ContactForm extends PureComponent {
@@ -27,21 +44,41 @@ export class ContactForm extends PureComponent {
 
     onSubmit = (event) => {
         event.preventDefault()
-        
-        const isValidForm = this.validateForm()
 
-        if (isValidForm) {
+        this.validateForm()
+
+        if (this.isValidForm()) {
             this.submitForm()
-            this.resetForm()
+                .finally(() => this.resetForm())
         }
     }
 
+    validateForm = () => {
+
+    }
+
+    startLoading = () => {
+        this.setState({isLoading: true})
+    }
+
+    stopLoading = () => {
+        this.setState({isLoading: false})
+    }
+
+    getFieldValue = (fieldKey) => (
+        get(this.state, `fields.${fieldKey}.value`)
+    )
+
+    getFieldError = (fieldKey) => (
+        get(this.state, `fields.${fieldKey}.hasError`)
+    )
+
     submitForm = () => {
         const body = {
-            __name: this.state.name,
-            __email: this.state.email,
-            __msg: this.state.message,
-            __subscribed: this.state.subscribed,
+            name: this.getFieldValue('name'),
+            email: this.getFieldValue('email'),
+            msg: this.getFieldValue('message'),
+            subscribed: this.getFieldValue('subscribed'),
         }
 
         const options = {
@@ -52,8 +89,8 @@ export class ContactForm extends PureComponent {
             },
         }
 
-        // TODO: Set loader
-        fetch(API, options)
+        this.startLoading();
+        return fetch(API, options)
             .then((response) => {
                 const {error, message} = response
 
@@ -62,60 +99,61 @@ export class ContactForm extends PureComponent {
                 }
                 
                 console.log(response)
+                this.stopLoading()
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                this.stopLoading()
+            })
     }
 
     resetForm = () => {
-        this.setState({initialState})
+        this.setState(initialState)
     }
 
     handleInputBlur = (event) => {
-        this.validateForm()
+        this.isValidForm()
     }
 
     handleInputChange = (event) => {
-        const target = event.target;
-        const name = target.name;
+        const fieldKey = event.target.name;
+        const fieldValue = event.target.value;
 
-        this.setState({
-            [name]: target.value
-        });
+        const updatedState = this.state
+        updatedState.fields[fieldKey].value = fieldValue
+
+        this.setState(updatedState)
     }
-
-    capitalize = (string) => (
-        string.charAt(0).toUpperCase() + string.slice(1)
-    )
 
     handleOnBlur = (event) => {
-        const {
-            name,
-            value,
-        } = event.target;
+        const fieldKey = event.target.name;
+        const fieldValue = event.target.value;
 
-        this.setState({
-            [`isValid${this.capitalize(name)}`]: this.isValidField(name, value)
-        })
+        const updatedState = this.state
+        updatedState.fields[fieldKey].value = fieldValue
+        updatedState.fields[fieldKey].hasError = this.isInvalidField(fieldKey)
+
+        this.setState(updatedState)
     }
 
-    isValidField = (name, value) => (
-        VALIDATORS[name](value)
-    )
+    isInvalidField = (fieldKey) => {
+        const fieldValue = this.getFieldValue(fieldKey)
 
-    validateForm = () => {
-        const isValidName = this.isValidField('name', this.state.name)
-        const isValidEmail = this.isValidField('email', this.state.email)
-        const isValidMessage = this.isValidField('message', this.state.message)
+        if (VALIDATORS[fieldKey]) {
+            return VALIDATORS[fieldKey](fieldValue)
+        }
 
-        this.setState({
-            isValidName,
-            isValidEmail,
-            isValidMessage,
-        })
+        // TODO: We could also throw an error. Validator does not exist...
+        return true
+    }
 
-        return isValidEmail ||
-            isValidEmail ||
-            isValidMessage
+    isValidForm = () => {
+        const fieldsKeys = Object.keys(this.state.fields)
+        const isValidForm = fieldsKeys.reduce((accum, nextFieldKey) => (
+            accum && this.isInvalidField(nextFieldKey)
+        ), true)
+
+        return isValidForm
     }
 
     renderError = (error) => (
@@ -130,16 +168,16 @@ export class ContactForm extends PureComponent {
         name,
         value,
         placeholder,
-        isValid,
+        hasError,
     }) => {
         return (
             <label className="contact_form_fieldset">
-                {!isValid && this.renderError(error)}
+                {hasError && this.renderError(error)}
 
                 <input
                     name={name}
                     value={value}
-                    className={`contact_form_input ${!isValid && 'wrongInput'}`}
+                    className={`contact_form_input ${hasError && 'wrongInput'}`}
                     type="text"
                     placeholder={placeholder}
                     onChange={this.handleInputChange}
@@ -149,14 +187,32 @@ export class ContactForm extends PureComponent {
         )
     }
 
-    renderForm = ({
+    renderTextareaField = ({
+        error,
         name,
-        email,
-        message,
-        isValidName,
-        isValidEmail,
-        isValidMessage,
+        value,
+        placeholder,
+        hasError,
     }) => (
+        <fieldset className="contact_form_fieldset">
+            {this.getFieldError('message') && this.renderError('Error: Hey! Please, fill some text here ;).')}
+
+            <input
+                name="message"
+                value={this.getFieldValue(name)}
+                onChange={this.handleInputChange}
+                className={`contact_form_input contact_form_textarea ${hasError && 'wrongInput'}`}
+                type="name"
+                placeholder={placeholder}
+                onBlur={this.handleOnBlur}
+                style={{
+                    marginBottom: 0,
+                }}
+            />
+        </fieldset>
+    )
+
+    renderForm = ({fields}) => (
         <form
             onSubmit={this.onSubmit}
             action="/contact/send"
@@ -167,35 +223,26 @@ export class ContactForm extends PureComponent {
             {this.renderInputField({
                 error: 'Your name can not be blank',
                 name: 'name',
-                value: name,
+                value: this.getFieldValue('name'),
                 placeholder: 'What is your name?',
-                isValid: isValidName, 
+                hasError: this.getFieldError('name'), 
             })}
 
             {this.renderInputField({
                 error: 'The email you introduced is not valid. Try again.',
                 name: 'email',
-                value: email,
+                value: this.getFieldValue('email'),
                 placeholder: 'And your email?',
-                isValid: isValidEmail, 
+                hasError: this.getFieldError('email'),
             })}
 
-            <fieldset className="contact_form_fieldset">
-                {!isValidMessage && this.renderError('Error: Hey! Please, fill some text here ;).')}
-
-                <input
-                    name="message"
-                    value={message}
-                    onChange={this.handleInputChange}
-                    className={`contact_form_input contact_form_textarea ${!isValidMessage && 'wrongInput'}`}
-                    type="name"
-                    placeholder='Write your message'
-                    onBlur={this.handleOnBlur}
-                    style={{
-                        marginBottom: 0,
-                    }}
-                />
-            </fieldset>
+            {this.renderTextareaField({
+                error: 'Foo',
+                name: 'message',
+                value: this.getFieldValue('message'),
+                placeholder: 'Foo placeholder',
+                hasError: this.getFieldError('message'),
+            })}
             
             <fieldset className="contact_form_fieldset">
                 <div className="contact_form_newsletter">
@@ -232,7 +279,10 @@ export class ContactForm extends PureComponent {
     )
 
     render() {
+        const {isLoading, fields} = this.state
 
+        console.log('isLoading', isLoading);
+        console.log('this.state', this.state);
 
         return (
             <div className="contact animate">
@@ -246,18 +296,19 @@ export class ContactForm extends PureComponent {
                                 }}
                             />
                         </div>
-                        <center>
-                            <img
-                                id="contactLoader"
-                                className="loaderIcon"
-                                src="/images/loading.gif"
-                                width="30px"
-                                style={{display: 'none'}}
-                            />
-                        </center>
-
-                        {this.renderForm(this.state)}
-                </div>
+                        
+                        {isLoading ? (
+                            <center>
+                                <img
+                                    className="loaderIcon"
+                                    src="/images/loading.gif"
+                                    width="30px"
+                                />
+                            </center>
+                        ) : (
+                            this.renderForm({fields})
+                        )}
+                    </div>
                 </div>
             </div>
         )

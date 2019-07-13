@@ -5,6 +5,10 @@ import {
     withRouter
 } from 'react-router-dom'
 
+import {PageLayout} from './components/layout/PageLayout'
+
+import {About} from './pages/about/About'
+import {AboutResume} from './pages/about/AboutResume'
 import {BlogHome} from './pages/blog/home/Home'
 import {BlogPost} from './pages/blog/post/Post'
 import {Contact} from './pages/contact/Contact'
@@ -12,14 +16,29 @@ import {Portfolio} from './pages/portfolio/Portfolio'
 import {VideosHome} from './pages/videos/Home'
 import {TalksHome} from './pages/talks/Home'
 
+import './common.scss';
+
 const NoMatch = ({ location }) => (
-    <div>
+    <PageLayout
+        showHeader={true}
+        isHeaderFix={false}
+    >
       <h3>Page not found <code>{location.pathname}</code></h3>
-    </div>
+    </PageLayout>
   )
 
 export const AppWithRoutes = () => (
     <Switch>
+        <Route
+            path='/about'
+            exact
+            component={About}
+        />
+        <Route
+            path='/about/resume'
+            exact
+            component={AboutResume}
+        />
         <Route
             path='/portfolio'
             exact
@@ -52,6 +71,11 @@ export const AppWithRoutes = () => (
         />
         <Route
             path='/contact'
+            exact
+            component={Contact}
+        />
+        <Route
+            path='/contact/talk'
             exact
             component={Contact}
         />

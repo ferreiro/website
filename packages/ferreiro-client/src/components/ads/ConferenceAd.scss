@@ -1,0 +1,74 @@
+@import "../mediaQueries.scss";
+
+.conference-ad {
+    width: 100%;
+    background: #f4f4f4;
+    // border: 4px solid #f4f4f4;
+    margin-bottom: 2em;
+
+    &__wrapper {
+        align-items: center;
+        display: flex;
+        margin: 0 auto;
+        max-width: 90%;
+        position: relative;
+
+        @include large-up {
+            max-width: 620px;
+        }
+    }
+
+    &__button {
+        background: #ca4622;
+        color: #fff;
+        display: block;
+        font-weight: 600;
+        max-width: 90px;
+        margin: 0 auto;
+        padding: .8em 1.5em;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 2em 0;
+
+        @include large-up {
+            max-width: 370px;
+            margin: 0 auto;
+            align-self: center;
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 1.5em;
+        margin: 0;
+        margin-bottom: 1em;
+
+        @include large-up {
+            font-size: 1.6em;
+        }        
+    }
+
+    &__image {
+        flex: 0 0 auto;
+        width: 200px;
+        align-self: flex-end;
+        display: none;
+
+        @include large-up {
+            display: flex;
+            width: 250px;
+            position: absolute;
+            right: 0;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+        }
+    }
+}

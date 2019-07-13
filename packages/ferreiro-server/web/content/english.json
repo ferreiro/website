@@ -12,7 +12,7 @@
       "id": "about",
       "icon": null,
       "name" : "About me",
-      "url" : "/about",
+      "url" : "/about?react=true",
       "target": "_self"
     },
     {
@@ -40,7 +40,7 @@
       "id": "contact",
       "icon": null,
       "name" : "Contact",
-      "url" : "/contact",
+      "url" : "/contact?react=true",
       "target": "_self"
     }
   ],

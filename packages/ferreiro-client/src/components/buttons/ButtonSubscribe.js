@@ -37,6 +37,8 @@ const getClassName = (style, size) => {
     })
 }
 
+// TODO: Rename into ButtonCta or something like that.
+// This is not only used for subscribe
 export const ButtonSubscribe = ({
     onClick,
     url = '/newsletter',

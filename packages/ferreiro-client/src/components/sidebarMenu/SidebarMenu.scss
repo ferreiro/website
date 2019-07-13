@@ -1,24 +1,37 @@
 .sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 2em 0 2em; 
+    width: calc(100% - 1em);
+    margin: 2em 0 2em;
+    margin-left: 1em;
+    
+    &__title {
+        font-size: 20px;
+        margin-bottom: 18px;
+        margin-left: 24px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
 
     &__item {
         list-style: none;
-        margin-left: 1em;
         flex: 1 1 auto;
 
         a {
             display: block;
-            padding: 1em;
+            padding: 1em 1.5em;
         }
     }
 
     .selected {
         border-top-left-radius: 100px;
         border-bottom-left-radius: 100px;
-        width: calc(100% + 5px);
-        background: #f4f4f4;
+        background: #d8f2ff;
+
+        a {
+            color: #33454e;
+            font-weight: 600;
+        }
     }
 }

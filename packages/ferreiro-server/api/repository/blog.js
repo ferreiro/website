@@ -155,9 +155,12 @@ module.exports.getRandomPosts = function (opts) {
       populate: 'series'
     }
 
-    Post.findRandom(filter, fields, options, (err, posts) => {
+    return Post.findRandom(filter, fields, options, (err, posts) => {
       if (err) {
         return reject(err)
+      }
+      if (!posts) {
+        return resolve([])
       }
       return resolve(posts)
     })

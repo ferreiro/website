@@ -1,3 +1,4 @@
+@import '../variables.scss';
 @import '../mediaQueries.scss';
 
 // This class is added to the body
@@ -105,10 +106,55 @@
         }
     }
 
+    .submenu {
+        position: relative;
+
+        &-dropdown {
+            box-shadow: 1px 1px 10px rgba(0,0,0,.2);
+            top: 100%;
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            position: absolute;
+            z-index: 100;
+
+            &__item {
+                padding: 1em 2em;
+                flex: 1 1 auto;
+
+                p {
+                    border-bottom: 2px solid transparent;
+                }
+
+                &:hover {
+                    background: #f7f7f7;
+
+                    p {
+                        color: $color-main;
+                    }
+                }
+
+                &:nth-child(1) {
+                    padding-top: 2em;
+                }
+
+                &:nth-last-child(1) {
+                    padding-bottom: 2em;
+                }
+
+                &--selected {
+                    background: #efeaea;
+                }
+            }
+        }
+    }
+
     &__item {
+        align-items: center; 
         font-size: 16px;
         padding: 18px 24px;
-        display: block;
+        display: flex;
         border-radius: 60px;
 
         p {
@@ -118,8 +164,7 @@
         }
 
         &--selected {
-            p {
-                color: rgba(0,0,0,.8);
+            p, span {
                 color: rgb(201, 70, 33);
             }
             background: #f7f7f7;

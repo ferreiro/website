@@ -11,17 +11,22 @@ import {
 import './Header.scss';
 
 const isReactEnabledForPage = (item) => (
-    item.id === 'blog'
+    item.id === 'about'
+        || item.id === 'blog'
         || item.id === 'portfolio'
         || item.id === 'videos'
         || item.id === 'talks'
         || item.id === 'contact'
 )
 
-const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName) => {
+const renderMenuItemMobile = (item, currentPath = '', itemClassName, selectedItemClassName) => {
+    const onClick = () => {
+        console.log('removing className')
+        document.body.classList.remove('mobile-header-is-showing');
+    }
     const className = classNames({
         [itemClassName]: true,
-        [selectedItemClassName]: item.id === currentPath
+        [selectedItemClassName]: currentPath.includes(item.id)
     })
 
     if (item.hidden === true) {
@@ -36,13 +41,14 @@ const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName)
             <Link
                 to={item.path}
                 className={className}
-                key={item.name}
+                key={item.text}
+                onClick={onClick}
             >
                 {item.icon && (
                     <p className={`icon ${item.icon}`} />
                 )}
-                {item.name && (
-                    <p>{item.name}</p>
+                {item.text && (
+                    <p>{item.text}</p>
                 )}
             </Link>
         )
@@ -50,6 +56,7 @@ const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName)
 
     return (
         <a
+            onClick={onClick}
             className={className}
             href={item.path}
             key={item.path}
@@ -57,8 +64,111 @@ const renderMenuItem = (item, currentPath, itemClassName, selectedItemClassName)
             {item.icon && (
                 <p className={`icon ${item.icon}`} />
             )}
-            {item.name && (
-                <p>{item.name}</p>
+            {item.text && (
+                <p>{item.text}</p>
+            )}
+        </a>
+    )
+}
+
+const renderMenuItem = ({
+    currentPath = '',
+    isShownAboutDropdown,
+    item,
+    itemClassName,
+    selectedItemClassName,
+    toggleAboutDropdownMenu
+}) => {
+    const onClick = () => {
+        console.log('removing className')
+        document.body.classList.remove('mobile-header-is-showing');
+    }
+    const className = classNames({
+        [itemClassName]: true,
+        [selectedItemClassName]: currentPath.includes(item.id)
+    })
+
+    if (item.hidden === true) {
+        // SKIP: do not add hide items
+        return null
+    }
+
+    // TODO: Remove this once all the migration into react
+    // is done.
+    if (isReactEnabledForPage(item)) {
+        const {submenu = null} = item
+        const renderItem = ({
+            item,
+            className,
+            selectedClass,
+            onClick,
+            extraContent
+        }) => {
+            const {path, text, icon} = item
+
+            return (
+                <Link
+                    to={path}
+                    className={classNames({
+                        [className]: true,
+                        [selectedClass]: currentPath.includes(item.id)
+                    })}
+                    key={text}
+                    onClick={onClick}
+                >
+                    {icon && (
+                        <p className={`icon ${icon}`} />
+                    )}
+                    {text && (
+                        <p>{text}</p>
+                    )}
+                    {extraContent}
+                </Link>
+            )
+        }
+
+        if (submenu) {
+            return (
+                <div
+                    className="submenu"
+                    onMouseEnter={toggleAboutDropdownMenu}
+                    onMouseLeave={toggleAboutDropdownMenu}
+                >
+                    {renderItem({
+                        item,
+                        className,
+                        extraContent: <span style={{marginLeft: '.5em'}} className="icon icon-circle-down" />,
+                    })}
+
+                    {isShownAboutDropdown && (
+                        <div className="submenu-dropdown">
+                            {submenu.map((item) => renderItem({
+                                item,
+                                className: 'submenu-dropdown__item',
+                                selectedClass: 'submenu-dropdown__item--selected',
+                                onClick
+                            }))}
+                        </div>
+                    )}
+                </div>
+            )
+        }
+
+        return renderItem({item, className, onClick})
+    }
+
+    return (
+        <a
+            onClick={onClick}
+            className={className}
+            href={item.path}
+            key={item.path}
+        >
+            {item.icon && (
+                <p className={`icon ${item.icon}`} />
+            )}
+            {item.text && (
+                <p>{item.text}</p>
             )}
         </a>
     )
@@ -87,6 +197,14 @@ const renderSocialItem = (item, itemClassName) => {
 export class Header extends PureComponent {
     state = {
         isShown: false,
+        isShownAboutDropdown: false,
+    }
+
+    toggleAboutDropdownMenu = () => {
+        console.log('toggleAboutDropdownMenu')
+        this.setState((prevState) => ({
+            isShownAboutDropdown: !prevState.isShownAboutDropdown
+        }))
     }
 
     toggleMenu = () => {
@@ -108,6 +226,9 @@ export class Header extends PureComponent {
 
     render() {
         const {currentPath} = this.props
+        const {
+            isShownAboutDropdown
+        } = this.state
 
         // TODO: delete menu, menu__wrapper and container_inner
         return (
@@ -116,7 +237,7 @@ export class Header extends PureComponent {
                     <div className="main-header-dropdown">
                         <nav className="main-header-dropdown__links">
                             {MOBILE_MENU_ITEMS.map((item) =>
-                                renderMenuItem(item, currentPath, 'main-header-dropdown__item', 'main-header-dropdown__item--selected'))
+                                renderMenuItemMobile(item, currentPath, 'main-header-dropdown__item', 'main-header-dropdown__item--selected'))
                             }
                         </nav>
                         <div className="main-header-dropdown__social">
@@ -134,9 +255,16 @@ export class Header extends PureComponent {
                     >
                         <img src="/images/logo_jorge_ferreiro.png" />
                     </a>
-    
+
                     <nav className="main-header__menu">
-                        {MENU_ITEMS.map((item) => renderMenuItem(item, currentPath, 'main-header__item', 'main-header__item--selected'))}
+                        {MENU_ITEMS.map((item) => renderMenuItem({
+                            item,
+                            currentPath,
+                            itemClassName: 'main-header__item',
+                            selectedItemClassName: 'main-header__item--selected',
+                            isShownAboutDropdown,
+                            toggleAboutDropdownMenu: this.toggleAboutDropdownMenu,
+                        }))}
                     </nav>
     
                     <div className="main-header__social">
@@ -153,45 +281,3 @@ export class Header extends PureComponent {
         )
     }
 }
-
-
-// header.menu.fixed#menu
-//   .menu__wrapper.container_inner
-//       a.logo(href="/")
-//         img(src="/images/logo.jpg").logo__image
-//         .logo__text Jorge Ferreiro
-//
-//           .menu-socialLinks
-//             each item in social || []
-//               a.menu-socialLinks__item(id= item.id, href= item.url, target= item.target || '_target')
-//                 span.dropdown-icon(class="icon-" + item.icon)
-//                 //- span.dropdown-text #{item.name}
-
-//           if admin
-//             a.item(href="/admin/")
-//               p Admin
-
-         
-//           //- a.item.with-icon(href="/newsletter").openNewsletterSubscription
-//             p
-//               //- i(class="icon ion-android-mail").dropdown-top-icon
-//               span Subscribe
-
-//           //-.dropdown.dropdown-social
-//             .item.with-icon
-//               p
-//                 i(class="icon ion-chatbox-working").dropdown-top-icon
-//                 //-span Social - Let's connect!
-//                 span Social Networks
-//                 .dropdown-content#DropdownSocial
-//                   .dropdown-wrapper
-//                     each item in social || []
-//                       a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
-//                         span.dropdown-icon(class="icon-" + item.icon)
-//                         span.dropdown-text #{item.name}
-
-//       .jfmenu__mobileButton#dropdown-mobiles
-//         .jfmenu__mobileButton__wrapper
-//           // p.jfmenu__mobileButton__text= path
-//           .jfmenu__mobileButton__icon
-//             span.icon.ion-navicon

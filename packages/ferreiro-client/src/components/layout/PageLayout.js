@@ -9,7 +9,7 @@ import './PageLayout.scss'
 export const PageLayout = ({
     currentPath = null,
     showHeader = true,
-    isHeaderFix = true,
+    isHeaderFix = false,
     children
 }) => {
     const headerClassName = classNames({

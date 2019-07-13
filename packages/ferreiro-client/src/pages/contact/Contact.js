@@ -7,6 +7,7 @@ import {ContentHeader} from '../../components/contentHeader/ContentHeader'
 import {PageLayout} from '../../components/layout/PageLayout'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
 import {content} from '../../content/english'
+import { PATH_CONTACT } from '../constants';
 
 const {
     title,
@@ -25,6 +26,7 @@ export class Contact extends Component {
 
         return (
             <PageLayout
+                currentPath={PATH_CONTACT}
                 showHeader={true}
                 isHeaderFix={false}
             >

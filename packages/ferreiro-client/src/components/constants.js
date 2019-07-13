@@ -35,44 +35,67 @@ export const BUTTON_SIZE_BIG = 'big';
 // MENU
 export const MENU_ITEMS = [
     {
+      "id": "about",
+      "icon": null,
+      "text" : "About",
+      "path" : "/about",
+      "target": "_self",
+      "submenu": [
+        {
+          "id": "biography",
+          "icon": null,
+          "text" : "Biography",
+          "path" : "/about",
+          "target": "_self",
+        },
+        {
+          "id": "portfolio",
+          "icon": null,
+          "text" : "Portfolio & Projects",
+          "path" : "/portfolio",
+          "target": "_self",
+        },
+        {
+          "id": "resume",
+          "icon": null,
+          "text" : "Resume / CV",
+          "path" : "/about/resume",
+          "target": "_self",
+        },
+      ]
+    },
+    {
       "id": "blog",
       "icon": null,
-      "name" : "Blog",
+      "text" : "Blog",
       "path" : "/blog",
       "target": "_self"
     },
     {
       "id": "videos",
       "icon": null,
-      "name" : "Videos",
+      "text" : "Videos",
       "path" : "/videos",
       "target": "_self"
     },
     {
       "id": "talks",
       "icon": null,
-      "name" : "Conferences",
+      "text" : "Conferences",
       "path" : "/talks",
       "target": "_self"
     },
-    {
-      "id": "about",
-      "icon": null,
-      "name" : "About",
-      "path" : "/about",
-      "target": "_self"
-    },
-    {
-      "id": "portfolio",
-      "icon": null,
-      "name" : "Portfolio",
-      "path" : "/portfolio",
-      "target": "_self"
-    },
+    // {
+    //   "id": "portfolio",
+    //   "icon": null,
+    //   "text" : "Portfolio",
+    //   "path" : "/portfolio",
+    //   "target": "_self"
+    // },
     {
       "id": "contact",
       "icon": null,
-      "name" : "Contact",
+      "text" : "Contact",
       "path" : "/contact",
       "target": "_self"
     }
@@ -82,7 +105,7 @@ export const MOBILE_MENU_ITEMS = [
   {
     "id": "home",
     "hidden": false,
-    "name" : "Home",
+    "text" : "Home",
     "path" : "/",
     "target": "_self"
   },

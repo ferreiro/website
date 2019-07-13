@@ -17,22 +17,13 @@ const {
 } = content.talks;
 
 import {
-    BLOG_CATEGORY_TO_CONTENT,
+    BLOG_CATEGORY_TO_CONTENT, PATH_TALKS,
 } from '../constants'
-
-const currentPath = 'talks'
+import { ConferenceAd } from '../../components/ads/ConferenceAd';
 
 const extraContent = (
     <ButtonSubscribe
         size={BUTTON_SIZE_BIG}
-    />
-)
-
-const header = (
-    <ContentHeader
-        title={title}
-        subtitle={subtitle}
-        extraContent={extraContent}
     />
 )
 
@@ -48,15 +39,25 @@ export class TalksHome extends PureComponent {
 
     render() {
         const content = (
-            <ThreeColumnLayout
-                items={items}
-                renderingCallback={renderTalk}
-            />
+            <div>
+                <ConferenceAd />
+
+                <ContentHeader
+                    title={title}
+                    subtitle={subtitle}
+                    extraContent={extraContent}
+                />
+
+                <ThreeColumnLayout
+                    items={items}
+                    renderingCallback={renderTalk}
+                />
+            </div>
         )
 
         return (
             <PageLayout
-                currentPath={currentPath}
+                currentPath={PATH_TALKS}
                 showHeader={true}
                 isHeaderFix={false}
             >
@@ -64,7 +65,6 @@ export class TalksHome extends PureComponent {
                     header={null}
                     isHeaderFullWidth={true}
                     panel={null}
-                    contentHeader={header}
                     content={content}
                 />
             </PageLayout>
