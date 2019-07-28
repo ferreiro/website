@@ -34,15 +34,18 @@ export const ContentHeader = ({
                 >
                     {title}
                 </h1>
-                <h2
-                    className="content-header__subtitle"
-                    dangerouslySetInnerHTML={{
-                        __html: subtitle,
-                    }}
-                    style={{
-                        fontFamily: 'aktiv-grotesk, sans-serif',
-                    }}
-                />
+
+                {subtitle && (
+                    <h2
+                        className="content-header__subtitle"
+                        dangerouslySetInnerHTML={{
+                            __html: subtitle,
+                        }}
+                        style={{
+                            fontFamily: 'aktiv-grotesk, sans-serif',
+                        }}
+                    />
+                )}
             </div>
 
             {options}

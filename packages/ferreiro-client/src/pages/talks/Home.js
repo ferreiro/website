@@ -10,13 +10,13 @@ import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
 import {PageLayout} from '../../components/layout/PageLayout'
 import {OneColumnLayout} from '../../components/oneColumnLayout/OneColumnLayout'
 
-import {content} from '../../content/english'
+import {getPageData, PAGE_ENTITIES, PAGE_CONTENT, PAGE_TITLE, PAGE_SUBTITLE} from '../../content/english'
 
-const {
-    title,
-    subtitle,
-    items = [],
-} = content.talks
+const pageData = getPageData(PATH_TALKS)
+
+const title = pageData[PAGE_CONTENT][PAGE_TITLE]
+const subtitle = pageData[PAGE_CONTENT][PAGE_SUBTITLE]
+const items = pageData[PAGE_ENTITIES]
 
 import {
     PATH_TALKS,
@@ -25,16 +25,15 @@ import {
 import './talks.scss'
 
 const renderCardTalk = (talk) => (
-    <CardTalk
-        key={talk.id}
-        talk={talk}
-    />
+    !talk.private
+        ? <CardTalk key={talk.id} talk={talk} />
+        : null
 )
 
 const renderTalk = (talk) => (
-    <TalkListItem
-        talk={talk}
-    />
+    !talk.private
+        ? <TalkListItem talk={talk} />
+        : null
 )
 
 export class TalksHome extends PureComponent {

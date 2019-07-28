@@ -3,16 +3,30 @@ import {
     PATH_VIDEOS,
     FILTER_MENU_KEY,
     PATH_CONTACT,
-    PATH_CONTACT_TALK
+    PATH_CONTACT_TALK,
+    PATH_TALKS
 } from "../pages/constants";
 
 export const PAGE_TITLE = 'title'
 export const PAGE_SUBTITLE = 'subtitle'
 export const PAGE_CATEGORIES = 'categories'
 export const PAGE_CONTENT = 'content'
+export const PAGE_COLORS = 'colors'
 export const PAGE_SIDEBAR_MENU = 'sidebarMenu'
 export const PAGE_SIDEBAR_MENU_ITEMS = 'sidebarMenuItems'
 export const PAGE_ENTITIES = 'entities'
+
+export const TALK_PROPERTY_LOCATION = 'location'
+export const TALK_PROPERTY_COUNTRY = 'country'
+export const TALK_PROPERTY_CITY = 'city'
+export const TALK_PROPERTY_VENUE = 'venue'
+
+export const TALK_COUNTRY_SPAIN = 'Spain'
+export const TALK_COUNTRY_UK = 'United Kingdom'
+export const TALK_COUNTRY_US = 'United States'
+export const TALK_CITY_MADRID = 'Madrid'
+export const TALK_CITY_MURCIA = 'Murcia'
+export const TALK_CITY_LONDON = 'London'
 
 export const VIDEO_CATEGORIES_ALL = 'all'
 export const VIDEO_CATEGORIES_DID = 'developersInDepth'
@@ -33,6 +47,14 @@ export const content = {
         [PAGE_CONTENT]: {
             [PAGE_TITLE]: 'About',
             // [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
+        },
+        [PAGE_COLORS]: {
+            career: '#922dcc',
+            talks: '#3f51b5',
+            videos: '#f44336',
+            writing: '#ff9800',
+            mentoring: '#009688',
+            photos: '#607d8b',
         }
     },
     [PATH_VIDEOS]: {
@@ -123,11 +145,13 @@ export const content = {
             }
         },
     },
-    talks: {
-        "title": "Conferences",
-        "subtitle": "I love sharing what I know! I have given talks on <strong>technical</strong>, <strong>career growth</strong> and <strong>motivational</strong> topics, as well as conducting workshops.",
-        "items": [
-            {
+    [PATH_TALKS]: {
+        [PAGE_CONTENT]: {
+            [PAGE_TITLE]: "Conferences",
+            [PAGE_SUBTITLE]: "I love sharing what I know! I have given talks on <strong>technical</strong>, <strong>career growth</strong> and <strong>motivational</strong> topics, as well as conducting workshops.",
+        },
+        [PAGE_ENTITIES]: {
+            github101: {
                 "title": "Github 101 by Jorge Ferreiro - Adalab Bootcamp",
                 "summary": "Why I love Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
                 "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
@@ -139,9 +163,10 @@ export const content = {
                 },
                 "date": "May, 7th",
                 "year": "2019",
-                "location": {
-                    "venue": "Google for Startups",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Google for Startups",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -151,7 +176,7 @@ export const content = {
                     }
                 ]
             },
-            {
+            githubProp: {
                 "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp",
                 "summary": "Why I ❤️ Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
                 "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
@@ -163,9 +188,10 @@ export const content = {
                 },
                 "date": "May, 7th",
                 "year": "2019",
-                "location": {
-                    "venue": "Google for Startups",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Google for Startups",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -175,7 +201,7 @@ export const content = {
                     }
                 ]
             },
-            {
+            perfLondon: {
                 "title": "Web Perfomance: Expectations Vs Reality - JSRoundabout by Jorge Ferreiro - #TwitterPerf",
                 "summary": "“Why is my website slow?”, “How can I improve the loading time?”, “How does the browser render a website?”, “What techniques can I apply to boost the speed of my website?”.",
                 "permalink": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout",
@@ -187,9 +213,10 @@ export const content = {
                 },
                 "date": "April, 2th",
                 "year": "2019",
-                "location": {
-                    "venue": "Twitter Office",
-                    "city": "London"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Twitter Office",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_LONDON,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_UK,
                 },
                 "event": "",
                 "buttons": [
@@ -199,7 +226,7 @@ export const content = {
                     }
                 ]
             },
-            {
+            fdi10Tips: {
                 "title": "Los 10 consejos para lanzar tu carrera en tecnología - #futuroFiumers",
                 "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
                 "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
@@ -211,9 +238,10 @@ export const content = {
                 },
                 "date": "February, 23th",
                 "year": "2019",
-                "location": {
-                    "venue": "Codecamp",
-                    "city": "Murcia"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Codecamp",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MURCIA,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -223,7 +251,7 @@ export const content = {
                     }
                 ]
             },
-            {
+            fdi10GetJob: {
                 "title": "La Guía Definitiva para conseguir tu trabajo - #futuroFDI",
                 "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
                 "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
@@ -235,9 +263,10 @@ export const content = {
                 },
                 "date": "February, 6th",
                 "year": "2019",
-                "location": {
-                    "venue": "FDI UCM",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "FDI UCM",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -251,7 +280,7 @@ export const content = {
                     },
                 ]
             },
-            {
+            fdiCesar: {
                 "title": "Entrevista con César Puerta, Senior Staff en Twitter - #futuroFDI",
                 "summary": "Jorge Ferreiro does a live video interview with César Puerta who is currently leading Twitter for Android application and who is Senior Staff Engineer.",
                 "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
@@ -263,9 +292,10 @@ export const content = {
                 },
                 "date": "February, 6th",
                 "year": "2019",
-                "location": {
-                    "venue": "FDI UCM",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "FDI UCM",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -275,7 +305,7 @@ export const content = {
                     }
                 ]
             },
-            {
+            fdiCv: {
                 "title": "El CV y Github: El momento de jugar como pros 2019 - #futuroFDI",
                 "summary": "Tips, ideas and suggestions on how to get the most out of your Social Networks. Also, learn how to do the most amazing resumes.",
                 "permalink": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros",
@@ -287,9 +317,10 @@ export const content = {
                 },
                 "date": "February, 6th",
                 "year": "2019",
-                "location": {
-                    "venue": "FDI UCM",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "FDI UCM",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -303,7 +334,7 @@ export const content = {
                     },
                 ]
             },
-            {
+            fdiHistory: {
                 "title": "Mi historia hasta 2019 - #futuroFDI",
                 "summary": "Comparto mi historia personal desde cuando comencé a programar con 10 años hasta la actualidad. Haciendou un repaso de las lecciones aprendidas en las diferentes empresas que he estado.",
                 "permalink": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019",
@@ -315,9 +346,10 @@ export const content = {
                 },
                 "date": "February, 6th",
                 "year": "2019",
-                "location": {
-                    "venue": "FDI UCM",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "FDI UCM",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -331,7 +363,7 @@ export const content = {
                     },
                 ]
             },
-            {
+            djangoGirlsLearn: {
                 "title": "Learn and grow in the tech world - #DjangoGirlsMadrid 2018-11-17",
                 "summary": "My personal story when I started programming, and 6 lessons learned during those years",
                 "permalink": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117",
@@ -343,9 +375,10 @@ export const content = {
                 },
                 "date": "November, 19th",
                 "year": "2018",
-                "location": {
-                    "venue": "spaces works",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "spaces works",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -360,7 +393,7 @@ export const content = {
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/vhVVEX9yujQ8Kt"
             },
-            {
+            djangoGirlsLearnSpanish: {
                 "title": "Aprende y crece en el mundo tech - Django girls madrid 2018 - #DjangoGirlsMadrid",
                 "summary": "Mi historia personal cuando comencé a programar, y 6 lecciones aprendidas",
                 "permalink": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018",
@@ -372,9 +405,10 @@ export const content = {
                 },
                 "date": "November, 19th",
                 "year": "2018",
-                "location": {
-                    "venue": "Spaces works",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Spaces works",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "event": "",
                 "buttons": [
@@ -389,7 +423,7 @@ export const content = {
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
             },
-            {
+            introduingRedis: {
                 "title": "Introducing Redis by Jorge Ferreiro - NoSQL database course at UCM",
                 "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
                 "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
@@ -399,9 +433,10 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "location": {
-                    "venue": "Universidad Complutense de Madrid",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Universidad Complutense de Madrid",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "May 5",
                 "year": "2017",
@@ -414,7 +449,7 @@ export const content = {
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp"
             },
-            {
+            dailyfocusDemo: {
                 "title": "Dailyfocus presentation (with DEMO! 🔥): 16 minutes - FDI UCM - #helloDailyfocus",
                 "summary": "Presentation of my personal project Dailyfocus, where I explained the engineering, product design, business and my personal experience.",
                 "permalink": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
@@ -424,9 +459,10 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "location": {
-                    "venue": "Universidad Complutense de Madrid",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Universidad Complutense de Madrid",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "June 17",
                 "year": "2017",
@@ -444,7 +480,7 @@ export const content = {
                 ],
                 "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
             },
-            {
+            dailyfocusPresentation: {
                 "title": "Dailyfocus presentation (June 2017): Vision, product, tech and journey.",
                 "summary": "Presentation made for an academic jury from my college. I mainly cover: Challenges, vision and goals, development process, lessons learned, etc.",
                 "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
@@ -454,9 +490,10 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "location": {
-                    "venue": "Universidad Complutense de Madrid",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Universidad Complutense de Madrid",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "August 7",
                 "year": "2017",
@@ -469,7 +506,7 @@ export const content = {
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
             },
-            {
+            lightningJSDay: {
                 "title": "Lightning talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
                 "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
                 "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
@@ -479,9 +516,10 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "location": {
-                    "venue": "Universidad Complutense de Madrid",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Universidad Complutense de Madrid",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "May",
                 "year": "2017",
@@ -494,7 +532,7 @@ export const content = {
                 ],
                 "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
             },
-            {
+            workshopHTML: {
                 "title": "Workshop: Your first professional website (sponsored by Github.com)",
                 "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
                 "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
@@ -504,9 +542,10 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "location": {
-                    "venue": "Universidad Complutense de Madrid",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Universidad Complutense de Madrid",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "May",
                 "year": "2016",
@@ -523,7 +562,7 @@ export const content = {
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
             },
-            {
+            fdiMachine: {
                 "private": true,
                 "title": "Machine Learning: online news prediction in Mashable",
                 "summary": "As a college project, I created a presentation and a report with a ML analysis to predict when is the best time to publish news to gain popularity.",
@@ -534,9 +573,10 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "location": {
-                    "venue": "Universidad Complutense de Madrid",
-                    "city": "Madrid"
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Universidad Complutense de Madrid",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "Jan 20",
                 "year": "2017",
@@ -549,7 +589,7 @@ export const content = {
                 ],
                 "iframeSrc": null
             },
-            {
+            webappsMedialab: {
                 "title": "Webapps: introduction and publishing on Firefox OS",
                 "summary": "I was invited to a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
                 "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",
@@ -558,6 +598,11 @@ export const content = {
                 "language": {
                     "display": "English",
                     "icon": "icon-english"
+                },
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "Medialab Prado",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_MADRID,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_SPAIN,
                 },
                 "date": "Nov 28",
                 "year": "2014",
@@ -570,7 +615,7 @@ export const content = {
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/i6RWO4Nmrt0eQw"
             }
-        ]
+        }
     },
     portfolio: [
         {

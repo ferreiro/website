@@ -14,7 +14,7 @@ export const LayoutWithSidebar = ({
     content,
     contentHeader,
     header,
-    isHeaderFullWidth,
+    isHeaderFullWidth = false,
     panel,
     style,
     wrapperClassName,

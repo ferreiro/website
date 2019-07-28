@@ -5,7 +5,9 @@ import {
 } from '../constants'
 
 export const Link = ({
+    // TODO: Delete url, and only use to
     url,
+    to,
     children,
     target = TARGET_SELF,
     onClick,
@@ -18,7 +20,7 @@ export const Link = ({
         <a
             onClick={onClick}
             className={className}
-            href={url}
+            href={url || to}
             target={target}
             rel={rel}
             title={title}

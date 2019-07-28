@@ -58,3 +58,60 @@ a, p, h1, h2, h3, h4 {
 .spacing-2-right {
     margin-right: $spacing-2;
 }
+
+
+// TODO: Have a script that automatically generates this...
+.spacing-3-ver {
+    margin-top: $spacing-3;
+    margin-bottom: $spacing-3;
+}
+
+.spacing-3-hor {
+    margin-left: $spacing-3;
+    margin-right: $spacing-3;
+}
+
+.spacing-3-bot {
+    margin-bottom: $spacing-3;
+}
+
+.spacing-3-top {
+    margin-top: $spacing-3;
+}
+
+.spacing-3-left {
+    margin-left: $spacing-3;
+}
+
+.spacing-3-right {
+    margin-right: $spacing-3;
+}
+
+
+
+// TODO: Have a script that automatically generates this...
+.spacing-4-ver {
+    margin-top: $spacing-4;
+    margin-bottom: $spacing-4;
+}
+
+.spacing-4-hor {
+    margin-left: $spacing-4;
+    margin-right: $spacing-4;
+}
+
+.spacing-4-bot {
+    margin-bottom: $spacing-4;
+}
+
+.spacing-4-top {
+    margin-top: $spacing-4;
+}
+
+.spacing-4-left {
+    margin-left: $spacing-4;
+}
+
+.spacing-4-right {
+    margin-right: $spacing-4;
+}

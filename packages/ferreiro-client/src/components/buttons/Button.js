@@ -4,6 +4,9 @@ import isEmpty from 'lodash/isEmpty'
 
 import './Button.scss'
 
+import {Link as ExternalLink} from '../link/Link';
+import {Link as InternalLink} from 'react-router-dom';
+
 import {
     BUTTON_STYLE_LINK,
     BUTTON_STYLE_FILL,
@@ -14,7 +17,6 @@ import {
     TARGET_SELF,
     BUTTON_STYLE_YOUTUBE
 } from '../constants'
-import {Link} from '../link/Link';
 
 const BASE_CLASSNAME = 'button-subscribe'
 
@@ -64,20 +66,24 @@ export const Button = ({
         onClick()
     }
 
+    const LinkComponent = target === TARGET_SELF
+        ? InternalLink
+        : ExternalLink
+
     // TODO: Instead of opening a new tab
     // open a modal.
     return (
-        <Link
+        <LinkComponent
             className={className}
             onClick={_onClick}
-            url={url}
+            to={url}
             target={target}
             title={title}
         >
             {icon && icon}
 
             {text}
-        </Link>
+        </LinkComponent>
     )
 }
 

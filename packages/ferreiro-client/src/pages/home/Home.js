@@ -2,6 +2,11 @@ import React, {PureComponent} from 'react'
 
 import {PageLayout} from '../../components/layout/PageLayout'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
+
+import {RecentArticles} from '../../components/recentArticles/RecentArticles'
+import {RecentTalks} from '../../components/recentTalks/RecentTalks'
+import {RecentVideos} from '../../components/recentVideos/RecentVideos'
+
 import {content} from '../../content/english'
 import {
     PATH_HOME,
@@ -16,8 +21,15 @@ export class Home extends PureComponent {
 
         const content = (
             <div>
-                <p>TODO: Put menu for mobile</p>
-                <h1>About Content</h1>
+                <h2>Splash</h2>
+                <h2>Most recent videos</h2>
+                <RecentVideos />
+
+                <h2>Most recent articles</h2>
+                <RecentArticles />
+
+                <h2>Latest conferences</h2>
+                <RecentTalks />
             </div>
         )
 
