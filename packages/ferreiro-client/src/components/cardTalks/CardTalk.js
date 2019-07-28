@@ -2,6 +2,8 @@ import React from 'react'
 import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 import './CardTalk.scss'
+import { Link } from '../link/Link';
+import { TARGET_BLANK } from '../constants';
 
 const DEFAULT_MAX_SUMMARY_LENGTH = 150
 
@@ -70,32 +72,36 @@ export const CardTalk = ({
         title,
     } = talk
 
+    const SEOTitle = `Jorge Ferreirto article ${title}`
     const summaryShortened = summary.substr(0, maxSummaryLength)
 
     return (
-        <a
+        <Link
             href={permalink}
-            rel="noopener noreferrer"
-            target="_blank"
+            target={TARGET_BLANK}
+            title={SEOTitle}
         >
             <div className="card-talk">
                 <div className="card-talk__image">
                     <LazyLoadImage
                         src={pic} 
-                        alt={title}
+                        alt={SEOTitle}
                         effect="blur"
                         placeholder={
                             <p>Loading... TODO: Replace with a facebook loader</p>
                         }
                     />
-                    {/* <LazyLoad debounce={false}>
-                        <img src={pic} alt={title} />
-                    </LazyLoad> */}
                 </div>
 
                 <div className="card-talk__content">
                     <h2 className="card-talk__title">
-                        {title}
+                        <Link
+                            href={permalink}
+                            target={TARGET_BLANK}
+                            title={SEOTitle}
+                        >
+                            {title}
+                        </Link>
                     </h2>
                     <p className="card-talk__summary">
                         {summaryShortened}
@@ -106,6 +112,6 @@ export const CardTalk = ({
                     {buttons.map(renderButton)}
                 </ul>
             </div>
-        </a>
+        </Link>
     )
 }

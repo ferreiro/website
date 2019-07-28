@@ -1,11 +1,12 @@
 import {getBlogCategoryPermalink} from './blog/get-blog-category-permalink'
 
-export const PATH_HOME = '/';
-export const PATH_ABOUT = '/about';
-export const PATH_RESUME = '/about/resume';
-export const PATH_CONTACT = '/contact';
-export const PATH_TALKS = '/talks';
-export const PATH_VIDEOS = '/videos';
+export const PATH_HOME = '/'
+export const PATH_ABOUT = '/about'
+export const PATH_RESUME = '/about/resume'
+export const PATH_CONTACT = '/contact'
+export const PATH_CONTACT_TALK = '/contact/talk'
+export const PATH_TALKS = '/talks'
+export const PATH_VIDEOS = '/videos'
 
 // TODO: Deprecating and put this into content/english.js
 export const SIDEBAR_MENU_ABOUT_TITLE = 'About'

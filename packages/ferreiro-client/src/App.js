@@ -13,6 +13,7 @@ import {AboutResume} from './pages/about/AboutResume'
 import {BlogHome} from './pages/blog/home/Home'
 import {BlogPost} from './pages/blog/post/Post'
 import {Contact} from './pages/contact/Contact'
+import {ContactTalk} from './pages/contact/ContactTalk'
 import {Portfolio} from './pages/portfolio/Portfolio'
 import {VideosHome} from './pages/videos/Home'
 import {TalksHome} from './pages/talks/Home'
@@ -88,7 +89,7 @@ export const AppWithRoutes = () => (
         <Route
             path='/contact/talk'
             exact
-            component={Contact}
+            component={ContactTalk}
         />
         <Route
             component={NoMatch}

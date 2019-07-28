@@ -2,7 +2,8 @@ import {
     PATH_ABOUT,
     PATH_VIDEOS,
     FILTER_MENU_KEY,
-    PATH_CONTACT
+    PATH_CONTACT,
+    PATH_CONTACT_TALK
 } from "../pages/constants";
 
 export const PAGE_TITLE = 'title'
@@ -898,6 +899,12 @@ export const content = {
         [PAGE_CONTENT]: {
             [PAGE_TITLE]: "Contact",
             [PAGE_SUBTITLE]: "Do you have a project, job proposal or want to say hi? Just ping me in the form below or shoot an email at <a class='email openModalBox'>jorge at ferreiro dot me</a>",
+        }
+    },
+    [PATH_CONTACT_TALK]: {
+        [PAGE_CONTENT]: {
+            [PAGE_TITLE]: "Bring me to your event",
+            [PAGE_SUBTITLE]: "Do you want me to speak in your congress, event or company? Send me all the details below. I would really love to be part of your event!",
         }
     }   
 }

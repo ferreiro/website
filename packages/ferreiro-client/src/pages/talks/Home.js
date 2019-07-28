@@ -38,8 +38,6 @@ const renderTalk = (talk) => (
 )
 
 export class TalksHome extends PureComponent {
-    state = {}
-
     getTalksPerYear = ({
         items,
     }) => {
@@ -64,7 +62,7 @@ export class TalksHome extends PureComponent {
                 <StickyContainer>
                     <div className="talks-title__wrapper">
                         <Sticky>
-                            {({style, isSticky}) => (
+                            {({style}) => (
                                 <h3
                                     className="talks-title"
                                     style={{
@@ -97,7 +95,8 @@ export class TalksHome extends PureComponent {
             <ContentHeaderContrast
                 title={title}
                 subtitle={subtitle}
-                // afterContent={<ConferenceAd />}
+                backgroundColor='#130c49'
+                backgroundImageUrl='/images/talks/jorge_ferreiro_software_engineer_and_public_speaker_on_technical_topics_and_motivational_topics.jpg'
             />
         )
 

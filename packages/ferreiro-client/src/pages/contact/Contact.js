@@ -5,6 +5,8 @@ import {ContentHeader} from '../../components/contentHeader/ContentHeader'
 import {PageLayout} from '../../components/layout/PageLayout'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
 
+import {ConferenceAd} from '../../components/ads/ConferenceAd'
+
 import {getPageData, PAGE_CONTENT, PAGE_TITLE, PAGE_SUBTITLE} from '../../content/english'
 import {PATH_CONTACT} from '../constants';
 
@@ -28,7 +30,12 @@ export class Contact extends Component {
                 isHeaderFullWidth={true}
                 panel={null}
                 contentHeader={contentHeader}
-                content={<ContactForm />}
+                content={
+                    <div>
+                        <ContactForm />
+                        <ConferenceAd />
+                    </div>
+                }
             />
         </PageLayout>
     )

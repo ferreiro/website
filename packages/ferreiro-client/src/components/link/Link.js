@@ -9,7 +9,8 @@ export const Link = ({
     children,
     target = TARGET_SELF,
     onClick,
-    className
+    className,
+    title,
 }) => {
     const rel = target === TARGET_BLANK ? 'noopener noreferrer' : ''
 
@@ -20,6 +21,7 @@ export const Link = ({
             href={url}
             target={target}
             rel={rel}
+            title={title}
         >
             {children}
         </a>

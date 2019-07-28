@@ -47,10 +47,11 @@ const getClassName = (style, size) => {
 export const Button = ({
     onClick,
     url = '/newsletter',
-    text = 'Subscribe Newsletter',
     style = BUTTON_STYLE_NEUTRAL,
     size = BUTTON_SIZE_MEDIUM,
     target = TARGET_SELF,
+    text = 'Subscribe Newsletter',
+    title,
     icon,
 }) => {
     const className = getClassName(style, size)
@@ -71,6 +72,7 @@ export const Button = ({
             onClick={_onClick}
             url={url}
             target={target}
+            title={title}
         >
             {icon && icon}
 

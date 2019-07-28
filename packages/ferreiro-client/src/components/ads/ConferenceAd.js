@@ -36,12 +36,19 @@ export class ConferenceAd extends PureComponent {
                         <h3 className="conference-ad__title">
                             Do you want me to speak in your congress, event or company?
                         </h3>
-                        <Link to="/contact/talk" className="conference-ad__button">
+                        <Link
+                            title={translate('Contact Jorge Ferreiro to give a Conference. Frontend Software Engineer')}
+                            className="conference-ad__button"
+                            to="/contact/talk"
+                        >
                             {translate('Contact me!')}
                         </Link>
                     </div>
                     <div className="conference-ad__image">
-                        <img src="/images/talks/talk.png" />
+                        <img
+                            alt="Jorge Ferreiro. Frontend Software Engineer and public speaker on technical and motivational topics."
+                            src="/images/talks/jorge_ferreiro_frontend_software_engineer_andpublic_technical_speaker_blogger_writer_and_motivational_speaker.png"
+                        />
                     </div>
                 </div>
             </div>

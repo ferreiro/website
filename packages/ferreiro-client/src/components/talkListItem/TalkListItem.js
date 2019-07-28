@@ -11,11 +11,7 @@ import {Link} from '../link/Link'
 
 import './TalkListItem.scss'
 
-const renderButton = ({
-    title,
-    type,
-    url
-}) => {
+const renderButton = ({title, type, url}, SEOTitle) => {
     if (type === BUTTON_TYPE_SLIDES) {
         const text = translate('Read slides')
         // icon-stack
@@ -33,6 +29,7 @@ const renderButton = ({
                 style={BUTTON_STYLE_LINK}
                 target={TARGET_BLANK}
                 text={text}
+                title={SEOTitle}
             />   
         )
     }
@@ -52,6 +49,7 @@ const renderButton = ({
                 style={BUTTON_STYLE_LINK}
                 target={TARGET_BLANK}
                 text={text}
+                title={SEOTitle}
                 url={url}
             />   
         )
@@ -63,6 +61,7 @@ const renderButton = ({
             style={BUTTON_STYLE_LINK}
             target={TARGET_BLANK}
             text={title}
+            title={SEOTitle}
             url={url}
         />
     )
@@ -82,30 +81,39 @@ export const TalkListItem = ({
         title,
     } = talk
 
+    const SEOTitle = `Jorge Ferreirto article ${title}`
+
     return (
-        <div
+        <article
             className="talk-list-item"
             key={title}
         >
             <div className="talk-list-item__image">
-                <LazyLoadImage
-                    src={pic} 
-                    alt={title}
-                    effect="blur"
-                    placeholder={
-                        <p>{translate('Loading... TODO: Replace with a facebook loader')}</p>
-                    }
-                />
-            </div>
-            <div className="talk-list-item__content">
                 <Link
                     url={permalink}
                     target={TARGET_BLANK}
+                    title={SEOTitle}
                 >
-                    <h2 className="talk-list-item__title">
-                        {title}
-                    </h2>
+                    <LazyLoadImage
+                        src={pic} 
+                        alt={SEOTitle}
+                        effect="blur"
+                        placeholder={
+                            <p>{translate('Loading... TODO: Replace with a facebook loader')}</p>
+                        }
+                    />
                 </Link>
+            </div>
+            <div className="talk-list-item__content">
+                <h2 className="talk-list-item__title">
+                    <Link
+                        url={permalink}
+                        target={TARGET_BLANK}
+                        title={SEOTitle}
+                    >
+                        {title}
+                    </Link>
+                </h2>
 
                 <div className="talk-list-item__metadata">
                     <li className="talk-list-item__metadata-entry">
@@ -141,7 +149,7 @@ export const TalkListItem = ({
                                 className="talk-list-item__button"
                                 key={index}
                             >
-                                {renderButton(button)}
+                                {renderButton(button, SEOTitle)}
                             </div>
                         ))}
                     </div>
@@ -150,6 +158,6 @@ export const TalkListItem = ({
             {/* <div className="talk-list-item__options">
                 Share
             </div> */}
-        </div>
+        </article>
     )
 }

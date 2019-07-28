@@ -45,6 +45,8 @@ const initialFormState = {
 }
 
 export class ContactForm extends PureComponent {
+    static propTypes = {}
+
     state = {
         ...initialFormState,
         [FORM_KEY_IS_LOADING]: false,

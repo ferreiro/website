@@ -15,13 +15,20 @@ export const ContentHeaderContrast = ({
     options = null,
     title,
     subtitle,
-    afterContent = null,
+    backgroundImageUrl = '',
+    backgroundColor,
 }) => (
     <Waypoint
         onEnter={onEnterViewport}
         onLeave={onLeaveViewport}
     >
-        <div className="content-header content-header--contrast">
+        <div
+            className="content-header content-header--contrast"
+            style={{
+                backgroundImage: `url(${backgroundImageUrl})`,
+                backgroundColor,
+            }}
+        >
             <div style={{flex: '1 1 auto'}}>
                 <h1
                     className="content-header__title content-header__title--contrast"
@@ -43,12 +50,6 @@ export const ContentHeaderContrast = ({
 
                 {options}
             </div>
-            
-            {afterContent && (
-                <div className="content-header__after-content--contrast">
-                    {afterContent}
-                </div>
-            )}
         </div>
     </Waypoint>
 )
