@@ -15,7 +15,7 @@
         "build:server": "yarn workspace @ferreiro/server build",
         "build": "yarn build:server && yarn build:client",
         "start": "yarn backend:server",
-        "test": "echo $'[TODO] Implement tests'",
+        "test": "echo $'[TODO] Implement tests'"
     },
     "workspaces": [
         "packages/*"

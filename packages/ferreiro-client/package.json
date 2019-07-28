@@ -22,6 +22,7 @@
     "@babel/plugin-proposal-class-properties": "7.4.4",
     "@ferreiro/design-system": "1.0.0",
     "add": "2.0.6",
+    "case-sensitive-paths-webpack-plugin": "2.2.0",
     "classnames": "2.2.6",
     "dompurify": "1.0.10",
     "email-validator": "2.0.4",

@@ -3,7 +3,7 @@ import groupBy from 'lodash/groupBy'
 import {StickyContainer, Sticky} from 'react-sticky'
 
 import {CardTalk} from '../../components/cardTalks/CardTalk'
-import {TalkListItem} from '../../components/talkListItem/talkListItem'
+import {TalkListItem} from '../../components/talkListItem/TalkListItem'
 import {ContentHeaderContrast} from '../../components/contentHeader/ContentHeaderContrast';
 import {ConferenceAd} from '../../components/ads/ConferenceAd'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'

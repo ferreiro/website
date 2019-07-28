@@ -4,6 +4,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 const CONFIG = {
     input: {
@@ -34,6 +35,7 @@ module.exports = {
         minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     },
     plugins: [
+        new CaseSensitivePathsPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: "[id].css"
