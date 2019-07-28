@@ -37,8 +37,8 @@ module.exports = {
     plugins: [
         new CaseSensitivePathsPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: "[id].css"
+            filename: '[name].bundle.css',
+            chunkFilename: "[id].bundle.css"
         }),
         new CopyWebpackPlugin([{
           from: './images/**/**',

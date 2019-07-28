@@ -20,7 +20,7 @@ export const LayoutWithSidebar = ({
     wrapperClassName,
 }) => (
     <StickyContainer>
-        <div
+        <main
             className={classnames(
                 'layout-with-sidebar', {
                     [wrapperClassName]: wrapperClassName,
@@ -61,6 +61,6 @@ export const LayoutWithSidebar = ({
                     {afterContent}
                 </div>
             </div>
-        </div>
+        </main>
     </StickyContainer>
 )

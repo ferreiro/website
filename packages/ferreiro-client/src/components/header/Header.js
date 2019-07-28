@@ -21,7 +21,6 @@ const isReactEnabledForPage = (item) => (
 
 const renderMenuItemMobile = (item, currentPath = '', itemClassName, selectedItemClassName) => {
     const onClick = () => {
-        console.log('removing className')
         document.body.classList.remove('mobile-header-is-showing');
     }
     const className = classNames({
@@ -80,7 +79,6 @@ const renderMenuItem = ({
     toggleAboutDropdownMenu
 }) => {
     const onClick = () => {
-        console.log('removing className')
         document.body.classList.remove('mobile-header-is-showing');
     }
     const className = classNames({
@@ -202,7 +200,6 @@ export class Header extends PureComponent {
     }
 
     toggleAboutDropdownMenu = () => {
-        console.log('toggleAboutDropdownMenu')
         this.setState((prevState) => ({
             isShownAboutDropdown: !prevState.isShownAboutDropdown
         }))
@@ -250,12 +247,21 @@ export class Header extends PureComponent {
                 )}
 
                 <div className="main-header-wrapper">
-                    <Link
+                    <div
+                        itemscope
+                        itemtype="http://schema.org/Attorney"
                         className="main-header__logo"
-                        to="/"
                     >
-                        <img src="/images/logo_jorge_ferreiro.png" />
-                    </Link>
+                        <Link
+                            title="Jorge Ferreiro Frontend Software Engineer and Entrepreneur"
+                            to="/"
+                        >
+                            <img
+                                src="/images/logo_jorge_ferreiro_frontend_software_engineer.png"
+                                alt="Jorge Ferreiro Frontend Software Engineer and Entrepreneur"
+                            />
+                        </Link>
+                    </div>
 
                     <nav className="main-header__menu">
                         {MENU_ITEMS.map((item) => renderMenuItem({
