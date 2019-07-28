@@ -13,7 +13,7 @@ import {
     PATH_ABOUT,
     PATH_CONTACT,
 } from '../constants'
-import {ButtonSubscribe} from '../../components/buttons/ButtonSubscribe';
+import {Button} from '../../components/buttons/Button';
 import {BUTTON_SIZE_BIG} from '../../components/constants';
 import {GenericAd} from '../../components/ads/GenericAd';
 
@@ -35,8 +35,8 @@ export class AboutResume extends PureComponent {
             <ContentHeader
                 title="Résume / CV"
                 subtitle={null}
-                // extraContent={
-                //     <ButtonSubscribe
+                // options={
+                //     <Button
                 //         size={BUTTON_SIZE_BIG}
                 //         text="Download my Résume"
                 //         url={RESUME_URL + '&ref=about-subscribe-cta'}

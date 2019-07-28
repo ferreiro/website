@@ -1,3 +1,60 @@
+// @import './normalize.scss';
+@import './components/spacing.scss';
+
 a, p, h1, h2, h3, h4 {
     text-decoration: none;
+}
+
+// TODO: Have a script that automatically generates this...
+.spacing-1-ver {
+    margin-top: $spacing-1;
+    margin-bottom: $spacing-1;
+}
+
+.spacing-1-hor {
+    margin-left: $spacing-1;
+    margin-right: $spacing-1;
+}
+
+.spacing-1-bot {
+    margin-bottom: $spacing-1;
+}
+
+.spacing-1-top {
+    margin-top: $spacing-1;
+}
+
+.spacing-1-left {
+    margin-left: $spacing-1;
+}
+
+.spacing-1-right {
+    margin-right: $spacing-1;
+}
+
+// TODO: Have a script that automatically generates this...
+.spacing-2-ver {
+    margin-top: $spacing-2;
+    margin-bottom: $spacing-2;
+}
+
+.spacing-2-hor {
+    margin-left: $spacing-2;
+    margin-right: $spacing-2;
+}
+
+.spacing-2-bot {
+    margin-bottom: $spacing-2;
+}
+
+.spacing-2-top {
+    margin-top: $spacing-2;
+}
+
+.spacing-2-left {
+    margin-left: $spacing-2;
+}
+
+.spacing-2-right {
+    margin-right: $spacing-2;
 }

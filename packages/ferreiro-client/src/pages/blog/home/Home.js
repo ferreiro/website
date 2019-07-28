@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react'
 import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
 
-import {BUTTON_SIZE_BIG} from '../../../components/constants';
-import {ButtonSubscribe} from '../../../components/buttons/ButtonSubscribe';
+import {BUTTON_SIZE_BIG, BUTTON_STYLE_FILL} from '../../../components/constants';
+import {Button} from '../../../components/buttons/Button';
 import {ContentHeader} from '../../../components/contentHeader/ContentHeader';
 import {Card} from '../../../components/card/Card';
 import {CardHighlight} from '../../../components/cardHighlight/CardHighlight';
@@ -22,9 +22,10 @@ import {
     BLOG_NAVIGATION,
     SIDEBAR_MENU_BLOG_TITLE,
 } from '../../constants'
+import {fetchApi} from '../../../utils/fetchApi';
+import {ERROR_FETCHING_CONTENT} from '../../../types/enums';
 
 const DEFAULT_CATEGORY = 'blog'
-
 
 const renderHighlight = ({
     permalink,
@@ -56,7 +57,7 @@ const renderPost = ({
     />
 )
 
-const getBlogContent = ({
+const renderBlogPostsList = ({
     posts = [],
     prevPageToken,
     nextPageToken,
@@ -97,12 +98,67 @@ const getBlogContent = ({
     );
 }
 
+const getBlogContent = ({
+    error,
+    isLoading,
+    posts,
+    retryFetchPosts,
+    nextPageToken,
+    prevPageToken,
+}) => {
+    const blogPosts = renderBlogPostsList({
+        isLoading,
+        posts,
+        nextPageToken,
+        prevPageToken,
+    });
+
+    return (
+        <div>
+            {renderError({
+                error,
+                retryFetchPosts,
+            })}
+            {blogPosts}
+        </div>
+    )
+}
+
+const renderError = ({
+    error,
+    retryFetchPosts,
+}) => {
+    if (isEmpty(error)) {
+        return null
+    }
+
+    switch (error) {
+        case ERROR_FETCHING_CONTENT:
+            return (
+                <p>
+                    Sorry. There was an error loading the list of posts...
+
+                    <Button
+                        onClick={retryFetchPosts}
+                        style={BUTTON_STYLE_FILL}
+                    >
+                        Try again! :)
+                    </Button>
+                </p>
+            )
+    
+        default:
+            break;
+    }
+}
+
 export class BlogHome extends PureComponent {
     state = {
         posts: [],
         category: 'blog',
         intro: null,
         isLoading: false,
+        error: '',
     }
 
     componentDidUpdate() {
@@ -117,23 +173,64 @@ export class BlogHome extends PureComponent {
             return
         }
 
-        // TODO: Cache results and check that first.header
-        this.setState({isLoading: true})
-        fetch('/api/v1/blog/list')
-            .then(res => res.json())
-            .then(({title, intro, posts}) => (
-                this.setState({
-                    title,
-                    intro,
-                    posts,
+        this.fetchPosts();
+    }
+
+    startFetchingPosts = () => {
+        this.setState({
+            isLoading: true,
+            error: null,
+        })
+    }
+
+    stopFetchingPosts = () => {
+        this.setState({
+            isLoading: false,
+        })
+    }
+
+    fetchPosts = () => {
+        // TODO: Cache results first, so avoid re-fetching
+        // posts lists in the same session.
+        // TODO: Put the url in CONSTANT
+        fetchApi('/api/v1/blog/list', {
+            onStart: () => {
+                this.startFetchingPosts()
+            },
+            onSuccess: ({
+                title,
+                intro,
+                posts
+            }) => {
+                this.cachePosts({
+                    title, intro, posts,
                 })
-            ))
-            .catch((error) => {
-                alert('error', error)
-            })
-            .finally(() => {
-                this.setState({isLoading: false})
-            })
+                this.setState({
+                    title, intro, posts,
+                })
+            },
+            onError: (_) => {
+                this.setState({
+                    error: ERROR_FETCHING_CONTENT
+                })
+            },
+            onFinish: () => {
+                this.stopFetchingPosts()
+            }
+        })
+    }
+
+    retryFetchPosts = () => {
+        console.log('retrying to fetch posts')
+        this.fetchPosts()
+    }
+
+    cachePosts = ({}) => {
+        console.log('Catching posts...')
+    }
+
+    getCachedPosts = ({}) => {
+        console.log('Catching posts...')
     }
 
     render() {
@@ -160,22 +257,24 @@ export class BlogHome extends PureComponent {
         );
 
         const {title, description} = BLOG_CATEGORY_TO_CONTENT[this.state.category]
-        const extraContent = (
-            <ButtonSubscribe
+        const options = (
+            <Button
                 size={BUTTON_SIZE_BIG}
             />
-        )        
+        )
         const blogContentHeader = (
             <ContentHeader
                 title={title}
                 subtitle={description}
-                extraContent={extraContent}
+                options={options}
             />
         )
 
         const blogContent = getBlogContent({
+            error: this.state.error,
             isLoading: this.state.isLoading,
             posts: this.state.posts,
+            retryFetchPosts: this.retryFetchPosts,
             nextPageToken,
             prevPageToken,
         })

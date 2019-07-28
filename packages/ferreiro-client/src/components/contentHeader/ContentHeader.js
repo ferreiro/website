@@ -12,23 +12,22 @@ const onLeaveViewport = () => {
 }
 
 export const ContentHeader = ({
-    extraContent = null,
+    options = null,
     title,
     subtitle,
-    showSubscribeButton = false,
 }) => (
     <Waypoint
         onEnter={onEnterViewport}
         onLeave={onLeaveViewport}
     >
-        <div className="blog-header">
+        <div className="content-header">
             <div
                 style={{
                     flex: '1 1 auto'
                 }}
             >
                 <h1
-                    className="blog-header__title"
+                    className="content-header__title"
                     style={{
                         fontFamily: 'aktiv-grotesk, sans-serif',
                     }}
@@ -36,7 +35,7 @@ export const ContentHeader = ({
                     {title}
                 </h1>
                 <h2
-                    className="blog-header__subtitle"
+                    className="content-header__subtitle"
                     dangerouslySetInnerHTML={{
                         __html: subtitle,
                     }}
@@ -46,7 +45,7 @@ export const ContentHeader = ({
                 />
             </div>
 
-            {extraContent}
+            {options}
         </div>
     </Waypoint>
 )

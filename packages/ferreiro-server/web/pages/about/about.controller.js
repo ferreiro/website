@@ -5,7 +5,7 @@ const about = require('../../content/english/about.json')
 const experience = require('../../content/english/experience.json')
 
 export const getAboutPage = (req, res, next) => {
-  if (isReactEnabled(req, process.env)) {
+  if (isReactEnabled(req)) {
     return res.render(createViewPath('about', 'about.react.pug'), {
       path: 'about',
       title: 'About - Jorge Ferreiro',

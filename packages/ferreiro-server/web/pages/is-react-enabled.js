@@ -1,4 +1,4 @@
-export const isReactEnabled = (req, processEnv) => (
-    processEnv.ENABLE_REACT === 'true' ||
-    req.query.react == 'true'
+export const isReactEnabled = (req) => (
+    process.env.ENABLE_REACT === 'true' ||
+        req.query.react == 'true'
 )

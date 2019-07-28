@@ -6,7 +6,7 @@ const contactContent = require('../../content/english/contact.json')
 const feedbackContent = require('../../content/english/feedback.json')
 
 export const getContact = (req, res) => {
-    if (isReactEnabled(req, process.env)) {
+    if (isReactEnabled(req)) {
         return res.render(createViewPath('contact', 'contact.react.pug'), {
             title: 'Contact - Jorge Ferreiro',
             headline: 'Contact me',

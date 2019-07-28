@@ -34,7 +34,7 @@ const getJsonResponse = (data, extraDataProps, filterKeys = []) => {
  * @required authentication
  */
 router.get('/list', function (req, res) {
-  blogRepository.getAllPublished()
+  return blogRepository.getAllPublished()
       .then((posts) => (
         res.json(
           createBlogListJsonResponse(posts.docs)

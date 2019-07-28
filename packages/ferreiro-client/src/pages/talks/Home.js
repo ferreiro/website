@@ -1,35 +1,38 @@
 import React, {PureComponent} from 'react'
+import groupBy from 'lodash/groupBy'
+import {StickyContainer, Sticky} from 'react-sticky'
 
-import {BUTTON_SIZE_BIG} from '../../components/constants';
-import {ButtonSubscribe} from '../../components/buttons/ButtonSubscribe';
-import {CardTalk} from '../../components/cardTalks/CardTalk';
-import {ContentHeader} from '../../components/contentHeader/ContentHeader';
-import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar';
-import {PageLayout} from '../../components/layout/PageLayout';
-import {ThreeColumnLayout} from '../../components/threeColumnLayout/ThreeColumnLayout';
+import {CardTalk} from '../../components/cardTalks/CardTalk'
+import {TalkListItem} from '../../components/talkListItem/talkListItem'
+import {ContentHeaderContrast} from '../../components/contentHeader/ContentHeaderContrast';
+import {ConferenceAd} from '../../components/ads/ConferenceAd'
+import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
+import {PageLayout} from '../../components/layout/PageLayout'
+import {OneColumnLayout} from '../../components/oneColumnLayout/OneColumnLayout'
 
-import {content} from '../../content/english';
+import {content} from '../../content/english'
 
 const {
     title,
     subtitle,
     items = [],
-} = content.talks;
+} = content.talks
 
 import {
-    BLOG_CATEGORY_TO_CONTENT, PATH_TALKS,
+    PATH_TALKS,
 } from '../constants'
-import { ConferenceAd } from '../../components/ads/ConferenceAd';
 
-const extraContent = (
-    <ButtonSubscribe
-        size={BUTTON_SIZE_BIG}
+import './talks.scss'
+
+const renderCardTalk = (talk) => (
+    <CardTalk
+        key={talk.id}
+        talk={talk}
     />
 )
 
 const renderTalk = (talk) => (
-    <CardTalk
-        key={talk.id}
+    <TalkListItem
         talk={talk}
     />
 )
@@ -37,21 +40,81 @@ const renderTalk = (talk) => (
 export class TalksHome extends PureComponent {
     state = {}
 
+    getTalksPerYear = ({
+        items,
+    }) => {
+        const keyToGroupBy = 'year'
+
+        return groupBy(items, keyToGroupBy)
+    }
+
+    renderTalksPerYear = ({
+        ads,
+        items,
+        renderTalk,
+    }) => {
+        const talksPerYear = this.getTalksPerYear({items})
+        const orderedTalksYears = Object.keys(talksPerYear).sort().reverse()
+
+        return orderedTalksYears.map((year, index) => {
+            const talks = talksPerYear[year]
+            const Ad = ads[index]
+
+            return (
+                <StickyContainer>
+                    <div className="talks-title__wrapper">
+                        <Sticky>
+                            {({style, isSticky}) => (
+                                <h3
+                                    className="talks-title"
+                                    style={{
+                                        ...style,
+                                        background: 'rgba(255, 255, 255, .98)',
+                                        zIndex: 10,
+                                    }}
+                                >
+                                    {year}
+                                </h3>
+                            )}
+                        </Sticky>
+                    </div>
+
+                    <OneColumnLayout
+                        items={talks}
+                        renderingCallback={renderTalk}
+                    />
+
+                    {Ad && (
+                        <Ad />
+                    )}
+                </StickyContainer>
+            )
+        })
+    }
+
     render() {
+        const header = (
+            <ContentHeaderContrast
+                title={title}
+                subtitle={subtitle}
+                // afterContent={<ConferenceAd />}
+            />
+        )
+
         const content = (
-            <div>
-                <ConferenceAd />
-
-                <ContentHeader
-                    title={title}
-                    subtitle={subtitle}
-                    extraContent={extraContent}
+            <div style={{marginTop: '-120px'}}>
+                <ConferenceAd
+                    extraClassNames="spacing-2-bot"
                 />
 
-                <ThreeColumnLayout
-                    items={items}
-                    renderingCallback={renderTalk}
-                />
+                {this.renderTalksPerYear({
+                    items,
+                    renderTalk,
+                    ads: {
+                        // 0: ConferenceAd
+                        4: ConferenceAd,
+                    }
+                })}
             </div>
         )
 
@@ -62,10 +125,10 @@ export class TalksHome extends PureComponent {
                 isHeaderFix={false}
             >
                 <LayoutWithSidebar
-                    header={null}
+                    header={header}
                     isHeaderFullWidth={true}
-                    panel={null}
                     content={content}
+                    wrapperClassName="talks-with-background"
                 />
             </PageLayout>
         )

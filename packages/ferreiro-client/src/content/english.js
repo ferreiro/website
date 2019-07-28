@@ -1,6 +1,8 @@
 import {
+    PATH_ABOUT,
     PATH_VIDEOS,
-    FILTER_MENU_KEY
+    FILTER_MENU_KEY,
+    PATH_CONTACT
 } from "../pages/constants";
 
 export const PAGE_TITLE = 'title'
@@ -16,13 +18,22 @@ export const VIDEO_CATEGORIES_DID = 'developersInDepth'
 export const VIDEO_CATEGORIES_CONFERENCES = 'conferences'
 
 export const VIDEO_TYPE_DID = 'didVideo'
-export const VIDEO_TYPE_CONFERENCE = 'conferenceVideo'
+export const VIDEO_TYPE_REGULAR = 'regularVideo'
+
+export const BUTTON_TYPE_SLIDES = 'slides'
+export const BUTTON_TYPE_VIDEO = 'video'
 
 export const getPageData = (path) => (
     content[path]
 )
 
 export const content = {
+    [PATH_ABOUT]: {
+        [PAGE_CONTENT]: {
+            [PAGE_TITLE]: 'About',
+            // [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
+        }
+    },
     [PATH_VIDEOS]: {
         [PAGE_CONTENT]: {
             [VIDEO_CATEGORIES_ALL]: {
@@ -34,7 +45,7 @@ export const content = {
                 [PAGE_SUBTITLE]: 'Youtube Show hosted by Jorge Ferreiro with interviews to top tech leaders ⚡ Propose the next interview or ask for an interview here: www.devsindepth.com',
             },
             [VIDEO_CATEGORIES_CONFERENCES]: {
-                [PAGE_TITLE]: 'Videos',
+                [PAGE_TITLE]: 'Conferences',
                 [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
             },
         },
@@ -51,13 +62,13 @@ export const content = {
                     category: VIDEO_CATEGORIES_DID,
                     text: 'Developers In Depth',
                     icon: 'home',
-                    path: `/videos?category=${VIDEO_CATEGORIES_DID}`,
+                    path: `/videos/${VIDEO_CATEGORIES_DID}`,
                 },
                 [VIDEO_CATEGORIES_CONFERENCES]: {
                     category: VIDEO_CATEGORIES_CONFERENCES,
                     text: 'Conferences',
                     icon: 'home',
-                    path: `/videos?category=${VIDEO_CATEGORIES_CONFERENCES}`,
+                    path: `/videos/${VIDEO_CATEGORIES_CONFERENCES}`,
                 },
             }
         },
@@ -76,7 +87,8 @@ export const content = {
                 ],
                 description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
                 image: '/images/videos/ian_fuller_vp_freetrade_former_amazon_snapchat.png',
-                url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj'
+                url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
+                iframe: null,
             },
             rahmaDid: {
                 id: 'rahmaDid',
@@ -92,16 +104,54 @@ export const content = {
                 ],
                 description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
                 image: '/images/videos/rahma_javed_engineering_director_deliveroo_microsoft_wealthfront.png',
-                url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj'
+                url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
+                iframe: 'https://www.youtube.com/embed/videoseries?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
+            },
+            JSRoundaboutPerfomance: {
+                id: 'JSRoundaboutPerfomance',
+                type: VIDEO_TYPE_REGULAR,
+                title: 'Web Performance Expectations vs Reality',
+                subtitle: 'Conference at Twitter London for JS Roundabout',
+                categories: [VIDEO_CATEGORIES_ALL, VIDEO_CATEGORIES_CONFERENCES],
+                cta: 'Watch now',
+                companies: [],
+                description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
+                image: '',
+                url: 'https://www.youtube.com/watch?v=N-WinPoapaA&t=1261s',
+                iframe: 'https://www.youtube.com/embed/N-WinPoapaA',
             }
-        }
+        },
     },
     talks: {
         "title": "Conferences",
-        "subtitle": "I enjoy sharing what I know. I have experience giving talks on different <strong>technical</strong> and <strong>product-related</strong> topics, as well as conducting workshops.",
+        "subtitle": "I love sharing what I know! I have given talks on <strong>technical</strong>, <strong>career growth</strong> and <strong>motivational</strong> topics, as well as conducting workshops.",
         "items": [
             {
-                "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp #adalabGithub @Google Campus Madrid",
+                "title": "Github 101 by Jorge Ferreiro - Adalab Bootcamp",
+                "summary": "Why I love Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
+                "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
+                "type": "slides",
+                "pic": "/images/talks/github_101_jorge_ferreiro.jpg",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "May, 7th",
+                "year": "2019",
+                "location": {
+                    "venue": "Google for Startups",
+                    "city": "Madrid"
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid"
+                    }
+                ]
+            },
+            {
+                "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp",
                 "summary": "Why I ❤️ Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
                 "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
                 "type": "slides",
@@ -110,16 +160,16 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "May, 7th 2019",
+                "date": "May, 7th",
+                "year": "2019",
                 "location": {
-                    "venue": "London",
+                    "venue": "Google for Startups",
                     "city": "Madrid"
                 },
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Read the slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid"
                     }
                 ]
@@ -134,22 +184,22 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "April, 2th 2019",
+                "date": "April, 2th",
+                "year": "2019",
                 "location": {
-                    "venue": "Twitter London",
+                    "venue": "Twitter Office",
                     "city": "London"
                 },
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Read the slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout"
                     }
                 ]
             },
             {
-                "title": "#futuroFiumers - Los 10 consejos para lanzar tu carrera en tecnología",
+                "title": "Los 10 consejos para lanzar tu carrera en tecnología - #futuroFiumers",
                 "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
                 "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
                 "type": "slides",
@@ -158,7 +208,8 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "February, 23th 2019",
+                "date": "February, 23th",
+                "year": "2019",
                 "location": {
                     "venue": "Codecamp",
                     "city": "Murcia"
@@ -166,14 +217,13 @@ export const content = {
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Read the slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software"
                     }
                 ]
             },
             {
-                "title": "#futuroFDI - La Guía Definitiva para conseguir tu trabajo",
+                "title": "La Guía Definitiva para conseguir tu trabajo - #futuroFDI",
                 "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
                 "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
                 "type": "slides",
@@ -182,7 +232,8 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "February, 6th 2019",
+                "date": "February, 6th",
+                "year": "2019",
                 "location": {
                     "venue": "FDI UCM",
                     "city": "Madrid"
@@ -190,19 +241,17 @@ export const content = {
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
-                        "url": "https://www.youtube.com/watch?v=Js-av-zysWs"
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo"
                     },
                     {
-                        "title": "Read slides",
-                        "type": "slides",
-                        "url": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo"
-                    }
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=Js-av-zysWs"
+                    },
                 ]
             },
             {
-                "title": "#futuroFDI - Entrevista con César Puerta, Senior Staff en Twitter",
+                "title": "Entrevista con César Puerta, Senior Staff en Twitter - #futuroFDI",
                 "summary": "Jorge Ferreiro does a live video interview with César Puerta who is currently leading Twitter for Android application and who is Senior Staff Engineer.",
                 "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
                 "type": "slides",
@@ -211,7 +260,8 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "February, 6th 2019",
+                "date": "February, 6th",
+                "year": "2019",
                 "location": {
                     "venue": "FDI UCM",
                     "city": "Madrid"
@@ -219,14 +269,13 @@ export const content = {
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the interview",
-                        "type": "video",
+                        "type": BUTTON_TYPE_VIDEO,
                         "url": "https://www.youtube.com/watch?v=-Di5O7dGKNc&t=17s"
                     }
                 ]
             },
             {
-                "title": "#futuroFDI - El CV y Github: El momento de jugar como pros 2019",
+                "title": "El CV y Github: El momento de jugar como pros 2019 - #futuroFDI",
                 "summary": "Tips, ideas and suggestions on how to get the most out of your Social Networks. Also, learn how to do the most amazing resumes.",
                 "permalink": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros",
                 "type": "slides",
@@ -235,7 +284,8 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "February, 6th 2019",
+                "date": "February, 6th",
+                "year": "2019",
                 "location": {
                     "venue": "FDI UCM",
                     "city": "Madrid"
@@ -243,19 +293,17 @@ export const content = {
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
-                        "url": "https://www.youtube.com/watch?v=evGZ2yGpqxk&t=45s"
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros"
                     },
                     {
-                        "title": "Read slides",
-                        "type": "slides",
-                        "url": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros"
-                    }
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=evGZ2yGpqxk&t=45s"
+                    },
                 ]
             },
             {
-                "title": "#futuroFDI - Mi historia hasta 2019",
+                "title": "Mi historia hasta 2019 - #futuroFDI",
                 "summary": "Comparto mi historia personal desde cuando comencé a programar con 10 años hasta la actualidad. Haciendou un repaso de las lecciones aprendidas en las diferentes empresas que he estado.",
                 "permalink": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019",
                 "type": "slides",
@@ -264,7 +312,8 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "February, 6th 2019",
+                "date": "February, 6th",
+                "year": "2019",
                 "location": {
                     "venue": "FDI UCM",
                     "city": "Madrid"
@@ -272,15 +321,13 @@ export const content = {
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
-                        "url": "https://www.youtube.com/watch?v=qgwNuMQJcjo"
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019"
                     },
                     {
-                        "title": "Read slides",
-                        "type": "slides",
-                        "url": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019"
-                    }
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=qgwNuMQJcjo"
+                    },
                 ]
             },
             {
@@ -293,7 +340,8 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "November, 19th 2018",
+                "date": "November, 19th",
+                "year": "2018",
                 "location": {
                     "venue": "spaces works",
                     "city": "Madrid"
@@ -301,15 +349,13 @@ export const content = {
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
-                        "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117"
                     },
                     {
-                        "title": "Read slides",
-                        "type": "slides",
-                        "url": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117"
-                    }
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+                    },
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/vhVVEX9yujQ8Kt"
             },
@@ -323,23 +369,22 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "November, 19th 2018",
+                "date": "November, 19th",
+                "year": "2018",
                 "location": {
-                    "venue": "spaces works",
+                    "venue": "Spaces works",
                     "city": "Madrid"
                 },
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
-                        "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
                     },
                     {
-                        "title": "Read slides",
-                        "type": "slides",
-                        "url": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018"
-                    }
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=gEfMsPIBC2Q&t=36s"
+                    },
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
             },
@@ -353,12 +398,16 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "May, 2017",
+                "location": {
+                    "venue": "Universidad Complutense de Madrid",
+                    "city": "Madrid"
+                },
+                "date": "May 5",
+                "year": "2017",
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Read slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://www.slideshare.net/jgferreiro/redis-76234580"
                     }
                 ],
@@ -374,19 +423,23 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "June 17, 2017",
+                "location": {
+                    "venue": "Universidad Complutense de Madrid",
+                    "city": "Madrid"
+                },
+                "date": "June 17",
+                "year": "2017",
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
-                        "url": "https://www.youtube.com/watch?v=qlDrZiwkrv0"
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
                     },
                     {
-                        "title": "Slides",
-                        "type": "slides",
-                        "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
-                    }
+                        "title": "Watch the video",
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=qlDrZiwkrv0"
+                    },
                 ],
                 "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
             },
@@ -400,19 +453,23 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "Aug 7, 2017",
+                "location": {
+                    "venue": "Universidad Complutense de Madrid",
+                    "city": "Madrid"
+                },
+                "date": "August 7",
+                "year": "2017",
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Read presentation",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
                     }
                 ],
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
             },
             {
-                "title": "Mini talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+                "title": "Lightning talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
                 "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
                 "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
                 "type": "video",
@@ -421,12 +478,16 @@ export const content = {
                     "display": "Spanish",
                     "icon": "icon-spanish"
                 },
-                "date": "May, 2017",
+                "location": {
+                    "venue": "Universidad Complutense de Madrid",
+                    "city": "Madrid"
+                },
+                "date": "May",
+                "year": "2017",
                 "event": "JS DAY ES 2017",
                 "buttons": [
                     {
-                        "title": "Watch the video",
-                        "type": "video",
+                        "type": BUTTON_TYPE_VIDEO,
                         "url": "https://www.youtube.com/watch?v=vZI3iPdbOTk"
                     }
                 ],
@@ -442,12 +503,16 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "May, 2016",
+                "location": {
+                    "venue": "Universidad Complutense de Madrid",
+                    "city": "Madrid"
+                },
+                "date": "May",
+                "year": "2016",
                 "event": "",
                 "buttons": [
                     {
-                        "title": "Checkout the Slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website"
                     },
                     {
@@ -468,12 +533,16 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "Jan 20, 2017",
+                "location": {
+                    "venue": "Universidad Complutense de Madrid",
+                    "city": "Madrid"
+                },
+                "date": "Jan 20",
+                "year": "2017",
                 "event": "FDI ML",
                 "buttons": [
                     {
-                        "title": "Read Slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": null
                     }
                 ],
@@ -489,12 +558,12 @@ export const content = {
                     "display": "English",
                     "icon": "icon-english"
                 },
-                "date": "Nov 28, 2014",
+                "date": "Nov 28",
+                "year": "2014",
                 "event": "Mozilla Event",
                 "buttons": [
                     {
-                        "title": "Read Slides",
-                        "type": "slides",
+                        "type": BUTTON_TYPE_SLIDES,
                         "url": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os"
                     }
                 ],
@@ -825,9 +894,11 @@ export const content = {
             }
         }
     ],
-    contact: {
-        "title": "Contact",
-        "subtitle" : "Do you have a project, job proposal or want to say hi? Just ping me in the form below or shoot an email at <a class='email openModalBox'>jorge at ferreiro dot me</a>.",
+    [PATH_CONTACT]: {
+        [PAGE_CONTENT]: {
+            [PAGE_TITLE]: "Contact",
+            [PAGE_SUBTITLE]: "Do you have a project, job proposal or want to say hi? Just ping me in the form below or shoot an email at <a class='email openModalBox'>jorge at ferreiro dot me</a>",
+        }
     }   
 }
 

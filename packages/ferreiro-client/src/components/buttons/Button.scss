@@ -2,12 +2,30 @@
 @import '../mediaQueries.scss';
 
 .button-subscribe {
-    // flex: 0 0 auto;
     display: inline-block;
 
+    &--style-youtube {
+        background: $color-youtube;
+        border-color: $color-youtube;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 600;
+
+        &:hover {
+            background: $color-youtube-hover;
+        }
+    }
 
     &--style-link {
-        
+        border-style: solid;
+        border-color: $color-main-link;
+        color: $color-main;
+        font-weight: 600;
+
+        &:hover {
+            background: $color-main-link;
+            color: #fff;
+        }
     }
 
     &--style-fill {
@@ -60,14 +78,12 @@
 
     &--size-big {
         border-radius: 2px;
-
-        @include large-down {
-            border-width: 3px;
-            font-size: 16px;
-            padding: .9rem 1rem;
-        }
+        border-width: 3px;
+        font-size: 16px;
+        padding: .9rem 1rem;
     
         @include large-up {
+            border-radius: 4px;
             border-width: 4px;
             font-size: 18px;
             padding: 1.2rem 1.8rem;

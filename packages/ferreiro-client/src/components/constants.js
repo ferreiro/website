@@ -28,6 +28,7 @@ export const SOCIAL_NETWORKS = [
 export const BUTTON_STYLE_LINK = 'link';
 export const BUTTON_STYLE_FILL = 'fill';
 export const BUTTON_STYLE_NEUTRAL = 'neutral';
+export const BUTTON_STYLE_YOUTUBE = 'youtube';
 export const BUTTON_SIZE_SMALL = 'small';
 export const BUTTON_SIZE_MEDIUM = 'medium';
 export const BUTTON_SIZE_BIG = 'big';

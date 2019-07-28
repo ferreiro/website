@@ -1,6 +1,10 @@
 @import '../mediaQueries.scss';
+@import '../variables.scss';
 
 .layout-with-sidebar {
+    display: flex;
+    flex-direction: column;
+
     &__wrapper {
         align-items: stretch;
         // background: #f4f4f4;
@@ -36,11 +40,12 @@
                 margin: 0 auto;
             }
     
-            @include large {
+            @include large-up {
                 padding: 1.5em 2em;
+                // background: $color-main-wrapper;
             }
     
-            @include extra-large {
+            @include extra-large-up {
                 padding: 1.5em 2em;
                 max-width: 1300px;
                 margin: 0 auto;

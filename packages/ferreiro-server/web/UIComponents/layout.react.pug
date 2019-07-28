@@ -12,7 +12,8 @@ html
 				#app
 			div!=ssrHtml
 
-		script(src="http://localhost:9000/client.bundle.js")
+		- bundleUrl = process.env.NODE_ENV === 'dev' ? 'http://localhost:9000' : ''
+		script(src= bundleUrl + "/client.bundle.js")
 		script.
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

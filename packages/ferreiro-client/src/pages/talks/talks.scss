@@ -1,0 +1,37 @@
+@import "../../components/spacing.scss";
+@import "../../components/variables.scss";
+
+.talks {
+    &-title {
+        font-size: $spacing-3;
+        font-weight: 800;
+        color: #000;
+        line-height: 34px;
+        margin: 0;
+        padding: $spacing-2 0;
+
+        &__wrapper {
+            margin-bottom: $spacing-1;
+            position: relative;
+        }
+
+        &__sticky-placeholder {
+            // border-bottom: 1px solid #cecece;
+            // box-shadow: 0px 2px 5px -2px rgba(0,0,0,0.39);
+            // position: fixed;
+            // top: 0;
+            // heigh
+        }
+
+        &__cta {
+            font-size: 16px;
+            background: $color-main;
+            color: #fff;
+            border-radius: 2px;
+            padding: 10px 16px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}

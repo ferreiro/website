@@ -1,5 +1,5 @@
 import React from 'react'
-import LazyLoad from 'react-lazy-load'
+import {LazyLoadImage} from 'react-lazy-load-image-component';
 
 import './CardTalk.scss'
 
@@ -56,19 +56,6 @@ const renderButton = ({
         default:
             return null
     }
-
-    // else if button.type == "slides"
-    //     a.card-talk-button(target="_blank", href= button.url)
-    //         span.icon.ion-ios-browsers-outline
-    //         | Read slides
-
-    // else if button.type == "image"
-    //     a.card-talk-button(target="_blank", href= button.url)
-    //         span.icon.ion-image
-    //         | #{button.title}
-
-    // else
-    //     a.card-talk-button(target="_blank", href= button.url)= button.title
 }
 
 export const CardTalk = ({
@@ -93,9 +80,17 @@ export const CardTalk = ({
         >
             <div className="card-talk">
                 <div className="card-talk__image">
-                    <LazyLoad debounce={false}>
+                    <LazyLoadImage
+                        src={pic} 
+                        alt={title}
+                        effect="blur"
+                        placeholder={
+                            <p>Loading... TODO: Replace with a facebook loader</p>
+                        }
+                    />
+                    {/* <LazyLoad debounce={false}>
                         <img src={pic} alt={title} />
-                    </LazyLoad>
+                    </LazyLoad> */}
                 </div>
 
                 <div className="card-talk__content">

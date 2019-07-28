@@ -30,8 +30,7 @@
         @include large-up {
             width: 60%;
             height: 400px;
-            border-top-left-radius: $card-radius;
-            border-bottom-left-radius: $card-radius;
+            border-radius: $card-radius;
         }
     }
 

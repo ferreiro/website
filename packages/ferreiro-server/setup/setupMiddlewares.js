@@ -30,12 +30,12 @@ module.exports = (app) => {
     maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0
   }))
   app.use(express.static(path.join(__dirname, '../web/public/dst'), {
-    maxAge: process.env.NODE_ENV === 'production' ? '2h' : '10h'
+    maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0
   }))
   // NB: We generate this from the web client. It contains
   // the react bundles...
   app.use(express.static(path.join(__dirname, '../dist'), {
-    maxAge: process.env.NODE_ENV === 'production' ? '2h' : '10h'
+    maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0
   }))
   app.use('/bower_components', express.static(path.join(__dirname, '../bower_components'), {
     maxAge: process.env.NODE_ENV === 'production' ? '2h' : 0

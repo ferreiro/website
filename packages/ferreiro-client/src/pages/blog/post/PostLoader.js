@@ -19,5 +19,5 @@ export const PostLoader = () => (
       <rect x="7" y="630" rx="5" ry="5" width="240" height="14" />
       <rect x="7" y="660" rx="5" ry="5" width="180" height="14" />
     </ContentLoader>
-  )
+)
   

@@ -8,12 +8,14 @@ export const Link = ({
     url,
     children,
     target = TARGET_SELF,
+    onClick,
     className
 }) => {
     const rel = target === TARGET_BLANK ? 'noopener noreferrer' : ''
 
     return (
         <a
+            onClick={onClick}
             className={className}
             href={url}
             target={target}

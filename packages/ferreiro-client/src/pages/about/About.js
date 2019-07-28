@@ -4,7 +4,13 @@ import {GenericAd} from '../../components/ads/GenericAd';
 import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu';
 import {PageLayout} from '../../components/layout/PageLayout'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
-import {content} from '../../content/english'
+import {
+    getPageData,
+    PAGE_CONTENT,
+    PAGE_TITLE,
+    PAGE_SUBTITLE
+} from '../../content/english'
+import {ContentHeader} from '../../components/contentHeader/ContentHeader'
 import {
     ABOUT_CATEGORY_BIO,
     PATH_RESUME,
@@ -13,18 +19,17 @@ import {
     PATH_ABOUT,
 } from '../constants'
 
-const {
-    title,
-    subtitle,
-} = content.contact
+const pageData = getPageData(PATH_ABOUT)
+const contentHeader = (
+    <ContentHeader
+        title={pageData[PAGE_CONTENT][PAGE_TITLE]}
+        subtitle={pageData[PAGE_CONTENT][PAGE_SUBTITLE]}
+    />
+)
 
 export class About extends PureComponent {
 
     render() {
-        const header = (
-            <h1>Hola</h1>
-        )
-
         const panel = (
             <div>
                 <SidebarMenu
@@ -35,11 +40,9 @@ export class About extends PureComponent {
                 />
             </div>
         )
+
         const content = (
             <div>
-                <p>TODO: Put menu for mobile</p>
-                <h1>About Content</h1>
-
                 <GenericAd
                     title="Would you like to check my Resume?"
                     ctaText="See Résume"
@@ -59,6 +62,7 @@ export class About extends PureComponent {
                     header={null}
                     isHeaderFullWidth={true}
                     panel={panel}
+                    contentHeader={contentHeader}
                     content={content}
                 />
             </PageLayout>

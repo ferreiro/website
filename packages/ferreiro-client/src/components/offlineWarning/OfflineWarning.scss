@@ -1,0 +1,17 @@
+@import "../../components/variables.scss";
+@import "../../components/spacing.scss";
+
+.offline-warning {
+    background: rgb(199, 0, 0);
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    &__wrapper {
+        padding: $spacing-1 $spacing-2;
+    }
+}

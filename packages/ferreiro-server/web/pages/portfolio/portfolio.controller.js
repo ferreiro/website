@@ -4,7 +4,7 @@ import {isReactEnabled} from '../is-react-enabled'
 const projects = require('../../content/english/portfolio')
 
 export const getProjects = (req, res) => {
-    if (isReactEnabled(req, process.env)) {
+    if (isReactEnabled(req)) {
         return res.render(createViewPath('portfolio', 'portfolio.react.pug'), {
           path: 'portfolio',
           title: 'Portfolio',

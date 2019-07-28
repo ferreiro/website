@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import LazyLoad from 'react-lazy-load'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 // import {Link} from '../atoms/link/Link'
 
@@ -22,9 +23,14 @@ export const Card = ({
         >
             <div className="card">
                 <div className="card__image">
-                    <LazyLoad debounce={false}>
+                    {/* <LazyLoad>
                         <img src={image} alt={title} />
-                    </LazyLoad>
+                    </LazyLoad> */}
+                    <LazyLoadImage
+                        src={image} 
+                        alt={title}
+                        effect="blur"
+                    />
                 </div>
                 <div className="card__content">
                     <h2 className="card__title">

@@ -30,7 +30,7 @@
     "build:gulp": "gulp",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn watch\"",
     "lint": "echo $'[TODO:] Implement the linter here'",
-    "server": "DEBUG=ferreiro:* nodemon ./bin/www --exec babel-node --presets babel-preset-env",
+    "server": "DEBUG=ferreiro:* nodemon ./bin/www --exec babel-node -e js,jade,scss --presets babel-preset-env",
     "start": "yarn server",
     "watch": "gulp watch"
   },

@@ -1,57 +1,89 @@
 @import '../mediaQueries.scss';
 
-.blog-header {
+.content-header {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 1.5em;
 
-    @include small {
-        margin-bottom: 1.5em;
+    &--contrast {
+        flex-direction: column;
+        color: $color-section-title-contrast;
+        background-image: url('/images/talks/jorge_ferreiro_talks_background.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 2em 1em;
+        padding-bottom: 100px !important;
     }
 
-    @include medium {
-        margin-bottom: 2rem;
+    @include medium-up {
+        padding-bottom: 2rem;
     }
 
     @include large-up {
-        margin: 1.5em 0 3em;
+        padding: 1.5em 0 3em;
     }
 
     &__title {
-        color: #525252;
-        // font-family: "aktiv-grotesk", "sans-serif";
+        color: $color-section-title;
+        font-size: 30px;
 
-        @include medium-down {
-            font-size: 30px;
-        }
-
-        @include medium {
+        @include medium-up {
             font-size: 60px;
         }
 
         @include large-up {
             font-size: 105px;
         }
+
+        &--contrast {
+            color: $color-section-title-contrast;
+            text-align: center;
+
+            @include large-up {
+                font-size: 80px;
+            }
+        }
     }
 
     &__subtitle {
         max-width: 700px;
-        color: #525252;
-        margin-top: 1rem;
-        // font-family: "aktiv-grotesk", "sans-serif";
+        color: $color-section-title;
+        padding-top: 1rem;
+        word-break: break-word;
+        font-size: 18px;
+        padding-bottom: 1.5rem;
 
-        @include medium-down {
-            font-size: 18px;
-            margin-bottom: 1.5rem;
-        }
 
-        @include medium {
+        @include medium-up {
             font-size: 24px;
-            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
         }
 
         @include large-up {
             font-size: 30px;
+        }
+
+        &--contrast {
+            color: $color-section-title-contrast;
+            padding: 0 auto;
+            text-align: center;
+
+            @include large-up {
+                font-size: 26px;
+            }
+        }
+
+    }
+
+    &__after-content {
+        &--contrast {
+            width: calc(100% - 4em);
+            margin: 0 2em;
+            display: flex;
+            background: red;
+            margin-bottom: -140px;
+            margin-top: 24px;
         }
     }
 }

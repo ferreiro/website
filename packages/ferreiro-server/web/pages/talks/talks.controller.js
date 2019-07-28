@@ -5,7 +5,7 @@ import {isReactEnabled} from '../is-react-enabled'
 const talks = require('../../content/english/talks.json')
 
 export const getTalks = (req, res) => {
-  if (isReactEnabled(req, process.env)) {
+  if (isReactEnabled(req)) {
     return res.render(createViewPath('talks', 'talks.react.pug'), {
       path: 'talks',
       title: 'Talks and Workshops - Jorge Ferreiro',

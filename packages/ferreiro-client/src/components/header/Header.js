@@ -102,9 +102,9 @@ const renderMenuItem = ({
             className,
             selectedClass,
             onClick,
-            extraContent
+            options
         }) => {
-            const {path, text, icon} = item
+            const {path, text, id, icon} = item
 
             return (
                 <Link
@@ -113,7 +113,7 @@ const renderMenuItem = ({
                         [className]: true,
                         [selectedClass]: currentPath.includes(item.id)
                     })}
-                    key={text}
+                    key={id}
                     onClick={onClick}
                 >
                     {icon && (
@@ -122,7 +122,7 @@ const renderMenuItem = ({
                     {text && (
                         <p>{text}</p>
                     )}
-                    {extraContent}
+                    {options}
                 </Link>
             )
         }
@@ -130,6 +130,7 @@ const renderMenuItem = ({
         if (submenu) {
             return (
                 <div
+                    key="submenu"
                     className="submenu"
                     onMouseEnter={toggleAboutDropdownMenu}
                     onMouseLeave={toggleAboutDropdownMenu}
@@ -137,7 +138,7 @@ const renderMenuItem = ({
                     {renderItem({
                         item,
                         className,
-                        extraContent: <span style={{marginLeft: '.5em'}} className="icon icon-circle-down" />,
+                        options: <span style={{marginLeft: '.5em'}} className="icon icon-circle-down" />,
                     })}
 
                     {isShownAboutDropdown && (
@@ -249,12 +250,12 @@ export class Header extends PureComponent {
                 )}
 
                 <div className="main-header-wrapper">
-                    <a
+                    <Link
                         className="main-header__logo"
-                        href="/"
+                        to="/"
                     >
                         <img src="/images/logo_jorge_ferreiro.png" />
-                    </a>
+                    </Link>
 
                     <nav className="main-header__menu">
                         {MENU_ITEMS.map((item) => renderMenuItem({

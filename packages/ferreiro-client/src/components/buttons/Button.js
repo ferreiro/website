@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
+import isEmpty from 'lodash/isEmpty'
 
-import './ButtonSubscribe.scss'
+import './Button.scss'
 
 import {
     BUTTON_STYLE_LINK,
@@ -9,8 +10,11 @@ import {
     BUTTON_STYLE_NEUTRAL,
     BUTTON_SIZE_SMALL,
     BUTTON_SIZE_MEDIUM,
-    BUTTON_SIZE_BIG
+    BUTTON_SIZE_BIG,
+    TARGET_SELF,
+    BUTTON_STYLE_YOUTUBE
 } from '../constants'
+import {Link} from '../link/Link';
 
 const BASE_CLASSNAME = 'button-subscribe'
 
@@ -18,6 +22,7 @@ const STYLE_TO_CLASSNAME = {
     [BUTTON_STYLE_LINK]: `${BASE_CLASSNAME}--style-link`,
     [BUTTON_STYLE_FILL]: `${BASE_CLASSNAME}--style-fill`,
     [BUTTON_STYLE_NEUTRAL]: `${BASE_CLASSNAME}--style-neutral`,
+    [BUTTON_STYLE_YOUTUBE]: `${BASE_CLASSNAME}--style-youtube`,
 }
 
 const SIZE_TO_CLASSNAME = {
@@ -39,24 +44,38 @@ const getClassName = (style, size) => {
 
 // TODO: Rename into ButtonCta or something like that.
 // This is not only used for subscribe
-export const ButtonSubscribe = ({
+export const Button = ({
     onClick,
     url = '/newsletter',
     text = 'Subscribe Newsletter',
     style = BUTTON_STYLE_NEUTRAL,
     size = BUTTON_SIZE_MEDIUM,
+    target = TARGET_SELF,
+    icon,
 }) => {
     const className = getClassName(style, size)
+    const _onClick = (event) => {
+        if (onClick === undefined) {
+            return
+        }
+
+        event.preventDefault()
+        onClick()
+    }
 
     // TODO: Instead of opening a new tab
     // open a modal.
     return (
-        <a
+        <Link
             className={className}
-            href={url}
+            onClick={_onClick}
+            url={url}
+            target={target}
         >
+            {icon && icon}
+
             {text}
-        </a>
+        </Link>
     )
 }
 

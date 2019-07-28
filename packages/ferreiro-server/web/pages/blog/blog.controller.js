@@ -9,6 +9,8 @@ import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
 import {markdownToHtml} from '../../../api/markdown-to-html'
 
+import blog from '../../content/english/blog.json'
+
 // TODO: replace by 'ferreiro-client/src/App';
 // import {App} from '@ferreiro/client/src/App';
 import {isReactEnabled} from '../is-react-enabled'
@@ -17,8 +19,6 @@ import {MAX_PAGE_POSTS} from './constants';
 
 const isAuthorizedAdmin = (req) => {
   const disableAdmin = req.query.disableAdmin
-
-  console.log(req.user)
 
   // TODO: Probably we can find a better way to check if the user
   // is loggedin, like checking a req function like req.isAuthorized()?
@@ -96,7 +96,7 @@ const createBlogContextBuilder = (req) => {
  * @param {*=} req.params.category - You can provide a post category to query
  */
 export const getBlogPosts = (req, res, next) => {
-  if (isReactEnabled(req, process.env)) {
+  if (isReactEnabled(req)) {
     return res.render(createViewPath('blog', 'blog.react.pug'), {
         path: 'blog',
         admin: isAuthorizedAdmin(req)
@@ -189,7 +189,7 @@ export const getPostByPermalink = (req, res, next) => {
   // NB: Check the isPostVisible before returning this... 
   // or maybe we can just update the API to check if the user
   // has permissions to view the post...
-  if (isReactEnabled(req, process.env)) {
+  if (isReactEnabled(req)) {
     // const jsx = (<App />);
     // const ssrHtml = renderToString(jsx);
     

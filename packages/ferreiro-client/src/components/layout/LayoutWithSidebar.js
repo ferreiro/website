@@ -1,21 +1,35 @@
-import React, {PureComponent} from 'react'
-import {StickyContainer, Sticky} from 'react-sticky';
+import React from 'react'
+import {StickyContainer, Sticky} from 'react-sticky'
+import classnames from 'classnames'
+
+import {OfflineWarning} from '../offlineWarning/OfflineWarning'
 
 import './LayoutWithSidebar.scss'
 
 // TODO: Remove contentHeader... Not needed. We can simply have
 // content with all the required data.
 export const LayoutWithSidebar = ({
-    header,
-    isHeaderFullWidth,
     afterContent,
     beforeContent,
-    panel,
     content,
     contentHeader,
+    header,
+    isHeaderFullWidth,
+    panel,
+    style,
+    wrapperClassName,
 }) => (
     <StickyContainer>
-        <div className="layout-with-sidebar">
+        <div
+            className={classnames(
+                'layout-with-sidebar', {
+                    [wrapperClassName]: wrapperClassName,
+                })
+            }
+            style={style}
+        >
+            <OfflineWarning />
+
             {isHeaderFullWidth === true ? (
                 header
             ) : (

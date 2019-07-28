@@ -1,27 +1,43 @@
 import React, {PureComponent} from 'react'
 
 import {ContentHeader} from '../../components/contentHeader/ContentHeader';
-import {getQueryParamValue} from '../../common/getQueryParam';
+import {getUrlPath} from '../../utils/getUrlPath';
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar';
 import {PageLayout} from '../../components/layout/PageLayout';
 import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu';
-import {SidebarSeparator} from '../../components/sidebarSeparator/SidebarSeparator';
-import {VideoCard, VideoCardDID} from '../../components/videoCard/VideoCardDID';
+import {VideoCard} from '../../components/videoCard/VideoCard';
+import {VideoCardDID} from '../../components/videoCard/VideoCardDID';
 
-import {getPageData, VIDEO_CATEGORIES_ALL, VIDEO_TYPE_DID, PAGE_SIDEBAR_MENU, VIDEO_CATEGORIES_DID, PAGE_CONTENT} from '../../content/english';
+import {getPageData, VIDEO_CATEGORIES_ALL, VIDEO_TYPE_DID, PAGE_SIDEBAR_MENU, VIDEO_CATEGORIES_DID, PAGE_CONTENT, VIDEO_TYPE_REGULAR} from '../../content/english';
 
 import {
     PATH_VIDEOS,
 } from '../constants'
+import {Button} from '../../components/buttons/Button';
+import {
+    BUTTON_SIZE_BIG,
+    BUTTON_STYLE_YOUTUBE,
+    TARGET_BLANK,
+} from '../../components/constants';
+import {translate} from '../../i18-me/i18-me'
 
 export class VideosHome extends PureComponent {
     renderHeader = ({pageData, activeCategory}) => {
         const content = pageData[PAGE_CONTENT][activeCategory]
-        const extraContent = <div>Subscribe to channel</div>
+        const options = (
+            <Button
+                text={translate('Subscribe youtube')}
+                size={BUTTON_SIZE_BIG}
+                style={BUTTON_STYLE_YOUTUBE}
+                target={TARGET_BLANK}
+                icon={<span style={{float: 'left', marginTop: '1.45px', marginRight: '16px'}} className="icon icon-youtube" />}
+                url='https://www.youtube.com/c/jgferreiro?sub_confirmation=1'
+            />
+        )
 
         return (
             <ContentHeader
-                extraContent={extraContent}
+                options={options}
                 title={content.title}
                 subtitle={content.subtitle}
             />
@@ -32,12 +48,9 @@ export class VideosHome extends PureComponent {
     renderVideoCard = (video) => {
         switch (video.type) {
             case VIDEO_TYPE_DID:
-                return (
-                    <VideoCardDID
-                        {...video}
-                    />
-                )
-        
+                return <VideoCardDID {...video} />
+            case VIDEO_TYPE_REGULAR:
+                return <VideoCard {...video} />
             default:
                 return null
         }
@@ -69,10 +82,10 @@ export class VideosHome extends PureComponent {
         menuKeys = [],
         defaultCategory,
     }) => {
-        const categoryKey = getQueryParamValue({
-            defaultValue : 'all',
-            key: 'category',
-            properties: properties,
+        const categoryKey = getUrlPath({
+            props: this.props,
+            path: 'category',
+            defaultValue: VIDEO_CATEGORIES_ALL,
         })
         
         return menuKeys.includes(categoryKey)
@@ -110,7 +123,7 @@ export class VideosHome extends PureComponent {
                     items={menuItems}
                 />
 
-                <SidebarSeparator />
+                {/* <SidebarSeparator /> */}
             </div>
         )
 

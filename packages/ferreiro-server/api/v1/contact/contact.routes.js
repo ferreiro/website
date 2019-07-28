@@ -4,15 +4,29 @@ import express from 'express';
 import MailchimpApi from 'mailchimp-api-v3';
 import {sendMessage} from './sendMessage';
 import {validateMessage} from './validateMessage';
+import {isReactEnabled} from '../../../web/pages/is-react-enabled';
 
 const router = express.Router()
 const mailchimp = new MailchimpApi(env.MAILCHIMP_API_TOKEN)
+
+const MAILCHIMP_NEWSLETTER_LIST = '/lists/3b63288535/members'
 
 /**
 * @api POST /contact
 * Send a personal email
 */
-router.post('/', function (req, res) {
+const getMessageFromRequest = (req) => {
+  // TODO: Remove old logic once the migration is done...
+  // In react we don't longer prepend form with __
+  if (isReactEnabled(req)) {
+    return {
+      name: req.body.name,
+      email: req.body.email,
+      msg: req.body.msg,
+      subscribed: req.body.subscribed 
+    }
+  }
+
   const {
     __name = null,
     __email = null,
@@ -20,12 +34,16 @@ router.post('/', function (req, res) {
     __subscribed = null
   } = req.body;
 
-  const message = {
+  return {
     name: __name,
     email: __email,
     msg: __msg,
     subscribed: __subscribed
   }
+}
+
+router.post('/', function (req, res) {
+  const message = getMessageFromRequest(req)
 
   validateMessage(message, (valid) => {
     if (!valid) {
@@ -40,10 +58,7 @@ router.post('/', function (req, res) {
 
     sendMessage(message, function (err, email) {
       if (err) {
-        errors.emailNotSend(req, res)
-        return res.json({
-          error: err
-        })
+        return errors.emailNotSend(req, res)
       } else {
         res.status(200).json(email)
       }
@@ -68,12 +83,14 @@ router.post('/subscribe', function (req, res) {
 })
 
 function addUserToMailchimp (name, email, next) {
-  name = ''.concat(name.replace(/\b\w/g, l => l.toUpperCase())) // first letter in uppercase
-  mailchimp.post({
-    path : '/lists/3b63288535/members',
+  // first letter in uppercase
+  const userName = ''.concat(name.replace(/\b\w/g, l => l.toUpperCase()))
+
+  return mailchimp.post({
+    path : MAILCHIMP_NEWSLETTER_LIST,
     body: {
       merge_fields: {
-        FNAME: name
+        FNAME: userName
       },
       email_address: email,
       status: 'subscribed'

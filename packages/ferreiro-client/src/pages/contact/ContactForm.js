@@ -2,67 +2,92 @@ import React, {PureComponent} from 'react'
 import isEmpty from 'lodash/isEmpty'
 import isBoolean from 'lodash/isBoolean'
 import get from 'lodash/get'
-import merge from 'lodash/merge'
 import validator from 'email-validator'
+
+import {SOCIAL_NETWORKS, TARGET_BLANK} from '../../components/constants';
+import { Link } from '../../components/link/Link';
 
 // Merge initial State and validators...
 const VALIDATORS = {
     name: (value) => isEmpty(value),
-    email: (value) => isEmpty(value) || validator.validate(value),
+    email: (value) => isEmpty(value) || !validator.validate(value),
     message: (value) => isEmpty(value),
     subscribed: (value) => !isBoolean(value)
 }
 
-const API = '/api/v1/contact'
+const FORM_KEY_VALUE = 'value'
+const FORM_KEY_HAS_ERROR = 'hasError'
+const FORM_KEY_IS_LOADING = 'isLoading'
+const FORM_KEY_SENT_SUCCESS = 'isSentSucess'
+const FORM_KEY_SENT_FAILURE = 'isSentError'
 
-const initialState = {
+const API = '/api/v1/contact?react=true'
+
+const initialFormState = {
     fields: {
         name: {
-            hasError: false,
-            value: '',
+            [FORM_KEY_HAS_ERROR]: false,
+            [FORM_KEY_VALUE]: '',
         },
         email: {
-            hasError: false,
-            value: '',
+            [FORM_KEY_HAS_ERROR]: false,
+            [FORM_KEY_VALUE]: '',
         },
         message: {
-            hasError: false,
-            value: '',
+            [FORM_KEY_HAS_ERROR]: false,
+            [FORM_KEY_VALUE]: '',
         },
         subscribed: {
-            hasError: false,
-            value: true,
+            [FORM_KEY_HAS_ERROR]: false,
+            [FORM_KEY_VALUE]: true,
         },
     },
-    isLoading: false,
-    isSentSucess: false,
-    isSentError: false,
 }
 
 export class ContactForm extends PureComponent {
-    state = initialState
+    state = {
+        ...initialFormState,
+        [FORM_KEY_IS_LOADING]: false,
+        [FORM_KEY_SENT_SUCCESS]: false,
+        [FORM_KEY_SENT_FAILURE]: false,
+    }
 
     onSubmit = (event) => {
         event.preventDefault()
 
         this.validateForm()
 
-        if (this.isValidForm()) {
+        if (this.isInvalidForm()) {
+            console.log('...isInvalidadform')
+            // Skip...
+        } else {
             this.submitForm()
-                .finally(() => this.resetForm())
         }
     }
 
     validateForm = () => {
+        const {fields} = this.state
 
+        Object.keys(fields).forEach((fieldKey) => {
+            this.validateField(fieldKey)
+        })
+    }
+
+    validateField = (fieldKey) => {
+        const isInvalidField = this.isInvalidField(
+            fieldKey,
+            this.getFieldValue(fieldKey)
+        )
+
+        this.setFieldValue(fieldKey, FORM_KEY_HAS_ERROR, isInvalidField)
     }
 
     startLoading = () => {
-        this.setState({isLoading: true})
+        this.setState({[FORM_KEY_IS_LOADING]: true})
     }
 
     stopLoading = () => {
-        this.setState({isLoading: false})
+        this.setState({[FORM_KEY_IS_LOADING]: false})
     }
 
     getFieldValue = (fieldKey) => (
@@ -72,6 +97,33 @@ export class ContactForm extends PureComponent {
     getFieldError = (fieldKey) => (
         get(this.state, `fields.${fieldKey}.hasError`)
     )
+
+    setFieldValue = (fieldKey, property, fieldValue) => (
+        this.setState((prevState) => ({
+            fields: {
+                ...prevState.fields,
+                [fieldKey]: {
+                    ...prevState.fields[fieldKey],
+                    ...{[property]: fieldValue}
+                }
+            }
+        }))
+    )
+
+    clearSentNotifications = () => {
+        this.setState({
+            [FORM_KEY_SENT_SUCCESS]: false,
+            [FORM_KEY_SENT_FAILURE]: false,
+        })
+    }
+
+    notifySuccessOnSent = () => {
+        this.setState({[FORM_KEY_SENT_SUCCESS]: true})
+    }
+
+    notifyErrorOnSent = () => {
+        this.setState({[FORM_KEY_SENT_FAILURE]: true})
+    }
 
     submitForm = () => {
         const body = {
@@ -89,56 +141,53 @@ export class ContactForm extends PureComponent {
             },
         }
 
-        this.startLoading();
-        return fetch(API, options)
-            .then((response) => {
-                const {error, message} = response
+        this.startLoading()
+        this.clearSentNotifications()
 
-                if (error == true) {
-                    alert('Error sending the form')
+        return fetch(API, options)
+            .then((response) => response.json())
+            .then((body) => {
+                if (body.error) {
+                    return this.notifyErrorOnSent(body.message)
                 }
-                
-                console.log(response)
-                this.stopLoading()
+
+                this.notifySuccessOnSent()
+                this.resetForm()
             })
-            .catch(error => {
-                console.log(error)
-                this.stopLoading()
+            .catch((_) => {
+                this.notifyErrorOnSent()
             })
+            .finally(() => this.stopLoading())
     }
 
     resetForm = () => {
-        this.setState(initialState)
+        this.setState({
+            ...initialFormState
+        })
     }
 
     handleInputBlur = (event) => {
-        this.isValidForm()
+        this.isInvalidForm()
     }
 
     handleInputChange = (event) => {
         const fieldKey = event.target.name;
         const fieldValue = event.target.value;
 
-        const updatedState = this.state
-        updatedState.fields[fieldKey].value = fieldValue
-
-        this.setState(updatedState)
+        this.setFieldValue(fieldKey, FORM_KEY_VALUE, fieldValue)
     }
 
     handleOnBlur = (event) => {
         const fieldKey = event.target.name;
         const fieldValue = event.target.value;
 
-        const updatedState = this.state
-        updatedState.fields[fieldKey].value = fieldValue
-        updatedState.fields[fieldKey].hasError = this.isInvalidField(fieldKey)
+        const isInvalidField = this.isInvalidField(fieldKey, fieldValue)
 
-        this.setState(updatedState)
+        this.setFieldValue(fieldKey, FORM_KEY_VALUE, fieldValue)
+        this.setFieldValue(fieldKey, FORM_KEY_HAS_ERROR, isInvalidField)
     }
 
-    isInvalidField = (fieldKey) => {
-        const fieldValue = this.getFieldValue(fieldKey)
-
+    isInvalidField = (fieldKey, fieldValue) => {
         if (VALIDATORS[fieldKey]) {
             return VALIDATORS[fieldKey](fieldValue)
         }
@@ -147,13 +196,13 @@ export class ContactForm extends PureComponent {
         return true
     }
 
-    isValidForm = () => {
+    isInvalidForm = () => {
         const fieldsKeys = Object.keys(this.state.fields)
-        const isValidForm = fieldsKeys.reduce((accum, nextFieldKey) => (
-            accum && this.isInvalidField(nextFieldKey)
-        ), true)
+        const isInvalidForm = fieldsKeys.reduce((accum, nextFieldKey) => (
+            accum || this.isInvalidField(nextFieldKey, this.getFieldValue(nextFieldKey))
+        ), false)
 
-        return isValidForm
+        return isInvalidForm
     }
 
     renderError = (error) => (
@@ -171,7 +220,13 @@ export class ContactForm extends PureComponent {
         hasError,
     }) => {
         return (
-            <label className="contact_form_fieldset">
+            <label
+                className="contact_form_fieldset"
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                }}
+            >
                 {hasError && this.renderError(error)}
 
                 <input
@@ -240,7 +295,7 @@ export class ContactForm extends PureComponent {
                 error: 'Foo',
                 name: 'message',
                 value: this.getFieldValue('message'),
-                placeholder: 'Foo placeholder',
+                placeholder: 'Write your message here :)',
                 hasError: this.getFieldError('message'),
             })}
             
@@ -279,13 +334,20 @@ export class ContactForm extends PureComponent {
     )
 
     render() {
-        const {isLoading, fields} = this.state
+        const {
+            isLoading,
+            fields,
+            [FORM_KEY_SENT_FAILURE]: hasSentFailure,
+            [FORM_KEY_SENT_SUCCESS]: hasSentSucess,
+        } = this.state
 
-        console.log('isLoading', isLoading);
-        console.log('this.state', this.state);
+        console.group('render()')
+        console.log('hasSentFailure', hasSentFailure)
+        console.log('hasSentSucess', hasSentSucess)
+        console.groupEnd()
 
         return (
-            <div className="contact animate">
+            <div className="contact">
                 <div className="contact_form_wrapper">
                     <div className="contact_form_container">
                         <div className="contact_form_result contact_form_success">
@@ -296,6 +358,31 @@ export class ContactForm extends PureComponent {
                                 }}
                             />
                         </div>
+
+                        {hasSentFailure && (
+                            <p>Failure on sent... Try again or reach out to me directly.</p>
+                        )}
+                        
+                        {hasSentSucess && (
+                            <div
+                                className="contact_form_result contact_form_success"
+                                style={{display: 'block'}}
+                            >
+                                <h2>Thank you!</h2>
+                                <p>Your message has been sent. I'll send you a reply asap.</p>
+                                <p>In the meantime, let's also connect!</p>
+
+                                {SOCIAL_NETWORKS.map((social) => (
+                                    <Link
+                                        url={social.url}
+                                        target={TARGET_BLANK}
+                                        key={social.url}
+                                    >
+                                        <span className={`social ${social.icon}`} />
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                         
                         {isLoading ? (
                             <center>

@@ -1,9 +1,9 @@
 import queryString from 'query-string'
 
-export const getQueryParam = (properties) => (
+export const getUrlQueryParam = (properties) => (
     queryString.parse(properties)
 )
 
-export const getQueryParamValue = ({key, properties, defaultValue}) => {
+export const getUrlQueryParamValue = ({key, properties, defaultValue}) => {
     return getQueryParam(properties)[key] || defaultValue
 }

@@ -7,6 +7,7 @@ import {
 
 import {PageLayout} from './components/layout/PageLayout'
 
+import {Home} from './pages/home/Home'
 import {About} from './pages/about/About'
 import {AboutResume} from './pages/about/AboutResume'
 import {BlogHome} from './pages/blog/home/Home'
@@ -25,10 +26,15 @@ const NoMatch = ({ location }) => (
     >
       <h3>Page not found <code>{location.pathname}</code></h3>
     </PageLayout>
-  )
+)
 
 export const AppWithRoutes = () => (
     <Switch>
+        <Route
+            path='/'
+            exact
+            component={Home}
+        />
         <Route
             path='/about'
             exact
@@ -61,6 +67,11 @@ export const AppWithRoutes = () => (
         />
         <Route
             path='/videos'
+            exact
+            component={VideosHome}
+        />
+        <Route
+            path='/videos/:category'
             exact
             component={VideosHome}
         />

@@ -1,0 +1,1 @@
+export const ERROR_FETCHING_CONTENT = 'loadingError'
