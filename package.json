@@ -16,7 +16,6 @@
         "build": "yarn build:server && yarn build:client",
         "start": "yarn backend:server",
         "test": "echo $'[TODO] Implement tests'",
-        "heroku-postbuild": "yarn build"
     },
     "workspaces": [
         "packages/*"

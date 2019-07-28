@@ -6,9 +6,10 @@ import {translate} from '../../i18-me/i18-me'
 import {BUTTON_SIZE_MEDIUM, TARGET_BLANK, BUTTON_STYLE_LINK} from '../../components/constants'
 import {Button} from '../../components/buttons/Button'
 
+import {BUTTON_TYPE_SLIDES, BUTTON_TYPE_VIDEO} from '../../content/english'
+import {Link} from '../link/Link'
+
 import './TalkListItem.scss'
-import { BUTTON_TYPE_SLIDES, BUTTON_TYPE_VIDEO } from '../../content/english'
-import { Link } from '../link/Link'
 
 const renderButton = ({
     title,
