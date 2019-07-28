@@ -248,8 +248,8 @@ export class Header extends PureComponent {
 
                 <div className="main-header-wrapper">
                     <div
-                        itemscope
-                        itemtype="http://schema.org/Attorney"
+                        itemScope
+                        itemType="http://schema.org/Attorney"
                         className="main-header__logo"
                     >
                         <Link
