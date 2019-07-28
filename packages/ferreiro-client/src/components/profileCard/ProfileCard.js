@@ -8,13 +8,13 @@ import {
 
 import './ProfileCard.scss'
 
-
 export const ProfileCard = () => (
     <div className="profile-card">
         <img
+            alt="Jorge Ferreiro is a Frontend Software Engineer, Entrepreneur and blog writer."
             width="60px"
             className="profile-card__image"
-            src="https://pbs.twimg.com/profile_images/1062169454413578243/z_WY3jdh_400x400.jpg"
+            src="/images/about/jorge_ferreiro_frontend_software_engineer_blogger_entrepreneur_public_speaker_and_host_of_developers_in_depth_youtube_show.jpg"
         />
 
         <h3 className="profile-card__title">

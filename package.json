@@ -7,6 +7,7 @@
     },
     "scripts": {
         "check": "npm-check",
+        "seed-database": "node ./scripts/seedDatabase",
         "dev": "concurrently \"yarn backend:server\" \"yarn backend:watch\" \"yarn frontend:server:dev\"",
         "frontend:server:dev": "yarn workspace @ferreiro/client start:dev",
         "backend:server": "yarn workspace @ferreiro/server start",
