@@ -14,7 +14,9 @@ const pageData = getPageData(PATH_TALKS)
 const talks = pageData[PAGE_ENTITIES]
 
 export const getTalksMetrics = () => {
-    const talksCount = Object.keys(talks).length
+    const talksCount = Object.values(talks)
+        .filter(({isPrivate}) => isPrivate === false)
+        .length
     
     const metricsReducer = (accum, nextKey) => {
         const {

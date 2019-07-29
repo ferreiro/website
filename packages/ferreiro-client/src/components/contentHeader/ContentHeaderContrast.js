@@ -12,6 +12,7 @@ const onLeaveViewport = () => {
 }
 
 export const ContentHeaderContrast = ({
+    afterContent = null,
     options = null,
     title,
     subtitle,
@@ -38,17 +39,22 @@ export const ContentHeaderContrast = ({
                 >
                     {title}
                 </h1>
-                <h2
-                    className="content-header__subtitle content-header__subtitle--contrast"
-                    dangerouslySetInnerHTML={{
-                        __html: subtitle,
-                    }}
-                    style={{
-                        fontFamily: 'aktiv-grotesk, sans-serif',
-                    }}
-                />
+
+                {subtitle &&
+                    <h2
+                        className="content-header__subtitle content-header__subtitle--contrast"
+                        dangerouslySetInnerHTML={{
+                            __html: subtitle,
+                        }}
+                        style={{
+                            fontFamily: 'aktiv-grotesk, sans-serif',
+                        }}
+                    />
+                }
 
                 {options}
+
+                {afterContent}
             </div>
         </div>
     </Waypoint>

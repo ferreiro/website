@@ -44,7 +44,10 @@ export class VideoCardDID extends PureComponent {
                     <div className="video__wrapper">
                         <div className="video__aside">
                             {this.state.isScrolled === true && (
-                                <VideoCardContent iframe={iframe} image={image} />
+                                <VideoCardContent
+                                    iframe={iframe}
+                                    image={image}
+                                />
                             )}
                         </div>
                         <div className="video__content">

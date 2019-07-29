@@ -23,16 +23,17 @@ import {
 } from '../constants'
 
 import './talks.scss'
+import { TalksMetrics } from './TalksMetrics';
 
-const renderCardTalk = (talk) => (
-    !talk.private
-        ? <CardTalk key={talk.id} talk={talk} />
+const renderCardTalk = ({isPrivate, ...rest}) => (
+    isPrivate === false
+        ? <CardTalk key={talk.id} talk={rest} />
         : null
 )
 
-const renderTalk = (talk) => (
-    !talk.private
-        ? <TalkListItem talk={talk} />
+const renderTalk = ({isPrivate, ...rest}) => (
+    isPrivate === false
+        ? <TalkListItem talk={rest} />
         : null
 )
 
@@ -94,6 +95,7 @@ export class TalksHome extends PureComponent {
             <ContentHeaderContrast
                 title={title}
                 subtitle={subtitle}
+                afterContent={<TalksMetrics />}
                 backgroundColor='#130c49'
                 backgroundImageUrl='/images/talks/jorge_ferreiro_software_engineer_and_public_speaker_on_technical_topics_and_motivational_topics.jpg'
             />

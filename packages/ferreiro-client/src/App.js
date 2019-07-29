@@ -17,6 +17,7 @@ import {ContactTalk} from './pages/contact/ContactTalk'
 import {Portfolio} from './pages/portfolio/Portfolio'
 import {VideosHome} from './pages/videos/Home'
 import {TalksHome} from './pages/talks/Home'
+import {TalksInfo} from './pages/talks/Info'
 
 import './common.scss';
 
@@ -80,6 +81,11 @@ export const AppWithRoutes = () => (
             path='/talks'
             exact
             component={TalksHome}
+        />
+        <Route
+            path='/talks/info'
+            exact
+            component={TalksInfo}
         />
         <Route
             path='/contact'

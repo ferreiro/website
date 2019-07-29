@@ -160,14 +160,13 @@ $post-reader-width: 700px;
 	ul li,
 	ol li,
 	a {
-		font-size: 20px;
-		line-height: 1.58;
+		font-size: $text-font-size;
+		line-height: $text-line-height;
 		letter-spacing: -.004em;
+
 		@include large-up {
-			font-size: 21px;
-			line-height: 32px;
-			// line-height: 1.58;
-			// letter-spacing: -.003em;
+			font-size: $text-font-size-large-up;
+			line-height: $text-line-height-large-up;
 			letter-spacing: -.003em;
 			color: rgba(0, 0, 0, .84);
 		}
@@ -182,7 +181,6 @@ $post-reader-width: 700px;
 		padding: 0;
 		list-style: decimal;
 		list-style-position: inside;
-		// margin-top: 29px;
 		list-style-position: inside;
 		margin: 0;
 		padding: 0;
@@ -280,7 +278,6 @@ $post-reader-width: 700px;
 		color: #2f2f2f;
 		background: #f4f4f4;
 		overflow-wrap: break-word;
-		// color: #c5c8c6;
 		text-shadow: 0 1px rgba(0, 0, 0, .3);
 		font-family: Inconsolata, Monaco, Consolas, Courier New, Courier, monospace;
 		direction: ltr;
@@ -298,7 +295,6 @@ $post-reader-width: 700px;
 	blockquote {
 		margin: 0;
 		margin-top: 29px;
-		// margin-left: -1.75px;
 		color: rgba(0, 0, 0, .68);
 		border: none;
 		padding: 5px 0;
@@ -350,11 +346,11 @@ $post-reader-width: 700px;
 		line-height: 1.15;
 		letter-spacing: -.02em;
 		color: rgba(0, 0, 0, .84);
-		// override
+
 		font-size: 26px;
 		font-weight: 600;
 		letter-spacing: -0.01em;
-		// font-family: Lato,sans-serif;
+
 		&::before {
             background-color: #d83902;
             padding: 0 20px;
@@ -364,11 +360,8 @@ $post-reader-width: 700px;
 		}
 	}
 	h2 {
-		// color: $primaryColor;
-		// font-family: Lato,sans-serif;
 		font-weight: 600;
 		font-size: 26px;
-		/* font-size: 24px; */
 		color: rgba(0, 0, 0, .7);
 		color: rgba(0, 0, 0, .9);
 		margin-bottom: -15px;

@@ -4,11 +4,15 @@ import {Link} from 'react-router-dom'
 import classnames from 'classnames'
 
 import './ConferenceAd.scss'
-import { translate } from '../../i18-me/i18-me';
+import {translate} from '../../i18-me/i18-me';
 
 export class ConferenceAd extends PureComponent {
     state = {
         isShown: false,
+    }
+
+    static defaultProps = {
+        showMoreInfo: true,
     }
 
     onEnter = () => {
@@ -36,13 +40,25 @@ export class ConferenceAd extends PureComponent {
                         <h3 className="conference-ad__title">
                             Do you want me to speak in your congress, event or company?
                         </h3>
-                        <Link
-                            title={translate('Contact Jorge Ferreiro to give a Conference. Frontend Software Engineer')}
-                            className="conference-ad__button"
-                            to="/contact/talk"
-                        >
-                            {translate('Contact me!')}
-                        </Link>
+                        <div className="conference-ad__options">
+                            <Link
+                                title={translate('Contact Jorge Ferreiro to give a Conference. Frontend Software Engineer')}
+                                className="conference-ad__button"
+                                to="/contact/talk"
+                            >
+                                {translate('Contact me!')}
+                            </Link>
+
+                            {this.props.showMoreInfo &&
+                                <Link
+                                    title={translate('Contact Jorge Ferreiro to give a Conference. Frontend Software Engineer')}
+                                    className="conference-ad__button conference-ad__button--more-info"
+                                    to="/talks/info"
+                                >
+                                    {translate('More info')}
+                                </Link>
+                            }
+                        </div>
                     </div>
                     <div className="conference-ad__image">
                         <img

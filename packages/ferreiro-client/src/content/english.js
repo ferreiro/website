@@ -152,6 +152,7 @@ export const content = {
         },
         [PAGE_ENTITIES]: {
             github101: {
+                "isPrivate": false,
                 "title": "Github 101 by Jorge Ferreiro - Adalab Bootcamp",
                 "summary": "Why I love Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
                 "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
@@ -177,6 +178,7 @@ export const content = {
                 ]
             },
             githubProp: {
+                "isPrivate": false,
                 "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp",
                 "summary": "Why I ❤️ Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
                 "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
@@ -202,6 +204,7 @@ export const content = {
                 ]
             },
             perfLondon: {
+                "isPrivate": false,
                 "title": "Web Perfomance: Expectations Vs Reality - JSRoundabout by Jorge Ferreiro - #TwitterPerf",
                 "summary": "“Why is my website slow?”, “How can I improve the loading time?”, “How does the browser render a website?”, “What techniques can I apply to boost the speed of my website?”.",
                 "permalink": "https://speakerdeck.com/ferreiro/web-performance-jorge-ferreiro-twitter-london-js-roundabout",
@@ -227,6 +230,7 @@ export const content = {
                 ]
             },
             fdi10Tips: {
+                "isPrivate": false,
                 "title": "Los 10 consejos para lanzar tu carrera en tecnología - #futuroFiumers",
                 "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
                 "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
@@ -252,6 +256,7 @@ export const content = {
                 ]
             },
             fdi10GetJob: {
+                "isPrivate": false,
                 "title": "La Guía Definitiva para conseguir tu trabajo - #futuroFDI",
                 "summary": "How does it work the interview process? How to get a job in tech? All the lessons learned and tips to get your first job in tech.",
                 "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
@@ -281,6 +286,7 @@ export const content = {
                 ]
             },
             fdiCesar: {
+                "isPrivate": false,
                 "title": "Entrevista con César Puerta, Senior Staff en Twitter - #futuroFDI",
                 "summary": "Jorge Ferreiro does a live video interview with César Puerta who is currently leading Twitter for Android application and who is Senior Staff Engineer.",
                 "permalink": "https://speakerdeck.com/ferreiro/la-guia-definitiva-para-conseguir-tu-trabajo",
@@ -306,6 +312,7 @@ export const content = {
                 ]
             },
             fdiCv: {
+                "isPrivate": false,
                 "title": "El CV y Github: El momento de jugar como pros 2019 - #futuroFDI",
                 "summary": "Tips, ideas and suggestions on how to get the most out of your Social Networks. Also, learn how to do the most amazing resumes.",
                 "permalink": "https://speakerdeck.com/ferreiro/el-cv-y-github-es-momento-de-jugar-como-pros",
@@ -335,6 +342,7 @@ export const content = {
                 ]
             },
             fdiHistory: {
+                "isPrivate": false,
                 "title": "Mi historia hasta 2019 - #futuroFDI",
                 "summary": "Comparto mi historia personal desde cuando comencé a programar con 10 años hasta la actualidad. Haciendou un repaso de las lecciones aprendidas en las diferentes empresas que he estado.",
                 "permalink": "https://speakerdeck.com/ferreiro/mi-historia-hasta-2019",
@@ -364,6 +372,7 @@ export const content = {
                 ]
             },
             djangoGirlsLearn: {
+                "isPrivate": false,
                 "title": "Learn and grow in the tech world - #DjangoGirlsMadrid 2018-11-17",
                 "summary": "My personal story when I started programming, and 6 lessons learned during those years",
                 "permalink": "https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117",
@@ -394,6 +403,7 @@ export const content = {
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/vhVVEX9yujQ8Kt"
             },
             djangoGirlsLearnSpanish: {
+                "isPrivate": false,
                 "title": "Aprende y crece en el mundo tech - Django girls madrid 2018 - #DjangoGirlsMadrid",
                 "summary": "Mi historia personal cuando comencé a programar, y 6 lecciones aprendidas",
                 "permalink": "https://www.slideshare.net/jgferreiro/aprende-y-crece-en-el-mundo-tech-django-girls-madrid-2018",
@@ -424,6 +434,7 @@ export const content = {
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/aQZrpBjP6TJlOi"
             },
             introduingRedis: {
+                "isPrivate": false,
                 "title": "Introducing Redis by Jorge Ferreiro - NoSQL database course at UCM",
                 "summary": "Introduced Redis, a key-value NoSQL database, to 30 college students. I talked about introductory concepts and features, and shared a practical case.",
                 "permalink": "https://www.slideshare.net/jgferreiro/redis-76234580",
@@ -450,6 +461,7 @@ export const content = {
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/7ccfv8oGwI8NUp"
             },
             dailyfocusDemo: {
+                "isPrivate": false,
                 "title": "Dailyfocus presentation (with DEMO! 🔥): 16 minutes - FDI UCM - #helloDailyfocus",
                 "summary": "Presentation of my personal project Dailyfocus, where I explained the engineering, product design, business and my personal experience.",
                 "permalink": "https://www.youtube.com/watch?v=qlDrZiwkrv0",
@@ -481,6 +493,7 @@ export const content = {
                 "iframeSrc": "https://www.youtube.com/embed/qlDrZiwkrv0?rel=0"
             },
             dailyfocusPresentation: {
+                "isPrivate": false,
                 "title": "Dailyfocus presentation (June 2017): Vision, product, tech and journey.",
                 "summary": "Presentation made for an academic jury from my college. I mainly cover: Challenges, vision and goals, development process, lessons learned, etc.",
                 "permalink": "https://www.slideshare.net/jgferreiro/dailyfocus",
@@ -507,6 +520,7 @@ export const content = {
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/9g2w6pw5BIfcb8"
             },
             lightningJSDay: {
+                "isPrivate": false,
                 "title": "Lightning talk - Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
                 "summary": "Brief introduction of Dailyfocus at JSDayEs (JavaScript event in Spain). Challenged by the organizer to prepare it in 5 minutes.",
                 "permalink": "https://www.youtube.com/watch?v=vZI3iPdbOTk",
@@ -533,6 +547,7 @@ export const content = {
                 "iframeSrc": "https://www.youtube-nocookie.com/embed/vZI3iPdbOTk?rel=0"
             },
             workshopHTML: {
+                "isPrivate": false,
                 "title": "Workshop: Your first professional website (sponsored by Github.com)",
                 "summary": "I organized and ran this workshop for more than 50 students in my college. I taught the attendees how to create a professional website from scratch to deployment.",
                 "permalink": "https://www.slideshare.net/jgferreiro/workshop-your-first-professional-website",
@@ -563,7 +578,7 @@ export const content = {
                 "iframeSrc": "//www.slideshare.net/slideshow/embed_code/key/JbRpFBTuxKzK60"
             },
             fdiMachine: {
-                "private": true,
+                "isPrivate": true,
                 "title": "Machine Learning: online news prediction in Mashable",
                 "summary": "As a college project, I created a presentation and a report with a ML analysis to predict when is the best time to publish news to gain popularity.",
                 "permalink": null,
@@ -590,6 +605,7 @@ export const content = {
                 "iframeSrc": null
             },
             webappsMedialab: {
+                "isPrivate": false,
                 "title": "Webapps: introduction and publishing on Firefox OS",
                 "summary": "I was invited to a Firefox OS meetup to talk about: Webapps, how to create them and my experience creating Music4deejays, a streaming music app.",
                 "permalink": "https://www.slideshare.net/jgferreiro/webapps-case-study-and-publishing-applications-on-firefox-os",

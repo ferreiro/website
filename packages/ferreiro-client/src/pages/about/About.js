@@ -5,21 +5,24 @@ import {GenericAd} from '../../components/ads/GenericAd'
 import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu'
 import {PageLayout} from '../../components/layout/PageLayout'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
-
-import {ContentHeader} from '../../components/contentHeader/ContentHeader'
-import {RecentArticles} from '../../components/recentArticles/RecentArticles'
-import {RecentTalks} from '../../components/recentTalks/RecentTalks'
-import {RecentVideos} from '../../components/recentVideos/RecentVideos'
-import {Button} from '../../components/buttons/Button'
 import {translate} from '../../i18-me/i18-me'
-import {getTalksMetrics} from '../talks/get-talks-metrics'
+
+import {AboutTalksBio} from './AboutTalksBio';
+import {Button} from '../../components/buttons/Button'
+import {JorgeIntersection} from './JorgeIntersection';
+import {RecentArticles} from '../../components/recentArticles/RecentArticles'
+import {RecentVideos} from '../../components/recentVideos/RecentVideos'
+import {TalksMetrics} from '../talks/TalksMetrics';
+import {TalksVenuesLogos} from '../talks/TalksVenuesLogos';
 
 import {
+    BUTTON_STYLE_LINK,
     BUTTON_STYLE_NEUTRAL,
     BUTTON_SIZE_SMALL,
     TARGET_BLANK,
     BUTTON_STYLE_FILL,
-    BUTTON_SIZE_MEDIUM
+    BUTTON_SIZE_MEDIUM,
+    BUTTON_STYLE_OUTLINE,
 } from '../../components/constants'
 
 import {
@@ -38,18 +41,25 @@ import {
 
 import {
     getPageData,
-    PAGE_CONTENT,
-    PAGE_TITLE,
-    PAGE_SUBTITLE,
     PAGE_COLORS
 } from '../../content/english'
 
 const pageData = getPageData(PATH_ABOUT)
 
+
 import './About.scss'
 
-
 export class About extends PureComponent {
+    state = {
+        isShownIntersection: false,
+    }
+
+    toggleIntersection = () => {
+        this.setState((prevState) => ({
+            isShownIntersection: !prevState.isShownIntersection
+        }))
+    }
+
     generateSection = ({
         key,
         title,
@@ -57,6 +67,7 @@ export class About extends PureComponent {
         content,
     }) => {
         const color = pageData[PAGE_COLORS][key]
+        const hashId = title.replace(' ', '-')
 
         return (
             <StickyContainer>
@@ -65,14 +76,19 @@ export class About extends PureComponent {
                         {({style}) => (
                             <h2
                                 className="about-section__title"
+                                id={hashId}
                                 style={{
                                     ...style,
                                     background: 'rgba(255, 255, 255, .98)',
-                                    zIndex: 10,
-                                    color
+                                    zIndex: 10
                                 }}
                             >
-                                {title}
+                                <a
+                                    href={`#${hashId}`}
+                                    style={{color}}
+                                >
+                                    {title}
+                                </a>
                             </h2>
                         )}
                     </Sticky>
@@ -88,33 +104,6 @@ export class About extends PureComponent {
                     </div>
                 </section>
             </StickyContainer>
-        )
-    }
-
-    // TODO: Possibly moving to its own component, so we can
-    // use this inside talks
-    renderTalksMetrics = () => {
-        const {
-            countries,
-            cities,
-            talksCount,
-        } = getTalksMetrics()
-
-        return (
-            <div>
-                <li>
-                    <span className="">{countries.length}</span>
-                    <span className="">Countries</span>
-                </li>
-                <li>
-                    <span className="">{talksCount}</span>
-                    <span className="">Talks</span>
-                </li>
-                <li>
-                    <span className="">{cities.length}</span>
-                    <span className="">Cities</span>
-                </li>
-            </div>
         )
     }
 
@@ -144,7 +133,6 @@ export class About extends PureComponent {
                         <li>
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}
-                                size={BUTTON_SIZE_SMALL}
                                 icon={<span className="icon icon-twitter" />}
                                 text={translate('Follow')}
                                 url={SOCIAL_URL_TWITTER}
@@ -154,7 +142,6 @@ export class About extends PureComponent {
                         <li>
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}
-                                size={BUTTON_SIZE_SMALL}
                                 icon={<span className="icon icon-linkedin" />}
                                 text={translate('Connect')}
                                 url={SOCIAL_URL_LINKEDIN}
@@ -180,9 +167,14 @@ export class About extends PureComponent {
         const bio = (
             <section className="about-bio">
                 <div className="about-bio__description spacing-4-left">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset and thrive on interaction and collaboration with team members</p>
+                    <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://www.eventbritecareers.com/home" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
+                    <p>I thrive on being at the intersection of four disciplines <Button onClick={this.toggleIntersection} style={BUTTON_STYLE_LINK} text={<strong>engineering, design, business and marketing</strong>} />. I am considered a strong 🗣️ communicator, 💡 ideas creator and innovator, and I am very passionate about the work I do</p>
+                    {/* <img
+                        width="100px"
+                        alt="Jorge ferreiro intersection software engineering design business marketing"
+                        src="/images/about/Jorge_ferreiro_intersection_software_engineering_design_business_marketing.png"
+                    /> */}
                 </div>
                 <div className="about-bio__pic">
                     <img
@@ -196,12 +188,23 @@ export class About extends PureComponent {
 
         const content = (
             <div>
-                <ContentHeader
-                    title={pageData[PAGE_CONTENT][PAGE_TITLE]}
-                    subtitle={pageData[PAGE_CONTENT][PAGE_SUBTITLE]}
-                />
+                {this.generateSection({
+                    title: translate('About me'),
+                    // TODO: Move into const
+                    key: 'me', 
+                    subtitle: null,
+                    content: (
+                        <div className="about-me">
+                            {bio}
 
-                {bio}
+                            {this.state.isShownIntersection && (
+                                <div className="spacing-4-top">
+                                    <JorgeIntersection />
+                                </div>
+                            )}
+                        </div>
+                    )
+                })}
 
                 {this.generateSection({
                     title: translate('Career'),
@@ -210,17 +213,112 @@ export class About extends PureComponent {
                     subtitle: null,
                     content: (
                         <div className="about-career">
-                            <div className="about-carrer__list">
-                                <div className="about-carrer__item">
+                            <div className="about-career__list">
+                                <div className="about-career__item about-career__item--active">
+                                    <img
+                                        className="about-career__avatar"
+                                        alt="Jorge Ferreiro Frontend Software Engineer at Eventbrite"
+                                        src="/images/companies/eventbrite-dark.png"
+                                    />
+                                    <p
+                                        className="about-career__dates"
+                                    >
+                                        Sep 2018 - current
+                                    </p>
+                                    <h4
+                                        className="about-career__title"
+                                    >
+                                        {translate('Frontend Software Engineer at Eventbrite')}
+                                    </h4>
+                                </div>
+                                <div className="about-career__item">
+                                    <img
+                                        className="about-career__avatar"
+                                        alt="Jorge Ferreiro Background Software Engineer Intern at Amazon"
+                                        src="/images/companies/amazon-dark.png"
+                                    />
+                                    <p
+                                        className="about-career__dates"
+                                    >
+                                        Jan 2018 - Jul 2018
+                                    </p>
+                                    <h4
+                                        className="about-career__title"
+                                    >
+                                        {translate('Backend Software Engineer Internship at Amazon')}
+                                    </h4>
+                                </div>
+                                <div className="about-career__item">
+                                    <img
+                                        className="about-career__avatar"
+                                        alt="Jorge Ferreiro creator and Full Stack Software Engineer at Dailyfocus"
+                                        src="/images/companies/dailyfocus-dark.png"
+                                    />
+                                    <p
+                                        className="about-career__dates"
+                                    >
+                                        Jan 2018 - Jul 2018
+                                    </p>
+                                    <h4
+                                        className="about-career__title"
+                                    >
+                                        {translate('Creator and Full Stack Software Engineer at Dailyfocus')}
+                                    </h4>
+                                </div>
+
+                                <div className="about-career__item">
+                                    <img
+                                        className="about-career__avatar"
+                                        alt="Jorge Ferreiro creator and Summer Scholarship with Huawei"
+                                        src="/images/companies/huawei-dark.png"
+                                    />
+                                    <p
+                                        className="about-career__dates"
+                                    >
+                                        Jan 2018 - Jul 2018
+                                    </p>
+                                    <h4
+                                        className="about-career__title"
+                                    >
+                                        {translate('Summer Scholarship with Huawei')}
+                                    </h4>
+                                </div>
+
+                                <div className="about-career__item">
+                                    <img
+                                        className="about-career__avatar"
+                                        alt="Jorge Ferreiro creator and Full Stack Software Engineer at Dailyfocus"
+                                        src="/images/companies/music4deejays-dark.png"
+                                    />
+                                    <p
+                                        className="about-career__dates"
+                                    >
+                                        Jan 2018 - Jul 2018
+                                    </p>
+                                    <h4
+                                        className="about-career__title"
+                                    >
+                                        {translate('Creator and Full Stack Software Engineer at Music4deejays')}
+                                    </h4>
                                 </div>
                             </div>
 
-                            <Button
-                                style={BUTTON_STYLE_FILL}
-                                size={BUTTON_SIZE_MEDIUM}
-                                text={translate('Read Résume')}
-                                url='about/resume'
-                            />
+                            <div className="about-career__options">
+                                <Button
+                                    style={BUTTON_STYLE_NEUTRAL}
+                                    size={BUTTON_SIZE_MEDIUM}
+                                    text={translate('Read Résume')}
+                                    url='about/resume'
+                                />
+
+                                <Button
+                                    style={BUTTON_STYLE_NEUTRAL}
+                                    icon={<span className="icon icon-linkedin" />}
+                                    text={translate('Connect on Linkedin')}
+                                    url={SOCIAL_URL_LINKEDIN}
+                                    target={TARGET_BLANK}
+                                />
+                            </div>
                         </div>
                     )
                 })}
@@ -232,34 +330,29 @@ export class About extends PureComponent {
                     subtitle: null,
                     content: (
                         <div className="about-talks">
-                            {this.renderTalksMetrics()}
+                            <AboutTalksBio />
 
-                            <img width="100%" src="https://www.martagarcia.tv/wp-content/uploads/2016/02/logos-tv-marta-OPC2-1.jpg" />
-                            twitter
-                            JSRoundAbout
-                            Adalab
-                            FDI,
-                            Logo Murcia
-                            Logo Codecamp
-                            Medialab prado
-                            FirefoxOS
+                            <div className="spacing-3-bot" style={{display: 'flex'}} />
+                            <div className="spacing-3-bot" style={{display: 'flex'}} />
+                            <TalksMetrics />
 
-                            <RecentTalks />
+                            <TalksVenuesLogos />
 
+                            <div className="about-talks__cta">
+                                <Button
+                                    style={BUTTON_STYLE_NEUTRAL}
+                                    size={BUTTON_SIZE_MEDIUM}
+                                    text={translate('See talks')}
+                                    url={PATH_TALKS}
+                                />
 
-                            <Button
-                                style={BUTTON_STYLE_NEUTRAL}
-                                size={BUTTON_SIZE_MEDIUM}
-                                text={translate('See talks')}
-                                url={PATH_TALKS}
-                            />
-
-                            <Button
-                                style={BUTTON_STYLE_FILL}
-                                size={BUTTON_SIZE_MEDIUM}
-                                text={translate('Bring me to your event')}
-                                url={PATH_CONTACT_TALK}
-                            />
+                                <Button
+                                    style={BUTTON_STYLE_FILL}
+                                    size={BUTTON_SIZE_MEDIUM}
+                                    text={translate('Bring me to your event')}
+                                    url={PATH_CONTACT_TALK}
+                                />
+                            </div>
                         </div>
                     )
                 })}
@@ -271,16 +364,14 @@ export class About extends PureComponent {
                     subtitle: null,
                     content: (
                         <div className="about-articles">
-                            Poner articulos de xataka,
-                            Poner articulos de terceros.
-                            Poner articulos propios.
-
                             <RecentArticles />
+
+                            <div className="spacing-4-top" />
 
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}
                                 size={BUTTON_SIZE_MEDIUM}
-                                text={translate('See blog')}
+                                text={translate('See all blog entries')}
                                 url={PATH_BLOG}
                             />
                         </div>
@@ -294,10 +385,9 @@ export class About extends PureComponent {
                     subtitle: null,
                     content: (
                         <div className="about-videos">
-                            Lista de videos...
-                            Enlace a seccion
-
                             <RecentVideos />
+
+                            <div className="spacing-4-top" />
 
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}

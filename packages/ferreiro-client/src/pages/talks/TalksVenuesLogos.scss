@@ -1,0 +1,25 @@
+@import "../../components/spacing.scss";
+
+.talks-venues-logos {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        text-align: center;        
+    }
+
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 80%;
+        margin: 0 auto;
+
+        img {
+            height: 60px;
+            margin: $spacing-1 $spacing-2;
+            opacity: 0.95;
+            filter: alpha(opacity=95); /* For IE8 and earlier */
+        }
+    }
+}

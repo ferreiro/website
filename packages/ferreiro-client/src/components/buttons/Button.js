@@ -8,20 +8,22 @@ import {Link as ExternalLink} from '../link/Link';
 import {Link as InternalLink} from 'react-router-dom';
 
 import {
-    BUTTON_STYLE_LINK,
+    BUTTON_STYLE_OUTLINE,
     BUTTON_STYLE_FILL,
     BUTTON_STYLE_NEUTRAL,
     BUTTON_SIZE_SMALL,
     BUTTON_SIZE_MEDIUM,
     BUTTON_SIZE_BIG,
     TARGET_SELF,
-    BUTTON_STYLE_YOUTUBE
+    BUTTON_STYLE_YOUTUBE,
+    BUTTON_STYLE_LINK
 } from '../constants'
 
 const BASE_CLASSNAME = 'button-subscribe'
 
 const STYLE_TO_CLASSNAME = {
     [BUTTON_STYLE_LINK]: `${BASE_CLASSNAME}--style-link`,
+    [BUTTON_STYLE_OUTLINE]: `${BASE_CLASSNAME}--style-outline`,
     [BUTTON_STYLE_FILL]: `${BASE_CLASSNAME}--style-fill`,
     [BUTTON_STYLE_NEUTRAL]: `${BASE_CLASSNAME}--style-neutral`,
     [BUTTON_STYLE_YOUTUBE]: `${BASE_CLASSNAME}--style-youtube`,
@@ -48,6 +50,7 @@ const getClassName = (style, size) => {
 // This is not only used for subscribe
 export const Button = ({
     onClick,
+    // TODO: Migrate into to, to be consistent with the link module
     url = '/newsletter',
     style = BUTTON_STYLE_NEUTRAL,
     size = BUTTON_SIZE_MEDIUM,

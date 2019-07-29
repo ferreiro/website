@@ -25,8 +25,9 @@ export const SOCIAL_NETWORKS = [
 ]
 
 // BUTTON
-export const BUTTON_STYLE_LINK = 'link';
+export const BUTTON_STYLE_OUTLINE = 'link';
 export const BUTTON_STYLE_FILL = 'fill';
+export const BUTTON_STYLE_LINK = 'none';
 export const BUTTON_STYLE_NEUTRAL = 'neutral';
 export const BUTTON_STYLE_YOUTUBE = 'youtube';
 export const BUTTON_SIZE_SMALL = 'small';

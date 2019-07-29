@@ -1,4 +1,5 @@
 @import '../variables.scss';
+@import '../spacing.scss';
 @import '../mediaQueries.scss';
 
 .button-subscribe {
@@ -16,7 +17,24 @@
         }
     }
 
+    /* 1. Removing margin added by border */
     &--style-link {
+        /* TODO: Instead of overriden with important, find an alternative */
+        border-radius: 0 !important;
+        font-size: inherit !important;
+        padding: 0 !important;
+        margin: initial !important;
+        margin-bottom: -4px !important; /* 1. */
+        border: 0 !important;
+        border-bottom: 4px solid $color-main-link  !important;
+
+        &:hover {
+            border-color: #000;
+        }
+    }
+
+    /* Rename this into outline */
+    &--style-outline {
         border-style: solid;
         border-color: $color-main-link;
         color: $color-main;

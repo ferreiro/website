@@ -1,4 +1,6 @@
 @import "../../components/spacing.scss";
+@import "../../components/variables.scss";
+@import "../../components/mediaQueries.scss";
 
 .about-header {
     align-items: center;
@@ -77,9 +79,43 @@
     display: flex;
     align-items: center;
 
+    &--reversed {
+        .about-bio__description {
+            order: 0;
+        }
+
+        .about-bio__pic {
+            order: 1;
+        }
+    }
+
     &__pic {
         flex: 1 1 auto;
         order: 0;
+    }
+
+    &__title {
+        font-size: $spacing-1 * 1.5;
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+
+    &__list {
+        
+    }
+
+    &__item {
+        margin: ($spacing-1 / 1.5) 0;
+        list-style: none;
+        font-size: $text-font-size;
+
+        @include large-up {
+            font-size: $text-font-size-large-up;
+        }
+
+        span.icon {
+            margin-right: $spacing-1;
+        }
     }
 
     &__description {
@@ -89,12 +125,67 @@
 
         p {
             margin-bottom: $spacing-2;
-            font-size: 18px;
-            line-height: 24px;
+            font-size: $text-font-size;
+            line-height: $text-line-height;
+
+            @include large-up {
+                font-size: $text-font-size-large-up;
+                line-height: $text-line-height-large-up;
+            }
 
             &:nth-last-child(1) {
                 margin-bottom: 0;
             }
+        }
+    }
+}
+
+.about-career {
+    &__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__item {
+        width: 300px;
+        flex: 0 0 auto;
+        margin-right: $spacing-2;
+        padding: $spacing-2;
+        border: 4px solid #cecece;
+        border-radius: 8px;
+        margin-bottom: $spacing-2;
+
+        &--active {
+            border-color: #922dcc;
+        }
+    }
+
+    &__avatar {
+        height: 40px;
+    }
+
+    &__title {
+        margin-top: $spacing-1;
+        font-size: $spacing-1;
+
+        @include large-up {
+            font-size: $spacing-1 * 1.2;
+        }
+    }
+
+    &__dates {
+        margin-top: $spacing-2;
+    }
+
+    &__options {
+        display: flex;
+        justify-content: center;
+        margin-top: $spacing-3;
+
+        a {
+            margin: 0 $spacing-1 / 2;
         }
     }
 }
@@ -110,5 +201,17 @@
     &__subtitle {}
     &__content {
         margin-top: $spacing-4;
+    }
+}
+
+.about-talks {
+    &__cta {
+        margin-top: $spacing-5;
+        display: flex;
+        justify-content: center;
+
+        a {
+            margin-right: $spacing-1;
+        }
     }
 }

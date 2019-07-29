@@ -3,7 +3,7 @@ import {LazyLoadImage} from 'react-lazy-load-image-component'
 import isEmpty from 'lodash/isEmpty'
 import {translate} from '../../i18-me/i18-me'
 
-import {BUTTON_SIZE_MEDIUM, TARGET_BLANK, BUTTON_STYLE_LINK} from '../../components/constants'
+import {BUTTON_SIZE_MEDIUM, TARGET_BLANK, BUTTON_STYLE_OUTLINE} from '../../components/constants'
 import {Button} from '../../components/buttons/Button'
 
 import {BUTTON_TYPE_SLIDES, BUTTON_TYPE_VIDEO} from '../../content/english'
@@ -26,7 +26,7 @@ const renderButton = ({title, type, url}, SEOTitle) => {
                 icon={icon}
                 size={BUTTON_SIZE_MEDIUM}
                 url={url}
-                style={BUTTON_STYLE_LINK}
+                style={BUTTON_STYLE_OUTLINE}
                 target={TARGET_BLANK}
                 text={text}
                 title={SEOTitle}
@@ -46,7 +46,7 @@ const renderButton = ({title, type, url}, SEOTitle) => {
             <Button
                 icon={icon}
                 size={BUTTON_SIZE_MEDIUM}
-                style={BUTTON_STYLE_LINK}
+                style={BUTTON_STYLE_OUTLINE}
                 target={TARGET_BLANK}
                 text={text}
                 title={SEOTitle}
@@ -58,7 +58,7 @@ const renderButton = ({title, type, url}, SEOTitle) => {
     return (
         <Button
             size={BUTTON_SIZE_MEDIUM}
-            style={BUTTON_STYLE_LINK}
+            style={BUTTON_STYLE_OUTLINE}
             target={TARGET_BLANK}
             text={title}
             title={SEOTitle}
