@@ -104,7 +104,7 @@ export class TalksHome extends PureComponent {
         const content = (
             <div style={{marginTop: '-120px'}}>
                 <ConferenceAd
-                    extraClassNames="spacing-2-bot"
+                    extraClassNames="spacing-4-bot"
                 />
 
                 {this.renderTalksPerYear({

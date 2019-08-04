@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
 import {StickyContainer, Sticky} from 'react-sticky'
+import classnames from 'classnames'
 
 import {GenericAd} from '../../components/ads/GenericAd'
 import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu'
@@ -41,10 +42,13 @@ import {
 
 import {
     getPageData,
-    PAGE_COLORS
+    PAGE_COLORS,
+    PAGE_CONTENT,
+    ABOUT_CAREER
 } from '../../content/english'
 
 const pageData = getPageData(PATH_ABOUT)
+const careerList = pageData[PAGE_CONTENT][ABOUT_CAREER]
 
 
 import './About.scss'
@@ -98,6 +102,75 @@ export class About extends PureComponent {
                     </div>
                 </section>
             </StickyContainer>
+        )
+    }
+
+    renderCareerList = () => {
+        return (
+            <div className="about-career">
+                <div className="about-career__list">
+                    {Object.values(careerList).map(({
+                        id,
+                        location,
+                        headline,
+                        dates = {},
+                        image = {},
+                    }) => {
+                        const {
+                            start: startDate,
+                            end: endDate,
+                        } = dates
+
+                        const {
+                            alt,
+                            src,
+                        } = image
+
+                        return (
+                            <div
+                                key={id}
+                                className={classnames(
+                                    'about-career__item',
+                                    {'about-career__item--active': !endDate},
+                                )}
+                            >
+                                <img
+                                    className="about-career__avatar"
+                                    alt={alt}
+                                    src={src}
+                                />
+                                <p
+                                    className="about-career__dates"
+                                >
+                                    {startDate} - {endDate ? endDate : translate('current')}
+                                </p>
+                                <h4
+                                    className="about-career__title"
+                                >
+                                    {headline}
+                                </h4>
+                            </div>  
+                        )
+                    })}
+                </div>
+
+                <div className="about-career__options">
+                    <Button
+                        style={BUTTON_STYLE_NEUTRAL}
+                        size={BUTTON_SIZE_MEDIUM}
+                        text={translate('Read Résume')}
+                        url='about/resume'
+                    />
+
+                    <Button
+                        style={BUTTON_STYLE_NEUTRAL}
+                        icon={<span className="icon icon-linkedin spacing-2-right" />}
+                        text={translate('Connect on Linkedin')}
+                        url={SOCIAL_URL_LINKEDIN}
+                        target={TARGET_BLANK}
+                    />
+                </div>
+            </div>
         )
     }
 
@@ -160,9 +233,9 @@ export class About extends PureComponent {
 
         const bio = (
             <section className="about-bio">
-                <div className="about-bio__description spacing-4-left">
+                <div className="about-bio__description spacing-6-left-large">
                     <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset and thrive on interaction and collaboration with team members</p>
-                    <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://www.eventbritecareers.com/home" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
+                    <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://jobs.lever.co/eventbrite?lever-via=LxHg4Lg84K" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
                     <p>I thrive on being at the intersection of four disciplines <Button onClick={this.toggleIntersection} style={BUTTON_STYLE_LINK} text={<strong>engineering, design, business and marketing</strong>} />. I am considered a strong 🗣️ communicator, 💡 ideas creator and innovator, and I am very passionate about the work I do</p>
                     {/* <img
                         width="100px"
@@ -192,7 +265,7 @@ export class About extends PureComponent {
                             {bio}
 
                             {this.state.isShownIntersection && (
-                                <div className="spacing-4-top">
+                                <div className="spacing-6-top">
                                     <JorgeIntersection />
                                 </div>
                             )}
@@ -206,114 +279,7 @@ export class About extends PureComponent {
                     key: 'career', 
                     subtitle: null,
                     content: (
-                        <div className="about-career">
-                            <div className="about-career__list">
-                                <div className="about-career__item about-career__item--active">
-                                    <img
-                                        className="about-career__avatar"
-                                        alt="Jorge Ferreiro Frontend Software Engineer at Eventbrite"
-                                        src="/images/companies/eventbrite-dark.png"
-                                    />
-                                    <p
-                                        className="about-career__dates"
-                                    >
-                                        Sep 2018 - current
-                                    </p>
-                                    <h4
-                                        className="about-career__title"
-                                    >
-                                        {translate('Frontend Software Engineer at Eventbrite')}
-                                    </h4>
-                                </div>
-                                <div className="about-career__item">
-                                    <img
-                                        className="about-career__avatar"
-                                        alt="Jorge Ferreiro Background Software Engineer Intern at Amazon"
-                                        src="/images/companies/amazon-dark.png"
-                                    />
-                                    <p
-                                        className="about-career__dates"
-                                    >
-                                        Jan 2018 - Jul 2018
-                                    </p>
-                                    <h4
-                                        className="about-career__title"
-                                    >
-                                        {translate('Backend Software Engineer Internship at Amazon')}
-                                    </h4>
-                                </div>
-                                <div className="about-career__item">
-                                    <img
-                                        className="about-career__avatar"
-                                        alt="Jorge Ferreiro creator and Full Stack Software Engineer at Dailyfocus"
-                                        src="/images/companies/dailyfocus-dark.png"
-                                    />
-                                    <p
-                                        className="about-career__dates"
-                                    >
-                                        Jan 2018 - Jul 2018
-                                    </p>
-                                    <h4
-                                        className="about-career__title"
-                                    >
-                                        {translate('Creator and Full Stack Software Engineer at Dailyfocus')}
-                                    </h4>
-                                </div>
-
-                                <div className="about-career__item">
-                                    <img
-                                        className="about-career__avatar"
-                                        alt="Jorge Ferreiro creator and Summer Scholarship with Huawei"
-                                        src="/images/companies/huawei-dark.png"
-                                    />
-                                    <p
-                                        className="about-career__dates"
-                                    >
-                                        Jan 2018 - Jul 2018
-                                    </p>
-                                    <h4
-                                        className="about-career__title"
-                                    >
-                                        {translate('Summer Scholarship with Huawei')}
-                                    </h4>
-                                </div>
-
-                                <div className="about-career__item">
-                                    <img
-                                        className="about-career__avatar"
-                                        alt="Jorge Ferreiro creator and Full Stack Software Engineer at Dailyfocus"
-                                        src="/images/companies/music4deejays-dark.png"
-                                    />
-                                    <p
-                                        className="about-career__dates"
-                                    >
-                                        Jan 2018 - Jul 2018
-                                    </p>
-                                    <h4
-                                        className="about-career__title"
-                                    >
-                                        {translate('Creator and Full Stack Software Engineer at Music4deejays')}
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div className="about-career__options">
-                                <Button
-                                    style={BUTTON_STYLE_NEUTRAL}
-                                    size={BUTTON_SIZE_MEDIUM}
-                                    text={translate('Read Résume')}
-                                    url='about/resume'
-                                />
-
-                                <Button
-                                    style={BUTTON_STYLE_NEUTRAL}
-                                    icon={<span className="icon icon-linkedin" />}
-                                    text={translate('Connect on Linkedin')}
-                                    url={SOCIAL_URL_LINKEDIN}
-                                    target={TARGET_BLANK}
-                                />
-                            </div>
-                        </div>
+                        this.renderCareerList()
                     )
                 })}
 
@@ -326,8 +292,8 @@ export class About extends PureComponent {
                         <div className="about-talks">
                             <AboutTalksBio />
 
-                            <div className="spacing-3-bot" style={{display: 'flex'}} />
-                            <div className="spacing-3-bot" style={{display: 'flex'}} />
+                            <div className="spacing-5-bot" style={{display: 'flex'}} />
+                            <div className="spacing-5-bot" style={{display: 'flex'}} />
                             <TalksMetrics />
 
                             <TalksVenuesLogos />
@@ -360,7 +326,7 @@ export class About extends PureComponent {
                         <div className="about-articles">
                             <RecentArticles />
 
-                            <div className="spacing-4-top" />
+                            <div className="spacing-6-top" />
 
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}
@@ -381,7 +347,7 @@ export class About extends PureComponent {
                         <div className="about-videos">
                             <RecentVideos />
 
-                            <div className="spacing-4-top" />
+                            <div className="spacing-6-top" />
 
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}

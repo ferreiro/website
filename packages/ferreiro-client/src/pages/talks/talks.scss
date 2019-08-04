@@ -3,15 +3,15 @@
 
 .talks {
     &-title {
-        font-size: $spacing-3;
+        font-size: $spacing-5;
         font-weight: 800;
         color: #000;
         line-height: 34px;
         margin: 0;
-        padding: $spacing-2 0;
+        padding: $spacing-4 0;
 
         &__wrapper {
-            margin-bottom: $spacing-1;
+            margin-bottom: $spacing-3;
             position: relative;
         }
 

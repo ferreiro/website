@@ -1,5 +1,6 @@
 /* @import './normalize.scss'; */
 @import './components/spacing.scss';
+@import './components/mediaQueries.scss';
 
 a, p, h1, h2, h3, h4 {
     text-decoration: none;
@@ -31,6 +32,7 @@ a, p, h1, h2, h3, h4 {
 .spacing-1-right {
     margin-right: $spacing-1;
 }
+
 
 // TODO: Have a script that automatically generates this...
 .spacing-2-ver {
@@ -87,8 +89,6 @@ a, p, h1, h2, h3, h4 {
     margin-right: $spacing-3;
 }
 
-
-
 // TODO: Have a script that automatically generates this...
 .spacing-4-ver {
     margin-top: $spacing-4;
@@ -114,4 +114,73 @@ a, p, h1, h2, h3, h4 {
 
 .spacing-4-right {
     margin-right: $spacing-4;
+}
+
+
+// TODO: Have a script that automatically generates this...
+.spacing-5-ver {
+    margin-top: $spacing-5;
+    margin-bottom: $spacing-5;
+}
+
+.spacing-5-hor {
+    margin-left: $spacing-5;
+    margin-right: $spacing-5;
+}
+
+.spacing-5-bot {
+    margin-bottom: $spacing-5;
+}
+
+.spacing-5-top {
+    margin-top: $spacing-5;
+}
+
+.spacing-5-left {
+    margin-left: $spacing-5;
+}
+
+.spacing-5-right {
+    margin-right: $spacing-5;
+}
+
+
+
+// TODO: Have a script that automatically generates this...
+.spacing-6-ver {
+    margin-top: $spacing-6;
+    margin-bottom: $spacing-6;
+}
+
+.spacing-6-hor {
+    margin-left: $spacing-6;
+    margin-right: $spacing-6;
+}
+
+.spacing-6-bot {
+    margin-bottom: $spacing-6;
+}
+
+.spacing-6-top {
+    margin-top: $spacing-6;
+}
+
+.spacing-6-left {
+    margin-left: $spacing-6;
+}
+
+.spacing-6-left-large {
+    @include large-up {
+        margin-left: $spacing-6;
+    }
+}
+
+.spacing-6-right {
+    margin-right: $spacing-6;
+}
+
+.spacing-6-right-large {
+    @include large-up {
+        margin-right: $spacing-6;
+    }
 }

@@ -16,6 +16,8 @@ export const PAGE_SIDEBAR_MENU = 'sidebarMenu'
 export const PAGE_SIDEBAR_MENU_ITEMS = 'sidebarMenuItems'
 export const PAGE_ENTITIES = 'entities'
 
+export const ABOUT_CAREER = 'about/career'
+
 export const TALK_PROPERTY_LOCATION = 'location'
 export const TALK_PROPERTY_COUNTRY = 'country'
 export const TALK_PROPERTY_CITY = 'city'
@@ -47,6 +49,73 @@ export const content = {
         [PAGE_CONTENT]: {
             [PAGE_TITLE]: 'About',
             // [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
+            [ABOUT_CAREER]: {
+                eventbrite: {
+                    id: 'eventbrite',
+                    location: 'Madrid, Spain',
+                    headline: 'Frontend Software Engineer at Eventbrite',
+                    dates: {
+                        start: 'Sep 2018',
+                        end: null,
+                    },
+                    image: {
+                        alt: 'Jorge Ferreiro Frontend Software Engineer at Eventbrite',
+                        src: '/images/companies/eventbrite-dark.png',
+                    }
+                },
+                amazon: {
+                    id: 'amazon',
+                    location: 'Luxembourg, Luxembourg',
+                    headline: 'Backend Software Engineer Internship at Amazon',
+                    dates: {
+                        start: 'Jan 2018',
+                        end: 'Jul 2018',
+                    },
+                    image: {
+                        alt: 'Jorge Ferreiro Background Software Engineer Intern at Amazon',
+                        src: '/images/companies/amazon-dark.png',
+                    }
+                },
+                dailyfocus: {
+                    id: 'dailyfocus',
+                    location: 'Madrid, Spain',
+                    headline: 'Creator and Full Stack Software Engineer at Dailyfocus',
+                    dates: {
+                        start: 'May 2016',
+                        end: 'Dec 2017',
+                    },
+                    image: {
+                        alt: 'Jorge Ferreiro creator and Full Stack Software Engineer at Dailyfocus',
+                        src: '/images/companies/dailyfocus-dark.png',
+                    }
+                },
+                huawei: {
+                    id: 'huawei',
+                    location: 'China',
+                    headline: 'Summer Scholarship with Huawei',
+                    dates: {
+                        start: 'Jul 2016',
+                        end: 'Jul 2016',
+                    },
+                    image: {
+                        alt: 'Jorge Ferreiro Frontend Software Engineer at Eventbrite',
+                        src: '/images/companies/eventbrite-dark.png',
+                    }
+                },
+                music4deejays: {
+                    id: 'music4deejays',
+                    location: 'Madrid, Spain',
+                    headline: 'Creator and Full Stack Software Engineer at Music4deejays',
+                    dates: {
+                        start: 'Dec 2013',
+                        end: 'Dec 2015',
+                    },
+                    image: {
+                        alt: 'Jorge Ferreiro creator and Full Stack Software Engineer at Music4deejays',
+                        src: '/images/companies/music4deejays-dark.png',
+                    }
+                }
+            }
         },
         [PAGE_COLORS]: {
             career: '#922dcc',
@@ -55,7 +124,7 @@ export const content = {
             writing: '#ff9800',
             mentoring: '#009688',
             photos: '#607d8b',
-        }
+        },
     },
     [PATH_VIDEOS]: {
         [PAGE_CONTENT]: {

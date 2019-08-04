@@ -10,7 +10,7 @@ import {translate} from '../../i18-me/i18-me'
 
 export const AboutTalksBio = () => (
     <section className="about-bio about-bio--reversed">
-        <div className="about-bio__description spacing-4-right">
+        <div className="about-bio__description spacing-6-right-large">
             <p>
                 {translate('I love sharing my knowledge. I am')} <strong>{translate('versatile and easily adapt my knowledge to different audiences')}</strong>. {translate('Here is a list of some topics I love talking about. I am always open to new proposal, ')}
                 <Button url="/contact/talk" style={BUTTON_STYLE_LINK} text={translate('contact me')} />
@@ -20,7 +20,7 @@ export const AboutTalksBio = () => (
                 {translate('Technical Talks')}
             </h4>
 
-            <ul className="about-bio__list spacing-2-top">
+            <ul className="about-bio__list spacing-4-top">
                 <li className="about-bio__item">
                     <span className="icon">⚛️</span>
                     <span>{translate('React, JavaScript and Web apps')}</span>
@@ -43,11 +43,11 @@ export const AboutTalksBio = () => (
                 </li>
             </ul>
 
-            <h4 className="about-bio__title spacing-3-top">
+            <h4 className="about-bio__title spacing-5-top">
                 {translate('Career Growth')}
             </h4>
 
-            <ul className="about-bio__list spacing-2-top">
+            <ul className="about-bio__list spacing-4-top">
                 <li className="about-bio__item">
                     <span className="icon">🎤</span>
                     <span>{translate('Public Speaking for Software Engineers')}</span>
@@ -62,11 +62,11 @@ export const AboutTalksBio = () => (
                 </li>
             </ul>
 
-            <h4 className="about-bio__title spacing-3-top">
+            <h4 className="about-bio__title spacing-5-top">
                 {translate('Motivational')}
             </h4>
 
-            <ul className="about-bio__list spacing-2-top">
+            <ul className="about-bio__list spacing-4-top">
                 <li className="about-bio__item">
                     <span className="icon">👨‍🎤</span>
                     <span>{translate('My story: from college to Amazon and Eventbrite')}</span>

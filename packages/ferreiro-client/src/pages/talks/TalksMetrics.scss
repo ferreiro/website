@@ -4,7 +4,7 @@
     display: flex;
     max-width: 600px;
     display: flex;
-    margin: $spacing-3 auto;
+    margin: $spacing-5 auto;
 
     &__item {
         list-style: none;
@@ -16,11 +16,11 @@
     }
 
     &__number {
-        font-size: $spacing-4;
+        font-size: $spacing-6;
         font-weight: 600;
     }
 
     &__text {
-        font-size: $spacing-2;
+        font-size: $spacing-4;
     }
 }
