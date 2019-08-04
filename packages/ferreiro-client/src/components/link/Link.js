@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link as RouterLink} from 'react-router-dom'
 import {
     TARGET_BLANK,
     TARGET_SELF
@@ -15,9 +16,18 @@ export const Link = ({
     title,
 }) => {
     const rel = target === TARGET_BLANK ? 'noopener noreferrer' : ''
+    const LinkComponent = target === TARGET_SELF
+        ? RouterLink
+        : 'a';
+
+    console.group('Link~')
+    console.log('to', to)
+    console.log('url', url)
+    console.log('url || to', url || to)
+    console.groupEnd()
 
     return (
-        <a
+        <LinkComponent
             onClick={onClick}
             className={className}
             href={url || to}
@@ -26,6 +36,6 @@ export const Link = ({
             title={title}
         >
             {children}
-        </a>
+        </LinkComponent>
     )
 }

@@ -91,9 +91,7 @@ export class RecentArticles extends PureComponent {
                     {posts.length > 0 && (
                         <div className="recent-article">
                             <div className="recent-article__items">
-                                {posts.length > 0 && (
-                                    this.renderPosts(posts)
-                                )}
+                                {this.renderPosts(posts)}
                             </div>
                         </div>
                     )}

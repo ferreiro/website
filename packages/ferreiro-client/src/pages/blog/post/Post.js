@@ -19,7 +19,7 @@ import {RelatedPosts} from './RelatedPosts';
 
 import './Post.scss'
 
-const PostNofFound = () => (
+const PostNotFound = () => (
     <div className="post-not-found">
         <div className="post-not-found__icon">
             404
@@ -50,28 +50,6 @@ const PostDivider = () => (
     <div className="post-divider" />
 )
 
-const getBlogPanel = (post) => {
-    return (
-        <div>
-            <Link
-                to={'/blog'}
-            >
-                Go back
-            </Link>
-
-            <SidebarSeparator />
-
-            <ProfileCard />
-
-            <SidebarSeparator />
-
-            <SidebarNewsletterAd
-                referrer={`/blog/${post.permalink}`}
-            />
-        </div>
-    )
-}
-
 const getBlogPostContent = ({
     post = {},
     isLoading,
@@ -91,7 +69,7 @@ const getBlogPostContent = ({
     if (isEmpty(post)) {
         return (
             <div className="post__not-found">
-                <PostNofFound />
+                <PostNotFound />
             </div>
         )
     }
@@ -107,6 +85,7 @@ export class BlogPost extends PureComponent {
     state = {
         post: {},
         isLoading: false,
+        title: 'Loading...',
     }
 
     reloadPost = (permalink) => {
@@ -115,11 +94,17 @@ export class BlogPost extends PureComponent {
         fetch(`/api/v1/blog/post/${permalink}`)
             .then(res => res.json())
             .then(post => {
+                const title = post.title
+
+                console.log('title', title)
+
                 this.setState({
-                    post
+                    post,
+                    title,
                 })
             })
             .catch((error) => {
+                this.setState({title: 'Not Found'})
                 alert('error', error)
             })
             .finally(() => {
@@ -152,9 +137,7 @@ export class BlogPost extends PureComponent {
     }
 
     render() {
-        const {isLoading, post} = this.state;
-
-        const blogPanel = getBlogPanel(post);
+        const {isLoading, post, title} = this.state;
 
         const blogContent = getBlogPostContent({
             isLoading: isLoading,
@@ -170,6 +153,7 @@ export class BlogPost extends PureComponent {
                 currentPath="blog"
                 showHeader={true}
                 isHeaderFix={false}
+                title={title}
             >
                 <LayoutWithSidebar
                     afterContent={afterContent}

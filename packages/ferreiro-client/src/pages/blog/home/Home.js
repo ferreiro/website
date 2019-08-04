@@ -284,6 +284,7 @@ export class BlogHome extends PureComponent {
                 currentPath="blog"
                 showHeader={true}
                 isHeaderFix={false}
+                title={title}
             >
                 <LayoutWithSidebar
                     header={null}

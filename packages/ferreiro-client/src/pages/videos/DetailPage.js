@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import get from 'lodash/get'
 
 import {ContentHeader} from '../../components/contentHeader/ContentHeader';
 import {getUrlPath} from '../../utils/getUrlPath';
@@ -8,7 +9,7 @@ import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu';
 import {VideoCard} from '../../components/videoCard/VideoCard';
 import {VideoCardDID} from '../../components/videoCard/VideoCardDID';
 
-import {getPageData, VIDEO_CATEGORIES_ALL, VIDEO_TYPE_DID, PAGE_SIDEBAR_MENU, VIDEO_CATEGORIES_DID, PAGE_CONTENT, VIDEO_TYPE_REGULAR} from '../../content/english';
+import {getPageData, VIDEO_CATEGORIES_ALL, VIDEO_TYPE_DID, PAGE_SIDEBAR_MENU, VIDEO_CATEGORIES_DID, PAGE_CONTENT, VIDEO_TYPE_REGULAR, PAGE_ENTITIES} from '../../content/english';
 
 import {
     PATH_VIDEOS,
@@ -20,15 +21,11 @@ import {
     TARGET_BLANK,
 } from '../../components/constants';
 import {translate} from '../../i18-me/i18-me'
+import { RecentVideos } from '../../components/recentVideos/RecentVideos';
 
-// TODO: Create an abstraction over this?
-const pageData = getPageData(PATH_VIDEOS)
-
-export class VideosHome extends PureComponent {
-    renderHeader = ({pageData, activeCategory}) => {
-        const pageTitle = pageData[PAGE_CONTENT][activeCategory].title
-        const pageSubtitle = pageData[PAGE_CONTENT][activeCategory].subtitle
-
+export class VideoDetailPage extends PureComponent {
+    renderHeader = ({pageData}) => {
+        // const content = pageData[PAGE_CONTENT]
         const options = (
             <Button
                 text={translate('Subscribe youtube')}
@@ -43,8 +40,8 @@ export class VideosHome extends PureComponent {
         return (
             <ContentHeader
                 options={options}
-                title={pageTitle}
-                subtitle={pageSubtitle}
+                // title={content.title}
+                // subtitle={content.subtitle}
             />
         )
     }
@@ -61,69 +58,75 @@ export class VideosHome extends PureComponent {
         }
     }
 
-    renderContent = ({pageData, activeCategory}) => {
-        const entities = pageData.entities
-        const filteredEntities = Object.values(entities).filter((entity) => {
-            const categories = entity.categories
-
-            return categories.includes(activeCategory)
-        })
+    renderContent = ({pageData}) => {
+        const permalink = get(this.props, 'match.params.permalink');
 
         return (
             <div>
-                {this.renderHeader({pageData, activeCategory})}
+                <div
+                    style={{
+                        background: '#f4f4f4',
+                        padding: '2em',
+                        textAlign: 'center',
+                    }}
+                    className="spacing-4-bot"
+                >
+                    <Button
+                        text={translate('Subscribe youtube')}
+                        size={BUTTON_SIZE_BIG}
+                        style={BUTTON_STYLE_YOUTUBE}
+                        target={TARGET_BLANK}
+                        icon={<span style={{float: 'left', marginTop: '1.45px', marginRight: '16px'}} className="icon icon-youtube" />}
+                        url='https://www.youtube.com/c/jgferreiro?sub_confirmation=1'
+                    />
+                </div>
 
-                {filteredEntities.length === 0 && (
-                    <p>No videos available :(</p>
-                )}
-
-                {filteredEntities.map(this.renderVideoCard)}
+                <RecentVideos />
             </div>
         )
     }
 
-    getActiveCategory = ({
-        properties,
-        menuKeys = [],
-        defaultCategory,
-    }) => {
-        const categoryKey = getUrlPath({
-            props: this.props,
-            path: 'category',
-            defaultValue: VIDEO_CATEGORIES_ALL,
-        })
-        
-        return menuKeys.includes(categoryKey)
-            ? categoryKey
-            : defaultCategory
-    }
-
     render() {
+        const title = 'SUPER PENE'
+
+        // TODO: Create an abstraction over this?
+        const pageData = getPageData(PATH_VIDEOS)
+
         const menu = pageData[PAGE_SIDEBAR_MENU]
-        const menuKeys = Object.keys(menu.entities)
         const menuItems = Object.values(menu.entities)
 
-        const activeCategory = this.getActiveCategory({
-            defaultCategory: VIDEO_CATEGORIES_ALL,
-            menuKeys,
-            properties: this.props.location.search
-        })
+        const permalink = get(this.props, 'match.params.permalink');
 
-        const title = pageData[PAGE_CONTENT][activeCategory].title
-
-        const beforeContent = activeCategory === VIDEO_CATEGORIES_DID
-            && (
-                <div>
-                    <img width="100%" src="https://yt3.ggpht.com/pNVRRJvvHM-jGbdUstBlJqj2zn3QRn0Fjo70RPGyAWC55-y8xGaJh0Pn0OACh0TpzByHwCaAvJk=w2560-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no" />
-                </div>
+        const videoEntities = getPageData(PATH_VIDEOS)[PAGE_ENTITIES]
+        const videos = Object.values(videoEntities)
+        const video = videos.filter((v) => v.permalink === permalink)
+        
+        if (video.length === 0) {
+            return (
+                <p>Not post found</p>
             )
+        }
+
+        const iframeUrlWithAutoplay = `${video[0].iframe}&autoplay=1`
+        console.log(video)
+
+        const beforeContent = (
+            <iframe
+                width="100%"
+                height="600px"
+                src={iframeUrlWithAutoplay}
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                autoPlay="true"
+            />
+        )
 
         const panel = (
             <div className="">
                 <SidebarMenu
                     title={menu.title}
                     onClick={this.changeCategory}
-                    selectedCategory={activeCategory}
                     items={menuItems}
                 />
 
@@ -143,7 +146,7 @@ export class VideosHome extends PureComponent {
                     header={null}
                     isHeaderFullWidth={true}
                     panel={panel}
-                    content={this.renderContent({pageData, activeCategory})}
+                    content={this.renderContent({pageData})}
                 />
             </PageLayout>
         )

@@ -15,13 +15,12 @@ import {
 export class Home extends PureComponent {
 
     render() {
-        const header = (
-            <h1>Hola</h1>
+        const beforeContent = (
+            <h2>Splash</h2>
         )
 
         const content = (
             <div>
-                <h2>Splash</h2>
                 <h2>Most recent videos</h2>
                 <RecentVideos />
 
@@ -41,6 +40,7 @@ export class Home extends PureComponent {
                 isHeaderFix={false}
             >
                 <LayoutWithSidebar
+                    beforeContent={beforeContent}
                     header={null}
                     isHeaderFullWidth={true}
                     content={content}

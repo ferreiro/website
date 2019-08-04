@@ -16,6 +16,7 @@ import {Contact} from './pages/contact/Contact'
 import {ContactTalk} from './pages/contact/ContactTalk'
 import {Portfolio} from './pages/portfolio/Portfolio'
 import {VideosHome} from './pages/videos/Home'
+import {VideoDetailPage} from './pages/videos/DetailPage'
 import {TalksHome} from './pages/talks/Home'
 import {TalksInfo} from './pages/talks/Info'
 
@@ -73,9 +74,14 @@ export const AppWithRoutes = () => (
             component={VideosHome}
         />
         <Route
-            path='/videos/:category'
+            path='/videos/category/:category'
             exact
             component={VideosHome}
+        />
+        <Route
+            path='/videos/:permalink'
+            exact
+            component={VideoDetailPage}
         />
         <Route
             path='/talks'

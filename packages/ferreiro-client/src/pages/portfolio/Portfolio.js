@@ -3,13 +3,17 @@ import React, {PureComponent} from 'react'
 import {ContentHeader} from '../../components/contentHeader/ContentHeader'
 import {PageLayout} from '../../components/layout/PageLayout'
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar'
-import {content} from '../../content/english'
 import {SidebarMenu} from '../../components/sidebarMenu/SidebarMenu';
-import {ABOUT_NAVIGATION, SIDEBAR_MENU_ABOUT_TITLE, ABOUT_CATEGORY_PORTFOLIO, PATH_ABOUT} from '../constants';
+import {ABOUT_NAVIGATION, SIDEBAR_MENU_ABOUT_TITLE, ABOUT_CATEGORY_PORTFOLIO, PATH_ABOUT, PATH_PORTFOLIO} from '../constants';
 import {ThreeColumnLayout} from '../../components/threeColumnLayout/ThreeColumnLayout';
-import { ProjectCard } from '../../components/projectCard/ProjectCard';
+import {ProjectCard} from '../../components/projectCard/ProjectCard';
 
-const portfolio = content.portfolio
+import {getPageData, PAGE_CONTENT, PAGE_SUBTITLE, PAGE_ENTITIES, PAGE_TITLE} from '../../content/english'
+
+const page = getPageData(PATH_PORTFOLIO)
+const title = page[PAGE_CONTENT][PAGE_TITLE]
+const subtitle = page[PAGE_CONTENT][PAGE_SUBTITLE]
+const portfolio = Object.values(page[PAGE_ENTITIES])
 
 const renderItem = (project) => (
     <ProjectCard
@@ -88,6 +92,7 @@ export class Portfolio extends PureComponent {
                 currentPath={PATH_ABOUT}
                 showHeader={true}
                 isHeaderFix={false}
+                title={title}
             >
                 <LayoutWithSidebar
                     header={null}

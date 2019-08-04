@@ -11,9 +11,10 @@ import {getPageData, PAGE_CONTENT, PAGE_TITLE, PAGE_SUBTITLE} from '../../conten
 import {PATH_CONTACT} from '../constants';
 
 const pageData = getPageData(PATH_CONTACT)
+const title = pageData[PAGE_CONTENT][PAGE_TITLE]
 const contentHeader = (
     <ContentHeader
-        title={pageData[PAGE_CONTENT][PAGE_TITLE]}
+        title={title}
         subtitle={pageData[PAGE_CONTENT][PAGE_SUBTITLE]}
     />
 )
@@ -24,6 +25,7 @@ export class Contact extends Component {
             currentPath={PATH_CONTACT}
             showHeader={true}
             isHeaderFix={false}
+            title={title}
         >
             <LayoutWithSidebar
                 header={null}

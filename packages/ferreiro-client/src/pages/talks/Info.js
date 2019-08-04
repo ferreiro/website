@@ -78,6 +78,7 @@ export class TalksInfo extends PureComponent {
                 currentPath={PATH_TALKS}
                 showHeader={true}
                 isHeaderFix={false}
+                title={title}
             >
                 <LayoutWithSidebar
                     header={header}

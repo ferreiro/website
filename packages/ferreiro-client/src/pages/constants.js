@@ -6,6 +6,7 @@ export const PATH_BLOG = '/blog'
 export const PATH_RESUME = '/about/resume'
 export const PATH_CONTACT = '/contact'
 export const PATH_CONTACT_TALK = '/contact/talk'
+export const PATH_PORTFOLIO = 'portfolio'
 export const PATH_TALKS = '/talks'
 export const PATH_VIDEOS = '/videos'
 

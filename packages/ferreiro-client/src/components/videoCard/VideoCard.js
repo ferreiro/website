@@ -8,6 +8,7 @@ import {PlayButton} from '../buttons/PlayButton';
 import {getVideoPermalink} from '../../utils/getVideoPermalink';
 
 import './VideoCard.scss';
+import { TARGET_BLANK } from '../constants';
 
 export class VideoCard extends PureComponent {
     state = {
@@ -38,6 +39,12 @@ export class VideoCard extends PureComponent {
             image = {},
             url,
         } = this.props;
+
+        console.group('videoCard')
+        console.log(permalink)
+        console.log(permalink)
+        console.log(getVideoPermalink(permalink))
+        console.groupEnd()
 
         return (
             <Waypoint
@@ -74,7 +81,7 @@ export class VideoCard extends PureComponent {
 
                             <Link
                                 url={url}
-                                target='_blank'
+                                target={TARGET_BLANK}
                                 className={ctaLinkClassName}
                             >
                                 {cta}
