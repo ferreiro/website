@@ -52,6 +52,7 @@ const careerList = pageData[PAGE_CONTENT][ABOUT_CAREER]
 
 
 import './About.scss'
+import { Link } from '../../components/link/Link';
 
 export class About extends PureComponent {
     state = {
@@ -104,6 +105,36 @@ export class About extends PureComponent {
             </StickyContainer>
         )
     }
+
+    renderBiography = () => (
+        <section className="about-me">
+            <div className="about-bio">
+                <div className="about-bio__description spacing-6-left-large">
+                    <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset and thrive on interaction and collaboration with team members</p>
+                    <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://jobs.lever.co/eventbrite?lever-via=LxHg4Lg84K" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
+                    <p>I thrive on being at the intersection of four disciplines <Button onClick={this.toggleIntersection} style={BUTTON_STYLE_LINK} text={<strong>engineering, design, business and marketing</strong>} />. I am considered a strong 🗣️ communicator, 💡 ideas creator and innovator, and I am very passionate about the work I do</p>
+                    {/* <img
+                        width="100px"
+                        alt="Jorge ferreiro intersection software engineering design business marketing"
+                        src="/images/about/Jorge_ferreiro_intersection_software_engineering_design_business_marketing.png"
+                    /> */}
+                </div>
+                <div className="about-bio__pic">
+                    <img
+                        width="100%"
+                        alt="Jorge Ferreiro is a Frontend Software Engineer, entrepreneur, blogger and host of DevelopersInDepth"
+                        src="/images/about/jorge_ferreiro_is_a_software_engineer_entrepreneur_blogger_collage.png"
+                    />
+                </div>
+            </div>
+
+            {this.state.isShownIntersection && (
+                <div className="spacing-6-top">
+                    <JorgeIntersection />
+                </div>
+            )}
+        </section>
+    )
 
     renderCareerList = () => {
         return (
@@ -174,6 +205,104 @@ export class About extends PureComponent {
         )
     }
 
+    renderGallery = () => {
+        const galleryImages = [
+            {
+                alt: 'Jorge ferreiro giving a technical talk at twitter london about javascript web performance for JS roundabout',
+                src: '/images/about/photos/jorge_ferreiro_giving_a_technical_talk_at_twitter_london_about_javascript_webs_performance_for_JS_roundabout.jpg',
+                link: '/images/about/photos/jorge_ferreiro_giving_a_technical_talk_at_twitter_london_about_javascript_webs_performance_for_JS_roundabout.jpg',
+            },
+            {
+                alt: 'Jorge ferreiro giving a talk about github at adalab a technical bootcamp for women in tech',
+                src: '/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech.jpg',
+                link: '/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech.jpg',
+            },
+            {
+                alt: 'Jorge ferreiro giving a talk about github at adalab a technical bootcamp for women in tech group 2',
+                src: '/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech_group_2.jpg',
+                link: '/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech_group_2.jpg',
+            },
+            {
+                alt: 'Jorge ferreiro giving a lightning technical talk in JS day Es',
+                src: '/images/about/photos/jorge_ferreiro_giving_a_lightning_technical_talk_in_js_day_es.png',
+                link: '/images/about/photos/jorge_ferreiro_giving_a_lightning_technical_talk_in_js_day_es.png',
+            },
+            {
+                alt: 'Jorge ferreiro giving a motivational talk in Codecamp murcia',
+                src: '/images/about/photos/jorge_ferreiro_giving_a_motivational_talk_in_codecamp_murcia.jpg',
+                link: '/images/about/photos/jorge_ferreiro_giving_a_motivational_talk_in_codecamp_murcia.jpg',
+            },
+            {
+                alt: 'Jorge ferreiro article in xataka about fav code editor',
+                src: '/images/about/photos/jorge_ferreiro_article_in_xataka_about_fav_code_editor.png',
+                link: 'https://www.xataka.com/otros/editor-codigo-favorito-programadores-8-profesionales-nos-dan-su-respuesta',
+            },
+            {
+                alt: 'Jorge ferreiro photo album software engineer eventbrite amazon',
+                src: '/images/about/photos/jorge_ferreiro_photo_album_software_engineer_eventbrite_amazon.jpg',
+                link: '/images/about/photos/jorge_ferreiro_photo_album_software_engineer_eventbrite_amazon.jpg',
+            },
+            {
+                alt: 'Jorge ferreiro being interview for hackupc hackathon in barcelona 2019',
+                src: '/images/about/photos/jorge_ferreiro_being_interview_for_hackupc_hackathon_in_barcelona_2019.jpg',
+                link: '/images/about/photos/jorge_ferreiro_being_interview_for_hackupc_hackathon_in_barcelona_2019.jpg',
+            },
+        ]
+
+        return (
+            <div className="about-photos">
+                {galleryImages.map(({
+                    alt,
+                    src,
+                    link,
+                }) => (
+                    <Link
+                        to={link}
+                        target={TARGET_BLANK}
+                    >
+                        <span>
+                            <div className="wrapper">
+                                <img
+                                    alt={alt}
+                                    src={src}
+                                    title={alt}
+                                />
+                            </div>
+                        </span>
+                    </Link>
+                ))}
+            </div>
+        )
+    }
+
+    renderPublicSpeaking = () => (
+        <div className="about-talks">
+            <AboutTalksBio />
+
+            <div className="spacing-5-bot" style={{display: 'flex'}} />
+            <div className="spacing-5-bot" style={{display: 'flex'}} />
+            <TalksMetrics />
+
+            <TalksVenuesLogos />
+
+            <div className="about-talks__cta">
+                <Button
+                    style={BUTTON_STYLE_NEUTRAL}
+                    size={BUTTON_SIZE_MEDIUM}
+                    text={translate('See talks')}
+                    url={PATH_TALKS}
+                />
+
+                <Button
+                    style={BUTTON_STYLE_FILL}
+                    size={BUTTON_SIZE_MEDIUM}
+                    text={translate('Bring me to your event')}
+                    url={PATH_CONTACT_TALK}
+                />
+            </div>
+        </div>
+    )
+
     render() {
         const header = (
             <header className="about-header">
@@ -231,28 +360,6 @@ export class About extends PureComponent {
             </div>
         )
 
-        const bio = (
-            <section className="about-bio">
-                <div className="about-bio__description spacing-6-left-large">
-                    <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset and thrive on interaction and collaboration with team members</p>
-                    <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://jobs.lever.co/eventbrite?lever-via=LxHg4Lg84K" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
-                    <p>I thrive on being at the intersection of four disciplines <Button onClick={this.toggleIntersection} style={BUTTON_STYLE_LINK} text={<strong>engineering, design, business and marketing</strong>} />. I am considered a strong 🗣️ communicator, 💡 ideas creator and innovator, and I am very passionate about the work I do</p>
-                    {/* <img
-                        width="100px"
-                        alt="Jorge ferreiro intersection software engineering design business marketing"
-                        src="/images/about/Jorge_ferreiro_intersection_software_engineering_design_business_marketing.png"
-                    /> */}
-                </div>
-                <div className="about-bio__pic">
-                    <img
-                        width="100%"
-                        alt="Jorge Ferreiro is a Frontend Software Engineer, entrepreneur, blogger and host of DevelopersInDepth"
-                        src="/images/about/jorge_ferreiro_is_a_software_engineer_entrepreneur_blogger_collage.png"
-                    />
-                </div>
-            </section>
-        )
-
         const content = (
             <div>
                 {this.generateSection({
@@ -260,17 +367,7 @@ export class About extends PureComponent {
                     // TODO: Move into const
                     key: 'me', 
                     subtitle: null,
-                    content: (
-                        <div className="about-me">
-                            {bio}
-
-                            {this.state.isShownIntersection && (
-                                <div className="spacing-6-top">
-                                    <JorgeIntersection />
-                                </div>
-                            )}
-                        </div>
-                    )
+                    content: this.renderBiography()
                 })}
 
                 {this.generateSection({
@@ -278,9 +375,7 @@ export class About extends PureComponent {
                     // TODO: Move into const
                     key: 'career', 
                     subtitle: null,
-                    content: (
-                        this.renderCareerList()
-                    )
+                    content: this.renderCareerList()
                 })}
 
                 {this.generateSection({
@@ -288,33 +383,7 @@ export class About extends PureComponent {
                     key: 'talks', 
                     title: translate('Public speaking'),
                     subtitle: null,
-                    content: (
-                        <div className="about-talks">
-                            <AboutTalksBio />
-
-                            <div className="spacing-5-bot" style={{display: 'flex'}} />
-                            <div className="spacing-5-bot" style={{display: 'flex'}} />
-                            <TalksMetrics />
-
-                            <TalksVenuesLogos />
-
-                            <div className="about-talks__cta">
-                                <Button
-                                    style={BUTTON_STYLE_NEUTRAL}
-                                    size={BUTTON_SIZE_MEDIUM}
-                                    text={translate('See talks')}
-                                    url={PATH_TALKS}
-                                />
-
-                                <Button
-                                    style={BUTTON_STYLE_FILL}
-                                    size={BUTTON_SIZE_MEDIUM}
-                                    text={translate('Bring me to your event')}
-                                    url={PATH_CONTACT_TALK}
-                                />
-                            </div>
-                        </div>
-                    )
+                    content: this.renderPublicSpeaking()
                 })}
 
                 {this.generateSection({
@@ -384,50 +453,7 @@ export class About extends PureComponent {
                     key: 'photos',
                     title: translate('Photos and press'),
                     subtitle: translate('Some photos about me. Yay! :)'),
-                    content: (
-                        <div className="about-photos">
-                            <span>
-                                <div className="wrapper">
-                                    <img
-                                        alt="jorge ferreiro giving a technical talk at twitter london about javascript webs performance for JS roundabout"
-                                        src="/images/about/photos/jorge_ferreiro_giving_a_technical_talk_at_twitter_london_about_javascript_webs_performance_for_JS_roundabout.jpg"
-                                    />
-                                </div>
-                            </span>
-                            <span>
-                                <div className="wrapper">
-                                    <img
-                                        alt="Jorge ferreiro giving a talk about github at adalab a technical bootcamp for women in tech"
-                                        src="/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech.jpg"
-                                    />
-                                </div>
-                            </span>
-                            <span>
-                                <div className="wrapper">
-                                    <img
-                                        alt="Jorge ferreiro giving a talk about github at adalab a technical bootcamp for women in tech group 2"
-                                        src="/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech_group_2.jpg"
-                                    />
-                                </div>
-                            </span>
-                            <span>
-                                <div className="wrapper">
-                                    <img
-                                        alt="Jorge ferreiro giving a lightning technical talk in JS day Es"
-                                        src="/images/about/photos/jorge_ferreiro_giving_a_lightning_technical_talk_in_js_day_es.png"
-                                    />
-                                </div>
-                            </span>
-                            <span>
-                                <div className="wrapper">
-                                    <img
-                                        alt="Jorge ferreiro giving a motivational talk in Codecamp murcia"
-                                        src="/images/about/photos/jorge_ferreiro_giving_a_motivational_talk_in_codecamp_murcia.jpg"
-                                    />
-                                </div>
-                            </span>
-                        </div>
-                    )
+                    content: this.renderGallery()
                 })}
 
                 <GenericAd

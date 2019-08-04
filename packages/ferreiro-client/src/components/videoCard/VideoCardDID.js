@@ -4,6 +4,8 @@ import {Waypoint} from 'react-waypoint';
 
 import {Link} from '../link/Link';
 import {VideoCardContent} from './VideoCardContent';
+import {PlayButton} from '../buttons/PlayButton';
+import {getVideoPermalink} from '../../utils/getVideoPermalink';
 
 import './VideoCard.scss';
 
@@ -25,6 +27,7 @@ export class VideoCardDID extends PureComponent {
         const ctaLinkClassName = classNames('video__link', 'video__link--did')
         const {
             id,
+            permalink,
             type,
             title,
             subtitle,
@@ -43,12 +46,17 @@ export class VideoCardDID extends PureComponent {
                 <div className={className}>
                     <div className="video__wrapper">
                         <div className="video__aside">
-                            {this.state.isScrolled === true && (
-                                <VideoCardContent
-                                    iframe={iframe}
-                                    image={image}
-                                />
-                            )}
+                            <Link
+                                to={getVideoPermalink(permalink)}
+                            >
+                                <PlayButton />
+                                {this.state.isScrolled === true && (
+                                    <VideoCardContent
+                                        // iframe={iframe}
+                                        image={image}
+                                    />
+                                )}
+                            </Link>
                         </div>
                         <div className="video__content">
                             <Link url="https://devsindepth.com" target="_blank">
@@ -70,7 +78,13 @@ export class VideoCardDID extends PureComponent {
 
 
                             <div className="video__companies">
-                                {companies.map((src) => <img src={src} />)}
+                                {companies.map(({alt, src} = {}) =>
+                                    <img
+                                        title={alt}
+                                        alt={alt}
+                                        src={src}
+                                    />
+                                )}
                             </div>
                             
                             <p className="video__description">

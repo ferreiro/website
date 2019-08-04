@@ -29,49 +29,57 @@
 
         @include large-up {
             flex-direction: row;
+            padding: 3em;
+        }
+
+        @include extra-large-up {
             padding: 4em;
         }
     }
 
     &__aside {
         flex: 1 1 auto;
+        position: relative;
+        height: 200px;
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
 
         &--did-image {
             margin-bottom: 0;
         }
 
-        @include large-down {
-            margin-top: 1em;
-
-            img {
-                width: 100%;
-                height: 200px;
-                object-fit: contain;
-                object-position: center;
-            }
+        @include medium-up {
+            height: 250px;
         }
 
         @include large-up {
             flex: 0 0 auto;
+            height: 280px;
+            width: 450px;
+            padding-right: 3em;
 
             img {
-                width: 540px;
+                height: 100%;
+                width: 100%;
             }
+        }
 
-            &--did-image {
-                margin-bottom: -4.2em;
-            }
+        @include extra-large-up {
+            height: 300px;
+            width: 500px;
+            padding-right: 4em;
         }
     }
 
     &__content {
         align-items: center;
         flex: 1 1 auto;
-        padding: 1.5em 1.5em 2em;
-
-        @include large-up {
-            padding-left: 4em;
-        }
     }
 
     &__program {
@@ -94,11 +102,11 @@
         margin: 0;
 
         @include medium-up {
-            font-size: 3em;
+            font-size: 2.5em;
         }
 
         @include large-up {
-            font-size: 4em;
+            font-size: 3.5em;
         }
     }
 

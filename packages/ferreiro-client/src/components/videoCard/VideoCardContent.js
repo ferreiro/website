@@ -20,12 +20,18 @@ export const VideoCardContent = ({
         )
     }
 
+    const {
+        alt,
+        src,
+    } = image
+
     if (!isEmpty(image)) {
         return (
             <img
                 className="video__aside--did-image"
-                src={image}
-                alt="Video image"
+                src={src}
+                alt={alt}
+                title={alt}
             />
         )
     }

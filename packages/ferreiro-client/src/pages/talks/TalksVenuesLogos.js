@@ -39,8 +39,8 @@ export const TalksVenuesLogos = () => (
             />
 
             <img
-                alt="Jorge Ferreiro Software Engineer Entrepreneur Blogger Writter talk Medialaba Prado for Mozilla Firefox OS meetup"
-                src="/images/talks/venues/jorge_ferreiro_software_engineer_entrepreneur_blogger_writter_talk_medialab_prado_mozilla_firefox_os.jpg"
+                alt="Jorge Ferreiro Software Engineer Entrepreneur Blogger Writter talk at Twitter London Office with JS Roundabout meetup"
+                src="/images/talks/venues/jorge_ferreiro_software_engineer_entrepreneur_blogger_writter_talk_js_roundabout_twitter_longon_meetup.png"
             />
 
             <img
@@ -49,8 +49,8 @@ export const TalksVenuesLogos = () => (
             />
 
             <img
-                alt="Jorge Ferreiro Software Engineer Entrepreneur Blogger Writter talk at Twitter London Office with JS Roundabout meetup"
-                src="/images/talks/venues/jorge_ferreiro_software_engineer_entrepreneur_blogger_writter_talk_js_roundabout_twitter_longon_meetup.png"
+                alt="Jorge Ferreiro Software Engineer Entrepreneur Blogger Writter talk Medialaba Prado for Mozilla Firefox OS meetup"
+                src="/images/talks/venues/jorge_ferreiro_software_engineer_entrepreneur_blogger_writter_talk_medialab_prado_mozilla_firefox_os.jpg"
             />
         </div>
     </div>

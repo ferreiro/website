@@ -4,6 +4,8 @@ import {Waypoint} from 'react-waypoint'
 
 import {Link} from '../link/Link'
 import {VideoCardContent} from './VideoCardContent';
+import {PlayButton} from '../buttons/PlayButton';
+import {getVideoPermalink} from '../../utils/getVideoPermalink';
 
 import './VideoCard.scss';
 
@@ -25,6 +27,7 @@ export class VideoCard extends PureComponent {
         const ctaLinkClassName = classNames('video__link')
         const {
             id,
+            permalink,
             type,
             title,
             subtitle,
@@ -32,7 +35,7 @@ export class VideoCard extends PureComponent {
             companies = [],
             description,
             iframe,
-            image,
+            image = {},
             url,
         } = this.props;
 
@@ -43,9 +46,17 @@ export class VideoCard extends PureComponent {
                 <div className={className}>
                     <div className="video__wrapper">
                         <div className="video__aside">
-                            {this.state.isScrolled === true && (
-                                <VideoCardContent iframe={iframe} image={image} />
-                            )}
+                            <Link
+                                to={getVideoPermalink(permalink)}
+                            >
+                                <PlayButton />
+                                {this.state.isScrolled === true && (
+                                    <VideoCardContent
+                                        // iframe={iframe}
+                                        image={image}
+                                    />
+                                )}
+                            </Link>
                         </div>
                         <div className="video__content">
                             <div className="video__user">
@@ -57,11 +68,6 @@ export class VideoCard extends PureComponent {
                                 </h3>
                             </div>
 
-
-                            <div className="video__companies">
-                                {companies.map((src) => <img src={src} />)}
-                            </div>
-                            
                             <p className="video__description">
                                 {description}
                             </p>

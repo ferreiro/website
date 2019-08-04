@@ -98,8 +98,8 @@ export const content = {
                         end: 'Jul 2016',
                     },
                     image: {
-                        alt: 'Jorge Ferreiro Frontend Software Engineer at Eventbrite',
-                        src: '/images/companies/eventbrite-dark.png',
+                        alt: 'Jorge Ferreiro Summer Scholarship at Huawei',
+                        src: '/images/companies/huawei-dark.png',
                     }
                 },
                 music4deejays: {
@@ -167,40 +167,67 @@ export const content = {
         [PAGE_ENTITIES]: {
             ianDID: {
                 id: 'ianDID',
+                permalink: 'ian-fuller-cto-freetrade',
                 type: VIDEO_TYPE_DID,
                 title: 'Ian Fuller',
                 subtitle: 'VP Engineering at Freetrade',
                 categories: [VIDEO_CATEGORIES_ALL, VIDEO_CATEGORIES_DID],
                 cta: 'Watch now',
                 companies: [
-                    '/images/companies/freetrade.png',
-                    '/images/companies/snapchat.png',
-                    '/images/companies/amazon_comp.png',
+                    {
+                        alt: 'Freetrade, Invest in stocks and ETFs, commission-free, right from your phone. Simple, safe and secure. Trusted by tens of thousands.',
+                        src: '/images/companies/freetrade.png',
+                    },
+                    {
+                        alt: 'Snapchat lets you easily talk with friends, view Live Stories from around the world, and explore news in Discover. Life is more fun when you live in the moment!',
+                        src: '/images/companies/snapchat.png',
+                    },
+                    {
+                        alt: 'Amazon.com, Inc., is an American multinational technology company based in Seattle, Washington that focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence.',
+                        src: '/images/companies/amazon_comp.png',
+                    },
                 ],
                 description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
-                image: '/images/videos/ian_fuller_vp_freetrade_former_amazon_snapchat.png',
+                image: {
+                    alt: 'Ian Fuller CTO freetrade, formerly at Amazon, Snapchat and Nokia',
+                    src: '/images/videos/ian_fuller_cto_freetrade_amazon_snapchat.jpg',
+                },
                 url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
                 iframe: null,
             },
             rahmaDid: {
                 id: 'rahmaDid',
+                permalink: 'rahma-javed-engineering-director-deliveroo',
                 type: VIDEO_TYPE_DID,
                 title: 'Rahma Javed',
                 subtitle: 'Engineering Director at Deliveroo',
                 categories: [VIDEO_CATEGORIES_ALL, VIDEO_CATEGORIES_DID],
                 cta: 'Watch now',
                 companies: [
-                    '/images/companies/freetrade.png',
-                    '/images/companies/snapchat.png',
-                    '/images/companies/amazon_comp.png',
+                    {
+                        alt: 'Deliveroo online food delivery company founded in 2013 by Will Shu and Greg Orlowski',
+                        src: '/images/companies/deliveroo.png',
+                    },
+                    {
+                        alt: 'Microsoft Corporation is an American multinational technology company with headquarters in Redmond, Washington',
+                        src: '/images/companies/microsoft.png',
+                    },
+                    {
+                        alt: 'Wealthfront Inc. is an automated investment service firm based in Redwood City, California, founded by Andy Rachleff and Dan Carroll in 2008',
+                        src: '/images/companies/wealthfront.png',
+                    },
                 ],
                 description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
-                image: '/images/videos/rahma_javed_engineering_director_deliveroo_microsoft_wealthfront.png',
+                image: {
+                    alt: 'Rahma Javed Director of Engineering at Deliveroo and alumni at Microsoft and Wealthfront',
+                    src: '/images/videos/rahma_javed_director_of_engineering_deliveroo_and_alumni_microsoft_wealthfront.jpg',
+                },
                 url: 'https://www.youtube.com/watch?v=8REUs0k_pVc&list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
                 iframe: 'https://www.youtube.com/embed/videoseries?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj',
             },
             JSRoundaboutPerfomance: {
                 id: 'JSRoundaboutPerfomance',
+                permalink: 'jorge-ferreiro-js-roundabout',
                 type: VIDEO_TYPE_REGULAR,
                 title: 'Web Performance Expectations vs Reality',
                 subtitle: 'Conference at Twitter London for JS Roundabout',
@@ -208,7 +235,10 @@ export const content = {
                 cta: 'Watch now',
                 companies: [],
                 description: 'Join us in this interview by Jorge Ferreiro where we dicuss tips for junior sofware engineers, diversity and lessons learned.',
-                image: '',
+                image: {
+                    alt: 'Jorge Ferreiro Web Perfomance Talk at JS Roundabout and Twitter London',
+                    src: '/images/videos/jorge_ferreiro_web_perfomance_talk_js_roundabout_london_and_twitter_london.jpg',
+                },
                 url: 'https://www.youtube.com/watch?v=N-WinPoapaA&t=1261s',
                 iframe: 'https://www.youtube.com/embed/N-WinPoapaA',
             }

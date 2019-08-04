@@ -1,4 +1,5 @@
 @import "../../components/spacing.scss";
+@import "../../components/mediaQueries.scss";
 
 .talks-venues-logos {
     display: flex;
@@ -12,14 +13,21 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 80%;
         margin: 0 auto;
 
+        @include large-up {
+            max-width: 80%;
+        }
+
         img {
-            height: 60px;
+            height: 30px;
             margin: $spacing-3 $spacing-4;
             opacity: 0.95;
             filter: alpha(opacity=95); /* For IE8 and earlier */
+
+            @include large-up {
+                height: 50px;
+            }
         }
     }
 }
