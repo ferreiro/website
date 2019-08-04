@@ -3,6 +3,7 @@ const router = express.Router()
 import validator from 'validator'
 import merge from 'deepmerge'
 import isEmpty from 'lodash/isEmpty'
+const debug = require('debug')('ferreiro:api:v1:blog')
 
 import {markdownToHtml} from "../../markdown-to-html";
 import {isAuthenticated} from '../../../web/pages/admin/is-authenticated'
@@ -33,19 +34,24 @@ const getJsonResponse = (data, extraDataProps, filterKeys = []) => {
  * @api get /blog/series - Retrieves the list of series (published and unpublished)
  * @required authentication
  */
-router.get('/list', function (req, res) {
+router.get('/list', (req, res) => {
   // TODO: sanitize the req.body
   const opts = {
-    maxPagePosts: req.body.postsCount
+    maxPagePosts: req.body.postsCount || req.query.limit
   }
 
   return blogRepository.getAllPublished({}, opts)
-      .then((posts) => (
+      .then((posts) => {
         res.json(
           createBlogListJsonResponse(posts.docs)
         )
-      ))
-      .catch(err => res.send(err))
+      })
+      .catch(err => {
+        debug('Error fetching related posts', err);
+        return res.json({
+          error: 'Error fetching related posts'
+        })
+      })
 })
 
 router.get('/post/:permalink', function (req, res) {
@@ -86,9 +92,13 @@ router.get('/post/:permalink/related', function (req, res) {
   // TODO: Scape XSS on params
   const sanitizedPermalink = validator.blacklist(req.params.permalink, "<|>|&|\'|\"|'|,|/|")
 
+  console.group('/post/:permalink/related');
+  console.log('sanitizedPermalink', sanitizedPermalink);
+  console.groupEnd();
+
   return generateRelatedPosts({
     permalinkToSkip: sanitizedPermalink,
-    count: 3
+    limit: 3
   }).then((relatedPosts) => (
     res.json({
       relatedPosts: relatedPosts

@@ -215,3 +215,29 @@
         }
     }
 }
+
+.about-photos {
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+        width: 25%;
+        flex: 0 0 auto;
+        margin-bottom: $spacing-2;
+    }
+
+    .wrapper {
+        padding-bottom: 60%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    img {
+        width: calc(100% - #{$spacing-2});
+        margin-right: $spacing-2;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+    }
+}

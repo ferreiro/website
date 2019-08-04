@@ -6,6 +6,8 @@ import {Waypoint} from 'react-waypoint';
 import {CardRelatedPost} from '../cardRelatedPost/CardRelatedPost';
 import {fetchApi} from '../../utils/fetchApi';
 
+import {ERROR_FETCHING_CONTENT} from '../../types/enums';
+
 import './RecentArticles.scss'
 
 export class RecentArticles extends PureComponent {
@@ -39,14 +41,11 @@ export class RecentArticles extends PureComponent {
         // TODO: Cache results first, so avoid re-fetching
         // posts lists in the same session.
         // TODO: Put the url in CONSTANT
-        fetchApi('/api/v1/blog/list', {
-            body: {
-                postsCount: 3,
-            },
+        fetchApi('/api/v1/blog/list?limit=3', {
             onStart: () => {
                 this.startFetchingPosts()
             },
-            onSuccess: ({posts}) => {
+            onSuccess: ({posts = []}) => {
                 this.setState({posts})
             },
             onError: (_) => {

@@ -67,7 +67,6 @@ export class About extends PureComponent {
         content,
     }) => {
         const color = pageData[PAGE_COLORS][key]
-        const hashId = title.replace(' ', '-')
 
         return (
             <StickyContainer>
@@ -76,19 +75,14 @@ export class About extends PureComponent {
                         {({style}) => (
                             <h2
                                 className="about-section__title"
-                                id={hashId}
                                 style={{
                                     ...style,
                                     background: 'rgba(255, 255, 255, .98)',
-                                    zIndex: 10
+                                    zIndex: 10,
+                                    color
                                 }}
                             >
-                                <a
-                                    href={`#${hashId}`}
-                                    style={{color}}
-                                >
-                                    {title}
-                                </a>
+                                {title}
                             </h2>
                         )}
                     </Sticky>
@@ -425,9 +419,47 @@ export class About extends PureComponent {
                     title: translate('Photos and press'),
                     subtitle: translate('Some photos about me. Yay! :)'),
                     content: (
-                        <div className="about-videos">
-                            Poner fotos de conferencias, etc...
-                            Tambien poner el caption para que se vea facil.
+                        <div className="about-photos">
+                            <span>
+                                <div className="wrapper">
+                                    <img
+                                        alt="jorge ferreiro giving a technical talk at twitter london about javascript webs performance for JS roundabout"
+                                        src="/images/about/photos/jorge_ferreiro_giving_a_technical_talk_at_twitter_london_about_javascript_webs_performance_for_JS_roundabout.jpg"
+                                    />
+                                </div>
+                            </span>
+                            <span>
+                                <div className="wrapper">
+                                    <img
+                                        alt="Jorge ferreiro giving a talk about github at adalab a technical bootcamp for women in tech"
+                                        src="/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech.jpg"
+                                    />
+                                </div>
+                            </span>
+                            <span>
+                                <div className="wrapper">
+                                    <img
+                                        alt="Jorge ferreiro giving a talk about github at adalab a technical bootcamp for women in tech group 2"
+                                        src="/images/about/photos/jorge_ferreiro_giving_a_talk_about_github_at_adalab_a_technical_bootcamp_for_women_in_tech_group_2.jpg"
+                                    />
+                                </div>
+                            </span>
+                            <span>
+                                <div className="wrapper">
+                                    <img
+                                        alt="Jorge ferreiro giving a lightning technical talk in JS day Es"
+                                        src="/images/about/photos/jorge_ferreiro_giving_a_lightning_technical_talk_in_js_day_es.png"
+                                    />
+                                </div>
+                            </span>
+                            <span>
+                                <div className="wrapper">
+                                    <img
+                                        alt="Jorge ferreiro giving a motivational talk in Codecamp murcia"
+                                        src="/images/about/photos/jorge_ferreiro_giving_a_motivational_talk_in_codecamp_murcia.jpg"
+                                    />
+                                </div>
+                            </span>
                         </div>
                     )
                 })}

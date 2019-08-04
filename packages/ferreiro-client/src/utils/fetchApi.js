@@ -6,7 +6,10 @@ export const fetchApi = (url, {
     onFinish,
 }) => {
     // TODO: Accept options body
+    // NB: Only POST method accept body. So we need a mechanism
+    // to check the type of the request.
     const options = {}
+
     // const options = body && {
     //     body: JSON.stringify(body)
     // }
@@ -23,10 +26,14 @@ export const fetchApi = (url, {
             return response
         })
         .then(res => res.json())
-        .then((jsonResponse) => {
+        .then((jsonResponse) => {            
+            if (jsonResponse.error) {
+                return onError(jsonResponse)
+            }
             onSuccess(jsonResponse)
         })
         .catch((errorObject) => {
+            console.log('errorObject', errorObject)
             onError(errorObject)
         })
         .finally(() => {
