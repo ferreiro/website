@@ -40,11 +40,11 @@
             }
     
             @include large-up {
-                padding: 1.5em 2em;
+                padding: 1.5em 2.5em;
             }
     
             @include extra-large-up {
-                padding: 1.5em 2em;
+                padding: 1.5em 3em;
                 max-width: 1300px;
                 margin: 0 auto;
             }

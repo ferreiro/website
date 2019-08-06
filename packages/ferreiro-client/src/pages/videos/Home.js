@@ -1,5 +1,8 @@
 import React, {PureComponent} from 'react'
 
+import {Card} from '../../components/card/Card';
+import {CardHighlight} from '../../components/cardHighlight/CardHighlight';
+
 import {ContentHeader} from '../../components/contentHeader/ContentHeader';
 import {getUrlPath} from '../../utils/getUrlPath';
 import {LayoutWithSidebar} from '../../components/layout/LayoutWithSidebar';
@@ -20,9 +23,78 @@ import {
     TARGET_BLANK,
 } from '../../components/constants';
 import {translate} from '../../i18-me/i18-me'
+import { getVideoPermalink } from '../../utils/getVideoPermalink';
 
 // TODO: Create an abstraction over this?
 const pageData = getPageData(PATH_VIDEOS)
+
+
+const renderHighlight = ({
+    permalink,
+    image: {
+        alt,
+        src,
+    },
+    description,
+    title,
+}) => (
+    <CardHighlight
+        key={permalink}
+        permalink={getVideoPermalink(permalink)}
+        title={title}
+        summary={description}
+        image={src}      
+    />
+)
+
+const renderPost = ({
+    permalink,
+    image: {
+        alt,
+        src,
+    },
+    description,
+    title,
+}) => (
+    <Card
+        key={permalink}
+        permalink={getVideoPermalink(permalink)}
+        title={title}
+        summary={description}
+        image={src}
+    />
+)
+
+const renderVideoList = ({
+    videos = [],
+    // prevPageToken,
+    // nextPageToken,
+    // isLoading,
+}) => {
+    if (videos.length === 0) {
+        return (
+            <p>No more posts available</p>
+        )
+    }
+
+    const [highlightVideo, ...restVideos] = videos;
+    return (
+        <div className="">
+            <div>
+                {renderHighlight(highlightVideo)}
+            </div>
+
+            <div>
+                {restVideos.map(renderPost)}
+            </div>
+
+            {/* <Pagination
+                prevPageToken={prevPageToken}
+                nextPageToken={nextPageToken}
+            /> */}
+        </div>
+    );
+}
 
 export class VideosHome extends PureComponent {
     renderHeader = ({pageData, activeCategory}) => {
@@ -72,6 +144,10 @@ export class VideosHome extends PureComponent {
         return (
             <div>
                 {this.renderHeader({pageData, activeCategory})}
+
+                {/* {renderVideoList({
+                    videos: filteredEntities,
+                })} */}
 
                 {filteredEntities.length === 0 && (
                     <p>No videos available :(</p>

@@ -5,31 +5,26 @@
     background: #fff;
     border-radius: $card-radius;
     display: flex;
-    
-    @include large-down {
-        flex-direction: column;
-        margin-bottom: 1.5em;
-    }
+    flex-direction: column;
+    margin-bottom: 1.5em;
 
     @include large-up {
         flex-direction: row;
-        margin-bottom: 1.5em;
+        margin-bottom: 1.2em;
     }
 
     &__image {
         object-fit: cover;
         object-position: center;
-
-        @include large-down {
-            width: 100%;
-            max-height: 260px;
-            border-top-left-radius: $card-radius;
-            border-top-right-radius: $card-radius;
-        }
+        width: 100%;
+        max-height: 260px;
+        border-top-left-radius: $card-radius;
+        border-top-right-radius: $card-radius;
 
         @include large-up {
-            width: 60%;
+            min-width: 60%;
             height: 400px;
+            max-height: 400px;
             border-radius: $card-radius;
         }
     }
