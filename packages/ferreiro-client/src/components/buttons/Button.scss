@@ -1,0 +1,110 @@
+@import '../variables.scss';
+@import '../spacing.scss';
+@import '../mediaQueries.scss';
+
+.button-subscribe {
+    display: inline-block;
+
+    &--style-youtube {
+        background: $color-youtube;
+        border-color: $color-youtube;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 600;
+
+        &:hover {
+            background: $color-youtube-hover;
+        }
+    }
+
+    /* 1. Removing margin added by border */
+    &--style-link {
+        /* TODO: Instead of overriden with important, find an alternative */
+        border-radius: 0 !important;
+        font-size: inherit !important;
+        padding: 0 !important;
+        margin: initial !important;
+        margin-bottom: -4px !important; /* 1. */
+        border: 0 !important;
+        border-bottom: 4px solid $color-main-link  !important;
+
+        &:hover {
+            border-color: #000;
+        }
+    }
+
+    /* Rename this into outline */
+    &--style-outline {
+        border-style: solid;
+        border-color: $color-main-link;
+        color: $color-main;
+        font-weight: 600;
+
+        &:hover {
+            background: $color-main-link;
+            color: #fff;
+        }
+    }
+
+    &--style-fill {
+        background: $color-main;
+        color: #fff;
+    }
+
+    &--style-neutral {
+        border-style: solid;
+        border-color: #000;
+
+        &:hover {
+            background: #efefef;
+            color: $color-main;
+            border-color: $color-main;
+        }
+    }
+
+    &--size-small {
+        border-radius: 60px;
+
+        @include large-down {
+            border-width: 2px;
+            font-size: 14px;
+            padding: .4rem .8rem;
+        }
+    
+        @include large-up {
+            border-width: 2px;
+            font-size: 14px;
+            padding: .5rem .8rem;
+        }
+    }
+
+    &--size-medium {
+        border-radius: 60px;
+
+        @include large-down {
+            border-width: 2px;
+            font-size: 14px;
+            padding: .9rem 1rem;
+        }
+    
+        @include large-up {
+            border-width: 2px;
+            font-size: 16px;
+            padding: 0.6rem 1rem;
+        }
+    }
+
+    &--size-big {
+        border-radius: 2px;
+        border-width: 3px;
+        font-size: 16px;
+        padding: .9rem 1rem;
+    
+        @include large-up {
+            border-radius: 4px;
+            border-width: 4px;
+            font-size: 18px;
+            padding: 1.2rem 1.8rem;
+        }
+    }
+}

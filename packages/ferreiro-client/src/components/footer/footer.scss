@@ -1,0 +1,134 @@
+@import '../mediaQueries.scss';
+@import '../mixins.scss';
+@import '../variables.scss';
+
+.footer {
+    width: 100%;
+    position: relative;
+    background: #fff;
+    display: block !important;
+    border: 0;
+    border-top: 1px solid #f4f4f4;
+  
+    @include large-up {
+      padding:1.7em 0;
+    }
+
+    &_content {
+      width: 100%;
+      text-align: center;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    &_separator {
+      width: 100%;
+      display: none;
+      border-top: 2px solid #f4f4f4;
+      margin: 0;
+
+      @include medium {
+        margin: 2em 0;
+        display: block;
+      }
+
+      @include large-up {
+          display: block;
+          margin-bottom: 2em;
+      }
+    }
+  
+    &__logo {
+      height: 40px;
+      margin-bottom: 1em;
+      display: inline-block;
+
+      img {
+        height: 40px;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        opacity: 0.5;
+        filter: alpha(opacity =50);
+        @include border-radius(5px);
+      }
+    }
+  
+    &_entry {
+      width: 48%;
+      border-bottom:1px solid #f4f4f4;
+      display: inline-block;
+      padding: 1em 0;
+      position: relative;
+      color: rgba(0, 0, 0, 0.9);
+  
+      &:hover {
+        .footer_entry__social {
+          p, a, span{
+            color: $color-main !important;
+          }
+        }
+      }
+  
+      &__link {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+  
+      @include medium {
+        width: 33%;
+      }
+
+      @include large-up {
+        border: 0;
+        width: auto !important;
+        padding:0 2em;
+        border-left:1px solid #f4f4f4;
+        border-right:1px solid #f4f4f4;
+      }
+  
+      h3 {
+        margin: 0.5em 0;
+        margin-top: 1em;
+        font-size: 0.8em;
+        color: rgba(0, 0, 0, 0.6);
+        @include transition(200ms);
+      }
+      h2 {
+        font-size: .8em;
+        color: rgba(0, 0, 0, 0.6);
+        @include transition(200ms);
+      }
+      h1 {
+        font-size: 1.6em;
+        color:#676767;
+        @include transition(200ms);
+      }
+      p {
+        margin-top: 5px;
+        font-size: 1em;
+        color: #000;
+        text-decoration: none;
+        @include transition(200ms);
+      }
+      span {
+        border: 0;
+        text-decoration: none;
+        font-size: 25px;
+        @include transition(200ms);
+      }
+      a {
+        text-decoration: none;
+        @include transition(200ms);
+      }
+    }
+    &_credits {
+      border: 0;
+    }
+  
+  }
+  

@@ -1,0 +1,20 @@
+{
+    "name": "i18n-me",
+    "version": "0.0.1",
+    "private": true,
+    "main": "src/index.js",
+    "scripts": {
+      "start": ""
+    },
+    "author": {
+      "name": "Jorge Ferreiro",
+      "email": "jorge@ferreiro.me",
+      "url": "https://www.ferreiro.me/"
+    },
+    "engines": {
+      "node": "10.16.x",
+      "yarn": "1.x"
+    },
+    "dependencies": {}
+  }
+  

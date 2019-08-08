@@ -11,7 +11,7 @@
     letter-spacing: -.028em;
     color: rgba(0,0,0,.84);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 36px;
       font-style: normal;
       font-weight: 600;
@@ -36,7 +36,7 @@
     font-size: 20px;
     line-height: 1.3;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 27px;
       font-size: 24px;
       line-height: 1.22;
@@ -49,7 +49,7 @@
     width: calc(100% + 32px);
     max-width: calc(100% + 32px);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       float: none;
       width: 125%;
       max-width: 125%;
@@ -164,7 +164,7 @@
       line-height: 1.58;
       letter-spacing: -.004em;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         font-size: 21px;
         line-height: 32px;
         // line-height: 1.58;
@@ -258,7 +258,7 @@
     ol.linenums {
       margin-left: 0;
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         padding-left: 0;
         margin-left: 0;
       }
@@ -321,7 +321,7 @@
       margin-left: -1em;
       border-left: 3px solid rgba(0,0,0,.84);
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         padding-left: 20px;
         margin-left: -23px;
       }
@@ -357,7 +357,7 @@
       // border-left: 3px solid rgba(0,0,0,.84);
 
 
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         // padding-left: 20px;
         // margin-left: -23px;
       }
@@ -372,7 +372,7 @@
         font-size: 24px;
         line-height: 30px;
 
-        @media all and (min-width: $desktop-screen) {
+        @media all and (min-width: $large-screen) {
           line-height: 38px;
           font-size: 30px;
         }
@@ -447,7 +447,7 @@
   position: relative;
   z-index: 100;
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     padding: 0.5em 0;
     margin-top: 3em;
     // padding: 2em 0;
@@ -457,7 +457,7 @@
     margin: 0;
     margin-bottom: 1.8em;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-bottom: 1.4em;
     }
   }

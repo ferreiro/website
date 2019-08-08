@@ -6,8 +6,8 @@
   margin-bottom: 1em;
   text-align: center !important;
 
-  @media all and (min-width: $tablet-screen) {}
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $medium-screen) {}
+  @media all and (min-width: $large-screen) {
     padding: 0;
     margin-bottom: 2em;
   }

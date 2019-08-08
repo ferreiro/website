@@ -12,7 +12,7 @@
   &__right {
     display: none;
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       display: inline-block;
       vertical-align: top;
   
@@ -30,7 +30,7 @@
   }
 }
 
-@media all and (min-width: $tablet-screen) {
+@media all and (min-width: $medium-screen) {
   .blogTwoColumnsGrid__left {
 
   }
@@ -39,7 +39,7 @@
   }
 }
 
-@media all and (min-width: $desktop-screen) {
+@media all and (min-width: $large-screen) {
   .blogTwoColumnsGrid__left {
 
   }

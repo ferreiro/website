@@ -65,7 +65,13 @@ footer.jfFooter#footer
 
 
 script(src="/bower_components/jquery/dist/jquery.min.js")
-script(src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js")
+
+block turboLinksEnabled
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js")
+  script.
+    $(window).on("load", function() {
+      Turbolinks.start()
+    })
 
 //- Orther matters here
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
@@ -88,19 +94,6 @@ script(src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min
 script(type='text/javascript').
   $(function() {
     FastClick.attach(document.body)
-  })
-
-  $(window).on("load", function() {
-    Turbolinks.start()
-    /*
-    $('.loader').fadeOut('100', () => {
-      //- Animation completed
-    })
-    window.animateMainContainer()
-    $('.container').css({
-      opacity: 1
-    })
-    */
   })
 
 script.

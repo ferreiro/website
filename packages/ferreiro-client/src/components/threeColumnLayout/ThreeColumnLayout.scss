@@ -1,0 +1,37 @@
+@import '../mediaQueries.scss';
+
+
+.three-column-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include large-up {
+        width: calc(100% + 1em);
+        margin: 0 -.5em;
+    }
+
+    &__item {
+        align-content: stretch;
+        margin-bottom: 1.5em;
+        width: 100%;
+
+        @include large-up {
+            width: 50%;
+            flex: 0 0 auto;
+            margin-bottom: 1.5em;
+        }
+
+        @include extra-large-up {
+            width: 33.33%;
+            flex: 0 0 auto;
+        }
+    }
+
+    &__item-wrapper {
+        @include large-up {
+            height: 100%;
+            padding: 0 .5em;
+        }
+    }
+}

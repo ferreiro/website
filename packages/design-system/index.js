@@ -1,1 +1,5 @@
-export * from './lib/Button.js';
+import {Button} from './lib/Button'
+
+export {
+    Button,
+}

@@ -1,0 +1,212 @@
+@import "../mediaQueries.scss";
+@import "../mixins.scss";
+
+$projectBorderRadious: 10px;
+$projectHeaderHeight: 60px;
+$projectHeaderMargin: 1em;
+$projectHeaderAvatarSize: 60px;
+$projectHeaderTitleSize: 1.2em;
+$projectHeaderDateSize: 1em;
+$projectHeaderGalleryHeight: 122px;
+$projectHeaderGalleryGradientWidth: 2em;
+$projectHeaderGalleryRadius: 7px;
+$projectBodyPadding_mobile: 16px;
+$projectBodyPadding_desktop: 24px;
+$projectLinksHeight: 52px;
+$projectLinksTopMargin: 20px;
+
+.projects {
+  @include large-up {
+    -webkit-column-count: 2;
+    -webkit-column-gap: 1.5em;
+    -moz-column-count: 2;
+    -moz-column-gap: 1.5em;
+    column-count: 2;
+    column-gap: 1.5em;
+  }
+}
+
+.project {
+    border: 1px solid #f0f0f0;
+    border-radius: $projectBorderRadious;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1.5em;
+    flex-direction: column;
+    
+    @include large {
+        background: #fefefe;
+        margin: 0;
+    }
+
+    &_bg {
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        border-radius: $projectBorderRadious;
+
+        &_image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            -webkit-filter: blur($projectBorderRadious);
+            -moz-filter: blur($projectBorderRadious);
+            -ms-filter: blur($projectBorderRadious);
+            -o-filter: blur($projectBorderRadious);
+            filter: blur($projectBorderRadious);
+      
+            &::before {
+              width: 100%;
+              height: 100%;
+              content: "";
+              background: rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        &_solid {
+            width: 100%;
+            height: 100%;
+            opacity: 0.9;
+            position: absolute;
+            top: 0;
+        }
+    }
+
+    &_header {
+        z-index: 3;
+        position: relative;
+        min-height: $projectHeaderHeight;
+        padding: $projectHeaderMargin;
+        background: rgba(0, 0, 0, 0.3);
+
+        @include border-radiuses($projectBorderRadious, $projectBorderRadious, 0, 0);
+
+        @include large-up {
+            padding: $projectHeaderMargin;
+        }
+
+        &_left {
+            left: 1em;
+            position: absolute;
+            width: $projectHeaderHeight;
+            max-width: $projectHeaderHeight;
+        }
+
+        &_right {
+            margin-left: $projectHeaderHeight + 14px;
+        }
+
+        &_avatar {
+            border-radius: 100%;
+            width: $projectHeaderAvatarSize;
+            height: $projectHeaderAvatarSize;
+            overflow: hidden;
+            background-size: cover;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: $projectHeaderMargin;
+            
+            @include large-up {
+                width: $projectHeaderAvatarSize;
+                height: $projectHeaderAvatarSize;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+
+        &_data {
+            width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 5px;
+        }
+
+        &_title {
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 0.3em;
+            text-decoration: none;
+
+            @include large-up {
+                font-size: $projectHeaderTitleSize;
+            }
+
+            &_clickable:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &_date {
+            color: #fff;
+            font-weight: 300;
+            @include large-up {
+                font-size: $projectHeaderDateSize;
+            }
+        }
+
+        &_share {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: $projectBorderRadious;
+            cursor: pointer;
+            top: 50%;
+            right: 1em;
+            padding: 10px;
+            display: none;
+            position: absolute;
+            transform: translate(0, -50%);
+
+            @include large-up {
+                font-size: 1.2em;
+                padding: 1em;
+            }
+        }
+    }
+
+    &_gallery {
+        z-index: 10;
+        position: relative;
+        height: $projectHeaderGalleryHeight;
+        background: rgba(0, 0, 0, 0.5);
+
+        &_gradient {
+            width: $projectHeaderGalleryGradientWidth;
+            height: 100%;
+            position: absolute;
+            z-index: 100;
+            right: 0;
+            top: 0;
+
+            @include opacity(0.3);
+
+            &_solid {
+                width: $projectHeaderGalleryGradientWidth;
+                height: 100%;
+                position: absolute;
+                z-index: 100;
+                right: 0;
+                top: 0;
+            }
+            &:after {
+                content: '';
+                width: $projectHeaderGalleryGradientWidth;
+                height: 100%;
+                position: absolute;
+                z-index: 100;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+}

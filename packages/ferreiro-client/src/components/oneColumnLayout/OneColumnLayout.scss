@@ -1,0 +1,30 @@
+@import '../mediaQueries.scss';
+
+
+.one-column-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include large-up {
+        width: calc(100% + 1em);
+        margin: 0 -.5em;
+    }
+
+    &__item {
+        align-content: stretch;
+        margin-bottom: 1.5em;
+        width: 100%;
+
+        @include large-up {
+            margin-bottom: 1.5em;
+        }
+    }
+
+    &__item-wrapper {
+        @include large-up {
+            height: 100%;
+            padding: 0 .5em;
+        }
+    }
+}

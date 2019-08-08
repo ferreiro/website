@@ -1,14 +1,29 @@
 import validator from 'validator'
-import {isEmpty} from 'lodash'
+import isEmpty from 'lodash/isEmpty'
+// import {renderToString} from "react-dom/server";
 
+import {generateRelatedPosts} from '../../../api/v1/blog/generate-related-posts';
 import blogRepository from '../../../api/repository/blog'
-import seriesRepository from '../../../api/repository/series'
+import * as seriesRepository from '../../../api/repository/series'
 import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
-import {markdownToHtml} from './markdown-to-html'
+import {markdownToHtml} from '../../../api/markdown-to-html'
+
+import blog from '../../content/english/blog.json'
+
+// TODO: replace by 'ferreiro-client/src/App';
+// import {App} from '@ferreiro/client/src/App';
+import {isReactEnabled} from '../is-react-enabled'
 
 import {MAX_PAGE_POSTS} from './constants';
-import blog from '../../content/english/blog.json'
+
+const isAuthorizedAdmin = (req) => {
+  const disableAdmin = req.query.disableAdmin
+
+  // TODO: Probably we can find a better way to check if the user
+  // is loggedin, like checking a req function like req.isAuthorized()?
+  return !isEmpty(req.user) && !disableAdmin
+}
 
 /**
  * Returns a context object with data to feed the views.
@@ -81,6 +96,13 @@ const createBlogContextBuilder = (req) => {
  * @param {*=} req.params.category - You can provide a post category to query
  */
 export const getBlogPosts = (req, res, next) => {
+  if (isReactEnabled(req)) {
+    return res.render(createViewPath('blog', 'blog.react.pug'), {
+        path: 'blog',
+        admin: isAuthorizedAdmin(req)
+    })
+  }
+
   const {category} = req.params
 
   if (category && category.length === 0) {
@@ -158,9 +180,28 @@ export const getSingleBlogSeries = (req, res, next) => {
  * and the user has the right credentials.
  */
 export const getPostByPermalink = (req, res, next) => {
-  const blogContext = createBlogContextBuilder(req)
-
   const {permalink} = req.params;
+
+  if (isEmpty(permalink)) {
+    // Raise exception or call next...
+  }
+
+  // NB: Check the isPostVisible before returning this... 
+  // or maybe we can just update the API to check if the user
+  // has permissions to view the post...
+  if (isReactEnabled(req)) {
+    // const jsx = (<App />);
+    // const ssrHtml = renderToString(jsx);
+    
+    return res.render(createViewPath('blog', 'blog.react.pug'), {
+      admin: isAuthorizedAdmin(req),
+      path: 'blog',
+      permalink,
+      // ssrHtml: renderToString(<App />),
+    })
+  }
+
+  const blogContext = createBlogContextBuilder(req)
 
   if (isEmpty(permalink)) {
     blogContext.with('blogCategory', '')
@@ -279,13 +320,4 @@ function isValidSecretKey (srcSecretKey, validSecretKey) {
     return false
   }
   return srcSecretKey === validSecretKey
-}
-
-function generateRelatedPosts (opts) {
-  return new Promise((resolve) => {
-    return blogRepository
-      .getRandomPosts(opts)
-      .then(posts => resolve(posts))
-      .catch(posts => resolve([]))
-  })
 }

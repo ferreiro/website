@@ -42,7 +42,7 @@ block content_large
         if blogCategory !== 'all'
           h2.category__title.margin-bottom-1= blogCategory + ' posts'
 
-        if !posts || posts.length <= 0
+        if !posts || posts.length <= 0
           .warningMessage(style="max-width: 400px; margin: 0 auto;")
             h1.warningMessage__title There are no more posts to show.
             p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
@@ -50,7 +50,7 @@ block content_large
               +subscriptionBox()
         else
           .twoColsGrid
-            each post, index in posts || []
+            each post, index in posts || []
 
               //- Advertisement: subscribe to blog!
               //- if index == 3
@@ -59,7 +59,6 @@ block content_large
                     +subscriptionBoxLarge({
                       displayForm: true
                     })
-
               if index === 0
                 .oneColGrid__item
                   .oneColGrid__item__wrapper
@@ -118,7 +117,6 @@ block content_large
                 if category !== null
                   li.blog-categories__item
                     a.blog-categories__link(href="/blog/category/" + category)= category
-
           .blog-divider
 
           .blog-follow.margin-top-1-5
@@ -132,7 +130,6 @@ block content_large
 
           //- .blog-top-articles.margin-top-1-5
           //-  h3.aside__title.margin-top-0-5.margin-bottom-1 Top articles
-
           //- .blog-series.margin-top-1-5
             h3.aside__title.margin-top-0-5.margin-bottom-1 List of series
             +seriesBlogList(series, {showPic: false})

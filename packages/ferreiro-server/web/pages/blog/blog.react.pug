@@ -1,0 +1,27 @@
+extends ../../UIComponents/layout.react.pug
+
+//- block extraScripts
+//-   script(src="http://localhost:9000/client.bundle.js", async)
+
+block container
+  // TODO: This needs to go inside the React VIEW.
+  if admin && permalink
+    ul.blog__post__options(style="margin-bottom: 1em;")
+      li(style="margin-right: 1em;")
+        a(href= permalink + '?disableAdmin=true').action_button
+          span.icon.ion-eye
+          | See post as normal user
+      li(style="margin-right: 1em;")
+        a(target="_blank", href= '/admin/edit/' + permalink).action_button
+          span.icon.ion-edit
+          | Edit post
+      li
+        a(href= '/admin/delete/' + permalink).action_button
+          span.icon.ion-android-delete
+          | Delete post
+
+  //- ID to set the react APP here.
+  #app
+
+//- block turboLinksEnabled
+//-   //- Disabled turbolink

@@ -1,0 +1,59 @@
+@import '../variables.scss';
+@import '../mediaQueries.scss';
+
+.card-related-video {
+    height: 100%;
+    background: #fff;
+    border-radius: $card-radius;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e8e8e8;
+    border-radius: $card-radius;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .05);
+
+    @include large-up {
+        margin: 0 .8em;
+    }
+
+    &__image {
+        flex: 0 0 auto;
+        height: 200px;
+        width: 100%;
+        position: relative;
+
+        img {
+            border-top-left-radius: $card-radius;
+            border-top-right-radius: $card-radius;
+            object-fit: cover;
+            object-position: center;            
+            height: 200px;
+            width: 100%;
+        }
+    }
+
+    &__content {
+        padding: 1em;
+        flex: 1 1 auto;
+    }
+
+    &__title {
+        @include large-down {
+            font-size: $font-size-title;
+            font-weight: 600;    
+        }
+
+        @include large-up {
+            max-width: 600px;
+            font-size: 1.3em;
+            line-height: 1.4em;
+            font-weight: 600;
+        }
+    }
+
+    &__summary {
+        margin-top: .7rem;
+        opacity: 0.7;
+        font-size: $font-size-paragraph;
+        line-height: $font-size-paragraph * 1.4;
+    }
+}

@@ -1,0 +1,47 @@
+
+.jorge-intersection {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+
+    &__avatar {
+        border-radius: 100%;
+        width: 140px;
+        height: 140px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -70px;
+        margin-left: -70px;
+        z-index: 10;
+    }
+
+    &__background {
+        width: 100%;
+
+        &--rotating {
+            animation: rotate 12s linear infinite;
+            -webkit-animation: rotate 12s linear infinite;
+            -moz-animation: rotate 12s linear infinite;
+        }
+    }
+}
+
+@keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+}
+  
+@-webkit-keyframes rotate {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}

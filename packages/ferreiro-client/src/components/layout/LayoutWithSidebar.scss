@@ -1,0 +1,53 @@
+@import '../mediaQueries.scss';
+@import '../variables.scss';
+
+.layout-with-sidebar {
+    display: flex;
+    flex-direction: column;
+
+    &__wrapper {
+        align-items: stretch;
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__sidebar {
+        background: #fff;
+        z-index: 10;
+
+        @include extra-large-down {
+            display: none;
+        }
+
+        @include large-up {
+            box-shadow: 5px 0px 5px -2px rgba(0, 0, 0, .1);
+            flex: 0 0 auto;
+            min-height: 100vh;
+            width: 240px;
+        }
+    }
+
+    &__content {
+        min-height: 100vh;
+        flex: 1 1 auto;
+
+        &-wrapper {
+            padding: 1.5em;
+
+            @include medium {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+    
+            @include large-up {
+                padding: 1.5em 2.5em;
+            }
+    
+            @include extra-large-up {
+                padding: 1.5em 3em;
+                max-width: 1300px;
+                margin: 0 auto;
+            }
+        }
+    }
+}

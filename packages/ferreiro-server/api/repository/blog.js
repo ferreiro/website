@@ -91,12 +91,12 @@ module.exports.getAllDrafts = function (options) {
 }
 
 module.exports.getAllPublished = function (extraQueryFields, opts) {
-  var maxLimit = 10
+  let maxLimit = 10
 
   if (opts) {
     if (opts.maxPagePosts) {
       const newLimit = opts.maxPagePosts
-      maxLimit = newLimit < maxLimit ? newLimit : maxLimit
+      maxLimit = parseInt(newLimit < maxLimit ? newLimit : maxLimit)
     }
   }
   const options = {
@@ -155,9 +155,17 @@ module.exports.getRandomPosts = function (opts) {
       populate: 'series'
     }
 
-    Post.findRandom(filter, fields, options, (err, posts) => {
+    console.group('getRandomPosts');
+    console.log('limit', limit);
+    console.log('options', options);
+    console.groupEnd();
+  
+    return Post.findRandom(filter, fields, options, (err, posts) => {
       if (err) {
         return reject(err)
+      }
+      if (!posts) {
+        return resolve([])
       }
       return resolve(posts)
     })

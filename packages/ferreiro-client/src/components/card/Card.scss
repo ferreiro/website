@@ -1,0 +1,86 @@
+@import '../variables.scss';
+@import '../mediaQueries.scss';
+
+.card {
+    background: #fff;
+    border-radius: $card-radius;
+    display: flex;
+    
+    @include large-down {
+        flex-direction: column;
+        margin-bottom: 1.5em;
+
+        border: 1px solid #e8e8e8;
+        border-radius: $card-radius;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,.05);
+    }
+
+    @include large-up {
+        flex-direction: row;
+        margin-bottom: 1.5em;
+        padding: 1em;
+        /* 1: Aligning left images to highlight card */
+        margin-left: -1em; /* 1 */ 
+    }
+
+    &__image {
+        img {
+            object-fit: cover;
+            object-position: center;
+        }
+
+        @include large-down {
+            width: 100%;
+            max-height: 260px;
+
+            img {
+                width: 100%;
+                max-height: 260px;
+                border-top-left-radius: $card-radius;
+                border-top-right-radius: $card-radius;
+            }
+        }
+
+        @include large-up {
+            flex: 0 0 auto;
+            width: 400px;
+            height: 260px;
+            
+            img {
+                border-radius: $card-radius;
+                height: 260px;
+                width: 400px;
+            }
+        }
+    }
+
+    &__content {
+        padding: 1em;
+
+        @include large-up {
+            padding: 2em;
+            flex: 1 1 auto;
+        }
+    }
+
+    &__title {
+        @include large-down {
+            font-size: $font-size-title;
+            font-weight: 600;    
+        }
+
+        @include large-up {
+            max-width: 600px;
+            font-size: 2em;
+            line-height: 1.4em;
+            font-weight: 600;
+        }
+    }
+
+    &__summary {
+        margin-top: .7rem;
+        opacity: 0.7;
+        font-size: $font-size-paragraph;
+        line-height: $font-size-paragraph * 1.4;
+    }
+}

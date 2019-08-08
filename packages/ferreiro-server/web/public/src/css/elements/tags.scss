@@ -29,7 +29,7 @@
 
   width: 100%; // Break the tags in two on mobiles
 
-  @media all and (min-width: $tablet-screen) {
+  @media all and (min-width: $medium-screen) {
       width: auto !important; // put tags in one line
   }
 

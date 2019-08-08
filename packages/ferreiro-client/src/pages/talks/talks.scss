@@ -1,0 +1,29 @@
+@import "../../components/spacing.scss";
+@import "../../components/variables.scss";
+
+.talks {
+    &-title {
+        font-size: $spacing-5;
+        font-weight: 800;
+        color: #000;
+        line-height: 34px;
+        margin: 0;
+        padding: $spacing-4 0;
+
+        &__wrapper {
+            margin-bottom: $spacing-3;
+            position: relative;
+        }
+
+        &__cta {
+            font-size: 16px;
+            background: $color-main;
+            color: #fff;
+            border-radius: 2px;
+            padding: 10px 16px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}

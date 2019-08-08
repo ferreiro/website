@@ -9,7 +9,7 @@
   @include flexbox_alignItems(stretch, stretch);
   @include flexbox_direction(column);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     @include flexbox_direction(row);
   }
 
@@ -23,7 +23,7 @@
     @include flexbox_flex(1, 1, auto);
     @include flexbox_alignSelf(stretch);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-left: 2em;
     }
   }
@@ -33,7 +33,7 @@
     // border-left: 10px solid #d83901;
     @include border-radius(10px);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: 240px;
       padding: 1em;
       text-align: center;
@@ -71,7 +71,7 @@
     font-size: 1.2em;
     text-align: center;
     display: inline-block;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: auto;
       font-size: 1.6em;
       text-align: center;
@@ -82,7 +82,7 @@
     clear: both;
     display: inline-block;
     text-align: center;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       display: initial;
       clear: none;
       width: auto;
@@ -98,7 +98,7 @@
     margin-top: 0.5em;
     display: inline-block;
     text-align: center;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: auto;
       margin-top: 0;
       font-size: 1.2em;
@@ -112,7 +112,7 @@
   &__body {
     display: block;
     text-align: center;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       text-align: left;
     }
   }
@@ -121,7 +121,7 @@
       font-size: 1em;
       line-height: 1.4em;
       text-align: justify;
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         font-size: 1.3em;
         line-height: 1.4em;
       }
@@ -155,7 +155,7 @@
     &__text {
       font-size: 1em;
       text-align: justify;
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         font-size: 1.3em;
       }
     }

@@ -2,17 +2,20 @@
     "private": true,
     "name": "ferreiro.me",
     "engines": {
-        "node": "8.x",
+        "node": "10.16.x",
         "yarn": "1.x"
     },
     "scripts": {
-        "build": "yarn workspace @ferreiro/server build",
         "check": "npm-check",
-        "devServer": "yarn build && yarn workspace @ferreiro/server dev",
-        "dev": "yarn install && yarn build && concurrently --kill-others-on-fail \"yarn devServer\"",
-        "heroku-postbuild": "yarn build",
-        "server": "yarn workspace @ferreiro/server start",
-        "start": "yarn server",
+        "seed-database": "node ./scripts/seedDatabase",
+        "dev": "concurrently \"yarn backend:server\" \"yarn backend:watch\" \"yarn frontend:server:dev\"",
+        "frontend:server:dev": "yarn workspace @ferreiro/client start:dev",
+        "backend:server": "yarn workspace @ferreiro/server start",
+        "backend:watch": "yarn workspace @ferreiro/server watch",
+        "build:client": "yarn workspace @ferreiro/client build",
+        "build:server": "yarn workspace @ferreiro/server build",
+        "build": "yarn build:server && yarn build:client",
+        "start": "yarn backend:server",
         "test": "echo $'[TODO] Implement tests'"
     },
     "workspaces": [
@@ -23,6 +26,7 @@
         "npm-check": "5.9.0"
     },
     "dependencies": {
+        "concurrently": "4.1.0",
         "xss-filters": "1.2.7"
     }
 }

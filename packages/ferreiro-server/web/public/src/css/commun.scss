@@ -74,7 +74,7 @@ a {
   text-align: center;
   color: rgba(0, 0, 0, .6);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     font-size: 1.4em;
     line-height: 1.4em;
   }
@@ -311,8 +311,8 @@ a {
       margin-bottom: 0;
     }
 
-    @media all and (min-width: $tablet-screen) {}
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width: $medium-screen) {}
+    @media all and (min-width:$large-screen) {
       // width:100%;
       // margin-right: 2%;
       // margin-bottom: 1em;
@@ -354,8 +354,8 @@ a {
       position: relative;
       z-index: 2;
       text-decoration: none;
-      @media all and (min-width: $tablet-screen) {}
-      @media all and (min-width:$desktop-screen) {
+      @media all and (min-width: $medium-screen) {}
+      @media all and (min-width:$large-screen) {
         padding:3.2em;
       }
       @media all and (min-width:$big-screen) {}

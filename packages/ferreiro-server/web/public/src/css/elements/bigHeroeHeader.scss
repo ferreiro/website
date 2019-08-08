@@ -7,11 +7,11 @@
   &__wrapper {
     padding: 1.9em 0;
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       padding: 4em 0;
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: 6.5em 0;
     }
   }
@@ -27,9 +27,9 @@
     background-position: 50% 50%;
     background-image: url(/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer_small.jpg);
 
-    @media all and (min-width: $tablet-screen) {}
+    @media all and (min-width: $medium-screen) {}
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       background-image: url(/images/home/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer.jpg);
     }
 
@@ -54,11 +54,11 @@
 
     @include text-shadow();
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       font-size: 3em;
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 3.5em;
     }
   }
@@ -73,12 +73,12 @@
 
     @include text-shadow();
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       max-width: 320px;
       font-size: 1.3em;
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 1.7em;
       max-width: 440px;
       line-height: 1.25em;
@@ -98,13 +98,13 @@
     @include transition(100ms !important);
     @include border-radius(60px);
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       font-size: 1.2em;
       padding: 0.90em 1.4em;
       margin-top: 30px;
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 1.3em;
       padding: 0.95em 1.4em;
       margin-top: 30px;

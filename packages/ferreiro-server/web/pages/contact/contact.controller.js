@@ -1,10 +1,21 @@
 import {cloneDeep} from 'lodash'
 import {createViewPath} from '../create-view-path'
+import {isReactEnabled} from '../is-react-enabled'
 
 const contactContent = require('../../content/english/contact.json')
 const feedbackContent = require('../../content/english/feedback.json')
 
-export const getContact = (req, res) => (
+export const getContact = (req, res) => {
+    if (isReactEnabled(req)) {
+        return res.render(createViewPath('contact', 'contact.react.pug'), {
+            title: 'Contact - Jorge Ferreiro',
+            headline: 'Contact me',
+            path: 'contact',
+            content: contactContent,
+            redirect: req.query.redirect
+        })  
+    }
+
     res.render(createViewPath('contact', 'contact.pug'), {
         title: 'Contact - Jorge Ferreiro',
         headline: 'Contact me',
@@ -12,7 +23,7 @@ export const getContact = (req, res) => (
         content: contactContent,
         redirect: req.query.redirect
     })
-)
+}
 
 export const getContactTalk = (req, res) => {
     let talkContact = cloneDeep(contactContent)

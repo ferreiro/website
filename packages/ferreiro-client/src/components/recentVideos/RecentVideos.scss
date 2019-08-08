@@ -1,0 +1,36 @@
+@import '../mediaQueries.scss';
+@import '../spacing.scss';
+
+.recent-videos {
+    min-height: 300px;
+    display: block;
+
+    @include large-up {
+        margin: 0 -.8em;
+    }
+
+    &__items {
+        align-items: stretch;
+        flex-wrap: wrap;
+        flex-direction: column;
+        display: flex;
+
+        @include large-up {
+            flex-direction: row;
+        }
+    }
+
+    &__item {
+        flex: 1 1 auto;
+        margin-bottom: $spacing-4;
+
+        @include large-up {
+            max-width: 33%;
+            margin-bottom: 0;
+
+            .card-related-post {
+                margin: 0 .8em;
+            }
+        }
+    }
+}

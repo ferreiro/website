@@ -1,8 +1,112 @@
 const express = require('express')
 const router = express.Router()
+import validator from 'validator'
+import merge from 'deepmerge'
+import isEmpty from 'lodash/isEmpty'
+const debug = require('debug')('ferreiro:api:v1:blog')
 
+import {markdownToHtml} from "../../markdown-to-html";
 import {isAuthenticated} from '../../../web/pages/admin/is-authenticated'
 import seriesRepository from '../../../api/repository/series'
+import blogRepository from '../../../api/repository/blog'
+import {generateRelatedPosts} from "./generate-related-posts";
+
+// TODO: Refactor and create specific response methods
+const createBlogListJsonResponse = (posts) => ({
+  title: 'Blog',
+  intro: 'A blog by Jorge Ferreiro about Web Development, Career growth and life adventures.',
+  posts,
+})
+
+// TODO: Move to a const file or something like that
+const ERROR_NOT_POST_FOUND = {
+    error: true,
+    message: 'Not post found or you do not have permissions to see it'
+}
+
+const getJsonResponse = (data, extraDataProps, filterKeys = []) => {
+    const dataWithExtraProps = merge(data, extraDataProps)
+
+    return dataWithExtraProps
+}
+
+/**
+ * @api get /blog/series - Retrieves the list of series (published and unpublished)
+ * @required authentication
+ */
+router.get('/list', (req, res) => {
+  // TODO: sanitize the req.body
+  const opts = {
+    maxPagePosts: req.body.postsCount || req.query.limit
+  }
+
+  return blogRepository.getAllPublished({}, opts)
+      .then((posts) => {
+        res.json(
+          createBlogListJsonResponse(posts.docs)
+        )
+      })
+      .catch(err => {
+        debug('Error fetching related posts', err);
+        return res.json({
+          error: 'Error fetching related posts'
+        })
+      })
+})
+
+router.get('/post/:permalink', function (req, res) {
+  // TODO: Scape XSS on params
+  const sanitizedPermalink = validator.blacklist(req.params.permalink, "<|>|&|\'|\"|'|,|/|")
+  const query = {
+    permalink: sanitizedPermalink
+  }
+
+  blogRepository
+    .findByPermalinkIncrementViews(query)
+    .then((response = {}) => {
+        const post = response._doc
+
+        // TODO: Also check if the user has permissions to see the post
+        // like: if is published or securityKey matched. If the post
+        // is only be visible by the admin, but not user. Then return
+        // not found.
+
+        if (isEmpty(post)) {
+          return res.json(ERROR_NOT_POST_FOUND)
+        }
+
+        const extraReponseProps = {
+            "html": markdownToHtml(post.body),
+        }
+        const filterOutKeys = ['body', 'html']
+
+        const jsonResponse = getJsonResponse(post, extraReponseProps, filterOutKeys)
+
+        return res.json(jsonResponse)
+    })
+    .catch(err => res.send(err))
+})
+
+// TODO: Protect this endpoint for bad users...
+router.get('/post/:permalink/related', function (req, res) {
+  // TODO: Scape XSS on params
+  const sanitizedPermalink = validator.blacklist(req.params.permalink, "<|>|&|\'|\"|'|,|/|")
+
+  console.group('/post/:permalink/related');
+  console.log('sanitizedPermalink', sanitizedPermalink);
+  console.groupEnd();
+
+  return generateRelatedPosts({
+    permalinkToSkip: sanitizedPermalink,
+    limit: 3
+  }).then((relatedPosts) => (
+    res.json({
+      relatedPosts: relatedPosts
+    })
+  )).catch((error) => (
+    res.json({error})
+  ))
+})
 
 /**
  * @api get /blog/series - Retrieves the list of series (published and unpublished)

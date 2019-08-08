@@ -1,0 +1,369 @@
+@import '../../../components/mediaQueries.scss';
+
+$post-reader-width: 700px;
+
+.post-reader {
+    z-index: 50;
+    margin: 1em auto 0;
+    position: relative;
+    max-width: $post-reader-width;
+
+    &__title {
+        margin: 0;
+        color: rgba(0, 0, 0, .85);
+        font-style: normal;
+        font-weight: 600;
+
+        @include large-down {
+            font-size: 32px;
+            letter-spacing: -.028em;
+            line-height: 1.04;
+        }
+    
+        @include large-up {
+          font-size: 36px;
+          letter-spacing: -.028em;
+          line-height: 42px;
+        }
+    }
+
+    &__subtitle {
+        --x-height-multiplier: 0.363;
+        --baseline-multiplier: 0.157;
+        color: rgba(0, 0, 0, .6);
+        font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        letter-spacing: -.022em;
+
+        @include large-down {
+            font-size: 20px;
+            line-height: 1.3;
+            margin-top: 16px;
+        }
+    
+        @include large-up {
+            font-size: 24px;
+            line-height: 1.22;
+            margin-top: 16px;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+// Display the post author
+.post-author {
+    align-items: center;
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 2em;
+
+    &__content {
+        flex: 0 0 auto;
+        align-items: center;
+        display: flex;
+    }
+
+    &__options {
+        flex: 1 1 auto;
+        margin-left: 1em;
+    }
+
+    &__image {
+        width: 30px;
+        border-radius: 100%;
+        margin-right: .7em;
+    }
+}
+
+.post-reader-content {
+	width: 100%;
+	display: inline-block;
+    font-family: 'Source Serif Pro', serif;
+    
+    hr {
+        font-size: 24px;
+        line-height: 1.4;
+        margin-top: 44px;
+        margin-bottom: 34px;
+        display: block;
+        border: 0;
+        text-align: center;
+        overflow: visible;
+        &:before {
+            content: '...';
+            display: inline-block;
+            margin-left: .6em;
+            color: rgba(0, 0, 0, .68);
+            position: relative;
+            top: -30px;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 30px;
+            letter-spacing: .62em;
+        }
+    }
+
+	p,
+	ul li,
+	h1,
+	h2,
+	h3,
+	h4,
+	a {
+		--x-height-multiplier: 0.35;
+		--baseline-multiplier: 0.179;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 21px;
+		line-height: 1.58;
+		letter-spacing: -.003em;
+		color: rgba(0, 0, 0, .80);
+		margin-top: 29px;
+		word-break: break-word;
+		word-wrap: break-word;
+		display: block;
+	}
+	.warningText {
+		padding: 1em;
+		border: 2px solid #f5a98e;
+		border: 1px solid #d93901;
+		margin-top: 29px;
+		border-radius: 10px;
+		p {
+			margin: 0;
+		}
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-family: 'Lato', sans-serif;
+	}
+	h2:before {
+		font-size: 1.2em;
+		content: '#';
+		position: absolute;
+		margin-left: -1.1em;
+		margin-top: -3px;
+		opacity: 0.2;
+		display: none;
+	}
+	p,
+	ul li,
+	ol li,
+	a {
+		font-size: $text-font-size;
+		line-height: $text-line-height;
+		letter-spacing: -.004em;
+
+		@include large-up {
+			font-size: $text-font-size-large-up;
+			line-height: $text-line-height-large-up;
+			letter-spacing: -.003em;
+			color: rgba(0, 0, 0, .84);
+		}
+	}
+	ol,
+	ul {
+		-webkit-margin-before: 0;
+		-webkit-margin-after: 0;
+		-webkit-margin-start: 0;
+		-webkit-margin-end: 0;
+		-webkit-padding-start: 0;
+		padding: 0;
+		list-style: decimal;
+		list-style-position: inside;
+		list-style-position: inside;
+		margin: 0;
+		padding: 0;
+		margin: 13px 0;
+		margin-left: 2em;
+		li {
+			margin: 20px 0;
+		}
+	}
+	ul {
+		li {
+			list-style: none;
+			position: relative;
+			margin-left: 1em;
+			&:before {
+				left: -1em;
+				content: '•';
+				padding-right: 10px;
+				position: absolute;
+				font-size: 1.3em;
+			}
+			p {
+				display: inline-block;
+				width: calc(100% - 25px);
+				vertical-align: top;
+				margin: 0;
+			}
+		}
+	}
+	ul.no_bullets {
+		list-style: none;
+		li {
+			span {
+				margin-right: 5px;
+			}
+			&:before {
+				content: '';
+				padding-right: 0;
+			}
+		}
+	}
+	ol {
+		margin-top: 29px;
+	}
+	//- https://stackoverflow.com/questions/10428720/how-to-keep-indent-for-second-line-in-ordered-lists-via-css
+	ol.linenums {
+		counter-reset: foo;
+		display: table;
+	}
+	ol.linenums>li {
+		counter-increment: foo;
+		display: table-row;
+	}
+	ol.linenums>li::before {
+		content: '';
+		/* Removed counter content: counter(foo) "."; */
+		display: table-cell;
+		/* aha! */
+		text-align: right;
+		padding-right: 0.5em;
+	}
+	//- Code syntax highlight
+	ol.linenums>li::before {
+		padding-right: 1em;
+	}
+	ol.linenums {
+		margin-left: 0;
+		@include large-up {
+			padding-left: 0;
+			margin-left: 0;
+		}
+		li {
+			margin: 0;
+			font-size: 18px;
+			line-height: 26px;
+			color: rgba(255, 255, 255, 0.6) !important;
+			padding-left: 0;
+		}
+	}
+	img {
+		max-width: 100%;
+		text-align: center;
+		margin: 0 auto;
+		display: block;
+	}
+	pre {
+		tab-size: 2;
+		color: #ddd;
+		margin-top: 19px;
+		padding: 0;
+		border-radius: 7px;
+	}
+	code {
+		padding: 0 5px;
+		color: #2f2f2f;
+		background: #f4f4f4;
+		overflow-wrap: break-word;
+		text-shadow: 0 1px rgba(0, 0, 0, .3);
+		font-family: Inconsolata, Monaco, Consolas, Courier New, Courier, monospace;
+		direction: ltr;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+		word-break: normal;
+		line-height: 1.5;
+		-moz-tab-size: 4;
+		tab-size: 4;
+		-webkit-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none;
+	}
+	blockquote {
+		margin: 0;
+		margin-top: 29px;
+		color: rgba(0, 0, 0, .68);
+		border: none;
+		padding: 5px 0;
+		text-align: left;
+		display: inline-block;
+		padding-left: 1em;
+		margin-left: -1em;
+		border-left: 3px solid rgba(0, 0, 0, .84);
+		@include large-up {
+			padding-left: 20px;
+			margin-left: -23px;
+		}
+		p {
+			margin-top: 0;
+			font-weight: 400;
+			font-style: italic;
+		}
+    }
+
+	a {
+		display: initial;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+	}
+	mark {
+		background-color: transparent !important;
+		background-image: linear-gradient(to bottom, rgba(203, 255, 186, 1), rgba(203, 255, 186, 1));
+		--x-height-multiplier: 0.363;
+		--baseline-multiplier: 0.157;
+		font-family: medium-content-slab-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+		font-weight: 400;
+		font-style: italic;
+		font-size: 28px;
+		line-height: 1.48;
+		letter-spacing: -.014em;
+		color: rgba(0, 0, 0, .68);
+		border: none;
+		padding: 0;
+		margin: 24px 0;
+		margin-left: 50px;
+		text-align: left;
+    }
+
+	h1 {
+		font-weight: 700;
+		font-style: normal;
+		font-size: 32px;
+		margin-left: -2px;
+		line-height: 1.15;
+		letter-spacing: -.02em;
+		color: rgba(0, 0, 0, .84);
+
+		font-size: 26px;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+
+		&::before {
+            background-color: #d83902;
+            padding: 0 20px;
+            content: '#';
+            color: #fff;
+            margin-right: .8em;
+		}
+	}
+	h2 {
+		font-weight: 600;
+		font-size: 26px;
+		color: rgba(0, 0, 0, .7);
+		color: rgba(0, 0, 0, .9);
+		margin-bottom: -15px;
+	}
+}

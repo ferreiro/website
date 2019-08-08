@@ -12,14 +12,14 @@
       "id": "about",
       "icon": null,
       "name" : "About me",
-      "url" : "/about",
+      "url" : "/about?react=true",
       "target": "_self"
     },
     {
       "id": "blog",
       "icon": null,
       "name" : "Blog",
-      "url" : "/blog",
+      "url" : "/blog?react=true",
       "target": "_self"
     },
     {
@@ -33,14 +33,14 @@
       "id": "talks",
       "icon": null,
       "name" : "Talks",
-      "url" : "/talks",
+      "url" : "/talks?react=true",
       "target": "_self"
     },
     {
       "id": "contact",
       "icon": null,
       "name" : "Contact",
-      "url" : "/contact",
+      "url" : "/contact?react=true",
       "target": "_self"
     }
   ],

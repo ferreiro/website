@@ -1,0 +1,59 @@
+@import '../variables.scss';
+@import '../mediaQueries.scss';
+
+.card-highlight {
+    background: #fff;
+    border-radius: $card-radius;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+
+    @include large-up {
+        flex-direction: row;
+        margin-bottom: 1.2em;
+    }
+
+    &__image {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        max-height: 260px;
+        border-top-left-radius: $card-radius;
+        border-top-right-radius: $card-radius;
+
+        @include large-up {
+            min-width: 60%;
+            height: 400px;
+            max-height: 400px;
+            border-radius: $card-radius;
+        }
+    }
+
+    &__content {
+        padding: 1em;
+
+        @include large-up {
+            padding: 2em;
+        }
+    }
+
+    &__title {
+        @include large-down {
+            font-size: $font-size-title;
+            font-weight: 600;    
+        }
+
+        @include large-up {
+            font-size: 40px;
+            line-height: 50px;
+            font-weight: 600;
+        }
+    }
+
+    &__summary {
+        margin-top: .7rem;
+        opacity: 0.7;
+        font-size: $font-size-paragraph;
+        line-height: $font-size-paragraph * 1.4;
+    }
+}

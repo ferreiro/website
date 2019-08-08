@@ -7,9 +7,9 @@
   border-top: 1px solid #f4f4f4;
 
 
-  @media all and (min-width: $tablet-screen) {
+  @media all and (min-width: $medium-screen) {
   }
-  @media all and (min-width:$desktop-screen) {
+  @media all and (min-width:$large-screen) {
     padding:1.7em 0;
   }
   @media all and (min-width:$big-screen) {
@@ -28,9 +28,9 @@
     display: none;
     border-top: 2px solid #f4f4f4;
     margin: 0;
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
     }
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       margin: 2em 0;
       display: block;
     }
@@ -76,10 +76,10 @@
       top: 0;
     }
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       width: 33%;
     }
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       border: 0;
       width: auto !important;
       padding:0 2em;

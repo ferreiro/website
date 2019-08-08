@@ -1,6 +1,7 @@
 # Ignoring destination static assets
 
 web/public/dst/
+dist
 
 .gulp-cache
 

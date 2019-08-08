@@ -7,7 +7,7 @@
   display: inline-block;
   margin-top: 2em;
 
-  @media all and (min-width:$desktop-screen) {
+  @media all and (min-width:$large-screen) {
     padding: 1em 0;
   }
 
@@ -45,7 +45,7 @@
   @include flexbox_alignItems(center, center);
   @include flexbox_direction(column);
 
-  @media all and (min-width: $desktop-screen) {
+  @media all and (min-width: $large-screen) {
     @include flexbox_direction(row);
   }
 
@@ -73,12 +73,12 @@
     @include flexbox_alignSelf(stretch);
     @include flexbox_order(0);
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       height: 280px;
       background-position: 50% 26%;
     }
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       width: 500px;
       width: 40%;
       height: auto;
@@ -108,10 +108,10 @@
     margin-top: 0.5em;
     margin-bottom: 0.2em;
     display: block;
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       font-size: 3em;
     }
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       line-height: 35px;
       font-size: 3.4em;
       margin-top: 10px;
@@ -125,10 +125,10 @@
     margin-top: 1em;
     color: rgba(0, 0, 0, 0.7);
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       font-size: 1.3em;
     }
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       font-size: 1.3em;
       max-width: 330px;
       margin-top: 0.9em;
@@ -145,10 +145,10 @@
     // @include transition(300ms);
     // @include opacity(0);
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       font-size: 1.125rem;
     }
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin: 1em 0;
       margin-top: 0;
       margin-bottom: 1.25rem;
@@ -169,7 +169,7 @@
     // @include opacity(0);
     @include transition(300ms);
 
-    @media all and (max-width: $desktop-screen) {
+    @media all and (max-width: $large-screen) {
       a {
         margin-bottom: 1.5em;
       }
@@ -194,10 +194,10 @@
     &:hover {
       background: #f4f4f4;
     }
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       margin-right: 1.4em;
     }
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       line-height: 1.2em;
       padding: 1.2em 1.5em;
       padding-bottom: 1.1em;
@@ -213,7 +213,7 @@
   padding: 1em;
   display: inline-block;
 
-  @media all and (min-width:$desktop-screen) {
+  @media all and (min-width:$large-screen) {
     padding: 2em;
     padding-bottom: 1em;
   }
@@ -225,10 +225,10 @@
     padding: 0;
     margin: 0;
 
-    @media all and (min-width: $tablet-screen) {
+    @media all and (min-width: $medium-screen) {
       font-size: 2.7em !important;
     }
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       font-size: 3em !important;
       text-align: left;
     }
@@ -239,7 +239,7 @@
     font-size: 1em;
     font-weight: 300;
     display: block;
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width:$large-screen) {
       margin:1em 0;
       letter-spacing:1px;
       font-size: 1.3em;

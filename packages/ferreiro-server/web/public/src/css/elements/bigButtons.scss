@@ -2,8 +2,8 @@
     @include flexbox();
     flex-direction: column;
 
-    @media all and (min-width: $tablet-screen) {}
-    @media all and (min-width:$desktop-screen) {
+    @media all and (min-width: $medium-screen) {}
+    @media all and (min-width:$large-screen) {
         flex-direction: column;
     }
     @media all and (min-width:$big-screen) {}

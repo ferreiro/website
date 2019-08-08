@@ -29,14 +29,14 @@
 
   &__entry {
     margin-bottom: 1.5em;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-bottom: 2em;
     }
   }
   &__content {
     padding: 1em;
     position: relative;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       padding: 1.5em;
     }
   }
@@ -45,7 +45,7 @@
     left: 0;
     margin-top: 0.5em;
     margin-bottom: 0.75em;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-bottom: 1em;
     }
     &__pic {
@@ -83,7 +83,7 @@
     padding: 1.5em 0;
     margin-bottom: 1em;
     text-align: center;
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       margin-bottom: 0;
       padding: 2.5em 0;
     }
@@ -99,7 +99,7 @@
     @include flexbox_alignContent(stretch, stretch);
     @include flexbox_alignItems(stretch, stretch);
 
-    @media all and (min-width: $desktop-screen) {
+    @media all and (min-width: $large-screen) {
       min-height: 240px;
       @include flexbox_direction(row);
       margin-bottom: 2em;
@@ -108,7 +108,7 @@
     &__left {
       @include flexbox_flex(0, 0, 100%);
       @include flexbox_alignSelf(auto);
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         @include flexbox_flex(0, 0, 40%);
         // margin: 1em;
         // margin-right: 0;
@@ -130,10 +130,10 @@
       vertical-align: top;
       position: relative;
       @include border-radiuses(5px, 5px, 0, 0);
-      @media all and (min-width: $tablet-screen) {
+      @media all and (min-width: $medium-screen) {
         height: 220px;
       }
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         height: 100%;
         margin-bottom: 0;
         background-size: cover;
@@ -163,7 +163,7 @@
       vertical-align: top;
       display: inline-block;
       margin: 1em;
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         margin: 1.5em 1.8em;
         margin: 1.2em 1.5em;
       }
@@ -179,7 +179,7 @@
     &__title {
       margin: 0;
       font-size: 1.6em;
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         font-size: 2em;
       }
       &__link {
@@ -200,7 +200,7 @@
       &:after {
         content: '...';
       }
-      @media all and (min-width: $desktop-screen) {
+      @media all and (min-width: $large-screen) {
         height: 55px;
         margin-top: 0.7em;
       }

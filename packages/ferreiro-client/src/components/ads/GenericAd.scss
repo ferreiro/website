@@ -1,0 +1,62 @@
+@import "../mediaQueries.scss";
+
+.generic-ad {
+    width: 100%;
+    background: #f4f4f4;
+    margin-bottom: 2em;
+
+    &__wrapper {
+        align-items: center;
+        display: flex;
+        margin: 0 auto;
+        max-width: 90%;
+
+        @include large-up {
+            max-width: 620px;
+        }
+    }
+
+    &__button {
+        background: #ca4622;
+        color: #fff;
+        display: block;
+        font-weight: 600;
+        max-width: 90px;
+        margin: 0 auto;
+        padding: .8em 1.5em;
+    }
+
+    &__content {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 1.5em;
+        margin: 0;
+        margin-bottom: 1em;
+
+        @include large-up {
+            font-size: 1.6em;
+        }        
+    }
+
+    &__image {
+        flex: 0 0 auto;
+        width: 200px;
+        align-self: flex-end;
+
+        @include large-up {
+            width: 250px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+        }
+    }
+}

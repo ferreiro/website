@@ -1,0 +1,37 @@
+.sidebar-menu {
+    width: calc(100% - 1em);
+    margin: 2em 0 2em;
+    margin-left: 1em;
+    
+    &__title {
+        font-size: 20px;
+        margin-bottom: 18px;
+        margin-left: 24px;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__item {
+        list-style: none;
+        flex: 1 1 auto;
+
+        a {
+            display: block;
+            padding: 1em 1.5em;
+        }
+    }
+
+    .selected {
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
+        background: #d8f2ff;
+
+        a {
+            color: #33454e;
+            font-weight: 600;
+        }
+    }
+}

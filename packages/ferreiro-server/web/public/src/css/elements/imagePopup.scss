@@ -20,7 +20,7 @@
     top: 1em;
     right: 1em;
     cursor: pointer;
-    @media all and (min-width: $desktop-screen){
+    @media all and (min-width: $large-screen){
       top: 1.5em;
       right: 1.5em;
     }

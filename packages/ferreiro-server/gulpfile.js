@@ -55,6 +55,7 @@ gulp.task('images', function () {
   const excludePsd = path.join(SRC, 'images/**/*.psd')
   return gulpTasks.optimizeImages({
     src: [
+      `!${excludePsd}`,
       path.join(SRC, 'images/**/*.jpg'),
       path.join(SRC, 'images/**/*.jpeg'),
       path.join(SRC, 'images/**/*.png'),
