@@ -28,7 +28,8 @@
     "build:bower": "bower install",
     "build:gulp": "gulp",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn watch\"",
-    "lint": "eslint",
+    "lint": "eslint api web setup",
+    "lint:fix": "eslint --fix api web setup",
     "server": "DEBUG=ferreiro:* nodemon ./bin/www --exec babel-node --presets babel-preset-env",
     "start": "yarn server",
     "watch": "gulp watch"

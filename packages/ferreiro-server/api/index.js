@@ -8,9 +8,9 @@ app.set('view engine', 'pug')
 // API Route
 app.use('/v1', require('./v1'))
 app.get('/status', function (req, res) {
-  res.status(200).json({
-    'response': 'Everything is working correctly'
-  })
+    res.status(200).json({
+        'response': 'Everything is working correctly'
+    })
 })
 app.all('*', errors.endpointNotFound)
 

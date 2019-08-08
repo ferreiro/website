@@ -1,8 +1,8 @@
 // setupAbout()
 
 function setupAbout() {
-  // displayBiography()
-  // setupScrollEvents()
+    // displayBiography()
+    // setupScrollEvents()
 }
 
 /*
@@ -32,24 +32,24 @@ function setupScrollEvents () {
 */
 
 function getScrollOffset () {
-  // We want to make our divs to appear when scroll on 70% of the screen
-  // meaning the item has seen 30%. How is this calculated?
-  // 100% --> $(window).height()
-  // 70%  --> X
-  return ($(window).height() * 85) / 100
+    // We want to make our divs to appear when scroll on 70% of the screen
+    // meaning the item has seen 30%. How is this calculated?
+    // 100% --> $(window).height()
+    // 70%  --> X
+    return ($(window).height() * 85) / 100
 }
 
 // offset makes the object to appear before in the screen
 function isScrollCloseToItem (scrollTop, item, offset) {
-  const targetOffsetY = item.offset().top
-  return scrollTop - (targetOffsetY - offset) > 0
+    const targetOffsetY = item.offset().top
+    return scrollTop - (targetOffsetY - offset) > 0
 }
 
 function displayTimelineItem (itemSelector, displayedClass, animationCss) {
-  const animationStyle = animationCss ? 'animated ' + animationCss : 'animated fadeInUp'
-  itemSelector
-    .addClass(displayedClass)
-    .addClass(animationStyle)
+    const animationStyle = animationCss ? 'animated ' + animationCss : 'animated fadeInUp'
+    itemSelector
+        .addClass(displayedClass)
+        .addClass(animationStyle)
 }
 /*
 
@@ -74,25 +74,25 @@ async function displayBiography () {
 */
 
 function hideContent (contents) {
-  contents.forEach(function (selector) {
-    selector.css({ opacity: 0 })
-  })
+    contents.forEach(function (selector) {
+        selector.css({ opacity: 0 })
+    })
 }
 
 function displayContent (contents) {
-  contents.forEach(function (selector) {
-    selector.css({
-      opacity: 1
+    contents.forEach(function (selector) {
+        selector.css({
+            opacity: 1
+        })
+            .addClass('animated fadeInBig')
     })
-    .addClass('animated fadeInBig')
-  })
 }
 
 function displayPhoto (photo) {
-  photo.css({
-    opacity: 1
-  })
-  /*
+    photo.css({
+        opacity: 1
+    })
+    /*
   var delayTime = 200
   setTimeout(function () {
     photo
@@ -126,9 +126,9 @@ async function displayBiographyTexts(bioTexts) {
   */
 
 function waitBeforeAnimation () {
-  return new Promise(resolve => {
-    setTimeout(function () {
-      resolve(true)
-    }, 1200)
-  })
+    return new Promise(resolve => {
+        setTimeout(function () {
+            resolve(true)
+        }, 1200)
+    })
 }

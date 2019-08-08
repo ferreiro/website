@@ -7,52 +7,52 @@ var projectImages = $('.project_gallery_entry')
 // EVENTS
 
 projectImages.click(function(e) {
-  var e = $(this)
-  displayPopup(e)
+    var e = $(this)
+    displayPopup(e)
 })
 
 popupCloseButton.click(function(e) {
-  hidepopup()
+    hidepopup()
 })
 
 popup.click(function(e) {
-  hidepopup()
+    hidepopup()
 })
 
 // AUXILIARY FUNCTIONS
 
 var changePopupImage = function(src) {
-  popupImage
-    .find('img')
-    .attr('src', src)
+    popupImage
+        .find('img')
+        .attr('src', src)
 }
 
 var hidepopup = function () {
-  const webpageBody = $('body')
-  webpageBody.css({ overflow: 'auto' })
+    const webpageBody = $('body')
+    webpageBody.css({ overflow: 'auto' })
 
-  if (popupDisplayed) {
-    popup.hide(0)
-    popupDisplayed = false
-  }
+    if (popupDisplayed) {
+        popup.hide(0)
+        popupDisplayed = false
+    }
 }
 
 var displayPopup = function (elem) {
-  const webpageBody = $('body')
-  const imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
-  const bigImageUrl = elem
-      .find('.bigImage')
-      .attr('value')
+    const webpageBody = $('body')
+    const imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
+    const bigImageUrl = elem
+        .find('.bigImage')
+        .attr('value')
 
-  webpageBody.css({ overflow: 'hidden' })
+    webpageBody.css({ overflow: 'hidden' })
 
-  if (!popupDisplayed) {
-    popup.fadeIn('400')
-  }
+    if (!popupDisplayed) {
+        popup.fadeIn('400')
+    }
 
-  // change the image shown in the popup
-  changePopupImage(bigImageUrl)
-  popupDisplayed = true
+    // change the image shown in the popup
+    changePopupImage(bigImageUrl)
+    popupDisplayed = true
 
 }
 
