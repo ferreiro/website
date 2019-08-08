@@ -65,12 +65,15 @@ export class VideoDetailPage extends PureComponent {
             <div>
                 <div
                     style={{
-                        background: '#f4f4f4',
+                        // background: '#f4f4f4',
                         padding: '2em',
                         textAlign: 'center',
                     }}
                     className="spacing-4-bot"
                 >
+                    <h3>
+                    🛎️ Don not miss any new video!
+                    </h3>
                     <Button
                         text={translate('Subscribe youtube')}
                         size={BUTTON_SIZE_BIG}
@@ -108,7 +111,6 @@ export class VideoDetailPage extends PureComponent {
         }
 
         const iframeUrlWithAutoplay = `${video[0].iframe}&autoplay=1`
-        console.log(video)
 
         const beforeContent = (
             <iframe

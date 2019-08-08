@@ -131,7 +131,7 @@ export const content = {
         [PAGE_CONTENT]: {
             [VIDEO_CATEGORIES_ALL]: {
                 [PAGE_TITLE]: 'Videos',
-                [PAGE_SUBTITLE]: 'Jorge Ferreiro videos',
+                [PAGE_SUBTITLE]: 'Jorge Ferreiro videos with conferences, talks, workshops, interviews and more exclusive content.',
             },
             [VIDEO_CATEGORIES_DID]: {
                 [PAGE_TITLE]: 'Developers In Depth',

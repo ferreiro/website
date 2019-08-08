@@ -145,9 +145,9 @@ export class VideosHome extends PureComponent {
             <div>
                 {this.renderHeader({pageData, activeCategory})}
 
-                {/* {renderVideoList({
+                {renderVideoList({
                     videos: filteredEntities,
-                })} */}
+                })}
 
                 {filteredEntities.length === 0 && (
                     <p>No videos available :(</p>
@@ -190,7 +190,12 @@ export class VideosHome extends PureComponent {
         const beforeContent = activeCategory === VIDEO_CATEGORIES_DID
             && (
                 <div>
-                    <img width="100%" src="https://yt3.ggpht.com/pNVRRJvvHM-jGbdUstBlJqj2zn3QRn0Fjo70RPGyAWC55-y8xGaJh0Pn0OACh0TpzByHwCaAvJk=w2560-fcrop64=1,00005a57ffffa5a8-nd-c0xffffffff-rj-k-no" />
+                    <img
+                        alt="Jorge ferreiro software engineer entrepreneur eventbrite amazon youtube channel banner"
+                        src="/images/videos/jorge_ferreiro_software_engineer_entrepreneur_eventbrite_amazon_youtube_channel_banner.jpg"
+                        title="Jorge ferreiro software engineer entrepreneur eventbrite amazon youtube channel banner"
+                        width="100%"
+                    />
                 </div>
             )
 
