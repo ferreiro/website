@@ -9,7 +9,7 @@
     "start": "yarn build"
   },
   "engines": {
-    "node": ">=10.16.2"
+    "node": ">=8.10.0"
   },
   "dependencies": {
     "react": "16.8.6",

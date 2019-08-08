@@ -2,7 +2,7 @@
     "private": true,
     "name": "ferreiro.me",
     "engines": {
-        "node": ">=10.16.2",
+        "node": ">=8.10.0",
         "yarn": "1.x"
     },
     "scripts": {
