@@ -13,7 +13,6 @@ export const getProjects = (req, res) => (
 )
 
 export const getProjectsByCategory = (req, res) => {
-    const title = category + ' projects'
     const category = req.params.category
   
     const projectsFiltered = projects.filter((project) => {

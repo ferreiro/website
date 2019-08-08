@@ -19,7 +19,7 @@ mixin experienceEntry(dataEntry)
             if dataEntry.description
                 .timeline__item__body
 
-                each item in dataEntry.description || []
+                each item in dataEntry.description || []
 
                     if item.type == "entry"
                         .timeline__item__oneline
@@ -41,7 +41,7 @@ mixin experienceEntry(dataEntry)
                     else if item.type == "warning"
                         .timeline__item__warning
                             if item.link
-                            a(href= item.link.url, target= item.link.target || '_blank').timeline__item__warning__link
+                            a(href= item.link.url, target= item.link.target || '_blank').timeline__item__warning__link
                             .timeline__item__warning__wrapper
                             if item.icon
                                 span.icon.timeline__item__warning__icon(class= item.icon)

@@ -11,7 +11,7 @@ function setupMostRecentPostAd () {
         return
     }
 
-    delayDisplayTime().then(sucess => {
+    delayDisplayTime().then(() => {
         if (!hasUserClickedOnMostRecentPostAd(mostRecentPostAd, cacheName)) {
             const offset = '50px'
             moveContainersAndMenu(offset, () => {
@@ -19,19 +19,19 @@ function setupMostRecentPostAd () {
             })
         }
 
-        setupScrollListener(mostRecentPostAd, cacheName)
+        // setupScrollListener(mostRecentPostAd, cacheName)
         setupAdClickListener(mostRecentPostAd, cacheName)
     })
 }
 
-function setupScrollListener(mostRecentPostAd, cacheName) {
-    $(window).scroll(function() {
-        const scrollTop = $(window).scrollTop()
+// function setupScrollListener(mostRecentPostAd, cacheName) {
+//     $(window).scroll(function() {
+//         const scrollTop = $(window).scrollTop()
 
-        // If user make scrolls, display ad.
-        if (scrollTop > 100) {}
-    })
-}
+//         // If user make scrolls, display ad.
+//         if (scrollTop > 100) {}
+//     })
+// }
 
 
 /**
@@ -52,7 +52,7 @@ function hasUserClickedOnMostRecentPostAd (mostRecentPostAd, cacheName) {
 }
 
 function setupAdClickListener (mostRecentPostAd, cacheName) {
-    mostRecentPostAd.click(function (event) {
+    mostRecentPostAd.click(function () {
         localStorage[cacheName + '_clicked'] = true
         localStorage[cacheName + '_lastPostIdShown'] = mostRecentPostAd.find('.lastPostId').val()
     })

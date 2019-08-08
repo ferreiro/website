@@ -27,7 +27,7 @@ class SeriesSelector {
     setupOpenDropdown () {
         const that = this
 
-        this.dropdownButton.click((event) => {
+        this.dropdownButton.click(() => {
             if (that.dropdown.is(':visible')) {
                 that.hideDropdown()
             } else {
@@ -118,7 +118,9 @@ class SeriesSelector {
             const seriesPic = $(event.target).parent()
                 .find('.seriesSelector__dropdown__favicon')
                 .css('background-image')  // https://stackoverflow.com/questions/8809876/can-i-get-divs-background-image-url
+                // eslint-disable-next-line no-useless-escape
                 .replace(/.*\s?url\([\'\"]?/, '')
+                // eslint-disable-next-line no-useless-escape
                 .replace(/[\'\"]?\).*/, '')
 
             that.updateCurrentId(seriesId)

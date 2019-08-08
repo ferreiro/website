@@ -41,7 +41,7 @@ mixin newsletterForm(opts)
             input(id="checkbox1.1", class="newsletter", type="checkbox", name="__subscribed", value="Subscribed", checked)
             label(for="checkbox1.1")
               i
-        span.contact_form_newsletter_text= (content && content.form && content.form.newsletter ? content.form.newsletter : 'Subscribe to updates from Jorge')
+        span.contact_form_newsletter_text= (content && content.form && content.form.newsletter ? content.form.newsletter : 'Subscribe to updates from Jorge')
 
     fieldset.contact_form_fieldset.contact_fieldset_nomargin(style="margin-top: 0.9em;")
       input(type="submit", value= submitButtonText, style="max-width: 275px;").subscriptionBoxLarge__submit#formSendButton

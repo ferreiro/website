@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-  getResume,
+    getResume,
 } from './resume.controller'
 
 const router = express.Router()

@@ -11,7 +11,7 @@
       li(id= item.id, class= path===item.id ? 'current_section' : '')
         if item.id == 'home'
           - item.name = 'Home'
-        a(href= item.url, target= item.target || '_self').link_focus_deactivated
+        a(href= item.url, target= item.target || '_self').link_focus_deactivated
           span= item.name
 
     //-Menu block containing links
@@ -26,7 +26,7 @@
 
         //-Menu block containing links (sublinks)
         ul
-          each item in social || []
+          each item in social || []
             li
               a(href= item.url, target= item.target || '_blank').link_focus_deactivated
                 span.icon-separated(class="icon-" + item.icon)
@@ -40,13 +40,13 @@ header.menu.fixed#menu
 
       //.menu_left
         nav.menu__nav
-          each item in menu || []
+          each item in menu || []
             if !item.hidden
               if item.id == 'home'
                 //- Skip home icon on desktop
               else
                 - itemClass = path===item.id ? 'item-selected' : ''
-                a.item(id= item.id, href= item.url, target= item.target || '_self', class= itemClass)
+                a.item(id= item.id, href= item.url, target= item.target || '_self', class= itemClass)
                   if item.icon
                     p.icon(class= item.icon)
                   if item.name
@@ -68,8 +68,8 @@ header.menu.fixed#menu
                     p= item.name
 
           .menu-socialLinks
-            each item in social || []
-              a.menu-socialLinks__item(id= item.id, href= item.url, target= item.target || '_target')
+            each item in social || []
+              a.menu-socialLinks__item(id= item.id, href= item.url, target= item.target || '_target')
                 span.dropdown-icon(class="icon-" + item.icon)
                 //- span.dropdown-text #{item.name}
 
@@ -91,8 +91,8 @@ header.menu.fixed#menu
                 span Social Networks
                 .dropdown-content#DropdownSocial
                   .dropdown-wrapper
-                    each item in social || []
-                      a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
+                    each item in social || []
+                      a.dropdown-item(id= item.id, href= item.url, target= item.target || '_target')
                         span.dropdown-icon(class="icon-" + item.icon)
                         span.dropdown-text #{item.name}
 

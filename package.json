@@ -13,6 +13,9 @@
         "build:client": "yarn workspace @ferreiro/client build",
         "build:server": "yarn workspace @ferreiro/server build",
         "build": "yarn build:server && yarn build:client",
+        "lint": "yarn run lint:client && yarn run lint:server",
+        "lint:client": "yarn workspace @ferreiro/client lint",
+        "lint:sever": "yarn workspace @ferreiro/server lint",
         "start": "yarn build && yarn backend:server",
         "test": "echo $'[TODO] Implement tests'",
         "heroku-postbuild": "yarn build"

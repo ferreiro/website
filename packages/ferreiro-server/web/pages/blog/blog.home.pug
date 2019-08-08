@@ -42,7 +42,7 @@ block content_large
         if blogCategory !== 'all'
           h2.category__title.margin-bottom-1= blogCategory + ' posts'
 
-        if !posts || posts.length <= 0
+        if !posts || posts.length <= 0
           .warningMessage(style="max-width: 400px; margin: 0 auto;")
             h1.warningMessage__title There are no more posts to show.
             p.warningMessage__text But I'm writing more articles! Join the community and be the first to receive my new posts and exclusive content!
@@ -50,7 +50,7 @@ block content_large
               +subscriptionBox()
         else
           .twoColsGrid
-            each post, index in posts || []
+            each post, index in posts || []
 
               //- Advertisement: subscribe to blog!
               //- if index == 3

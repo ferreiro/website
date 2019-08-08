@@ -1,9 +1,9 @@
 import express from 'express'
 import {
-	getBlogPosts,
-	getBlogSeries,
-	getSingleBlogSeries,
-	getPostByPermalink,
+    getBlogPosts,
+    getBlogSeries,
+    getSingleBlogSeries,
+    getPostByPermalink,
 } from './blog.controller'
 
 const router = express.Router()

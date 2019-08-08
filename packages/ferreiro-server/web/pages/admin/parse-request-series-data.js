@@ -10,13 +10,13 @@ export const parseRequestSeriesData = (req) => {
     const secretKey = data.series_secretKey
   
     return {
-      pic,
-      title,
-      favicon,
-      permalink,
-      description,
-      published,
-      secretKey
+        pic,
+        title,
+        favicon,
+        permalink,
+        description,
+        published,
+        secretKey
     }
-  }
+}
   

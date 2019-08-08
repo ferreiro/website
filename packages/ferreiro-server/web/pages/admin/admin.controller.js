@@ -2,12 +2,12 @@ import {createViewPath} from '../create-view-path'
 import {parseRequestPostData} from './parse-request-post-data'
 import blogRepository from '../../../api/repository/blog'
 
-export const logout = (req, res, next) => {
-    req.logout();
+export const logout = (req, res) => {
+    req.logout()
     res.redirect('/admin')
 }
   
-export const login = (req, res, next) => {
+export const login = (req, res) => {
     if (req.user) {
         return res.redirect('/admin') // logged!
     }
@@ -32,7 +32,7 @@ export const postLogin = (req, res, next) => {
     })
 }
   
-export const getAllPosts = (req, res, next) => {
+export const getAllPosts = (req, res) => {
     let locals = {
         title: 'Posts',
         path: 'admin',
@@ -48,7 +48,7 @@ export const getAllPosts = (req, res, next) => {
     })
 }
 
-export const getPublishedPosts = (req, res, next) => {
+export const getPublishedPosts = (req, res) => {
     let locals = {
         title: 'Published',
         path: 'admin',
@@ -71,7 +71,7 @@ export const getPublishedPosts = (req, res, next) => {
         })
 }
 
-export const getDraftsPosts = (req, res, next) => {
+export const getDraftsPosts = (req, res) => {
     let locals = {
         title: 'Drafts',
         path: 'admin',
@@ -87,7 +87,7 @@ export const getDraftsPosts = (req, res, next) => {
     })
 }
 
-export const createPostComposer = (req, res, next) => {
+export const createPostComposer = (req, res) => {
     const context = {
         admin: true
     }
@@ -95,7 +95,7 @@ export const createPostComposer = (req, res, next) => {
     res.render(createViewPath('admin', 'views/create.pug'), context)
 }
 
-export const postNewBlog = (req, res, next) => {
+export const postNewBlog = (req, res) => {
     const postData = parseRequestPostData(req.body)
 
     return blogRepository.create(postData).then((post) => {
@@ -110,7 +110,7 @@ export const postNewBlog = (req, res, next) => {
     })
 }
   
-export const editPostPage = (req, res, next) => {
+export const editPostPage = (req, res) => {
     const postPermalink = req.params.permalink
 
     return blogRepository.findByPermalink({
@@ -121,14 +121,14 @@ export const editPostPage = (req, res, next) => {
             post: post,
             admin: true
         })
-    }).catch((err) => {
+    }).catch(() => {
         return res.render(createViewPath('admin', 'views/home.pug'), {
             error: 'Failed to create new post.'
         })
     })
 }
   
-export const editPostSubmit = (req, res, next) => {
+export const editPostSubmit = (req, res) => {
     const postPermalink = req.params.permalink
     const postData = parseRequestPostData(req.body)
 
@@ -136,7 +136,7 @@ export const editPostSubmit = (req, res, next) => {
         res.json({
             post
         })
-    )).catch((err) => (
+    )).catch(() => (
         res.json({
             error: 'Failed to update post.'
         })
@@ -144,18 +144,18 @@ export const editPostSubmit = (req, res, next) => {
 }
 
 // Show a confirmation screen before deleting a post
-export const deletePostConfirmation = (req, res, next) => {
+export const deletePostConfirmation = (req, res) => {
     const postPermalink = req.params.permalink
 
     return res.send('Are you sure you want to delete the post?<br /><a href="/admin">Cancel</a><a href="/admin/delete/' + postPermalink + '/confirm">Yes. I know this action can not be undo</a>')
 }
 
-export const deletePost = (req, res, next) => {
+export const deletePost = (req, res) => {
     const postPermalink = req.params.permalink
 
-    blogRepository.findAndDeleteByPermalink(postPermalink).then((post) => (
+    blogRepository.findAndDeleteByPermalink(postPermalink).then(() => (
         res.redirect('/admin')
-    )).catch((err) => (
+    )).catch(() => (
         res.render(createViewPath('admin', 'home.pug'), {
             error: 'Failed to update post.'
         })

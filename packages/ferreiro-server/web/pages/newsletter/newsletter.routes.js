@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-  getNewsletter,
+    getNewsletter,
 } from './newsletter.controller'
 
 const router = express.Router()

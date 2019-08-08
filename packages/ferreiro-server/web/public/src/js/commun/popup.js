@@ -16,7 +16,7 @@ function setupPopup() {
     // Skip and don't autodisplay newsletter
     } else {
     // Only autodisplay if the user has not subscribed in this browser
-        if (!localStorage.userSubscribed || localStorage.userSubscribed === 'false') {
+        if (!localStorage.userSubscribed || localStorage.userSubscribed === 'false') {
             setupScrollEvents(popup, popupBackground, popupWrapper)
         }
     }
@@ -30,12 +30,12 @@ function setupPopup() {
         closePopup(popup, popupBackground, popupWrapper)
     })
 
-    popupBackground.click(function (event) {
+    popupBackground.click(function () {
         closePopup(popup, popupBackground, popupWrapper)
     })
 }
 
-function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
+function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
     const button = $('.openNewsletterSubscription')
     button.click(function (event) {
         event.preventDefault()
@@ -78,14 +78,14 @@ function isScrollCloseToItem (scrollTop, item, offset) {
     return scrollTop - (targetOffsetY - offset) > 0
 }
 
-function displayPopupWithDelay (popup, popupBackground, popupWrapper, opts) {
-    const timeoutMs = opts && opts.timeoutMs ? opts.timeoutMs : 10000
-    setTimeout(function () {
-        showPopup(popup, popupBackground, popupWrapper)
-    }, timeoutMs)
-}
+// function displayPopupWithDelay (popup, popupBackground, popupWrapper, opts) {
+//     const timeoutMs = opts && opts.timeoutMs ? opts.timeoutMs : 10000
+//     setTimeout(function () {
+//         showPopup(popup, popupBackground, popupWrapper)
+//     }, timeoutMs)
+// }
 
-function showPopup(popup, popupBackground, popupWrapper) {
+function showPopup(popup) {
     $('body').css({
     // overflow: 'hidden'
     })
@@ -100,15 +100,9 @@ function showPopup(popup, popupBackground, popupWrapper) {
     } else {
         popup.find('*').filter(':input:visible:first').focus()
     }
-
-    /*popupBackground
-    .show(0)
-    .removeClass('animated fadeIn')
-    .addClass('animated fadeIn')
-    */
 }
 
-function closePopup(popup, popupBackground, popupWrapper) {
+function closePopup(popup) {
     $('body').css({
         overflow: 'initial'
     })

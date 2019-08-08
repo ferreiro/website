@@ -6,13 +6,13 @@ import {
     AWS_ACCESS_KEY_ID,
     S3_REGION,
     S3_BUCKET,
-} from '../../../env';
+} from '../../../env'
 
 aws.config.update({
     secretAccessKey: AWS_SECRET_ACCESS_KEY,
     accessKeyId: AWS_ACCESS_KEY_ID,
     region: S3_REGION
-});
+})
 
 const s3 = new aws.S3()
 
@@ -22,7 +22,7 @@ export const upload = multer({
         bucket: S3_BUCKET,
         acl: 'public-read',
         key: function (req, file, next) {
-            next(null, file.originalname); //use Date.now() for unique file keys
+            next(null, file.originalname) //use Date.now() for unique file keys
         }
     })
-});
+})

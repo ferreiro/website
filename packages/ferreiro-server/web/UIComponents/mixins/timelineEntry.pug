@@ -19,7 +19,7 @@ mixin timelineEntry(dataEntry)
       if dataEntry.description
         .timeline__item__body
 
-          each item in dataEntry.description || []
+          each item in dataEntry.description || []
 
             if item.type == "entry"
               .timeline__item__oneline
@@ -41,7 +41,7 @@ mixin timelineEntry(dataEntry)
             else if item.type == "warning"
               .timeline__item__warning
                 if item.link
-                  a(href= item.link.url, target= item.link.target || '_blank').timeline__item__warning__link
+                  a(href= item.link.url, target= item.link.target || '_blank').timeline__item__warning__link
                 .timeline__item__warning__wrapper
                   if item.icon
                     span.icon.timeline__item__warning__icon(class= item.icon)
@@ -72,7 +72,7 @@ mixin timelineEntry(dataEntry)
         .resume__entry__body
 
           if dataEntry.description
-            each item in dataEntry.description || []
+            each item in dataEntry.description || []
 
               if item.type == "entry"
                 .resume__entry__oneline
@@ -92,7 +92,7 @@ mixin timelineEntry(dataEntry)
               else if item.type == "warning"
                 .resume__entry__warning
                   if item.link
-                    a(href= item.link.url, target= item.link.target || '_blank').resume__entry__warning__link
+                    a(href= item.link.url, target= item.link.target || '_blank').resume__entry__warning__link
                   .resume__entry__warning__wrapper
                     if item.icon
                       span.icon.resume__entry__warning__icon(class= item.icon)

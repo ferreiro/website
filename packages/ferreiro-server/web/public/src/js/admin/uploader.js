@@ -3,17 +3,17 @@ setupImageUploader({
     uploaderButton: '#headerImageUploaderButton',
     uploaderForm: '#headerImageUploaderForm',
     loader: '#headerImageUploaderLoading',
-    success: function (loader, form, data, statusCode) {
+    success: function (_, __, data) {
         const image = $('#picImage')
         const imageInput = $('#picInput')
 
         image.attr('src', data.permalink)
         imageInput.attr('value', data.permalink)
     },
-    error: function (error, loader, form) {
+    error: function (error) {
         window.alert('Can not upload the image', error)
     },
-    always: function (loader, form) {
+    always: function (loader) {
         loader.hide()
     }
 })
@@ -24,7 +24,7 @@ setupImageUploader({
     uploaderForm: '#imageUploader',
     loader: '#imageUploaderLoader',
     hideButton: '#imageUploaderClear',
-    success: function (loader, form, data, statusCode) {
+    success: function (_, __, data) {
         const imageUrl = $('#imageUploadedUrl')
         imageUrl.html(data.permalink)
 
@@ -37,10 +37,10 @@ setupImageUploader({
             $('#imageUploaderWrapper').fadeIn(0)
         })
     },
-    error: function (error, loader, form) {
+    error: function (error) {
         window.alert('Can not upload the image', error )
     },
-    always: function (loader, form) {
+    always: function (loader) {
         loader.hide()
     }
 })

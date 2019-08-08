@@ -6,18 +6,18 @@ import seriesRouter from './admin.series.routes'
 import env from '../../../env'
 import {isAuthenticated} from './is-authenticated'
 import {
-  login,
-  logout,
-  postLogin,
-  getAllPosts,
-  getPublishedPosts,
-  getDraftsPosts,
-  createPostComposer,
-  postNewBlog,
-  editPostPage,
-  editPostSubmit,
-  deletePostConfirmation,
-  deletePost
+    login,
+    logout,
+    postLogin,
+    getAllPosts,
+    getPublishedPosts,
+    getDraftsPosts,
+    createPostComposer,
+    postNewBlog,
+    editPostPage,
+    editPostSubmit,
+    deletePostConfirmation,
+    deletePost
 } from './admin.controller'
 
 const router = express.Router()
@@ -40,9 +40,9 @@ router.use('/series', isAuthenticated, seriesRouter)
 router.get('/logout', logout)
 router.get('/login', login)
 router.post('/login', recaptcha.middleware.verify, postLogin, passport.authenticate('local', {
-  successRedirect: '/admin',
-  failureRedirect: '/admin/login',
-  failureFlash: 'Invalid password or username.'
+    successRedirect: '/admin',
+    failureRedirect: '/admin/login',
+    failureFlash: 'Invalid password or username.'
 }))
 
 module.exports = router

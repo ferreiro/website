@@ -1,5 +1,5 @@
-var ss = sessionStorage
-var menu = $('.menu')
+// var ss = sessionStorage
+// var menu = $('.menu')
 var targetDivToAnimate = $('.animate')
 var animations = [ 'fadeInUpBig'] //  'flipInY', '', 'bounceIn'
 

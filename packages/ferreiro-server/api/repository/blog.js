@@ -83,7 +83,7 @@ module.exports.getAll = function () {
         .populate('series')
 }
 
-module.exports.getAllDrafts = function (options) {
+module.exports.getAllDrafts = function () {
     return Post.find({
         published: false
     }).sort({ createdAt: -1 })
@@ -138,7 +138,7 @@ module.exports.getMostRecentPosts = function (opts) {
 
 module.exports.getRandomPosts = function (opts) {
     const limit = opts.limit || 3
-    const permalinkToSkip = opts.permalinkToSkip || ''
+    const permalinkToSkip = opts.permalinkToSkip || ''
 
     return new Promise((resolve, reject) => {
         const filter = {

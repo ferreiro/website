@@ -1,8 +1,8 @@
 import express from 'express'
 import {
-  getContact,
-  getContactTalk,
-  getContactFeedback
+    getContact,
+    getContactTalk,
+    getContactFeedback
 } from './contact.controller'
 
 const router = express.Router()

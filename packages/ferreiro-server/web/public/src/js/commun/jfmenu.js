@@ -37,7 +37,7 @@ function setupMobileMenu () {
     var menuButton = $('.jfmenu__mobileButton')
     var header = $('#menu')
 
-    $(window).resize(function(elem) {
+    $(window).resize(function() {
         const deskstopScreen = 1100
         if ($(window).width() > deskstopScreen) {
             hideMenu()
@@ -72,7 +72,7 @@ function setupMobileMenu () {
 
 
     menuButton.click(function() {
-        var e = $(this)
+        // var e = $(this)
 
         if (jfmenu.hasClass('jfmenu_displayed')) {
             hideMenu()
@@ -118,7 +118,7 @@ function setupMobileMenu () {
 }
 
 function scrollTop (opts) {
-    const position = opts && opts.position ? opts.position : 0
+    // const position = opts && opts.position ? opts.position : 0
     const speed = opts && opts.speed ? opts.speed : 300
 
     $('html, body').animate({

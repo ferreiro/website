@@ -1,7 +1,7 @@
 var openModalBox = $('.openModalBox')
 var jfmodalbox = $('.jfmodalbox')
 var jfmodalboxOverlay = $('.jfmodalbox_overlay')
-var jfmodalboxContent = $('.jfmodalbox_content')
+// var jfmodalboxContent = $('.jfmodalbox_content')
 var jfmodalboxClose = $('.jfmodalbox_close')
 
 // Listening when the user press a key

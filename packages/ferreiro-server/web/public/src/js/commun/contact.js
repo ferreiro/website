@@ -1,7 +1,7 @@
 var form = $('.contact_form')
 var loader = $('#contactLoader')
-var formSubmitButton = $('#formSendButton')
-var formValidInputs = [] // Array of bools that has length of tototal inputs in the site
+// var formSubmitButton = $('#formSendButton')
+// var formValidInputs = [] // Array of bools that has length of tototal inputs in the site
 var success = $('.contact_form_success')
 var failure = $('.contact_form_failure')
 
@@ -25,7 +25,7 @@ form.submit(function(event){
 })
 
 function submitForm(opts) {
-    var endpoint = opts && opts.endpoint ? opts.endpoint : '/api/v1/contact'
+    var endpoint = opts && opts.endpoint ? opts.endpoint : '/api/v1/contact'
     var scrollToError = opts && opts.scrollToError ? opts.scrollToError === 'true' : true
 
     success.hide()
@@ -73,20 +73,18 @@ function submitForm(opts) {
                 }
             }
         })
-        .fail(function(objectReturned) {
+        .fail(function() {
             failure.show()
         })
-        .always(function(objectReturned) {
+        .always(function() {
             loader.hide()
         })
 
-    try {
-
-    }
-    catch(err) {
-        failure.show()
-        loader.hide()
-    }
+    // try {}
+    // catch(err) {
+    //     failure.show()
+    //     loader.hide()
+    // }
 }
 
 function setCacheUserSubscribed () {

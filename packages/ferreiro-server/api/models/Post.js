@@ -4,8 +4,6 @@ const permalink = require('mongoose-permalink')
 const random = require('mongoose-simple-random')
 const Schema = mongoose.Schema
 
-const Series = require('./Series') // required since we ref Series from here
-
 const Post = {
     title: {
         type: String,

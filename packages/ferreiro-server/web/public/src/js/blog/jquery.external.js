@@ -31,6 +31,7 @@
     $(function(){
         // Set up the regex
         baseDomain = new RegExp($.externalLinks.baseDomain, 'i')
+        // eslint-disable-next-line no-useless-escape
         externalPath = /^([a-z\+]*:)?(\/\/)/i
     })
 

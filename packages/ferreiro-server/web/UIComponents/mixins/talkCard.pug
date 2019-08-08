@@ -20,7 +20,7 @@ mixin talkCard(post)
           span= post.title
       a.postCard__summary(target="_blank", href= url)= post.date + ' - ' + post.summary
       ul.postCard__options
-        each button in post.buttons || []
+        each button in post.buttons || []
           li.postCard__options__item
             if button.type == "video"
               a.action_button(target="_blank", href= button.url)

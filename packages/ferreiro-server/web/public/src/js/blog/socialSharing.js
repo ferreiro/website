@@ -10,7 +10,7 @@ function setupSocialButtons () {
     setupLinkedinButton(url, title, summary)
 }
 
-function setupTwitterButton (url, title, summary) {
+function setupTwitterButton (url, title) {
     const twitterShareButton = $('.tweetShare')
 
     twitterShareButton.click(function (event) {
@@ -35,9 +35,9 @@ function setupLinkedinButton (url, title, summary) {
 
 function setupScrollListener () {
     const offsetFromBreakPoint = 300
-    const headerHeight = $('.menu').outerHeight()
+    // const headerHeight = $('.menu').outerHeight()
     const targetContainer = $('#socialSharingBreakpoint')
-    const targetHeader = $('#blogHeader')
+    // const targetHeader = $('#blogHeader')
     const targetFooter = $('#postFooter')
     const socialSharing = $('#socialSharing')
 

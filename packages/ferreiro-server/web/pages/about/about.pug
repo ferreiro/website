@@ -106,7 +106,7 @@ block content_wrapped
                 <img class="companies__item" height="30px" src="#{company.image}" alt="#{company.name}" />
 
         .companies-selector__body
-            each item in work || []
+            each item in work || []
                 .companies-selector__item(id= item.title)
                     +experienceEntry(item)
 
@@ -133,7 +133,7 @@ block content_wrapped
                         .timeline__badge
                             span.timeline__badge__title Experience
                         .timeline__entries
-                            each item in work || []
+                            each item in work || []
                                 +timelineEntry(item)
 
 block after_content

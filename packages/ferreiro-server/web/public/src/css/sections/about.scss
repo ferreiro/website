@@ -49,14 +49,14 @@
     @include flexbox_direction(row);
   }
 
-  &__left {
+  &__left {
     max-width: 50%;
     overflow: hidden;
     margin-left: 2em;
     @include flexbox_flex(0, 1, auto);
     @include flexbox_alignSelf(stretch);
   }
-  &__left_v2 {
+  &__left_v2 {
     width: 100%;
     overflow: hidden;
     min-height: 210px;

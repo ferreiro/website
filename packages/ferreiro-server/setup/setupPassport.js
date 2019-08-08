@@ -19,6 +19,9 @@ module.exports = (app) => {
                 return done(null, false)
             }
             user.validatePassword(password, (err, isValid) => {
+                if (err) {
+                    return done(null, false)
+                }
                 if (isValid) {
                     return done(null, user)
                 }

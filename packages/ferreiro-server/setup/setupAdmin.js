@@ -33,7 +33,7 @@ function createAdminUser (data) {
     const email = data.email
     const passd = data.password
 
-    if (!email || !passd) {
+    if (!email || !passd) {
         throw new Error('Admin user can not have null values')
     }
 

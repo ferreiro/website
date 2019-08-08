@@ -5,16 +5,16 @@ module.exports = {
         'es6': true,
         'jquery': true
     },
-    'globals': {
-        'process': true
-    },
     'extends': 'eslint:recommended',
     'globals': {
+        '__dirname': true,
+        'process': true,
         'Atomics': 'readonly',
         'SharedArrayBuffer': 'readonly'
     },
     'parserOptions': {
-        'ecmaVersion': 2018
+        'ecmaVersion': 2018,
+        'sourceType': 'module',
     },
     'rules': {
         'indent': [
@@ -32,6 +32,15 @@ module.exports = {
         'semi': [
             'error',
             'never'
-        ]
+        ],
+        'callback-return': [
+            'error',
+        ],
+        'handle-callback-err': [
+            'error',
+        ],
+        'no-sync': [
+            'error',
+        ],
     }
 }

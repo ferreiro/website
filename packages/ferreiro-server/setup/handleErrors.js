@@ -11,7 +11,7 @@ module.exports = (app) => {
     // Development Error Handler.
     // Printing Stacktrace
     if (process.env.NODE_ENV === 'DEV') {
-        app.use(function (err, req, res, next) {
+        app.use(function (err, _, res) {
             res.status(err.status || 500)
             res.render('./UIComponents/error', {
                 message: err.message,
@@ -22,7 +22,7 @@ module.exports = (app) => {
 
     // Production Error Handler.
     // No stacktraces leaked to user
-    app.use(function (err, req, res, next) {
+    app.use(function (err, _, res) {
         res.status(err.status || 500)
         res.render('./UIComponents/error', {
             message: err.message,

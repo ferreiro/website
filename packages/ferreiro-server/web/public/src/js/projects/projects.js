@@ -6,16 +6,16 @@ var projectImages = $('.project_gallery_entry')
 
 // EVENTS
 
-projectImages.click(function(e) {
-    var e = $(this)
-    displayPopup(e)
+projectImages.click(function() {
+    var _this = $(this)
+    displayPopup(_this)
 })
 
-popupCloseButton.click(function(e) {
+popupCloseButton.click(function() {
     hidepopup()
 })
 
-popup.click(function(e) {
+popup.click(function() {
     hidepopup()
 })
 
@@ -39,7 +39,7 @@ var hidepopup = function () {
 
 var displayPopup = function (elem) {
     const webpageBody = $('body')
-    const imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
+    // const imageURL = elem.css('background-image').replace(/^url|[\(\)]|"/g, '')
     const bigImageUrl = elem
         .find('.bigImage')
         .attr('value')
