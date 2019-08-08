@@ -9,7 +9,7 @@ const DESTINATION_PATH = path.join(__dirname, '../ferreiro-server/dist');
 
 module.exports = {
     entry: {
-        client: './index.js',
+        client: './src/index.js',
     },
     output: {
         filename: '[name].bundle.js',

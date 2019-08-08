@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
 
-import App from './app/App';
-import {Blog} from './app/blog/Blog';
+import App from './App';
+import {Blog} from './pages/blog/Blog';
 
 ReactDOM.render(
 	<Blog />,
