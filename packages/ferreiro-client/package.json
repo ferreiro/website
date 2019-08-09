@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "start:dev": "webpack-dev-server --mode development",
@@ -12,10 +14,10 @@
     "node": ">=8.10.0"
   },
   "dependencies": {
+    "@ferreiro/design-system": "1.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "react-router-dom": "5.0.0",
-    "@ferreiro/design-system": "1.0.0"
+    "react-router-dom": "5.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
@@ -24,6 +26,8 @@
     "babel-loader": "8.0.5",
     "copy-webpack-plugin": "5.0.2",
     "css-loader": "2.1.1",
+    "eslint": "6.1.0",
+    "eslint-plugin-react": "7.14.3",
     "imagemin-webpack-plugin": "2.4.2",
     "mini-css-extract-plugin": "0.6.0",
     "node-sass": "4.11.0",

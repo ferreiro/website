@@ -1,23 +1,26 @@
 module.exports = {
     'env': {
         'browser': true,
-        'commonjs': true,
-        'es6': true,
-        'jquery': true
+        'es6': true
     },
     'extends': [
         'eslint:recommended',
+        'plugin:react/recommended',
     ],
     'globals': {
-        '__dirname': true,
-        'process': true,
         'Atomics': 'readonly',
         'SharedArrayBuffer': 'readonly'
     },
     'parserOptions': {
+        'ecmaFeatures': {
+            'jsx': true
+        },
         'ecmaVersion': 2018,
-        'sourceType': 'module',
+        'sourceType': 'module'
     },
+    'plugins': [
+        'react'
+    ],
     'rules': {
         'indent': [
             'error',
@@ -34,15 +37,6 @@ module.exports = {
         'semi': [
             'error',
             'never'
-        ],
-        'callback-return': [
-            'error',
-        ],
-        'handle-callback-err': [
-            'error',
-        ],
-        'no-sync': [
-            'error',
-        ],
+        ]
     }
 }
