@@ -34,7 +34,7 @@
     @include transition(all 3s linear);
     display: none; /* Hide on mobile phones */
   }
-  &_entry {
+  &_entry {
     border-top: 1px solid #cecece;
     text-align: center;
     &_link {

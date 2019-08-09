@@ -1,4 +1,4 @@
-import {createViewPath} from '../create-view-path'
+const {createViewPath} = require('../create-view-path')
 
 const content = require('../../content/english.json') // TODO: Add multilanguage
 

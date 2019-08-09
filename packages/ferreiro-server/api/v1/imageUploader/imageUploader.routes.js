@@ -8,6 +8,6 @@ import {upload} from './upload'
 const router = express.Router()
 
 router.get('/', getImageUploader)
-router.post('/', upload.array('image', 1), postImageUploader);
+router.post('/', upload.array('image', 1), postImageUploader)
 
 module.exports = router

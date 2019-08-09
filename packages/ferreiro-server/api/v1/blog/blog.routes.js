@@ -9,9 +9,9 @@ import seriesRepository from '../../../api/repository/series'
  * @required authentication
  */
 router.get('/series', isAuthenticated, function (req, res) {
-  seriesRepository.getAll()
-      .then(series => res.json(series))
-      .catch(err => res.send(err))
+    seriesRepository.getAll()
+        .then(series => res.json(series))
+        .catch(err => res.send(err))
 })
 
 /**
@@ -19,9 +19,9 @@ router.get('/series', isAuthenticated, function (req, res) {
  * It doesn't require authentication
  */
 router.get('/series/published', function (req, res) {
-  seriesRepository.getAllPublished()
-      .then(series => res.json(series))
-      .catch(err => res.send(err))
+    seriesRepository.getAllPublished()
+        .then(series => res.json(series))
+        .catch(err => res.send(err))
 })
 
 /**
@@ -29,13 +29,13 @@ router.get('/series/published', function (req, res) {
  * list of articles associated with that series.
  */
 router.get('/series/:permalink', function (req, res) {
-  const query = {
-    permalink: req.params.permalink
-  }
+    const query = {
+        permalink: req.params.permalink
+    }
 
-  seriesRepository.findByPermalink(query)
-      .then(series => res.json(series))
-      .catch(err => res.send(err))
+    seriesRepository.findByPermalink(query)
+        .then(series => res.json(series))
+        .catch(err => res.send(err))
 })
 
 module.exports = router

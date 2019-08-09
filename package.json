@@ -2,18 +2,23 @@
     "private": true,
     "name": "ferreiro.me",
     "engines": {
-        "node": "8.x",
+        "node": ">=8.10.0",
         "yarn": "1.x"
     },
     "scripts": {
-        "build": "yarn workspace @ferreiro/server build",
         "check": "npm-check",
-        "devServer": "yarn build && yarn workspace @ferreiro/server dev",
-        "dev": "yarn install && yarn build && concurrently --kill-others-on-fail \"yarn devServer\"",
-        "heroku-postbuild": "yarn build",
-        "server": "yarn workspace @ferreiro/server start",
-        "start": "yarn server",
-        "test": "echo $'[TODO] Implement tests'"
+        "dev": "concurrently \"yarn backend:server\" \"yarn frontend:server:dev\"",
+        "frontend:server:dev": "yarn workspace @ferreiro/client start:dev",
+        "backend:server": "yarn workspace @ferreiro/server start",
+        "build:client": "yarn workspace @ferreiro/client build",
+        "build:server": "yarn workspace @ferreiro/server build",
+        "build": "yarn build:server && yarn build:client",
+        "lint": "yarn run lint:client && yarn run lint:server",
+        "lint:client": "yarn workspace @ferreiro/client lint",
+        "lint:sever": "yarn workspace @ferreiro/server lint",
+        "start": "yarn build && yarn backend:server",
+        "test": "echo $'[TODO] Implement tests'",
+        "heroku-postbuild": "yarn build"
     },
     "workspaces": [
         "packages/*"
@@ -23,6 +28,7 @@
         "npm-check": "5.9.0"
     },
     "dependencies": {
-        "xss-filters": "1.2.7"
+        "xss-filters": "1.2.7",
+        "concurrently": "4.1.0"
     }
 }

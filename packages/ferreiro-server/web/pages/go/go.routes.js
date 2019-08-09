@@ -1,5 +1,5 @@
 import express from 'express'
-import {uriPathInHTMLData} from 'xss-filters';
+import {uriPathInHTMLData} from 'xss-filters'
 
 const router = express.Router()
 
@@ -41,4 +41,4 @@ router.get('/:permalink', async (req, res) => {
         .catch(error => res.render(error))
 })
 
-module.exports = router;
+module.exports = router

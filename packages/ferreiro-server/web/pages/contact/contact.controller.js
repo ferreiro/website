@@ -16,9 +16,9 @@ export const getContact = (req, res) => (
 
 export const getContactTalk = (req, res) => {
     let talkContact = cloneDeep(contactContent)
-    talkContact.config.claim = "Are you organizing an event and want me to talk? I'll be happy to be part of it! Submit the form below or shoot me an email at (<a class='email openModalBox'>jorge at ferreiro dot me</a>)."
-    talkContact.sendButton = "Submit proposal"
-    talkContact.form.message = "What's your event about and when is it?"
+    talkContact.config.claim = 'Are you organizing an event and want me to talk? I\'ll be happy to be part of it! Submit the form below or shoot me an email at (<a class=\'email openModalBox\'>jorge at ferreiro dot me</a>).'
+    talkContact.sendButton = 'Submit proposal'
+    talkContact.form.message = 'What\'s your event about and when is it?'
 
     return res.render(createViewPath('contact', 'contact.pug'), {
         title: 'Bring me to your event',

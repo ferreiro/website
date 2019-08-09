@@ -14,7 +14,7 @@ export const parseRequestPostData = ({
     post_isPublished,
     post_category = [],
     post_seriesId = null,
-  }) => {
+}) => {
     const title = post_title
     const pic = post_pic
     const secretKey = post_secretKey
@@ -27,17 +27,17 @@ export const parseRequestPostData = ({
     const seriesId = post_seriesId
   
     return {
-      pic,
-      title,
-      secretKey,
-      summary,
-      permalink,
-      published,
-      category,
-      author_name: authorName,
-      author_pic: authorPic,
-      body: sanitizeHtml(post_body),
-      series: isEmpty(post_seriesId) ? null : new mongoose.mongo.ObjectId(seriesId)
+        pic,
+        title,
+        secretKey,
+        summary,
+        permalink,
+        published,
+        category,
+        author_name: authorName,
+        author_pic: authorPic,
+        body: sanitizeHtml(post_body),
+        series: isEmpty(post_seriesId) ? null : new mongoose.mongo.ObjectId(seriesId)
     }
-  }
+}
   

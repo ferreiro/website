@@ -1,11 +1,10 @@
 import express from 'express'
-
 import admin from './pages/admin/admin.routes'
 import about from './pages/about/about.routes'
 import blog from './pages/blog/blog.routes'
 import contact from './pages/contact/contact.routes'
-import gifts from './pages/landings/gifts.routes';
-import go from './pages/go/go.routes';
+import gifts from './pages/landings/gifts.routes'
+import go from './pages/go/go.routes'
 import home from './pages/home/home.routes'
 import newsletter from './pages/newsletter/newsletter.routes'
 import portfolio from './pages/portfolio/portfolio.routes'
@@ -17,24 +16,24 @@ import university from './pages/university/university.routes'
 const router = express.Router()
   
 const comingSoon = function (req, res) {
-  res.render('comingSoon')
+    res.render('comingSoon')
 }
 
 const redirectProjectsToPortfolio = (req, res) => {
-  res.redirect('/portfolio') // leave this, backwards compatibility
+    res.redirect('/portfolio') // leave this, backwards compatibility
 }
 
 const redirectFeedbackToContact = (req, res) => (
-  res.redirect('/contact/feedback')
-);
+    res.redirect('/contact/feedback')
+)
 
 const redirectToGifts = (req, res) => (
-  res.redirect('/gifts')
-);
+    res.redirect('/gifts')
+)
 
 const redirectMeetupLondon = (req, res) => (
-  res.redirect('https://www.meetup.com/es-ES/The-JS-Roundabout/events/259864908/')
-);
+    res.redirect('https://www.meetup.com/es-ES/The-JS-Roundabout/events/259864908/')
+)
 
 // Mounting more subroutes.
 router.get('/', home) // Home shows about page

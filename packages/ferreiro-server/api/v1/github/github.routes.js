@@ -4,9 +4,9 @@ import {
     getGithubPublicRepositories,
 } from './github.controller'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get('/profile', getGithubProfile);
-router.get('/public_repositories', getGithubPublicRepositories);
+router.get('/profile', getGithubProfile)
+router.get('/public_repositories', getGithubPublicRepositories)
 
-module.exports = router;
+module.exports = router

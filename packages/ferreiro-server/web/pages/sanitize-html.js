@@ -18,7 +18,7 @@ export const sanitizeHtml = (dirtyHtml) => {
             ul: [ 'class' ],
             iframe: [ 'width', 'height', 'src', 'frameborder', 'allow', 'allowfullscreen' ]
         }
-    };
+    }
 
     return sanitizer(dirtyHtml, sanitizerOptions)
-  }
+}

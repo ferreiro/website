@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-  getUniversity,
+    getUniversity,
 } from './university.controller'
 
 const router = express.Router()

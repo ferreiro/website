@@ -1,37 +1,37 @@
 $(window).on('load', function () {
-  setupMostRecentPostAd()
+    setupMostRecentPostAd()
 })
 
 function setupMostRecentPostAd () {
-  const mostRecentPostAd = $('.mostRecentPostAd')
-  const cacheName = 'mostRecentPostAd'
+    const mostRecentPostAd = $('.mostRecentPostAd')
+    const cacheName = 'mostRecentPostAd'
 
-  if (mostRecentPostAd.length <= 0) {
+    if (mostRecentPostAd.length <= 0) {
     // Don't execute if the ad is not found on the webpage
-    return;
-  }
-
-  delayDisplayTime().then(sucess => {
-    if (!hasUserClickedOnMostRecentPostAd(mostRecentPostAd, cacheName)) {
-      const offset = '50px'
-      moveContainersAndMenu(offset, () => {
-        displayMostRecentPostAd(mostRecentPostAd)
-      })
+        return
     }
 
-    setupScrollListener(mostRecentPostAd, cacheName)
-    setupAdClickListener(mostRecentPostAd, cacheName)
-  })
+    delayDisplayTime().then(() => {
+        if (!hasUserClickedOnMostRecentPostAd(mostRecentPostAd, cacheName)) {
+            const offset = '50px'
+            moveContainersAndMenu(offset, () => {
+                displayMostRecentPostAd(mostRecentPostAd)
+            })
+        }
+
+        // setupScrollListener(mostRecentPostAd, cacheName)
+        setupAdClickListener(mostRecentPostAd, cacheName)
+    })
 }
 
-function setupScrollListener(mostRecentPostAd, cacheName) {
-  $(window).scroll(function() {
-    const scrollTop = $(window).scrollTop()
+// function setupScrollListener(mostRecentPostAd, cacheName) {
+//     $(window).scroll(function() {
+//         const scrollTop = $(window).scrollTop()
 
-    // If user make scrolls, display ad.
-    if (scrollTop > 100) {}
-  })
-}
+//         // If user make scrolls, display ad.
+//         if (scrollTop > 100) {}
+//     })
+// }
 
 
 /**
@@ -42,45 +42,45 @@ function setupScrollListener(mostRecentPostAd, cacheName) {
  * from the one the user has already clicked.
  */
 function hasUserClickedOnMostRecentPostAd (mostRecentPostAd, cacheName) {
-  const lastPostId = mostRecentPostAd.find('.lastPostId').val()
+    const lastPostId = mostRecentPostAd.find('.lastPostId').val()
 
-  if (lastPostId && lastPostId === localStorage[cacheName + '_lastPostIdShown']) {
-    return localStorage[cacheName + '_clicked']
-  }
+    if (lastPostId && lastPostId === localStorage[cacheName + '_lastPostIdShown']) {
+        return localStorage[cacheName + '_clicked']
+    }
 
-  return false
+    return false
 }
 
 function setupAdClickListener (mostRecentPostAd, cacheName) {
-  mostRecentPostAd.click(function (event) {
-    localStorage[cacheName + '_clicked'] = true
-    localStorage[cacheName + '_lastPostIdShown'] = mostRecentPostAd.find('.lastPostId').val()
-  })
+    mostRecentPostAd.click(function () {
+        localStorage[cacheName + '_clicked'] = true
+        localStorage[cacheName + '_lastPostIdShown'] = mostRecentPostAd.find('.lastPostId').val()
+    })
 }
 
 function delayDisplayTime () {
-  return new Promise(resolve => {
-    setTimeout(function () {
-      resolve(true)
-    }, 1500)
-  })
+    return new Promise(resolve => {
+        setTimeout(function () {
+            resolve(true)
+        }, 1500)
+    })
 }
 
 function moveContainersAndMenu (offset, next) {
-  $('#menu').css({ top: isMobileMenuShown() ? 0 : offset })
-  $('.container').css({ 'padding-top': offset }).promise().done(function () {
-    return next()
-  })
+    $('#menu').css({ top: isMobileMenuShown() ? 0 : offset })
+    $('.container').css({ 'padding-top': offset }).promise().done(function () {
+        return next()
+    })
 }
 
 function isMobileMenuShown () {
-  const mobileMenu = $('.jfmenu')
-  return mobileMenu.length > 0 && mobileMenu.hasClass('jfmenu_displayed')
+    const mobileMenu = $('.jfmenu')
+    return mobileMenu.length > 0 && mobileMenu.hasClass('jfmenu_displayed')
 }
 
 function displayMostRecentPostAd (mostRecentPostAd) {
-  mostRecentPostAd
-    .show(0)
+    mostRecentPostAd
+        .show(0)
     // .addClass('animated slideInDown')
-    .slideDown('500')
+        .slideDown('500')
 }

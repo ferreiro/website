@@ -10,14 +10,14 @@ function setupSocialButtons () {
     setupLinkedinButton(url, title, summary)
 }
 
-function setupTwitterButton (url, title, summary) {
+function setupTwitterButton (url, title) {
     const twitterShareButton = $('.tweetShare')
 
     twitterShareButton.click(function (event) {
         event.preventDefault()
 
-        const twitterShareUrl = "https://twitter.com/share?text=👓 " + title + " &via=jgferreiro&url=" + url
-        window.open(twitterShareUrl, "Share on Twitter", "width=500px,height=250px;");
+        const twitterShareUrl = 'https://twitter.com/share?text=👓 ' + title + ' &via=jgferreiro&url=' + url
+        window.open(twitterShareUrl, 'Share on Twitter', 'width=500px,height=250px;')
     })
 }
 
@@ -25,24 +25,24 @@ function setupLinkedinButton (url, title, summary) {
     const linkedinShareButton = $('.linkedinShare')
 
     linkedinShareButton.click(function (event) {
-        event.preventDefault();
+        event.preventDefault()
 
         const mini = true
         const linkedinShareUrl = `https://www.linkedin.com/shareArticle?mini=${mini}&url=${url}&title=${title}&summary=${summary}&source=LinkedIn`
-        window.open(linkedinShareUrl, "Share on Twitter", "width=500px,height=250px;");
+        window.open(linkedinShareUrl, 'Share on Twitter', 'width=500px,height=250px;')
     })
 }
 
 function setupScrollListener () {
     const offsetFromBreakPoint = 300
-    const headerHeight = $('.menu').outerHeight()
+    // const headerHeight = $('.menu').outerHeight()
     const targetContainer = $('#socialSharingBreakpoint')
-    const targetHeader = $('#blogHeader')
+    // const targetHeader = $('#blogHeader')
     const targetFooter = $('#postFooter')
     const socialSharing = $('#socialSharing')
 
     if (targetContainer.length === 0) {
-        return; // skip if container does not exist
+        return // skip if container does not exist
     }
 
     $(window).scroll(function() {

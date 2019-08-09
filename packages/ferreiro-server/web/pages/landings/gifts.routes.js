@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-  getGifts,
+    getGifts,
 } from './gifts.controller'
 
 const router = express.Router()

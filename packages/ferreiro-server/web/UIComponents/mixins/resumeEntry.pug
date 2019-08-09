@@ -23,7 +23,7 @@ mixin resumeEntry(dataEntry)
         .resume__entry__body
 
           if dataEntry.description
-            each item in dataEntry.description || []
+            each item in dataEntry.description || []
 
               if item.type == "entry"
                 .resume__entry__oneline
@@ -43,7 +43,7 @@ mixin resumeEntry(dataEntry)
               else if item.type == "warning"
                 .resume__entry__warning
                   if item.link
-                    a(href= item.link.url, target= item.link.target || '_blank').resume__entry__warning__link
+                    a(href= item.link.url, target= item.link.target || '_blank').resume__entry__warning__link
                   .resume__entry__warning__wrapper
                     if item.icon
                       span.icon.resume__entry__warning__icon(class= item.icon)

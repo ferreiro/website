@@ -34,11 +34,11 @@ mixin seriesEntry(series)
               ul.blog__post__options
                 li(style="margin-right: 1em;")
                   a(target="_blank", href= '/blog/series/' + series.permalink + '?disableAdmin=true').action_button
-                    | See series page
+                    | See series page
                 li(style="margin-right: 1em;")
                   a(href= '/admin/series/update/' + series.permalink).action_button
                     span.icon.ion-edit
-                    | Edit post
+                    | Edit post
                 li(style="margin-right: 0;")
                   a(href= '/admin/series/delete/' + series.permalink).action_button
                     span.icon.ion-android-delete

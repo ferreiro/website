@@ -1,13 +1,13 @@
 function replaceEmail() {
-  var emails = $('.email')
+    var emails = $('.email')
 
-  emails.each(function(index, value) {
-    var email = $(this)
-    var emailText = email.text()
-    var emailFormated = emailText.replace(' AT ', '@').replace(' DOT ', '.')
+    emails.each(function() {
+        var email = $(this)
+        var emailText = email.text()
+        var emailFormated = emailText.replace(' AT ', '@').replace(' DOT ', '.')
 
-    $(".email").html(emailFormated)
-  })
+        $('.email').html(emailFormated)
+    })
 
 }
 

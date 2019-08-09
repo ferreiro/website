@@ -1,13 +1,13 @@
 import express from 'express'
 import {isAuthenticated} from './is-authenticated'
 import {
-  getAllSeries,
-  createSeriesPage,
-  createSeries,
-  deleteSeriesConfirmationPage,
-  deleteSeries,
-  editPostPage,
-  editPostSubmit,
+    getAllSeries,
+    createSeriesPage,
+    createSeries,
+    deleteSeriesConfirmationPage,
+    deleteSeries,
+    editPostPage,
+    editPostSubmit,
 } from './admin.series.controller'
 
 const router = express.Router()
