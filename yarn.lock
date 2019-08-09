@@ -4741,10 +4741,10 @@ expect-ct@0.2.0:
   resolved "https://registry.yarnpkg.com/expect-ct/-/expect-ct-0.2.0.tgz#3a54741b6ed34cc7a93305c605f63cd268a54a62"
   integrity sha512-6SK3MG/Bbhm8MsgyJAylg+ucIOU71/FzyFalcfu5nY19dH8y/z0tBJU0wrNBXD4B27EoQtqPF/9wqH0iYAd04g==
 
-express-recaptcha@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/express-recaptcha/-/express-recaptcha-3.0.1.tgz#6ff6b6e6ed43e6ef78643f56e3aa8ffe280394c8"
-  integrity sha1-b/a25u1D5u94ZD9W46qP/igDlMg=
+express-recaptcha@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/express-recaptcha/-/express-recaptcha-5.0.0.tgz#cff792dd6b8d00388629bf7aebf359931cf7c899"
+  integrity sha512-RsckzdJvJMXjRuNNX9ygfFQ7lAEgxR8gSs5O013g45CYwHuZ7DZLNwXcvpUkECcE/xbrRWuIR3hYW+npmMArPA==
 
 express-session@^1.15.6:
   version "1.16.2"
