@@ -10,6 +10,30 @@
   },
   "pastTalks": [
     {
+      "title": "Github 101 by Jorge Ferreiro at Adalab Women bootcamp",
+      "summary": "Presentation in Google For Startups Madrid for the bootcamp Adalab, which mission is to help women to land into their dream job as frontend engineers.",
+      "permalink": "https://speakerdeck.com/ferreiro/github-101-adalab-jorge-ferreiro",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_in_adalab_bootcamp_about_github_and_how_to_use_github.jpg",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "May, 7th 2019",
+      "location": {
+        "venue": "Google for startups",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/github-101-adalab-jorge-ferreiro"
+        }
+      ]
+    },
+    {
       "title": "Github Like a Pro by Jorge Ferreiro - Adalab bootcamp #adalabGithub @Google Campus Madrid",
       "summary": "Why I ❤️ Github? What makes your Github profile stands out? Roast my Github. How do I use Github?",
       "permalink": "https://speakerdeck.com/ferreiro/github-like-a-pro-jorge-ferreiro-adalab-bootcamp-at-google-campus-madrid",
