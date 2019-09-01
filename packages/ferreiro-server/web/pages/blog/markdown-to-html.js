@@ -10,7 +10,7 @@ export const markdownToHtml = (srcMarkdown) => {
     const outputHtmlWithSyntaxHighlight = replaceall('<pre><code>', '<pre><code class=\'prettyprint linenums\'>', htmlSanitized)
 
     // NB 2: Adding Lazy loading to blog post pictures
-    const outputHtmlWithLazyImageLoading = replaceall('src="', 'class="lazy" data-src="', outputHtmlWithSyntaxHighlight)
+    const outputHtmlWithLazyImageLoading = replaceall('img src="', 'img class="lazy" data-src="', outputHtmlWithSyntaxHighlight)
 
     return outputHtmlWithLazyImageLoading
 }
