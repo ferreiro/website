@@ -7,7 +7,7 @@
     },
     "scripts": {
         "check": "npm-check",
-        "dev": "yarn build:assets && concurrently \"yarn backend:server\" \"yarn frontend:server:dev\"",
+        "dev": "concurrently \"yarn build:assets\" \"yarn backend:server\" \"yarn frontend:server:dev\"",
         "frontend:server:dev": "yarn workspace @ferreiro/client start:dev",
         "backend:server": "yarn workspace @ferreiro/server start",
         "build:client": "yarn workspace @ferreiro/client build",
