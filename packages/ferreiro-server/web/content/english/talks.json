@@ -10,6 +10,35 @@
   },
   "pastTalks": [
     {
+      "title": "Pennapps hackathon - Workshop: Progressive Web Apps, the future of web development - University of Pennsylvania",
+      "summary": "Progressive Web Apps is a term that Google created in 2015. Representing the next revolution in web development, PWAs enable more reliable, faster and engaging user experiences while also incorporating mobile app functionalities into websites.",
+      "permalink": "https://www.youtube.com/watch?v=de1xiqz-BTE",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_in_the_university_of_pennsylvania_pennapps_progressive_web_apps.png",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "Sep 7th, 2019",
+      "location": {
+        "venue": "University of Pennsylvania",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=de1xiqz-BTE"
+        },
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/pennapps-hackathon-workshop-progressive-web-apps-the-future-of-web-development-university-of-pennsylvania"
+        }
+      ]
+    },
+    {
       "title": "Github 101 by Jorge Ferreiro at Adalab Women bootcamp",
       "summary": "Presentation in Google For Startups Madrid for the bootcamp Adalab, which mission is to help women to land into their dream job as frontend engineers.",
       "permalink": "https://speakerdeck.com/ferreiro/github-101-adalab-jorge-ferreiro",
@@ -19,7 +48,7 @@
         "display": "English",
         "icon": "icon-english"
       },
-      "date": "May, 7th 2019",
+      "date": "July, 24th 2019",
       "location": {
         "venue": "Google for startups",
         "city": "Madrid"
@@ -83,7 +112,7 @@
     },
     {
       "title": "#futuroFiumers - Los 10 consejos para lanzar tu carrera en tecnología",
-      "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología. Además, comparte una serie de consejos para poder aprovechar al máximo las oportunidades profesionales que te encuentres. Jorge Ferreiro basa sus consejos en los años programando de manera autodidacta, así como su internship (prácticas) en Amazon y ahora como full time employee en Eventbrite donde es programador de frontend.",
+      "summary": "Jorge Ferreiro comparte 10 consejos y lecciones aprendidas para conseguir tu primer trabajo en tecnología e impulsar tu carrera en tecnología.",
       "permalink": "https://speakerdeck.com/ferreiro/los-10-consejos-para-triunfar-como-programador-en-el-mundo-del-software",
       "type": "slides",
       "pic": "/images/talks/jorge_ferreiro_codecamp_2019_murcia_consejos_para_junior_engineers.jpg",
