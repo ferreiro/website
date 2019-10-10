@@ -3,9 +3,34 @@
     padding: 1.2em 0 1em 0;
 
     &__author {
+        align-items: center;
         color: rgba(#000000, 0.5);
+        display: flex;
 
         @include flexbox_flex(1, 1, auto);
+
+        &-avatar {
+            flex: 0 0 auto;
+            margin-right: 1em;
+
+            img {
+                width: 45px;
+                height: 45px;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 100%;
+            }
+        }
+
+        &-info {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-name {
+            margin-bottom: 7px;
+        }
 
         span {
             color: rgba(#000000, 0.5);
