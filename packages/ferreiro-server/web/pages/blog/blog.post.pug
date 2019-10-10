@@ -118,7 +118,8 @@ block content_large
           publishedDate: post.createdAt
         })
 
-        h2.blogPost__subtitle= post.summary
+        if post.summary
+          h2.blogPost__subtitle= post.summary
 
         // .toc#toc
 

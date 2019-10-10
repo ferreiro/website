@@ -420,7 +420,7 @@
       // font-family: Lato,sans-serif;
 
       &::before {
-        background-color: green;
+        display: none;
         padding: 0 20px;
         content: '#';
       }
