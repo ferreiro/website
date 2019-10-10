@@ -1,3 +1,6 @@
+// Delay one minute
+const POPUP_DELAY_MS = 60000
+
 setupPopup()
 
 function setupPopup() {
@@ -5,7 +8,6 @@ function setupPopup() {
     const popupClose = $('.popup__close')
     const popupBackground = $('.popup__background')
     const popupWrapper = $('.popup__wrapper')
-    const poupTimeoutMs = 60000
 
     if (popup.length === 0) {
         return // popup not defined
@@ -17,7 +19,10 @@ function setupPopup() {
     } else {
     // Only autodisplay if the user has not subscribed in this browser
         if (!localStorage.userSubscribed || localStorage.userSubscribed === 'false') {
-            setupScrollEvents(popup, popupBackground, popupWrapper)
+            setTimeout(() => {
+                showPopup(popup, popupBackground, popupWrapper)
+            }, POPUP_DELAY_MS)
+            // setupScrollEvents(popup, popupBackground, popupWrapper)
         }
     }
 
@@ -43,26 +48,26 @@ function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
     })
 }
 
-function setupScrollEvents (popup, popupBackground, popupWrapper) {
-    const breakpointItem = $('#showNewsletterBreakPoint')
-    let popup_displayed = false
+// function setupScrollEvents (popup, popupBackground, popupWrapper) {
+//     const breakpointItem = $('#showNewsletterBreakPoint')
+//     let popup_displayed = false
 
-    if (breakpointItem.length === 0) {
-        return // skip.
-    }
+//     if (breakpointItem.length === 0) {
+//         return // skip.
+//     }
 
-    $(window).scroll(function() {
-        const scrollTop = $(window).scrollTop()
-        const offset = getScrollOffset()
+//     $(window).scroll(function() {
+//         const scrollTop = $(window).scrollTop()
+//         const offset = getScrollOffset()
 
-        if (isScrollCloseToItem(scrollTop, breakpointItem, offset)) {
-            if (!popup_displayed) {
-                showPopup(popup, popupBackground, popupWrapper)
-                popup_displayed = true
-            }
-        }
-    })
-}
+//         if (isScrollCloseToItem(scrollTop, breakpointItem, offset)) {
+//             if (!popup_displayed) {
+//                 showPopup(popup, popupBackground, popupWrapper)
+//                 popup_displayed = true
+//             }
+//         }
+//     })
+// }
 
 function getScrollOffset () {
     // We want to make our divs to appear when scroll on 70% of the screen
