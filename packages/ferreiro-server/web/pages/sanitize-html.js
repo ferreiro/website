@@ -9,7 +9,7 @@ export const sanitizeHtml = (dirtyHtml) => {
             'img', 'span', 'iframe', 'data-src', 'mark',
         ],
         allowedAttributes: {
-            '*': [ 'id', 'href', 'align', 'alt', 'center', 'bgcolor' ],
+            '*': [ 'id', 'href', 'align', 'alt', 'center', 'bgcolor', 'style' ],
             div: [ 'class' ],
             a: [ 'href', 'name', 'target' ],
             img: [ 'src', 'style', 'data-src' ],
