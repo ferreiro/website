@@ -1,1 +1,1 @@
-export const MAX_PAGE_POSTS = 9
+export const MAX_PAGE_POSTS = 15
