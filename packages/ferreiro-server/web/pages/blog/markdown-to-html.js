@@ -9,8 +9,8 @@ export const markdownToHtml = (srcMarkdown) => {
     // NB 1: Add syntax highlight class to hmtl
     const outputHtmlWithSyntaxHighlight = replaceall('<pre><code>', '<pre><code class=\'prettyprint linenums\'>', htmlSanitized)
 
-    // NB 2: Adding Lazy loading to blog post pictures
-    const outputHtmlWithLazyImageLoading = replaceall('img src="', 'img class="lazy" data-src="', outputHtmlWithSyntaxHighlight)
+    // // NB 2: Adding Lazy loading to blog post pictures
+    // const outputHtmlWithLazyImageLoading = replaceall('img src="', 'img class="lazy" data-src="', outputHtmlWithSyntaxHighlight)
 
-    return outputHtmlWithLazyImageLoading
+    return outputHtmlWithSyntaxHighlight
 }

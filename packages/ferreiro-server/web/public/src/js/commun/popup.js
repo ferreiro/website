@@ -1,5 +1,5 @@
 // Delay
-const POPUP_DELAY_MS = 60000
+const POPUP_DELAY_MS = 80000 // One minute and twenty seconds
 
 setupPopup()
 
