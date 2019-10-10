@@ -1,5 +1,7 @@
 import validator from 'validator'
-import {isEmpty} from 'lodash'
+import isEmpty from 'lodash/isEmpty'
+import merge from 'lodash/merge'
+import moment from 'moment'
 
 import blogRepository from '../../../api/repository/blog'
 import seriesRepository from '../../../api/repository/series'
@@ -203,12 +205,16 @@ export const getPostByPermalink = (req, res, next) => {
                     permalinkToSkip: sanitizedPermalink,
                     count: 3
                 }).then(relatedPosts => {
-                    post.html = markdownToHtml(post.body)
+                    const timeAgo = moment(post.createdAt).fromNow()
+                    const html = markdownToHtml(post.body)
+                    const postEnhanced = merge(post, {
+                        html,
+                    })
 
-                    blogContext.with('post', post)
+                    blogContext.with('post', postEnhanced)
                     blogContext.with('relatedPosts', relatedPosts)
+                    blogContext.with('timeAgo', timeAgo)
 
-                  
                     return res.render(
                         createViewPath('blog', 'blog.post.pug'),
                         blogContext.build()
