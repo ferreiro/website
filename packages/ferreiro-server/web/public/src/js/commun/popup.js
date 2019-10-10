@@ -1,4 +1,4 @@
-// Delay one minute
+// Delay
 const POPUP_DELAY_MS = 60000
 
 setupPopup()
@@ -26,7 +26,7 @@ function setupPopup() {
         }
     }
 
-    setupOpenNewsletterPopup(popup, popupBackground, popupWrapper, poupTimeoutMs)
+    setupOpenNewsletterPopup(popup, popupBackground, popupWrapper)
 
     setupEscape(popup, popupBackground, popupWrapper)
 
@@ -69,19 +69,19 @@ function setupOpenNewsletterPopup (popup, popupBackground, popupWrapper) {
 //     })
 // }
 
-function getScrollOffset () {
-    // We want to make our divs to appear when scroll on 70% of the screen
-    // meaning the item has seen 30%. How is this calculated?
-    // 100% --> $(window).height()
-    // 70%  --> X
-    return ($(window).height() * 85) / 100
-}
+// function getScrollOffset () {
+//     // We want to make our divs to appear when scroll on 70% of the screen
+//     // meaning the item has seen 30%. How is this calculated?
+//     // 100% --> $(window).height()
+//     // 70%  --> X
+//     return ($(window).height() * 85) / 100
+// }
 
 // offset makes the object to appear before in the screen
-function isScrollCloseToItem (scrollTop, item, offset) {
-    const targetOffsetY = item.offset().top
-    return scrollTop - (targetOffsetY - offset) > 0
-}
+// function isScrollCloseToItem (scrollTop, item, offset) {
+//     const targetOffsetY = item.offset().top
+//     return scrollTop - (targetOffsetY - offset) > 0
+// }
 
 // function displayPopupWithDelay (popup, popupBackground, popupWrapper, opts) {
 //     const timeoutMs = opts && opts.timeoutMs ? opts.timeoutMs : 10000
