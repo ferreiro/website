@@ -112,14 +112,14 @@ export const getBlogPosts = (req, res, next) => {
         const {docs, page, pages} = postsResult
 
         const blogContext =
-      createBlogContextBuilder(req)
-          .with('posts', docs)
-          .with('prevPageToken', (page - 1 >= 1 ? page - 1 : 'start'))
-          .with('nextPageToken', (page + 1 <= pages ? page + 1 : 'end'))
-          .with('blogCategory', category)
-          .with('categories', categories)
-          .with('series', series)
-          .build()
+            createBlogContextBuilder(req)
+                .with('posts', docs)
+                .with('prevPageToken', (page - 1 >= 1 ? page - 1 : 'start'))
+                .with('nextPageToken', (page + 1 <= pages ? page + 1 : 'end'))
+                .with('blogCategory', category)
+                .with('categories', categories)
+                .with('series', series)
+                .build()
 
         return res.render(createViewPath('blog', 'blog.home.pug'), blogContext)
     }).catch((error) => {

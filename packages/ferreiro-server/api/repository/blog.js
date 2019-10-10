@@ -91,7 +91,7 @@ module.exports.getAllDrafts = function () {
 }
 
 module.exports.getAllPublished = function (extraQueryFields, opts) {
-    var maxLimit = 10
+    let maxLimit = 15
 
     if (opts) {
         if (opts.maxPagePosts) {
