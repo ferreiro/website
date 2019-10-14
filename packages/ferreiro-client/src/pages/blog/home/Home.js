@@ -42,18 +42,11 @@ const renderHighlight = ({
     />
 )
 
-const renderPost = ({
-    permalink,
-    pic,
-    summary,
-    title,
-}) => (
+const renderPost = (post) => (
     <Card
-        key={permalink}
-        permalink={getPostPermalink(permalink)}
-        title={title}
-        summary={summary}
-        image={pic}
+        {...post}
+        key={post.id}
+        permalink={getPostPermalink(post.permalink)}
     />
 )
 

@@ -14,9 +14,12 @@ export const Card = ({
     summary = '',
     maxSummaryLength = DEFAULT_MAX_SUMMARY_LENGTH,
     image,
+    series,
 }) => {
     const SEOTitle = `Jorge Ferreirto article ${title}`
     const summaryShortened = summary.substr(0, maxSummaryLength)
+
+    console.log(series)
 
     return (
         <Link
@@ -43,6 +46,11 @@ export const Card = ({
                     <p className="card__summary">
                         {summaryShortened}
                     </p>
+                    {series && (
+                        <p>
+                            This post belongs to {series.title.substr(0, 50)} series
+                        </p>
+                    )}
                 </div>
             </article>
         </Link>

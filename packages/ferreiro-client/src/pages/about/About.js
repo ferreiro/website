@@ -55,6 +55,38 @@ import './About.scss'
 import { Link } from '../../components/link/Link';
 import { AboutGallery } from './AboutGallery';
 
+const Section = ({
+    title,
+    subtitle,
+    children,
+}) => {
+    return (
+        <section className="about-section">
+            {title && (
+                <h2
+                    className="about-section__title"
+                    style={{
+                        background: 'rgba(255, 255, 255, .98)',
+                        zIndex: 10,
+                    }}
+                >
+                    {title}
+                </h2>
+            )}
+
+            {subtitle && (
+                <h3 className="about-section__subtitle">
+                    {subtitle}
+                </h3>
+            )}
+
+            <div className="about-section__content">
+                {children}
+            </div>
+        </section>
+    )
+}
+
 export class About extends PureComponent {
     state = {
         isShownIntersection: false,
@@ -66,67 +98,21 @@ export class About extends PureComponent {
         }))
     }
 
-    generateSection = ({
-        key,
-        title,
-        subtitle,
-        content,
-    }) => {
-        const color = pageData[PAGE_COLORS][key]
-
-        return (
-            // <StickyContainer>
-                <section className="about-section">
-                    {/* <Sticky>
-                        {({style}) => ( */}
-                            <h2
-                                className="about-section__title"
-                                style={{
-                                    // ...style,
-                                    background: 'rgba(255, 255, 255, .98)',
-                                    zIndex: 10,
-                                    color
-                                }}
-                            >
-                                {title}
-                            </h2>
-                        {/* )} */}
-                    {/* </Sticky> */}
-
-                    {subtitle && (
-                        <h3 className="about-section__subtitle">
-                            {subtitle}
-                        </h3>
-                    )}
-
-                    <div className="about-section__content">
-                        {content}
-                    </div>
-                </section>
-            // </StickyContainer>
-        )
-    }
-
     renderBiography = () => (
         <section className="about-me">
             <div className="about-bio">
-                <div className="about-bio__description spacing-6-left-large">
+                <div className="about-bio__description">
                     <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset and thrive on interaction and collaboration with team members</p>
                     <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://jobs.lever.co/eventbrite?lever-via=LxHg4Lg84K" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
                     <p>I thrive on being at the intersection of four disciplines <Button onClick={this.toggleIntersection} style={BUTTON_STYLE_LINK} text={<strong>engineering, design, business and marketing</strong>} />. I am considered a strong 🗣️ communicator, 💡 ideas creator and innovator, and I am very passionate about the work I do</p>
-                    {/* <img
-                        width="100px"
-                        alt="Jorge ferreiro intersection software engineering design business marketing"
-                        src="/images/about/Jorge_ferreiro_intersection_software_engineering_design_business_marketing.png"
-                    /> */}
                 </div>
-                <div className="about-bio__pic">
+                {/* <div className="about-bio__pic">
                     <img
                         width="100%"
                         alt="Jorge Ferreiro is a Frontend Software Engineer, entrepreneur, blogger and host of DevelopersInDepth"
                         src="/images/about/jorge_ferreiro_is_a_software_engineer_entrepreneur_blogger_collage.png"
                     />
-                </div>
+                </div> */}
             </div>
 
             {this.state.isShownIntersection && (
@@ -237,12 +223,12 @@ export class About extends PureComponent {
     render() {
         const header = (
             <header className="about-header">
-                <div className="about-header__background">
+                {/* <div className="about-header__background">
                     <img
                         alt="Jorge Ferreiro is a Frontend Software Engineer, entrepreneur, blogger and host of DevelopersInDepth"
                         src="/images/about/jorge_ferreiro_is_a_frontend_software_engineer_entrepreneur_blogger_wallpaper.jpg"
                     />
-                </div>
+                </div> */}
                 <div className="about-header__data">
                     <div className="about-header__avatar">
                         <img
@@ -257,7 +243,7 @@ export class About extends PureComponent {
                         Frontend Software Engineer, Entrepreneur, Blogger and host of DevelopersInDepth
                     </p>
                     <ul className="about-header__options">
-                        <li>
+                        <li className="about-header__option">
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}
                                 icon={<span className="icon icon-twitter" />}
@@ -266,7 +252,7 @@ export class About extends PureComponent {
                                 target={TARGET_BLANK}
                             />
                         </li>
-                        <li>
+                        <li className="about-header__option">
                             <Button
                                 style={BUTTON_STYLE_NEUTRAL}
                                 icon={<span className="icon icon-linkedin" />}
@@ -293,98 +279,86 @@ export class About extends PureComponent {
 
         const content = (
             <div>
-                {this.generateSection({
-                    title: translate('About me'),
-                    // TODO: Move into const
-                    key: 'me', 
-                    subtitle: null,
-                    content: this.renderBiography()
-                })}
+                <Section
+                    key='me'
+                >
+                    {this.renderBiography()}
+                </Section>
 
-                {this.generateSection({
-                    title: translate('Career'),
-                    // TODO: Move into const
-                    key: 'career', 
-                    subtitle: null,
-                    content: this.renderCareerList()
-                })}
+                <Section
+                    title={translate('Career')}
+                    key='career'
+                >
+                    {this.renderCareerList()}
+                </Section>
 
-                {this.generateSection({
-                    // TODO: Move into const
-                    key: 'talks', 
-                    title: translate('Public speaking'),
-                    subtitle: null,
-                    content: this.renderPublicSpeaking()
-                })}
+                <Section
+                    title={translate('Public speaking')}
+                    key='talks'
+                >
+                    {this.renderPublicSpeaking()}
+                </Section>
 
-                {this.generateSection({
-                    // TODO: Move into const
-                    key: 'writing',
-                    title: translate('Articles, blogs and interviews'),
-                    subtitle: null,
-                    content: (
-                        <div className="about-articles">
-                            <RecentArticles />
+                <Section
+                    title={translate('Articles, blogs and interviews')}
+                    key='writing'
+                >
+                    <div className="about-articles">
+                        <RecentArticles />
 
-                            <div className="spacing-6-top" />
+                        <div className="spacing-6-top" />
 
-                            <Button
-                                style={BUTTON_STYLE_NEUTRAL}
-                                size={BUTTON_SIZE_MEDIUM}
-                                text={translate('See all blog entries')}
-                                url={PATH_BLOG}
-                            />
-                        </div>
-                    )
-                })}
+                        <Button
+                            style={BUTTON_STYLE_NEUTRAL}
+                            size={BUTTON_SIZE_MEDIUM}
+                            text={translate('See all blog entries')}
+                            url={PATH_BLOG}
+                        />
+                    </div>
+                </Section>
 
-                {this.generateSection({
-                    // TODO: Move into const
-                    key: 'videos',
-                    title: translate('Videos and Youtube show'),
-                    subtitle: null,
-                    content: (
-                        <div className="about-videos">
-                            <RecentVideos />
+                <Section
+                    title={translate('Videos and Youtube show')}
+                    key='videos'
+                >
+                    <div className="about-videos">
+                        <RecentVideos />
 
-                            <div className="spacing-6-top" />
+                        <div className="spacing-6-top" />
 
-                            <Button
-                                style={BUTTON_STYLE_NEUTRAL}
-                                size={BUTTON_SIZE_MEDIUM}
-                                text={translate('See all videos')}
-                                url={PATH_VIDEOS}
-                            />
-                        </div>
-                    )
-                })}
+                        <Button
+                            style={BUTTON_STYLE_NEUTRAL}
+                            size={BUTTON_SIZE_MEDIUM}
+                            text={translate('See all videos')}
+                            url={PATH_VIDEOS}
+                        />
+                    </div>
+                </Section>
 
-                {this.generateSection({
-                    // TODO: Move into const
-                    key: 'mentoring',
-                    title: translate('Mentoring'),
-                    content: (
-                        <div className="about-mentoring">
-                            I have mentored more than 30 students and junior engineers.
-                            If you wanna have a mentoring session with me... Go here.
+                <Section
+                    title={translate('Mentoring')}
+                    key='mentoring'
+                >
+                    <div className="about-mentoring">
+                        I have mentored more than 30 students and junior engineers.
+                        If you wanna have a mentoring session with me... Go here.
 
-                            <Button
-                                style={BUTTON_STYLE_FILL}
-                                size={BUTTON_SIZE_MEDIUM}
-                                text={translate('Request mentory')}
-                                url={PATH_CONTACT}
-                            />
-                        </div>
-                    )
-                })}
+                        <Button
+                            style={BUTTON_STYLE_FILL}
+                            size={BUTTON_SIZE_MEDIUM}
+                            text={translate('Request mentory')}
+                            url={PATH_CONTACT}
+                        />
+                    </div>
+                </Section>
 
-                {this.generateSection({
-                    // TODO: Move into const
-                    key: 'photos',
-                    title: translate('Photos and press'),
-                    subtitle: translate('Here are some photos and press articles of me. Feel free to download or see them :)'),
-                    content: <AboutGallery />
-                })}
+                <Section
+                    title={translate('Photos and press')}
+                    subtitle={translate('Here are some photos and press articles of me. Feel free to download or see them :)')}
+                    key='photos'
+                >
+                    <AboutGallery />
+                </Section>
 
                 <GenericAd
                     title="Would you like to contact me?"
