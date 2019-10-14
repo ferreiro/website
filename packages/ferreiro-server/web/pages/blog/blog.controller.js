@@ -205,7 +205,7 @@ export const getPostByPermalink = (req, res, next) => {
                     permalinkToSkip: sanitizedPermalink,
                     count: 3
                 }).then(relatedPosts => {
-                    const timeAgo = moment(post.updatedAt).fromNow()
+                    const timeAgo = moment(post.createdAt).fromNow()
                     const html = markdownToHtml(post.body)
                     const postEnhanced = merge(post, {
                         html,
