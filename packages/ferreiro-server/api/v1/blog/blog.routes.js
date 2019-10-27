@@ -3,6 +3,8 @@ const router = express.Router()
 import validator from 'validator'
 import merge from 'deepmerge'
 import isEmpty from 'lodash/isEmpty'
+import moment from 'moment'
+
 const debug = require('debug')('ferreiro:api:v1:blog')
 
 import {markdownToHtml} from "../../markdown-to-html";
@@ -77,6 +79,7 @@ router.get('/post/:permalink', function (req, res) {
 
         const extraReponseProps = {
             "html": markdownToHtml(post.body),
+            "timeAgo": moment(post.createdAt).fromNow()
         }
         const filterOutKeys = ['body', 'html']
 

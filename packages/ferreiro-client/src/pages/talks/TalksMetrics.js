@@ -15,6 +15,14 @@ export const TalksMetrics = () => {
         <ul className="talks-metrics">
             <li className="talks-metrics__item">
                 <span className="talks-metrics__number">
+                    {talksCount}
+                </span>
+                <span className="talks-metrics__text">
+                    {translate('Talks')}
+                </span>
+            </li>
+            <li className="talks-metrics__item">
+                <span className="talks-metrics__number">
                     {countries.length}
                 </span>
                 <span className="talks-metrics__text">
@@ -23,10 +31,10 @@ export const TalksMetrics = () => {
             </li>
             <li className="talks-metrics__item">
                 <span className="talks-metrics__number">
-                    {talksCount}
+                    +XXX
                 </span>
                 <span className="talks-metrics__text">
-                    {translate('Talks')}
+                    {translate('Attendees')}
                 </span>
             </li>
             <li className="talks-metrics__item">

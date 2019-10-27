@@ -7,8 +7,9 @@ import {VideoCardContent} from './VideoCardContent';
 import {PlayButton} from '../buttons/PlayButton';
 import {getVideoPermalink} from '../../utils/getVideoPermalink';
 
-import './VideoCard.scss';
 import { TARGET_BLANK } from '../constants';
+
+import './VideoCard.scss';
 
 export class VideoCard extends PureComponent {
     state = {

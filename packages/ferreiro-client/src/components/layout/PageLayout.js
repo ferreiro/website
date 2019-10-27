@@ -15,6 +15,10 @@ export class PageLayout extends PureComponent {
             : defaultTitle
     }
 
+    componentDidMount() {
+        this.updatePageTitle(this.props.title)
+    }
+
     componentDidUpdate(prevProps) {
         this.updatePageTitle(prevProps.title)
     }
@@ -22,7 +26,7 @@ export class PageLayout extends PureComponent {
     render() {
         const {
             children,
-            currentPath = null,
+            currentPath = '',
             showHeader = true,
             isHeaderFix = false,
         } = this.props
@@ -32,8 +36,6 @@ export class PageLayout extends PureComponent {
             'page-layout__header--fixed': isHeaderFix === true,
         })
     
-        console.log(children)
-
         return (
             <div className="page-layout">
                 {showHeader === true && (

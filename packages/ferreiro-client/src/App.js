@@ -19,6 +19,7 @@ import {VideosHome} from './pages/videos/Home'
 import {VideoDetailPage} from './pages/videos/DetailPage'
 import {TalksHome} from './pages/talks/Home'
 import {TalksInfo} from './pages/talks/Info'
+import {Newsletter} from './pages/newsletter/Newsletter'
 
 import './common.scss';
 
@@ -92,6 +93,11 @@ export const AppWithRoutes = () => (
             path='/talks/info'
             exact
             component={TalksInfo}
+        />
+        <Route
+            path='/newsletter'
+            exact
+            component={Newsletter}
         />
         <Route
             path='/contact'

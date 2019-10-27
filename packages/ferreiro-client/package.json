@@ -26,6 +26,7 @@
     "classnames": "2.2.6",
     "dompurify": "1.0.10",
     "email-validator": "2.0.4",
+    "emotion": "10.0.17",
     "lodash": "4.17.11",
     "prop-types": "15.7.2",
     "query-string": "6.8.1",

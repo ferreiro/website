@@ -27,9 +27,10 @@ export const TALK_PROPERTY_VENUE = 'venue'
 export const TALK_COUNTRY_SPAIN = 'Spain'
 export const TALK_COUNTRY_UK = 'United Kingdom'
 export const TALK_COUNTRY_US = 'United States'
+export const TALK_CITY_LONDON = 'London'
 export const TALK_CITY_MADRID = 'Madrid'
 export const TALK_CITY_MURCIA = 'Murcia'
-export const TALK_CITY_LONDON = 'London'
+export const TALK_CITY_PHILADELPHIA = 'Philadelphia'
 
 export const VIDEO_CATEGORIES_ALL = 'all'
 export const VIDEO_CATEGORIES_DID = 'developersInDepth'
@@ -248,9 +249,39 @@ export const content = {
     [PATH_TALKS]: {
         [PAGE_CONTENT]: {
             [PAGE_TITLE]: "Conferences",
-            [PAGE_SUBTITLE]: "I love sharing what I know! I have given talks on <strong>technical</strong>, <strong>career growth</strong> and <strong>motivational</strong> topics, as well as conducting workshops.",
+            [PAGE_SUBTITLE]: "I have given talks on <strong>technical</strong>, <strong>career growth</strong> and <strong>motivational</strong> topics, as well as conducting workshops. I love sharing what I know!",
         },
         [PAGE_ENTITIES]: {
+            pennapps101: {
+                "isPrivate": false,
+                "title": "Workshop: Progressive Web Apps, the future of web development - Pennapps hackathon - University of Pennsylvania",
+                "summary": "Sep 7th, 2019 - Progressive Web Apps is a term that Google created in 2015. Representing the next revolution in web development, PWAs enable more reliable, faster and engaging user experiences while also incorporating mobile app functionalities into websites.",
+                "permalink": "https://www.youtube.com/watch?v=de1xiqz-BTE",
+                "type": "video",
+                "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_in_the_university_of_pennsylvania_pennapps_progressive_web_apps.png",
+                "language": {
+                    "display": "English",
+                    "icon": "icon-english"
+                },
+                "date": "Sep, 7th",
+                "year": "2019",
+                [TALK_PROPERTY_LOCATION]: {
+                    [TALK_PROPERTY_VENUE]: "UPenn, University of Pennsylvania, Philadelphia",
+                    [TALK_PROPERTY_CITY]: TALK_CITY_PHILADELPHIA,
+                    [TALK_PROPERTY_COUNTRY]: TALK_COUNTRY_US,
+                },
+                "event": "",
+                "buttons": [
+                    {
+                        "type": BUTTON_TYPE_VIDEO,
+                        "url": "https://www.youtube.com/watch?v=de1xiqz-BTE"
+                    },
+                    {
+                        "type": BUTTON_TYPE_SLIDES,
+                        "url": "https://speakerdeck.com/ferreiro/pennapps-hackathon-workshop-progressive-web-apps-the-future-of-web-development-university-of-pennsylvania"
+                    }
+                ]
+            },
             github101: {
                 "isPrivate": false,
                 "title": "Github 101 by Jorge Ferreiro - Adalab Bootcamp",

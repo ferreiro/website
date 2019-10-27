@@ -20,12 +20,6 @@ export const Link = ({
         ? RouterLink
         : 'a';
 
-    console.group('Link~')
-    console.log('to', to)
-    console.log('url', url)
-    console.log('url || to', url || to)
-    console.groupEnd()
-
     return (
         <LinkComponent
             onClick={onClick}

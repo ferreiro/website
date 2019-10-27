@@ -1,6 +1,7 @@
 import validator from 'validator'
 import isEmpty from 'lodash/isEmpty'
-// import {renderToString} from "react-dom/server";
+import merge from 'lodash/merge'
+import moment from 'moment'
 
 import {generateRelatedPosts} from '../../../api/v1/blog/generate-related-posts';
 import blogRepository from '../../../api/repository/blog'
@@ -244,15 +245,19 @@ export const getPostByPermalink = (req, res, next) => {
           permalinkToSkip: sanitizedPermalink,
           count: 3
         }).then(relatedPosts => {
-          post.html = markdownToHtml(post.body)
+          const timeAgo = moment(post.createdAt).fromNow()
+          const html = markdownToHtml(post.body)
+          const postEnhanced = merge(post, {
+              html,
+          })
 
-          blogContext.with('post', post)
+          blogContext.with('post', postEnhanced)
           blogContext.with('relatedPosts', relatedPosts)
+          blogContext.with('timeAgo', timeAgo)
 
-                  
           return res.render(
-            createViewPath('blog', 'blog.post.pug'),
-            blogContext.build()
+              createViewPath('blog', 'blog.post.pug'),
+              blogContext.build()
           )
         })
       } else {

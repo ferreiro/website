@@ -1,4 +1,5 @@
 @import '../../../components/mediaQueries.scss';
+@import '../../../components/spacing.scss';
 
 $post-reader-width: 700px;
 
@@ -54,32 +55,49 @@ $post-reader-width: 700px;
         max-height: 400px;
         object-fit: cover;
         object-position: center;
-    }
+	}
+	
+	&__metadata {
+		align-items: center;
+		display: flex;
+		margin-top: $spacing-4;
+		margin-bottom: $spacing-6;
+	}
 }
 
 // Display the post author
 .post-author {
-    align-items: center;
-    display: flex;
-    margin-top: 1em;
-    margin-bottom: 2em;
+	align-items: center;
+	display: flex;
 
-    &__content {
-        flex: 0 0 auto;
-        align-items: center;
-        display: flex;
-    }
+	&__avatar {
+		width: 45px;
+		height: 45px;
+		margin-right: .7em;
 
-    &__options {
-        flex: 1 1 auto;
-        margin-left: 1em;
-    }
+		img {
+			width: 45px;
+			height: 45px;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 100%;
+		}
+	}
+	&__info {
+		display: flex;
+		flex-direction: column;
+		margin-right: $spacing-3;
+	}
+	&__name {}
+	&__date {
+		color: rgba(0,0,0,.5);
+		margin-top: $spacing-2;
+	}
 
-    &__image {
-        width: 30px;
-        border-radius: 100%;
-        margin-right: .7em;
-    }
+
+    &__subscribe {
+
+	}
 }
 
 .post-reader-content {

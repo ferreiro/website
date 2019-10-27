@@ -13,13 +13,17 @@ export const Card = ({
     title,
     summary = '',
     maxSummaryLength = DEFAULT_MAX_SUMMARY_LENGTH,
-    image,
+    pic,
     series,
+    ...rest
 }) => {
     const SEOTitle = `Jorge Ferreirto article ${title}`
     const summaryShortened = summary.substr(0, maxSummaryLength)
 
+    console.log('Card')
     console.log(series)
+    console.log(rest)
+    console.log(pic)
 
     return (
         <Link
@@ -29,7 +33,7 @@ export const Card = ({
             <article className="card">
                 <div className="card__image">
                     <LazyLoadImage
-                        src={image} 
+                        src={pic} 
                         alt={SEOTitle}
                         effect="blur"
                     />
@@ -43,14 +47,24 @@ export const Card = ({
                             {title}
                         </Link>
                     </h2>
+
                     <p className="card__summary">
                         {summaryShortened}
                     </p>
+
                     {series && (
                         <p>
                             This post belongs to {series.title.substr(0, 50)} series
                         </p>
                     )}
+{/* 
+                    <Link url="https://devsindepth.com" target="_blank">
+                        <img
+                            height="60px"
+                            src="https://www.devsindepth.com/static/logo_developers_in_depth_by_jorge_ferreiro.svg"
+                        />
+                    </Link> */}
+
                 </div>
             </article>
         </Link>

@@ -102,7 +102,7 @@ export class About extends PureComponent {
         <section className="about-me">
             <div className="about-bio">
                 <div className="about-bio__description">
-                    <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset and thrive on interaction and collaboration with team members</p>
+                    <p>👋 I am Jorge Ferreiro, a <strong>Full-Stack Software Engineer</strong> who loves <Button url="/portfolio" style={BUTTON_STYLE_LINK} text={translate('building products')} /> designed to improve people’s lives. I have an entrepreneurial and creative mindset</p>
                     <p>I am currently focusing on 🤓 <strong>Frontend with React</strong> at <Button url="https://jobs.lever.co/eventbrite?lever-via=LxHg4Lg84K" target={TARGET_BLANK} style={BUTTON_STYLE_LINK} text={translate('Eventbrite')} />, and I did <strong>Backend at Amazon</strong> with Java 8. I have a solid all-around background in building complex web software applications</p>
                     <p>I thrive on being at the intersection of four disciplines <Button onClick={this.toggleIntersection} style={BUTTON_STYLE_LINK} text={<strong>engineering, design, business and marketing</strong>} />. I am considered a strong 🗣️ communicator, 💡 ideas creator and innovator, and I am very passionate about the work I do</p>
                 </div>

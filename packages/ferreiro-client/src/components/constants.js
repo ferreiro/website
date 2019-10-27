@@ -1,24 +1,28 @@
 export const TARGET_BLANK = '_blank'
 export const TARGET_SELF = '_self'
 
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/jgferreiro/'
+export const TWITTER_URL = 'https://twitter.com/JGFerreiro'
+export const INSTAGRAM_URL = 'https://www.instagram.com/jgferreiro/'
+export const GITHUB_URL = 'https://github.com/ferreiro'
 export const SOCIAL_NETWORKS = [
     {
-        url: 'https://www.linkedin.com/in/jgferreiro/',
+        url: LINKEDIN_URL,
         text: 'Linkedin',
         icon: 'icon-linkedin',
     },
     {
-        url: 'https://twitter.com/JGFerreiro',
+        url: TWITTER_URL,
         text: 'Twitter',
         icon: 'icon-twitter',
     },
     {
-        url: 'https://www.instagram.com/jgferreiro/',
+        url: INSTAGRAM_URL,
         text: 'Instagram',
         icon: 'icon-instagram',
     },
     {
-        url: 'https://github.com/ferreiro',
+        url: GITHUB_URL,
         text: 'Github',
         icon: 'icon-github',
     },
