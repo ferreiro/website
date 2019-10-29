@@ -91,3 +91,13 @@ V3, level up Jorge Ferreiro: The content has arrived.
 
 ### Version 1 (Early 2016 - Sep 25, 2016)
 
+
+## Contribute
+
+💬 [Create a new Pull Request](https://github.com/ferreiro/website/pulls)
+
+## My social networks
+
+* Twitter: [https://www.twitter.com/jgferreiro](https://www.twitter.com/jgferreiro)
+* Linkedin: [https://www.linkedin.com/in/jgferreiro/](https://www.linkedin.com/in/jgferreiro/)
+* Instagram: [https://www.instagram.com/jgferreiro/](https://www.instagram.com/jgferreiro/)
