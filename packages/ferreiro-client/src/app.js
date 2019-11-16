@@ -5,7 +5,14 @@ function PageHome() {
     return (<div>Welcome to the home!</div>)
 }
 
-export function AppWithRoutes() {
+function PagePost() {
+    return <div>This is page post rendered in React!</div>
+}
+function PageNotFound() {
+    return <div>Not found!</div>
+}
+
+export function AppWithRouter() {
     return (
         <Switch>
             <Route
@@ -13,8 +20,16 @@ export function AppWithRoutes() {
                 exact
                 render={PageHome}
             />
+            <Route
+                path='/blog/:permalink'
+                exact
+                render={PagePost}
+            />
+            <Route
+                render={PageNotFound}
+            />
         </Switch>
     )
 }
 
-export default withRouter(AppWithRoutes)
+export default withRouter(AppWithRouter)

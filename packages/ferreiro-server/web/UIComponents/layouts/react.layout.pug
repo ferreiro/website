@@ -153,17 +153,20 @@ html
 		// overriden this block
 		block extraHead
 
-	body
-		.container
-			#app!= htmlSsr
+	body(class="pushable")
+		include ../menu.pug
 
-			// NB: Any child view can add extra head properties
-			// overriden this block
-			block container
+		.ui.container_home#mainContainer
+			.container
+				#app!= htmlSsr
+
+				// NB: Any child view can add extra head properties
+				// overriden this block
+				block container
 
 		//- In local dev we have the react server in the port 9000.  So we use
 		//- localhost directly. In production, we only serve those assets
 		//- directly in our backend. So not longer need port 9000.
 		//- TODO: Probably inject this value from the pug view.
-		//- - bundleUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:9000'
-		//- script(src= bundleUrl + "/client.bundle.js")
+		- bundleUrl = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:9000'
+		script(src= bundleUrl + "/client.bundle.js")

@@ -161,7 +161,7 @@ export const getSingleBlogSeries = (req, res, next) => {
  */
 export const getPostByPermalink = (req, res, next) => {
     // SSR
-    return res.render('layouts/blog.layout.pug', {
+    return res.render('UIComponents/layouts/blog.layout.pug', {
         htmlSsr: '<h1>Hola</h1>',
         // TODO: This should be a global config...
         buildVersion: '3.5.6'
