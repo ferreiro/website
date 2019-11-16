@@ -28,7 +28,7 @@
         "npm-check": "5.9.0"
     },
     "dependencies": {
-        "xss-filters": "1.2.7",
-        "concurrently": "4.1.0"
+        "concurrently": "4.1.0",
+        "xss-filters": "1.2.7"
     }
 }

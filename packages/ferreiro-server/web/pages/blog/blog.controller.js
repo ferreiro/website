@@ -1,13 +1,15 @@
 import validator from 'validator'
 import isEmpty from 'lodash/isEmpty'
-import merge from 'lodash/merge'
-import moment from 'moment'
+// import merge from 'lodash/merge'
+// import moment from 'moment'
 
 import blogRepository from '../../../api/repository/blog'
 import seriesRepository from '../../../api/repository/series'
 import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
-import {markdownToHtml} from './markdown-to-html'
+// import {markdownToHtml} from './markdown-to-html'
+
+// import {render} from '@ferreiro/client/src/server'
 
 import {MAX_PAGE_POSTS} from './constants'
 import blog from '../../content/english/blog.json'
@@ -159,87 +161,90 @@ export const getSingleBlogSeries = (req, res, next) => {
  * Finds and returns a blog post if is valid
  * and the user has the right credentials.
  */
-export const getPostByPermalink = (req, res, next) => {
+export const getPostByPermalink = (_, res) => {
+    // const html = render()
+    const html = '<h1>Hola</h1>'
+
     // SSR
     return res.render('UIComponents/layouts/blog.layout.pug', {
-        htmlSsr: '<h1>Hola</h1>',
+        htmlSsr: html,
         // TODO: This should be a global config...
         buildVersion: '3.5.6'
     })
 
 
-    const blogContext = createBlogContextBuilder(req)
+    // const blogContext = createBlogContextBuilder(req)
 
-    const {permalink} = req.params
+    // const {permalink} = req.params
 
-    if (isEmpty(permalink)) {
-        blogContext.with('blogCategory', '')
-        blogContext.with('error', 'Post not found or invalid url')
+    // if (isEmpty(permalink)) {
+    //     blogContext.with('blogCategory', '')
+    //     blogContext.with('error', 'Post not found or invalid url')
 
-        return res.render(
-            createViewPath('blog', 'blog.post.pug'),
-            blogContext.build()
-        )
-    }
+    //     return res.render(
+    //         createViewPath('blog', 'blog.post.pug'),
+    //         blogContext.build()
+    //     )
+    // }
 
-    const sanitizedPermalink =
-    validator.blacklist(permalink, '<|>|&|\'|"|\'|,|/|')
+    // const sanitizedPermalink =
+    // validator.blacklist(permalink, '<|>|&|\'|"|\'|,|/|')
 
-    const query = {
-        isAdmin: blogContext.get('admin'),
-        permalink: sanitizedPermalink
-    }
+    // const query = {
+    //     isAdmin: blogContext.get('admin'),
+    //     permalink: sanitizedPermalink
+    // }
 
-    blogRepository
-        .findByPermalinkIncrementViews(query)
-        .then((post) => {
-            if (isEmpty(post)) {
-                blogContext.with('blogCategory', '') // no menu selected
-                blogContext.with('error', 'Post does not exist or you dont have permissions to view.')
+    // blogRepository
+    //     .findByPermalinkIncrementViews(query)
+    //     .then((post) => {
+    //         if (isEmpty(post)) {
+    //             blogContext.with('blogCategory', '') // no menu selected
+    //             blogContext.with('error', 'Post does not exist or you dont have permissions to view.')
         
-                return res.render(
-                    createViewPath('blog', 'blog.post.pug'),
-                    blogContext.build()
-                )
-            }
+    //             return res.render(
+    //                 createViewPath('blog', 'blog.post.pug'),
+    //                 blogContext.build()
+    //             )
+    //         }
 
-            const isPostVisible =
-        post.published
-        || isValidSecretKey(req.query.secretKey, post.secretKey)
-        || (isValidUser(req) && blogContext.get('admin'))
+    //         const isPostVisible =
+    //     post.published
+    //     || isValidSecretKey(req.query.secretKey, post.secretKey)
+    //     || (isValidUser(req) && blogContext.get('admin'))
 
-            if (isPostVisible) {
-                generateRelatedPosts({
-                    permalinkToSkip: sanitizedPermalink,
-                    count: 3
-                }).then(relatedPosts => {
-                    const timeAgo = moment(post.createdAt).fromNow()
-                    const html = markdownToHtml(post.body)
-                    const postEnhanced = merge(post, {
-                        html,
-                    })
+    //         if (isPostVisible) {
+    //             generateRelatedPosts({
+    //                 permalinkToSkip: sanitizedPermalink,
+    //                 count: 3
+    //             }).then(relatedPosts => {
+    //                 const timeAgo = moment(post.createdAt).fromNow()
+    //                 const html = markdownToHtml(post.body)
+    //                 const postEnhanced = merge(post, {
+    //                     html,
+    //                 })
 
-                    blogContext.with('post', postEnhanced)
-                    blogContext.with('relatedPosts', relatedPosts)
-                    blogContext.with('timeAgo', timeAgo)
+    //                 blogContext.with('post', postEnhanced)
+    //                 blogContext.with('relatedPosts', relatedPosts)
+    //                 blogContext.with('timeAgo', timeAgo)
 
-                    return res.render(
-                        createViewPath('blog', 'blog.post.pug'),
-                        blogContext.build()
-                    )
-                })
-            } else {
-                return next(new Error('Post does not exist or you dont have permissions to view.'))
-            }
-        })
-        .catch(error => {
-            blogContext.with('error', error)
+    //                 return res.render(
+    //                     createViewPath('blog', 'blog.post.pug'),
+    //                     blogContext.build()
+    //                 )
+    //             })
+    //         } else {
+    //             return next(new Error('Post does not exist or you dont have permissions to view.'))
+    //         }
+    //     })
+    //     .catch(error => {
+    //         blogContext.with('error', error)
              
-            return res.render(
-                createViewPath('blog', 'blog.post.pug'),
-                blogContext.build()
-            )
-        })
+    //         return res.render(
+    //             createViewPath('blog', 'blog.post.pug'),
+    //             blogContext.build()
+    //         )
+    //     })
 }
 
 /**
@@ -280,26 +285,22 @@ function fetchPosts (query, opts, callback) {
         })
 }
 
-// function isInvalidUser (req) {
-//     return !req.user
+// function isValidUser (req) {
+//     return !isEmpty(req.user)
 // }
 
-function isValidUser (req) {
-    return !isEmpty(req.user)
-}
+// function isValidSecretKey (srcSecretKey, validSecretKey) {
+//     if (isEmpty(srcSecretKey) || isEmpty(validSecretKey)) {
+//         return false
+//     }
+//     return srcSecretKey === validSecretKey
+// }
 
-function isValidSecretKey (srcSecretKey, validSecretKey) {
-    if (isEmpty(srcSecretKey) || isEmpty(validSecretKey)) {
-        return false
-    }
-    return srcSecretKey === validSecretKey
-}
-
-function generateRelatedPosts (opts) {
-    return new Promise((resolve) => {
-        return blogRepository
-            .getRandomPosts(opts)
-            .then(posts => resolve(posts))
-            .catch(() => resolve([]))
-    })
-}
+// function generateRelatedPosts (opts) {
+//     return new Promise((resolve) => {
+//         return blogRepository
+//             .getRandomPosts(opts)
+//             .then(posts => resolve(posts))
+//             .catch(() => resolve([]))
+//     })
+// }
