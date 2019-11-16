@@ -65,5 +65,6 @@ module.exports = (app) => {
     // Later on you, you can decide where to load the views using:
     // Eg: return res.render('home/home.pug')
     app.set('views', path.join(__dirname, '../web'))
+    app.set('views', path.join(__dirname, '../web/UIComponents'))
     app.set('view engine', 'pug')
 }
