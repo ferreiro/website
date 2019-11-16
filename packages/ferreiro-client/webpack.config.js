@@ -35,7 +35,7 @@ module.exports = {
           to: DIST_PATH
         }]),
         new CopyWebpackPlugin([{
-          from: './lib',
+          from: LIB_PATH,
           to: DIST_PATH
         }]),
         new ImageminPlugin()
