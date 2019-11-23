@@ -2,7 +2,6 @@ import { Page } from "./Page"
 
 export interface MenuItem {
     display: string
-    order: number
     path: string
     type: Page
     submenu?: SubmenuItem
