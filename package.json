@@ -1,34 +1,33 @@
 {
-    "private": true,
-    "name": "ferreiro.me",
-    "engines": {
-        "node": ">=8.10.0",
-        "yarn": "1.x"
-    },
-    "scripts": {
-        "check": "npm-check",
-        "dev": "concurrently \"yarn build:assets\" \"yarn backend:server\" \"yarn frontend:server:dev\"",
-        "frontend:server:dev": "yarn workspace @ferreiro/client start:dev",
-        "backend:server": "yarn workspace @ferreiro/server start",
-        "build:client": "yarn workspace @ferreiro/client build",
-        "build:server": "yarn workspace @ferreiro/server build",
-        "build:assets": "yarn build:server && yarn build:client",
-        "lint": "yarn run lint:client && yarn run lint:server",
-        "lint:client": "yarn workspace @ferreiro/client lint",
-        "lint:sever": "yarn workspace @ferreiro/server lint",
-        "start": "yarn backend:server",
-        "test": "echo $'[TODO] Implement tests'",
-        "heroku-postbuild": "yarn build:assets"
-    },
-    "workspaces": [
-        "packages/*"
-    ],
-    "devDependencies": {
-        "concurrently": "4.1.0",
-        "npm-check": "5.9.0"
-    },
-    "dependencies": {
-        "xss-filters": "1.2.7",
-        "concurrently": "4.1.0"
-    }
+  "private": true,
+  "name": "ferreiro.me",
+  "engines": {
+    "node": ">=8.10.0",
+    "yarn": "1.x"
+  },
+  "scripts": {
+    "check": "npm-check",
+    "dev": "concurrently \"yarn build:assets\" \"yarn backend:server\" \"yarn client:dev\"",
+    "client:dev": "yarn workspace @ferreiro/client dev",
+    "backend:server": "yarn workspace @ferreiro/server start",
+    "build:client": "yarn workspace @ferreiro/client build",
+    "build:server": "yarn workspace @ferreiro/server build",
+    "build:assets": "yarn build:server && yarn build:client",
+    "lint": "yarn run lint:client && yarn run lint:server",
+    "lint:client": "yarn workspace @ferreiro/client lint",
+    "lint:sever": "yarn workspace @ferreiro/server lint",
+    "start": "yarn backend:server",
+    "test": "echo $'[TODO] Implement tests'",
+    "heroku-postbuild": "yarn build:assets"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "4.1.0",
+    "npm-check": "5.9.0"
+  },
+  "dependencies": {
+    "xss-filters": "1.2.7"
+  }
 }
