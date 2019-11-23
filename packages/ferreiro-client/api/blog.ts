@@ -20,8 +20,12 @@ export async function fetchPostsApi(): Promise<PaginatedResponse<Post>> {
         .catch(error => error)
 }
 
-export async function fetchFeaturedPostsApi(): Promise<Post[]> {
-    return fetch("http://localhost:4000/api/v1/blog/featured")
+export async function fetchFeaturedPostsApi(query: {
+    limit?: number
+}): Promise<Post[]> {
+    const limit = query.limit
+
+    return fetch(`http://localhost:4000/api/v1/blog/featured?limit=${limit}`)
         .then(r => r.json())
         .then((posts: Object[]) => transformPosts(posts))
         .catch(error => error)

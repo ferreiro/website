@@ -99,12 +99,12 @@ function BlogTopArticles(props: { posts: Post[] }) {
     useEffect(() => {
         if (isEmpty(props.posts) && isEmpty(featuredPosts)) {
             setIsLoading(true)
-            fetchFeaturedPostsApi()
+            fetchFeaturedPostsApi({ limit: 5 })
                 .then((posts: Post[]) => {
-                    console.log({ posts })
                     setFeaturedPosts(posts)
                 })
                 .catch(error => {
+                    // TODO: Handle errors properly
                     console.log(error)
                 })
                 .finally(() => {
@@ -200,7 +200,7 @@ export function Blog(props: Props) {
 Blog.getInitialProps = async function(): Promise<Props> {
     try {
         const { docs, ...pagination } = await fetchPostsApi()
-        const featuredPosts: Post[] = await fetchFeaturedPostsApi()
+        const featuredPosts: Post[] = await fetchFeaturedPostsApi({ limit: 5 })
 
         return {
             posts: docs,

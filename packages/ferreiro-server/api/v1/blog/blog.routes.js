@@ -12,16 +12,8 @@ import blogRepository from "../../../api/repository/blog"
 router.get("/", function(req, res) {
     return blogRepository
         .getAllPublished()
-        .then(paginatedResponse => {
-            console.log("paginatedResponse", paginatedResponse)
-
-            return res.json(paginatedResponse)
-        })
-        .catch(err => {
-            console.log('router.get("/", function(req, res) {')
-            console.log("err", err)
-            return res.json(err)
-        })
+        .then(paginatedResponse => res.json(paginatedResponse))
+        .catch(err => res.json(err))
 })
 
 /**
@@ -29,16 +21,15 @@ router.get("/", function(req, res) {
  * @required authentication
  */
 router.get("/featured", function(req, res) {
+    // TODO: Sanitize  query param
+    const limit = (req.query.limit && parseInt(req.query.limit)) || 10
+
     return blogRepository
-        .getMostReadPosts()
-        .then(response => {
-            console.log("response", response)
-            return res.json(response)
+        .getMostReadPosts({
+            limit
         })
-        .catch(err => {
-            console.log("err", err)
-            return res.json(err)
-        })
+        .then(response => res.json(response))
+        .catch(err => res.json(err))
 })
 
 router.get("/:permalink", function(req, res) {
