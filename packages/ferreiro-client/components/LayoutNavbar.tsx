@@ -4,17 +4,18 @@ import { useRouter } from "next/router"
 import { css, cx } from "emotion"
 
 import config, {
-    spacing3,
     spacing4,
     spacing5,
-    headerLogoHeight,
-    breakpoints
+    spacing6,
+    navBarLogoHeight,
+    breakpoints,
+    containterMaxWidths
 } from "./config"
 
 import { MenuItem, SubmenuItem } from "../types/Menu"
 import { Page } from "../types/Page"
 
-function HeaderLogo() {
+function NavbarLogo() {
     return (
         <div
             itemScope
@@ -25,7 +26,7 @@ function HeaderLogo() {
                 <a title="Jorge Ferreiro Frontend Software Engineer and Entrepreneur">
                     <img
                         className={styles.logoImage}
-                        src="/images/logos/logo_jorge_ferreiro_frontend_software_engineer.png"
+                        src="/images/logos/logo_jorge_ferreiro_frontend_software_engineer_clear.png"
                         alt="Jorge Ferreiro Frontend Software Engineer and Entrepreneur"
                     />
                 </a>
@@ -34,7 +35,7 @@ function HeaderLogo() {
     )
 }
 
-function HeaderMenu(props: {
+function NavbarMenu(props: {
     activePathname: string
     items: { [key: string]: MenuItem }
 }) {
@@ -44,7 +45,7 @@ function HeaderMenu(props: {
     return (
         <div className={styles.menu}>
             {Object.values(items).map((item: MenuItem) => (
-                <HeaderMenuItem
+                <NavbarMenuItem
                     activePathname={activePathname}
                     item={item}
                     key={item.type}
@@ -54,7 +55,7 @@ function HeaderMenu(props: {
     )
 }
 
-function HeaderMenuItem(props: { activePathname: string; item: MenuItem }) {
+function NavbarMenuItem(props: { activePathname: string; item: MenuItem }) {
     const [isShownSubmenu, setisShownSubmenu] = useState(false)
 
     const item = props.item
@@ -109,65 +110,74 @@ function HeaderSubmenuVideos() {
     return <div>Amazing submenu with top latest videos. Yay!</div>
 }
 
-function HeaderActions() {
-    return <div>Actions...</div>
+function NavbarActions() {
+    return <div>Actions.. Follow? Subscribe?.</div>
 }
 
-function HeaderMobile() {
+function NavbarMobile() {
     const [isShownMenu, setIsShownMenu] = useState(false)
 
     return <div>Mobile</div>
 }
 
-export function LayoutHeader() {
+export function LayoutNavbar() {
     const router = useRouter()
     const menuItems = config.menu
 
     // TODO: Fetch list of articles in the background?
 
     return (
-        <div className={styles.wrapper}>
+        <nav className={styles.wrapper}>
             <div className={styles.container}>
-                <HeaderLogo />
-                <HeaderMenu
+                <NavbarLogo />
+                <NavbarMenu
                     activePathname={router.pathname}
                     items={menuItems}
                 />
-                <HeaderActions />
-                <HeaderMobile />
+                <NavbarActions />
+                <NavbarMobile />
             </div>
-        </div>
+        </nav>
     )
 }
 
+export const smallUp = `
+    @media all and (min-width: ${breakpoints.sm})
+`
+
+export const mediumUp = `
+    @media all and (min-width: ${breakpoints.md})
+`
+
 export const largeUp = `
-    @media all and (min-width: ${breakpoints.large})
+    @media all and (min-width: ${breakpoints.lg})
 `
 
 const styles = {
     wrapper: css`
         background: #fff;
+        background: #000;
         border-bottom: 1px solid #f1f1f1;
-        padding: 0 ${spacing3};
+        padding: 0 ${spacing4};
     `,
     container: css`
         align-items: center;
         display: flex;
         flex-direction: row;
-        max-width: ${breakpoints.large};
+        max-width: ${containterMaxWidths.lg};
         margin: 0 auto;
     `,
     logo: css`
-        padding: ${spacing3} 0;
-        height: ${headerLogoHeight};
+        padding: ${spacing4} 0;
+        height: ${navBarLogoHeight};
     `,
     logoImage: css`
-        height: ${headerLogoHeight};
+        height: ${navBarLogoHeight};
     `,
     menu: css`
         flex: 1 1 auto;
         flex-direction: row;
-        margin-left: ${spacing4};
+        margin-left: ${spacing5};
         display: none;
 
         ${largeUp} {
@@ -176,20 +186,23 @@ const styles = {
     `,
     menuItem: css`
         display: inline-flex;
-        margin: 0 ${spacing3};
+        margin: 0 ${spacing4};
 
         a {
-            color: ${config.colors.secondary};
-            font-size: 22px;
-            opacity: 0.7;
-            padding: ${spacing5} 0;
+            color: ${config.colors.navBar};
+            font-size: 18px;
+            font-weight: 600;
+            opacity: 0.9;
+            padding: ${spacing6} 0;
             text-decoration: none;
         }
     `,
     menuItemSelected: css`
         a {
-            font-weight: 600;
             border-bottom: 2px solid ${config.colors.primary};
+            color: ${config.colors.primary};
+            font-weight: 600;
+            opacity: 1;
         }
     `
 }

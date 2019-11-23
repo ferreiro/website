@@ -1,10 +1,19 @@
 import React from "react"
 import Head from "next/head"
+import isEmpty from "lodash/isEmpty"
+import { cx } from "emotion"
+import { useRouter } from "next/router"
+
+import { Layout } from "../../components/Layout"
+import { sharedStyles } from "../../components/config"
+
+import { Post } from "../../types/Post"
 
 // https://www.creativebloq.com/how-to/build-an-seo-friendly-head-component-for-nextjsreact
 // TODO: Copy this from the current .pug
 function PostMeta(props: {
     // post
+    description?: string
 }) {
     const description = props.description || "TODO: Put default description"
 
@@ -38,6 +47,47 @@ function PostMeta(props: {
     )
 }
 
-export default function Post() {
-    return <div>Welcome to the post!!</div>
+interface Props {
+    post?: Post
 }
+
+function PostDetail(props: Props) {
+    if (!props.post || isEmpty(props.post)) {
+        return (
+            <Layout title="Videos of">
+                <p>Post not found or does not exist</p>
+            </Layout>
+        )
+    }
+    return (
+        <Layout title="Videos of">
+            <PostMeta />
+            <h1
+                className={cx(sharedStyles.title, sharedStyles.marginBottom(5))}
+            >
+                {props.post.title}
+            </h1>
+
+            <div className={sharedStyles.marginTop(8)}>
+                <div className={sharedStyles.row}>This is a post</div>
+            </div>
+        </Layout>
+    )
+}
+
+PostDetail.getInitialProps = async function(context: any): Promise<Props> {
+    const permalink = context.query.id
+    const paginatedResponse = await fetch(
+        `http://localhost:4000/api/v1/blog/${permalink}`,
+        { method: "GET", mode: "no-cors" }
+    )
+    const post = await paginatedResponse.json()
+
+    console.log(`Post fetched. Count: ${post.length}`)
+
+    return {
+        post
+    }
+}
+
+export default PostDetail

@@ -1,10 +1,39 @@
 import React from "react"
 import Head from "next/head"
+import { injectGlobal, css } from "emotion"
 
-import config from "./config"
+import config, { breakpoints, spacing7, containterMaxWidths } from "./config"
 
-import { LayoutContainer } from "./LayoutContainer"
-import { LayoutHeader } from "./LayoutHeader"
+import { LayoutNavbar } from "./LayoutNavbar"
+
+injectGlobal(`
+    body {
+        font-family: Roobert, Helvetica Neue, Helvetica, Arial, sans-serif;
+    }
+
+    p, h1, h2, h3, {
+        margin: 0;
+        padding: 0;
+    }
+
+    @font-face {
+        font-family: Roobert;
+        font-weight: 400;
+        src: url(/fonts/Roobert-Regular-3fe213a3618624fd7b71.woff2) format("woff2"),url(/fonts/Roobert-Regular-014ea096b0f865fa4dd9.woff) format("woff")
+    }
+
+    @font-face {
+        font-family: Roobert;
+        font-weight: 600;
+        src: url(/fonts/Roobert-SemiBold-df85158a0012c224b021.woff2) format("woff2"),url(/fonts/Roobert-SemiBold-48a406bf82c48cfaa849.woff) format("woff")
+    }
+
+    @font-face {
+        font-family: Roobert;
+        font-weight: 700;
+        src: url(/fonts/Roobert-Bold-7fda562c82c09fbabec2.woff2) format("woff2"),url(/fonts/Roobert-SemiBold-48a406bf82c48cfaa849.woff) format("woff")
+    }
+`)
 
 function LayoutHead(props: {
     title: string
@@ -52,6 +81,22 @@ function LayoutHead(props: {
     )
 }
 
+export function LayoutContainer(props: { children: object }) {
+    return (
+        <main className={styles.containerWrapper}>
+            <div className={styles.containerContent}>{props.children}</div>
+        </main>
+    )
+}
+
+export function LayoutFooter() {
+    return (
+        <div className={styles.footerWrapper}>
+            <div className={styles.footerContent}>Amazing footer :)</div>
+        </div>
+    )
+}
+
 export function Layout(props: {
     children: object
     description?: string
@@ -65,8 +110,27 @@ export function Layout(props: {
                 image={props.image}
                 description={props.description}
             />
-            <LayoutHeader />
+            <LayoutNavbar />
             <LayoutContainer>{props.children}</LayoutContainer>
+            <LayoutFooter />
         </div>
     )
+}
+
+const styles = {
+    containerWrapper: css`
+        padding: ${spacing7} 0;
+    `,
+    containerContent: css`
+        margin: 0 auto;
+        max-width: ${containterMaxWidths.lg};
+    `,
+    footerWrapper: css`
+        border-top: 1px solid #f1f1f1;
+        padding-top: ${spacing7};
+    `,
+    footerContent: css`
+        margin: 0 auto;
+        max-width: ${containterMaxWidths.lg};
+    `
 }
