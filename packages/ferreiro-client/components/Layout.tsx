@@ -19,6 +19,8 @@ function LayoutHead(props: {
         <Head>
             <title>{title}</title>
 
+            <link rel="canonical" href={config.meta.url} />
+
             <meta property="og:type" content="website" />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
@@ -40,6 +42,12 @@ function LayoutHead(props: {
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={image} />
+
+            <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+            />
         </Head>
     )
 }

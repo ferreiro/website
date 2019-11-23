@@ -1,12 +1,12 @@
 export enum Page {
-    about,
-    blog,
-    biography,
-    contact,
-    projects,
-    home,
-    resume,
-    talks,
-    videocall,
-    videos
+    about = "about",
+    blog = "blog",
+    biography = "biography",
+    contact = "contact",
+    projects = "projects",
+    home = "home",
+    resume = "resume",
+    talks = "talks",
+    videocall = "videocall",
+    videos = "videos"
 }

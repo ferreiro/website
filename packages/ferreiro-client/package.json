@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "private": true,
     "scripts": {
-        "build": "next build",
+        "build": "next build && next export && \"TODO: Copy files over the server?\"",
         "dev": "concurrently \"next\"",
         "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
         "lint": "eslint src",
@@ -31,6 +31,7 @@
         "eslint-plugin-prettier": "3.1.1",
         "eslint-plugin-react": "7.14.3",
         "prettier": "1.19.1",
+        "stylelint-prettier": "1.1.1",
         "typescript": "3.7.2"
     }
 }

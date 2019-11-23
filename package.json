@@ -8,6 +8,7 @@
   "scripts": {
     "check": "npm-check",
     "dev": "concurrently \"yarn build:assets\" \"yarn backend:server\" \"yarn client:dev\"",
+    "client:build": "yarn workspace @ferreiro/client build",
     "client:dev": "yarn workspace @ferreiro/client dev",
     "backend:server": "yarn workspace @ferreiro/server start",
     "build:client": "yarn workspace @ferreiro/client build",
@@ -16,7 +17,7 @@
     "lint": "yarn run lint:client && yarn run lint:server",
     "lint:client": "yarn workspace @ferreiro/client lint",
     "lint:sever": "yarn workspace @ferreiro/server lint",
-    "start": "yarn backend:server",
+    "start": "yarn client:build && yarn backend:server",
     "test": "echo $'[TODO] Implement tests'",
     "heroku-postbuild": "yarn build:assets"
   },
