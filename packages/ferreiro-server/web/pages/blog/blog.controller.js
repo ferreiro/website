@@ -9,7 +9,10 @@ import {getCategories} from '../../../api/repository/categories'
 import {createViewPath} from '../create-view-path'
 // import {markdownToHtml} from './markdown-to-html'
 
-// import {render} from '@ferreiro/client/src/server'
+// const render = require('@ferreiro/client')
+const render = require('../../../../ferreiro-client/lib/client.bundle')
+// import render from '@ferreiro/client'
+console.log(render)
 
 import {MAX_PAGE_POSTS} from './constants'
 import blog from '../../content/english/blog.json'
@@ -162,8 +165,8 @@ export const getSingleBlogSeries = (req, res, next) => {
  * and the user has the right credentials.
  */
 export const getPostByPermalink = (_, res) => {
-    // const html = render()
-    const html = '<h1>Hola</h1>'
+    const html = render()
+    // const html = '<h1>Hola</h1>'
 
     // SSR
     return res.render('UIComponents/layouts/blog.layout.pug', {

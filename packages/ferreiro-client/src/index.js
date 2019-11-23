@@ -4,14 +4,14 @@ import {BrowserRouter} from 'react-router-dom'
 
 import App from './app'
 
-// function Header() {
-//     return <div>This is a react notification!</div>
-// }
+function Header() {
+    return <div>This is a react notification!</div>
+}
 
-// ReactDOM.hydrate(
-//     <Header />,
-//     document.getElementById('header')
-// )
+ReactDOM.hydrate(
+    <Header />,
+    document.getElementById('header')
+)
 
 ReactDOM.render(
     <BrowserRouter>

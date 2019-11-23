@@ -2,7 +2,7 @@
   "name": "@ferreiro/client",
   "version": "0.0.1",
   "private": true,
-  "main": "lib/client.bundle.js",
+  "main": "lib/lib.bundle.js",
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route, withRouter} from 'react-router-dom'
+import {Switch, Route, withRouter} from 'react-router'
 
 function PageHome() {
     return (<div>Welcome to the home!</div>)

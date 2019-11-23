@@ -11,9 +11,10 @@ const DIST_PATH = path.join(__dirname, '../ferreiro-server/dist')
 module.exports = {
     entry: {
         client: './src/index.js',
+        lib: './src/server.js',
     },
     output: {
-        filename: 'client.bundle.js',
+        filename: '[name].bundle.js',
         path: LIB_PATH,
     },
     // This is required to make the hot reload work for the web...
@@ -35,7 +36,7 @@ module.exports = {
           to: DIST_PATH
         }]),
         new CopyWebpackPlugin([{
-          from: LIB_PATH,
+          from: `${LIB_PATH}/client.bundle.js`,
           to: DIST_PATH
         }]),
         new ImageminPlugin()
