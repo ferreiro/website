@@ -94,9 +94,11 @@ function BlogList(props: { posts: Post[]; pagination: Pagination }) {
 
 function BlogTopArticles(props: { posts: Post[] }) {
     const [featuredPosts, setFeaturedPosts] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        if (isEmpty(featuredPosts)) {
+        if (isEmpty(props.posts) && isEmpty(featuredPosts)) {
+            setIsLoading(true)
             fetchFeaturedPostsApi()
                 .then((posts: Post[]) => {
                     console.log({ posts })
@@ -105,24 +107,34 @@ function BlogTopArticles(props: { posts: Post[] }) {
                 .catch(error => {
                     console.log(error)
                 })
+                .finally(() => {
+                    setIsLoading(false)
+                })
         }
     }, [featuredPosts])
+
+    const posts = props.posts || featuredPosts || []
 
     return (
         <div>
             <h2 className={sharedStyles.subtitle}>Top articles</h2>
-            <ul>
-                {featuredPosts.map((post: Post) => (
-                    <li key={post.permalink}>
-                        <Link href={createPostUrl(post.permalink)}>
-                            <a>
-                                <h3>{post.title}</h3>
-                                <p>{post.published}</p>
-                            </a>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+
+            {isLoading ? (
+                <p>Loading top articles</p>
+            ) : (
+                <ul>
+                    {posts.map((post: Post) => (
+                        <li key={post.permalink}>
+                            <Link href={createPostUrl(post.permalink)}>
+                                <a>
+                                    <h3>{post.title}</h3>
+                                    <p>{post.published}</p>
+                                </a>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     )
 }
@@ -188,17 +200,14 @@ export function Blog(props: Props) {
 Blog.getInitialProps = async function(): Promise<Props> {
     try {
         const { docs, ...pagination } = await fetchPostsApi()
-
-        console.log(`Blog data fetched. Count: ${pagination}`)
-        console.log(`Blog data fetched. Count: ${docs.length}`)
+        const featuredPosts: Post[] = await fetchFeaturedPostsApi()
 
         return {
             posts: docs,
             pagination,
-            featuredPosts: []
+            featuredPosts
         }
     } catch (error) {
-        console.log("error", error)
         return {
             posts: [],
             pagination: {} as Pagination,
