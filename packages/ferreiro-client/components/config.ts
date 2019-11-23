@@ -2,8 +2,24 @@ import { Page } from "../types/Page"
 
 export default {
     meta: {
+        about: "",
         author: "Jorge Ferreiro",
-        about: ""
+        siteName: "Jorge Ferreiro",
+        description:
+            "Jorge Ferreiro is a Entrepreneur, Blogger and Speaker. Jorge is a Frontend Software Engineer at Eventbrite, Former Backend Software Engineer at Amazon and Entrepreneur with a solid experience in web development. Ferreiro uses the following technologies: Node, Javascript, Python, Java, MongoDB, Redis, HTML5, CSS3.",
+        defaultImage: "",
+        locale: "en_US",
+        social: {
+            twitter: {
+                site: "@jgferreiro",
+                creator: "@jgferreiro",
+                username: "@jgferreiro",
+                url: "https://twitter.com/JGFerreiro"
+            }
+        },
+        title:
+            "Jorge Ferreiro - Entrepreneur, Blogger, Speaker. Frontend Software Engineer at Eventbrite, Former Backend Software Engineer at Amazon and Entrepreneur",
+        url: "https://www.ferreiro.me"
     },
     colors: {
         main: "",

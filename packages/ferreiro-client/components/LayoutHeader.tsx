@@ -111,7 +111,7 @@ function HeaderMobile() {
     return <div>Mobile</div>
 }
 
-export function Header() {
+export function LayoutHeader() {
     const router = useRouter()
     const menuItems = config.menu
 

@@ -2,7 +2,7 @@ import { Layout } from "../components/Layout"
 
 export default function Videos() {
     return (
-        <Layout>
+        <Layout title="Videos of">
             <p>Videos me!!!!!</p>
         </Layout>
     )

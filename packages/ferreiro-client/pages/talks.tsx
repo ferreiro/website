@@ -2,7 +2,7 @@ import { Layout } from "../components/Layout"
 
 export default function Talks() {
     return (
-        <Layout>
+        <Layout title="Talks and conferences by">
             <p>Talks me!!!!!</p>
         </Layout>
     )
