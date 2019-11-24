@@ -8,6 +8,18 @@ export const breakpoints = {
     lg: "1100px"
 }
 
+export const smallUp = `
+    @media all and (min-width: ${breakpoints.sm})
+`
+
+export const mediumUp = `
+    @media all and (min-width: ${breakpoints.md})
+`
+
+export const largeUp = `
+    @media all and (min-width: ${breakpoints.lg})
+`
+
 export const containterMaxWidths = {
     sm: "380px",
     md: "800px",
@@ -209,6 +221,90 @@ export const sharedStyles = {
     col_2: css`
         flex: 0 0 16.666667%;
         max-width: 16.666667%;
+    `,
+    col_md_12: css`
+        ${mediumUp} {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    `,
+    col_md_10: css`
+        ${mediumUp} {
+            flex: 0 0 83.333333%;
+            max-width: 83.333333%;
+        }
+    `,
+    col_md_8: css`
+        ${mediumUp} {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+        }
+    `,
+    col_md_6: css`
+        ${mediumUp} {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    `,
+    col_md_4: css`
+        ${mediumUp} {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+    `,
+    col_md_3: css`
+        ${mediumUp} {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+    `,
+    col_md_2: css`
+        ${mediumUp} {
+            flex: 0 0 16.666667%;
+            max-width: 16.666667%;
+        }
+    `,
+    col_lg_12: css`
+        ${largeUp} {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    `,
+    col_lg_10: css`
+        ${largeUp} {
+            flex: 0 0 83.333333%;
+            max-width: 83.333333%;
+        }
+    `,
+    col_lg_8: css`
+        ${largeUp} {
+            flex: 0 0 66.666667%;
+            max-width: 66.666667%;
+        }
+    `,
+    col_lg_6: css`
+        ${largeUp} {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    `,
+    col_lg_4: css`
+        ${largeUp} {
+            flex: 0 0 33.333333%;
+            max-width: 33.333333%;
+        }
+    `,
+    col_lg_3: css`
+        ${largeUp} {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+    `,
+    col_lg_2: css`
+        ${largeUp} {
+            flex: 0 0 16.666667%;
+            max-width: 16.666667%;
+        }
     `
     // col_sm_12: css`
     //     flex: 0 0 100%;
@@ -216,7 +312,7 @@ export const sharedStyles = {
     // `,
     // col_sm_6: css``,
     // col_sm_4: css``,
-    // col_md_12: css`
+    // col_lg_12: css`
     //     flex: 0 0 100%;
     //     max-width: 100%;
     // `,

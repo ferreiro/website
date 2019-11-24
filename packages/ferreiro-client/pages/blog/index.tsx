@@ -180,13 +180,13 @@ export function Blog(props: Props) {
 
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>
-                    <div className={sharedStyles.col_8}>
+                    <div className={sharedStyles.col_lg_8}>
                         <BlogList
                             posts={props.posts}
                             pagination={props.pagination}
                         />
                     </div>
-                    <div className={sharedStyles.col_4}>
+                    <div className={sharedStyles.col_lg_4}>
                         <div className={sharedStyles.marginLeft(6)}>
                             <BlogTopArticles posts={props.featuredPosts} />
                         </div>

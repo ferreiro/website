@@ -9,7 +9,8 @@ import config, {
     spacing6,
     navBarLogoHeight,
     breakpoints,
-    containterMaxWidths
+    containterMaxWidths,
+    largeUp
 } from "./config"
 
 import { MenuItem, SubmenuItem } from "../types/Menu"
@@ -140,18 +141,6 @@ export function LayoutNavbar() {
         </nav>
     )
 }
-
-export const smallUp = `
-    @media all and (min-width: ${breakpoints.sm})
-`
-
-export const mediumUp = `
-    @media all and (min-width: ${breakpoints.md})
-`
-
-export const largeUp = `
-    @media all and (min-width: ${breakpoints.lg})
-`
 
 const styles = {
     wrapper: css`
