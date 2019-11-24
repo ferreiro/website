@@ -23,7 +23,8 @@
         "next": "9.1.4",
         "onchange": "6.1.0",
         "react": "16.12.0",
-        "react-dom": "16.12.0"
+        "react-dom": "16.12.0",
+        "react-icons": "3.8.0"
     },
     "devDependencies": {
         "@types/react": "16.9.12",

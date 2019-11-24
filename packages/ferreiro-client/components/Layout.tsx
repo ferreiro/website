@@ -92,7 +92,10 @@ export function LayoutContainer(props: { children: object }) {
 export function LayoutFooter() {
     return (
         <div className={styles.footerWrapper}>
-            <div className={styles.footerContent}>Amazing footer :)</div>
+            <div className={styles.footerContent}>
+                <p>Super anuncio para subscribirse a la newsletter!</p>
+                Amazing footer :)
+            </div>
         </div>
     )
 }

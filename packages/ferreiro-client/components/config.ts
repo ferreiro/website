@@ -66,6 +66,7 @@ const config = {
         navBar: "#fff",
         link: "",
         title: "",
+        separator: "#e6e6e6",
         content: ""
     },
     menu: {
@@ -143,6 +144,11 @@ export const sharedStyles = {
         font-size: ${spacing6};
         margin: 0;
         padding: 0;
+    `,
+    separator: css`
+        width: 100%;
+        height: 2px;
+        background: ${config.colors.separator};
     `,
     marginTop: (size: number) => css`
         margin-top: ${spacingMapper[size]};
@@ -306,21 +312,6 @@ export const sharedStyles = {
             max-width: 16.666667%;
         }
     `
-    // col_sm_12: css`
-    //     flex: 0 0 100%;
-    //     max-width: 100%;
-    // `,
-    // col_sm_6: css``,
-    // col_sm_4: css``,
-    // col_lg_12: css`
-    //     flex: 0 0 100%;
-    //     max-width: 100%;
-    // `,
-    // col_md_6: css``,
-    // col_md_4: css``
-    // col, col-sm, col-md
-    // col-6, col-sm-6, col-md-6
-    // col-4, col-sm-4, col-md-4
 }
 
 export default config

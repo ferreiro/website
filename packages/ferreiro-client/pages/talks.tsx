@@ -4,6 +4,14 @@ import { Layout } from "../components/Layout"
 import { Tabs } from "../components/Tabs"
 import { sharedStyles } from "../components/config"
 
+function AdConference() {
+    return (
+        <div style={{ background: "#f4f4f4" }}>
+            Can't wait to speak at your event!
+        </div>
+    )
+}
+
 export default function Talks() {
     const tabs = [
         {
@@ -35,6 +43,8 @@ export default function Talks() {
             </h1>
 
             <Tabs activePath="/blog" tabs={tabs} />
+
+            <AdConference />
 
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>

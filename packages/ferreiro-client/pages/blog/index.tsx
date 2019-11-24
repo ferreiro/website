@@ -3,7 +3,6 @@ import { cx } from "emotion"
 import { Fragment, useState, useEffect } from "react"
 import Link from "next/link"
 import isEmpty from "lodash/isEmpty"
-import fetch from "isomorphic-unfetch"
 
 import { Layout } from "../../components/Layout"
 import { Tabs } from "../../components/Tabs"
@@ -117,16 +116,16 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
     return (
         <div>
-            <h2 className={sharedStyles.subtitle}>Top articles</h2>
+            <h2 className={sharedStyles.subtitle}>Popular articles</h2>
 
             {isLoading ? (
-                <p>Loading top articles</p>
+                <p>Loading Popular articles...</p>
             ) : (
                 <ul>
                     {posts.map((post: Post) => (
                         <li key={post.permalink}>
                             <Link href={createPostUrl(post.permalink)}>
-                                <a>
+                                <a title={post.title}>
                                     <h3>{post.title}</h3>
                                     <p>{post.published}</p>
                                 </a>
@@ -139,6 +138,70 @@ function BlogTopArticles(props: { posts: Post[] }) {
     )
 }
 
+function BlogAdNewsletter() {
+    return (
+        <div>
+            <h2>Get your dream job</h2>
+            <p>
+                Do you wanna get tips and tricks on how to get your next
+                internship or full time position? You can sign up into "The
+                hackers newsletter" curated by me
+            </p>
+        </div>
+    )
+}
+
+function AdSocialDeveloper() {
+    return (
+        <div>
+            <h2>Show your social skills!</h2>
+            <ul>
+                <li>
+                    <span>Twitter</span>
+                    <span>Twitter</span>
+                </li>
+            </ul>
+        </div>
+    )
+}
+
+function BlogAdIdea() {
+    const [email, setEmail] = useState("")
+
+    const handleEmail = event => {
+        setEmail(event.target.value)
+    }
+
+    return (
+        <div>
+            <h2>Got an idea?</h2>
+            <p>
+                Do you have an idea of a blog that you want me to write? Send it
+                below
+            </p>
+            <input
+                placeholder="Write your post idea"
+                value={email}
+                onChange={handleEmail}
+            />
+        </div>
+    )
+}
+
+// TODO: Create type for a category
+function BlogCategories(props: { categories: any[] }) {
+    return (
+        <div>
+            <h2 className={sharedStyles.subtitle}>Categories</h2>
+            <ul>
+                {props.categories.map(category => (
+                    <li>Hola</li>
+                ))}
+            </ul>
+        </div>
+    )
+}
+
 interface Props {
     posts: Post[]
     pagination: Pagination
@@ -147,7 +210,7 @@ interface Props {
 
 export function Blog(props: Props) {
     // TOOD: Move to config?
-    const tabs = [
+    const categories = [
         {
             display: "All",
             path: "/blog",
@@ -176,7 +239,7 @@ export function Blog(props: Props) {
                 Blog
             </h1>
 
-            <Tabs activePath="/blog" tabs={tabs} />
+            <Tabs activePath="/blog" tabs={categories} />
 
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>
@@ -189,6 +252,45 @@ export function Blog(props: Props) {
                     <div className={sharedStyles.col_lg_4}>
                         <div className={sharedStyles.marginLeft(6)}>
                             <BlogTopArticles posts={props.featuredPosts} />
+
+                            <div
+                                className={cx(
+                                    sharedStyles.separator,
+                                    sharedStyles.marginTop(7),
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            />
+
+                            <BlogAdNewsletter />
+
+                            <div
+                                className={cx(
+                                    sharedStyles.separator,
+                                    sharedStyles.marginTop(7),
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            />
+                            <AdSocialDeveloper />
+
+                            <div
+                                className={cx(
+                                    sharedStyles.separator,
+                                    sharedStyles.marginTop(7),
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            />
+
+                            <BlogCategories categories={categories} />
+
+                            <div
+                                className={cx(
+                                    sharedStyles.separator,
+                                    sharedStyles.marginTop(7),
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            />
+
+                            <BlogAdIdea />
                         </div>
                     </div>
                 </div>

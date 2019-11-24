@@ -78,8 +78,7 @@ function PostDetail(props: Props) {
 PostDetail.getInitialProps = async function(context: any): Promise<Props> {
     const permalink = context.query.id
     const paginatedResponse = await fetch(
-        `http://localhost:4000/api/v1/blog/${permalink}`,
-        { method: "GET", mode: "no-cors" }
+        `http://localhost:4000/api/v1/blog/${permalink}`
     )
     const post = await paginatedResponse.json()
 
