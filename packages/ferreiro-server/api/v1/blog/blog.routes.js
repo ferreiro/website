@@ -4,14 +4,22 @@ const router = express.Router()
 import { isAuthenticated } from "../../../web/pages/admin/is-authenticated"
 import seriesRepository from "../../../api/repository/series"
 import blogRepository from "../../../api/repository/blog"
+import { MAX_PAGE_POSTS } from "../../../web/pages/blog/constants"
 
 /**
  * @api get /blog/ - Retrieves the list of series (published and unpublished)
  * @required authentication
  */
 router.get("/", function(req, res) {
+    const extraQueryFields = {}
+    const opts = {
+        limit: req.query.limit ? parseInt(req.query.limit) : MAX_PAGE_POSTS,
+
+        page: req.query.page && parseInt(req.query.page)
+    }
+
     return blogRepository
-        .getAllPublished()
+        .getAllPublished(extraQueryFields, opts)
         .then(paginatedResponse => res.json(paginatedResponse))
         .catch(err => res.json(err))
 })
@@ -29,7 +37,10 @@ router.get("/featured", function(req, res) {
             limit
         })
         .then(response => res.json(response))
-        .catch(err => res.json(err))
+        .catch(err => {
+            console.log("err", err)
+            res.json(err)
+        })
 })
 
 router.get("/:permalink", function(req, res) {
@@ -49,7 +60,7 @@ router.get("/:permalink", function(req, res) {
  * @required authentication
  */
 router.get("/series", isAuthenticated, function(req, res) {
-    return blogRepoaitory
+    return blogRepository
         .getAll()
         .then(series => res.json(series))
         .catch(err => res.json(err))

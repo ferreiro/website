@@ -1,30 +1,29 @@
 import React from "react"
-import { cx } from "emotion"
-import { Fragment, useState, useEffect } from "react"
 import Link from "next/link"
 import isEmpty from "lodash/isEmpty"
-import { FaTwitter } from "react-icons/fa"
+import moment from "moment"
+import { cx } from "emotion"
+import { FaTwitter, FaLinkedin, FaYoutube } from "react-icons/fa"
+import { Fragment, useState, useEffect } from "react"
+
+import {
+    fetchFeaturedPostsApi,
+    fetchPostsApi,
+    fetchSerieApi,
+    FetchSerieResponse
+} from "../../api/blog"
+import { postContactIdeasApi, postSubscribeApi } from "../../api/contact"
 
 import { Layout } from "../../components/Layout"
+import { PagePagination, FIRST_PAGE } from "../../components/PagePagination"
+import { Sharing } from "../../components/Sharing"
 import { Tabs } from "../../components/Tabs"
-import config, { sharedStyles } from "../../components/config"
 
-import { fetchFeaturedPostsApi, fetchPostsApi } from "../../api/blog"
+import config, { sharedStyles } from "../../components/config"
 import { createPostUrl } from "../../utils/create-post-url"
 
-import { Pagination, PaginatedResponse } from "../../types/PaginatedResponse"
+import { Pagination } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
-import { Sharing } from "../../components/Sharing"
-
-function PagePagination(props: { pagination: Pagination }) {
-    return (
-        <div>
-            <span>{props.pagination.page}</span>
-            <span>/</span>
-            <span>{props.pagination.pages}</span>
-        </div>
-    )
-}
 
 function BlogItemHighlight(props: { post: Post }) {
     const post = props.post
@@ -51,10 +50,10 @@ function BlogItemHighlight(props: { post: Post }) {
                     sharedStyles.marginTop(5)
                 )}
             >
-                <div className={sharedStyles.col_11}>
-                    <p>Published {post.createdAt}</p>
+                <div className={sharedStyles.col}>
+                    <p>Published {moment(post.createdAt).fromNow()}</p>
                 </div>
-                <div className={sharedStyles.col_1}>
+                <div className={sharedStyles.col_auto}>
                     <Sharing
                         mini={post.pic}
                         permalink={post.permalink}
@@ -71,7 +70,7 @@ function BlogItem(props: { post: Post }) {
     const post = props.post
 
     return (
-        <div className={cx(sharedStyles.row, sharedStyles.marginBottom(6))}>
+        <div className={cx(sharedStyles.row, sharedStyles.marginBottom(8))}>
             <div className={sharedStyles.col_9}>
                 <div
                     className={cx(
@@ -88,14 +87,14 @@ function BlogItem(props: { post: Post }) {
                             )}
                         >
                             <h3>{post.title}</h3>
+                            <p className={sharedStyles.marginTop(3)}>
+                                {post.summary}
+                            </p>
                         </a>
                     </Link>
                     <div className={cx(sharedStyles.row, sharedStyles.rowFull)}>
-                        <div className={sharedStyles.col_auto}>
-                            <p>Published {post.createdAt}</p>
-                        </div>
                         <div className={sharedStyles.col}>
-                            <p>7 mins read</p>
+                            <p>Published {moment(post.createdAt).fromNow()}</p>
                         </div>
                         <div className={cx(sharedStyles.col_auto)}>
                             <Sharing
@@ -112,7 +111,8 @@ function BlogItem(props: { post: Post }) {
                 <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
                     <img
                         width="100%"
-                        height="100px"
+                        height="100%"
+                        style={{ objectFit: "cover" }}
                         src={post.pic}
                         alt={post.title}
                     />
@@ -122,14 +122,13 @@ function BlogItem(props: { post: Post }) {
     )
 }
 
-function BlogList(props: { posts: Post[]; pagination: Pagination }) {
+function BlogList(props: { posts: Post[] }) {
     if (isEmpty(props.posts)) {
         return (
             <Fragment>
                 <div className={sharedStyles.marginTop(8)}>
                     No more posts available
                 </div>
-                <PagePagination pagination={props.pagination} />
             </Fragment>
         )
     }
@@ -143,8 +142,6 @@ function BlogList(props: { posts: Post[]; pagination: Pagination }) {
             {filteredPosts.map((post: Post) => (
                 <BlogItem key={post.id} post={post} />
             ))}
-
-            <PagePagination pagination={props.pagination} />
         </div>
     )
 }
@@ -186,7 +183,12 @@ function BlogTopArticles(props: { posts: Post[] }) {
             {isLoading ? (
                 <p>Loading Popular articles...</p>
             ) : (
-                <ul style={{ paddingInlineStart: 30 }}>
+                <ul
+                    style={{
+                        paddingInlineStart: 30,
+                        listStyle: "disc"
+                    }}
+                >
                     {posts.map((post: Post) => (
                         <li
                             key={post.permalink}
@@ -212,6 +214,47 @@ function BlogTopArticles(props: { posts: Post[] }) {
 }
 
 function BlogAdNewsletter() {
+    const [name, setName] = useState("Jorge")
+    const [email, setEmail] = useState("")
+    const isSubscribe = true
+    const [isError, setIsError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+
+    const handleEmail = event => {
+        setEmail(event.target.value)
+    }
+
+    const resetForm = event => {
+        setName("")
+        setEmail("")
+        setIsError(false)
+        setIsSuccess(false)
+    }
+
+    const submitForm = event => {
+        setIsError(false)
+        setIsLoading(true)
+        setIsSuccess(false)
+
+        postSubscribeApi({
+            body: {
+                name,
+                email,
+                isSubscribe
+            }
+        })
+            .then(response => {
+                setIsSuccess(true)
+            })
+            .catch(error => {
+                setIsError(true)
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }
+
     return (
         <div>
             <h2
@@ -222,11 +265,62 @@ function BlogAdNewsletter() {
             >
                 🚀 Get your dream job
             </h2>
-            <p>
+
+            <p className={sharedStyles.marginBottom(5)}>
                 Do you wanna get tips and tricks on how to get your next
                 internship or full time position? You can sign up into "The
                 hackers newsletter" curated by me
             </p>
+
+            {isLoading ? (
+                <p>Sending your message...</p>
+            ) : (
+                <>
+                    {isError && (
+                        <div>
+                            <p>
+                                😨 Opps... I couldn't add you to the list. Try
+                                again or send me an email jorge@ferreiro.me
+                            </p>
+                            <button onClick={submitForm}>Try again</button>
+                        </div>
+                    )}
+
+                    {isSuccess ? (
+                        <div>
+                            <p>
+                                ✅ Thanks! Yeah! You are now subscribed! 🙌🙌🙌
+                                Do you have any comment or question?
+                            </p>
+                            <button onClick={resetForm}>
+                                Send me a message
+                            </button>
+                        </div>
+                    ) : (
+                        <div className={sharedStyles.row}>
+                            <input
+                                className={cx(
+                                    sharedStyles.inputField,
+                                    sharedStyles.col
+                                )}
+                                placeholder="Write your email"
+                                value={email}
+                                onChange={handleEmail}
+                            />
+                            <button
+                                className={cx(
+                                    sharedStyles.buttonSubmit,
+                                    sharedStyles.col_auto
+                                )}
+                                onClick={submitForm}
+                                type="submit"
+                            >
+                                Subscribe
+                            </button>
+                        </div>
+                    )}
+                </>
+            )}
         </div>
     )
 }
@@ -244,10 +338,40 @@ function AdSocialDeveloper() {
             </h2>
             <ul>
                 <li>
-                    <span>
-                        <FaTwitter />
-                    </span>
-                    <span>Twitter</span>
+                    <a
+                        href={config.meta.social.twitter.url}
+                        target="_blank"
+                        rel="norel nooppener"
+                    >
+                        <span>
+                            <FaTwitter />
+                        </span>
+                        <span>Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href={config.meta.social.youtube.url}
+                        target="_blank"
+                        rel="norel nooppener"
+                    >
+                        <span>
+                            <FaYoutube />
+                        </span>
+                        <span>Youtube</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href={config.meta.social.linkedin.url}
+                        target="_blank"
+                        rel="norel nooppener"
+                    >
+                        <span>
+                            <FaLinkedin />
+                        </span>
+                        <span>Linkedin</span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -275,11 +399,9 @@ function BlogAdIdea() {
         setIsLoading(true)
         setIsSuccess(false)
 
-        fetch("http://localhost:4000/api/v1/contact/ideas", {
-            method: "POST",
-            body: JSON.stringify({ message }),
-            headers: {
-                "Content-Type": "application/json"
+        postContactIdeasApi({
+            body: {
+                message
             }
         })
             .then(() => {
@@ -332,19 +454,27 @@ function BlogAdIdea() {
                             </Link>
                         </p>
                     ) : (
-                        <>
+                        <div className={sharedStyles.row}>
                             <textarea
-                                className={cx(sharedStyles.textarea)}
+                                className={cx(
+                                    sharedStyles.textarea,
+                                    sharedStyles.marginBottom(3)
+                                )}
                                 placeholder="Write your post idea"
                                 value={message}
                                 onChange={handleMessage}
                             />
                             <button
-                                className={sharedStyles.buttonSubmit}
+                                className={cx(
+                                    sharedStyles.buttonSubmit,
+                                    sharedStyles.col_12
+                                )}
                                 onClick={submitForm}
                                 type="submit"
-                            />
-                        </>
+                            >
+                                Send idea
+                            </button>
+                        </div>
                     )}
                 </>
             )}
@@ -373,10 +503,89 @@ function BlogCategories(props: { categories: any[] }) {
     )
 }
 
+// TODO: Add waypoint
+function BlogSeries(props: { featuredSeriePermalink: string }) {
+    const [serieInfo, setSerieInfo] = useState({
+        title: "",
+        permalink: "",
+        description: "",
+        pic: ""
+    })
+    const [seriesPosts, setSeriesPosts] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        if (isEmpty(seriesPosts)) {
+            setIsLoading(true)
+            fetchSerieApi({ permalink: props.featuredSeriePermalink })
+                .then((response: FetchSerieResponse) => {
+                    setSerieInfo(response.serie)
+                    setSeriesPosts(response.posts)
+                })
+                .catch(error => {
+                    // TODO: Handle errors properly
+                    console.log(error)
+                })
+                .finally(() => {
+                    setIsLoading(false)
+                })
+        }
+    }, [seriesPosts])
+
+    return (
+        <div>
+            <h2
+                className={cx(
+                    sharedStyles.subtitle,
+                    sharedStyles.marginBottom(5)
+                )}
+            >
+                Featured serie
+            </h2>
+
+            {isLoading ? (
+                <p>Loading Popular articles...</p>
+            ) : (
+                <div>
+                    {serieInfo && (
+                        <div>
+                            <img src={serieInfo.pic} width="60px" />
+                            <h3>{serieInfo.title}</h3>
+                        </div>
+                    )}
+
+                    <ul style={{ paddingInlineStart: 30 }}>
+                        {seriesPosts.map((post: Post) => (
+                            <li
+                                key={post.permalink}
+                                className={cx(
+                                    sharedStyles.text,
+                                    sharedStyles.marginBottom(5)
+                                )}
+                            >
+                                <Link href={createPostUrl(post.permalink)}>
+                                    <a title={post.title}>
+                                        <h3 className={sharedStyles.text}>
+                                            {post.title}
+                                        </h3>
+                                        <p>{post.published}</p>
+                                    </a>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    )
+}
+
 interface Props {
-    posts: Post[]
-    pagination: Pagination
+    activePage: number
     featuredPosts: Post[]
+    featuredSeriePermalink: string
+    pagination: Pagination
+    posts: Post[]
 }
 
 export function Blog(props: Props) {
@@ -415,8 +624,18 @@ export function Blog(props: Props) {
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>
                     <div className={sharedStyles.col_lg_8}>
-                        <BlogList
-                            posts={props.posts}
+                        <BlogList posts={props.posts} />
+
+                        <div
+                            className={cx(
+                                sharedStyles.separator,
+                                sharedStyles.marginTop(7),
+                                sharedStyles.marginBottom(7)
+                            )}
+                        />
+
+                        <PagePagination
+                            activePage={props.activePage}
                             pagination={props.pagination}
                         />
                     </div>
@@ -441,6 +660,21 @@ export function Blog(props: Props) {
                                     sharedStyles.marginBottom(7)
                                 )}
                             />
+
+                            <BlogSeries
+                                featuredSeriePermalink={
+                                    props.featuredSeriePermalink
+                                }
+                            />
+
+                            <div
+                                className={cx(
+                                    sharedStyles.separator,
+                                    sharedStyles.marginTop(7),
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            />
+
                             <AdSocialDeveloper />
 
                             <div
@@ -470,21 +704,29 @@ export function Blog(props: Props) {
     )
 }
 
-Blog.getInitialProps = async function(): Promise<Props> {
+Blog.getInitialProps = async function(context: any): Promise<Props> {
+    const page = context.query.page ? parseInt(context.query.page) : FIRST_PAGE
+
     try {
-        const { docs, ...pagination } = await fetchPostsApi()
+        const { docs, ...pagination } = await fetchPostsApi({ page })
         const featuredPosts: Post[] = await fetchFeaturedPostsApi({ limit: 5 })
 
         return {
+            activePage: page,
             posts: docs,
             pagination,
-            featuredPosts
+            featuredPosts,
+            featuredSeriePermalink:
+                "the-definitive-guide-to-making-the-most-of-college"
         }
     } catch (error) {
         return {
+            activePage: 0,
             posts: [],
             pagination: {} as Pagination,
-            featuredPosts: []
+            featuredPosts: [],
+            featuredSeriePermalink:
+                "the-definitive-guide-to-making-the-most-of-college"
         }
     }
 }

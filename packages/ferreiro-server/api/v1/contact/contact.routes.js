@@ -69,8 +69,8 @@ router.post("/ideas", function(req, res) {
 })
 
 router.post("/subscribe", function(req, res) {
-    const name = req.body.__name || ""
-    const email = req.body.__email || null
+    const name = req.body.name || ""
+    const email = req.body.email || null
 
     addUserToMailchimp(name, email, err => {
         if (err) {

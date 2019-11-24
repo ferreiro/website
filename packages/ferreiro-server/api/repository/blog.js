@@ -100,12 +100,12 @@ module.exports.getAllDrafts = function() {
 }
 
 module.exports.getAllPublished = function(extraQueryFields, opts) {
-    let maxLimit = 15
+    let limit = 15
 
     if (opts) {
-        if (opts.maxPagePosts) {
-            const newLimit = opts.maxPagePosts
-            maxLimit = newLimit < maxLimit ? newLimit : maxLimit
+        if (opts.limit) {
+            const newLimit = opts.limit
+            limit = newLimit < limit ? newLimit : limit
         }
     }
     const options = {
@@ -113,8 +113,8 @@ module.exports.getAllPublished = function(extraQueryFields, opts) {
             createdAt: -1
         },
         lean: true,
-        page: opts && opts.nextPage ? opts.nextPage : 1,
-        limit: maxLimit,
+        page: opts && opts.page ? opts.page : 1,
+        limit: limit,
         populate: "series",
         select: { body: 0 }
     }

@@ -1,37 +1,35 @@
-import {cloneDeep} from 'lodash'
-import blogRepository from './blog'
+import { cloneDeep } from "lodash"
+import blogRepository from "./blog"
 
-const Series = require('../models/Series')
+const Series = require("../models/Series")
 
 const EMPTY_SERIES = []
 
-module.exports.getAll = function () {
+module.exports.getAll = function() {
     const fieldsToExclude = {
         secretKey: 0,
         __v: 0
     }
 
-    return Series
-        .find({}, fieldsToExclude)
-        .sort({ createdAt: -1 })
+    return Series.find({}, fieldsToExclude).sort({ createdAt: -1 })
 }
 
 /**
  * Returns all the published Series
  * @param query.permalink - the permalink of the serie
  */
-module.exports.getAllPublished = function () {
+module.exports.getAllPublished = function() {
     const fieldsToExclude = {
         secretKey: 0,
         __v: 0
     }
 
-    return Series
-        .find({published: true}, fieldsToExclude)
-        .sort({createdAt: -1})
+    return Series.find({ published: true }, fieldsToExclude).sort({
+        createdAt: -1
+    })
 }
 
-module.exports.create = function (data) {
+module.exports.create = function(data) {
     const newSeries = new Series(data)
 
     return newSeries.save()
@@ -41,34 +39,37 @@ module.exports.create = function (data) {
  * Returns a Series with its metadata and the related *Published* posts
  * @param query.permalink - the permalink of the serie
  */
-module.exports.findByPermalink = function (query) {
+module.exports.findByPermalink = function(query) {
     const seriesQuery = {
         permalink: query.permalink
     }
 
     return new Promise((resolve, reject) => {
-        Series.findOne(seriesQuery).exec(function (err, series) {
+        Series.findOne(seriesQuery, { secretKey: 0, __v: 0 }).exec(function(
+            err,
+            serie
+        ) {
             if (err) {
                 return Promise.reject(err)
             }
 
-            if (!series) {
+            if (!serie) {
                 return resolve(EMPTY_SERIES)
             }
 
-            return fetchPostSeries(series._id)
-                .then(seriesPosts => {
-                    let combinedResponse = cloneDeep(series)['_doc']
-                    combinedResponse['posts'] = seriesPosts
-
-                    return resolve(combinedResponse)
+            return fetchPostSeries(serie._id)
+                .then(posts => {
+                    return resolve({
+                        serie,
+                        posts
+                    })
                 })
                 .catch(error => reject(error))
         })
     })
 }
 
-module.exports.findAndUpdateByPermalink = function (postPermalink, seriesData) {
+module.exports.findAndUpdateByPermalink = function(postPermalink, seriesData) {
     const query = {
         permalink: postPermalink
     }
@@ -76,7 +77,7 @@ module.exports.findAndUpdateByPermalink = function (postPermalink, seriesData) {
     return Series.findOneAndUpdate(query, seriesData, { new: true })
 }
 
-module.exports.findAndDeleteByPermalink = function (postPermalink) {
+module.exports.findAndDeleteByPermalink = function(postPermalink) {
     const query = {
         permalink: postPermalink
     }
@@ -85,6 +86,6 @@ module.exports.findAndDeleteByPermalink = function (postPermalink) {
 }
 
 // Given a series _id, returns the list of post associated that belongs to that series.
-function fetchPostSeries (seriesId) {
+function fetchPostSeries(seriesId) {
     return blogRepository.findSeriesPublishedPosts(seriesId)
 }

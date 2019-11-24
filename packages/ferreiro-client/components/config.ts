@@ -54,6 +54,14 @@ const config = {
                 creator: "@jgferreiro",
                 username: "@jgferreiro",
                 url: "https://twitter.com/JGFerreiro"
+            },
+            linkedin: {
+                username: "@jgferreiro",
+                url: "https://www.linkedin.com/in/jgferreiro/"
+            },
+            youtube: {
+                username: "@jgferreiro",
+                url: "https://www.youtube.com/c/jgferreiro/"
             }
         },
         title:
@@ -163,10 +171,19 @@ export const sharedStyles = {
         height: 2px;
         background: ${config.colors.separator};
     `,
-    buttonSubmit: css``,
-    inputField: css``,
+    buttonSubmit: css`
+        color: #fff;
+        border: 2px solid ${config.colors.secondary};
+        background: ${config.colors.secondary};
+        padding: ${spacing4} ${spacing5};
+    `,
+    inputField: css`
+        border: 2px solid ${config.colors.secondary};
+        padding: ${spacing4} ${spacing5};
+    `,
     textarea: css`
-        width: 100%;
+        width: calc(100% - 2 * ${spacing3});
+        padding: ${spacing3};
     `,
     marginTop: (size: number) => css`
         margin-top: ${spacingMapper[size]};
@@ -345,6 +362,18 @@ export const sharedStyles = {
             flex: 0 0 16.666667%;
             max-width: 16.666667%;
         }
+    `,
+    flex: css`
+        display: flex !important;
+    `,
+    flexWrap: css`
+        flex-wrap: wrap-reverse !important;
+    `,
+    justifyContentEnd: css`
+        justify-content: flex-end !important;
+    `,
+    justifyContentCenter: css`
+        justify-content: center !important;
     `
 }
 

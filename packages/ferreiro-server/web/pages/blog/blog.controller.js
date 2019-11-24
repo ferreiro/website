@@ -1,46 +1,48 @@
-import validator from 'validator'
-import isEmpty from 'lodash/isEmpty'
-import merge from 'lodash/merge'
-import moment from 'moment'
+import validator from "validator"
+import isEmpty from "lodash/isEmpty"
+import merge from "lodash/merge"
+import moment from "moment"
 
-import blogRepository from '../../../api/repository/blog'
-import seriesRepository from '../../../api/repository/series'
-import {getCategories} from '../../../api/repository/categories'
-import {createViewPath} from '../create-view-path'
-import {markdownToHtml} from './markdown-to-html'
+import blogRepository from "../../../api/repository/blog"
+import seriesRepository from "../../../api/repository/series"
+import { getCategories } from "../../../api/repository/categories"
+import { createViewPath } from "../create-view-path"
+import { markdownToHtml } from "./markdown-to-html"
 
-import {MAX_PAGE_POSTS} from './constants'
-import blog from '../../content/english/blog.json'
+import { MAX_PAGE_POSTS } from "./constants"
+import blog from "../../content/english/blog.json"
 
 /**
  * Returns a context object with data to feed the views.
  * This object can be updated before return it to view.
  */
-export const getBlogContext = (req) => {
+export const getBlogContext = req => {
     const disableAdmin = req.query.disableAdmin
 
     return {
-        title: 'Blog - Jorge Ferreiro',
-        description: 'Personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.',
-        path: 'blog',
-        blogCategory: 'all',
+        title: "Blog - Jorge Ferreiro",
+        description:
+            "Personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.",
+        path: "blog",
+        blogCategory: "all",
         config: blog.config,
         admin: !!(req.user && !disableAdmin),
         posts: [],
-        categories: [],
+        categories: []
     }
 }
 
-const createBlogContextBuilder = (req) => {
+const createBlogContextBuilder = req => {
     let defaultContext = {
-        title: 'Blog - Jorge Ferreiro',
-        description: 'Personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.',
-        path: 'blog',
-        blogCategory: 'all',
+        title: "Blog - Jorge Ferreiro",
+        description:
+            "Personal blog written by Jorge Ferreiro about software engineering, product management, and entrepreneurship.",
+        path: "blog",
+        blogCategory: "all",
         config: blog.config,
         admin: false,
         posts: [],
-        categories: [],
+        categories: []
     }
 
     class BlogContextBuilder {
@@ -83,16 +85,16 @@ const createBlogContextBuilder = (req) => {
  * @param {*=} req.params.category - You can provide a post category to query
  */
 export const getBlogPosts = (req, res, next) => {
-    const {category} = req.params
+    const { category } = req.params
 
     if (category && category.length === 0) {
-        return next(new Error('No valid category'))
+        return next(new Error("No valid category"))
     }
 
     const fetchPostsPromise = new Promise((resolve, reject) => {
         const opts = getBlogPostsOptions(req)
-        const query = isEmpty(category) ? {} : {category} 
-  
+        const query = isEmpty(category) ? {} : { category }
+
         fetchPosts(query, opts, (error, result) => {
             if (error) {
                 return reject(error)
@@ -102,54 +104,60 @@ export const getBlogPosts = (req, res, next) => {
     })
     const fetchBlogCategoriesPromise = getCategories()
     const fetchBlogSeriesPromise = seriesRepository.getAllPublished()
-  
+
     Promise.all([
         fetchPostsPromise,
         fetchBlogCategoriesPromise,
-        fetchBlogSeriesPromise,
-    ]).then(function(values) {
-        const [postsResult, categories, series] = values
-        const {docs, page, pages} = postsResult
+        fetchBlogSeriesPromise
+    ])
+        .then(function(values) {
+            const [postsResult, categories, series] = values
+            const { docs, page, pages } = postsResult
 
-        const blogContext =
-            createBlogContextBuilder(req)
-                .with('posts', docs)
-                .with('prevPageToken', (page - 1 >= 1 ? page - 1 : 'start'))
-                .with('nextPageToken', (page + 1 <= pages ? page + 1 : 'end'))
-                .with('blogCategory', category)
-                .with('categories', categories)
-                .with('series', series)
+            const blogContext = createBlogContextBuilder(req)
+                .with("posts", docs)
+                .with("prevPageToken", page - 1 >= 1 ? page - 1 : "start")
+                .with("nextPageToken", page + 1 <= pages ? page + 1 : "end")
+                .with("blogCategory", category)
+                .with("categories", categories)
+                .with("series", series)
                 .build()
 
-        return res.render(createViewPath('blog', 'blog.home.pug'), blogContext)
-    }).catch((error) => {
-        return next(error)
-    })
+            return res.render(
+                createViewPath("blog", "blog.home.pug"),
+                blogContext
+            )
+        })
+        .catch(error => {
+            return next(error)
+        })
 }
 
 export const getBlogSeries = (req, res, next) => {
-    seriesRepository.getAllPublished()
+    seriesRepository
+        .getAllPublished()
         .then(publishedSeries => {
             let blogContext = getBlogContext(req)
             blogContext.series = publishedSeries
 
             return res.render(
-                createViewPath('blog', 'blog.series.home.pug'),
-                blogContext,
+                createViewPath("blog", "blog.series.home.pug"),
+                blogContext
             )
         })
         .catch(error => next(error))
 }
 
 export const getSingleBlogSeries = (req, res, next) => {
-    seriesRepository.findByPermalink({ permalink: req.params.permalink })
+    seriesRepository
+        .findByPermalink({ permalink: req.params.permalink })
         .then(singleSeries => {
             let blogContext = getBlogContext(req)
             blogContext.series = singleSeries
 
             return res.render(
-                createViewPath('blog', 'blog.series.detailPage.pug'),
-                blogContext,
+                createViewPath("blog", "blog.series.detailPage.pug"),
+                blogContext
             )
         })
         .catch(error => next(error))
@@ -162,43 +170,48 @@ export const getSingleBlogSeries = (req, res, next) => {
 export const getPostByPermalink = (req, res, next) => {
     const blogContext = createBlogContextBuilder(req)
 
-    const {permalink} = req.params
+    const { permalink } = req.params
 
     if (isEmpty(permalink)) {
-        blogContext.with('blogCategory', '')
-        blogContext.with('error', 'Post not found or invalid url')
+        blogContext.with("blogCategory", "")
+        blogContext.with("error", "Post not found or invalid url")
 
         return res.render(
-            createViewPath('blog', 'blog.post.pug'),
+            createViewPath("blog", "blog.post.pug"),
             blogContext.build()
         )
     }
 
-    const sanitizedPermalink =
-    validator.blacklist(permalink, '<|>|&|\'|"|\'|,|/|')
+    const sanitizedPermalink = validator.blacklist(
+        permalink,
+        "<|>|&|'|\"|'|,|/|"
+    )
 
     const query = {
-        isAdmin: blogContext.get('admin'),
+        isAdmin: blogContext.get("admin"),
         permalink: sanitizedPermalink
     }
 
     blogRepository
         .findByPermalinkIncrementViews(query)
-        .then((post) => {
+        .then(post => {
             if (isEmpty(post)) {
-                blogContext.with('blogCategory', '') // no menu selected
-                blogContext.with('error', 'Post does not exist or you dont have permissions to view.')
-        
+                blogContext.with("blogCategory", "") // no menu selected
+                blogContext.with(
+                    "error",
+                    "Post does not exist or you dont have permissions to view."
+                )
+
                 return res.render(
-                    createViewPath('blog', 'blog.post.pug'),
+                    createViewPath("blog", "blog.post.pug"),
                     blogContext.build()
                 )
             }
 
             const isPostVisible =
-        post.published
-        || isValidSecretKey(req.query.secretKey, post.secretKey)
-        || (isValidUser(req) && blogContext.get('admin'))
+                post.published ||
+                isValidSecretKey(req.query.secretKey, post.secretKey) ||
+                (isValidUser(req) && blogContext.get("admin"))
 
             if (isPostVisible) {
                 generateRelatedPosts({
@@ -208,27 +221,31 @@ export const getPostByPermalink = (req, res, next) => {
                     const timeAgo = moment(post.createdAt).fromNow()
                     const html = markdownToHtml(post.body)
                     const postEnhanced = merge(post, {
-                        html,
+                        html
                     })
 
-                    blogContext.with('post', postEnhanced)
-                    blogContext.with('relatedPosts', relatedPosts)
-                    blogContext.with('timeAgo', timeAgo)
+                    blogContext.with("post", postEnhanced)
+                    blogContext.with("relatedPosts", relatedPosts)
+                    blogContext.with("timeAgo", timeAgo)
 
                     return res.render(
-                        createViewPath('blog', 'blog.post.pug'),
+                        createViewPath("blog", "blog.post.pug"),
                         blogContext.build()
                     )
                 })
             } else {
-                return next(new Error('Post does not exist or you dont have permissions to view.'))
+                return next(
+                    new Error(
+                        "Post does not exist or you dont have permissions to view."
+                    )
+                )
             }
         })
         .catch(error => {
-            blogContext.with('error', error)
-             
+            blogContext.with("error", error)
+
             return res.render(
-                createViewPath('blog', 'blog.post.pug'),
+                createViewPath("blog", "blog.post.pug"),
                 blogContext.build()
             )
         })
@@ -238,7 +255,7 @@ export const getPostByPermalink = (req, res, next) => {
  * Generic options object that it's use
  * when fetching results from database.
  */
-function getBlogPostsOptions (req) {
+function getBlogPostsOptions(req) {
     let nextPage = null
 
     if (req.query.next && validator.isInt(req.query.next)) {
@@ -247,9 +264,12 @@ function getBlogPostsOptions (req) {
         nextPage = nextPageNum < 0 ? 1 : nextPageNum
     }
 
+    // TODO: Sanitize input
+    const limit = parseInt(req.query.limit) || MAX_PAGE_POSTS
+
     return {
         nextPage,
-        maxPagePosts: MAX_PAGE_POSTS
+        limit
     }
 }
 
@@ -257,13 +277,14 @@ function getBlogPostsOptions (req) {
  * Makes a call to the database to fetch
  * a list of posts.
  * @param {String=} query.category - (optional) fetches posts from this category
- * @param {String=} opts.maxPagePosts - (optional) limit of results from database
+ * @param {String=} opts.limit - (optional) limit of results from database
  * @param {String=} opts.nextPage - (optional) Page from database to get results from. (use with pagination)
  * @param {*} callback.error - notifies any error to the caller.
  * @param {*} callback.result - Database generic result (see method in repository)
  */
-function fetchPosts (query, opts, callback) {
-    blogRepository.getAllPublished(query, opts)
+function fetchPosts(query, opts, callback) {
+    blogRepository
+        .getAllPublished(query, opts)
         .then(result => {
             return callback(null, result)
         })
@@ -276,19 +297,19 @@ function fetchPosts (query, opts, callback) {
 //     return !req.user
 // }
 
-function isValidUser (req) {
+function isValidUser(req) {
     return !isEmpty(req.user)
 }
 
-function isValidSecretKey (srcSecretKey, validSecretKey) {
+function isValidSecretKey(srcSecretKey, validSecretKey) {
     if (isEmpty(srcSecretKey) || isEmpty(validSecretKey)) {
         return false
     }
     return srcSecretKey === validSecretKey
 }
 
-function generateRelatedPosts (opts) {
-    return new Promise((resolve) => {
+function generateRelatedPosts(opts) {
+    return new Promise(resolve => {
         return blogRepository
             .getRandomPosts(opts)
             .then(posts => resolve(posts))
