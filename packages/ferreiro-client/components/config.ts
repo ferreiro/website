@@ -66,6 +66,7 @@ const config = {
         navBar: "#fff",
         link: "",
         title: "",
+        text: "#464646",
         separator: "#e6e6e6",
         content: ""
     },
@@ -139,6 +140,12 @@ export const sharedStyles = {
         margin: 0;
         padding: 0;
     `,
+    text: css`
+        color: ${config.colors.text};
+    `,
+    center: css`
+        text-align: center;
+    `,
     subtitle: css`
         color: ${config.colors.secondary};
         font-size: ${spacing6};
@@ -149,6 +156,11 @@ export const sharedStyles = {
         width: 100%;
         height: 2px;
         background: ${config.colors.separator};
+    `,
+    buttonSubmit: css``,
+    inputField: css``,
+    textarea: css`
+        width: 100%;
     `,
     marginTop: (size: number) => css`
         margin-top: ${spacingMapper[size]};
@@ -189,6 +201,10 @@ export const sharedStyles = {
     row: css`
         display: flex;
         flex-wrap: wrap;
+        max-width: 100%;
+    `,
+    rowFull: css`
+        width: 100%;
     `,
     col: css`
         flex-basis: 0;
@@ -203,6 +219,10 @@ export const sharedStyles = {
     col_12: css`
         flex: 0 0 100%;
         max-width: 100%;
+    `,
+    col_11: css`
+        flex: 0 0 91.666667%;
+        max-width: 91.666667%;
     `,
     col_10: css`
         flex: 0 0 83.333333%;
@@ -227,6 +247,10 @@ export const sharedStyles = {
     col_2: css`
         flex: 0 0 16.666667%;
         max-width: 16.666667%;
+    `,
+    col_1: css`
+        flex: 0 0 8.333333%;
+        max-width: 8.333333%;
     `,
     col_md_12: css`
         ${mediumUp} {

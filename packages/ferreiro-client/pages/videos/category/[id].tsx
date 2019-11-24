@@ -1,8 +1,8 @@
 import { cx } from "emotion"
 
-import { Layout } from "../components/Layout"
-import { Tabs } from "../components/Tabs"
-import { sharedStyles } from "../components/config"
+import { Layout } from "../../../components/Layout"
+import { Tabs } from "../../../components/Tabs"
+import { sharedStyles } from "../../../components/config"
 
 export default function Videos() {
     const tabs = [

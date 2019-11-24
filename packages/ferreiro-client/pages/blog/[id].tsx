@@ -63,7 +63,11 @@ function PostDetail(props: Props) {
         <Layout title="Videos of">
             <PostMeta />
             <h1
-                className={cx(sharedStyles.title, sharedStyles.marginBottom(5))}
+                className={cx(
+                    sharedStyles.title,
+                    sharedStyles.center,
+                    sharedStyles.marginBottom(5)
+                )}
             >
                 {props.post.title}
             </h1>

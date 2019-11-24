@@ -3,16 +3,18 @@ import { cx } from "emotion"
 import { Fragment, useState, useEffect } from "react"
 import Link from "next/link"
 import isEmpty from "lodash/isEmpty"
+import { FaTwitter } from "react-icons/fa"
 
 import { Layout } from "../../components/Layout"
 import { Tabs } from "../../components/Tabs"
-import { sharedStyles } from "../../components/config"
+import config, { sharedStyles } from "../../components/config"
 
 import { fetchFeaturedPostsApi, fetchPostsApi } from "../../api/blog"
 import { createPostUrl } from "../../utils/create-post-url"
 
 import { Pagination, PaginatedResponse } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
+import { SharingDropdown } from "../../components/SharingDropdown"
 
 function PagePagination(props: { pagination: Pagination }) {
     return (
@@ -32,9 +34,17 @@ function BlogItemHighlight(props: { post: Post }) {
                 <a title={post.title} className={sharedStyles.row}>
                     <img width="100%" src={post.pic} alt={post.title} />
                     <h2>{post.title}</h2>
-                    <p>Published {post.createdAt}</p>
                 </a>
             </Link>
+
+            <div className={cx(sharedStyles.row, sharedStyles.rowFull)}>
+                <div className={sharedStyles.col_11}>
+                    <p>Published {post.createdAt}</p>
+                </div>
+                <div className={sharedStyles.col_1}>
+                    <SharingDropdown />
+                </div>
+            </div>
         </div>
     )
 }
@@ -49,6 +59,8 @@ function BlogItem(props: { post: Post }) {
                     <div className={sharedStyles.col_10}>
                         <h3>{post.title}</h3>
                         <p>Published {post.createdAt}</p>
+
+                        <SharingDropdown />
                     </div>
                     <div className={sharedStyles.col_2}>
                         <img
@@ -116,7 +128,7 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
     return (
         <div>
-            <h2 className={sharedStyles.subtitle}>Popular articles</h2>
+            <h2 className={sharedStyles.subtitle}>🔥 Popular articles</h2>
 
             {isLoading ? (
                 <p>Loading Popular articles...</p>
@@ -126,7 +138,9 @@ function BlogTopArticles(props: { posts: Post[] }) {
                         <li key={post.permalink}>
                             <Link href={createPostUrl(post.permalink)}>
                                 <a title={post.title}>
-                                    <h3>{post.title}</h3>
+                                    <h3 className={sharedStyles.text}>
+                                        {post.title}
+                                    </h3>
                                     <p>{post.published}</p>
                                 </a>
                             </Link>
@@ -141,7 +155,7 @@ function BlogTopArticles(props: { posts: Post[] }) {
 function BlogAdNewsletter() {
     return (
         <div>
-            <h2>Get your dream job</h2>
+            <h2>🚀 Get your dream job</h2>
             <p>
                 Do you wanna get tips and tricks on how to get your next
                 internship or full time position? You can sign up into "The
@@ -154,10 +168,12 @@ function BlogAdNewsletter() {
 function AdSocialDeveloper() {
     return (
         <div>
-            <h2>Show your social skills!</h2>
+            <h2>Show me your social skills!</h2>
             <ul>
                 <li>
-                    <span>Twitter</span>
+                    <span>
+                        <FaTwitter />
+                    </span>
                     <span>Twitter</span>
                 </li>
             </ul>
@@ -166,10 +182,42 @@ function AdSocialDeveloper() {
 }
 
 function BlogAdIdea() {
-    const [email, setEmail] = useState("")
+    const [message, setMessage] = useState("")
+    const [isError, setIsError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
 
-    const handleEmail = event => {
-        setEmail(event.target.value)
+    const handleMessage = event => {
+        setMessage(event.target.value)
+    }
+
+    const resetForm = event => {
+        setMessage("")
+        setIsError(false)
+        setIsSuccess(false)
+    }
+
+    const submitForm = event => {
+        setIsError(false)
+        setIsLoading(true)
+        setIsSuccess(false)
+
+        fetch("http://localhost:4000/api/v1/contact/ideas", {
+            method: "POST",
+            body: JSON.stringify({ message }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(() => {
+                setIsSuccess(true)
+            })
+            .catch(error => {
+                setIsError(true)
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
     }
 
     return (
@@ -179,11 +227,46 @@ function BlogAdIdea() {
                 Do you have an idea of a blog that you want me to write? Send it
                 below
             </p>
-            <input
-                placeholder="Write your post idea"
-                value={email}
-                onChange={handleEmail}
-            />
+
+            {isLoading ? (
+                <p>Sending your message...</p>
+            ) : (
+                <>
+                    {isError && (
+                        <p>
+                            😨 Opps... I couldn't submit your idea. Try again or
+                            send me an email jorge@ferreiro.me
+                            <button onClick={submitForm}>Try again</button>
+                        </p>
+                    )}
+
+                    {isSuccess ? (
+                        <p>
+                            ✅ Yeah! Message sent! 🙌🙌🙌
+                            <button onClick={resetForm}>
+                                Send another idea?
+                            </button>
+                            <Link href="/newsletter">
+                                <a>Get the newsletter</a>
+                            </Link>
+                        </p>
+                    ) : (
+                        <>
+                            <textarea
+                                className={sharedStyles.textarea}
+                                placeholder="Write your post idea"
+                                value={message}
+                                onChange={handleMessage}
+                            />
+                            <button
+                                className={sharedStyles.buttonSubmit}
+                                onClick={submitForm}
+                                type="submit"
+                            />
+                        </>
+                    )}
+                </>
+            )}
         </div>
     )
 }
