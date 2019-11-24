@@ -14,7 +14,7 @@ import { createPostUrl } from "../../utils/create-post-url"
 
 import { Pagination, PaginatedResponse } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
-import { Sharing } from "../../components/SharingDropdown"
+import { Sharing } from "../../components/Sharing"
 
 function PagePagination(props: { pagination: Pagination }) {
     return (
@@ -55,7 +55,12 @@ function BlogItemHighlight(props: { post: Post }) {
                     <p>Published {post.createdAt}</p>
                 </div>
                 <div className={sharedStyles.col_1}>
-                    <Sharing />
+                    <Sharing
+                        mini={post.pic}
+                        permalink={post.permalink}
+                        summary={post.summary}
+                        title={post.title}
+                    />
                 </div>
             </div>
         </div>
@@ -75,22 +80,30 @@ function BlogItem(props: { post: Post }) {
                     )}
                 >
                     <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
-                        <a title={post.title} className={sharedStyles.row}>
+                        <a
+                            title={post.title}
+                            className={cx(
+                                sharedStyles.row,
+                                sharedStyles.paddingBottom(5)
+                            )}
+                        >
                             <h3>{post.title}</h3>
                         </a>
                     </Link>
-                    <div
-                        className={cx(
-                            sharedStyles.row,
-                            sharedStyles.rowFull,
-                            sharedStyles.marginTop(5)
-                        )}
-                    >
-                        <div className={sharedStyles.col}>
+                    <div className={cx(sharedStyles.row, sharedStyles.rowFull)}>
+                        <div className={sharedStyles.col_auto}>
                             <p>Published {post.createdAt}</p>
                         </div>
+                        <div className={sharedStyles.col}>
+                            <p>7 mins read</p>
+                        </div>
                         <div className={cx(sharedStyles.col_auto)}>
-                            <Sharing />
+                            <Sharing
+                                mini={post.pic}
+                                permalink={post.permalink}
+                                summary={post.summary}
+                                title={post.title}
+                            />
                         </div>
                     </div>
                 </div>
