@@ -14,7 +14,7 @@ import { createPostUrl } from "../../utils/create-post-url"
 
 import { Pagination, PaginatedResponse } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
-import { SharingDropdown } from "../../components/SharingDropdown"
+import { Sharing } from "../../components/SharingDropdown"
 
 function PagePagination(props: { pagination: Pagination }) {
     return (
@@ -29,20 +29,33 @@ function PagePagination(props: { pagination: Pagination }) {
 function BlogItemHighlight(props: { post: Post }) {
     const post = props.post
     return (
-        <div>
+        <div className={cx(sharedStyles.marginBottom(8))}>
             <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
                 <a title={post.title} className={sharedStyles.row}>
                     <img width="100%" src={post.pic} alt={post.title} />
-                    <h2>{post.title}</h2>
+                    <h2
+                        className={cx(
+                            sharedStyles.subtitle,
+                            sharedStyles.marginTop(6)
+                        )}
+                    >
+                        {post.title}
+                    </h2>
                 </a>
             </Link>
 
-            <div className={cx(sharedStyles.row, sharedStyles.rowFull)}>
+            <div
+                className={cx(
+                    sharedStyles.row,
+                    sharedStyles.rowFull,
+                    sharedStyles.marginTop(5)
+                )}
+            >
                 <div className={sharedStyles.col_11}>
                     <p>Published {post.createdAt}</p>
                 </div>
                 <div className={sharedStyles.col_1}>
-                    <SharingDropdown />
+                    <Sharing />
                 </div>
             </div>
         </div>
@@ -53,25 +66,45 @@ function BlogItem(props: { post: Post }) {
     const post = props.post
 
     return (
-        <div>
-            <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
-                <a title={post.title} className={sharedStyles.row}>
-                    <div className={sharedStyles.col_10}>
-                        <h3>{post.title}</h3>
-                        <p>Published {post.createdAt}</p>
-
-                        <SharingDropdown />
+        <div className={cx(sharedStyles.row, sharedStyles.marginBottom(6))}>
+            <div className={sharedStyles.col_9}>
+                <div
+                    className={cx(
+                        sharedStyles.paddingTop(3),
+                        sharedStyles.marginRight(5)
+                    )}
+                >
+                    <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
+                        <a title={post.title} className={sharedStyles.row}>
+                            <h3>{post.title}</h3>
+                        </a>
+                    </Link>
+                    <div
+                        className={cx(
+                            sharedStyles.row,
+                            sharedStyles.rowFull,
+                            sharedStyles.marginTop(5)
+                        )}
+                    >
+                        <div className={sharedStyles.col}>
+                            <p>Published {post.createdAt}</p>
+                        </div>
+                        <div className={cx(sharedStyles.col_auto)}>
+                            <Sharing />
+                        </div>
                     </div>
-                    <div className={sharedStyles.col_2}>
-                        <img
-                            width="100%"
-                            height="100px"
-                            src={post.pic}
-                            alt={post.title}
-                        />
-                    </div>
-                </a>
-            </Link>
+                </div>
+            </div>
+            <div className={sharedStyles.col_2}>
+                <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
+                    <img
+                        width="100%"
+                        height="100px"
+                        src={post.pic}
+                        alt={post.title}
+                    />
+                </Link>
+            </div>
         </div>
     )
 }
@@ -128,14 +161,27 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
     return (
         <div>
-            <h2 className={sharedStyles.subtitle}>🔥 Popular articles</h2>
+            <h2
+                className={cx(
+                    sharedStyles.subtitle,
+                    sharedStyles.marginBottom(5)
+                )}
+            >
+                🔥 Popular articles
+            </h2>
 
             {isLoading ? (
                 <p>Loading Popular articles...</p>
             ) : (
-                <ul>
+                <ul style={{ paddingInlineStart: 30 }}>
                     {posts.map((post: Post) => (
-                        <li key={post.permalink}>
+                        <li
+                            key={post.permalink}
+                            className={cx(
+                                sharedStyles.text,
+                                sharedStyles.marginBottom(5)
+                            )}
+                        >
                             <Link href={createPostUrl(post.permalink)}>
                                 <a title={post.title}>
                                     <h3 className={sharedStyles.text}>
@@ -155,7 +201,14 @@ function BlogTopArticles(props: { posts: Post[] }) {
 function BlogAdNewsletter() {
     return (
         <div>
-            <h2>🚀 Get your dream job</h2>
+            <h2
+                className={cx(
+                    sharedStyles.subtitle,
+                    sharedStyles.marginBottom(5)
+                )}
+            >
+                🚀 Get your dream job
+            </h2>
             <p>
                 Do you wanna get tips and tricks on how to get your next
                 internship or full time position? You can sign up into "The
@@ -168,7 +221,14 @@ function BlogAdNewsletter() {
 function AdSocialDeveloper() {
     return (
         <div>
-            <h2>Show me your social skills!</h2>
+            <h2
+                className={cx(
+                    sharedStyles.subtitle,
+                    sharedStyles.marginBottom(5)
+                )}
+            >
+                Show me your social skills!
+            </h2>
             <ul>
                 <li>
                     <span>
@@ -222,8 +282,16 @@ function BlogAdIdea() {
 
     return (
         <div>
-            <h2>Got an idea?</h2>
-            <p>
+            <h2
+                className={cx(
+                    sharedStyles.subtitle,
+                    sharedStyles.marginBottom(5)
+                )}
+            >
+                Got an idea?
+            </h2>
+
+            <p className={sharedStyles.marginBottom(5)}>
                 Do you have an idea of a blog that you want me to write? Send it
                 below
             </p>
@@ -253,7 +321,7 @@ function BlogAdIdea() {
                     ) : (
                         <>
                             <textarea
-                                className={sharedStyles.textarea}
+                                className={cx(sharedStyles.textarea)}
                                 placeholder="Write your post idea"
                                 value={message}
                                 onChange={handleMessage}
@@ -275,7 +343,14 @@ function BlogAdIdea() {
 function BlogCategories(props: { categories: any[] }) {
     return (
         <div>
-            <h2 className={sharedStyles.subtitle}>Categories</h2>
+            <h2
+                className={cx(
+                    sharedStyles.subtitle,
+                    sharedStyles.marginBottom(5)
+                )}
+            >
+                Categories
+            </h2>
             <ul>
                 {props.categories.map(category => (
                     <li>Hola</li>

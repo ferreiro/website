@@ -143,6 +143,12 @@ export const sharedStyles = {
     text: css`
         color: ${config.colors.text};
     `,
+    right: css`
+        text-align: right;
+    `,
+    left: css`
+        text-align: left;
+    `,
     center: css`
         text-align: center;
     `,
@@ -225,6 +231,10 @@ export const sharedStyles = {
         max-width: 91.666667%;
     `,
     col_10: css`
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    `,
+    col_9: css`
         flex: 0 0 83.333333%;
         max-width: 83.333333%;
     `,

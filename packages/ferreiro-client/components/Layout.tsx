@@ -2,7 +2,12 @@ import React from "react"
 import Head from "next/head"
 import { injectGlobal, css } from "emotion"
 
-import config, { breakpoints, spacing7, containterMaxWidths } from "./config"
+import config, {
+    breakpoints,
+    spacing8,
+    containterMaxWidths,
+    sharedStyles
+} from "./config"
 
 import { LayoutNavbar } from "./LayoutNavbar"
 
@@ -11,7 +16,7 @@ injectGlobal(`
         font-family: Roobert, Helvetica Neue, Helvetica, Arial, sans-serif;
     }
 
-    p, h1, h2, h3, {
+    p, h1, h2, h3, h4 {
         margin: 0;
         padding: 0;
     }
@@ -122,7 +127,7 @@ export function Layout(props: {
 
 const styles = {
     containerWrapper: css`
-        padding: ${spacing7} 0;
+        padding: ${spacing8} 0;
     `,
     containerContent: css`
         margin: 0 auto;
@@ -130,7 +135,7 @@ const styles = {
     `,
     footerWrapper: css`
         border-top: 1px solid #f1f1f1;
-        padding-top: ${spacing7};
+        padding-top: ${spacing8};
     `,
     footerContent: css`
         margin: 0 auto;
