@@ -110,10 +110,7 @@ export function BlogItem(props: { post: Post }) {
                                 href="/blog/[id]"
                                 as={createPostUrl(post.permalink)}
                             >
-                                <a
-                                    title={post.title}
-                                    className={cx(sharedStyles.row)}
-                                >
+                                <a title={post.title}>
                                     <p>{post.summary}</p>
                                 </a>
                             </Link>
@@ -331,8 +328,8 @@ function BlogAdNewsletter() {
 
             <p className={sharedStyles.marginBottom(5)}>
                 Do you wanna get tips and tricks on how to get your next
-                internship or full time position? You can sign up into "The
-                hackers newsletter" curated by me
+                internship or full time job? Get an exclusive pdf with{" "}
+                <strong>10 tips to get your next job</strong>.
             </p>
 
             {isLoading ? (
@@ -360,27 +357,51 @@ function BlogAdNewsletter() {
                             </button>
                         </div>
                     ) : (
-                        <div className={sharedStyles.row}>
-                            <input
+                        <>
+                            <div className={sharedStyles.row}>
+                                <input
+                                    className={cx(
+                                        sharedStyles.inputField,
+                                        sharedStyles.col
+                                    )}
+                                    placeholder="Write your name"
+                                    value={email}
+                                    onChange={handleEmail}
+                                />
+                            </div>
+
+                            <div className={sharedStyles.row}>
+                                <input
+                                    className={cx(
+                                        sharedStyles.inputField,
+                                        sharedStyles.marginTop(5),
+                                        sharedStyles.col
+                                    )}
+                                    placeholder="Write your email"
+                                    value={email}
+                                    onChange={handleEmail}
+                                />
+                            </div>
+
+                            <div
                                 className={cx(
-                                    sharedStyles.inputField,
-                                    sharedStyles.col
+                                    sharedStyles.row,
+                                    sharedStyles.justifyContentCenter
                                 )}
-                                placeholder="Write your email"
-                                value={email}
-                                onChange={handleEmail}
-                            />
-                            <button
-                                className={cx(
-                                    sharedStyles.buttonSubmit,
-                                    sharedStyles.col_auto
-                                )}
-                                onClick={submitForm}
-                                type="submit"
                             >
-                                Subscribe
-                            </button>
-                        </div>
+                                <button
+                                    className={cx(
+                                        sharedStyles.marginTop(5),
+                                        sharedStyles.buttonSubmit,
+                                        sharedStyles.col_auto
+                                    )}
+                                    onClick={submitForm}
+                                    type="submit"
+                                >
+                                    Get exclusive tips
+                                </button>
+                            </div>
+                        </>
                     )}
                 </>
             )}
@@ -567,7 +588,7 @@ function BlogCategories(props: { categories: any[] }) {
 }
 
 // TODO: Add waypoint
-function BlogSeries(props: { featuredSeriePermalink: string }) {
+function FeaturedSeries(props: { seriesPermalink: string }) {
     const [serieInfo, setSerieInfo] = useState({
         title: "",
         permalink: "",
@@ -580,7 +601,7 @@ function BlogSeries(props: { featuredSeriePermalink: string }) {
     useEffect(() => {
         if (isEmpty(seriesPosts)) {
             setIsLoading(true)
-            fetchSerieApi({ permalink: props.featuredSeriePermalink })
+            fetchSerieApi({ permalink: props.seriesPermalink })
                 .then((response: FetchSerieResponse) => {
                     setSerieInfo(response.serie)
                     setSeriesPosts(response.posts)
@@ -607,7 +628,7 @@ function BlogSeries(props: { featuredSeriePermalink: string }) {
                     sharedStyles.marginBottom(5)
                 )}
             >
-                Featured serie
+                Featured series
             </h2>
 
             {isEmpty(serieInfo) || isEmpty(seriesPosts) ? (
@@ -622,37 +643,77 @@ function BlogSeries(props: { featuredSeriePermalink: string }) {
             ) : (
                 <div>
                     {serieInfo && (
-                        <div>
-                            <img src={serieInfo.pic} width="60px" />
-                            <h3>{serieInfo.title}</h3>
-                            <Link
-                                href={createSeriesUrlWithSubscription({
-                                    permalink: serieInfo.permalink,
-                                    source: "series-blog-ad"
-                                })}
-                            >
-                                <a>Follow</a>
-                            </Link>
+                        <div
+                            className={cx(
+                                sharedStyles.row,
+                                sharedStyles.flex,
+                                sharedStyles.alignItemsCenter
+                            )}
+                        >
+                            <div className={sharedStyles.row}>
+                                <div className={sharedStyles.col_auto}>
+                                    <img src={serieInfo.pic} width="60px" />
+                                </div>
+                                <div
+                                    className={cx(
+                                        sharedStyles.col,
+                                        sharedStyles.alignSelfCenter,
+                                        sharedStyles.marginLeft(5)
+                                    )}
+                                >
+                                    <h3>{serieInfo.title}</h3>
+                                </div>
+                                <div
+                                    className={cx(
+                                        sharedStyles.col_auto,
+                                        sharedStyles.alignSelfCenter
+                                    )}
+                                >
+                                    <Link
+                                        href={createSeriesUrlWithSubscription({
+                                            permalink: serieInfo.permalink,
+                                            source: "series-blog-ad"
+                                        })}
+                                    >
+                                        <a className={cx(sharedStyles.button)}>
+                                            Follow
+                                        </a>
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     )}
 
-                    <ul style={{ paddingInlineStart: 30 }}>
-                        {seriesPosts.map((post: Post) => (
+                    <ul
+                        style={{
+                            paddingInlineStart: 0,
+                            listStyle: "none",
+                            border: `1px solid ${config.colors.separator}`
+                        }}
+                    >
+                        {seriesPosts.map((post: Post, index: number) => (
                             <li
                                 key={post.permalink}
-                                className={cx(
-                                    sharedStyles.text,
-                                    sharedStyles.marginBottom(5)
-                                )}
+                                className={cx(sharedStyles.text)}
                             >
                                 <Link href={createPostUrl(post.permalink)}>
-                                    <a title={post.title}>
+                                    <a
+                                        className={cx(
+                                            sharedStyles.paddingCustom(3, 4),
+                                            sharedStyles.flex
+                                        )}
+                                        title={post.title}
+                                    >
                                         <h3 className={sharedStyles.text}>
                                             {post.title}
                                         </h3>
                                         <p>{post.published}</p>
                                     </a>
                                 </Link>
+
+                                {index < seriesPosts.length - 1 && (
+                                    <div className={sharedStyles.separator} />
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -743,10 +804,8 @@ export function Blog(props: Props) {
                                 )}
                             />
 
-                            <BlogSeries
-                                featuredSeriePermalink={
-                                    props.featuredSeriePermalink
-                                }
+                            <FeaturedSeries
+                                seriesPermalink={props.featuredSeriePermalink}
                             />
 
                             <div

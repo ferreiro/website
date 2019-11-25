@@ -1,4 +1,3 @@
-import { cloneDeep } from "lodash"
 import blogRepository from "./blog"
 
 const Series = require("../models/Series")
@@ -45,10 +44,11 @@ module.exports.findByPermalink = function(query) {
     }
 
     return new Promise((resolve, reject) => {
-        Series.findOne(seriesQuery, { secretKey: 0, __v: 0 }).exec(function(
-            err,
-            serie
-        ) {
+        Series.findOne(
+            seriesQuery,
+            { secretKey: 0, __v: 0 },
+            { createdAt: -1 }
+        ).exec(function(err, serie) {
             if (err) {
                 return Promise.reject(err)
             }

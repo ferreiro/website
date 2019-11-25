@@ -214,6 +214,9 @@ export const sharedStyles = {
     marginHorizontal: (size: number) => css`
         margin: 0 ${spacingMapper[size]};
     `,
+    marginBoth: (size: number) => css`
+        margin: ${spacingMapper[size]};
+    `,
     paddingTop: (size: number) => css`
         padding-top: ${spacingMapper[size]};
     `,
@@ -231,6 +234,12 @@ export const sharedStyles = {
     `,
     paddingHorizontal: (size: number) => css`
         padding: 0 ${spacingMapper[size]};
+    `,
+    paddingBoth: (size: number) => css`
+        padding: ${spacingMapper[size]};
+    `,
+    paddingCustom: (sizeVertical: number, sizeHorizontal) => css`
+        padding: ${spacingMapper[sizeVertical]} ${spacingMapper[sizeHorizontal]};
     `,
     row: css`
         display: flex;
@@ -394,6 +403,9 @@ export const sharedStyles = {
     `,
     alignItemsCenter: css`
         align-items: center !important;
+    `,
+    alignSelfCenter: css`
+        align-self: center !important;
     `
 }
 
