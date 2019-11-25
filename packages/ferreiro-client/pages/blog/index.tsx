@@ -12,6 +12,7 @@ import {
     fetchSerieApi,
     FetchSerieResponse
 } from "../../api/blog"
+
 import { postContactIdeasApi, postSubscribeApi } from "../../api/contact"
 
 import { Layout } from "../../components/Layout"
@@ -20,7 +21,7 @@ import { Sharing } from "../../components/Sharing"
 import { Tabs } from "../../components/Tabs"
 
 import config, { sharedStyles } from "../../components/config"
-import { createPostUrl } from "../../utils/create-post-url"
+import { createPostUrl, createSeriesUrl } from "../../utils/create-post-url"
 
 import { Pagination } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
@@ -31,7 +32,12 @@ function BlogItemHighlight(props: { post: Post }) {
         <div className={cx(sharedStyles.marginBottom(8))}>
             <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
                 <a title={post.title} className={sharedStyles.row}>
-                    <img width="100%" src={post.pic} alt={post.title} />
+                    <img
+                        alt={post.title}
+                        src={post.pic}
+                        style={{ objectFit: "cover", objectPosition: "center" }}
+                        width="100%"
+                    />
                     <h2
                         className={cx(
                             sharedStyles.subtitle,
@@ -40,6 +46,9 @@ function BlogItemHighlight(props: { post: Post }) {
                     >
                         {post.title}
                     </h2>
+                    <p className={cx(sharedStyles.marginTop(4))}>
+                        {post.summary}
+                    </p>
                 </a>
             </Link>
 
@@ -83,20 +92,59 @@ function BlogItem(props: { post: Post }) {
                             title={post.title}
                             className={cx(
                                 sharedStyles.row,
-                                sharedStyles.paddingBottom(5)
+                                sharedStyles.paddingBottom(4)
                             )}
                         >
                             <h3>{post.title}</h3>
-                            <p className={sharedStyles.marginTop(3)}>
-                                {post.summary}
-                            </p>
                         </a>
                     </Link>
                     <div className={cx(sharedStyles.row, sharedStyles.rowFull)}>
                         <div className={sharedStyles.col}>
-                            <p>Published {moment(post.createdAt).fromNow()}</p>
+                            <Link
+                                href="/blog/[id]"
+                                as={createPostUrl(post.permalink)}
+                            >
+                                <a
+                                    title={post.title}
+                                    className={cx(sharedStyles.row)}
+                                >
+                                    <p>{post.summary}</p>
+                                </a>
+                            </Link>
+
+                            <div
+                                className={cx(
+                                    sharedStyles.row,
+                                    sharedStyles.marginTop(4)
+                                )}
+                            >
+                                {post.series && (
+                                    <Link
+                                        href={createSeriesUrl(
+                                            post.series.permalink
+                                        )}
+                                    >
+                                        <a
+                                            className={sharedStyles.marginRight(
+                                                4
+                                            )}
+                                        >
+                                            {post.series.title}
+                                        </a>
+                                    </Link>
+                                )}
+                                <p>
+                                    Published {moment(post.createdAt).fromNow()}
+                                </p>
+                            </div>
                         </div>
-                        <div className={cx(sharedStyles.col_auto)}>
+                        <div
+                            className={cx(
+                                sharedStyles.col_auto,
+                                sharedStyles.flex,
+                                sharedStyles.alignItemsFlexEnd
+                            )}
+                        >
                             <Sharing
                                 mini={post.pic}
                                 permalink={post.permalink}
@@ -112,7 +160,7 @@ function BlogItem(props: { post: Post }) {
                     <img
                         width="100%"
                         height="100%"
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "cover", objectPosition: "center" }}
                         src={post.pic}
                         alt={post.title}
                     />

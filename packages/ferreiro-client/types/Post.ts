@@ -1,4 +1,15 @@
-export interface PostSeries {}
+export interface PostSeries {
+    _id: string
+    updatedAt: string
+    createdAt: string
+    title: string
+    permalink: string
+    secretKey: string
+    published: boolean
+    description: string
+    favicon: string
+    pic: string
+}
 
 export interface Post {
     id: string

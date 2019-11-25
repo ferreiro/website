@@ -171,6 +171,17 @@ export const sharedStyles = {
         height: 2px;
         background: ${config.colors.separator};
     `,
+    button: css`
+        border: 2px solid ${config.colors.secondary};
+        color: #000;
+        padding: ${spacing4} ${spacing5};
+        text-decoration: none;
+    `,
+    buttonActive: css`
+        border-color: ${config.colors.primary};
+        background: ${config.colors.primary};
+        color: #fff;
+    `,
     buttonSubmit: css`
         color: #fff;
         border: 2px solid ${config.colors.secondary};
@@ -363,6 +374,9 @@ export const sharedStyles = {
             max-width: 16.666667%;
         }
     `,
+    displayInlineFlex: css`
+        display: inline-flex !important;
+    `,
     flex: css`
         display: flex !important;
     `,
@@ -374,6 +388,12 @@ export const sharedStyles = {
     `,
     justifyContentCenter: css`
         justify-content: center !important;
+    `,
+    alignItemsFlexEnd: css`
+        align-items: flex-end !important;
+    `,
+    alignItemsCenter: css`
+        align-items: center !important;
     `
 }
 

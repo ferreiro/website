@@ -5,6 +5,7 @@ import { css, cx } from "emotion"
 import { Pagination } from "../types/PaginatedResponse"
 
 import { sharedStyles } from "./config"
+import { FaAngleRight, FaAngleLeft, FaHome } from "react-icons/fa"
 
 export const FIRST_PAGE = 1
 
@@ -13,22 +14,13 @@ export function PagePagination(props: {
     pagination: Pagination
 }) {
     const pages = Array.from(
-        Array(props.pagination.pages).keys()
-        // .map(key => key + 1)
+        Array(props.pagination.pages)
+            .map(number => number + 1)
+            .keys()
     )
-
-    console.log("pagination")
-    console.log(props.pagination)
 
     const isFirstPage = props.activePage === FIRST_PAGE
     const hasNextPage = props.activePage < props.pagination.pages
-
-    console.log("isFirstPage", isFirstPage)
-    console.log("props.activePage", props.activePage)
-    console.log(props.activePage)
-    console.log(typeof props.activePage)
-    console.log(typeof props.pagination.pages)
-    console.log("hasNextPage", hasNextPage)
 
     return (
         <div className={sharedStyles.row}>
@@ -42,39 +34,21 @@ export function PagePagination(props: {
                     )}
                 >
                     {!isFirstPage && (
-                        <>
-                            <li
-                                className={cx(
-                                    sharedStyles.col_auto,
-                                    sharedStyles.marginRight(3),
-                                    styles.listItem
-                                )}
-                            >
-                                <Link href={`/blog`}>
-                                    <a className={sharedStyles.inputField}>
-                                        First
-                                    </a>
-                                </Link>
-                            </li>
-
-                            <li
-                                className={cx(
-                                    sharedStyles.col,
-                                    styles.listItem
-                                )}
-                            >
-                                <Link
-                                    href={`/blog?page=${props.activePage - 1}`}
+                        <li className={cx(sharedStyles.col, styles.listItem)}>
+                            <Link href={`/blog?page=${props.activePage - 1}`}>
+                                <a
+                                    className={cx(
+                                        sharedStyles.button,
+                                        sharedStyles.alignItemsCenter,
+                                        sharedStyles.displayInlineFlex
+                                    )}
+                                    title="Previous page"
                                 >
-                                    <a
-                                        className={sharedStyles.inputField}
-                                        title="Previous page"
-                                    >
-                                        Previous
-                                    </a>
-                                </Link>
-                            </li>
-                        </>
+                                    <FaAngleLeft />
+                                    <span>Previous</span>
+                                </a>
+                            </Link>
+                        </li>
                     )}
                 </ul>
             </div>
@@ -89,6 +63,7 @@ export function PagePagination(props: {
                     )}
                 >
                     {pages.map((pageIndex: number) => {
+                        const isActivePage = pageIndex + 1 === props.activePage
                         return (
                             <li
                                 key={pageIndex}
@@ -98,8 +73,15 @@ export function PagePagination(props: {
                                 )}
                             >
                                 <Link href={`/blog?page=${pageIndex + 1}`}>
-                                    <a className={sharedStyles.inputField}>
-                                        {pageIndex}
+                                    <a
+                                        className={cx(
+                                            sharedStyles.displayInlineFlex,
+                                            sharedStyles.button,
+                                            isActivePage &&
+                                                sharedStyles.buttonActive
+                                        )}
+                                    >
+                                        {pageIndex + 1}
                                     </a>
                                 </Link>
                             </li>
@@ -119,21 +101,19 @@ export function PagePagination(props: {
                     {hasNextPage && (
                         <li className={styles.listItem}>
                             <Link href={`/blog?page=${props.activePage + 1}`}>
-                                <a className={sharedStyles.inputField}>Next</a>
+                                <a
+                                    className={cx(
+                                        sharedStyles.button,
+                                        sharedStyles.displayInlineFlex,
+                                        sharedStyles.alignItemsCenter
+                                    )}
+                                >
+                                    <span>Next</span>
+                                    <FaAngleRight />
+                                </a>
                             </Link>
                         </li>
                     )}
-
-                    <li
-                        className={cx(
-                            styles.listItem,
-                            sharedStyles.marginLeft(3)
-                        )}
-                    >
-                        <Link href={`/blog?page=${props.pagination.pages}`}>
-                            <a className={sharedStyles.inputField}>Last</a>
-                        </Link>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -146,5 +126,9 @@ const styles = {
         margin: 0;
         padding: 0;
     `,
-    listItem: css``
+    listItem: css`
+        a {
+            text-decoration: none;
+        }
+    `
 }
