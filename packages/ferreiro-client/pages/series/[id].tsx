@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect } from "react"
+import Error from "next/error"
 import { fetchSerieApi, FetchSerieResponse } from "../../api/blog"
 import { Layout } from "../../components/Layout"
 
@@ -18,12 +19,53 @@ function RelatedSeries() {
     )
 }
 
+function FollowSeries() {
+    function onClick() {
+        alert(
+            "Implement. Open a modal to get the newsletter... I can also add the user to mailchimp inside a group for this series..."
+        )
+    }
+
+    return (
+        <div className={sharedStyles.row}>
+            <button
+                onClick={onClick}
+                className={cx(
+                    sharedStyles.col_12,
+                    sharedStyles.marginTop(5),
+                    sharedStyles.buttonSubmit
+                )}
+            >
+                Follow the series
+            </button>
+        </div>
+    )
+}
+
 interface Props {
     posts: Post[]
     serie: Serie
+    serieIsSubscribe: boolean
 }
 
 export default function SeriePage(props: Props) {
+    if (!props.serie) {
+        return (
+            <Error
+                title="Series not found or you don't have permissions to see it"
+                statusCode={404}
+            />
+        )
+    }
+
+    useEffect(() => {
+        if (props.serieIsSubscribe && window) {
+            window.alert(
+                "TODO: Open popup, cause user wants to subscribe to the serie"
+            )
+        }
+    })
+
     return (
         <Layout title="Serie">
             <h1
@@ -33,7 +75,7 @@ export default function SeriePage(props: Props) {
                     sharedStyles.marginBottom(5)
                 )}
             >
-                {props.serie.title} serie
+                {props.serie.title} series
             </h1>
 
             <div className={sharedStyles.marginTop(8)}>
@@ -46,7 +88,13 @@ export default function SeriePage(props: Props) {
                     <div className={sharedStyles.col_lg_4}>
                         <div className={sharedStyles.marginLeft(6)}>
                             <img src={props.serie.pic} width="100%" />
-                            <p className={sharedStyles.marginTop(6)}>
+
+                            <FollowSeries />
+
+                            <h3 className={sharedStyles.marginTop(6)}>
+                                About this series
+                            </h3>
+                            <p className={sharedStyles.marginTop(4)}>
                                 {props.serie.description}
                             </p>
                         </div>
@@ -71,6 +119,7 @@ export default function SeriePage(props: Props) {
 
 SeriePage.getInitialProps = async function(context: any) {
     const seriePermalink = context.query.id
+    const serieIsSubscribe = context.query.subscribe
     const serieResponse: FetchSerieResponse = await fetchSerieApi({
         permalink: seriePermalink
     })
@@ -79,6 +128,7 @@ SeriePage.getInitialProps = async function(context: any) {
 
     return {
         serie: serieResponse.serie,
+        serieIsSubscribe,
         posts: serieResponse.posts
     }
 }

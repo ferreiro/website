@@ -15,7 +15,7 @@ import config, {
     spacing3,
     spacing4
 } from "./config"
-import { createShareablePostUrl } from "../utils/create-post-url"
+import { createShareablePostUrl } from "../utils/get-url"
 import { addTrackingUrl } from "../utils/analytics"
 import {
     getLinkedinShareableUrl,

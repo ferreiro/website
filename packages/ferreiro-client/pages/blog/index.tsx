@@ -13,6 +13,8 @@ import {
     FetchSerieResponse
 } from "../../api/blog"
 
+const FEATURED_SERIES = "the-definitive-guide-for-college-hackathon"
+
 import { postContactIdeasApi, postSubscribeApi } from "../../api/contact"
 
 import { Layout } from "../../components/Layout"
@@ -21,7 +23,11 @@ import { Sharing } from "../../components/Sharing"
 import { Tabs } from "../../components/Tabs"
 
 import config, { sharedStyles } from "../../components/config"
-import { createPostUrl, createSeriesUrl } from "../../utils/create-post-url"
+import {
+    createPostUrl,
+    createSeriesUrl,
+    createSeriesUrlWithSubscription
+} from "../../utils/get-url"
 
 import { Pagination } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
@@ -231,6 +237,8 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
             {isLoading ? (
                 <p>Loading Popular articles...</p>
+            ) : isEmpty(posts) ? (
+                <div>No posts available...</div>
             ) : (
                 <ul
                     style={{
@@ -238,24 +246,30 @@ function BlogTopArticles(props: { posts: Post[] }) {
                         listStyle: "disc"
                     }}
                 >
-                    {posts.map((post: Post) => (
-                        <li
-                            key={post.permalink}
-                            className={cx(
-                                sharedStyles.text,
-                                sharedStyles.marginBottom(5)
-                            )}
-                        >
-                            <Link href={createPostUrl(post.permalink)}>
-                                <a title={post.title}>
-                                    <h3 className={sharedStyles.text}>
-                                        {post.title}
-                                    </h3>
-                                    <p>{post.published}</p>
-                                </a>
-                            </Link>
-                        </li>
-                    ))}
+                    {isEmpty(posts) ? (
+                        <div>No feature post available</div>
+                    ) : (
+                        <>
+                            {posts.map((post: Post) => (
+                                <li
+                                    key={post.permalink}
+                                    className={cx(
+                                        sharedStyles.text,
+                                        sharedStyles.marginBottom(5)
+                                    )}
+                                >
+                                    <Link href={createPostUrl(post.permalink)}>
+                                        <a title={post.title}>
+                                            <h3 className={sharedStyles.text}>
+                                                {post.title}
+                                            </h3>
+                                            <p>{post.published}</p>
+                                        </a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </>
+                    )}
                 </ul>
             )}
         </div>
@@ -581,6 +595,10 @@ function BlogSeries(props: { featuredSeriePermalink: string }) {
         }
     }, [seriesPosts])
 
+    if (isLoading) {
+        return <p>Loading featured series...</p>
+    }
+
     return (
         <div>
             <h2
@@ -592,14 +610,29 @@ function BlogSeries(props: { featuredSeriePermalink: string }) {
                 Featured serie
             </h2>
 
-            {isLoading ? (
-                <p>Loading Popular articles...</p>
+            {isEmpty(serieInfo) || isEmpty(seriesPosts) ? (
+                <p>
+                    Featured series is not available at this moment, but you can{" "}
+                    <Link href="/series">
+                        <a title="Check all the series">
+                            check all the series here!
+                        </a>
+                    </Link>{" "}
+                </p>
             ) : (
                 <div>
                     {serieInfo && (
                         <div>
                             <img src={serieInfo.pic} width="60px" />
                             <h3>{serieInfo.title}</h3>
+                            <Link
+                                href={createSeriesUrlWithSubscription({
+                                    permalink: serieInfo.permalink,
+                                    source: "series-blog-ad"
+                                })}
+                            >
+                                <a>Follow</a>
+                            </Link>
                         </div>
                     )}
 
@@ -765,8 +798,7 @@ Blog.getInitialProps = async function(context: any): Promise<Props> {
             posts: docs,
             pagination,
             featuredPosts,
-            featuredSeriePermalink:
-                "the-definitive-guide-to-making-the-most-of-college"
+            featuredSeriePermalink: FEATURED_SERIES
         }
     } catch (error) {
         return {
@@ -774,8 +806,7 @@ Blog.getInitialProps = async function(context: any): Promise<Props> {
             posts: [],
             pagination: {} as Pagination,
             featuredPosts: [],
-            featuredSeriePermalink:
-                "the-definitive-guide-to-making-the-most-of-college"
+            featuredSeriePermalink: FEATURED_SERIES
         }
     }
 }
