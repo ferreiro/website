@@ -75,7 +75,7 @@ function BlogItemHighlight(props: { post: Post }) {
     )
 }
 
-function BlogItem(props: { post: Post }) {
+export function BlogItem(props: { post: Post }) {
     const post = props.post
 
     return (
@@ -120,7 +120,8 @@ function BlogItem(props: { post: Post }) {
                             >
                                 {post.series && (
                                     <Link
-                                        href={createSeriesUrl(
+                                        href="/series/[id]"
+                                        as={createSeriesUrl(
                                             post.series.permalink
                                         )}
                                     >
