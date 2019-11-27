@@ -24,7 +24,7 @@
     "url": "https://www.ferreiro.me/"
   },
   "scripts": {
-    "build": "yarn lint && concurrently --kill-others-on-fail \"yarn build:bower\" \"yarn build:gulp\"",
+    "build": "concurrently --kill-others-on-fail \"yarn build:bower\" \"yarn build:gulp\"",
     "build:bower": "bower install",
     "build:gulp": "gulp",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn watch\"",
