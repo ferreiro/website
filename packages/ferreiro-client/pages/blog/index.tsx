@@ -430,7 +430,6 @@ function AdSocialDeveloper() {
                         <span>
                             <FaTwitter />
                         </span>
-                        <span>Twitter</span>
                     </a>
                 </li>
                 <li>
@@ -442,7 +441,6 @@ function AdSocialDeveloper() {
                         <span>
                             <FaYoutube />
                         </span>
-                        <span>Youtube</span>
                     </a>
                 </li>
                 <li>
@@ -454,7 +452,6 @@ function AdSocialDeveloper() {
                         <span>
                             <FaLinkedin />
                         </span>
-                        <span>Linkedin</span>
                     </a>
                 </li>
             </ul>
