@@ -15,27 +15,36 @@ import university from "./pages/university/university.routes";
 
 const router = express.Router();
 
-const comingSoon = function(req, res) {
-  res.render("comingSoon");
-};
+function comingSoon(req, res) {
+  return res.render("comingSoon");
+}
 
-const redirectProjectsToPortfolio = (req, res) => {
-  res.redirect("/portfolio"); // leave this, backwards compatibility
-};
+// leave this, backwards compatibility
+function redirectProjectsToPortfolio(req, res) {
+  return res.redirect("/portfolio");
+}
 
-const redirectFeedbackToContact = (req, res) =>
-  res.redirect("/contact/feedback");
+function redirectFeedbackToContact(req, res) {
+  return res.redirect("/contact/feedback");
+}
 
-const redirectToGifts = (req, res) => res.redirect("/gifts");
+function redirectToGifts(req, res) {
+  return res.redirect("/gifts");
+}
 
-const redirectMeetupLondon = (req, res) =>
-  res.redirect(
+function redirectMeetupLondon(req, res) {
+  return res.redirect(
     "https://www.meetup.com/es-ES/The-JS-Roundabout/events/259864908/"
   );
+}
 
-const surveySpanish = (req, res) => {
+function surveySpanish(req, res) {
+  return res.render("./UIComponents/encuesta");
+}
+
+function surveyEnglish(req, res) {
   return res.render("./UIComponents/survey");
-};
+}
 
 // Mounting more subroutes.
 router.get("/", home); // Home shows about page
@@ -45,6 +54,7 @@ router.use("/blog", blog);
 router.get("/coming", comingSoon); // Home shows about page
 router.use("/contact", contact);
 router.use("/encuesta", surveySpanish);
+router.use("/survey", surveyEnglish);
 router.get("/feedback", redirectFeedbackToContact);
 router.use("/gifts", gifts);
 router.use("/go", go);
