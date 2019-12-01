@@ -125,6 +125,26 @@ export function Layout(props: {
     )
 }
 
+export function LayoutFullwidth(props: {
+    children: object
+    description?: string
+    image?: string
+    title: string
+}) {
+    return (
+        <div>
+            <LayoutHead
+                title={props.title}
+                image={props.image}
+                description={props.description}
+            />
+            <LayoutNavbar />
+            <div className={styles.containerWrapper}>{props.children}</div>
+            <LayoutFooter />
+        </div>
+    )
+}
+
 const styles = {
     containerWrapper: css`
         padding: ${spacing8} 0;

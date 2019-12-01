@@ -803,7 +803,22 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                         >
                             <div className={sharedStyles.row}>
                                 <div className={sharedStyles.col_auto}>
-                                    <img src={serieInfo.pic} width="60px" />
+                                    <Link
+                                        href={getLinkWithTracking(
+                                            `/series/${serieInfo.permalink}`,
+                                            {
+                                                utm_source:
+                                                    "series-featured-avatar"
+                                            }
+                                        )}
+                                    >
+                                        <a>
+                                            <img
+                                                src={serieInfo.pic}
+                                                width="60px"
+                                            />
+                                        </a>
+                                    </Link>
                                 </div>
                                 <div
                                     className={cx(
@@ -812,7 +827,19 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                                         sharedStyles.marginLeft(5)
                                     )}
                                 >
-                                    <h3>{serieInfo.title}</h3>
+                                    <Link
+                                        href={getLinkWithTracking(
+                                            `/series/${serieInfo.permalink}`,
+                                            {
+                                                utm_source:
+                                                    "series-featured-title"
+                                            }
+                                        )}
+                                    >
+                                        <a>
+                                            <h3>{serieInfo.title}</h3>
+                                        </a>
+                                    </Link>
                                 </div>
                                 <div
                                     className={cx(

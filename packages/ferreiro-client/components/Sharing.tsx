@@ -1,20 +1,14 @@
 import { useState } from "react"
 import { css, cx } from "emotion"
-import Link from "next/link"
 import {
     FaShareSquare,
     FaRegBookmark,
     FaTwitter,
-    FaLinkedin
+    FaLinkedin,
+    FaFacebook
 } from "react-icons/fa"
 
-import config, {
-    sharedStyles,
-    spacing5,
-    spacing2,
-    spacing3,
-    spacing4
-} from "./config"
+import config, { sharedStyles, spacing5, spacing2, spacing4 } from "./config"
 import { createShareablePostUrl } from "../utils/get-url"
 import { addTrackingUrl } from "../utils/analytics"
 import {
@@ -80,6 +74,17 @@ function SharingButtonLinkedin(props: ShareButton) {
     )
 }
 
+function SharingButtonFacebook(props: ShareButton) {
+    const linkedinSharingUrl = getLinkedinShareableUrl(props)
+    return (
+        <SharingButton
+            {...props}
+            buttonStyle={styles.shareButtonLinkedin}
+            url={linkedinSharingUrl}
+        />
+    )
+}
+
 function SharingPermalink(props: { url: string }) {
     const handleClick = event => event.target.select()
 
@@ -112,6 +117,20 @@ function SharingDropdown(props: {
                 text="Share on Twitter"
                 url={addTrackingUrl(createShareablePostUrl(props.permalink), {
                     utmSource: "sharing-dropdown-twitter"
+                })}
+            />
+
+            <div className={sharedStyles.marginBottom(4)} />
+
+            <SharingButtonFacebook
+                buttonStyle={styles.shareButtonFacebook}
+                mini={props.mini}
+                summary={props.summary}
+                title={props.title}
+                Icon={FaFacebook}
+                text="Post on Facebook"
+                url={addTrackingUrl(createShareablePostUrl(props.permalink), {
+                    utmSource: "sharing-dropdown-facebook"
                 })}
             />
 
@@ -225,6 +244,13 @@ const styles = {
 
         &:hover {
             background: #1d5190;
+        }
+    `,
+    shareButtonFacebook: css`
+        background: #3b5998;
+
+        &:hover {
+            background: #355088;
         }
     `,
     shareButtonIcon: css`

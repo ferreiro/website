@@ -177,6 +177,12 @@ export const sharedStyles = {
         padding: ${spacing4} ${spacing5};
         text-decoration: none;
     `,
+    buttonNoFill: css`
+        border: 2px solid transparent;
+        color: #000;
+        padding: ${spacing4} ${spacing3};
+        text-decoration: none;
+    `,
     buttonActive: css`
         border-color: ${config.colors.primary};
         background: ${config.colors.primary};
@@ -214,7 +220,8 @@ export const sharedStyles = {
         margin-bottom: ${spacingMapper[size]};
     `,
     marginVertical: (size: number) => css`
-        margin-bottom: ${spacingMapper[size]} 0;
+        margin-top: ${spacingMapper[size]};
+        margin-bottom: ${spacingMapper[size]};
     `,
     marginHorizontal: (size: number) => css`
         margin: 0 ${spacingMapper[size]};
@@ -235,7 +242,18 @@ export const sharedStyles = {
         padding-bottom: ${spacingMapper[size]};
     `,
     paddingVertical: (size: number) => css`
-        padding-bottom: ${spacingMapper[size]} 0;
+        padding-top: ${spacingMapper[size]};
+        padding-bottom: ${spacingMapper[size]};
+    `,
+    paddingVertical_md: (size: number) => css`
+        ${mediumUp} {
+            ${sharedStyles.paddingVertical(size)}
+        }
+    `,
+    paddingVertical_lg: (size: number) => css`
+        ${largeUp} {
+            ${sharedStyles.paddingVertical(size)}
+        }
     `,
     paddingHorizontal: (size: number) => css`
         padding: 0 ${spacingMapper[size]};
@@ -245,6 +263,18 @@ export const sharedStyles = {
     `,
     paddingCustom: (sizeVertical: number, sizeHorizontal) => css`
         padding: ${spacingMapper[sizeVertical]} ${spacingMapper[sizeHorizontal]};
+    `,
+    shadow: css`
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    `,
+    shadowSm: css`
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    `,
+    shadowLg: css`
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    `,
+    rounded: css`
+        border-radius: 2px;
     `,
     row: css`
         display: flex;
