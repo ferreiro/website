@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import isEmpty from "lodash/isEmpty"
 import moment from "moment"
-import { cx } from "emotion"
+import { cx, css } from "emotion"
 import { FaTwitter, FaLinkedin, FaYoutube } from "react-icons/fa"
 import { Fragment, useState, useEffect } from "react"
 
@@ -22,11 +22,22 @@ import { PagePagination, FIRST_PAGE } from "../../components/PagePagination"
 import { Sharing } from "../../components/Sharing"
 import { Tabs } from "../../components/Tabs"
 
-import config, { sharedStyles } from "../../components/config"
+import config, {
+    sharedStyles,
+    largeUp,
+    mediumUp,
+    spacing6,
+    spacing7,
+    spacing8,
+    spacing9,
+    spacing4,
+    spacing5
+} from "../../components/config"
 import {
     createPostUrl,
     createSeriesUrl,
-    createSeriesUrlWithSubscription
+    createSeriesUrlWithSubscription,
+    getLinkWithTracking
 } from "../../utils/get-url"
 
 import { Pagination } from "../../types/PaginatedResponse"
@@ -34,25 +45,63 @@ import { Post } from "../../types/Post"
 
 function BlogItemHighlight(props: { post: Post }) {
     const post = props.post
+
+    const styles = {
+        link: css`
+            text-decoration: none;
+        `,
+        title: css`
+            color: #1b1b1b;
+            font-size: 38px;
+            line-height: 48px;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+        `,
+        summary: css`
+            color: #5d5d5d;
+            font-size: ${spacing5};
+            line-height: ${spacing6};
+            text-decoration: none;
+        `,
+        published: css`
+            color: #5d5d5d;
+            line-height: 1.2em;
+        `,
+        image: css`
+            height: 120px;
+            object-fit: cover;
+            object-position: center;
+            width: 120px;
+
+            ${largeUp} {
+                width: 100%;
+                height: 100%;
+            }
+        `
+    }
+
     return (
         <div className={cx(sharedStyles.marginBottom(8))}>
             <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
-                <a title={post.title} className={sharedStyles.row}>
+                <a
+                    title={post.title}
+                    className={cx(styles.link, sharedStyles.row)}
+                >
                     <img
                         alt={post.title}
                         src={post.pic}
                         style={{ objectFit: "cover", objectPosition: "center" }}
                         width="100%"
                     />
-                    <h2
-                        className={cx(
-                            sharedStyles.subtitle,
-                            sharedStyles.marginTop(6)
-                        )}
-                    >
+                    <h2 className={cx(styles.title, sharedStyles.marginTop(6))}>
                         {post.title}
                     </h2>
-                    <p className={cx(sharedStyles.marginTop(4))}>
+                    <p
+                        className={cx(
+                            styles.summary,
+                            sharedStyles.marginTop(5)
+                        )}
+                    >
                         {post.summary}
                     </p>
                 </a>
@@ -65,7 +114,7 @@ function BlogItemHighlight(props: { post: Post }) {
                     sharedStyles.marginTop(5)
                 )}
             >
-                <div className={sharedStyles.col}>
+                <div className={cx(styles.published, sharedStyles.col)}>
                     <p>Published {moment(post.createdAt).fromNow()}</p>
                 </div>
                 <div className={sharedStyles.col_auto}>
@@ -84,9 +133,42 @@ function BlogItemHighlight(props: { post: Post }) {
 export function BlogItem(props: { post: Post }) {
     const post = props.post
 
+    const styles = {
+        title: css`
+            color: #1b1b1b;
+            text-decoration: none;
+
+            h3 {
+                font-size: ${spacing6};
+                letter-spacing: 0.2px;
+                line-height: ${spacing7};
+            }
+        `,
+        summary: css`
+            color: #5d5d5d;
+            line-height: 1.2em;
+            text-decoration: none;
+        `,
+        published: css`
+            color: #5d5d5d;
+            line-height: 1.2em;
+        `,
+        image: css`
+            height: 120px;
+            object-fit: cover;
+            object-position: center;
+            width: 120px;
+
+            ${largeUp} {
+                width: 100%;
+                height: 100%;
+            }
+        `
+    }
+
     return (
         <div className={cx(sharedStyles.row, sharedStyles.marginBottom(8))}>
-            <div className={sharedStyles.col_9}>
+            <div className={cx(sharedStyles.col, sharedStyles.col_lg_9)}>
                 <div
                     className={cx(
                         sharedStyles.paddingTop(3),
@@ -97,6 +179,7 @@ export function BlogItem(props: { post: Post }) {
                         <a
                             title={post.title}
                             className={cx(
+                                styles.title,
                                 sharedStyles.row,
                                 sharedStyles.paddingBottom(4)
                             )}
@@ -110,7 +193,10 @@ export function BlogItem(props: { post: Post }) {
                                 href="/blog/[id]"
                                 as={createPostUrl(post.permalink)}
                             >
-                                <a title={post.title}>
+                                <a
+                                    className={styles.summary}
+                                    title={post.title}
+                                >
                                     <p>{post.summary}</p>
                                 </a>
                             </Link>
@@ -118,7 +204,7 @@ export function BlogItem(props: { post: Post }) {
                             <div
                                 className={cx(
                                     sharedStyles.row,
-                                    sharedStyles.marginTop(4)
+                                    sharedStyles.marginTop(5)
                                 )}
                             >
                                 {post.series && (
@@ -129,15 +215,16 @@ export function BlogItem(props: { post: Post }) {
                                         )}
                                     >
                                         <a
-                                            className={sharedStyles.marginRight(
-                                                4
+                                            className={cx(
+                                                styles.published,
+                                                sharedStyles.marginRight(4)
                                             )}
                                         >
                                             {post.series.title}
                                         </a>
                                     </Link>
                                 )}
-                                <p>
+                                <p className={styles.published}>
                                     Published {moment(post.createdAt).fromNow()}
                                 </p>
                             </div>
@@ -159,15 +246,15 @@ export function BlogItem(props: { post: Post }) {
                     </div>
                 </div>
             </div>
-            <div className={sharedStyles.col_2}>
+            <div className={cx(sharedStyles.col_auto, sharedStyles.col_lg_2)}>
                 <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
-                    <img
-                        width="100%"
-                        height="100%"
-                        style={{ objectFit: "cover", objectPosition: "center" }}
-                        src={post.pic}
-                        alt={post.title}
-                    />
+                    <a title={post.title}>
+                        <img
+                            alt={post.title}
+                            className={styles.image}
+                            src={post.pic}
+                        />
+                    </a>
                 </Link>
             </div>
         </div>
@@ -320,13 +407,13 @@ function BlogAdNewsletter() {
             <h2
                 className={cx(
                     sharedStyles.subtitle,
-                    sharedStyles.marginBottom(5)
+                    sharedStyles.marginBottom(6)
                 )}
             >
                 🚀 Get your dream job
             </h2>
 
-            <p className={sharedStyles.marginBottom(5)}>
+            <p className={sharedStyles.marginBottom(6)}>
                 Do you wanna get tips and tricks on how to get your next
                 internship or full time job? Get an exclusive pdf with{" "}
                 <strong>10 tips to get your next job</strong>.
@@ -391,7 +478,7 @@ function BlogAdNewsletter() {
                             >
                                 <button
                                     className={cx(
-                                        sharedStyles.marginTop(5),
+                                        sharedStyles.marginTop(6),
                                         sharedStyles.buttonSubmit,
                                         sharedStyles.col_auto
                                     )}
@@ -410,19 +497,38 @@ function BlogAdNewsletter() {
 }
 
 function AdSocialDeveloper() {
+    const styles = {
+        list: css``,
+        item: css`
+            padding: 1em;
+            border: 2px solid #cecece;
+        `
+    }
+
     return (
         <div>
             <h2
                 className={cx(
                     sharedStyles.subtitle,
-                    sharedStyles.marginBottom(5)
+                    sharedStyles.marginBottom(6)
                 )}
             >
                 Show me your social skills!
             </h2>
-            <ul>
-                <li>
+            <ul
+                className={cx(
+                    sharedStyles.flex,
+                    sharedStyles.justifyContentCenter,
+                    sharedStyles.marginHorizontal(0),
+                    sharedStyles.paddingHorizontal(0)
+                )}
+            >
+                <li className={sharedStyles.displayInlineFlex}>
                     <a
+                        className={cx(
+                            styles.item,
+                            sharedStyles.marginHorizontal(3)
+                        )}
                         href={config.meta.social.twitter.url}
                         target="_blank"
                         rel="norel nooppener"
@@ -432,8 +538,14 @@ function AdSocialDeveloper() {
                         </span>
                     </a>
                 </li>
-                <li>
+                <li
+                    className={cx(
+                        sharedStyles.displayInlineFlex,
+                        sharedStyles.marginHorizontal(3)
+                    )}
+                >
                     <a
+                        className={styles.item}
                         href={config.meta.social.youtube.url}
                         target="_blank"
                         rel="norel nooppener"
@@ -443,8 +555,14 @@ function AdSocialDeveloper() {
                         </span>
                     </a>
                 </li>
-                <li>
+                <li
+                    className={cx(
+                        sharedStyles.displayInlineFlex,
+                        sharedStyles.marginHorizontal(3)
+                    )}
+                >
                     <a
+                        className={styles.item}
                         href={config.meta.social.linkedin.url}
                         target="_blank"
                         rel="norel nooppener"
@@ -456,6 +574,31 @@ function AdSocialDeveloper() {
                 </li>
             </ul>
         </div>
+    )
+}
+
+function AdVideoCall() {
+    const styles = {
+        wrapper: css`
+            background-size: cover;
+            background-image: url("jorge_ferreiro_software_engineer_entrepreneur_amazon_eventbrite_developers_in_depth");
+        `
+    }
+    return (
+        <img
+            width="100px"
+            height="123px"
+            src="/images/ads/jorge_ferreiro_software_engineer_entrepreneur_amazon_eventbrite_developers_in_depth.jpg"
+        />
+        // <Link
+        //     href={getLinkWithTracking("/videocall", {
+        //         utm_source: "ferreiro-blog-videocall-ad"
+        //     })}
+        // >
+        //     <a title="Videocall with Jorge Ferreiro">
+        //         <div className={styles.wrapper}>Hola</div>
+        //     </a>
+        // </Link>
     )
 }
 
@@ -501,13 +644,13 @@ function BlogAdIdea() {
             <h2
                 className={cx(
                     sharedStyles.subtitle,
-                    sharedStyles.marginBottom(5)
+                    sharedStyles.marginBottom(6)
                 )}
             >
                 Got an idea?
             </h2>
 
-            <p className={sharedStyles.marginBottom(5)}>
+            <p className={sharedStyles.marginBottom(6)}>
                 Do you have an idea of a blog that you want me to write? Send it
                 below
             </p>
@@ -545,16 +688,27 @@ function BlogAdIdea() {
                                 value={message}
                                 onChange={handleMessage}
                             />
-                            <button
+                            <div
                                 className={cx(
-                                    sharedStyles.buttonSubmit,
-                                    sharedStyles.col_12
+                                    sharedStyles.row,
+                                    sharedStyles.justifyContentCenter
                                 )}
-                                onClick={submitForm}
-                                type="submit"
+                                style={{
+                                    width: "100%"
+                                }}
                             >
-                                Send idea
-                            </button>
+                                <button
+                                    className={cx(
+                                        sharedStyles.marginTop(5),
+                                        sharedStyles.buttonSubmit,
+                                        sharedStyles.col_auto
+                                    )}
+                                    onClick={submitForm}
+                                    type="submit"
+                                >
+                                    Send idea
+                                </button>
+                            </div>
                         </div>
                     )}
                 </>
@@ -622,7 +776,7 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
             <h2
                 className={cx(
                     sharedStyles.subtitle,
-                    sharedStyles.marginBottom(5)
+                    sharedStyles.marginBottom(6)
                 )}
             >
                 Featured series
@@ -667,10 +821,12 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                                     )}
                                 >
                                     <Link
-                                        href={createSeriesUrlWithSubscription({
-                                            permalink: serieInfo.permalink,
-                                            source: "series-blog-ad"
-                                        })}
+                                        href={createSeriesUrlWithSubscription(
+                                            serieInfo.permalink,
+                                            {
+                                                utm_source: "series-blog-ad"
+                                            }
+                                        )}
                                     >
                                         <a className={cx(sharedStyles.button)}>
                                             Follow
@@ -780,18 +936,8 @@ export function Blog(props: Props) {
                         />
                     </div>
                     <div className={sharedStyles.col_lg_4}>
-                        <div className={sharedStyles.marginLeft(6)}>
+                        <div className={sharedStyles.marginLeft_lg(6)}>
                             <BlogTopArticles posts={props.featuredPosts} />
-
-                            <div
-                                className={cx(
-                                    sharedStyles.separator,
-                                    sharedStyles.marginTop(7),
-                                    sharedStyles.marginBottom(7)
-                                )}
-                            />
-
-                            <BlogAdNewsletter />
 
                             <div
                                 className={cx(
@@ -813,6 +959,16 @@ export function Blog(props: Props) {
                                 )}
                             />
 
+                            <BlogAdNewsletter />
+
+                            <div
+                                className={cx(
+                                    sharedStyles.separator,
+                                    sharedStyles.marginTop(7),
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            />
+
                             <AdSocialDeveloper />
 
                             <div
@@ -823,7 +979,8 @@ export function Blog(props: Props) {
                                 )}
                             />
 
-                            <BlogCategories categories={categories} />
+                            <AdVideoCall />
+                            {/* <BlogCategories categories={categories} /> */}
 
                             <div
                                 className={cx(

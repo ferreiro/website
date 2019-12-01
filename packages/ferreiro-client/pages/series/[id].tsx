@@ -45,7 +45,7 @@ function FollowSeries() {
 interface Props {
     posts: Post[]
     serie: Serie
-    serieIsSubscribe: boolean
+    serieSubConfirmation: boolean
 }
 
 export default function SeriePage(props: Props) {
@@ -59,7 +59,7 @@ export default function SeriePage(props: Props) {
     }
 
     useEffect(() => {
-        if (props.serieIsSubscribe && window) {
+        if (props.serieSubConfirmation && window) {
             window.alert(
                 "TODO: Open popup, cause user wants to subscribe to the serie"
             )
@@ -119,7 +119,8 @@ export default function SeriePage(props: Props) {
 
 SeriePage.getInitialProps = async function(context: any) {
     const seriePermalink = context.query.id
-    const serieIsSubscribe = context.query.subscribe
+    // NB: You can force prompting the user to show a popup modal for subscribing
+    const serieSubConfirmation = context.query.sub_confirmation
     const serieResponse: FetchSerieResponse = await fetchSerieApi({
         permalink: seriePermalink
     })
@@ -128,7 +129,7 @@ SeriePage.getInitialProps = async function(context: any) {
 
     return {
         serie: serieResponse.serie,
-        serieIsSubscribe,
+        serieSubConfirmation,
         posts: serieResponse.posts
     }
 }

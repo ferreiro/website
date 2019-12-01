@@ -15,5 +15,5 @@ export function getTwitterShareableUrl(props: {
     summary: string
     title: string
 }) {
-    return `https://twitter.com/share?text=👓 ${props.title}&via=jgferreiro&url=${props.url}`
+    return `https://twitter.com/share?text=${props.title}&via=jgferreiro&url=${props.url}`
 }

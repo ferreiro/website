@@ -189,11 +189,8 @@ const styles = {
     `,
     itemIcon: css`
         cursor: pointer;
-        // padding: ${spacing2};
-        // border-radius: 100%;
         opacity: 0.6;
         &:hover {
-            // background: ${config.colors.separator};
             opacity: 1;
         }
     `,
@@ -218,9 +215,17 @@ const styles = {
     `,
     shareButtonTwitter: css`
         background: #00acee;
+
+        &:hover {
+            background: #009cd8;
+        }
     `,
     shareButtonLinkedin: css`
         background: #2867b2;
+
+        &:hover {
+            background: #1d5190;
+        }
     `,
     shareButtonIcon: css`
         color: #fff;
@@ -236,6 +241,4 @@ const styles = {
         padding: ${spacing2};
         border: 2px solid ${config.colors.separator};
     `
-    // wrapper: css``,
-    // wrapper: css``
 }

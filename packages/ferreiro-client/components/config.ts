@@ -202,6 +202,11 @@ export const sharedStyles = {
     marginLeft: (size: number) => css`
         margin-left: ${spacingMapper[size]};
     `,
+    marginLeft_lg: (size: number) => css`
+        ${largeUp} {
+            margin-left: ${spacingMapper[size]};
+        }
+    `,
     marginRight: (size: number) => css`
         margin-right: ${spacingMapper[size]};
     `,
@@ -348,6 +353,12 @@ export const sharedStyles = {
         }
     `,
     col_lg_10: css`
+        ${largeUp} {
+            flex: 0 0 83.333333%;
+            max-width: 83.333333%;
+        }
+    `,
+    col_lg_9: css`
         ${largeUp} {
             flex: 0 0 83.333333%;
             max-width: 83.333333%;

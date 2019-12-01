@@ -29,6 +29,7 @@
     "npm-check": "5.9.0"
   },
   "dependencies": {
+    "url-lib": "3.0.3",
     "xss-filters": "1.2.7"
   }
 }

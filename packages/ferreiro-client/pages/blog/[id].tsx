@@ -75,6 +75,10 @@ function PostDetail(props: Props) {
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>This is a post</div>
             </div>
+
+            <div style={{ textAlign: "center" }}>
+                <img src="/images/blog/credits.png" />
+            </div>
         </Layout>
     )
 }
