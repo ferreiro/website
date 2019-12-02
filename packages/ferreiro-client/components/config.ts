@@ -430,6 +430,12 @@ export const sharedStyles = {
     flex: css`
         display: flex !important;
     `,
+    flexDirectionRow: css`
+        flex-direction: row;
+    `,
+    flexDirectionColumn: css`
+        flex-direction: column;
+    `,
     flexWrap: css`
         flex-wrap: wrap-reverse !important;
     `,

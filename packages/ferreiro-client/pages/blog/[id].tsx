@@ -11,38 +11,53 @@ import config, {
     largeUp,
     spacing7,
     spacing4,
-    spacing5
+    spacing5,
+    mediumUp,
+    spacing3
 } from "../../components/config"
 
 import { Post } from "../../types/Post"
 import { formatUrl } from "url-lib"
 import Link from "next/link"
 import moment from "moment"
-import { getLinkWithTracking } from "../../utils/get-url"
-import { FaTwitter, FaLinkedin, FaFacebook } from "react-icons/fa"
+import {
+    getLinkWithTracking,
+    createShareablePostUrl
+} from "../../utils/get-url"
+import { FaTwitter, FaLinkedin, FaFacebook, FaLink } from "react-icons/fa"
+import {
+    getTwitterShareableUrl,
+    getLinkedinShareableUrl
+} from "../../utils/get-social-url"
+import { addTrackingUrl } from "../../utils/analytics"
+import Video from "../videos/[id]"
+import { postSubscribeApi } from "../../api/contact"
+import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
 
 // https://www.creativebloq.com/how-to/build-an-seo-friendly-head-component-for-nextjsreact
 // TODO: Copy this from the current .pug
-function PostMeta(props: {
-    // post
-    description?: string
-}) {
-    const description = props.description || "TODO: Put default description"
+function PostMeta(props: { post: Post }) {
+    const description = props.post.summary
+    const title = props.post.title
 
     return (
         <Head>
-            <title>Post!!!</title>
-            <meta name="description" content="" />
+            <title>{props.post.title}</title>
+            <meta name="description" content={description} />
 
-            <meta property="og:title" content="" name="og:title" />
-            <meta property="og:description" content="" name="og:description" />
+            <meta property="og:title" content={title} name="og:title" />
+            <meta
+                property="og:description"
+                content={description}
+                name="og:description"
+            />
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content="" />
             <meta property="og:url" content="" />
             <meta property="og:image" content="" />
 
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content="" />
+            <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:site" content="" />
             <meta name="twitter:creator" content="" />
@@ -54,7 +69,10 @@ function PostMeta(props: {
                 href="/static/images/favicon.ico"
             />
             <link rel="apple-touch-icon" href="/static/images/favicon.ico" />
-            <link rel="stylesheet" href="" />
+            <link
+                href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap"
+                rel="stylesheet"
+            ></link>
         </Head>
     )
 }
@@ -89,16 +107,16 @@ function PostHeader(props: { post: Post }) {
                 />
             </div>
 
-            <div className={styles.containerWrapper_lg}>
+            <figure className={styles.containerWrapper_lg}>
                 <img
                     alt={props.post.title}
                     className={sharedStyles.marginTop(6)}
                     src={props.post.pic}
                     width="100%"
                 />
-            </div>
+            </figure>
 
-            <div className={styles.containerWrapper}>
+            <summary className={styles.containerWrapper}>
                 <h2
                     className={cx(
                         headerStyles.summary,
@@ -108,7 +126,7 @@ function PostHeader(props: { post: Post }) {
                 >
                     {props.post.summary}
                 </h2>
-            </div>
+            </summary>
         </div>
     )
 }
@@ -192,20 +210,201 @@ function PostAuthor(props: {
     )
 }
 
+function PostSeries(props: { config: any; series: FetchSerieResponse }) {
+    const series = props.series
+    return (
+        <div>
+            Post series...
+            {JSON.stringify(props.series, null, 2)}
+            {JSON.stringify(props, null, 2)}
+        </div>
+    )
+}
+
 // { value: string }
-function PostQuote(props: { config: any }) {
+function PostQuote(props: { config: any; post: Post }) {
+    const quoteText = props.config.value
+    const quoteStyles = {
+        author: css`
+            text-align: center;
+        `,
+        mark: css`
+            background-color: transparent !important;
+            // background-image: linear-gradient(
+            //     to bottom,
+            //     rgba(203, 255, 186, 1),
+            //     rgba(203, 255, 186, 1)
+            // );
+            --x-height-multiplier: 0.363;
+            --baseline-multiplier: 0.157;
+            font-family: medium-content-slab-serif-font, Georgia, Cambria,
+                "Times New Roman", Times, serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 28px;
+            line-height: 1.48;
+            letter-spacing: -0.014em;
+            color: rgba(0, 0, 0, 0.68);
+            border: none;
+            padding: 0;
+            margin: 24px 0;
+            margin-left: 50px;
+            text-align: left;
+        `
+    }
+
+    const handleShareTwitterClick = () => {
+        const url = addTrackingUrl(
+            createShareablePostUrl(props.post.permalink),
+            {
+                utmSource: "sharing-quote-twitter"
+            }
+        )
+        const twitterUrl = getTwitterShareableUrl({
+            mini: props.post.pic,
+            url,
+            summary: quoteText,
+            title: quoteText
+        })
+
+        // TODO: Emit a new google analytics event to track how many clicks
+        window.open(twitterUrl, quoteText, "width=550px,height=580px;")
+    }
+
+    const handleShareLinkedinClick = () => {
+        const url = addTrackingUrl(
+            createShareablePostUrl(props.post.permalink),
+            {
+                utmSource: "sharing-linkedin-twitter"
+            }
+        )
+        const linkedinUrl = getLinkedinShareableUrl({
+            mini: props.post.pic,
+            url,
+            summary: quoteText,
+            title: quoteText
+        })
+
+        // TODO: Emit a new google analytics event to track how many clicks
+        window.open(linkedinUrl, quoteText, "width=550px,height=580px;")
+    }
+
     return (
         <div className={styles.containerWrapper}>
-            <mark>{props.config.value}</mark>
-            {props.config.author && <p>{props.config.author}</p>}
+            <mark className={quoteStyles.mark}>{props.config.value}</mark>
+            {props.config.author && (
+                <p
+                    className={cx(
+                        quoteStyles.author,
+                        sharedStyles.marginTop(3)
+                    )}
+                >
+                    {props.config.author}
+                </p>
+            )}
+            <div>
+                <button onClick={handleShareTwitterClick}>
+                    <FaTwitter />
+                </button>
+                <button onClick={handleShareLinkedinClick}>
+                    <FaLinkedin />
+                </button>
+            </div>
         </div>
     )
 }
 
 function PostText(props: { config: any }) {
+    const postStyle = {
+        wrapper: css`
+            h2 {
+                ${sharedStyles.paddingTop(7)}
+                ${sharedStyles.paddingBottom(
+                    6
+                )}
+                font-weight: 600;
+                font-size: 26px;
+                color: rgba(0, 0, 0, 0.9);
+            }
+
+            p,
+            ul li,
+            ol li,
+            a {
+                font-family: "Source Serif Pro", serif;
+
+                color: rgba(0, 0, 0, 0.8);
+                --x-height-multiplier: 0.35;
+                --baseline-multiplier: 0.179;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 20px;
+                line-height: 1.58;
+                letter-spacing: -0.004em;
+                word-break: break-word;
+                word-wrap: break-word;
+
+                ${largeUp} {
+                    font-size: 21px;
+                    line-height: 32px;
+                    // line-height: 1.58;
+                    // letter-spacing: -.003em;
+                    letter-spacing: -0.003em;
+                    color: rgba(0, 0, 0, 0.84);
+                }
+            }
+
+            ol,
+            ul {
+                -webkit-margin-before: 0;
+                -webkit-margin-after: 0;
+                -webkit-margin-start: 0;
+                -webkit-margin-end: 0;
+                -webkit-padding-start: 0;
+                list-style: decimal;
+                list-style-position: inside;
+                padding: 0;
+                margin: ${spacing4} 0;
+                margin-left: ${spacing5};
+
+                ${largeUp} {
+                    margin-left: ${spacing7};
+                }
+
+                li {
+                    margin: 20px 0;
+                }
+            }
+
+            ul {
+                li {
+                    list-style: none;
+                    position: relative;
+                    margin-left: ${spacing5};
+
+                    &:before {
+                        left: -1em;
+                        content: "•";
+                        padding-right: ${spacing3};
+                        position: absolute;
+                        font-size: 1.3em;
+                    }
+
+                    p {
+                        display: inline-block;
+                        width: calc(100% - 25px);
+                        vertical-align: top;
+                        margin: 0;
+                    }
+                }
+            }
+        `
+    }
+
     return (
         <div
             className={cx(
+                postStyle.wrapper,
                 styles.containerWrapper,
                 sharedStyles.paddingVertical_lg(5)
             )}
@@ -215,73 +414,137 @@ function PostText(props: { config: any }) {
     )
 }
 
+//
 function PostImage(props: { config: any }) {
-    if (props.config.layout === "full") {
+    const imageStyles = {
+        caption: css`
+            text-align: center;
+            padding-top: ${spacing5};
+        `
+    }
+
+    function getImage({
+        caption,
+        layout,
+        src
+    }: {
+        caption: string
+        layout: LayoutType
+        src: string
+    }) {
+        if (layout === LayoutType.full) {
+            return (
+                <figure>
+                    <img src={src} width="100%" alt={alt} />
+                    <figcaption className={imageStyles.caption}>
+                        {caption}
+                    </figcaption>
+                </figure>
+            )
+        } else if (layout === LayoutType.inline) {
+            return (
+                <figure className={styles.containerWrapper}>
+                    <img src={src} width="100%" alt={alt} />
+                    <figcaption className={imageStyles.caption}>
+                        {caption}
+                    </figcaption>
+                </figure>
+            )
+        }
+
         return (
-            <img src={props.config.url} width="100%" alt={props.config.alt} />
-        )
-    } else if (props.config.layout === "center") {
-        return (
-            <div className={styles.containerWrapper}>
-                <img
-                    alt={props.config.alt}
-                    src={props.config.url}
-                    width="100%"
-                />
-            </div>
+            <figure className={styles.containerWrapper_more_space_lg}>
+                <img src={src} width="100%" alt={alt} />
+                <figcaption className={imageStyles.caption}>
+                    {caption}
+                </figcaption>
+            </figure>
         )
     }
 
-    return (
-        <div className={styles.containerWrapper}>
-            {JSON.stringify(props)}
-            <img src={props.config.url} alt={props.config.alt} />
-        </div>
+    const alt = props.config.alt
+    const caption = props.config.caption || alt
+    const src = props.config.url
+    // This can be nullable...
+    const href = props.config.href
+    const target = props.config.target
+
+    const layout: LayoutType = props.config.layout
+
+    return isEmpty(href) ? (
+        getImage({ layout, caption, src })
+    ) : (
+        <a href={href} target={target || "_blank"}>
+            {getImage({ layout, caption, src })}
+        </a>
     )
 }
 
 function PostVideo(props: { config: any }) {
-    const autoPlay = props.config.autoPlay
-    const src = autoPlay
-        ? formatUrl(props.config.src, { autoplay: 1 })
-        : props.config.src
+    const videoStyle = {
+        iframe: css`
+            width: 100%;
+            height: 300px;
 
-    if (props.config.layout === "full") {
-        return (
-            <iframe
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
-                className={sharedStyles.marginVertical(5)}
-                width="100%"
-                height="400px"
-                src={src}
-            />
-        )
-    } else if (props.config.layout === "center") {
-        return (
-            <div className={styles.containerWrapper}>
-                <iframe
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen={true}
-                    className={sharedStyles.marginVertical(5)}
-                    width="100%"
-                    height="400px"
-                    src={src}
-                />
-            </div>
-        )
+            ${mediumUp} {
+                height: 400px;
+            }
+
+            ${largeUp} {
+                height: 450px;
+            }
+        `,
+        caption: css`
+            text-align: center;
+        `
     }
 
+    function getEmbedUrl(id: string, provider: VideoProvider) {
+        if (provider === VideoProvider.youtube) {
+            return `https://www.youtube.com/embed/${id}`
+        }
+
+        return ""
+    }
+
+    function getWatchurl(id: string, provider: VideoProvider) {
+        if (provider === VideoProvider.youtube) {
+            return `https://www.youtube.com/watch/${id}`
+        }
+
+        return ""
+    }
+
+    const id = props.config.id
+    const provider = props.config.provider
+    const autoPlay = props.config.isAutoPlay ? 1 : 0
+
+    const srcUrl = formatUrl(getEmbedUrl(id, provider), { autoPlay })
+    const watchUrl = getWatchurl(id, provider)
+
+    // NB: It could be full, center, etc
+    const layout = props.config.layout
+
+    // NB: Type center...
     return (
-        <div className={styles.containerWrapper}>
+        <div className={styles.containerWrapper_more_space_lg}>
             <iframe
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen={true}
-                className={sharedStyles.marginVertical(5)}
-                width="100%"
-                height="400px"
-                src={src}
+                className={cx(sharedStyles.marginTop(5), videoStyle.iframe)}
+                src={srcUrl}
             />
+            <p className={cx(videoStyle.caption, sharedStyles.paddingTop(5))}>
+                Watch link:
+                <a
+                    href={watchUrl}
+                    rel="norel noopener"
+                    target="_blank"
+                    title="Watch the video"
+                >
+                    {watchUrl}
+                </a>
+            </p>
         </div>
     )
 }
@@ -300,6 +563,10 @@ function PostAd(props: { config: any }) {
 // type: string
 // image: string
 function PostLink(props: { config: any }) {
+    const title = props.config.title
+    const subtitle = props.config.subtitle
+    const layout = props.config.layout
+
     const linkStyles = {
         image: css`
             object-fit: cover;
@@ -309,13 +576,13 @@ function PostLink(props: { config: any }) {
         `
     }
 
+    const wrapperClassName =
+        layout === LayoutType.highlight
+            ? styles.containerWrapper_more_space_lg
+            : styles.containerWrapper
+
     return (
-        <div
-            className={cx(
-                styles.containerWrapper,
-                sharedStyles.marginVertical(7)
-            )}
-        >
+        <div className={cx(wrapperClassName, sharedStyles.paddingVertical(9))}>
             <Link href={props.config.url}>
                 <a title={props.config.title}>
                     <div
@@ -332,20 +599,35 @@ function PostLink(props: { config: any }) {
                                 sharedStyles.paddingBoth(6)
                             )}
                         >
-                            <h4>{props.config.title}</h4>
+                            <span className={sharedStyles.marginRight(5)}>
+                                <FaLink />
+                            </span>
+                            <div
+                                className={cx(
+                                    sharedStyles.flex,
+                                    sharedStyles.flexDirectionColumn
+                                )}
+                            >
+                                <h4>{title}</h4>
+                                <p className={sharedStyles.marginTop(3)}>
+                                    {subtitle}
+                                </p>
+                            </div>
                         </div>
-                        <div
-                            className={cx(
-                                sharedStyles.displayInlineFlex,
-                                sharedStyles.rounded
-                            )}
-                        >
-                            <img
-                                className={linkStyles.image}
-                                alt={props.config.title}
-                                src={props.config.image}
-                            />
-                        </div>
+                        {props.config.image && (
+                            <div
+                                className={cx(
+                                    sharedStyles.displayInlineFlex,
+                                    sharedStyles.rounded
+                                )}
+                            >
+                                <img
+                                    className={linkStyles.image}
+                                    alt={props.config.title}
+                                    src={props.config.image}
+                                />
+                            </div>
+                        )}
                     </div>
                 </a>
             </Link>
@@ -383,29 +665,42 @@ function PostSeparator(props: { config: any }) {
     )
 }
 
-function PostProvider(props: { config: Config }) {
+function PostProvider(props: {
+    config: Config
+    post: Post
+    series: FetchSerieResponse
+}) {
     const order = props.config.order
     const modules = props.config.modules
+    const post = props.post
 
     return (
         <div>
             {order.map(moduleId => {
                 const _module: Module = modules[moduleId] as Module
+                const moduleProps = _module.props
 
                 if (_module.type === ModuleTypes.quote) {
-                    return <PostQuote config={_module.props} />
+                    return <PostQuote config={moduleProps} post={post} />
                 } else if (_module.type === ModuleTypes.text) {
-                    return <PostText config={_module.props} />
+                    return <PostText config={moduleProps} />
                 } else if (_module.type === ModuleTypes.image) {
-                    return <PostImage config={_module.props} />
+                    return <PostImage config={moduleProps} />
                 } else if (_module.type === ModuleTypes.ad) {
-                    return <PostAd config={_module.props} />
+                    return <PostAd config={moduleProps} />
                 } else if (_module.type === ModuleTypes.video) {
-                    return <PostVideo config={_module.props} />
+                    return <PostVideo config={moduleProps} />
                 } else if (_module.type === ModuleTypes.separator) {
-                    return <PostSeparator config={_module.props} />
+                    return <PostSeparator config={moduleProps} />
                 } else if (_module.type === ModuleTypes.link) {
-                    return <PostLink config={_module.props} />
+                    return <PostLink config={moduleProps} />
+                } else if (_module.type === ModuleTypes.series) {
+                    return (
+                        <PostSeries
+                            config={moduleProps}
+                            series={props.series}
+                        />
+                    )
                 }
 
                 return (
@@ -432,6 +727,10 @@ interface Config {
     }
 }
 
+enum VideoProvider {
+    youtube = "youtube"
+}
+
 enum ModuleTypes {
     ad = "ad",
     text = "text",
@@ -439,11 +738,24 @@ enum ModuleTypes {
     image = "image",
     video = "video",
     link = "link",
-    separator = "separator"
+    separator = "separator",
+    series = "series"
+}
+
+enum LayoutType {
+    // It uses the same container as the post text
+    inline = "inline",
+
+    // Extends the content to be full size
+    full = "full",
+
+    // Makes the content standout having a bigger container than the post
+    highlight = "highlight"
 }
 
 interface Props {
     post?: Post
+    series?: FetchSerieResponse
 }
 
 function PostDetail(props: Props) {
@@ -460,17 +772,16 @@ function PostDetail(props: Props) {
         order: [
             "123123123",
             "423423733",
+            "7774543534",
             "234234122",
+            "5435345345",
             "984230344",
-            "023423432",
             "3545234234",
             "223423432",
             "234234234",
             "333423432",
             "993423432",
-            "5435345345",
-            "7774543534",
-            "345345345"
+            "554230344"
         ],
         modules: {
             "123123123": {
@@ -478,14 +789,6 @@ function PostDetail(props: Props) {
                 props: {
                     value:
                         "I gave my first webinar for Codemotion couple of weeks ago, and I really enjoyed the experience! ⚡️ In this post I'm sharing you what topics I covered as well as the video in case you wanna learn more about PWAs.\r\n\r\n## What are Progressive Web Apps?\r\n\r\nIn the first part of the video I introduced the main features and funcionalities of a PWA. I also shared examples of top companies in the industry using PWAs (like Twitter, Tinder, Startbucks...). These are the topics I covered:\r\n\r\n- Progressive Enhancement.\r\n- The 10 features of PWAs.\r\n- Trusted Web Applications.\r\n- Progressive Web Apps in the industry.\r\n- Why Progressive Web Apps?\r\n\r\n"
-                }
-            },
-            "345345345": {
-                type: ModuleTypes.video,
-                props: {
-                    autoPlay: false,
-                    src: "https://www.youtube.com/embed/yYjvLUj-Mt8",
-                    layout: "full"
                 }
             },
             "234234122": {
@@ -500,11 +803,27 @@ function PostDetail(props: Props) {
                 props: {
                     title:
                         "Codemotion Webinar: Progressive Web Applications (PWAs)",
+                    subtitle: "Slides for the webinar",
                     url:
                         "https://speakerdeck.com/ferreiro/codemotion-webinar-progressive-web-applications-pwas-jorge-ferreiro-at-jgferreiro",
                     type: "slides",
+                    layout: LayoutType.highlight,
                     image:
                         "https://speakerd.s3.amazonaws.com/presentations/34a85b762e62420984a92e0f5d2715cf/slide_0.jpg?13970515"
+                }
+            },
+            "554230344": {
+                type: ModuleTypes.link,
+                props: {
+                    title:
+                        "Next post: The first hour, MVCH and the social hackathon",
+                    subtitle:
+                        "Coming up in the post, the importance of finding the MVCH, and the social hackathon",
+                    url:
+                        "/blog/part-3-tips-make-a-successful-hackathon-project?utm-source=ferreiro-post-1",
+                    type: "slides",
+                    layout: LayoutType.inline,
+                    image: undefined
                 }
             },
             "234234234": {
@@ -513,7 +832,10 @@ function PostDetail(props: Props) {
                     url:
                         "https://ferreirov3.s3.eu-west-2.amazonaws.com/one_year2.jpg",
                     alt: "One year at Eventbrite",
-                    layout: "full"
+                    href: null,
+                    target: null,
+                    caption: "One year at Eventbrite",
+                    layout: LayoutType.highlight
                 }
             },
             "3545234234": {
@@ -522,14 +844,10 @@ function PostDetail(props: Props) {
                     url:
                         "https://ferreirov3.s3.eu-west-2.amazonaws.com/one_year2.jpg",
                     alt: "One year at Eventbrite",
-                    layout: "center"
-                }
-            },
-            "023423432": {
-                type: "text",
-                props: {
-                    value:
-                        "### Welcome to the post\n\nQue tal?\n\nMuy bien, me mega flipa"
+                    href: "https://twitter.com/JGFerreiro",
+                    target: "_blank",
+                    caption: "One year at Eventbrite",
+                    layout: LayoutType.inline
                 }
             },
             "333423432": {
@@ -552,19 +870,20 @@ function PostDetail(props: Props) {
                 }
             },
             "993423432": {
-                type: "separator",
+                type: ModuleTypes.separator,
                 props: {}
             },
             "423423733": {
-                type: "video",
+                type: ModuleTypes.video,
                 props: {
-                    autoPlay: false,
-                    src: "https://www.youtube.com/embed/yYjvLUj-Mt8",
-                    layout: "center"
+                    id: "yYjvLUj-Mt8",
+                    isAutoPlay: false,
+                    layout: "center",
+                    provider: "youtube"
                 }
             },
             "5435345345": {
-                type: "quote",
+                type: ModuleTypes.quote,
                 props: {
                     value:
                         "Many teams spend two or three minutes to do a startup pitch, rather than showcasing the hack. [...] Focus first on demoing your project.",
@@ -584,16 +903,25 @@ function PostDetail(props: Props) {
 
     return (
         <LayoutFullwidth title="Videos of">
-            <PostMeta />
+            <PostMeta post={props.post} />
 
             <article>
                 <PostHeader post={props.post} />
 
-                <PostProvider config={config} />
+                <sub>{JSON.stringify(props.series)}</sub>
+
+                <PostProvider
+                    config={config}
+                    post={props.post}
+                    series={props.series}
+                />
 
                 <div style={{ textAlign: "center" }}>
                     Post author
-                    <img src="/images/blog/credits.png" />
+                    <figure>
+                        <img src="/images/blog/credits.png" />
+                        <figcaption>Jorge Ferreiro</figcaption>
+                    </figure>
                 </div>
             </article>
         </LayoutFullwidth>
@@ -602,15 +930,23 @@ function PostDetail(props: Props) {
 
 PostDetail.getInitialProps = async function(context: any): Promise<Props> {
     const permalink = context.query.id
-    const paginatedResponse = await fetch(
+    const response = await fetch(
         `http://localhost:4000/api/v1/blog/${permalink}`
     )
-    const post = await paginatedResponse.json()
+    const post: Post = await response.json()
 
-    console.log(`Post fetched. Count: ${post.length}`)
+    let series: FetchSerieResponse
+    if (isEmpty(post.series)) {
+        series = await fetchSerieApi({
+            permalink: post.series.permalink
+        })
+    }
+
+    console.log(`series ${series}`)
 
     return {
-        post
+        post,
+        series
     }
 }
 
@@ -619,7 +955,7 @@ export default PostDetail
 const styles = {
     containerWrapper: css`
         margin: 0 auto;
-        max-width: 600px;
+        max-width: 650px;
         padding: ${spacing6};
 
         ${largeUp} {
@@ -629,7 +965,13 @@ const styles = {
     containerWrapper_lg: css`
         ${largeUp} {
             margin: 0 auto;
-            max-width: 600px;
+            max-width: 650px;
+        }
+    `,
+    containerWrapper_more_space_lg: css`
+        ${largeUp} {
+            margin: 0 auto;
+            max-width: 850px;
         }
     `
 }
