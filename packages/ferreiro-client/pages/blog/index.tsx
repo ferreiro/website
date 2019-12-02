@@ -527,7 +527,8 @@ function AdSocialDeveloper() {
                     <a
                         className={cx(
                             styles.item,
-                            sharedStyles.marginHorizontal(3)
+                            sharedStyles.marginHorizontal(3),
+                            sharedStyles.iconTwitter
                         )}
                         href={config.meta.social.twitter.url}
                         target="_blank"
@@ -541,7 +542,8 @@ function AdSocialDeveloper() {
                 <li
                     className={cx(
                         sharedStyles.displayInlineFlex,
-                        sharedStyles.marginHorizontal(3)
+                        sharedStyles.marginHorizontal(3),
+                        sharedStyles.iconYoutube
                     )}
                 >
                     <a
@@ -558,7 +560,8 @@ function AdSocialDeveloper() {
                 <li
                     className={cx(
                         sharedStyles.displayInlineFlex,
-                        sharedStyles.marginHorizontal(3)
+                        sharedStyles.marginHorizontal(3),
+                        sharedStyles.iconLinkedin
                     )}
                 >
                     <a
@@ -974,9 +977,7 @@ export function Blog(props: Props) {
                                 )}
                             />
 
-                            <FeaturedSeries
-                                seriesPermalink={props.featuredSeriePermalink}
-                            />
+                            <BlogAdNewsletter />
 
                             <div
                                 className={cx(
@@ -986,7 +987,9 @@ export function Blog(props: Props) {
                                 )}
                             />
 
-                            <BlogAdNewsletter />
+                            <FeaturedSeries
+                                seriesPermalink={props.featuredSeriePermalink}
+                            />
 
                             <div
                                 className={cx(

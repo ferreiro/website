@@ -57,7 +57,7 @@ function SharingButtonTwitter(props: ShareButton) {
     return (
         <SharingButton
             {...props}
-            buttonStyle={styles.shareButtonTwitter}
+            buttonStyle={cx(styles.shareButton, sharedStyles.buttonTwitter)}
             url={twitterSharingUrl}
         />
     )
@@ -68,7 +68,7 @@ function SharingButtonLinkedin(props: ShareButton) {
     return (
         <SharingButton
             {...props}
-            buttonStyle={styles.shareButtonLinkedin}
+            buttonStyle={cx(styles.shareButton, sharedStyles.buttonLinkedin)}
             url={linkedinSharingUrl}
         />
     )
@@ -79,7 +79,7 @@ function SharingButtonFacebook(props: ShareButton) {
     return (
         <SharingButton
             {...props}
-            buttonStyle={styles.shareButtonLinkedin}
+            buttonStyle={cx(styles.shareButton, sharedStyles.buttonFacebook)}
             url={linkedinSharingUrl}
         />
     )
@@ -109,7 +109,7 @@ function SharingDropdown(props: {
             <h4 className={sharedStyles.marginBottom(4)}>Sharing</h4>
 
             <SharingButtonTwitter
-                buttonStyle={styles.shareButtonTwitter}
+                buttonStyle={sharedStyles.buttonTwitter}
                 mini={props.mini}
                 summary={props.summary}
                 title={props.title}
@@ -123,7 +123,7 @@ function SharingDropdown(props: {
             <div className={sharedStyles.marginBottom(4)} />
 
             <SharingButtonFacebook
-                buttonStyle={styles.shareButtonFacebook}
+                buttonStyle={sharedStyles.buttonFacebook}
                 mini={props.mini}
                 summary={props.summary}
                 title={props.title}
@@ -137,7 +137,7 @@ function SharingDropdown(props: {
             <div className={sharedStyles.marginBottom(4)} />
 
             <SharingButtonLinkedin
-                buttonStyle={styles.shareButtonLinkedin}
+                buttonStyle={sharedStyles.buttonLinkedin}
                 mini={props.mini}
                 summary={props.summary}
                 title={props.title}
@@ -233,24 +233,10 @@ const styles = {
         padding: ${spacing4} ${spacing4};
     `,
     shareButtonTwitter: css`
-        background: #00acee;
+        background: ${config.colors.twitter.normal};
 
         &:hover {
-            background: #009cd8;
-        }
-    `,
-    shareButtonLinkedin: css`
-        background: #2867b2;
-
-        &:hover {
-            background: #1d5190;
-        }
-    `,
-    shareButtonFacebook: css`
-        background: #3b5998;
-
-        &:hover {
-            background: #355088;
+            background: ${config.colors.twitter.active};
         }
     `,
     shareButtonIcon: css`

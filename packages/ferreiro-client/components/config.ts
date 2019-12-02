@@ -76,7 +76,23 @@ const config = {
         title: "",
         text: "#464646",
         separator: "#e6e6e6",
-        content: ""
+        content: "",
+        twitter: {
+            normal: "#00acee",
+            active: "#009cd8"
+        },
+        youtube: {
+            normal: "#c4302b",
+            active: "#2867b2"
+        },
+        facebook: {
+            normal: "#2867b2",
+            active: "#2867b2"
+        },
+        linkedin: {
+            normal: "#3b5998",
+            active: "#355088"
+        }
     },
     menu: {
         [Page.home]: {
@@ -193,6 +209,55 @@ export const sharedStyles = {
         border: 2px solid ${config.colors.secondary};
         background: ${config.colors.secondary};
         padding: ${spacing4} ${spacing5};
+    `,
+    buttonTwitter: css`
+        background: ${config.colors.twitter.normal};
+
+        &:hover {
+            background: ${config.colors.twitter.active};
+        }
+    `,
+    buttonLinkedin: css`
+        background: ${config.colors.linkedin.normal};
+
+        &:hover {
+            background: ${config.colors.linkedin.active};
+        }
+    `,
+    buttonFacebook: css`
+        background: ${config.colors.facebook.normal};
+
+        &:hover {
+            background: ${config.colors.facebook.active};
+        }
+    `,
+    iconTwitter: css`
+        color: ${config.colors.twitter.normal};
+
+        &:hover {
+            color: ${config.colors.twitter.active};
+        }
+    `,
+    iconYoutube: css`
+        color: ${config.colors.youtube.normal};
+
+        &:hover {
+            color: ${config.colors.youtube.active};
+        }
+    `,
+    iconLinkedin: css`
+        color: ${config.colors.linkedin.normal};
+
+        &:hover {
+            color: ${config.colors.linkedin.active};
+        }
+    `,
+    iconFacebook: css`
+        color: ${config.colors.facebook.normal};
+
+        &:hover {
+            color: ${config.colors.facebook.active};
+        }
     `,
     inputField: css`
         border: 2px solid ${config.colors.secondary};

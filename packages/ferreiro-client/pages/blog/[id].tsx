@@ -83,6 +83,26 @@ function PostHeader(props: { post: Post }) {
             font-size: ${spacing5};
             line-height: ${spacing6};
             font-weight: 400;
+
+            margin: 16px 0 0;
+            --x-height-multiplier: 0.363;
+            --baseline-multiplier: 0.157;
+            font-family: medium-content-sans-serif-font, "Lucida Grande",
+                "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+            letter-spacing: -0.02em;
+            font-weight: 300;
+            font-style: normal;
+            letter-spacing: 0;
+            letter-spacing: -0.022em;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 20px;
+            line-height: 1.3;
+
+            @media all and (min-width: $desktop-screen) {
+                font-size: 27px;
+                font-size: 24px;
+                line-height: 1.22;
+            }
         `
     }
 
@@ -93,7 +113,7 @@ function PostHeader(props: { post: Post }) {
                     className={cx(
                         sharedStyles.title,
                         sharedStyles.center,
-                        sharedStyles.marginBottom(7)
+                        sharedStyles.marginBottom(8)
                     )}
                 >
                     {props.post.title}
@@ -110,7 +130,7 @@ function PostHeader(props: { post: Post }) {
             <figure className={styles.containerWrapper_lg}>
                 <img
                     alt={props.post.title}
-                    className={sharedStyles.marginTop(6)}
+                    className={sharedStyles.marginTop(8)}
                     src={props.post.pic}
                     width="100%"
                 />
@@ -149,11 +169,14 @@ function PostAuthor(props: {
     return (
         <div className={styles.containerWrapper}>
             <div
-                className={cx(sharedStyles.row, sharedStyles.alignItemsCenter)}
+                className={cx(
+                    sharedStyles.row,
+                    sharedStyles.justifyContentCenter
+                )}
             >
                 <div
                     className={cx(
-                        sharedStyles.col_auto,
+                        sharedStyles.displayInlineFlex,
                         sharedStyles.marginRight(5)
                     )}
                 >
@@ -164,7 +187,13 @@ function PostAuthor(props: {
                     />
                 </div>
 
-                <div className={sharedStyles.col}>
+                <div
+                    className={cx(
+                        sharedStyles.displayInlineFlex,
+                        sharedStyles.flex,
+                        sharedStyles.flexDirectionColumn
+                    )}
+                >
                     <p>
                         <strong>{props.name}</strong> (
                         <a
@@ -184,7 +213,15 @@ function PostAuthor(props: {
                         Published {moment(props.createdAt).fromNow()}
                     </p>
                 </div>
-
+            </div>
+            <div
+                className={cx(
+                    sharedStyles.row,
+                    sharedStyles.flex,
+                    sharedStyles.justifyContentCenter,
+                    sharedStyles.marginTop(6)
+                )}
+            >
                 <div className={sharedStyles.col_auto}>
                     <button className={sharedStyles.buttonNoFill}>
                         <FaTwitter />
@@ -237,8 +274,7 @@ function PostQuote(props: { config: any; post: Post }) {
             // );
             --x-height-multiplier: 0.363;
             --baseline-multiplier: 0.157;
-            font-family: medium-content-slab-serif-font, Georgia, Cambria,
-                "Times New Roman", Times, serif;
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
             font-weight: 400;
             font-style: italic;
             font-size: 28px;
@@ -250,6 +286,12 @@ function PostQuote(props: { config: any; post: Post }) {
             margin: 24px 0;
             margin-left: 50px;
             text-align: left;
+        `,
+        socialButton: css`
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            font-size: 32px;
         `
     }
 
@@ -302,11 +344,31 @@ function PostQuote(props: { config: any; post: Post }) {
                     {props.config.author}
                 </p>
             )}
-            <div>
-                <button onClick={handleShareTwitterClick}>
+            <div
+                className={cx(
+                    sharedStyles.flex,
+                    sharedStyles.justifyContentCenter,
+                    sharedStyles.marginTop(5)
+                )}
+            >
+                <button
+                    className={cx(
+                        sharedStyles.displayInlineFlex,
+                        quoteStyles.socialButton,
+                        sharedStyles.iconTwitter
+                    )}
+                    onClick={handleShareTwitterClick}
+                >
                     <FaTwitter />
                 </button>
-                <button onClick={handleShareLinkedinClick}>
+                <button
+                    className={cx(
+                        sharedStyles.displayInlineFlex,
+                        quoteStyles.socialButton,
+                        sharedStyles.iconLinkedin
+                    )}
+                    onClick={handleShareLinkedinClick}
+                >
                     <FaLinkedin />
                 </button>
             </div>
@@ -550,10 +612,17 @@ function PostVideo(props: { config: any }) {
 }
 
 function PostAd(props: { config: any }) {
+    const adType = props.config.adType
     return (
-        <div className={styles.containerWrapper}>
-            {JSON.stringify(props)}
-            <p>Advertisement</p>
+        <div className={styles.containerWrapper_more_space_lg}>
+            <div
+                className={cx(
+                    sharedStyles.marginVertical(9),
+                    sharedStyles.shadow
+                )}
+            >
+                <p>Advertisement. Type: {adType}</p>
+            </div>
         </div>
     )
 }
@@ -680,6 +749,9 @@ function PostProvider(props: {
                 const _module: Module = modules[moduleId] as Module
                 const moduleProps = _module.props
 
+                // TODO: We can add logic here to add advertisements...
+                // So prepending ads before rendering a post (like with a HOC)
+
                 if (_module.type === ModuleTypes.quote) {
                     return <PostQuote config={moduleProps} post={post} />
                 } else if (_module.type === ModuleTypes.text) {
@@ -778,6 +850,7 @@ function PostDetail(props: Props) {
             "984230344",
             "3545234234",
             "223423432",
+            "123123123",
             "234234234",
             "333423432",
             "993423432",
@@ -835,7 +908,7 @@ function PostDetail(props: Props) {
                     href: null,
                     target: null,
                     caption: "One year at Eventbrite",
-                    layout: LayoutType.highlight
+                    layout: LayoutType.inline
                 }
             },
             "3545234234": {
@@ -847,7 +920,7 @@ function PostDetail(props: Props) {
                     href: "https://twitter.com/JGFerreiro",
                     target: "_blank",
                     caption: "One year at Eventbrite",
-                    layout: LayoutType.inline
+                    layout: LayoutType.highlight
                 }
             },
             "333423432": {
