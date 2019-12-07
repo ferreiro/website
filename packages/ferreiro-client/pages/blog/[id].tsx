@@ -6,6 +6,8 @@ import ReactMarkdown from "react-markdown"
 
 import framerPostConfig from "./__fixtures__/framer.js"
 import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
+import promotionConfig from "./__fixtures__/promotion-config"
+import hackathonPitchConfig from "./__fixtures__/hackathon-pitch"
 
 import { Layout, LayoutFullwidth } from "../../components/Layout"
 import config, {
@@ -247,20 +249,33 @@ function PostSummary({ value }: PostSummaryProps) {
     )
 }
 
-function PostSeries(props: { config: any; series: FetchSerieResponse }) {
+interface PostSeriesProps {
+    // NB: This is the current article, so we
+    // can highlight that in the list
+    currentArticle: string
+    series: FetchSerieResponse
+    layout: PostLayoutType
+}
+function PostSeries(props: PostSeriesProps) {
     const series = props.series
+    const layout = props.layout || PostLayoutType.inline
+
     return (
-        <div>
+        <div className={getContainerClassname({ layout })}>
             Post series...
-            {JSON.stringify(props.series, null, 2)}
-            {JSON.stringify(props, null, 2)}
+            {JSON.stringify(series, null, 2)}
         </div>
     )
 }
 
-// { value: string }
-function PostQuote(props: { config: any; post: Post }) {
-    const quoteText = props.config.value
+interface PostSummaryProps {
+    author: string
+    value: string
+    layout: PostLayoutType
+    post: Post
+}
+function PostQuote({ author, value, layout, post }: PostSummaryProps) {
+    const quoteText = value
     const quoteStyles = {
         author: css`
             text-align: center;
@@ -296,14 +311,11 @@ function PostQuote(props: { config: any; post: Post }) {
     }
 
     const handleShareTwitterClick = () => {
-        const url = addTrackingUrl(
-            createShareablePostUrl(props.post.permalink),
-            {
-                utmSource: "sharing-quote-twitter"
-            }
-        )
+        const url = addTrackingUrl(createShareablePostUrl(post.permalink), {
+            utmSource: "sharing-quote-twitter"
+        })
         const twitterUrl = getTwitterShareableUrl({
-            mini: props.post.pic,
+            mini: post.pic,
             url,
             summary: quoteText,
             title: quoteText
@@ -314,14 +326,11 @@ function PostQuote(props: { config: any; post: Post }) {
     }
 
     const handleShareLinkedinClick = () => {
-        const url = addTrackingUrl(
-            createShareablePostUrl(props.post.permalink),
-            {
-                utmSource: "sharing-linkedin-twitter"
-            }
-        )
+        const url = addTrackingUrl(createShareablePostUrl(post.permalink), {
+            utmSource: "sharing-linkedin-twitter"
+        })
         const linkedinUrl = getLinkedinShareableUrl({
-            mini: props.post.pic,
+            mini: post.pic,
             url,
             summary: quoteText,
             title: quoteText
@@ -332,16 +341,16 @@ function PostQuote(props: { config: any; post: Post }) {
     }
 
     return (
-        <div className={styles.containerWrapper}>
-            <mark className={quoteStyles.mark}>{props.config.value}</mark>
-            {props.config.author && (
+        <div className={getContainerClassname({ layout })}>
+            <mark className={quoteStyles.mark}>{value}</mark>
+            {author && (
                 <p
                     className={cx(
                         quoteStyles.author,
                         sharedStyles.marginTop(3)
                     )}
                 >
-                    {props.config.author}
+                    {author}
                 </p>
             )}
             <div
@@ -376,14 +385,14 @@ function PostQuote(props: { config: any; post: Post }) {
     )
 }
 
-interface PostImageProps {
+interface PostEmbedProps {
     src: string
     layout: PostLayoutType
 }
 
-function PostEmbed({ src, layout }: PostImageProps) {
+function PostEmbed({ src, layout }: PostEmbedProps) {
     return (
-        <div className={cx(getContainerClassname(layout))}>
+        <div className={cx(getContainerClassname({ layout }))}>
             <div
                 className={cx(
                     sharedStyles.embedResponsive,
@@ -391,6 +400,8 @@ function PostEmbed({ src, layout }: PostImageProps) {
                 )}
             >
                 <iframe
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen={true}
                     className={sharedStyles.embedResponsiveItem}
                     src={src}
                 />
@@ -399,102 +410,54 @@ function PostEmbed({ src, layout }: PostImageProps) {
     )
 }
 
-function PostText(props: { config: any }) {
-    const postStyle = {
+interface PostError {
+    id: string
+}
+function PostError(props: PostError) {
+    const socialNetworksStyle = {
         wrapper: css`
-            h2 {
-                ${sharedStyles.paddingTop(7)}
-                ${sharedStyles.paddingBottom(
-                    6
-                )}
-                font-weight: 600;
-                font-size: 26px;
-                color: rgba(0, 0, 0, 0.9);
-            }
-
-            p,
-            ul li,
-            ol li,
-            a {
-                font-family: "Source Serif Pro", serif;
-
-                color: rgba(0, 0, 0, 0.8);
-                --x-height-multiplier: 0.35;
-                --baseline-multiplier: 0.179;
-                font-weight: 400;
-                font-style: normal;
-                font-size: 20px;
-                line-height: 1.58;
-                letter-spacing: -0.004em;
-                word-break: break-word;
-                word-wrap: break-word;
-
-                ${largeUp} {
-                    font-size: 21px;
-                    line-height: 32px;
-                    // line-height: 1.58;
-                    // letter-spacing: -.003em;
-                    letter-spacing: -0.003em;
-                    color: rgba(0, 0, 0, 0.84);
-                }
-            }
-
-            ol,
-            ul {
-                -webkit-margin-before: 0;
-                -webkit-margin-after: 0;
-                -webkit-margin-start: 0;
-                -webkit-margin-end: 0;
-                -webkit-padding-start: 0;
-                list-style: decimal;
-                list-style-position: inside;
-                padding: 0;
-                margin: ${spacing4} 0;
-                margin-left: ${spacing5};
-
-                ${largeUp} {
-                    margin-left: ${spacing7};
-                }
-
-                li {
-                    margin: 20px 0;
-                }
-            }
-
-            ul {
-                li {
-                    list-style: none;
-                    position: relative;
-                    margin-left: ${spacing5};
-
-                    &:before {
-                        left: -1em;
-                        content: "•";
-                        padding-right: ${spacing3};
-                        position: absolute;
-                        font-size: 1.3em;
-                    }
-
-                    p {
-                        display: inline-block;
-                        width: calc(100% - 25px);
-                        vertical-align: top;
-                        margin: 0;
-                    }
-                }
-            }
+            border: 3px dashed #cecece;
         `
     }
+    const layout = PostLayoutType.inline
+
+    return (
+        <div
+            className={cx(
+                socialNetworksStyle.wrapper,
+                getContainerClassname({ layout })
+            )}
+        >
+            <p>
+                There is an error trying to showing this content (id: $
+                {props.id})
+            </p>
+            <p>Please, report this so I can fix it. Thanks 🙌</p>
+            <a href="/contact">Report error</a>
+        </div>
+    )
+}
+
+// TODO: make the proptypes
+interface PostTextProps {
+    layout?: PostLayoutType
+
+    // Contains the markdown text
+    value: string
+}
+
+function PostText({ layout, value }: PostTextProps) {
+    const postLayout = layout || PostLayoutType.inline
 
     return (
         <div
             className={cx(
                 postStyle.wrapper,
-                styles.containerWrapper,
+                getContainerClassname({ layout: postLayout }),
                 sharedStyles.paddingVertical_lg(5)
             )}
         >
-            <ReactMarkdown source={props.config.value} />
+            <ReactMarkdown source={value} />
         </div>
     )
 }
@@ -505,7 +468,7 @@ enum LinkTarget {
     self = "_self"
 }
 
-function getContainerClassname(layout: PostLayoutType) {
+function getContainerClassname({ layout }: { layout?: PostLayoutType }) {
     if (layout === PostLayoutType.full) {
         return cx()
     } else if (layout === PostLayoutType.inline) {
@@ -538,22 +501,22 @@ function withLink(
 interface PostImageProps {
     alt: string
     // TODO: Explain when is this gonna be used...
-    caption: string
+    caption?: string
     href: string
-    maxWidth: string
-    target: LinkTarget
-    url: string
     layout: PostLayoutType
+    maxWidth?: string
+    src: string
+    target: LinkTarget
 }
 
 function PostImage({
     alt,
     caption,
     href,
-    maxWidth,
-    target,
     layout,
-    url
+    maxWidth,
+    src,
+    target
 }: PostImageProps) {
     const imageStyles = {
         wrapper: css`
@@ -572,33 +535,35 @@ function PostImage({
 
     return withLink(
         <figure
-            className={cx(getContainerClassname(layout), imageStyles.wrapper)}
+            className={cx(
+                getContainerClassname({ layout }),
+                imageStyles.wrapper
+            )}
         >
-            <img style={{ maxWidth }} src={url} width="100%" alt={alt} />
+            <img style={{ maxWidth }} src={src} width="100%" alt={alt} />
             {caption && (
                 <figcaption className={imageStyles.caption}>
                     {caption}
                 </figcaption>
             )}
+            <br />
+            <FaTwitter />
+            <FaFacebook />
+            <FaLinkedin />
         </figure>,
         options
     )
 }
 
-function PostVideo(props: { config: any }) {
+interface PostVideoProps {
+    id: string
+    provider: VideoProvider
+    isAutoplay: boolean
+    layout: PostLayoutType
+}
+
+function PostVideo(props: PostVideoProps) {
     const videoStyle = {
-        iframe: css`
-            width: 100%;
-            height: 300px;
-
-            ${mediumUp} {
-                height: 400px;
-            }
-
-            ${largeUp} {
-                height: 450px;
-            }
-        `,
         caption: css`
             a {
                 color: #000;
@@ -623,25 +588,20 @@ function PostVideo(props: { config: any }) {
         return ""
     }
 
-    const id = props.config.id
-    const provider = props.config.provider
-    const autoPlay = props.config.isAutoPlay ? 1 : 0
+    const id = props.id
+    const provider = props.provider
+    const autoplay = props.isAutoplay ? 1 : 0
 
-    const srcUrl = formatUrl(getEmbedUrl(id, provider), { autoPlay })
+    const srcUrl = formatUrl(getEmbedUrl(id, provider), { autoplay })
     const watchUrl = getWatchurl(id, provider)
 
-    // NB: It could be full, center, etc
-    const layout = props.config.layout
+    // NB: It could be , center, etc
+    const layout = props.layout
 
     // NB: Type center...
     return (
         <div className={styles.containerWrapper_more_space_lg}>
-            <iframe
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
-                className={cx(sharedStyles.marginTop(5), videoStyle.iframe)}
-                src={srcUrl}
-            />
+            <PostEmbed src={srcUrl} layout={PostLayoutType.highlight} />
             <p className={cx(videoStyle.caption, sharedStyles.paddingTop(5))}>
                 Watch link:
                 <a
@@ -673,6 +633,55 @@ function PostAd(props: { config: any }) {
     )
 }
 
+interface PostSocialNetworksProps {
+    title?: string
+    text?: string
+    layout?: PostLayoutType
+}
+
+function PostSocialNetworks(props: PostSocialNetworksProps) {
+    const title = props.title || "🤔 Questions?"
+    const text =
+        props.text ||
+        "If you have some doubts or want to stay in touch I'll be happy to get a message from you! You can reach me here"
+    const layout = props.layout || PostLayoutType.inline
+
+    return (
+        <div
+            className={cx(postStyle.wrapper, getContainerClassname({ layout }))}
+        >
+            <h2>{title}</h2>
+            <p>{text}</p>
+            <ul>
+                <li>
+                    Youtube:{" "}
+                    <a href="https://www.youtube.com/jgferreiro?utm-source=ferreiro-post">
+                        https://www.youtube.com/jgferreiro
+                    </a>
+                </li>
+                <li>
+                    Linkedin:{" "}
+                    <a href="https://www.linkedin.com/in/jgferreiro/">
+                        https://www.linkedin.com/in/jgferreiro/
+                    </a>
+                </li>
+                <li>
+                    Twitter:{" "}
+                    <a href="https://www.youtube.com/jgferreiro?utm-source=ferreiro-post">
+                        https://www.youtube.com/jgferreiro
+                    </a>
+                </li>
+                <li>
+                    Email:{" "}
+                    <a href="/contact?utm_source=ferreiro-framer-blog&utm_medium=ferreiro-blog">
+                        Contact and information
+                    </a>
+                </li>
+            </ul>
+        </div>
+    )
+}
+
 // title: string
 // url: string
 // type: string
@@ -698,7 +707,7 @@ function PostLink(props: { config: any }) {
 
     return (
         <div className={cx(wrapperClassName, sharedStyles.paddingVertical(9))}>
-            <Link href={props.config.url}>
+            <Link href={props.config.src}>
                 <a title={props.config.title}>
                     <div
                         className={cx(
@@ -795,6 +804,10 @@ function PostProvider(props: {
     return (
         <div>
             {order.map(moduleId => {
+                if (!(moduleId in modules)) {
+                    return <PostError id={moduleId} />
+                }
+
                 const _module: Module = modules[moduleId] as Module
                 const moduleProps = _module.props
 
@@ -806,26 +819,23 @@ function PostProvider(props: {
                 } else if (_module.type === PostModuleTypes.summary) {
                     return <PostSummary {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.quote) {
-                    return <PostQuote config={moduleProps} post={post} />
+                    return <PostQuote {...moduleProps} post={post} />
                 } else if (_module.type === PostModuleTypes.text) {
-                    return <PostText config={moduleProps} />
+                    return <PostText {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.image) {
                     return <PostImage {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.ad) {
                     return <PostAd config={moduleProps} />
                 } else if (_module.type === PostModuleTypes.video) {
-                    return <PostVideo config={moduleProps} />
+                    return <PostVideo {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.separator) {
                     return <PostSeparator config={moduleProps} />
                 } else if (_module.type === PostModuleTypes.link) {
                     return <PostLink config={moduleProps} />
                 } else if (_module.type === PostModuleTypes.series) {
-                    return (
-                        <PostSeries
-                            config={moduleProps}
-                            series={props.series}
-                        />
-                    )
+                    return <PostSeries {...moduleProps} series={props.series} />
+                } else if (_module.type === PostModuleTypes.socialNetworks) {
+                    return <PostSocialNetworks {...moduleProps} />
                 }
 
                 return (
@@ -868,8 +878,6 @@ function PostDetail(props: Props) {
             <article>
                 <PostHeader post={props.post} />
 
-                <sub>{JSON.stringify(props.series)}</sub>
-
                 {props.post.config && !isEmpty(props.post.config) ? (
                     <PostProvider
                         isEditing={true}
@@ -880,6 +888,17 @@ function PostDetail(props: Props) {
                     <ReactMarkdown source={props.post.body} />
                 )}
 
+                <p>TODO: Put the list of tags...</p>
+
+                <p>TODO: Put the links for sharing the post</p>
+
+                <div style={{ textAlign: "center" }}>
+                    Post author
+                    <figure>
+                        <img src="/images/blog/wrapup.png" />
+                        <figcaption>Jorge Ferreiro</figcaption>
+                    </figure>
+                </div>
                 <div style={{ textAlign: "center" }}>
                     Post author
                     <figure>
@@ -887,6 +906,10 @@ function PostDetail(props: Props) {
                         <figcaption>Jorge Ferreiro</figcaption>
                     </figure>
                 </div>
+
+                {JSON.stringify(props.post.body)}
+
+                <p>TODO: Put related posts...</p>
             </article>
         </LayoutFullwidth>
     )
@@ -908,9 +931,15 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
 
     const configMapper = {
         "codemotion-webinar-jorge-ferreiro-progressive-web-apps": codemotionWebinarConfig,
-        "interactive-prototyping-with-framer-and-react": framerPostConfig
+        "interactive-prototyping-with-framer-and-react": framerPostConfig,
+        "one-year-at-eventbrite-and-promoted-to-sde2-frontend": promotionConfig,
+        "part-4-pitch-hackathon-idea-and-followup": hackathonPitchConfig
     }
 
+    // TODO: Maybe instead of having everything inside config
+    // it's better to have layout, which is a bunch of modules...
+    // modules
+    // layout
     const config: Config = configMapper[post.permalink] || undefined
 
     if (config) {
@@ -950,6 +979,90 @@ const styles = {
         ${largeUp} {
             margin: 0 auto;
             max-width: 850px;
+        }
+    `
+}
+
+const postStyle = {
+    wrapper: css`
+        h2 {
+            ${sharedStyles.paddingTop(7)}
+            ${sharedStyles.paddingBottom(6)}
+            font-weight: 600;
+            font-size: 26px;
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        p,
+        ul li,
+        ol li,
+        a {
+            font-family: "Source Serif Pro", serif;
+
+            color: rgba(0, 0, 0, 0.8);
+            --x-height-multiplier: 0.35;
+            --baseline-multiplier: 0.179;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+            line-height: 1.58;
+            letter-spacing: -0.004em;
+            word-break: break-word;
+            word-wrap: break-word;
+
+            ${largeUp} {
+                font-size: 21px;
+                line-height: 32px;
+                // line-height: 1.58;
+                // letter-spacing: -.003em;
+                letter-spacing: -0.003em;
+                color: rgba(0, 0, 0, 0.84);
+            }
+        }
+
+        ol,
+        ul {
+            -webkit-margin-before: 0;
+            -webkit-margin-after: 0;
+            -webkit-margin-start: 0;
+            -webkit-margin-end: 0;
+            -webkit-padding-start: 0;
+            list-style: decimal;
+            list-style-position: inside;
+            padding: 0;
+            margin: ${spacing4} 0;
+            margin-left: ${spacing5};
+
+            ${largeUp} {
+                margin-left: ${spacing7};
+            }
+
+            li {
+                margin: 20px 0;
+            }
+        }
+
+        ul {
+            li {
+                list-style: none;
+                position: relative;
+                margin-left: ${spacing5};
+
+                &:before {
+                    left: -1em;
+                    content: "•";
+                    padding-right: ${spacing3};
+                    position: absolute;
+                    font-size: 1.3em;
+                }
+
+                p {
+                    display: inline-block;
+                    width: calc(100% - 25px);
+                    vertical-align: top;
+                    margin: 0;
+                }
+            }
         }
     `
 }

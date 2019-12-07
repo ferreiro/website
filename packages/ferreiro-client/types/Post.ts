@@ -61,5 +61,6 @@ export enum PostModuleTypes {
     series = "series",
     summary = "summary",
     text = "text",
-    video = "video"
+    video = "video",
+    socialNetworks = "social-networks"
 }

@@ -9,7 +9,7 @@ const config = {
                 alt:
                     "Jorge Ferreiro React and Framer workshop at Eventbrite Spain",
                 layout: PostLayoutType.inline,
-                url: "https://ferreirov3.s3.eu-west-2.amazonaws.com/framer2.jpg"
+                src: "https://ferreirov3.s3.eu-west-2.amazonaws.com/framer2.jpg"
             }
         },
         "2": {
@@ -35,7 +35,7 @@ const config = {
                     "Jorge Ferreiro React and Framer workshop at Eventbrite Spain",
                 layout: PostLayoutType.inline,
                 maxWidth: "300px",
-                url:
+                src:
                     "https://ferreirov3.s3.eu-west-2.amazonaws.com/YvwOkBEOz9.gif"
             }
         },
