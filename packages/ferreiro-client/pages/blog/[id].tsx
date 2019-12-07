@@ -17,7 +17,6 @@ import config, {
     spacing7,
     spacing4,
     spacing5,
-    mediumUp,
     spacing3
 } from "../../components/config"
 
@@ -278,32 +277,42 @@ interface PostSummaryProps {
     layout: PostLayoutType
     post: Post
 }
+
 function PostQuote({ author, value, layout, post }: PostSummaryProps) {
     const quoteText = value
     const quoteStyles = {
+        arrow: css`
+            background-image: url("/images/blog/quote_arrow.png");
+            background-size: cover;
+            height: 40px;
+            margin-left: ${spacing4};
+            opacity: 0.8;
+            width: 90px;
+        `,
         author: css`
             text-align: center;
         `,
-        mark: css`
-            background-color: transparent !important;
-            // background-image: linear-gradient(
-            //     to bottom,
-            //     rgba(203, 255, 186, 1),
-            //     rgba(203, 255, 186, 1)
-            // );
-            --x-height-multiplier: 0.363;
-            --baseline-multiplier: 0.157;
+        quote: css`
+            border: none;
+            color: rgba(0, 0, 0, 0.54);
             font-family: Georgia, Cambria, "Times New Roman", Times, serif;
             font-weight: 400;
             font-style: italic;
             font-size: 28px;
-            line-height: 1.48;
             letter-spacing: -0.014em;
-            color: rgba(0, 0, 0, 0.68);
-            border: none;
+            line-height: 42px;
             padding: 0;
             text-align: left;
-            display: block;
+        `,
+        quoteHighlight: css`
+            --x-height-multiplier: 0.363;
+            --baseline-multiplier: 0.157;
+            background-color: transparent !important;
+            background-image: linear-gradient(
+                to bottom,
+                rgba(203, 255, 186, 1),
+                rgba(203, 255, 186, 1)
+            );
         `,
         socialButton: css`
             background: transparent;
@@ -346,7 +355,7 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
     return (
         <div className={getContainerClassname({ layout })}>
             <blockquote>
-                <p className={quoteStyles.mark}>{value}</p>
+                <p className={quoteStyles.quote}>{value}</p>
                 {author && (
                     <cite
                         className={cx(
@@ -357,41 +366,42 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
                         {author}
                     </cite>
                 )}
+                <div
+                    className={cx(
+                        sharedStyles.flex,
+                        sharedStyles.justifyContentStart,
+                        sharedStyles.marginTop(5)
+                    )}
+                >
+                    <div
+                        className={cx(
+                            quoteStyles.arrow,
+                            sharedStyles.marginRight(4)
+                        )}
+                    />
+
+                    <button
+                        className={cx(
+                            sharedStyles.displayInlineFlex,
+                            quoteStyles.socialButton,
+                            sharedStyles.iconTwitter
+                        )}
+                        onClick={handleShareTwitterClick}
+                    >
+                        <FaTwitter />
+                    </button>
+                    <button
+                        className={cx(
+                            sharedStyles.displayInlineFlex,
+                            quoteStyles.socialButton,
+                            sharedStyles.iconLinkedin
+                        )}
+                        onClick={handleShareLinkedinClick}
+                    >
+                        <FaLinkedin />
+                    </button>
+                </div>
             </blockquote>
-            <img src="/images/blog/quote.png" />
-            https://medium.com/forwardtick/how-google-collapsed-b6ffa82198ee
-            <img src="/images/blog/quote_2.png" />
-            <img src="/images/blog/quote_3.png" />
-            https://medium.com/p/b2912244e04a/edit
-            <div
-                className={cx(
-                    sharedStyles.flex,
-                    sharedStyles.justifyContentCenter,
-                    sharedStyles.marginTop(5)
-                )}
-            >
-                Share
-                <button
-                    className={cx(
-                        sharedStyles.displayInlineFlex,
-                        quoteStyles.socialButton,
-                        sharedStyles.iconTwitter
-                    )}
-                    onClick={handleShareTwitterClick}
-                >
-                    <FaTwitter />
-                </button>
-                <button
-                    className={cx(
-                        sharedStyles.displayInlineFlex,
-                        quoteStyles.socialButton,
-                        sharedStyles.iconLinkedin
-                    )}
-                    onClick={handleShareLinkedinClick}
-                >
-                    <FaLinkedin />
-                </button>
-            </div>
         </div>
     )
 }

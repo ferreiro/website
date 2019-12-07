@@ -537,6 +537,9 @@ export const sharedStyles = {
     flexWrap: css`
         flex-wrap: wrap-reverse !important;
     `,
+    justifyContentStart: css`
+        justify-content: flex-start !important;
+    `,
     justifyContentEnd: css`
         justify-content: flex-end !important;
     `,

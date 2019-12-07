@@ -61,7 +61,7 @@ const config = {
                     "Jorge Ferreiro React and Framer workshop at Eventbrite Spain",
                 caption:
                     "Jorge Ferreiro React and Framer workshop at Eventbrite Spain",
-                layout: PostLayoutType.highlight,
+                layout: PostLayoutType.inline,
                 src:
                     "https://ferreirov3.s3.eu-west-2.amazonaws.com/2019-10-22%2009.30.56%202.jpg"
             }
