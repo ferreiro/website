@@ -308,6 +308,9 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
     const posts = props.posts || featuredPosts || []
 
+    console.log("posts")
+    console.log(posts)
+
     return (
         <div>
             <h2

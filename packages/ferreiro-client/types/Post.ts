@@ -1,3 +1,10 @@
+export interface Config {
+    order: string[]
+    modules: {
+        [key: string]: object
+    }
+}
+
 export interface PostSeries {
     _id: string
     updatedAt: string
@@ -16,6 +23,7 @@ export interface Post {
     title: string
     pic: string
     createdAt: string
+    config: Config
     updatedAt: string
     secretKey: string
     permalink: string
@@ -29,4 +37,27 @@ export interface Post {
     likes: number
     views: number
     series: PostSeries
+}
+
+export enum PostLayoutType {
+    // It uses the same container as the post text
+    inline = "inline",
+
+    // Extends the content to be full size
+    full = "full",
+
+    // Makes the content standout having a bigger container than the post
+    highlight = "highlight"
+}
+
+export enum PostModuleTypes {
+    ad = "ad",
+    embed = "embed",
+    text = "text",
+    quote = "quote",
+    image = "image",
+    video = "video",
+    link = "link",
+    separator = "separator",
+    series = "series"
 }

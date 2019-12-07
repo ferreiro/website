@@ -4,6 +4,8 @@ import isEmpty from "lodash/isEmpty"
 import { cx, css } from "emotion"
 import ReactMarkdown from "react-markdown"
 
+import framerPostConfig from "./__fixtures__/framer-post-config.js"
+
 import { Layout, LayoutFullwidth } from "../../components/Layout"
 import config, {
     sharedStyles,
@@ -16,7 +18,7 @@ import config, {
     spacing3
 } from "../../components/config"
 
-import { Post } from "../../types/Post"
+import { Post, Config, PostLayoutType } from "../../types/Post"
 import { formatUrl } from "url-lib"
 import Link from "next/link"
 import moment from "moment"
@@ -30,9 +32,8 @@ import {
     getLinkedinShareableUrl
 } from "../../utils/get-social-url"
 import { addTrackingUrl } from "../../utils/analytics"
-import Video from "../videos/[id]"
-import { postSubscribeApi } from "../../api/contact"
 import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
+import { PostModuleTypes } from "../../types/Post"
 
 // https://www.creativebloq.com/how-to/build-an-seo-friendly-head-component-for-nextjsreact
 // TODO: Copy this from the current .pug
@@ -80,8 +81,6 @@ function PostMeta(props: { post: Post }) {
 function PostHeader(props: { post: Post }) {
     const headerStyles = {
         summary: css`
-            font-size: ${spacing5};
-            line-height: ${spacing6};
             font-weight: 400;
 
             margin: 16px 0 0;
@@ -95,13 +94,11 @@ function PostHeader(props: { post: Post }) {
             letter-spacing: 0;
             letter-spacing: -0.022em;
             color: rgba(0, 0, 0, 0.6);
-            font-size: 20px;
-            line-height: 1.3;
+            font-size: ${spacing6};
+            line-height: ${spacing7};
 
-            @media all and (min-width: $desktop-screen) {
-                font-size: 27px;
-                font-size: 24px;
-                line-height: 1.22;
+            ${largeUp} {
+                line-height: ${spacing7};
             }
         `
     }
@@ -376,6 +373,41 @@ function PostQuote(props: { config: any; post: Post }) {
     )
 }
 
+function PostEmbed(props) {
+    return (
+        <>
+            <blockquote className="twitter-tweet">
+                <p lang="en" dir="ltr">
+                    Sunsets don&#39;t get much better than this one over{" "}
+                    <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">
+                        @GrandTetonNPS
+                    </a>
+                    .{" "}
+                    <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">
+                        #nature
+                    </a>{" "}
+                    <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">
+                        #sunset
+                    </a>{" "}
+                    <a href="http://t.co/YuKy2rcjyU">
+                        pic.twitter.com/YuKy2rcjyU
+                    </a>
+                </p>
+                &mdash; US Department of the Interior (@Interior){" "}
+                <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">
+                    May 5, 2014
+                </a>
+            </blockquote>
+
+            <script
+                async
+                src="https://platform.twitter.com/widgets.js"
+                // charset="utf-8"
+            />
+        </>
+    )
+}
+
 function PostText(props: { config: any }) {
     const postStyle = {
         wrapper: css`
@@ -491,10 +523,10 @@ function PostImage(props: { config: any }) {
         src
     }: {
         caption: string
-        layout: LayoutType
+        layout: PostLayoutType
         src: string
     }) {
-        if (layout === LayoutType.full) {
+        if (layout === PostLayoutType.full) {
             return (
                 <figure>
                     <img src={src} width="100%" alt={alt} />
@@ -503,7 +535,7 @@ function PostImage(props: { config: any }) {
                     </figcaption>
                 </figure>
             )
-        } else if (layout === LayoutType.inline) {
+        } else if (layout === PostLayoutType.inline) {
             return (
                 <figure className={styles.containerWrapper}>
                     <img src={src} width="100%" alt={alt} />
@@ -531,7 +563,7 @@ function PostImage(props: { config: any }) {
     const href = props.config.href
     const target = props.config.target
 
-    const layout: LayoutType = props.config.layout
+    const layout: PostLayoutType = props.config.layout
 
     return isEmpty(href) ? (
         getImage({ layout, caption, src })
@@ -557,6 +589,9 @@ function PostVideo(props: { config: any }) {
             }
         `,
         caption: css`
+            a {
+                color: #000;
+            }
             text-align: center;
         `
     }
@@ -646,7 +681,7 @@ function PostLink(props: { config: any }) {
     }
 
     const wrapperClassName =
-        layout === LayoutType.highlight
+        layout === PostLayoutType.highlight
             ? styles.containerWrapper_more_space_lg
             : styles.containerWrapper
 
@@ -735,12 +770,15 @@ function PostSeparator(props: { config: any }) {
 }
 
 function PostProvider(props: {
-    config: Config
+    isEditing: boolean
     post: Post
     series: FetchSerieResponse
 }) {
-    const order = props.config.order
-    const modules = props.config.modules
+    const isEditing: boolean = props.isEditing
+    const config: Config = props.post.config
+
+    const order = config.order
+    const modules = config.modules
     const post = props.post
 
     return (
@@ -752,21 +790,23 @@ function PostProvider(props: {
                 // TODO: We can add logic here to add advertisements...
                 // So prepending ads before rendering a post (like with a HOC)
 
-                if (_module.type === ModuleTypes.quote) {
+                if (_module.type === PostModuleTypes.embed) {
+                    return <PostEmbed config={moduleProps} />
+                } else if (_module.type === PostModuleTypes.quote) {
                     return <PostQuote config={moduleProps} post={post} />
-                } else if (_module.type === ModuleTypes.text) {
+                } else if (_module.type === PostModuleTypes.text) {
                     return <PostText config={moduleProps} />
-                } else if (_module.type === ModuleTypes.image) {
+                } else if (_module.type === PostModuleTypes.image) {
                     return <PostImage config={moduleProps} />
-                } else if (_module.type === ModuleTypes.ad) {
+                } else if (_module.type === PostModuleTypes.ad) {
                     return <PostAd config={moduleProps} />
-                } else if (_module.type === ModuleTypes.video) {
+                } else if (_module.type === PostModuleTypes.video) {
                     return <PostVideo config={moduleProps} />
-                } else if (_module.type === ModuleTypes.separator) {
+                } else if (_module.type === PostModuleTypes.separator) {
                     return <PostSeparator config={moduleProps} />
-                } else if (_module.type === ModuleTypes.link) {
+                } else if (_module.type === PostModuleTypes.link) {
                     return <PostLink config={moduleProps} />
-                } else if (_module.type === ModuleTypes.series) {
+                } else if (_module.type === PostModuleTypes.series) {
                     return (
                         <PostSeries
                             config={moduleProps}
@@ -786,43 +826,14 @@ function PostProvider(props: {
 }
 
 interface Module {
-    type: ModuleTypes
+    type: PostModuleTypes
     props: {
-        [key: string]: object
-    }
-}
-
-interface Config {
-    order: string[]
-    modules: {
         [key: string]: object
     }
 }
 
 enum VideoProvider {
     youtube = "youtube"
-}
-
-enum ModuleTypes {
-    ad = "ad",
-    text = "text",
-    quote = "quote",
-    image = "image",
-    video = "video",
-    link = "link",
-    separator = "separator",
-    series = "series"
-}
-
-enum LayoutType {
-    // It uses the same container as the post text
-    inline = "inline",
-
-    // Extends the content to be full size
-    full = "full",
-
-    // Makes the content standout having a bigger container than the post
-    highlight = "highlight"
 }
 
 interface Props {
@@ -839,141 +850,6 @@ function PostDetail(props: Props) {
         )
     }
 
-    // Layout: full,
-    const config: Config = {
-        order: [
-            "123123123",
-            "423423733",
-            "7774543534",
-            "234234122",
-            "5435345345",
-            "984230344",
-            "3545234234",
-            "223423432",
-            "123123123",
-            "234234234",
-            "333423432",
-            "993423432",
-            "554230344"
-        ],
-        modules: {
-            "123123123": {
-                type: ModuleTypes.text,
-                props: {
-                    value:
-                        "I gave my first webinar for Codemotion couple of weeks ago, and I really enjoyed the experience! ⚡️ In this post I'm sharing you what topics I covered as well as the video in case you wanna learn more about PWAs.\r\n\r\n## What are Progressive Web Apps?\r\n\r\nIn the first part of the video I introduced the main features and funcionalities of a PWA. I also shared examples of top companies in the industry using PWAs (like Twitter, Tinder, Startbucks...). These are the topics I covered:\r\n\r\n- Progressive Enhancement.\r\n- The 10 features of PWAs.\r\n- Trusted Web Applications.\r\n- Progressive Web Apps in the industry.\r\n- Why Progressive Web Apps?\r\n\r\n"
-                }
-            },
-            "234234122": {
-                type: ModuleTypes.text,
-                props: {
-                    value:
-                        '## Building your first PWAs\r\n\r\nIn the second half of the presentation we did together our first Progressive Web Application. If you are curious, you can download the source code directly in my Github: ["Progressive Web Apps 101"](https://github.com/ferreiro/pwa-101?utm_source=ferreiro-blog)\r\n\r\nI covered the following topics:\r\n\r\n- Progressive metatags\r\n- Manifest.json\r\n- Intro to service workers\r\n- Offline mode with Cache API\r\n- Caching critical assets.\r\n- Fetch image or placeholder\r\n- Other cool APIs (Local notification, Payments API, Web Push Notifications, The App Shell Model, Background Sync, IndexedDB)\r\n\r\n'
-                }
-            },
-            "984230344": {
-                type: ModuleTypes.link,
-                props: {
-                    title:
-                        "Codemotion Webinar: Progressive Web Applications (PWAs)",
-                    subtitle: "Slides for the webinar",
-                    url:
-                        "https://speakerdeck.com/ferreiro/codemotion-webinar-progressive-web-applications-pwas-jorge-ferreiro-at-jgferreiro",
-                    type: "slides",
-                    layout: LayoutType.highlight,
-                    image:
-                        "https://speakerd.s3.amazonaws.com/presentations/34a85b762e62420984a92e0f5d2715cf/slide_0.jpg?13970515"
-                }
-            },
-            "554230344": {
-                type: ModuleTypes.link,
-                props: {
-                    title:
-                        "Next post: The first hour, MVCH and the social hackathon",
-                    subtitle:
-                        "Coming up in the post, the importance of finding the MVCH, and the social hackathon",
-                    url:
-                        "/blog/part-3-tips-make-a-successful-hackathon-project?utm-source=ferreiro-post-1",
-                    type: "slides",
-                    layout: LayoutType.inline,
-                    image: undefined
-                }
-            },
-            "234234234": {
-                type: ModuleTypes.image,
-                props: {
-                    url:
-                        "https://ferreirov3.s3.eu-west-2.amazonaws.com/one_year2.jpg",
-                    alt: "One year at Eventbrite",
-                    href: null,
-                    target: null,
-                    caption: "One year at Eventbrite",
-                    layout: LayoutType.inline
-                }
-            },
-            "3545234234": {
-                type: ModuleTypes.image,
-                props: {
-                    url:
-                        "https://ferreirov3.s3.eu-west-2.amazonaws.com/one_year2.jpg",
-                    alt: "One year at Eventbrite",
-                    href: "https://twitter.com/JGFerreiro",
-                    target: "_blank",
-                    caption: "One year at Eventbrite",
-                    layout: LayoutType.highlight
-                }
-            },
-            "333423432": {
-                type: "ad",
-                props: {
-                    adType: "videoconference"
-                }
-            },
-            "223423432": {
-                type: "ad",
-                props: {
-                    adType: "newsletter"
-                }
-            },
-            "8833423432": {
-                type: "code",
-                props: {
-                    language: "javascript",
-                    value: "const hola = () => { console.log('Hola'); }"
-                }
-            },
-            "993423432": {
-                type: ModuleTypes.separator,
-                props: {}
-            },
-            "423423733": {
-                type: ModuleTypes.video,
-                props: {
-                    id: "yYjvLUj-Mt8",
-                    isAutoPlay: false,
-                    layout: "center",
-                    provider: "youtube"
-                }
-            },
-            "5435345345": {
-                type: ModuleTypes.quote,
-                props: {
-                    value:
-                        "Many teams spend two or three minutes to do a startup pitch, rather than showcasing the hack. [...] Focus first on demoing your project.",
-                    author: "- Jake Hart from McKinsey"
-                }
-            },
-            "7774543534": {
-                type: "series",
-                props: {
-                    id: "the-definitive-guide-for-college-hackathon",
-                    currentPostId:
-                        "codemotion-webinar-jorge-ferreiro-progressive-web-apps"
-                }
-            }
-        }
-    }
-
     return (
         <LayoutFullwidth title="Videos of">
             <PostMeta post={props.post} />
@@ -983,11 +859,15 @@ function PostDetail(props: Props) {
 
                 <sub>{JSON.stringify(props.series)}</sub>
 
-                <PostProvider
-                    config={config}
-                    post={props.post}
-                    series={props.series}
-                />
+                {config ? (
+                    <PostProvider
+                        isEditing={true}
+                        post={props.post}
+                        series={props.series}
+                    />
+                ) : (
+                    <ReactMarkdown source={props.post.body} />
+                )}
 
                 <div style={{ textAlign: "center" }}>
                     Post author
@@ -1009,11 +889,15 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
     const post: Post = await response.json()
 
     let series: FetchSerieResponse
-    if (isEmpty(post.series)) {
+    if (!isEmpty(post.series)) {
         series = await fetchSerieApi({
             permalink: post.series.permalink
         })
     }
+
+    const config: Config = framerPostConfig
+
+    post.config = config
 
     console.log(`series ${series}`)
 

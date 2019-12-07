@@ -48,6 +48,10 @@ const Post = {
         type: [String],
         default: []
     },
+    config: {
+        type: Object,
+        default: {}
+    },
     tags: {
         type: [String],
         required: false,

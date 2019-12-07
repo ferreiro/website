@@ -6,6 +6,7 @@
     "yarn": "1.x"
   },
   "scripts": {
+    "backup-database": "node ./scripts/backup-database.sh",
     "check": "npm-check",
     "dev": "concurrently \"yarn build:assets\" \"yarn backend:server\" \"yarn client:dev\"",
     "client:build": "yarn workspace @ferreiro/client build",
