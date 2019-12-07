@@ -44,7 +44,7 @@ const config = {
             props: {
                 value:
                     "Operating as a startup inside a company like Eventbrite has been a really interesting learning process for me.",
-                layout: PostLayoutType.highlight
+                layout: PostLayoutType.inline
             }
         },
         "456456": {

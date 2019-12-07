@@ -25,12 +25,8 @@ import { Tabs } from "../../components/Tabs"
 import config, {
     sharedStyles,
     largeUp,
-    mediumUp,
     spacing6,
     spacing7,
-    spacing8,
-    spacing9,
-    spacing4,
     spacing5
 } from "../../components/config"
 import {
@@ -42,9 +38,17 @@ import {
 
 import { Pagination } from "../../types/PaginatedResponse"
 import { Post } from "../../types/Post"
+import { AdSocialDeveloper, AdVideoCall } from "../../components/Ads"
 
 function BlogItemHighlight(props: { post: Post }) {
     const post = props.post
+    const linkWithTracking = getLinkWithTracking(
+        createPostUrl(post.permalink),
+        {
+            utm_source: "blog-home-featured",
+            utm_medium: "ferreiro.me"
+        }
+    )
 
     const styles = {
         link: css`
@@ -82,7 +86,7 @@ function BlogItemHighlight(props: { post: Post }) {
 
     return (
         <div className={cx(sharedStyles.marginBottom(8))}>
-            <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
+            <Link href="/blog/[id]" as={linkWithTracking}>
                 <a
                     title={post.title}
                     className={cx(styles.link, sharedStyles.row)}
@@ -132,6 +136,13 @@ function BlogItemHighlight(props: { post: Post }) {
 
 export function BlogItem(props: { post: Post }) {
     const post = props.post
+    const linkWithTracking = getLinkWithTracking(
+        createPostUrl(post.permalink),
+        {
+            utm_source: "blog-home-list",
+            utm_medium: "ferreiro.me"
+        }
+    )
 
     const styles = {
         title: css`
@@ -175,7 +186,7 @@ export function BlogItem(props: { post: Post }) {
                         sharedStyles.marginRight(5)
                     )}
                 >
-                    <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
+                    <Link href="/blog/[id]" as={linkWithTracking}>
                         <a
                             title={post.title}
                             className={cx(
@@ -189,10 +200,7 @@ export function BlogItem(props: { post: Post }) {
                     </Link>
                     <div className={cx(sharedStyles.row, sharedStyles.rowFull)}>
                         <div className={sharedStyles.col}>
-                            <Link
-                                href="/blog/[id]"
-                                as={createPostUrl(post.permalink)}
-                            >
+                            <Link href="/blog/[id]" as={linkWithTracking}>
                                 <a
                                     className={styles.summary}
                                     title={post.title}
@@ -247,7 +255,7 @@ export function BlogItem(props: { post: Post }) {
                 </div>
             </div>
             <div className={cx(sharedStyles.col_auto, sharedStyles.col_lg_2)}>
-                <Link href="/blog/[id]" as={createPostUrl(post.permalink)}>
+                <Link href="/blog/[id]" as={linkWithTracking}>
                     <a title={post.title}>
                         <img
                             alt={post.title}
@@ -496,115 +504,6 @@ function BlogAdNewsletter() {
                 </>
             )}
         </div>
-    )
-}
-
-function AdSocialDeveloper() {
-    const styles = {
-        list: css``,
-        item: css`
-            padding: 1em;
-            border: 2px solid #cecece;
-        `
-    }
-
-    return (
-        <div>
-            <h2
-                className={cx(
-                    sharedStyles.subtitle,
-                    sharedStyles.marginBottom(6)
-                )}
-            >
-                Show me your social skills!
-            </h2>
-            <ul
-                className={cx(
-                    sharedStyles.flex,
-                    sharedStyles.justifyContentCenter,
-                    sharedStyles.marginHorizontal(0),
-                    sharedStyles.paddingHorizontal(0)
-                )}
-            >
-                <li className={sharedStyles.displayInlineFlex}>
-                    <a
-                        className={cx(
-                            styles.item,
-                            sharedStyles.marginHorizontal(3),
-                            sharedStyles.iconTwitter
-                        )}
-                        href={config.meta.social.twitter.url}
-                        target="_blank"
-                        rel="norel nooppener"
-                    >
-                        <span>
-                            <FaTwitter />
-                        </span>
-                    </a>
-                </li>
-                <li
-                    className={cx(
-                        sharedStyles.displayInlineFlex,
-                        sharedStyles.marginHorizontal(3),
-                        sharedStyles.iconYoutube
-                    )}
-                >
-                    <a
-                        className={styles.item}
-                        href={config.meta.social.youtube.url}
-                        target="_blank"
-                        rel="norel nooppener"
-                    >
-                        <span>
-                            <FaYoutube />
-                        </span>
-                    </a>
-                </li>
-                <li
-                    className={cx(
-                        sharedStyles.displayInlineFlex,
-                        sharedStyles.marginHorizontal(3),
-                        sharedStyles.iconLinkedin
-                    )}
-                >
-                    <a
-                        className={styles.item}
-                        href={config.meta.social.linkedin.url}
-                        target="_blank"
-                        rel="norel nooppener"
-                    >
-                        <span>
-                            <FaLinkedin />
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    )
-}
-
-function AdVideoCall() {
-    const styles = {
-        wrapper: css`
-            background-size: cover;
-            background-image: url("jorge_ferreiro_software_engineer_entrepreneur_amazon_eventbrite_developers_in_depth");
-        `
-    }
-    return (
-        <img
-            width="100px"
-            height="123px"
-            src="/images/ads/jorge_ferreiro_software_engineer_entrepreneur_amazon_eventbrite_developers_in_depth.jpg"
-        />
-        // <Link
-        //     href={getLinkWithTracking("/videocall", {
-        //         utm_source: "ferreiro-blog-videocall-ad"
-        //     })}
-        // >
-        //     <a title="Videocall with Jorge Ferreiro">
-        //         <div className={styles.wrapper}>Hola</div>
-        //     </a>
-        // </Link>
     )
 }
 

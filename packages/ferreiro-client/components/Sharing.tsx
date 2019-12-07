@@ -104,6 +104,9 @@ function SharingDropdown(props: {
     summary: string
     title: string
 }) {
+    // TODO: Be able to override tracking url utmSource. So we can specify
+    // in which part of the app the sharing button was pressed. Another
+    // idea is to add an event here.
     return (
         <div className={styles.dropdown}>
             <h4 className={sharedStyles.marginBottom(4)}>Sharing</h4>

@@ -6,6 +6,7 @@ import { Pagination } from "../types/PaginatedResponse"
 
 import { sharedStyles } from "./config"
 import { FaAngleRight, FaAngleLeft, FaHome } from "react-icons/fa"
+import { getLinkWithTracking } from "../utils/get-url"
 
 export const FIRST_PAGE = 1
 
@@ -35,7 +36,15 @@ export function PagePagination(props: {
                 >
                     {!isFirstPage && (
                         <li className={cx(sharedStyles.col, styles.listItem)}>
-                            <Link href={`/blog?page=${props.activePage - 1}`}>
+                            <Link
+                                href={getLinkWithTracking(
+                                    `/blog?page=${props.activePage - 1}`,
+                                    {
+                                        utm_source: "page-pagination-previous",
+                                        utm_medium: "ferreiro.me"
+                                    }
+                                )}
+                            >
                                 <a
                                     className={cx(
                                         sharedStyles.button,
@@ -72,7 +81,15 @@ export function PagePagination(props: {
                                     sharedStyles.marginHorizontal(3)
                                 )}
                             >
-                                <Link href={`/blog?page=${pageIndex + 1}`}>
+                                <Link
+                                    href={getLinkWithTracking(
+                                        `/blog?page=${pageIndex + 1}`,
+                                        {
+                                            utm_source: "page-pagination",
+                                            utm_medium: "ferreiro.me"
+                                        }
+                                    )}
+                                >
                                     <a
                                         className={cx(
                                             sharedStyles.displayInlineFlex,
@@ -100,7 +117,15 @@ export function PagePagination(props: {
                 >
                     {hasNextPage && (
                         <li className={styles.listItem}>
-                            <Link href={`/blog?page=${props.activePage + 1}`}>
+                            <Link
+                                href={getLinkWithTracking(
+                                    `/blog?page=${props.activePage + 1}`,
+                                    {
+                                        utm_source: "page-pagination-next",
+                                        utm_medium: "ferreiro.me"
+                                    }
+                                )}
+                            >
                                 <a
                                     className={cx(
                                         sharedStyles.button,

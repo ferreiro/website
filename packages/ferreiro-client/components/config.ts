@@ -2,6 +2,16 @@ import { css } from "emotion"
 
 import { Page } from "../types/Page"
 
+export const bios = {
+    small: `👨‍💻 Frontend Engineer @Eventbrite *  Past: @Amazon<br /><br />
+    📸 Speaker, Blogger, Youtuber @devsindepth<br /><br />
+    
+    ❤️ #React #PWA #JS #Perf #DJ #tennis
+    
+    ~ Love to ship products! 🚀`,
+    large: ""
+}
+
 export const breakpoints = {
     sm: "400px",
     md: "840px",

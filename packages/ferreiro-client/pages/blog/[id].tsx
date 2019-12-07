@@ -123,6 +123,9 @@ function PostAuthor(props: {
             height: 48px;
             border-radius: 100%;
             object-fit: cover;
+        `,
+        author: css`
+            color: ${config.colors.secondary};
         `
     }
 
@@ -157,6 +160,7 @@ function PostAuthor(props: {
                     <p>
                         <strong>{props.name}</strong> (
                         <a
+                            className={authorStyles.author}
                             href={getLinkWithTracking(
                                 config.meta.social.twitter.url,
                                 {
@@ -298,9 +302,8 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
             color: rgba(0, 0, 0, 0.68);
             border: none;
             padding: 0;
-            margin: 24px 0;
-            margin-left: 50px;
             text-align: left;
+            display: block;
         `,
         socialButton: css`
             background: transparent;
@@ -342,17 +345,24 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
 
     return (
         <div className={getContainerClassname({ layout })}>
-            <mark className={quoteStyles.mark}>{value}</mark>
-            {author && (
-                <p
-                    className={cx(
-                        quoteStyles.author,
-                        sharedStyles.marginTop(3)
-                    )}
-                >
-                    {author}
-                </p>
-            )}
+            <blockquote>
+                <p className={quoteStyles.mark}>{value}</p>
+                {author && (
+                    <cite
+                        className={cx(
+                            quoteStyles.author,
+                            sharedStyles.marginTop(3)
+                        )}
+                    >
+                        {author}
+                    </cite>
+                )}
+            </blockquote>
+            <img src="/images/blog/quote.png" />
+            https://medium.com/forwardtick/how-google-collapsed-b6ffa82198ee
+            <img src="/images/blog/quote_2.png" />
+            <img src="/images/blog/quote_3.png" />
+            https://medium.com/p/b2912244e04a/edit
             <div
                 className={cx(
                     sharedStyles.flex,
@@ -360,6 +370,7 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
                     sharedStyles.marginTop(5)
                 )}
             >
+                Share
                 <button
                     className={cx(
                         sharedStyles.displayInlineFlex,
@@ -899,6 +910,10 @@ function PostDetail(props: Props) {
 
                 <p>TODO: Put the links for sharing the post</p>
 
+                <p>
+                    <img src="/images/blog/signup.png" />
+                </p>
+
                 <div style={{ textAlign: "center" }}>
                     Post author
                     <figure>
@@ -909,12 +924,14 @@ function PostDetail(props: Props) {
                 <div style={{ textAlign: "center" }}>
                     Post author
                     <figure>
+                        <img src="/images/blog/credits_2.png" />
+                        <figcaption>Jorge Ferreiro</figcaption>
+                    </figure>
+                    <figure>
                         <img src="/images/blog/credits.png" />
                         <figcaption>Jorge Ferreiro</figcaption>
                     </figure>
                 </div>
-
-                {JSON.stringify(props.post.body)}
 
                 <p>TODO: Put related posts...</p>
             </article>
