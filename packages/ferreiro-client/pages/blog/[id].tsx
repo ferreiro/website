@@ -875,6 +875,13 @@ function PostDetail(props: Props) {
         <LayoutFullwidth title="Videos of">
             <PostMeta post={props.post} />
 
+            <div style={{ position: "fixed", bottom: 0 }}>
+                <p>Don't miss out!</p>
+                <input placeholder="subscribe" />
+                <p>Share!</p>
+                <FaTwitter />
+            </div>
+
             <article>
                 <PostHeader post={props.post} />
 

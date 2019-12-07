@@ -176,6 +176,7 @@ const styles = {
     menuItem: css`
         display: inline-flex;
         margin: 0 ${spacing4};
+        position: relative;
 
         a {
             color: ${config.colors.navBar};
@@ -187,8 +188,15 @@ const styles = {
         }
     `,
     menuItemSelected: css`
-        a {
+        &:before {
             border-bottom: 2px solid ${config.colors.primary};
+            content: "";
+            position: absolute;
+            top: 100%;
+            width: 100%;
+        }
+
+        a {
             color: ${config.colors.primary};
             font-weight: 600;
             opacity: 1;
