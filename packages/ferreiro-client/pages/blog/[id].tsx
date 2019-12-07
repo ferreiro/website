@@ -4,7 +4,8 @@ import isEmpty from "lodash/isEmpty"
 import { cx, css } from "emotion"
 import ReactMarkdown from "react-markdown"
 
-import framerPostConfig from "./__fixtures__/framer-post-config.js"
+import framerPostConfig from "./__fixtures__/framer.js"
+import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
 
 import { Layout, LayoutFullwidth } from "../../components/Layout"
 import config, {
@@ -79,32 +80,13 @@ function PostMeta(props: { post: Post }) {
 }
 
 function PostHeader(props: { post: Post }) {
-    const headerStyles = {
-        summary: css`
-            font-weight: 400;
-
-            margin: 16px 0 0;
-            --x-height-multiplier: 0.363;
-            --baseline-multiplier: 0.157;
-            font-family: medium-content-sans-serif-font, "Lucida Grande",
-                "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
-            letter-spacing: -0.02em;
-            font-weight: 300;
-            font-style: normal;
-            letter-spacing: 0;
-            letter-spacing: -0.022em;
-            color: rgba(0, 0, 0, 0.6);
-            font-size: ${spacing6};
-            line-height: ${spacing7};
-
-            ${largeUp} {
-                line-height: ${spacing7};
-            }
-        `
-    }
-
     return (
-        <div className={cx(sharedStyles.paddingHorizontal(6))}>
+        <div
+            className={cx(
+                sharedStyles.paddingHorizontal(6),
+                sharedStyles.marginBottom(7)
+            )}
+        >
             <div className={styles.containerWrapper}>
                 <h1
                     className={cx(
@@ -123,27 +105,6 @@ function PostHeader(props: { post: Post }) {
                     twitterHandle="@jgferreiro"
                 />
             </div>
-
-            <figure className={styles.containerWrapper_lg}>
-                <img
-                    alt={props.post.title}
-                    className={sharedStyles.marginTop(8)}
-                    src={props.post.pic}
-                    width="100%"
-                />
-            </figure>
-
-            <summary className={styles.containerWrapper}>
-                <h2
-                    className={cx(
-                        headerStyles.summary,
-                        sharedStyles.marginTop(6),
-                        sharedStyles.marginBottom(6)
-                    )}
-                >
-                    {props.post.summary}
-                </h2>
-            </summary>
         </div>
     )
 }
@@ -241,6 +202,48 @@ function PostAuthor(props: {
                 </div>
             </div>
         </div>
+    )
+}
+
+interface PostSummaryProps {
+    value: string
+}
+
+function PostSummary({ value }: PostSummaryProps) {
+    const summaryStyles = css`
+        font-weight: 400;
+
+        margin: 16px 0 0;
+        --x-height-multiplier: 0.363;
+        --baseline-multiplier: 0.157;
+        font-family: medium-content-sans-serif-font, "Lucida Grande",
+            "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+        letter-spacing: -0.02em;
+        font-weight: 300;
+        font-style: normal;
+        letter-spacing: 0;
+        letter-spacing: -0.022em;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: ${spacing6};
+        line-height: ${spacing7};
+
+        ${largeUp} {
+            line-height: ${spacing7};
+        }
+    `
+
+    return (
+        <summary className={styles.containerWrapper}>
+            <h2
+                className={cx(
+                    summaryStyles,
+                    sharedStyles.marginTop(6),
+                    sharedStyles.marginBottom(6)
+                )}
+            >
+                {value}
+            </h2>
+        </summary>
     )
 }
 
@@ -373,38 +376,26 @@ function PostQuote(props: { config: any; post: Post }) {
     )
 }
 
-function PostEmbed(props) {
-    return (
-        <>
-            <blockquote className="twitter-tweet">
-                <p lang="en" dir="ltr">
-                    Sunsets don&#39;t get much better than this one over{" "}
-                    <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">
-                        @GrandTetonNPS
-                    </a>
-                    .{" "}
-                    <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">
-                        #nature
-                    </a>{" "}
-                    <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">
-                        #sunset
-                    </a>{" "}
-                    <a href="http://t.co/YuKy2rcjyU">
-                        pic.twitter.com/YuKy2rcjyU
-                    </a>
-                </p>
-                &mdash; US Department of the Interior (@Interior){" "}
-                <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">
-                    May 5, 2014
-                </a>
-            </blockquote>
+interface PostImageProps {
+    src: string
+    layout: PostLayoutType
+}
 
-            <script
-                async
-                src="https://platform.twitter.com/widgets.js"
-                // charset="utf-8"
-            />
-        </>
+function PostEmbed({ src, layout }: PostImageProps) {
+    return (
+        <div className={cx(getContainerClassname(layout))}>
+            <div
+                className={cx(
+                    sharedStyles.embedResponsive,
+                    sharedStyles.embedResponsive16by9
+                )}
+            >
+                <iframe
+                    className={sharedStyles.embedResponsiveItem}
+                    src={src}
+                />
+            </div>
+        </div>
     )
 }
 
@@ -509,68 +500,88 @@ function PostText(props: { config: any }) {
 }
 
 //
-function PostImage(props: { config: any }) {
+enum LinkTarget {
+    target = "_blank",
+    self = "_self"
+}
+
+function getContainerClassname(layout: PostLayoutType) {
+    if (layout === PostLayoutType.full) {
+        return cx()
+    } else if (layout === PostLayoutType.inline) {
+        return cx(styles.containerWrapper)
+    }
+
+    return cx(styles.containerWrapper_more_space_lg)
+}
+
+function withLink(
+    Component: any,
+    options: {
+        href: string
+        target?: LinkTarget
+    }
+) {
+    if (!options.href || isEmpty(options.href)) {
+        return Component
+    }
+
+    const target = options.target || LinkTarget.target
+
+    return (
+        <a href={options.href} target={target}>
+            {Component}
+        </a>
+    )
+}
+
+interface PostImageProps {
+    alt: string
+    // TODO: Explain when is this gonna be used...
+    caption: string
+    href: string
+    maxWidth: string
+    target: LinkTarget
+    url: string
+    layout: PostLayoutType
+}
+
+function PostImage({
+    alt,
+    caption,
+    href,
+    maxWidth,
+    target,
+    layout,
+    url
+}: PostImageProps) {
     const imageStyles = {
+        wrapper: css`
+            text-align: center;
+        `,
         caption: css`
             text-align: center;
             padding-top: ${spacing5};
         `
     }
 
-    function getImage({
-        caption,
-        layout,
-        src
-    }: {
-        caption: string
-        layout: PostLayoutType
-        src: string
-    }) {
-        if (layout === PostLayoutType.full) {
-            return (
-                <figure>
-                    <img src={src} width="100%" alt={alt} />
-                    <figcaption className={imageStyles.caption}>
-                        {caption}
-                    </figcaption>
-                </figure>
-            )
-        } else if (layout === PostLayoutType.inline) {
-            return (
-                <figure className={styles.containerWrapper}>
-                    <img src={src} width="100%" alt={alt} />
-                    <figcaption className={imageStyles.caption}>
-                        {caption}
-                    </figcaption>
-                </figure>
-            )
-        }
+    const options = {
+        href,
+        target
+    }
 
-        return (
-            <figure className={styles.containerWrapper_more_space_lg}>
-                <img src={src} width="100%" alt={alt} />
+    return withLink(
+        <figure
+            className={cx(getContainerClassname(layout), imageStyles.wrapper)}
+        >
+            <img style={{ maxWidth }} src={url} width="100%" alt={alt} />
+            {caption && (
                 <figcaption className={imageStyles.caption}>
                     {caption}
                 </figcaption>
-            </figure>
-        )
-    }
-
-    const alt = props.config.alt
-    const caption = props.config.caption || alt
-    const src = props.config.url
-    // This can be nullable...
-    const href = props.config.href
-    const target = props.config.target
-
-    const layout: PostLayoutType = props.config.layout
-
-    return isEmpty(href) ? (
-        getImage({ layout, caption, src })
-    ) : (
-        <a href={href} target={target || "_blank"}>
-            {getImage({ layout, caption, src })}
-        </a>
+            )}
+        </figure>,
+        options
     )
 }
 
@@ -791,13 +802,15 @@ function PostProvider(props: {
                 // So prepending ads before rendering a post (like with a HOC)
 
                 if (_module.type === PostModuleTypes.embed) {
-                    return <PostEmbed config={moduleProps} />
+                    return <PostEmbed {...moduleProps} />
+                } else if (_module.type === PostModuleTypes.summary) {
+                    return <PostSummary {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.quote) {
                     return <PostQuote config={moduleProps} post={post} />
                 } else if (_module.type === PostModuleTypes.text) {
                     return <PostText config={moduleProps} />
                 } else if (_module.type === PostModuleTypes.image) {
-                    return <PostImage config={moduleProps} />
+                    return <PostImage {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.ad) {
                     return <PostAd config={moduleProps} />
                 } else if (_module.type === PostModuleTypes.video) {
@@ -827,9 +840,7 @@ function PostProvider(props: {
 
 interface Module {
     type: PostModuleTypes
-    props: {
-        [key: string]: object
-    }
+    props: PostImageProps | any
 }
 
 enum VideoProvider {
@@ -859,7 +870,7 @@ function PostDetail(props: Props) {
 
                 <sub>{JSON.stringify(props.series)}</sub>
 
-                {config ? (
+                {props.post.config && !isEmpty(props.post.config) ? (
                     <PostProvider
                         isEditing={true}
                         post={props.post}
@@ -895,9 +906,18 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
         })
     }
 
-    const config: Config = framerPostConfig
+    const configMapper = {
+        "codemotion-webinar-jorge-ferreiro-progressive-web-apps": codemotionWebinarConfig,
+        "interactive-prototyping-with-framer-and-react": framerPostConfig
+    }
 
-    post.config = config
+    const config: Config = configMapper[post.permalink] || undefined
+
+    if (config) {
+        post.config = config
+    }
+
+    console.log(post)
 
     console.log(`series ${series}`)
 
@@ -925,6 +945,7 @@ const styles = {
             max-width: 650px;
         }
     `,
+    containerWrapper_full: css``,
     containerWrapper_more_space_lg: css`
         ${largeUp} {
             margin: 0 auto;

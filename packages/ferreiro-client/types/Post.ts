@@ -1,10 +1,11 @@
 export interface Config {
     order: string[]
-    modules: {
-        [key: string]: object
-    }
+    modules: object
 }
 
+// {
+//     [key: string]: object
+// }
 export interface PostSeries {
     _id: string
     updatedAt: string
@@ -23,7 +24,7 @@ export interface Post {
     title: string
     pic: string
     createdAt: string
-    config: Config
+    config?: Config
     updatedAt: string
     secretKey: string
     permalink: string
@@ -53,11 +54,12 @@ export enum PostLayoutType {
 export enum PostModuleTypes {
     ad = "ad",
     embed = "embed",
-    text = "text",
-    quote = "quote",
     image = "image",
-    video = "video",
     link = "link",
+    quote = "quote",
     separator = "separator",
-    series = "series"
+    series = "series",
+    summary = "summary",
+    text = "text",
+    video = "video"
 }
