@@ -62,7 +62,8 @@ const config = {
                 type: "slides",
                 layout: PostLayoutType.inline,
                 image:
-                    "https://speakerd.s3.amazonaws.com/presentations/34a85b762e62420984a92e0f5d2715cf/slide_0.jpg?13970515"
+                    "https://speakerd.s3.amazonaws.com/presentations/34a85b762e62420984a92e0f5d2715cf/slide_0.jpg?13970515",
+                target: "_blank"
             }
         },
         "9345345": {

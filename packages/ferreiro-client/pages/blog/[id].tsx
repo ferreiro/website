@@ -827,17 +827,34 @@ function PostSocialNetworks(props: PostSocialNetworksProps) {
 // url: string
 // type: string
 // image: string
-function PostLink(props: { config: any }) {
-    const title = props.config.title
-    const subtitle = props.config.subtitle
-    const layout = props.config.layout
+function PostLink(props: {
+    title: string
+    subtitle: string
+    src: string
+    type: string
+    layout: PostLayoutType
+    image: string
+    target?: LinkTarget
+}) {
+    const title = props.title
+    const subtitle = props.subtitle
+    const layout = props.layout
+    const target = props.target || LinkTarget.target
 
     const linkStyles = {
+        link: css`
+            color: #000;
+            text-decoration: none;
+        `,
+        title: css`
+            font-size: ${spacing5};
+        `,
         image: css`
+            border-radius: 2px;
             object-fit: cover;
             object-position: center;
             height: 120px;
-            width: 140px;
+            max-width: 180px;
         `
     }
 
@@ -848,8 +865,12 @@ function PostLink(props: { config: any }) {
 
     return (
         <div className={cx(wrapperClassName, sharedStyles.paddingVertical(9))}>
-            <Link href={props.config.src}>
-                <a title={props.config.title}>
+            <Link href={props.src}>
+                <a
+                    title={props.title}
+                    className={linkStyles.link}
+                    target={target}
+                >
                     <div
                         className={cx(
                             sharedStyles.flex,
@@ -873,13 +894,13 @@ function PostLink(props: { config: any }) {
                                     sharedStyles.flexDirectionColumn
                                 )}
                             >
-                                <h4>{title}</h4>
+                                <h4 className={linkStyles.title}>{title}</h4>
                                 <p className={sharedStyles.marginTop(3)}>
                                     {subtitle}
                                 </p>
                             </div>
                         </div>
-                        {props.config.image && (
+                        {props.image && (
                             <div
                                 className={cx(
                                     sharedStyles.displayInlineFlex,
@@ -888,8 +909,8 @@ function PostLink(props: { config: any }) {
                             >
                                 <img
                                     className={linkStyles.image}
-                                    alt={props.config.title}
-                                    src={props.config.image}
+                                    alt={props.title}
+                                    src={props.image}
                                 />
                             </div>
                         )}
@@ -972,7 +993,7 @@ function PostProvider(props: {
                 } else if (_module.type === PostModuleTypes.separator) {
                     return <PostSeparator config={moduleProps} />
                 } else if (_module.type === PostModuleTypes.link) {
-                    return <PostLink config={moduleProps} />
+                    return <PostLink {...moduleProps} />
                 } else if (_module.type === PostModuleTypes.series) {
                     return <PostSeries {...moduleProps} series={props.series} />
                 } else if (_module.type === PostModuleTypes.socialNetworks) {
@@ -1016,42 +1037,61 @@ function PostTags(props: { post: Post }) {
         }))
     ]
 
+    if (isEmpty(tags)) {
+        return null
+    }
+
     return (
-        <div
-            className={getContainerClassname({ layout: PostLayoutType.inline })}
-        >
-            <div className={sharedStyles.row}>
-                <div
-                    className={cx(
-                        sharedStyles.col_auto,
-                        sharedStyles.marginLeft(3),
-                        sharedStyles.marginRight(5)
-                    )}
-                    style={{
-                        marginTop: "10px"
-                    }}
-                >
-                    <FaTags />
-                </div>
-                <div className={sharedStyles.col}>
-                    {tags.map((tag: { text: string; url: string }) => {
-                        return (
-                            <Link href={tag.url}>
-                                <a
-                                    title={tag.text}
-                                    className={cx(
-                                        tagsStyle.tag,
-                                        sharedStyles.marginRight(4)
-                                    )}
-                                >
-                                    #{tag.text}
-                                </a>
-                            </Link>
-                        )
-                    })}
+        <>
+            <div
+                className={cx(
+                    getContainerClassname({
+                        layout: PostLayoutType.inline
+                    }),
+                    sharedStyles.separator,
+                    sharedStyles.marginTop(8),
+                    sharedStyles.marginBottom(7)
+                )}
+            />
+
+            <div
+                className={getContainerClassname({
+                    layout: PostLayoutType.inline
+                })}
+            >
+                <div className={sharedStyles.row}>
+                    <div
+                        className={cx(
+                            sharedStyles.col_auto,
+                            sharedStyles.marginLeft(3),
+                            sharedStyles.marginRight(5)
+                        )}
+                        style={{
+                            marginTop: "10px"
+                        }}
+                    >
+                        <FaTags />
+                    </div>
+                    <div className={sharedStyles.col}>
+                        {tags.map((tag: { text: string; url: string }) => {
+                            return (
+                                <Link href={tag.url}>
+                                    <a
+                                        title={tag.text}
+                                        className={cx(
+                                            tagsStyle.tag,
+                                            sharedStyles.marginRight(4)
+                                        )}
+                                    >
+                                        #{tag.text}
+                                    </a>
+                                </Link>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
@@ -1573,17 +1613,6 @@ function PostDetail(props: Props) {
             </article>
 
             <p>POST SHARE</p>
-
-            <div
-                className={cx(
-                    getContainerClassname({
-                        layout: PostLayoutType.inline
-                    }),
-                    sharedStyles.separator,
-                    sharedStyles.marginTop(8),
-                    sharedStyles.marginBottom(7)
-                )}
-            />
 
             <PostTags post={props.post} />
 
