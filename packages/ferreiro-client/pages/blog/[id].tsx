@@ -856,7 +856,7 @@ function PostLink(props: {
             border-radius: 2px;
             object-fit: cover;
             object-position: center;
-            height: 120px;
+            height: 135px;
             max-width: 180px;
         `
     }
