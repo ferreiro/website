@@ -847,7 +847,10 @@ function PostLink(props: {
             text-decoration: none;
         `,
         title: css`
-            font-size: ${spacing5};
+            font-size: 22px;
+            font-weight: 600;
+            color: #3c3c3c;
+            line-height: 28px;
         `,
         image: css`
             border-radius: 2px;
@@ -885,7 +888,12 @@ function PostLink(props: {
                                 sharedStyles.paddingBoth(6)
                             )}
                         >
-                            <span className={sharedStyles.marginRight(5)}>
+                            <span
+                                className={cx(
+                                    sharedStyles.marginTop(3),
+                                    sharedStyles.marginRight(5)
+                                )}
+                            >
                                 <FaLink />
                             </span>
                             <div
@@ -895,7 +903,7 @@ function PostLink(props: {
                                 )}
                             >
                                 <h4 className={linkStyles.title}>{title}</h4>
-                                <p className={sharedStyles.marginTop(3)}>
+                                <p className={sharedStyles.marginTop(4)}>
                                     {subtitle}
                                 </p>
                             </div>
