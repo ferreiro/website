@@ -31,7 +31,14 @@ import {
     getLinkedinShareableUrl,
     getFacebookShareableUrl
 } from "../../utils/get-url"
-import { FaTwitter, FaLinkedin, FaFacebook, FaLink } from "react-icons/fa"
+import {
+    FaTwitter,
+    FaLinkedin,
+    FaFacebook,
+    FaLink,
+    FaTag,
+    FaTags
+} from "react-icons/fa"
 import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
 import { PostModuleTypes } from "../../types/Post"
 import { TrackingOptions } from "../../types/TrackingOptions.js"
@@ -263,20 +270,6 @@ function PostAuthor(props: {
 
                     <button
                         onClick={() =>
-                            handleShareLinkedinClick({
-                                post: props.post,
-                                trackingOptions: {
-                                    utm_source: "sharing-quote-twitter"
-                                }
-                            })
-                        }
-                        className={sharedStyles.buttonNoFill}
-                    >
-                        <FaLinkedin />
-                    </button>
-
-                    <button
-                        onClick={() =>
                             handleShareFacebookClick({
                                 post: props.post,
                                 trackingOptions: {
@@ -287,6 +280,20 @@ function PostAuthor(props: {
                         className={sharedStyles.buttonNoFill}
                     >
                         <FaFacebook />
+                    </button>
+
+                    <button
+                        onClick={() =>
+                            handleShareLinkedinClick({
+                                post: props.post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-twitter"
+                                }
+                            })
+                        }
+                        className={sharedStyles.buttonNoFill}
+                    >
+                        <FaLinkedin />
                     </button>
                 </div>
 
@@ -960,6 +967,62 @@ function PostProvider(props: {
     )
 }
 
+function PostTags(props: { post: Post }) {
+    const tagsStyle = {
+        tag: css`
+            border: 1px solid #e2e2e2;
+            border-radius: 4px;
+            color: #d83901;
+            padding: ${spacing3} ${spacing4};
+            text-transform: capitalize;
+        `
+    }
+    const tags = [
+        ...props.post.category.map(category => ({
+            text: category,
+            url: `/blog/topics/${category}`
+        })),
+        ...props.post.tags.map(tag => ({
+            text: tag,
+            url: `/blog/tag/${tag}`
+        }))
+    ]
+
+    return (
+        <div
+            className={getContainerClassname({ layout: PostLayoutType.inline })}
+        >
+            <div className={sharedStyles.row}>
+                <div
+                    className={cx(
+                        sharedStyles.col_auto,
+                        sharedStyles.marginRight(5)
+                    )}
+                >
+                    <FaTags />
+                </div>
+                <div className={sharedStyles.col}>
+                    {tags.map((tag: { text: string; url: string }) => {
+                        return (
+                            <Link href={tag.url}>
+                                <a
+                                    title={tag.text}
+                                    className={cx(
+                                        tagsStyle.tag,
+                                        sharedStyles.marginRight(4)
+                                    )}
+                                >
+                                    #{tag.text}
+                                </a>
+                            </Link>
+                        )
+                    })}
+                </div>
+            </div>
+        </div>
+    )
+}
+
 interface Module {
     type: PostModuleTypes
     props: PostImageProps | any
@@ -1007,7 +1070,29 @@ function PostDetail(props: Props) {
                     <ReactMarkdown source={props.post.body} />
                 )}
 
-                <p>TODO: Put the list of tags...</p>
+                <div
+                    className={cx(
+                        getContainerClassname({
+                            layout: PostLayoutType.inline
+                        }),
+                        sharedStyles.separator,
+                        sharedStyles.marginTop(7),
+                        sharedStyles.marginBottom(7)
+                    )}
+                />
+
+                <PostTags post={props.post} />
+
+                <div
+                    className={cx(
+                        getContainerClassname({
+                            layout: PostLayoutType.inline
+                        }),
+                        sharedStyles.separator,
+                        sharedStyles.marginTop(7),
+                        sharedStyles.marginBottom(7)
+                    )}
+                />
 
                 <p>TODO: Put the links for sharing the post</p>
 
@@ -1087,7 +1172,7 @@ const styles = {
     containerWrapper: css`
         margin: 0 auto;
         max-width: 650px;
-        padding: ${spacing6};
+        padding: 0 ${spacing6};
 
         ${largeUp} {
             padding: 0;
