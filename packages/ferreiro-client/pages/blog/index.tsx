@@ -272,13 +272,9 @@ function BlogList(props: { posts: Post[] }) {
         )
     }
 
-    const [postHighlight, ...filteredPosts] = props.posts
-
     return (
         <div>
-            <BlogItemHighlight post={postHighlight} />
-
-            {filteredPosts.map((post: Post) => (
+            {props.posts.map((post: Post) => (
                 <BlogItem key={post.id} post={post} />
             ))}
         </div>
@@ -846,6 +842,8 @@ export function Blog(props: Props) {
         }
     ]
 
+    const [postHighlight, ...filteredPosts] = props.posts
+
     return (
         <Layout title="Blog">
             <h1
@@ -859,7 +857,8 @@ export function Blog(props: Props) {
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>
                     <div className={sharedStyles.col_lg_8}>
-                        <BlogList posts={props.posts} />
+                        <BlogItemHighlight post={postHighlight} />
+                        <BlogList posts={filteredPosts} />
 
                         <div
                             className={cx(
@@ -875,7 +874,7 @@ export function Blog(props: Props) {
                         />
                     </div>
                     <div className={sharedStyles.col_lg_4}>
-                        <div className={sharedStyles.marginLeft_lg(6)}>
+                        <div className={sharedStyles.marginLeft_lg(8)}>
                             <BlogTopArticles posts={props.featuredPosts} />
 
                             <div

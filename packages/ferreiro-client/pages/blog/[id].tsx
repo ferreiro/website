@@ -15,7 +15,11 @@ import {
     FaInstagram
 } from "react-icons/fa"
 
-import { Layout, LayoutFullwidth } from "../../components/Layout"
+import {
+    Layout,
+    LayoutFullwidth,
+    LayoutContainer
+} from "../../components/Layout"
 
 import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
 import { postSubscribeApi } from "../../api/contact"
@@ -981,7 +985,7 @@ function PostTags(props: { post: Post }) {
         tag: css`
             border: 1px solid #e2e2e2;
             border-radius: 4px;
-            color: #d83901;
+            color: #777777;
             display: inline-flex;
             padding: ${spacing3} ${spacing4};
             text-transform: capitalize;
@@ -1044,6 +1048,12 @@ function PostTags(props: { post: Post }) {
 
 function PostAuthor(props: {}) {
     const authorStyles = {
+        avatar: css`
+            width: 60px;
+        `,
+        title: css`
+            font-size: ${spacing7};
+        `,
         bio: css`
             line-height: 20px;
 
@@ -1089,13 +1099,12 @@ function PostAuthor(props: {}) {
                     )}
                 >
                     <img
-                        width="100px"
-                        className={sharedStyles.circle}
+                        className={cx(sharedStyles.circle, authorStyles.avatar)}
                         src="/images/about/jorge_ferreiro_software_engineer_entrepreneur.jpg"
                     />
                 </div>
                 <div className={sharedStyles.col}>
-                    <h3>Jorge Ferreiro</h3>
+                    <h3 className={authorStyles.title}>Jorge Ferreiro</h3>
 
                     <p
                         className={cx(
@@ -1363,7 +1372,20 @@ function PostSignup() {
 }
 
 function PostRelated() {
-    return <p>TODO: Put related posts...</p>
+    const relatedStyles = {
+        wrapper: css`
+            background: #f4f4f4;
+            padding: ${spacing5};
+        `
+    }
+
+    return (
+        <div className={relatedStyles.wrapper}>
+            <LayoutContainer>
+                <h3>More content from Jorge Ferreiro</h3>
+            </LayoutContainer>
+        </div>
+    )
 }
 
 interface Module {
@@ -1422,7 +1444,7 @@ function PostDetail(props: Props) {
                         layout: PostLayoutType.inline
                     }),
                     sharedStyles.separator,
-                    sharedStyles.marginTop(7),
+                    sharedStyles.marginTop(8),
                     sharedStyles.marginBottom(7)
                 )}
             />
@@ -1453,20 +1475,20 @@ function PostDetail(props: Props) {
                 )}
             />
 
-            <PostSignup />
+            <PostRelated />
 
             <div
                 className={cx(
                     getContainerClassname({
                         layout: PostLayoutType.inline
                     }),
-                    sharedStyles.separator,
-                    sharedStyles.marginTop(8),
-                    sharedStyles.marginBottom(8)
+                    // sharedStyles.separator,
+                    sharedStyles.marginTop(8)
+                    // sharedStyles.marginBottom(8)
                 )}
             />
 
-            <PostRelated />
+            <PostSignup />
         </LayoutFullwidth>
     )
 }

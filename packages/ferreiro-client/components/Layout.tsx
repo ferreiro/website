@@ -5,7 +5,7 @@ import { injectGlobal, css } from "emotion"
 import config, {
     breakpoints,
     spacing8,
-    containterMaxWidths,
+    containerMaxWidths,
     sharedStyles
 } from "./config"
 
@@ -151,7 +151,7 @@ const styles = {
     `,
     containerContent: css`
         margin: 0 auto;
-        max-width: ${containterMaxWidths.lg};
+        max-width: ${containerMaxWidths.lg};
     `,
     footerWrapper: css`
         border-top: 1px solid #f1f1f1;
@@ -159,6 +159,6 @@ const styles = {
     `,
     footerContent: css`
         margin: 0 auto;
-        max-width: ${containterMaxWidths.lg};
+        max-width: ${containerMaxWidths.lg};
     `
 }

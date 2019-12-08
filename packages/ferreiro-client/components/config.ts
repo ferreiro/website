@@ -29,7 +29,7 @@ export const largeUp = `
     @media all and (min-width: ${breakpoints.lg})
 `
 
-export const containterMaxWidths = {
+export const containerMaxWidths = {
     sm: "380px",
     md: "800px",
     lg: "1050px"

@@ -8,8 +8,7 @@ import config, {
     spacing5,
     spacing6,
     navBarLogoHeight,
-    breakpoints,
-    containterMaxWidths,
+    containerMaxWidths,
     largeUp
 } from "./config"
 
@@ -153,7 +152,7 @@ const styles = {
         align-items: center;
         display: flex;
         flex-direction: row;
-        max-width: ${containterMaxWidths.lg};
+        max-width: ${containerMaxWidths.lg};
         margin: 0 auto;
     `,
     logo: css`
