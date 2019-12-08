@@ -1,15 +1,36 @@
-import React from "react"
+import React, { useState } from "react"
 import Head from "next/head"
 import isEmpty from "lodash/isEmpty"
 import ReactMarkdown from "react-markdown"
+import Link from "next/link"
+import moment from "moment"
+import { formatUrl } from "url-lib"
 import { cx, css } from "emotion"
-
-import framerPostConfig from "./__fixtures__/framer.js"
-import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
-import promotionConfig from "./__fixtures__/promotion-config"
-import hackathonPitchConfig from "./__fixtures__/hackathon-pitch"
+import {
+    FaTwitter,
+    FaLinkedin,
+    FaFacebook,
+    FaLink,
+    FaTags,
+    FaInstagram
+} from "react-icons/fa"
 
 import { Layout, LayoutFullwidth } from "../../components/Layout"
+
+import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
+import { postSubscribeApi } from "../../api/contact"
+import {
+    getUrlWithTracking,
+    getPostQualifiedUrl,
+    getTwitterShareableUrl,
+    getLinkedinShareableUrl,
+    getFacebookShareableUrl
+} from "../../utils/get-url"
+
+import { Post, Config, PostLayoutType } from "../../types/Post"
+import { PostModuleTypes } from "../../types/Post"
+import { TrackingOptions } from "../../types/TrackingOptions"
+
 import config, {
     sharedStyles,
     spacing6,
@@ -22,29 +43,10 @@ import config, {
     mediumUp
 } from "../../components/config"
 
-import { Post, Config, PostLayoutType } from "../../types/Post"
-import { formatUrl } from "url-lib"
-import Link from "next/link"
-import moment from "moment"
-import {
-    getUrlWithTracking,
-    getPostQualifiedUrl,
-    getTwitterShareableUrl,
-    getLinkedinShareableUrl,
-    getFacebookShareableUrl
-} from "../../utils/get-url"
-import {
-    FaTwitter,
-    FaLinkedin,
-    FaFacebook,
-    FaLink,
-    FaTag,
-    FaTags,
-    FaInstagram
-} from "react-icons/fa"
-import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
-import { PostModuleTypes } from "../../types/Post"
-import { TrackingOptions } from "../../types/TrackingOptions.js"
+import framerPostConfig from "./__fixtures__/framer.js"
+import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
+import promotionConfig from "./__fixtures__/promotion-config"
+import hackathonPitchConfig from "./__fixtures__/hackathon-pitch"
 
 function handleShareTwitterClick(props: {
     post: Post
@@ -1156,6 +1158,214 @@ function PostAuthor(props: {}) {
     )
 }
 
+function getRandomInt(max: number) {
+    return Math.floor(Math.random() * Math.floor(max))
+}
+
+const randomCopies = [
+    "🚀 Want more posts like this in your inbox?",
+    "Wanna grow your tech career? 🚀",
+    "Exclusive access to my webinar! 🚀"
+]
+const randomCopyIndex = getRandomInt(randomCopies.length)
+
+function PostSignup() {
+    // TODO: Have a random list of captions, and play with that...
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [isError, setIsError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [isSuccess, setIsSuccess] = useState(false)
+
+    const handleName = event => {
+        setName(event.target.value)
+    }
+
+    const handleEmail = event => {
+        setEmail(event.target.value)
+    }
+
+    const resetForm = event => {
+        setName("")
+        setEmail("")
+        setIsError(false)
+        setIsSuccess(false)
+    }
+
+    const submitForm = event => {
+        setIsError(false)
+        setIsLoading(true)
+        setIsSuccess(false)
+
+        postSubscribeApi({
+            body: {
+                name,
+                email,
+                isSubscribe: true
+            }
+        })
+            .then(() => {
+                setIsSuccess(true)
+            })
+            .catch(error => {
+                setIsError(true)
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }
+
+    return (
+        <div
+            className={getContainerClassname({ layout: PostLayoutType.inline })}
+        >
+            {isLoading ? (
+                <p>Sending your message...</p>
+            ) : (
+                <>
+                    {isError && (
+                        <p>
+                            😨 Opps... I couldn't submit your idea. Try again or
+                            send me an email jorge@ferreiro.me
+                            <button onClick={submitForm}>Try again</button>
+                        </p>
+                    )}
+
+                    {isSuccess ? (
+                        <div
+                            className={cx(
+                                sharedStyles.row,
+                                sharedStyles.rowFull,
+                                sharedStyles.justifyContentCenter
+                            )}
+                        >
+                            <h4>✅ Yay! You are in! Thanks 🙌🙌🙌</h4>
+                            <br />
+                            <br />
+                            <p>
+                                Let's connect on social media too and tell your
+                                friends!
+                            </p>
+                            <br />
+                            <br />
+                            <a
+                                href={config.meta.social.twitter.url}
+                                target="_blank"
+                            >
+                                <span>
+                                    <FaTwitter />
+                                </span>
+                                <span>Twitter @jgferreiro</span>
+                            </a>
+                            <br />
+                            <br />
+
+                            <a
+                                href={config.meta.social.instagram.url}
+                                target="_blank"
+                            >
+                                <span>
+                                    <FaInstagram />
+                                </span>
+                                <span>Instagram @jgferreiro</span>
+                            </a>
+                            <br />
+                            <br />
+
+                            <a
+                                href={config.meta.social.linkedin.url}
+                                target="_blank"
+                            >
+                                <span>
+                                    <FaLinkedin />
+                                </span>
+                                <span>Linkedin @jgferreiro</span>
+                            </a>
+                        </div>
+                    ) : (
+                        <div className={sharedStyles.row}>
+                            <div
+                                className={cx(
+                                    sharedStyles.row,
+                                    sharedStyles.rowFull,
+                                    sharedStyles.justifyContentCenter,
+                                    sharedStyles.marginBottom(7)
+                                )}
+                            >
+                                <h2 className={cx(sharedStyles.subtitle)}>
+                                    {randomCopies[randomCopyIndex]}
+                                </h2>
+                            </div>
+
+                            <div
+                                className={cx(
+                                    sharedStyles.row,
+                                    sharedStyles.rowFull,
+                                    sharedStyles.justifyContentCenter
+                                )}
+                            >
+                                <input
+                                    className={cx(
+                                        sharedStyles.inputField,
+                                        sharedStyles.marginBottom(3)
+                                    )}
+                                    placeholder="Name"
+                                    value={name}
+                                    onChange={handleName}
+                                    style={{ minWidth: "270px" }}
+                                />
+                            </div>
+
+                            <div
+                                className={cx(
+                                    sharedStyles.row,
+                                    sharedStyles.rowFull,
+                                    sharedStyles.justifyContentCenter
+                                )}
+                            >
+                                <input
+                                    className={cx(
+                                        sharedStyles.inputField,
+                                        sharedStyles.marginBottom(3)
+                                    )}
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={handleEmail}
+                                    style={{ minWidth: "270px" }}
+                                />
+                            </div>
+
+                            <div
+                                className={cx(
+                                    sharedStyles.row,
+                                    sharedStyles.rowFull,
+                                    sharedStyles.justifyContentCenter
+                                )}
+                            >
+                                <button
+                                    className={cx(
+                                        sharedStyles.marginTop(5),
+                                        sharedStyles.buttonSubmit,
+                                        sharedStyles.col_auto
+                                    )}
+                                    onClick={submitForm}
+                                    type="submit"
+                                >
+                                    Join me now!
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
+        </div>
+    )
+}
+
+function PostRelated() {
+    return <p>TODO: Put related posts...</p>
+}
+
 interface Module {
     type: PostModuleTypes
     props: PostImageProps | any
@@ -1243,9 +1453,7 @@ function PostDetail(props: Props) {
                 )}
             />
 
-            <p style={{ textAlign: "center" }}>
-                <img src="/images/blog/signup.png" />
-            </p>
+            <PostSignup />
 
             <div
                 className={cx(
@@ -1253,12 +1461,12 @@ function PostDetail(props: Props) {
                         layout: PostLayoutType.inline
                     }),
                     sharedStyles.separator,
-                    sharedStyles.marginTop(5),
-                    sharedStyles.marginBottom(7)
+                    sharedStyles.marginTop(8),
+                    sharedStyles.marginBottom(8)
                 )}
             />
 
-            <p>TODO: Put related posts...</p>
+            <PostRelated />
         </LayoutFullwidth>
     )
 }

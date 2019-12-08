@@ -596,11 +596,9 @@ function BlogAdIdea() {
                             <div
                                 className={cx(
                                     sharedStyles.row,
+                                    sharedStyles.rowFull,
                                     sharedStyles.justifyContentCenter
                                 )}
-                                style={{
-                                    width: "100%"
-                                }}
                             >
                                 <button
                                     className={cx(

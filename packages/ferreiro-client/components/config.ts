@@ -222,6 +222,11 @@ export const sharedStyles = {
         border: 2px solid ${config.colors.secondary};
         background: ${config.colors.secondary};
         padding: ${spacing4} ${spacing5};
+
+        &:hover {
+            border-color: ${config.colors.primary};
+            background: ${config.colors.primary};
+        }
     `,
     buttonTwitter: css`
         background: ${config.colors.twitter.normal};
