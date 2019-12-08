@@ -6,7 +6,7 @@ import { Pagination } from "../types/PaginatedResponse"
 
 import { sharedStyles } from "./config"
 import { FaAngleRight, FaAngleLeft, FaHome } from "react-icons/fa"
-import { getLinkWithTracking } from "../utils/get-url"
+import { getUrlWithTracking } from "../utils/get-url"
 
 export const FIRST_PAGE = 1
 
@@ -37,7 +37,7 @@ export function PagePagination(props: {
                     {!isFirstPage && (
                         <li className={cx(sharedStyles.col, styles.listItem)}>
                             <Link
-                                href={getLinkWithTracking(
+                                href={getUrlWithTracking(
                                     `/blog?page=${props.activePage - 1}`,
                                     {
                                         utm_source: "page-pagination-previous",
@@ -82,7 +82,7 @@ export function PagePagination(props: {
                                 )}
                             >
                                 <Link
-                                    href={getLinkWithTracking(
+                                    href={getUrlWithTracking(
                                         `/blog?page=${pageIndex + 1}`,
                                         {
                                             utm_source: "page-pagination",
@@ -118,7 +118,7 @@ export function PagePagination(props: {
                     {hasNextPage && (
                         <li className={styles.listItem}>
                             <Link
-                                href={getLinkWithTracking(
+                                href={getUrlWithTracking(
                                     `/blog?page=${props.activePage + 1}`,
                                     {
                                         utm_source: "page-pagination-next",

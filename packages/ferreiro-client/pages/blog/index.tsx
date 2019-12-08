@@ -30,10 +30,10 @@ import config, {
     spacing5
 } from "../../components/config"
 import {
-    createPostUrl,
-    createSeriesUrl,
-    createSeriesUrlWithSubscription,
-    getLinkWithTracking
+    getSeriesUrl,
+    getSeriesUrlWithSubscription,
+    getUrlWithTracking,
+    getPostUrlWithTracking
 } from "../../utils/get-url"
 
 import { Pagination } from "../../types/PaginatedResponse"
@@ -42,13 +42,10 @@ import { AdSocialDeveloper, AdVideoCall } from "../../components/Ads"
 
 function BlogItemHighlight(props: { post: Post }) {
     const post = props.post
-    const linkWithTracking = getLinkWithTracking(
-        createPostUrl(post.permalink),
-        {
-            utm_source: "blog-home-featured",
-            utm_medium: "ferreiro.me"
-        }
-    )
+    const linkWithTracking = getPostUrlWithTracking(post.permalink, {
+        utm_source: "blog-home-featured",
+        utm_medium: "ferreiro.me"
+    })
 
     const styles = {
         link: css`
@@ -136,13 +133,10 @@ function BlogItemHighlight(props: { post: Post }) {
 
 export function BlogItem(props: { post: Post }) {
     const post = props.post
-    const linkWithTracking = getLinkWithTracking(
-        createPostUrl(post.permalink),
-        {
-            utm_source: "blog-home-list",
-            utm_medium: "ferreiro.me"
-        }
-    )
+    const linkWithTracking = getPostUrlWithTracking(post.permalink, {
+        utm_source: "blog-home-list",
+        utm_medium: "ferreiro.me"
+    })
 
     const styles = {
         title: css`
@@ -218,9 +212,7 @@ export function BlogItem(props: { post: Post }) {
                                 {post.series && (
                                     <Link
                                         href="/series/[id]"
-                                        as={createSeriesUrl(
-                                            post.series.permalink
-                                        )}
+                                        as={getSeriesUrl(post.series.permalink)}
                                     >
                                         <a
                                             className={cx(
@@ -353,7 +345,15 @@ function BlogTopArticles(props: { posts: Post[] }) {
                                         sharedStyles.marginBottom(5)
                                     )}
                                 >
-                                    <Link href={createPostUrl(post.permalink)}>
+                                    <Link
+                                        href={getPostUrlWithTracking(
+                                            post.permalink,
+                                            {
+                                                utm_source: "blog-top-articles",
+                                                utm_medium: "ferreiro.me"
+                                            }
+                                        )}
+                                    >
                                         <a title={post.title}>
                                             <h3 className={sharedStyles.text}>
                                                 {post.title}
@@ -709,7 +709,7 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                             <div className={sharedStyles.row}>
                                 <div className={sharedStyles.col_auto}>
                                     <Link
-                                        href={getLinkWithTracking(
+                                        href={getUrlWithTracking(
                                             `/series/${serieInfo.permalink}`,
                                             {
                                                 utm_source:
@@ -733,7 +733,7 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                                     )}
                                 >
                                     <Link
-                                        href={getLinkWithTracking(
+                                        href={getUrlWithTracking(
                                             `/series/${serieInfo.permalink}`,
                                             {
                                                 utm_source:
@@ -753,10 +753,11 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                                     )}
                                 >
                                     <Link
-                                        href={createSeriesUrlWithSubscription(
+                                        href={getSeriesUrlWithSubscription(
                                             serieInfo.permalink,
                                             {
-                                                utm_source: "series-blog-ad"
+                                                utm_source:
+                                                    "series-featured-follow"
                                             }
                                         )}
                                     >
@@ -781,7 +782,15 @@ function FeaturedSeries(props: { seriesPermalink: string }) {
                                 key={post.permalink}
                                 className={cx(sharedStyles.text)}
                             >
-                                <Link href={createPostUrl(post.permalink)}>
+                                <Link
+                                    href={getPostUrlWithTracking(
+                                        post.permalink,
+                                        {
+                                            utm_source: "featured-series",
+                                            utm_medium: "ferreiro.me"
+                                        }
+                                    )}
+                                >
                                     <a
                                         className={cx(
                                             sharedStyles.paddingCustom(3, 4),

@@ -1,8 +1,8 @@
 import React from "react"
 import Head from "next/head"
 import isEmpty from "lodash/isEmpty"
-import { cx, css } from "emotion"
 import ReactMarkdown from "react-markdown"
+import { cx, css } from "emotion"
 
 import framerPostConfig from "./__fixtures__/framer.js"
 import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
@@ -25,17 +25,76 @@ import { formatUrl } from "url-lib"
 import Link from "next/link"
 import moment from "moment"
 import {
-    getLinkWithTracking,
-    createShareablePostUrl
+    getUrlWithTracking,
+    getPostQualifiedUrl,
+    getTwitterShareableUrl,
+    getLinkedinShareableUrl,
+    getFacebookShareableUrl
 } from "../../utils/get-url"
 import { FaTwitter, FaLinkedin, FaFacebook, FaLink } from "react-icons/fa"
-import {
-    getTwitterShareableUrl,
-    getLinkedinShareableUrl
-} from "../../utils/get-social-url"
-import { addTrackingUrl } from "../../utils/analytics"
 import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
 import { PostModuleTypes } from "../../types/Post"
+import { TrackingOptions } from "../../types/TrackingOptions.js"
+
+function handleShareTwitterClick(props: {
+    post: Post
+    trackingOptions: TrackingOptions
+}) {
+    const permalink = props.post.permalink
+    const title = props.post.title
+    const utm_source = props.trackingOptions.utm_source
+
+    const twitterUrl = getTwitterShareableUrl({
+        url: getPostQualifiedUrl(permalink),
+        title,
+        trackingOptions: {
+            utm_source: utm_source || "sharing-twitter"
+        }
+    })
+
+    // TODO: Emit a new google analytics event to track how many clicks
+    window.open(twitterUrl, title, "width=550px,height=580px;")
+}
+
+function handleShareLinkedinClick(props: {
+    post: Post
+    trackingOptions: TrackingOptions
+}) {
+    const permalink = props.post.permalink
+    const title = props.post.title
+    const utm_source = props.trackingOptions.utm_source
+
+    const linkedinUrl = getLinkedinShareableUrl({
+        url: getPostQualifiedUrl(permalink),
+        title,
+        trackingOptions: {
+            utm_source: utm_source || "sharing-linkedin"
+        }
+    })
+
+    // TODO: Emit a new google analytics event to track how many clicks
+    window.open(linkedinUrl, title, "width=550px,height=580px;")
+}
+
+function handleShareFacebookClick(props: {
+    post: Post
+    trackingOptions: TrackingOptions
+}) {
+    const permalink = props.post.permalink
+    const title = props.post.title
+    const utm_source = props.trackingOptions.utm_source
+
+    const linkedinUrl = getFacebookShareableUrl({
+        url: getPostQualifiedUrl(permalink),
+        title,
+        trackingOptions: {
+            utm_source: utm_source || "sharing-facebook"
+        }
+    })
+
+    // TODO: Emit a new google analytics event to track how many clicks
+    window.open(linkedinUrl, title, "width=550px,height=580px;")
+}
 
 // https://www.creativebloq.com/how-to/build-an-seo-friendly-head-component-for-nextjsreact
 // TODO: Copy this from the current .pug
@@ -100,6 +159,7 @@ function PostHeader(props: { post: Post }) {
                 </h1>
 
                 <PostAuthor
+                    post={props.post}
                     avatarUrl="/images/about/jorge_ferreiro_software_engineer_entrepreneur.jpg"
                     name="Jorge Ferreiro"
                     createdAt={props.post.createdAt}
@@ -111,6 +171,7 @@ function PostHeader(props: { post: Post }) {
 }
 
 function PostAuthor(props: {
+    post: Post
     avatarUrl: string
     name: string
     createdAt: string
@@ -160,7 +221,7 @@ function PostAuthor(props: {
                         <strong>{props.name}</strong> (
                         <a
                             className={authorStyles.author}
-                            href={getLinkWithTracking(
+                            href={getUrlWithTracking(
                                 config.meta.social.twitter.url,
                                 {
                                     utm_source: "ferreiro-post-author"
@@ -186,13 +247,45 @@ function PostAuthor(props: {
                 )}
             >
                 <div className={sharedStyles.col_auto}>
-                    <button className={sharedStyles.buttonNoFill}>
+                    <button
+                        onClick={() =>
+                            handleShareTwitterClick({
+                                post: props.post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-twitter"
+                                }
+                            })
+                        }
+                        className={sharedStyles.buttonNoFill}
+                    >
                         <FaTwitter />
                     </button>
-                    <button className={sharedStyles.buttonNoFill}>
+
+                    <button
+                        onClick={() =>
+                            handleShareLinkedinClick({
+                                post: props.post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-twitter"
+                                }
+                            })
+                        }
+                        className={sharedStyles.buttonNoFill}
+                    >
                         <FaLinkedin />
                     </button>
-                    <button className={sharedStyles.buttonNoFill}>
+
+                    <button
+                        onClick={() =>
+                            handleShareFacebookClick({
+                                post: props.post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-twitter"
+                                }
+                            })
+                        }
+                        className={sharedStyles.buttonNoFill}
+                    >
                         <FaFacebook />
                     </button>
                 </div>
@@ -279,7 +372,6 @@ interface PostSummaryProps {
 }
 
 function PostQuote({ author, value, layout, post }: PostSummaryProps) {
-    const quoteText = value
     const quoteStyles = {
         arrow: css`
             background-image: url("/images/blog/quote_arrow.png");
@@ -322,36 +414,6 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
         `
     }
 
-    const handleShareTwitterClick = () => {
-        const url = addTrackingUrl(createShareablePostUrl(post.permalink), {
-            utmSource: "sharing-quote-twitter"
-        })
-        const twitterUrl = getTwitterShareableUrl({
-            mini: post.pic,
-            url,
-            summary: quoteText,
-            title: quoteText
-        })
-
-        // TODO: Emit a new google analytics event to track how many clicks
-        window.open(twitterUrl, quoteText, "width=550px,height=580px;")
-    }
-
-    const handleShareLinkedinClick = () => {
-        const url = addTrackingUrl(createShareablePostUrl(post.permalink), {
-            utmSource: "sharing-linkedin-twitter"
-        })
-        const linkedinUrl = getLinkedinShareableUrl({
-            mini: post.pic,
-            url,
-            summary: quoteText,
-            title: quoteText
-        })
-
-        // TODO: Emit a new google analytics event to track how many clicks
-        window.open(linkedinUrl, quoteText, "width=550px,height=580px;")
-    }
-
     return (
         <div className={getContainerClassname({ layout })}>
             <blockquote>
@@ -386,17 +448,50 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
                             quoteStyles.socialButton,
                             sharedStyles.iconTwitter
                         )}
-                        onClick={handleShareTwitterClick}
+                        onClick={() =>
+                            handleShareTwitterClick({
+                                post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-twitter"
+                                }
+                            })
+                        }
                     >
                         <FaTwitter />
                     </button>
+
                     <button
                         className={cx(
                             sharedStyles.displayInlineFlex,
                             quoteStyles.socialButton,
                             sharedStyles.iconLinkedin
                         )}
-                        onClick={handleShareLinkedinClick}
+                        onClick={() =>
+                            handleShareFacebookClick({
+                                post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-facebook"
+                                }
+                            })
+                        }
+                    >
+                        <FaFacebook />
+                    </button>
+
+                    <button
+                        className={cx(
+                            sharedStyles.displayInlineFlex,
+                            quoteStyles.socialButton,
+                            sharedStyles.iconLinkedin
+                        )}
+                        onClick={() =>
+                            handleShareLinkedinClick({
+                                post,
+                                trackingOptions: {
+                                    utm_source: "sharing-quote-linkedin"
+                                }
+                            })
+                        }
                     >
                         <FaLinkedin />
                     </button>
@@ -567,10 +662,6 @@ function PostImage({
                     {caption}
                 </figcaption>
             )}
-            <br />
-            <FaTwitter />
-            <FaFacebook />
-            <FaLinkedin />
         </figure>,
         options
     )

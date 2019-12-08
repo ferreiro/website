@@ -9,12 +9,13 @@ import {
 } from "react-icons/fa"
 
 import config, { sharedStyles, spacing5, spacing2, spacing4 } from "./config"
-import { createShareablePostUrl } from "../utils/get-url"
-import { addTrackingUrl } from "../utils/analytics"
 import {
+    getPostQualifiedUrl,
+    getTwitterShareableUrl,
     getLinkedinShareableUrl,
-    getTwitterShareableUrl
-} from "../utils/get-social-url"
+    getFacebookShareableUrl,
+    getUrlWithTracking
+} from "../utils/get-url"
 
 interface ShareButton {
     buttonStyle: string
@@ -28,7 +29,7 @@ interface ShareButton {
 
 function SharingButton(props: ShareButton) {
     const Icon = props.Icon
-    const handleClick = event => {
+    const handleClick = () => {
         window.open(props.url, props.title, "width=550px,height=580px;")
     }
 
@@ -53,7 +54,13 @@ function SharingButton(props: ShareButton) {
 }
 
 function SharingButtonTwitter(props: ShareButton) {
-    const twitterSharingUrl = getTwitterShareableUrl(props)
+    const twitterSharingUrl = getTwitterShareableUrl({
+        url: props.url,
+        title: props.title,
+        trackingOptions: {
+            utm_source: "sharing-twitter"
+        }
+    })
     return (
         <SharingButton
             {...props}
@@ -64,7 +71,14 @@ function SharingButtonTwitter(props: ShareButton) {
 }
 
 function SharingButtonLinkedin(props: ShareButton) {
-    const linkedinSharingUrl = getLinkedinShareableUrl(props)
+    const linkedinSharingUrl = getLinkedinShareableUrl({
+        url: props.url,
+        title: props.title,
+        trackingOptions: {
+            utm_source: "sharing-linkedin"
+        }
+    })
+
     return (
         <SharingButton
             {...props}
@@ -75,12 +89,19 @@ function SharingButtonLinkedin(props: ShareButton) {
 }
 
 function SharingButtonFacebook(props: ShareButton) {
-    const linkedinSharingUrl = getLinkedinShareableUrl(props)
+    const facebookSharingUrl = getFacebookShareableUrl({
+        url: props.url,
+        title: props.title,
+        trackingOptions: {
+            utm_source: "sharing-linkedin"
+        }
+    })
+
     return (
         <SharingButton
             {...props}
             buttonStyle={cx(styles.shareButton, sharedStyles.buttonFacebook)}
-            url={linkedinSharingUrl}
+            url={facebookSharingUrl}
         />
     )
 }
@@ -104,6 +125,8 @@ function SharingDropdown(props: {
     summary: string
     title: string
 }) {
+    const qualifiedUrl = getPostQualifiedUrl(props.permalink)
+
     // TODO: Be able to override tracking url utmSource. So we can specify
     // in which part of the app the sharing button was pressed. Another
     // idea is to add an event here.
@@ -118,8 +141,8 @@ function SharingDropdown(props: {
                 title={props.title}
                 Icon={FaTwitter}
                 text="Share on Twitter"
-                url={addTrackingUrl(createShareablePostUrl(props.permalink), {
-                    utmSource: "sharing-dropdown-twitter"
+                url={getUrlWithTracking(qualifiedUrl, {
+                    utm_source: "sharing-dropdown-twitter"
                 })}
             />
 
@@ -132,8 +155,8 @@ function SharingDropdown(props: {
                 title={props.title}
                 Icon={FaFacebook}
                 text="Post on Facebook"
-                url={addTrackingUrl(createShareablePostUrl(props.permalink), {
-                    utmSource: "sharing-dropdown-facebook"
+                url={getUrlWithTracking(qualifiedUrl, {
+                    utm_source: "sharing-dropdown-facebook"
                 })}
             />
 
@@ -146,8 +169,8 @@ function SharingDropdown(props: {
                 title={props.title}
                 Icon={FaLinkedin}
                 text="Post on Linkedin"
-                url={addTrackingUrl(createShareablePostUrl(props.permalink), {
-                    utmSource: "sharing-dropdown-linkedin"
+                url={getUrlWithTracking(qualifiedUrl, {
+                    utm_source: "sharing-dropdown-linkedin"
                 })}
             />
 
@@ -161,8 +184,8 @@ function SharingDropdown(props: {
             </h4>
 
             <SharingPermalink
-                url={addTrackingUrl(createShareablePostUrl(props.permalink), {
-                    utmSource: "sharing-dropdown-permalink"
+                url={getUrlWithTracking(qualifiedUrl, {
+                    utm_source: "sharing-dropdown-permalink"
                 })}
             />
         </div>
