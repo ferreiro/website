@@ -3,13 +3,12 @@ import { css } from "emotion"
 import { Page } from "../types/Page"
 
 export const bios = {
-    small: `👨‍💻 Frontend Engineer @Eventbrite *  Past: @Amazon<br /><br />
-    📸 Speaker, Blogger, Youtuber @devsindepth<br /><br />
-    
-    ❤️ #React #PWA #JS #Perf #DJ #tennis
-    
+    small: `👨‍💻 Frontend Engineer @Eventbrite *  Past: @Amazon<br />
+    📸 Speaker, Blogger, Youtuber @devsindepth<br />
+    ❤️ #React #PWA #JS #Perf #DJ #tennis<br /><br />
     ~ Love to ship products! 🚀`,
-    large: ""
+    intro:
+        "Jorge is a fan of musicals, software engineer and entrepreneur born in Spain. He currently is a Software Engineer at Eventbrite and host at <a href='/videos/category/developersindepth'>DevsInDepth</a>. Jorge loves web dev, PWAs, and coaching junior software engineers."
 }
 
 export const breakpoints = {
@@ -64,6 +63,10 @@ const config = {
                 creator: "@jgferreiro",
                 username: "@jgferreiro",
                 url: "https://twitter.com/JGFerreiro"
+            },
+            instagram: {
+                username: "@jgferreiro",
+                url: "https://www.instagram.com/jgferreiro/"
             },
             linkedin: {
                 username: "@jgferreiro",
@@ -350,6 +353,9 @@ export const sharedStyles = {
     `,
     rounded: css`
         border-radius: 2px;
+    `,
+    circle: css`
+        border-radius: 100%;
     `,
     row: css`
         display: flex;

@@ -17,7 +17,9 @@ import config, {
     spacing7,
     spacing4,
     spacing5,
-    spacing3
+    spacing3,
+    bios,
+    mediumUp
 } from "../../components/config"
 
 import { Post, Config, PostLayoutType } from "../../types/Post"
@@ -37,7 +39,8 @@ import {
     FaFacebook,
     FaLink,
     FaTag,
-    FaTags
+    FaTags,
+    FaInstagram
 } from "react-icons/fa"
 import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
 import { PostModuleTypes } from "../../types/Post"
@@ -165,7 +168,7 @@ function PostHeader(props: { post: Post }) {
                     {props.post.title}
                 </h1>
 
-                <PostAuthor
+                <PostHeaderInfo
                     post={props.post}
                     avatarUrl="/images/about/jorge_ferreiro_software_engineer_entrepreneur.jpg"
                     name="Jorge Ferreiro"
@@ -177,7 +180,7 @@ function PostHeader(props: { post: Post }) {
     )
 }
 
-function PostAuthor(props: {
+function PostHeaderInfo(props: {
     post: Post
     avatarUrl: string
     name: string
@@ -384,9 +387,13 @@ function PostQuote({ author, value, layout, post }: PostSummaryProps) {
             background-image: url("/images/blog/quote_arrow.png");
             background-size: cover;
             height: 40px;
-            margin-left: ${spacing4};
+
             opacity: 0.8;
             width: 90px;
+
+            ${mediumUp} {
+                margin-left: 19%;
+            }
         `,
         author: css`
             text-align: center;
@@ -973,8 +980,14 @@ function PostTags(props: { post: Post }) {
             border: 1px solid #e2e2e2;
             border-radius: 4px;
             color: #d83901;
+            display: inline-flex;
             padding: ${spacing3} ${spacing4};
             text-transform: capitalize;
+            margin-bottom: ${spacing4};
+
+            &:hover {
+                background: #fbfafa;
+            }
         `
     }
     const tags = [
@@ -996,8 +1009,12 @@ function PostTags(props: { post: Post }) {
                 <div
                     className={cx(
                         sharedStyles.col_auto,
+                        sharedStyles.marginLeft(3),
                         sharedStyles.marginRight(5)
                     )}
+                    style={{
+                        marginTop: "10px"
+                    }}
                 >
                     <FaTags />
                 </div>
@@ -1017,6 +1034,122 @@ function PostTags(props: { post: Post }) {
                             </Link>
                         )
                     })}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function PostAuthor(props: {}) {
+    const authorStyles = {
+        bio: css`
+            line-height: 20px;
+
+            a {
+                font-weight: 600;
+                color: #000;
+            }
+        `,
+        social: css`
+            margin: 0;
+            margin-top: ${spacing4};
+        `,
+        socialItem: css`
+            margin: ${spacing3} 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        `,
+        socialItemLink: css`
+            color: #000;
+        `,
+        socialIcon: css`
+            margin-right: ${spacing4};
+        `,
+        socialText: css``
+    }
+
+    return (
+        <div
+            className={getContainerClassname({ layout: PostLayoutType.inline })}
+        >
+            <div
+                className={cx(
+                    sharedStyles.flex,
+                    sharedStyles.marginHorizontal(8)
+                )}
+            >
+                <div
+                    className={cx(
+                        sharedStyles.col_auto,
+                        sharedStyles.marginRight(6)
+                    )}
+                >
+                    <img
+                        width="100px"
+                        className={sharedStyles.circle}
+                        src="/images/about/jorge_ferreiro_software_engineer_entrepreneur.jpg"
+                    />
+                </div>
+                <div className={sharedStyles.col}>
+                    <h3>Jorge Ferreiro</h3>
+
+                    <p
+                        className={cx(
+                            sharedStyles.marginTop(5),
+                            sharedStyles.marginBottom(5),
+                            authorStyles.bio
+                        )}
+                        dangerouslySetInnerHTML={{ __html: bios.intro }}
+                    />
+
+                    <ul className={authorStyles.social}>
+                        <li className={authorStyles.socialItem}>
+                            <a
+                                className={authorStyles.socialItemLink}
+                                href={config.meta.social.twitter.url}
+                                target="_blank"
+                            >
+                                <span className={authorStyles.socialIcon}>
+                                    <FaTwitter />
+                                </span>
+                                <span className={authorStyles.socialText}>
+                                    Twitter @jgferreiro
+                                </span>
+                            </a>
+                        </li>
+
+                        <li className={authorStyles.socialItem}>
+                            <a
+                                className={authorStyles.socialItemLink}
+                                href={config.meta.social.instagram.url}
+                                target="_blank"
+                            >
+                                <span className={authorStyles.socialIcon}>
+                                    <FaInstagram />
+                                </span>
+                                <span className={authorStyles.socialText}>
+                                    Instagram @jgferreiro
+                                </span>
+                            </a>
+                        </li>
+
+                        <li className={authorStyles.socialItem}>
+                            <a
+                                className={authorStyles.socialItemLink}
+                                href={config.meta.social.linkedin.url}
+                                target="_blank"
+                            >
+                                <span className={authorStyles.socialIcon}>
+                                    <FaLinkedin />
+                                </span>
+                                <span className={authorStyles.socialText}>
+                                    Linkedin @jgferreiro
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1069,58 +1202,63 @@ function PostDetail(props: Props) {
                 ) : (
                     <ReactMarkdown source={props.post.body} />
                 )}
-
-                <div
-                    className={cx(
-                        getContainerClassname({
-                            layout: PostLayoutType.inline
-                        }),
-                        sharedStyles.separator,
-                        sharedStyles.marginTop(7),
-                        sharedStyles.marginBottom(7)
-                    )}
-                />
-
-                <PostTags post={props.post} />
-
-                <div
-                    className={cx(
-                        getContainerClassname({
-                            layout: PostLayoutType.inline
-                        }),
-                        sharedStyles.separator,
-                        sharedStyles.marginTop(7),
-                        sharedStyles.marginBottom(7)
-                    )}
-                />
-
-                <p>TODO: Put the links for sharing the post</p>
-
-                <p>
-                    <img src="/images/blog/signup.png" />
-                </p>
-
-                <div style={{ textAlign: "center" }}>
-                    Post author
-                    <figure>
-                        <img src="/images/blog/wrapup.png" />
-                        <figcaption>Jorge Ferreiro</figcaption>
-                    </figure>
-                </div>
-                <div style={{ textAlign: "center" }}>
-                    Post author
-                    <figure>
-                        <img src="/images/blog/credits_2.png" />
-                        <figcaption>Jorge Ferreiro</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/images/blog/credits.png" />
-                        <figcaption>Jorge Ferreiro</figcaption>
-                    </figure>
-                </div>
-
-                <p>TODO: Put related posts...</p>
             </article>
+
+            <p>POST SHARE</p>
+
+            <div
+                className={cx(
+                    getContainerClassname({
+                        layout: PostLayoutType.inline
+                    }),
+                    sharedStyles.separator,
+                    sharedStyles.marginTop(7),
+                    sharedStyles.marginBottom(7)
+                )}
+            />
+
+            <PostTags post={props.post} />
+
+            <div
+                className={cx(
+                    getContainerClassname({
+                        layout: PostLayoutType.inline
+                    }),
+                    sharedStyles.separator,
+                    sharedStyles.marginTop(5),
+                    sharedStyles.marginBottom(8)
+                )}
+            />
+
+            <PostAuthor />
+
+            <div
+                className={cx(
+                    getContainerClassname({
+                        layout: PostLayoutType.inline
+                    }),
+                    sharedStyles.separator,
+                    sharedStyles.marginTop(8),
+                    sharedStyles.marginBottom(8)
+                )}
+            />
+
+            <p style={{ textAlign: "center" }}>
+                <img src="/images/blog/signup.png" />
+            </p>
+
+            <div
+                className={cx(
+                    getContainerClassname({
+                        layout: PostLayoutType.inline
+                    }),
+                    sharedStyles.separator,
+                    sharedStyles.marginTop(5),
+                    sharedStyles.marginBottom(7)
+                )}
+            />
+
+            <p>TODO: Put related posts...</p>
         </LayoutFullwidth>
     )
 }

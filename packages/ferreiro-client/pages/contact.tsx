@@ -19,12 +19,17 @@ export default function Contact() {
                                 <div className={sharedStyles.col_auto}>
                                     <img
                                         width="100px"
+                                        className={sharedStyles.circle}
                                         src="/images/about/jorge_ferreiro_software_engineer_entrepreneur.jpg"
                                     />
                                 </div>
                                 <div className={sharedStyles.col}>
                                     <h3>Jorge Ferreiro</h3>
-                                    <p>{bios.small}</p>
+                                    <p
+                                        dangerouslySetInnerHTML={{
+                                            __html: bios.small
+                                        }}
+                                    />
                                 </div>
                             </div>
 
