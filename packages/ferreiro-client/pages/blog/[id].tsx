@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Head from "next/head"
 import isEmpty from "lodash/isEmpty"
 import ReactMarkdown from "react-markdown"
@@ -14,6 +14,7 @@ import {
     FaTags,
     FaInstagram
 } from "react-icons/fa"
+import { Waypoint } from "react-waypoint"
 
 import {
     Layout,
@@ -21,14 +22,20 @@ import {
     LayoutContainer
 } from "../../components/Layout"
 
-import { FetchSerieResponse, fetchSerieApi } from "../../api/blog"
+import {
+    FetchSerieResponse,
+    fetchSerieApi,
+    fetchPostApi,
+    fetchRelatedPostsApi
+} from "../../api/blog"
 import { postSubscribeApi } from "../../api/contact"
 import {
     getUrlWithTracking,
     getPostQualifiedUrl,
     getTwitterShareableUrl,
     getLinkedinShareableUrl,
-    getFacebookShareableUrl
+    getFacebookShareableUrl,
+    getPostUrlWithTracking
 } from "../../utils/get-url"
 
 import { Post, Config, PostLayoutType } from "../../types/Post"
@@ -51,6 +58,8 @@ import framerPostConfig from "./__fixtures__/framer.js"
 import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
 import promotionConfig from "./__fixtures__/promotion-config"
 import hackathonPitchConfig from "./__fixtures__/hackathon-pitch"
+import { isError } from "util"
+import { Sharing } from "../../components/Sharing"
 
 function handleShareTwitterClick(props: {
     post: Post
@@ -1371,20 +1380,147 @@ function PostSignup() {
     )
 }
 
-function PostRelated() {
-    const relatedStyles = {
-        wrapper: css`
-            background: #f4f4f4;
-            padding: ${spacing5};
+function PostRelatedItem(props: { post: Post }) {
+    const itemStyles = {
+        img: css`
+            object-fit: cover;
+            object-position: center;
+        `,
+        link: css`
+            color: #4a4a4a;
+            text-decoration: none;
         `
     }
 
     return (
-        <div className={relatedStyles.wrapper}>
-            <LayoutContainer>
-                <h3>More content from Jorge Ferreiro</h3>
-            </LayoutContainer>
-        </div>
+        <>
+            <Link
+                href="/blog/[id]"
+                as={getPostUrlWithTracking(props.post.permalink, {
+                    utm_source: "post-related-content",
+                    utm_medium: props.post.permalink
+                })}
+            >
+                <a title={props.post.title} className={itemStyles.link}>
+                    <div
+                        className={cx(
+                            sharedStyles.embedResponsive,
+                            sharedStyles.embedResponsive16by9
+                        )}
+                    >
+                        <img
+                            className={cx(
+                                itemStyles.img,
+                                sharedStyles.embedResponsiveItem
+                            )}
+                            src={props.post.pic}
+                            width="100%"
+                        />
+                    </div>
+
+                    <h3 className={cx(sharedStyles.marginTop(5))}>
+                        {props.post.title}
+                    </h3>
+                </a>
+            </Link>
+
+            <div className={cx(sharedStyles.row, sharedStyles.marginTop(5))}>
+                <div className={sharedStyles.col}></div>
+                <div className={sharedStyles.col_auto}>
+                    <Sharing
+                        mini={false}
+                        permalink={props.post.permalink}
+                        summary={props.post.summary}
+                        title={props.post.title}
+                    />
+                </div>
+            </div>
+        </>
+    )
+}
+
+function PostRelated(props: { permalink: string }) {
+    // TODO: Have a random list of captions, and play with that...
+    const [relatedPosts, setRelatedPosts] = useState([])
+    const [error, setError] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [hasUserScrolled, setHasUserScrolled] = useState(false)
+
+    useEffect(() => {
+        if (!hasUserScrolled) {
+            return
+        }
+
+        setIsLoading(true)
+        fetchRelatedPostsApi({ permalink: props.permalink })
+            .then(response => {
+                setRelatedPosts(response)
+            })
+            .catch(err => {
+                setError(err.message)
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }, [hasUserScrolled, props.permalink])
+
+    const relatedStyles = {
+        wrapper: css`
+            background: #f5f5f5;
+            padding: ${spacing5};
+        `
+    }
+
+    const onEnterUser = () => {
+        setHasUserScrolled(true)
+    }
+
+    return (
+        <Waypoint onEnter={onEnterUser}>
+            <div className={relatedStyles.wrapper}>
+                <LayoutContainer>
+                    <h3 className={sharedStyles.marginBottom(6)}>
+                        More content from Jorge Ferreiro
+                    </h3>
+
+                    {isLoading ? (
+                        <p>Is loading</p>
+                    ) : (
+                        <>
+                            {!isEmpty(error) ? (
+                                <p>There is a huge error...</p>
+                            ) : (
+                                <div
+                                    style={{
+                                        maxWidth: `calc(100% + ${spacing4});`
+                                    }}
+                                    className={cx(
+                                        sharedStyles.row,
+                                        sharedStyles.marginHorizontal(4, true)
+                                    )}
+                                >
+                                    {Object.values(relatedPosts).map(post => {
+                                        return (
+                                            <div className={sharedStyles.col_4}>
+                                                <div
+                                                    className={sharedStyles.marginHorizontal(
+                                                        4
+                                                    )}
+                                                >
+                                                    <PostRelatedItem
+                                                        post={post}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            )}
+                        </>
+                    )}
+                </LayoutContainer>
+            </div>
+        </Waypoint>
     )
 }
 
@@ -1475,7 +1611,7 @@ function PostDetail(props: Props) {
                 )}
             />
 
-            <PostRelated />
+            <PostRelated permalink={props.post.permalink} />
 
             <div
                 className={cx(
@@ -1495,10 +1631,8 @@ function PostDetail(props: Props) {
 
 PostDetail.getInitialProps = async function(context: any): Promise<Props> {
     const permalink = context.query.id
-    const response = await fetch(
-        `http://localhost:4000/api/v1/blog/${permalink}`
-    )
-    const post: Post = await response.json()
+
+    const post = await fetchPostApi({ permalink })
 
     let series: FetchSerieResponse
     if (!isEmpty(post.series)) {

@@ -30,6 +30,7 @@
     "npm-check": "5.9.0"
   },
   "dependencies": {
+    "react-waypoint": "9.0.2",
     "url-lib": "3.0.3",
     "xss-filters": "1.2.7"
   }

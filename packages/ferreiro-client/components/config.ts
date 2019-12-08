@@ -306,8 +306,8 @@ export const sharedStyles = {
         margin-top: ${spacingMapper[size]};
         margin-bottom: ${spacingMapper[size]};
     `,
-    marginHorizontal: (size: number) => css`
-        margin: 0 ${spacingMapper[size]};
+    marginHorizontal: (size: number, isNegative?: boolean) => css`
+        margin: 0 ${isNegative && '-'}${spacingMapper[size]};
     `,
     marginBoth: (size: number) => css`
         margin: ${spacingMapper[size]};

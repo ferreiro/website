@@ -21,7 +21,7 @@ interface ShareButton {
     buttonStyle: string
     Icon: any
     text: string
-    mini: string
+    mini: boolean
     summary: string
     title: string
     url: string
@@ -120,7 +120,7 @@ function SharingPermalink(props: { url: string }) {
 }
 
 function SharingDropdown(props: {
-    mini: string
+    mini: boolean
     permalink: string
     summary: string
     title: string
@@ -136,7 +136,7 @@ function SharingDropdown(props: {
 
             <SharingButtonTwitter
                 buttonStyle={sharedStyles.buttonTwitter}
-                mini={props.mini}
+                mini={false}
                 summary={props.summary}
                 title={props.title}
                 Icon={FaTwitter}
@@ -150,7 +150,7 @@ function SharingDropdown(props: {
 
             <SharingButtonFacebook
                 buttonStyle={sharedStyles.buttonFacebook}
-                mini={props.mini}
+                mini={false}
                 summary={props.summary}
                 title={props.title}
                 Icon={FaFacebook}
@@ -164,7 +164,7 @@ function SharingDropdown(props: {
 
             <SharingButtonLinkedin
                 buttonStyle={sharedStyles.buttonLinkedin}
-                mini={props.mini}
+                mini={false}
                 summary={props.summary}
                 title={props.title}
                 Icon={FaLinkedin}
@@ -195,7 +195,7 @@ function SharingDropdown(props: {
 // TODO: Be able to positionate the dropdown on top of the component
 // or below based on the bottom/top/right/left size
 export function Sharing(props: {
-    mini: string
+    mini: boolean
     permalink: string
     summary: string
     title: string

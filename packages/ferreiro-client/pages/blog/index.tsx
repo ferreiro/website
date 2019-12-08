@@ -120,7 +120,7 @@ function BlogItemHighlight(props: { post: Post }) {
                 </div>
                 <div className={sharedStyles.col_auto}>
                     <Sharing
-                        mini={post.pic}
+                        mini={false}
                         permalink={post.permalink}
                         summary={post.summary}
                         title={post.title}
@@ -237,7 +237,7 @@ export function BlogItem(props: { post: Post }) {
                             )}
                         >
                             <Sharing
-                                mini={post.pic}
+                                mini={false}
                                 permalink={post.permalink}
                                 summary={post.summary}
                                 title={post.title}
@@ -286,26 +286,21 @@ function BlogTopArticles(props: { posts: Post[] }) {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        if (isEmpty(props.posts) && isEmpty(featuredPosts)) {
-            setIsLoading(true)
-            fetchFeaturedPostsApi({ limit: 5 })
-                .then((posts: Post[]) => {
-                    setFeaturedPosts(posts)
-                })
-                .catch(error => {
-                    // TODO: Handle errors properly
-                    console.log(error)
-                })
-                .finally(() => {
-                    setIsLoading(false)
-                })
-        }
-    }, [featuredPosts])
+        setIsLoading(true)
+        fetchFeaturedPostsApi({ limit: 5 })
+            .then((posts: Post[]) => {
+                setFeaturedPosts(posts)
+            })
+            .catch(error => {
+                // TODO: Handle errors properly
+                console.log(error)
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }, [])
 
     const posts = props.posts || featuredPosts || []
-
-    console.log("posts")
-    console.log(posts)
 
     return (
         <div>

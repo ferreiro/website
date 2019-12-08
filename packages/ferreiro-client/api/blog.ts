@@ -4,6 +4,30 @@ import { Post } from "../types/Post"
 import { PaginatedResponse, Pagination } from "../types/PaginatedResponse"
 import { Serie } from "../types/Serie"
 
+export async function fetchPostApi(options: {
+    permalink: string
+}): Promise<Post> {
+    const permalink = options.permalink
+
+    return fetch(`http://localhost:4000/api/v1/blog/${permalink}`)
+        .then(r => r.json())
+        .then((post: Object) => transformPost(post))
+        .catch(error => error)
+}
+
+export async function fetchRelatedPostsApi(options: {
+    permalink: string
+}): Promise<Post[]> {
+    const permalink = options.permalink
+
+    return fetch(`http://localhost:4000/api/v1/blog/${permalink}/related`)
+        .then(r => r.json())
+        .then((response: { relatedPosts: object[] }) => {
+            return transformPosts(response.relatedPosts)
+        })
+        .catch(error => error)
+}
+
 export async function fetchPostsApi(options: {
     page?: number
 }): Promise<PaginatedResponse<Post>> {

@@ -1,10 +1,13 @@
 const express = require("express")
 const router = express.Router()
 
+import validator from "validator"
+
+import blogRepository from "../../repository/blog"
+import seriesRepository from "../../repository/series"
 import { isAuthenticated } from "../../../web/pages/admin/is-authenticated"
-import seriesRepository from "../../../api/repository/series"
-import blogRepository from "../../../api/repository/blog"
 import { MAX_PAGE_POSTS } from "../../../web/pages/blog/constants"
+import { generateRelatedPosts } from "./generate-related-posts"
 
 /**
  * @api get /blog/ - Retrieves the list of series (published and unpublished)
@@ -44,8 +47,10 @@ router.get("/featured", function(req, res) {
 })
 
 router.get("/:permalink", function(req, res) {
-    // TODO: sanitize permalink
-    const permalink = req.params.permalink
+    const permalink = validator.blacklist(
+        req.params.permalink,
+        "<|>|&|'|\"|'|,|/|"
+    )
 
     return blogRepository
         .findByPermalinkIncrementViews({
@@ -53,6 +58,25 @@ router.get("/:permalink", function(req, res) {
         })
         .then(paginatedResponse => res.json(paginatedResponse))
         .catch(err => res.json(err))
+})
+
+// TODO: Protect this endpoint for bad users...
+router.get("/:permalink/related", function(req, res) {
+    const permalink = validator.blacklist(
+        req.params.permalink,
+        "<|>|&|'|\"|'|,|/|"
+    )
+
+    return generateRelatedPosts({
+        permalinkToSkip: permalink,
+        limit: 3
+    })
+        .then(relatedPosts =>
+            res.json({
+                relatedPosts: relatedPosts
+            })
+        )
+        .catch(error => res.json({ error }))
 })
 
 /**
