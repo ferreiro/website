@@ -87,11 +87,7 @@ function LayoutHead(props: {
 }
 
 export function LayoutContainer(props: { children: object }) {
-    return (
-        <main className={styles.containerWrapper}>
-            <div className={styles.containerContent}>{props.children}</div>
-        </main>
-    )
+    return <div className={styles.containerContent}>{props.children}</div>
 }
 
 export function LayoutFooter() {
@@ -119,7 +115,9 @@ export function Layout(props: {
                 description={props.description}
             />
             <LayoutNavbar />
-            <LayoutContainer>{props.children}</LayoutContainer>
+            <main className={styles.containerWrapper}>
+                <LayoutContainer>{props.children}</LayoutContainer>
+            </main>
             <LayoutFooter />
         </div>
     )

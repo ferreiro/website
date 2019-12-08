@@ -164,6 +164,30 @@ function PostMeta(props: { post: Post }) {
     )
 }
 
+function PostStickyNav() {
+    const stickyStyles = {
+        wrapper: css`
+            background: #fff;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.31);
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            z-index: 12;
+        `
+    }
+
+    return (
+        <div className={stickyStyles.wrapper}>
+            <LayoutContainer>
+                <p>Don't miss out!</p>
+                <input placeholder="subscribe" />
+                <p>Share!</p>
+                <FaTwitter />
+            </LayoutContainer>
+        </div>
+    )
+}
+
 function PostHeader(props: { post: Post }) {
     return (
         <div
@@ -1289,14 +1313,6 @@ function PostSignup() {
                 <p>Sending your message...</p>
             ) : (
                 <>
-                    {isError && (
-                        <p>
-                            😨 Opps... I couldn't submit your idea. Try again or
-                            send me an email jorge@ferreiro.me
-                            <button onClick={submitForm}>Try again</button>
-                        </p>
-                    )}
-
                     {isSuccess ? (
                         <div
                             className={cx(
@@ -1362,6 +1378,40 @@ function PostSignup() {
                                     {randomCopies[randomCopyIndex]}
                                 </h2>
                             </div>
+
+                            {isError && (
+                                <div
+                                    className={cx(
+                                        sharedStyles.row,
+                                        sharedStyles.rowFull,
+                                        sharedStyles.justifyContentCenter,
+                                        sharedStyles.marginBottom(6)
+                                    )}
+                                >
+                                    <div
+                                        className={cx(
+                                            sharedStyles.notification,
+                                            sharedStyles.notificationError,
+                                            sharedStyles.rounded,
+                                            sharedStyles.alignItemsCenter
+                                        )}
+                                        style={{ maxWidth: "305px" }}
+                                    >
+                                        <p
+                                            style={{
+                                                padding: spacing5
+                                            }}
+                                        >
+                                            😨 Opps... We couldn't add you to
+                                            the list. Try again or send me an
+                                            email jorge@ferreiro.me
+                                        </p>
+                                        <button onClick={submitForm}>
+                                            Try again
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
 
                             <div
                                 className={cx(
@@ -1515,7 +1565,6 @@ function PostRelated(props: { permalink: string }) {
     const relatedStyles = {
         wrapper: css`
             background: #f5f5f5;
-            padding: ${spacing5};
         `
     }
 
@@ -1525,7 +1574,12 @@ function PostRelated(props: { permalink: string }) {
 
     return (
         <Waypoint onEnter={onEnterUser}>
-            <div className={relatedStyles.wrapper}>
+            <div
+                className={cx(
+                    relatedStyles.wrapper,
+                    sharedStyles.paddingVertical(8)
+                )}
+            >
                 <LayoutContainer>
                     <h3 className={sharedStyles.marginBottom(6)}>
                         More content from Jorge Ferreiro
@@ -1599,12 +1653,7 @@ function PostDetail(props: Props) {
         <LayoutFullwidth title="Videos of">
             <PostMeta post={props.post} />
 
-            <div style={{ position: "fixed", bottom: 0 }}>
-                <p>Don't miss out!</p>
-                <input placeholder="subscribe" />
-                <p>Share!</p>
-                <FaTwitter />
-            </div>
+            <PostStickyNav />
 
             <article>
                 <PostHeader post={props.post} />

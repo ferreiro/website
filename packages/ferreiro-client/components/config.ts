@@ -307,7 +307,15 @@ export const sharedStyles = {
         margin-bottom: ${spacingMapper[size]};
     `,
     marginHorizontal: (size: number, isNegative?: boolean) => css`
-        margin: 0 ${isNegative && '-'}${spacingMapper[size]};
+        ${isNegative
+            ? `margin: 0 -${spacingMapper[size]};`
+            : `margin: 0 ${spacingMapper[size]};`}
+    `,
+
+    notification: css``,
+    notificationError: css`
+        background: red;
+        color: #fff;
     `,
     marginBoth: (size: number) => css`
         margin: ${spacingMapper[size]};
@@ -347,6 +355,12 @@ export const sharedStyles = {
     paddingCustom: (sizeVertical: number, sizeHorizontal) => css`
         padding: ${spacingMapper[sizeVertical]} ${spacingMapper[sizeHorizontal]};
     `,
+    circle: css`
+        border-radius: 100%;
+    `,
+    rounded: css`
+        border-radius: 2px;
+    `,
     shadow: css`
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     `,
@@ -355,12 +369,6 @@ export const sharedStyles = {
     `,
     shadowLg: css`
         box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
-    `,
-    rounded: css`
-        border-radius: 2px;
-    `,
-    circle: css`
-        border-radius: 100%;
     `,
     row: css`
         display: flex;
