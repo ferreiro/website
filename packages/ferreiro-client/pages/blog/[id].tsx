@@ -59,7 +59,6 @@ import framerPostConfig from "./__fixtures__/framer.js"
 import codemotionWebinarConfig from "./__fixtures__/codemotion-webinar.js"
 import promotionConfig from "./__fixtures__/promotion-config"
 import hackathonPitchConfig from "./__fixtures__/hackathon-pitch"
-import { isError } from "util"
 import { Sharing } from "../../components/Sharing"
 import { FollowSeries } from "../series/[id]"
 
@@ -158,10 +157,11 @@ function PostMeta(props: { post: Post }) {
                 href="/static/images/favicon.ico"
             />
             <link rel="apple-touch-icon" href="/static/images/favicon.ico" />
+
             <link
-                href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap"
+                href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap"
                 rel="stylesheet"
-            ></link>
+            />
         </Head>
     )
 }
@@ -634,7 +634,7 @@ function PostSeries(props: {
                                     className={cx(sharedStyles.col)}
                                     style={{
                                         backgroundColor: "#fdfdfd",
-                                        opacity: '0.7'
+                                        opacity: "0.7"
                                     }}
                                 >
                                     {post.title} (currently reading)
@@ -2182,7 +2182,7 @@ const postStyle = {
         ul li,
         ol li,
         a {
-            font-family: "Source Serif Pro", serif;
+            font-family: Source Serif Pro, serif;
 
             color: rgba(0, 0, 0, 0.8);
             --x-height-multiplier: 0.35;
