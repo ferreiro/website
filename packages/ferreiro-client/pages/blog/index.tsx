@@ -278,9 +278,13 @@ function BlogList(props: { posts: Post[] }) {
         )
     }
 
+    const [postHighlight, ...posts] = props.posts
+
     return (
         <div>
-            {props.posts.map((post: Post) => (
+            <BlogItemHighlight post={postHighlight} />
+
+            {posts.map((post: Post) => (
                 <BlogItem key={post.id} post={post} />
             ))}
         </div>
@@ -308,6 +312,8 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
     const posts = props.posts || featuredPosts || []
 
+    return null
+
     return (
         <div>
             <h2
@@ -321,8 +327,6 @@ function BlogTopArticles(props: { posts: Post[] }) {
 
             {isLoading ? (
                 <p>Loading Popular articles...</p>
-            ) : isEmpty(posts) ? (
-                <div>No posts available...</div>
             ) : (
                 <ul
                     style={{
@@ -330,38 +334,29 @@ function BlogTopArticles(props: { posts: Post[] }) {
                         listStyle: "disc"
                     }}
                 >
-                    {isEmpty(posts) ? (
-                        <div>No feature post available</div>
-                    ) : (
-                        <>
-                            {posts.map((post: Post) => (
-                                <li
-                                    key={post.permalink}
-                                    className={cx(
-                                        sharedStyles.text,
-                                        sharedStyles.marginBottom(5)
-                                    )}
-                                >
-                                    <Link
-                                        href={getPostUrlWithTracking(
-                                            post.permalink,
-                                            {
-                                                utm_source: "blog-top-articles",
-                                                utm_medium: "ferreiro.me"
-                                            }
-                                        )}
-                                    >
-                                        <a title={post.title}>
-                                            <h3 className={sharedStyles.text}>
-                                                {post.title}
-                                            </h3>
-                                            <p>{post.published}</p>
-                                        </a>
-                                    </Link>
-                                </li>
-                            ))}
-                        </>
-                    )}
+                    {posts.map((post: Post) => (
+                        <li
+                            key={post.permalink}
+                            className={cx(
+                                sharedStyles.text,
+                                sharedStyles.marginBottom(5)
+                            )}
+                        >
+                            <Link
+                                href={getPostUrlWithTracking(post.permalink, {
+                                    utm_source: "blog-top-articles",
+                                    utm_medium: "ferreiro.me"
+                                })}
+                            >
+                                <a title={post.title}>
+                                    <h3 className={sharedStyles.text}>
+                                        {post.title}
+                                    </h3>
+                                    <p>{post.published}</p>
+                                </a>
+                            </Link>
+                        </li>
+                    ))}
                 </ul>
             )}
         </div>
@@ -843,8 +838,6 @@ export function Blog(props: Props) {
         }
     ]
 
-    const [postHighlight, ...filteredPosts] = props.posts
-
     return (
         <Layout title="Blog">
             <h1
@@ -858,13 +851,10 @@ export function Blog(props: Props) {
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>
                     <div className={sharedStyles.col_lg_8}>
-                        {isEmpty(props.posts) ? (
-                            <p>No posts found</p>
+                        {!isEmpty(props.posts) ? (
+                            <BlogList posts={props.posts} />
                         ) : (
-                            <>
-                                <BlogItemHighlight post={postHighlight} />
-                                <BlogList posts={filteredPosts} />
-                            </>
+                            <p>No posts found</p>
                         )}
 
                         <div
