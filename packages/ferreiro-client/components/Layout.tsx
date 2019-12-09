@@ -1,13 +1,8 @@
 import React from "react"
 import Head from "next/head"
-import { injectGlobal, css } from "emotion"
+import { injectGlobal, css, cx } from "emotion"
 
-import config, {
-    breakpoints,
-    spacing8,
-    containerMaxWidths,
-    sharedStyles
-} from "./config"
+import config, { spacing8, containerMaxWidths, sharedStyles } from "./config"
 
 import { LayoutNavbar } from "./LayoutNavbar"
 
@@ -92,7 +87,9 @@ export function LayoutContainer(props: { children: object }) {
 
 export function LayoutFooter() {
     return (
-        <div className={styles.footerWrapper}>
+        <div
+            className={cx(styles.footerWrapper, sharedStyles.marginBottom(10))}
+        >
             <div className={styles.footerContent}>
                 <p>Super anuncio para subscribirse a la newsletter!</p>
                 Amazing footer :)

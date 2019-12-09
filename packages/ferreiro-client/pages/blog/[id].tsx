@@ -164,7 +164,7 @@ function PostMeta(props: { post: Post }) {
     )
 }
 
-function PostStickyNav() {
+function PostStickyNav({ post }: { post: Post }) {
     const stickyStyles = {
         wrapper: css`
             background: #fff;
@@ -173,16 +173,136 @@ function PostStickyNav() {
             position: fixed;
             width: 100%;
             z-index: 12;
+        `,
+        button: css`
+            border: 0;
+            border-left: 1px solid #f4f4f4;
+            border-right: 1px solid #f4f4f4;
+            outline: 0;
+
+            &:hover {
+                background: #f4f4f4;
+            }
         `
     }
+
+    const socialLinks = [
+        {
+            className: sharedStyles.iconTwitter,
+            icon: FaTwitter,
+            onClick: () => {
+                handleShareTwitterClick({
+                    post,
+                    trackingOptions: {
+                        utm_source: "sharing-sticky-twitter"
+                    }
+                })
+            }
+        },
+        {
+            className: sharedStyles.iconFacebook,
+            icon: FaFacebook,
+            onClick: () => {
+                handleShareFacebookClick({
+                    post,
+                    trackingOptions: {
+                        utm_source: "sharing-sticky-facebook"
+                    }
+                })
+            }
+        },
+        {
+            className: sharedStyles.iconLinkedin,
+            icon: FaLinkedin,
+            onClick: () => {
+                handleShareLinkedinClick({
+                    post,
+                    trackingOptions: {
+                        utm_source: "sharing-sticky-linkedin"
+                    }
+                })
+            }
+        }
+    ]
 
     return (
         <div className={stickyStyles.wrapper}>
             <LayoutContainer>
-                <p>Don't miss out!</p>
-                <input placeholder="subscribe" />
-                <p>Share!</p>
-                <FaTwitter />
+                <div className={cx(sharedStyles.row)}>
+                    <div
+                        className={cx(
+                            sharedStyles.col,
+                            sharedStyles.paddingVertical(4)
+                        )}
+                    >
+                        <p
+                            className={cx(
+                                sharedStyles.displayInlineFlex,
+                                sharedStyles.marginRight(4)
+                            )}
+                        >
+                            Don't miss out!
+                        </p>
+                        <input
+                            className={cx(
+                                sharedStyles.displayInlineFlex,
+                                sharedStyles.inputFieldSmall,
+                                sharedStyles.marginRight(4)
+                            )}
+                            type="text"
+                            placeholder="Name"
+                        />
+                        <input
+                            className={cx(
+                                sharedStyles.displayInlineFlex,
+                                sharedStyles.inputFieldSmall,
+                                sharedStyles.marginRight(4)
+                            )}
+                            type="text"
+                            placeholder="Email"
+                        />
+                        <button
+                            className={cx(
+                                sharedStyles.displayInlineFlex,
+                                sharedStyles.inputFieldSmall
+                            )}
+                        >
+                            Join!
+                        </button>
+                    </div>
+                    <div
+                        className={sharedStyles.col_5}
+                        style={{ textAlign: "right" }}
+                    >
+                        <p
+                            className={cx(
+                                sharedStyles.displayInlineFlex,
+                                sharedStyles.marginRight(5)
+                            )}
+                        >
+                            Share
+                        </p>
+
+                        {socialLinks.map(
+                            ({ icon: Icon, onClick, className }) => {
+                                return (
+                                    <button
+                                        className={cx(
+                                            stickyStyles.button,
+                                            sharedStyles.displayInlineFlex,
+                                            sharedStyles.paddingHorizontal(6),
+                                            className
+                                        )}
+                                        style={{ height: "60px" }}
+                                        onClick={onClick}
+                                    >
+                                        <Icon />
+                                    </button>
+                                )
+                            }
+                        )}
+                    </div>
+                </div>
             </LayoutContainer>
         </div>
     )
@@ -1653,7 +1773,7 @@ function PostDetail(props: Props) {
         <LayoutFullwidth title="Videos of">
             <PostMeta post={props.post} />
 
-            <PostStickyNav />
+            <PostStickyNav post={props.post} />
 
             <article>
                 <PostHeader post={props.post} />

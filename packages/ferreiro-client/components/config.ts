@@ -100,7 +100,7 @@ const config = {
         },
         facebook: {
             normal: "#2867b2",
-            active: "#2867b2"
+            active: "#1b5294"
         },
         linkedin: {
             normal: "#3b5998",
@@ -281,6 +281,10 @@ export const sharedStyles = {
         border: 2px solid ${config.colors.secondary};
         padding: ${spacing4} ${spacing5};
     `,
+    inputFieldSmall: css`
+        border: 1px solid ${config.colors.secondary};
+        padding: ${spacing3} ${spacing4};
+    `,
     textarea: css`
         width: calc(100% - 2 * ${spacing3});
         padding: ${spacing3};
@@ -347,7 +351,18 @@ export const sharedStyles = {
         }
     `,
     paddingHorizontal: (size: number) => css`
-        padding: 0 ${spacingMapper[size]};
+        padding-left: ${spacingMapper[size]};
+        padding-right: ${spacingMapper[size]};
+    `,
+    paddingHorizontal_md: (size: number) => css`
+        ${mediumUp} {
+            ${sharedStyles.paddingHorizontal(size)}
+        }
+    `,
+    paddingHorizontal_lg: (size: number) => css`
+        ${largeUp} {
+            ${sharedStyles.paddingHorizontal(size)}
+        }
     `,
     paddingBoth: (size: number) => css`
         padding: ${spacingMapper[size]};
@@ -411,6 +426,10 @@ export const sharedStyles = {
     col_6: css`
         flex: 0 0 50%;
         max-width: 50%;
+    `,
+    col_5: css`
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%;
     `,
     col_4: css`
         flex: 0 0 33.333333%;
