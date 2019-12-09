@@ -30,7 +30,7 @@ import config, {
     spacing5
 } from "../../components/config"
 import {
-    getSeriesUrl,
+    getSeriesUrlWithTracking,
     getSeriesUrlWithSubscription,
     getUrlWithTracking,
     getPostUrlWithTracking
@@ -212,7 +212,13 @@ export function BlogItem(props: { post: Post }) {
                                 {post.series && (
                                     <Link
                                         href="/series/[id]"
-                                        as={getSeriesUrl(post.series.permalink)}
+                                        as={getSeriesUrlWithTracking(
+                                            post.series.permalink,
+                                            {
+                                                utm_source:
+                                                    "blog-sidebar-series"
+                                            }
+                                        )}
                                     >
                                         <a
                                             className={cx(
@@ -852,8 +858,14 @@ export function Blog(props: Props) {
             <div className={sharedStyles.marginTop(8)}>
                 <div className={sharedStyles.row}>
                     <div className={sharedStyles.col_lg_8}>
-                        <BlogItemHighlight post={postHighlight} />
-                        <BlogList posts={filteredPosts} />
+                        {isEmpty(props.posts) ? (
+                            <p>No posts found</p>
+                        ) : (
+                            <>
+                                <BlogItemHighlight post={postHighlight} />
+                                <BlogList posts={filteredPosts} />
+                            </>
+                        )}
 
                         <div
                             className={cx(

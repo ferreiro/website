@@ -4,6 +4,7 @@ const config = {
     order: [
         "122",
         "233",
+        "234234234",
         "1231231",
         "4234237",
         "2342341",
@@ -19,6 +20,13 @@ const config = {
                 layout: PostLayoutType.inline,
                 src:
                     "https://ferreirov3.s3.eu-west-2.amazonaws.com/%5Blow%5D%20Codemotion%20Promo%20youtube.jpg"
+            }
+        },
+        "234234234": {
+            type: PostModuleTypes.series,
+            props: {
+                value:
+                    "This article is the 4th part of the series called The Definitive Guide for Hackathon – in these chapters you can learn how to get the most out of your next hackathon.\r\n\r\nIf you are enjoying this series so far, I’d love to hear your thoughts! So [tweet me your own tips](https://twitter.com/JGFerreiro) or [send me your doubts](https://ferreiro.me/contact?utm_source=ferreiro.me-hackathon-part-1) 🙌\r\n\r\nIn the last article of the series.\r\n\r\n<div>\r\n<h4>All the articles in this series:</h4>\r\n<ul>\r\n<li><a href='https://www.ferreiro.me/blog/part-1-the-definitive-guide-to-making-the-most-of-college-tech-hackathons?utm_source=ferreiro.me-hackathon-part-4'>Part 1: Mindset and Team Hunting.</a></li>\r\n<li><a href='https://www.ferreiro.me/blog/part-2-wow-factor-idea-and-dev-environment-the?utm_source=ferreiro.me-hackathon-part-4'>Part 2: Wow-factor idea and dev environment.</a></li>\r\n<li><a href='https://www.ferreiro.me/blog/part-3-tips-make-a-successful-hackathon-project?utm_source=ferreiro.me-hackathon-part-4'>Part 3: The first hour, MVCH (minimum viable crap hack) and the social hackathon.</a></li>\r\n<li>Part 4: Pitch, Judging and After the Hackathon (this article)</li>\r\n</ul>\r\n</div>"
             }
         },
         "233": {

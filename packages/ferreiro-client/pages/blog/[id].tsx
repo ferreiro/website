@@ -35,7 +35,8 @@ import {
     getTwitterShareableUrl,
     getLinkedinShareableUrl,
     getFacebookShareableUrl,
-    getPostUrlWithTracking
+    getPostUrlWithTracking,
+    getSeriesUrlWithTracking
 } from "../../utils/get-url"
 
 import { Post, Config, PostLayoutType } from "../../types/Post"
@@ -60,6 +61,7 @@ import promotionConfig from "./__fixtures__/promotion-config"
 import hackathonPitchConfig from "./__fixtures__/hackathon-pitch"
 import { isError } from "util"
 import { Sharing } from "../../components/Sharing"
+import { FollowSeries } from "../series/[id]"
 
 function handleShareTwitterClick(props: {
     post: Post
@@ -522,13 +524,127 @@ interface PostSeriesProps {
     layout: PostLayoutType
 }
 function PostSeries(props: PostSeriesProps) {
-    const series = props.series
-    const layout = props.layout || PostLayoutType.inline
+    const seriesStyle = {
+        header: css`
+            a {
+                color: #505050;
+                text-decoration: none;
+            }
+        `,
+        wrapper: css`
+            border: 1px solid #f4f4f4;
+        `,
+        list: css`
+            border-top: 1px solid #f4f4f4;
+            margin: 0;
+            padding: 0;
+        `,
+        listItemIndex: css`
+            width: 9px !important;
+        `,
+        listItem: css`
+            color: #000;
+            list-style: none;
+            border-bottom: 1px solid #f4f4f4;
+
+            span {
+                padding: ${spacing5} 0 ${spacing5} ${spacing6};
+            }
+
+            a {
+                color: #505050;
+                display: flex;
+                padding: ${spacing5} ${spacing6};
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+        `
+    }
+
+    if (isEmpty(props.series)) {
+        return null
+    }
+
+    const { posts, serie } = props.series
 
     return (
-        <div className={getContainerClassname({ layout })}>
-            Post series...
-            {JSON.stringify(series, null, 2)}
+        <div
+            className={getContainerClassname({
+                layout: props.layout || PostLayoutType.inline
+            })}
+        >
+            <div className={seriesStyle.wrapper}>
+                <div
+                    className={cx(
+                        sharedStyles.row,
+                        sharedStyles.alignItemsCenter,
+                        sharedStyles.justifyContentCenter,
+                        sharedStyles.marginHorizontal(4),
+                        sharedStyles.marginVertical(4)
+                    )}
+                >
+                    <div className={sharedStyles.col}>
+                        <h3
+                            className={cx(
+                                sharedStyles.marginLeft(4),
+                                seriesStyle.header
+                            )}
+                        >
+                            <Link
+                                href={getSeriesUrlWithTracking(
+                                    serie.permalink,
+                                    {
+                                        utm_source: "blog-post-series-module"
+                                    }
+                                )}
+                            >
+                                <a title={serie.title}>{serie.title} series</a>
+                            </Link>
+                        </h3>
+                    </div>
+
+                    <div className={sharedStyles.col_auto}>
+                        <FollowSeries
+                            serie={serie}
+                            buttonText="Follow series"
+                        />
+                    </div>
+                </div>
+
+                <ul className={seriesStyle.list}>
+                    {posts.map((post: Post, index: number) => (
+                        <li
+                            className={cx(
+                                seriesStyle.listItem,
+                                sharedStyles.row
+                            )}
+                        >
+                            <span
+                                className={cx(
+                                    seriesStyle.listItemIndex,
+                                    sharedStyles.col_auto
+                                )}
+                            >
+                                {index + 1}.
+                            </span>
+                            <Link
+                                href={getPostUrlWithTracking(post.permalink, {
+                                    utm_source: "blog-post-series-module"
+                                })}
+                            >
+                                <a
+                                    title={post.title}
+                                    className={cx(sharedStyles.col)}
+                                >
+                                    {post.title}
+                                </a>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     )
 }
@@ -1108,7 +1224,6 @@ function PostProvider(props: {
     post: Post
     series: FetchSerieResponse
 }) {
-    const isEditing: boolean = props.isEditing
     const config: Config = props.post.config
 
     const order = config.order
@@ -1977,9 +2092,11 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
 
     let series: FetchSerieResponse
     if (!isEmpty(post.series)) {
+        console.log("post.series", post.series)
         series = await fetchSerieApi({
             permalink: post.series.permalink
         })
+        console.log("series", series)
     }
 
     const configMapper = {
@@ -1999,9 +2116,8 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
         post.config = config
     }
 
-    console.log(post)
-
-    console.log(`series ${series}`)
+    // console.log("config", config)
+    // console.log("post", post)
 
     return {
         post,

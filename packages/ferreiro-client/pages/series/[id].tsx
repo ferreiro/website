@@ -19,24 +19,22 @@ function RelatedSeries() {
     )
 }
 
-function FollowSeries() {
+export function FollowSeries(props: { serie: Serie; buttonText?: string }) {
     function onClick() {
         alert(
             "Implement. Open a modal to get the newsletter... I can also add the user to mailchimp inside a group for this series..."
         )
     }
 
+    const buttonText = props.buttonText || "Follow the series"
+
     return (
         <div className={sharedStyles.row}>
             <button
                 onClick={onClick}
-                className={cx(
-                    sharedStyles.col_12,
-                    sharedStyles.marginTop(5),
-                    sharedStyles.buttonSubmit
-                )}
+                className={cx(sharedStyles.col_12, sharedStyles.buttonSubmit)}
             >
-                Follow the series
+                {buttonText}
             </button>
         </div>
     )
@@ -89,7 +87,14 @@ export default function SeriePage(props: Props) {
                         <div className={sharedStyles.marginLeft(6)}>
                             <img src={props.serie.pic} width="100%" />
 
-                            <FollowSeries />
+                            <div
+                                className={cx(
+                                    sharedStyles.separatorTransparent,
+                                    sharedStyles.marginTop(4)
+                                )}
+                            />
+
+                            <FollowSeries serie={props.serie} />
 
                             <h3 className={sharedStyles.marginTop(6)}>
                                 About this series

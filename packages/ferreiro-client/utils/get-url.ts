@@ -12,6 +12,11 @@ export function getUrlWithTracking(
     })
 }
 
+// NB: Do not used... Always force to use the getPostUrlWithTrack
+function getPostUrl(permalink: string) {
+    return `/blog/${permalink}`
+}
+
 export function getPostUrlWithTracking(
     permalink: string,
     trackingOptions: TrackingOptions
@@ -20,28 +25,28 @@ export function getPostUrlWithTracking(
     return getUrlWithTracking(postUrl, trackingOptions)
 }
 
-// NB: Do not used... Always force to use the getPostUrlWithTrack
-function getPostUrl(permalink: string) {
-    return `/blog/${permalink}`
-}
-
 export function getPostQualifiedUrl(permalink: string) {
     return `https://www.ferreiro.me${getPostUrl(permalink)}`
 }
 
-export function getSeriesUrl(permalink: string) {
+// NB: Do not used... Always force to use the getSeriesUrlWithTracking
+function getSeriesUrl(permalink: string) {
     return `/series/${permalink}`
+}
+
+export function getSeriesUrlWithTracking(permalink: string, trackingOptions) {
+    return getUrlWithTracking(getSeriesUrl(permalink), trackingOptions)
 }
 
 export function getSeriesUrlWithSubscription(
     permalink: string,
-    options: {
-        utm_source?: string
-    }
+    trackingOptions: TrackingOptions
 ) {
-    return formatUrl(`/series/${permalink}`, {
-        ...options,
-        ...{ sub_confirmation: true }
+    const seriesUrl = getSeriesUrl(permalink)
+    const url = getUrlWithTracking(seriesUrl, trackingOptions)
+
+    return formatUrl(url, {
+        sub_confirmation: true
     })
 }
 
