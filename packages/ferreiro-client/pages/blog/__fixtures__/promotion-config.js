@@ -96,7 +96,11 @@ const config = {
             }
         },
         "10": {
-            type: PostModuleTypes.series
+            type: PostModuleTypes.series,
+            props: {
+                currentPermalink:
+                    "one-year-at-eventbrite-and-promoted-to-sde2-frontend"
+            }
         }
     }
 }

@@ -516,14 +516,13 @@ function PostSummary({ value }: PostSummaryProps) {
     )
 }
 
-interface PostSeriesProps {
+function PostSeries(props: {
     // NB: This is the current article, so we
     // can highlight that in the list
-    currentArticle: string
+    currentPermalink: string
     series: FetchSerieResponse
     layout: PostLayoutType
-}
-function PostSeries(props: PostSeriesProps) {
+}) {
     const seriesStyle = {
         header: css`
             a {
@@ -629,18 +628,35 @@ function PostSeries(props: PostSeriesProps) {
                             >
                                 {index + 1}.
                             </span>
-                            <Link
-                                href={getPostUrlWithTracking(post.permalink, {
-                                    utm_source: "blog-post-series-module"
-                                })}
-                            >
+
+                            {props.currentPermalink === post.permalink ? (
                                 <a
-                                    title={post.title}
                                     className={cx(sharedStyles.col)}
+                                    style={{
+                                        backgroundColor: "#fdfdfd",
+                                        opacity: '0.7'
+                                    }}
                                 >
-                                    {post.title}
+                                    {post.title} (currently reading)
                                 </a>
-                            </Link>
+                            ) : (
+                                <Link
+                                    href={getPostUrlWithTracking(
+                                        post.permalink,
+                                        {
+                                            utm_source:
+                                                "blog-post-series-module"
+                                        }
+                                    )}
+                                >
+                                    <a
+                                        title={post.title}
+                                        className={cx(sharedStyles.col)}
+                                    >
+                                        {post.title}
+                                    </a>
+                                </Link>
+                            )}
                         </li>
                     ))}
                 </ul>
