@@ -1162,6 +1162,128 @@ function PostProvider(props: {
     )
 }
 
+function PostShare(props: { post: Post }) {
+    const postShareStyle = {
+        button: css`
+            width: 100px;
+            height: 100px;
+            border: 0;
+        `,
+        buttonIcon: css`
+            font-size: 30px;
+        `,
+        buttonText: css`
+            margin-top: ${spacing3};
+        `
+    }
+    const socialLinks = [
+        {
+            className: css`
+                background: ${config.colors.twitter.normal};
+                color: #fff;
+
+                &:hover {
+                    background: ${config.colors.twitter.active};
+                }
+            `,
+            icon: FaTwitter,
+            legend: "Tweet it",
+            onClick: () => {
+                handleShareTwitterClick({
+                    post: props.post,
+                    trackingOptions: {
+                        utm_source: "sharing-sticky-twitter"
+                    }
+                })
+            }
+        },
+        {
+            className: css`
+                background: ${config.colors.facebook.normal};
+                color: #fff;
+
+                &:hover {
+                    background: ${config.colors.facebook.active};
+                }
+            `,
+            icon: FaFacebook,
+            legend: "Post it",
+            onClick: () => {
+                handleShareFacebookClick({
+                    post: props.post,
+                    trackingOptions: {
+                        utm_source: "sharing-sticky-facebook"
+                    }
+                })
+            }
+        },
+        {
+            className: css`
+                background: ${config.colors.linkedin.normal};
+                color: #fff;
+
+                &:hover {
+                    background: ${config.colors.linkedin.active};
+                }
+            `,
+            icon: FaLinkedin,
+            legend: "Share it",
+            onClick: () => {
+                handleShareLinkedinClick({
+                    post: props.post,
+                    trackingOptions: {
+                        utm_source: "sharing-sticky-linkedin"
+                    }
+                })
+            }
+        }
+    ]
+
+    return (
+        <div
+            className={cx(
+                getContainerClassname({ layout: PostLayoutType.inline }),
+                sharedStyles.center
+            )}
+        >
+            <h3 className={sharedStyles.marginBottom(6)}>Liked the post? 🙌</h3>
+
+            {socialLinks.map(({ className, icon: Icon, legend, onClick }) => {
+                return (
+                    <button
+                        className={cx(
+                            className,
+                            postShareStyle.button,
+                            sharedStyles.rounded,
+                            sharedStyles.marginHorizontal(3)
+                        )}
+                        onClick={onClick}
+                    >
+                        <span
+                            className={cx(
+                                postShareStyle.buttonIcon,
+                                sharedStyles.row,
+                                sharedStyles.justifyContentCenter
+                            )}
+                        >
+                            <Icon />
+                        </span>
+                        <span
+                            className={cx(
+                                postShareStyle.buttonText,
+                                sharedStyles.row,
+                                sharedStyles.justifyContentCenter
+                            )}
+                        >
+                            {legend}
+                        </span>
+                    </button>
+                )
+            })}
+        </div>
+    )
+}
+
 function PostTags(props: { post: Post }) {
     const tagsStyle = {
         tag: css`
@@ -1305,7 +1427,7 @@ function PostAuthor(props: {}) {
                     />
                 </div>
                 <div className={sharedStyles.col}>
-                    <h3 className={authorStyles.title}>Jorge Ferreiro</h3>
+                    <h2 className={authorStyles.title}>Jorge Ferreiro</h2>
 
                     <p
                         className={cx(
@@ -1789,7 +1911,17 @@ function PostDetail(props: Props) {
                 )}
             </article>
 
-            <p>POST SHARE</p>
+            <div
+                className={cx(
+                    getContainerClassname({
+                        layout: PostLayoutType.inline
+                    }),
+                    sharedStyles.marginTop(8),
+                    sharedStyles.marginBottom(8)
+                )}
+            />
+
+            <PostShare post={props.post} />
 
             <PostTags post={props.post} />
 
