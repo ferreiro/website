@@ -200,6 +200,11 @@ export const sharedStyles = {
         height: 2px;
         background: ${config.colors.separator};
     `,
+    separatorTransparent: css`
+        width: 100%;
+        height: 2px;
+        background: transparent;
+    `,
     button: css`
         border: 2px solid ${config.colors.secondary};
         color: #000;

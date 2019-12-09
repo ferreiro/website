@@ -1165,9 +1165,10 @@ function PostProvider(props: {
 function PostShare(props: { post: Post }) {
     const postShareStyle = {
         button: css`
-            width: 100px;
-            height: 100px;
             border: 0;
+            cursor: pointer;
+            height: 100px;
+            width: 100px;
         `,
         buttonIcon: css`
             font-size: 30px;
@@ -1246,7 +1247,7 @@ function PostShare(props: { post: Post }) {
                 sharedStyles.center
             )}
         >
-            <h3 className={sharedStyles.marginBottom(6)}>Liked the post? 🙌</h3>
+            <h2 className={sharedStyles.marginBottom(6)}>Liked the post?</h2>
 
             {socialLinks.map(({ className, icon: Icon, legend, onClick }) => {
                 return (
@@ -1916,7 +1917,8 @@ function PostDetail(props: Props) {
                     getContainerClassname({
                         layout: PostLayoutType.inline
                     }),
-                    sharedStyles.marginTop(8),
+                    sharedStyles.separatorTransparent,
+                    sharedStyles.marginTop(6),
                     sharedStyles.marginBottom(8)
                 )}
             />
@@ -1944,6 +1946,7 @@ function PostDetail(props: Props) {
                         layout: PostLayoutType.inline
                     }),
                     sharedStyles.separator,
+                    sharedStyles.separatorTransparent,
                     sharedStyles.marginTop(8),
                     sharedStyles.marginBottom(8)
                 )}
