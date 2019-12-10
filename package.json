@@ -24,11 +24,11 @@
         "packages/*"
     ],
     "devDependencies": {
-        "concurrently": "4.1.0",
+        "concurrently": "5.0.1",
         "npm-check": "5.9.0"
     },
     "dependencies": {
         "xss-filters": "1.2.7",
-        "concurrently": "4.1.0"
+        "concurrently": "5.0.1"
     }
 }
