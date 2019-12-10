@@ -297,6 +297,16 @@ export const sharedStyles = {
     marginTop: (size: number) => css`
         margin-top: ${spacingMapper[size]};
     `,
+    marginTop_md: (size: number) => css`
+        ${mediumUp} {
+            ${sharedStyles.marginTop(size)}
+        }
+    `,
+    marginTop_lg: (size: number) => css`
+        ${largeUp} {
+            ${sharedStyles.marginTop(size)}
+        }
+    `,
     marginLeft: (size: number) => css`
         margin-left: ${spacingMapper[size]};
     `,
@@ -320,7 +330,20 @@ export const sharedStyles = {
             ? `margin: 0 -${spacingMapper[size]};`
             : `margin: 0 ${spacingMapper[size]};`}
     `,
-
+    marginHorizontal_md: (size: number, isNegative?: boolean) => css`
+        ${mediumUp} {
+            ${isNegative
+                ? `margin: 0 -${spacingMapper[size]};`
+                : `margin: 0 ${spacingMapper[size]};`}
+        }
+    `,
+    marginHorizontal_lg: (size: number, isNegative?: boolean) => css`
+        ${largeUp} {
+            ${isNegative
+                ? `margin: 0 -${spacingMapper[size]};`
+                : `margin: 0 ${spacingMapper[size]};`}
+        }
+    `,
     notification: css``,
     notificationError: css`
         background: red;
@@ -567,6 +590,10 @@ export const sharedStyles = {
         width: 100%;
         height: 100%;
         border: 0;
+    `,
+    responsiveImage: css`
+        object-fit: cover;
+        object-position: center;
     `,
     flex: css`
         display: flex !important;

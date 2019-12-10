@@ -1901,7 +1901,7 @@ function PostRelatedItem(props: { post: Post }) {
                 <div className={sharedStyles.col_auto}>
                     <Sharing
                         mini={false}
-                        permalink={props.post.permalink}
+                        permalink={getPostQualifiedUrl(props.post.permalink)}
                         summary={props.post.summary}
                         title={props.post.title}
                     />

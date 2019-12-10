@@ -12,6 +12,14 @@ export function getUrlWithTracking(
     })
 }
 
+export function getVideoUrl({ id }: { id: string }) {
+    return `/videos/${id}`
+}
+
+export function getVideoQualifiedUrl({ id }: { id: string }) {
+    return `https://www.ferreiro.me${getVideoUrl({ id })}`
+}
+
 // NB: Do not used... Always force to use the getPostUrlWithTrack
 function getPostUrl(permalink: string) {
     return `/blog/${permalink}`

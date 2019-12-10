@@ -125,7 +125,7 @@ function SharingDropdown(props: {
     summary: string
     title: string
 }) {
-    const qualifiedUrl = getPostQualifiedUrl(props.permalink)
+    const permalink = props.permalink
 
     // TODO: Be able to override tracking url utmSource. So we can specify
     // in which part of the app the sharing button was pressed. Another
@@ -141,7 +141,7 @@ function SharingDropdown(props: {
                 title={props.title}
                 Icon={FaTwitter}
                 text="Share on Twitter"
-                url={getUrlWithTracking(qualifiedUrl, {
+                url={getUrlWithTracking(permalink, {
                     utm_source: "sharing-dropdown-twitter"
                 })}
             />
@@ -155,7 +155,7 @@ function SharingDropdown(props: {
                 title={props.title}
                 Icon={FaFacebook}
                 text="Post on Facebook"
-                url={getUrlWithTracking(qualifiedUrl, {
+                url={getUrlWithTracking(permalink, {
                     utm_source: "sharing-dropdown-facebook"
                 })}
             />
@@ -169,7 +169,7 @@ function SharingDropdown(props: {
                 title={props.title}
                 Icon={FaLinkedin}
                 text="Post on Linkedin"
-                url={getUrlWithTracking(qualifiedUrl, {
+                url={getUrlWithTracking(permalink, {
                     utm_source: "sharing-dropdown-linkedin"
                 })}
             />
@@ -184,7 +184,7 @@ function SharingDropdown(props: {
             </h4>
 
             <SharingPermalink
-                url={getUrlWithTracking(qualifiedUrl, {
+                url={getUrlWithTracking(permalink, {
                     utm_source: "sharing-dropdown-permalink"
                 })}
             />

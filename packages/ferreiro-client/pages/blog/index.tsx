@@ -33,7 +33,8 @@ import {
     getSeriesUrlWithTracking,
     getSeriesUrlWithSubscription,
     getUrlWithTracking,
-    getPostUrlWithTracking
+    getPostUrlWithTracking,
+    getPostQualifiedUrl
 } from "../../utils/get-url"
 
 import { Pagination } from "../../types/PaginatedResponse"
@@ -121,7 +122,7 @@ function BlogItemHighlight(props: { post: Post }) {
                 <div className={sharedStyles.col_auto}>
                     <Sharing
                         mini={false}
-                        permalink={post.permalink}
+                        permalink={getPostQualifiedUrl(props.post.permalink)}
                         summary={post.summary}
                         title={post.title}
                     />
@@ -244,7 +245,7 @@ export function BlogItem(props: { post: Post }) {
                         >
                             <Sharing
                                 mini={false}
-                                permalink={post.permalink}
+                                permalink={getPostQualifiedUrl(post.permalink)}
                                 summary={post.summary}
                                 title={post.title}
                             />
@@ -311,8 +312,6 @@ function BlogTopArticles(props: { posts: Post[] }) {
     }, [])
 
     const posts = props.posts || featuredPosts || []
-
-    return null
 
     return (
         <div>

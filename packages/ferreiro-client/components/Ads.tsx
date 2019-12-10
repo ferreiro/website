@@ -1,9 +1,29 @@
 import config, { sharedStyles } from "./config"
 import { css, cx } from "emotion"
-import { FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa"
+import { FaTwitter, FaYoutube, FaLinkedin, FaBullhorn } from "react-icons/fa"
 
 export function Ads() {
     return <div>Ads...</div>
+}
+
+export function AdConference() {
+    return (
+        <div style={{ background: "#f4f4f4" }}>
+            <div>Can't wait to speak at your event!</div>
+            <FaBullhorn />
+            <button>Read more info</button>
+            <button>Book me</button>
+        </div>
+    )
+}
+
+export function AdSubscribe() {
+    return (
+        <div style={{ background: "#f4f4f4" }}>
+            <div>Subscribe!</div>
+            <FaBullhorn />
+        </div>
+    )
 }
 
 export function AdSocialDeveloper() {

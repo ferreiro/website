@@ -3,18 +3,7 @@ import { cx } from "emotion"
 import { Layout } from "../components/Layout"
 import { Tabs } from "../components/Tabs"
 import { sharedStyles } from "../components/config"
-import { FaBullhorn } from "react-icons/fa"
-
-function AdConference() {
-    return (
-        <div style={{ background: "#f4f4f4" }}>
-            <div>Can't wait to speak at your event!</div>
-            <FaBullhorn />
-            <button>Read more info</button>
-            <button>Book me</button>
-        </div>
-    )
-}
+import { AdConference } from "../components/Ads"
 
 export default function Talks() {
     const tabs = [
