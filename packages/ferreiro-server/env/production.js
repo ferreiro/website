@@ -13,6 +13,9 @@ module.exports = {
     AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
 
+    // GOOGLE TOKENS
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+
     // Email Services
     CONTACT_EMAIL: process.env.CONTACT_EMAIL,
     MAILGUN_USER: process.env.MAILGUN_USER,

@@ -32,13 +32,15 @@ router.get("/", function(req, res) {
  * @required authentication
  */
 router.get("/featured", function(req, res) {
-    // TODO: Sanitize  query param
-    const limit = (req.query.limit && parseInt(req.query.limit)) || 10
+    const defaultLimit = 10
+    const sanitizedLimit = validator.blacklist(
+        req.query.limit,
+        "<|>|&|'|\"|'|,|/|"
+    )
+    const limit = sanitizedLimit ? parseInt(sanitizedLimit) : defaultLimit
 
     return blogRepository
-        .getMostReadPosts({
-            limit
-        })
+        .getMostReadPosts({ limit })
         .then(response => res.json(response))
         .catch(err => {
             console.log("err", err)
@@ -106,8 +108,12 @@ router.get("/series/published", function(req, res) {
  * list of articles associated with that series.
  */
 router.get("/series/:permalink", function(req, res) {
+    const permalink = validator.blacklist(
+        req.params.permalink,
+        "<|>|&|'|\"|'|,|/|"
+    )
     const query = {
-        permalink: req.params.permalink
+        permalink
     }
 
     return seriesRepository

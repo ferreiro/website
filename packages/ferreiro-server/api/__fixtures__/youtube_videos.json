@@ -1,0 +1,860 @@
+{
+    "kind": "youtube#playlistItemListResponse",
+    "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/GEzlsPOVc3_q-jAJEfeCXiyI5Yw\"",
+    "pageInfo": {
+     "totalResults": 18,
+     "resultsPerPage": 25
+    },
+    "items": [
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/_0EtxK2Y-oSfIv8Yd0FD_dgLa_0\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLk96Z2RZMk9ydHVR",
+      "snippet": {
+       "publishedAt": "2019-11-28T01:31:43.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Hello OnePlus 7T Unboxing - Bye Google Pixel2 - Jorge Ferreiro",
+       "description": "1.5 years with my Google Pixel 2, but this relationship has come to an end! The new guy in the fam is the OnePlus 7T! Enjoy the Unboxing the OnePlus 7T, so cool and powerful phone.\n\nFOLLOW ME IN THESE PLACES FOR UPDATES\nTwitter https://www.twitter.com/jgferreiro\r\nLinkedin https://www.linkedin.com/in/jgferreiro/\r\nInstagram https://www.instagram.com/jgferreiro/\r\n\r\n--\r\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/OzgdY2OrtuQ/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/OzgdY2OrtuQ/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/OzgdY2OrtuQ/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/OzgdY2OrtuQ/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/OzgdY2OrtuQ/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 0,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "OzgdY2OrtuQ"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/zX4qeFvTZ6WaopjCpAeoOgaaTNk\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLmhRM25BZkpTbHdn",
+      "snippet": {
+       "publishedAt": "2019-11-21T08:49:09.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Mi experiencia de intraemprendimiento en Evenbrite - III Jornada Emprendedora UCM Jorge Ferreiro",
+       "description": "Mini presentación que hice para la III jornada de la Universidad Emprendedora UCM.\n👇👇👇Ábreme... Indice de la charla abajo 🙌 ❤️ 👇👇👇\n\nÍNDICE:\nSubscribe: https://www.youtube.com/channel/UCA2Z3mQUqOj80M84vRu-3AQ?subscribe=true\n\n2:05 ¿Cómo y por qué empecé a programar?\n2:25 Busca tus referencias, gente que te inspire y que vaya dos / tres pasos por delante.\n3:46 Saltarse las reglas y no rodearse de gente tóxica\n4:47 La universidad me frustraba un poco... Busca los aspectos positivos de las imperfecciones.\n6:44 Está bien vender expectativas, pero que tu trabajo hable por vosotros/as. \n7:58 Obsesión por el cliente. Crea productos que los usuarios demandan, no lo que tu piensas que los usuarios demandan.\n9:44 Desapego a las ideas. Cuando emprendes o (intraemprendes) no tenemos que apegarnos a una idea en concreto. Si no funciona, o pivotamos o vamos a por otra idea.\n10:30 El talento está distribuído. Busca desarolladores, gente de negocio, marketing, en cualquier parte del mundo.\n11:22 El triángulo entre ingeniería, diseño y producto. Un buen producto se crea cuando las 3 patas trabajan juntas.\n12:22 Balance entre vida personal y trabajo. Work life balance.\nBonus tips:\n13:23 Titulitus: No tengamos prejuicios si la gente no tiene carrera. Busca talento por lo que saben hacer.\n14:22 Cómo encontrar un cofundador técnico (tipo Programador) o cómo buscar un CTO para tu startup. Diferencia entre ingeniero/a de producto vs. a un ingeniero no de producto.\n15:54 Aprender a programar. No hay excusas. Si quieres ser un buen lider, aprende cómo funciona la programación.\n16:34 Resumen: No paréis de aprender y pelear por vuestras oportunidades.\n\nGracias a la Complutense y a Javier por la oportunidad! ❤️\n\n🤷\u200d♂️Para cualquier duda o pregunta: https://www.ferreiro.me/contact\n\nEstoy en las redes\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro/\nSuscríbete: https://www.ferreiro.me/newsletter",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/hQ3nAfJSlwg/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/hQ3nAfJSlwg/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/hQ3nAfJSlwg/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/hQ3nAfJSlwg/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/hQ3nAfJSlwg/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 1,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "hQ3nAfJSlwg"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/HlI8QvXkmLolKnFTQ4DlJ-DVfdU\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLnlZanZMVWotTXQ4",
+      "snippet": {
+       "publishedAt": "2019-11-13T23:00:07.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Codemotion Webinar - Progressive Web Applications Webinar (PWAs) - Jorge Ferreiro - @jgferreiro",
+       "description": "Online webinar for Codemotion World about Progressive Web Applications. Let me know your impressions down below in the comments! :)\n\nSlides: https://speakerdeck.com/ferreiro/codemotion-webinar-progressive-web-applications-pwas-jorge-ferreiro-at-jgferreiro\n\nMore talks like this? Subscribe to my channel, and join my newsletter: http://ferreiro.me/newsletter\n\n- What is a Progressive Web Application (PWAs)?\n- How to build your first Progressive Web Application in React, Vue or Angular?\n\nSlides: https://www.ferreiro.me/talks\nSuscríbete: https://www.ferreiro.me/newsletter\n\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/yYjvLUj-Mt8/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/yYjvLUj-Mt8/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/yYjvLUj-Mt8/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/yYjvLUj-Mt8/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/yYjvLUj-Mt8/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 2,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "yYjvLUj-Mt8"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/Q6ZmTB5DVFkidGRZdIBpwR0C2oQ\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLmRlMXhpcXotQlRF",
+      "snippet": {
+       "publishedAt": "2019-09-19T10:00:13.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Workshop: Progressive Web Applications PWAs - 🇺🇸 PennApp University of Pennsylvania Jorge Ferreiro",
+       "description": "Last September 7th I gave a workshop in USA at the university of  Pennsylvania (upenn) an Ivy League school. The Progressive Web App (PWA) workshop was run in Pennapps, the Original College Hackathon with more than 1.2k people organized by the students from the university.\n\n🐣 I'm on Twitter, yay! https://www.twitter.com/jgferreiro\nAlso on Linkedin https://www.linkedin.com/in/jgferreiro/\nAnd even on Instagram! https://www.instagram.com/jgferreiro/\n\nIn this workshop I introduced the concept of Progressive Web Apps, as well as, sharing how to create your first PWA from scratch with the following functionalities:\n\n- Offline mode\n- Caching requests: images, CSS, index.html.\n- Local Notifications\n- Payments Api\n- How to setup your app manifest\n- Add to home screen\n\nSlides: https://www.ferreiro.me/talks\nSubscribe: https://www.ferreiro.me/newsletter\n\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro/\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/de1xiqz-BTE/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/de1xiqz-BTE/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/de1xiqz-BTE/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/de1xiqz-BTE/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/de1xiqz-BTE/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 3,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "de1xiqz-BTE"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/hPTOfrL0CZJWeqCSEHRzLUw27gs\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLjhUc2JTMzFubVJr",
+      "snippet": {
+       "publishedAt": "2019-08-11T14:57:44.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "🇬🇧Web Performance: Expectations Vs Reality - JS Roundabout by Jorge Ferreiro - Twitter London",
+       "description": "🐣 I'm on Twitter, yay! https://www.twitter.com/jgferreiro\nAlso on Linkedin https://www.linkedin.com/in/jgferreiro/\nAnd even on Instagram! https://www.instagram.com/jgferreiro/\n\n👀 Get the slides: https://www.ferreiro.me/talks\n♾️More slides: https://www.ferreiro.me/talks\n🥳Join the fam! https://www.ferreiro.me/newsletter\n\n| Venue: Twitter London\n| Event: \"Web Performance and Development Tools\" - JS Roundabout #21 @ Twitter\n| Details: https://www.meetup.com/es-ES/the-JS-| Roundabout/events/259864908/\n| Date: Tuesday, April 2, 2019\n| About the talk: \n“Why is my website slow?”, “How can I improve the loading time?”, “How does the browser render a website?”, “What techniques can I apply to boost the speed of my website?”.\n\nYou will not only learn about the most common performance mistakes in a webpage but also, what the best solutions are and the main trade-offs when it comes to web performance.\n\nWe will see in details the three parts that affect your web performance (network requests, browser parsing, and browser rendering), and we will cover everything from loading non-blocking Javascript, reducing bundle sizes, cache content and more techniques.\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/8TsbS31nmRk/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/8TsbS31nmRk/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/8TsbS31nmRk/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 4,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "8TsbS31nmRk"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/HN0fSbdXtfhEW-4F3bO961Pnmi4\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLlI1R3p2N2R3WEtB",
+      "snippet": {
+       "publishedAt": "2019-08-01T00:52:11.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "360 Ian Fuller, CTO at Freetrade - Developers In Depth by Jorge Ferreiro",
+       "description": "🐣 I'm on Twitter, yay! https://www.twitter.com/jgferreiro\nAlso on Linkedin https://www.linkedin.com/in/jgferreiro/\nAnd even on Instagram! https://www.instagram.com/jgferreiro/\n\nFollow the show: https://twitter.com/devsindepth\n\nJorge Ferreiro interviews Ian Fuller, CTO and former VP of Engineering at Freetrade (a cool free investing app)\n\nThe Developers in Depth 360 interview is a quick format where Jorge asks 15 questions,  and we get 15 answers in (almost hehe) 5 minutes!\n\n[0:27] When did you start coding and why?\n[1:22] What are your favorite books?\n[2:00] Which 3 words define you as a leader?\n[2:05] What’s the most important advice anybody in the world has given you?\n[2:17] What’s the most important accomplishment in your career?\n[2:50] What are the things you like most being a VP of engineering?\n[3:24] Things you would like to change from your day-to-day life.\nRandom questions:\n[3:45] How would you use 10 million dollars?\n[3:52] What are your 3 hobbies?\n[5:04] What’s your fav movie and song?\n[5:13] Choose your favorite animal and explain why.\n[5:27] Choose one character from Hollywood.\n[5:40] Tell us the funniest thing that has happened to you recently.\n[5:57] Choose your fav restaurant.\n[6:20] What’s your favorite city in the world?\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/R5Gzv7dwXKA/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/R5Gzv7dwXKA/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/R5Gzv7dwXKA/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/R5Gzv7dwXKA/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/R5Gzv7dwXKA/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 5,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "R5Gzv7dwXKA"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/ws9QcZc5FMupVD4I3BNwef9ePUE\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLkFyekZGMWJ0Tngw",
+      "snippet": {
+       "publishedAt": "2019-05-19T22:05:32.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "WOMEN IN TECH AND DIVERSITY - Rahma Javed Deliveroo - Developers In Depth by Jorge Ferreiro",
+       "description": "Full interview: https://www.youtube.com/playlist?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj\n\nIn this last Developers In Depth interview by Jorge Ferreiro, Rahma Javed, currently Director of Engineering at Deliveroo, shares insights to boost diversity in the workspace as well as tips for college students.\n\nSome questions that Jorge asked: How can we all help to bring diversity into tech and our workspaces? Advice for girls who are starting to code and their career.\n\nGuests:\n\nJorge Ferreiro\nSoftware Engineer, Speaker and Blogger\nhttps://twitter.com/JGFerreiro\nhttps://www.instagram.com/jgferreiro/\n\nRahma Javed\nDirector of Engineering at Deliveroo\nhttps://www.linkedin.com/in/rahma\n\nFollow the show on Twitter: https://twitter.com/devsindepth\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/ArzFF1btNx0/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/ArzFF1btNx0/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/ArzFF1btNx0/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/ArzFF1btNx0/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/ArzFF1btNx0/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 6,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "ArzFF1btNx0"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/qYUUwUUAZuPVkydn0iJC1igBV_Y\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLlNtN1JrNExtNGpv",
+      "snippet": {
+       "publishedAt": "2019-05-19T22:00:07.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "TIPS FOR JUNIOR SOFTWARE ENGINEERS - Rahma Javed Deliveroo - Developers In Depth by Jorge Ferreiro",
+       "description": "Full interview: https://www.youtube.com/playlist?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj\n\nRahma Javed has more than 9 years of professional experience in Software. Rahma did 2 internships at IBM, RIM, and rapidly grew as a software engineer at Microsoft, later on as an Engineering Director at Wealthfront and currently Rahma is the engineering Director at Deliveroo in London.\n\nIn this Developer In Depth interview, Jorge Ferreiro, dives deep on Rahma's background and get really interesting and useful insights and lessons learned for Junior engineers, people that are starting their career or in general anybody working in technology that is leading and managing people.\n\nJorge asked questions like: What are you looking for in a Junior Engineers, Do you recommend to start a career in software engineering in a big company or in a startup, How do you earn trust when you join a new Software Engineer team, biggest mistakes when people landing into a new dev team.\n\nJorge Ferreiro\nSoftware Engineer, Speaker and Blogger\nhttps://twitter.com/JGFerreiro\nhttps://www.instagram.com/jgferreiro/\n\nRahma Javed\nDirector of Engineering at Deliveroo\nhttps://www.linkedin.com/in/rahma\n\nFollow the show on Twitter: https://twitter.com/devsindepth\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/Sm7Rk4Lm4jo/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/Sm7Rk4Lm4jo/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/Sm7Rk4Lm4jo/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/Sm7Rk4Lm4jo/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/Sm7Rk4Lm4jo/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 7,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "Sm7Rk4Lm4jo"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/EOKdcEoEVbPnworfG72sB7V1RZw\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLklQenBJbHJDTC1R",
+      "snippet": {
+       "publishedAt": "2019-05-19T21:05:12.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "THE ROLE OF AN ENGINEERING DIRECTOR - Rahma Javed Deliveroo - Developers In Depth Jorge Ferreiro",
+       "description": "Full interview: https://www.youtube.com/playlist?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj\n\nRahma is currently working as an Engineering director at Deliveroo, a hot food company founded in 2013 by Will Shu and Greg Orlowski. \n\nIn this Developers in Depth interview by Jorge Ferreiro, Jorge asks multiple questions to understand better Rahma's role. Things like: What's Deliveroo and their mission, What is an Engineering Director,  Why did Rahma moved from Silicon Valley to London, What is the engineering culture at Deliveroo, main technical challenges of Deliveroo, as well as what's the most important career accomplishment/project that Rahma has done.\n\nFollow the show on Twitter: https://twitter.com/devsindepth\n\nJorge Ferreiro\nSoftware Engineer, Speaker and Blogger\nhttps://twitter.com/JGFerreiro\nhttps://www.instagram.com/jgferreiro/\n\nRahma Javed\nDirector of Engineering at Deliveroo\nhttps://www.linkedin.com/in/rahma\n\nFollow the show on Twitter: https://twitter.com/devsindepth\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/IPzpIlrCL-Q/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/IPzpIlrCL-Q/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/IPzpIlrCL-Q/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/IPzpIlrCL-Q/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/IPzpIlrCL-Q/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 8,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "IPzpIlrCL-Q"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/iOAeCMNh-swso2bT466qiLDQ9Yk\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLjJkLU9rejd1bU1F",
+      "snippet": {
+       "publishedAt": "2019-05-19T21:02:48.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "INTRO+BACKGROUND - Rahma Javed Engineering Director Deliveroo - Developers In Depth x Jorge Ferreiro",
+       "description": "Full interview: https://www.youtube.com/playlist?list=PLaN1b7vXPDt6f3jYSdFbVeeEixCxWSepj\n\nRahma Javed is currently leading more than 26 engineers at Deliveroo as the Engineering Director, prior to Deliveroo, Rahma was working as an engineering director at Wealthfront, a really great fintech company in the bay area, before that she was software engineer in top tech companies like Microsoft, IBM or BlackBerry (RIM).\n\nIn this Developers In Depth interview by Jorge Ferreiro, Jorge introduced Rahma's background and story, as well as those first years in the software industry. Also, Rahma shares his lessons learned working as a software engineer at Microsoft, and also explained why she decided to leave Microsoft and joined a smaller company (Wealthfront). \n\nRahma graduated from the university of Toronto where she did computer science classes as well as electrical engineering. Rapidly, Rahma did a couple of software development internships in IBM and BlackBerry.\n\nJorge Ferreiro\nSoftware Engineer, Speaker and Blogger\nhttps://twitter.com/JGFerreiro\nhttps://www.instagram.com/jgferreiro/\n\nRahma Javed\nDirector of Engineering at Deliveroo\nhttps://www.linkedin.com/in/rahma\n\nFollow the show on Twitter: https://twitter.com/devsindepth\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/2d-Okz7umME/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/2d-Okz7umME/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/2d-Okz7umME/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/2d-Okz7umME/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/2d-Okz7umME/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 9,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "2d-Okz7umME"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/V9ZN7D4_thVS28LVs_enSMthvRA\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLjhSRVVzMGtfcFZj",
+      "snippet": {
+       "publishedAt": "2019-04-24T23:13:55.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "360 Rahma Javed, Director of Engineering at Deliveroo - Developers In Depth by Jorge Ferreiro",
+       "description": "The 360 interview by Developers In Depth, is one of the two interviews to Rahma. It's a format with quick questions, quick answers. 15 questions in 5 minutes!\n\nIn this episode I have the honour to bring Rahma Javed. Rahma is the Director of Engineering at Deliveroo, a food company and one of the coolest startups in London. Rahma previously worked in Microsoft (for around 4 years!) as Software Engineer and Senior Software Engineer. Then Rahma moved to the bay area and grew from Senior Engineer into Director of Engineering at Wealthfront, a financial Planning & Robo-Investing for Millennials. During her college, Rahma worked for BlackBerry as a Security Software Engineer and at IBM.\n\nApart from her professional career, Rahma shared with me some cool advices and lessons learned in her career. Hope you enjoy it!\n\nJorge Ferreiro\nSoftware Engineer, Speaker and Blogger\nhttps://twitter.com/JGFerreiro\nhttps://www.instagram.com/jgferreiro/\n\nRahma Javed\nDirector of Engineering at Deliveroo\nhttps://www.linkedin.com/in/rahma\n\nFollow the show on Twitter: https://twitter.com/devsindepth\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/8REUs0k_pVc/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/8REUs0k_pVc/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/8REUs0k_pVc/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/8REUs0k_pVc/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/8REUs0k_pVc/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 10,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "8REUs0k_pVc"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/QKFQgNzof7qVIQJlkTSJ96WjtL4\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLkpzLWF2LXp5c1dz",
+      "snippet": {
+       "publishedAt": "2019-03-10T06:44:51.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Cómo conseguir tu primero trabajo en tecnología: Amazon, Eventbrite y más - Jorge Ferreiro - FDI UCM",
+       "description": "¿Cómo funciona el proceso de entrevistas en empresas de tecnología como Google, Amazon, Eventbrite, Facebook? ¿Cómo consigo mi primero trabajo en tecnología después de la universidad? \n\nEn esta conferencia Jorge Ferreiro te comparte varias de sus lecciones aprendidas, consejos y sugerencias para obtener su primer trabajo en tecnología.\n\nPuedes mirar las diapositivas aquí: https://www.ferreiro.me/talks\nSuscríbete: https://www.ferreiro.me/newsletter\n\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro/\n\n- - -\n\nCómo conseguir tu trabajo en tecnología, cómo son las entrevistas en Google, Amazon, Facebook, Eventbrite, N26, Youtube, Yelp, Dropbox, Fitbit, Deezer, Microsoft, Palantir... Mi experiencia entrevistándome en todas esas empresas.\n\nAdemás, te comparto varios consejos para conseguir tu primer trabajo en tecnología y en qué páginas puedes encontrar tu trabajo como programador o programadora: Paysa, Glassdoor, Linkedin Jobs, Angel.co, intern.supply, wayup.\n\nTambién te comento la importancia de tener tu perfil en Github y Linkedin. Y la importancia de aprender online en Platzi, Udacity, Coursera, Frontend Masters, Udemy, Eda, Khan Academy y muchas otras.\n\nAdemás, te cuento qué es un Hackathon, por qué deberías de apuntarte y cuales son los Hackathons más importantes: Hackupc, HackPrinceton, nwHacks, Hack Western, HackDavis, QHacks.\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/Js-av-zysWs/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/Js-av-zysWs/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/Js-av-zysWs/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/Js-av-zysWs/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/Js-av-zysWs/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 11,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "Js-av-zysWs"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/knJ8tFJBb_At01fP5adQlwB0j9c\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLmV2R1oyeUdwcXhr",
+      "snippet": {
+       "publishedAt": "2019-02-25T00:45:14.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Los errores más comunes al crear tu CV y perfil Github como programador/a - Jorge Ferreiro - FDI UCM",
+       "description": "¡Hola! En este video os cuento brevemente los errores más comunes al hacer vuestro CV (Curriculum Vitae) para aplicar a empresas de tecnología. Además, os cuento cuáles son los trucos y consejos a la hora de crear un CV bueno y vuestro perfil en Github como programador or programador. A modo de bonus, también os doy un par de consejos para tu perfil de Linkedin como programador o programadora.\n\nDescárgate las diapositivas aquí: https://www.ferreiro.me/talks\nSuscríbete al blog: https://www.ferreiro.me/newsletter\n\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro/\n\n------\n\n¿De qué va el video?\n\nPara crear tu CV para conseguir tu primer trabajo tienes que medir tu impacto, poner bullets points con resultados de tu trabajo. Además, tu perfil de Github tiene que tener un buen número de proyectos relevantes. Mindset: Enséñame lo que sabes hacer.  Cuando los hechos hablan, las palabras no son nada. Proverbio africano\n\n ¿Escribir carta de presentación?  ¿Poner una foto? Si estás aplicando para una empresa de Estados Unidos de tecnología (por ejemplo: Amazon, Apple, Google, Microsoft...) lo mejor es no poner foto. Si aplicas a una empresa española depende, pero yo en general no suelo poner foto.\n\nEs muy importante que uséis Git (y Github). Ya que eso os ayudará a conseguir vuestro primer trabajo (las empresas están continuamente buscando en vuestros perfiles de Github).\n\nAdemás, para conseguir tu primer trabajo en tecnología es fundamental que tengáis vuestro perfil de Linkedin. Hay errores muy comunes, y en el video te cuento varios de ellos.\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/evGZ2yGpqxk/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/evGZ2yGpqxk/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/evGZ2yGpqxk/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/evGZ2yGpqxk/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/evGZ2yGpqxk/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 12,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "evGZ2yGpqxk"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/JaqqnAIVHMzBXXL85X32BISQ5jg\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLnFnd051TVFKY2pv",
+      "snippet": {
+       "publishedAt": "2019-02-21T19:00:08.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Mi historia: De Amazon a Eventbrite - Ser programador en Empresas de Silicon Valley - Jorge Ferreiro",
+       "description": "Hola! Soy Jorge Ferreiro, programador en Eventbrite como Frontend Software Engineer. Eventbrite es una empresa de Silicon Valley (Estados unidos) que recientemente ha salido a bolsa. Trabajo en el departamento de Eventbrite Incubation R&D (Investigación y desarrollo). Mi equipo está más centrado en la parte de desarrollo de nuevos productos para Eventbrite. Actualmente estamos trabajando para crear, programar y lanzar un nuevo producto en Eventbrite desde cero.\n\nAntes de Eventbrite, trabajé como programador en la empresa Amazon. Amazon es una de las empresas líderes en tecnología de Estados Unidos y del mundo. Tuve la oportunidad de ser programador backend en Amazon.com, la tienda online de Amazon. Mi rol fue Backend Engineer en un equipo de las oficinas de Amazon en Luxemburgo.\n\nEstudié Ingeniería informática en la Universidad Complutense de Madrid (UCM), en el grupo bilingüe. Tuve la suerte durante los años de la universidad de hacer prácticas y formación en el extranjero. Durante uno de los veranos estuve un par de semanas en China haciendo un Schorlarship con Huawei, una de las empresas chinas de tecnología más potentes.\n\nAdemás, tuve la suerte de poder completar mi formación como programador informático estudiante durante el verano en la prestigiosa UC Berkeley. La universidad de california (UC Berkeley) es una de las más importantes de Estados Unidos. Allí hice cursos de programación (estructuras de datos y algoritmos) y también me formé mucho más como emprendedor.\n\nSiempre me ha encantado ser emprendedor y montar proyectos para internet. Algunos de esos proyectos han sido Music4deejays o Dailyfocus, entre otros.\n\nEspero que el video sirva como inspiración. Para cualquier duda o comentario, deja un comentario o escríbeme en mi web: http://ferreiro.me/contact\n\nSlides: https://www.ferreiro.me/talks\nSuscríbete: https://www.ferreiro.me/newsletter\n\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro/\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/qgwNuMQJcjo/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/qgwNuMQJcjo/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/qgwNuMQJcjo/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/qgwNuMQJcjo/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/qgwNuMQJcjo/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 13,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "qgwNuMQJcjo"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/_-49pQk73iTwCeI5PkHUBN0-lWQ\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLi1EaTVPN2RHS05j",
+      "snippet": {
+       "publishedAt": "2019-02-25T00:44:40.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Cómo ser ingeniero en Silicon Valley - Entrevista César Puerta programador Twitter x Jorge Ferreiro",
+       "description": "César Puerta es un Ingeniero en Silicon Valley trabajando en Twitter, una de las redes sociales más importantes del mercado. César es el director técnico de la aplicación de Twitter para Android, dirigiendo el equipo de ingeniería de la aplicación. Anteriormente, César ha ocupado múltiples cargos en Twitter: Senior Software Engineer, Staff Software Engineer y actualmente Senior Staff Software Engineer. Como ves, Cesar es un ingeniero programador con un perfil muy único y valioso.\n\nAntes de Twitter, César trabajó en Electronic Arts (EA) Madrid como programador y manager durante 8 años en Electronic Arts, una de las empresas de videojuegos más importantes del mundo. En EA César ocupó muchos roles (desde programador a manager), tales como: Integration Engineer, Senior Lead Engineer, Engineering Supervisor, Technical Engineering Manager.\n\nAntes de incorporarse como programador en Electronic Arts, César fue consultor en DMR, y estudió Ingeniería Informática en la facultad de informática de la complutense (FDI UCM). \n\nSuscríbete para más entrevistas: https://www.ferreiro.me/newsletter\n\non https://www.twitter.com/jgferreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro/\n\n--\nMusic: https://www.bensound.com/",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/-Di5O7dGKNc/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/-Di5O7dGKNc/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/-Di5O7dGKNc/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/-Di5O7dGKNc/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/-Di5O7dGKNc/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 14,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "-Di5O7dGKNc"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/0VLSR7RMZzSONZKvkGEW5-4kj48\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLmdFZk1zUElCQzJR",
+      "snippet": {
+       "publishedAt": "2018-12-04T02:40:25.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "[English Subtitles] Learning and growing in the tech world - Jorge Ferreiro - #django #girls 2018",
+       "description": "Motivational talk for https://djangogirls.org/madrid/, an event for teaching girls how to code in Django and create their first website with HTML... I shared my story since I started to code when I was 10 to my current job at Eventbrite, and 6 lessons learned all this years.\n\nGift: https://djangogirls.org/madrid/\nSlides: https://www.slideshare.net/jgferreiro/learn-and-grow-in-the-tech-world-djangogirlsmadrid-20181117\n\nfollow me; on https://twitter.com/JGFerreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/ferreiro",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/gEfMsPIBC2Q/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/gEfMsPIBC2Q/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/gEfMsPIBC2Q/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/gEfMsPIBC2Q/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 15,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "gEfMsPIBC2Q"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/CRz1vGxDZdRxXwqPeVOtFt6tP-8\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLnFsRHJaaXdrcnYw",
+      "snippet": {
+       "publishedAt": "2017-07-04T22:37:40.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Presentación final Dailyfocus (incluye DEMO! 🔥) - 16 minutos - FDI UCM - Jorge Ferreiro",
+       "description": "¡Gracias por ver el video! Esta es la presentación de Dailyfocus, mi proyecto final de la carrera!\n\nCualquier sugerencia para mejorar, no dudes en hacérmelo llegar! jorge@ferreiro.me or por los comentarios de Youtube.\n\nPágina web: https://www.ferreiro.me\nMás charlas: https://www.ferreiro.me/talks\n\nfollow me; on https://twitter.com/JGFerreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/jgferreiro\n\n¡Un abrazo!",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/qlDrZiwkrv0/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/qlDrZiwkrv0/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/qlDrZiwkrv0/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/qlDrZiwkrv0/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/qlDrZiwkrv0/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 16,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "qlDrZiwkrv0"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     },
+     {
+      "kind": "youtube#playlistItem",
+      "etag": "\"j6xRRd8dTPVVptg711_CSPADRfg/e7xaRk4BkPhuMJdNCaqcP6-r70A\"",
+      "id": "VVVBMlozbVFVcU9qODBNODR2UnUtM0FRLnZaSTNpUGRiT1Rr",
+      "snippet": {
+       "publishedAt": "2017-05-17T19:50:52.000Z",
+       "channelId": "UCA2Z3mQUqOj80M84vRu-3AQ",
+       "title": "Dailyfocus at #JsDayEs 2017 - Jorge Ferreiro",
+       "description": "Mr. Pinchito, the organizer of JSDayEs (one of the most important Javascript event in Spain) challenged the audience to prepare a product presentation in just 5 minutes. And this is the result!\n\nMore talks: https://www.ferreiro.me/talks\n\nDailyfocus is a productivity application that integrates all the services you love in one place and helps you to work efficiently without distractions. More info: http://www.dailyfocus.io\n\nJorge Ferreiro is a passionate 22-yo software engineer who loves to solve big and challenging problems using software. More info: https://www.ferreiro.me\n\nDate: 12/May/2017\n\nfollow me; on https://twitter.com/JGFerreiro\non https://www.linkedin.com/in/jgferreiro/\non https://www.instagram.com/ferreiro",
+       "thumbnails": {
+        "default": {
+         "url": "https://i.ytimg.com/vi/vZI3iPdbOTk/default.jpg",
+         "width": 120,
+         "height": 90
+        },
+        "medium": {
+         "url": "https://i.ytimg.com/vi/vZI3iPdbOTk/mqdefault.jpg",
+         "width": 320,
+         "height": 180
+        },
+        "high": {
+         "url": "https://i.ytimg.com/vi/vZI3iPdbOTk/hqdefault.jpg",
+         "width": 480,
+         "height": 360
+        },
+        "standard": {
+         "url": "https://i.ytimg.com/vi/vZI3iPdbOTk/sddefault.jpg",
+         "width": 640,
+         "height": 480
+        },
+        "maxres": {
+         "url": "https://i.ytimg.com/vi/vZI3iPdbOTk/maxresdefault.jpg",
+         "width": 1280,
+         "height": 720
+        }
+       },
+       "channelTitle": "Jorge Ferreiro",
+       "playlistId": "UUA2Z3mQUqOj80M84vRu-3AQ",
+       "position": 17,
+       "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "vZI3iPdbOTk"
+       }
+      },
+      "status": {
+       "privacyStatus": "public"
+      }
+     }
+    ]
+   }
+   
