@@ -304,7 +304,6 @@ function BlogTopArticles(props: { posts: Post[] }) {
             })
             .catch(error => {
                 // TODO: Handle errors properly
-                console.log(error)
             })
             .finally(() => {
                 setIsLoading(false)

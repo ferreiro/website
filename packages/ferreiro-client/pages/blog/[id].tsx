@@ -2108,11 +2108,9 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
 
     let series: FetchSerieResponse
     if (!isEmpty(post.series)) {
-        console.log("post.series", post.series)
         series = await fetchSerieApi({
             permalink: post.series.permalink
         })
-        console.log("series", series)
     }
 
     const configMapper = {
@@ -2131,9 +2129,6 @@ PostDetail.getInitialProps = async function(context: any): Promise<Props> {
     if (config) {
         post.config = config
     }
-
-    // console.log("config", config)
-    // console.log("post", post)
 
     return {
         post,

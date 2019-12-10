@@ -1,7 +1,7 @@
 import fetch from "isomorphic-unfetch"
 
-import { Post } from "../types/Post"
 import { PaginatedResponse, Pagination } from "../types/PaginatedResponse"
+import { Post } from "../types/Post"
 import { Serie } from "../types/Serie"
 
 export async function fetchPostApi(options: {

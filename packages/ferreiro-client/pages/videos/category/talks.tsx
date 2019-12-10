@@ -55,8 +55,6 @@ export default function Talks(props: Props) {
 Talks.getInitialProps = async function(context: any): Promise<Props> {
     const response: VideosMultilanguagePaginated = await fetchTalksVideosApi()
 
-    console.log(response)
-
     return {
         englishVideos: response.englishVideos.items,
         spanishVideos: response.spanishVideos.items

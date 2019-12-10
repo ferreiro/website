@@ -8,13 +8,6 @@ function TabItem(props: { activePath: string; tab: Tab }) {
     const isActiveItem = props.activePath === props.tab.as
     const className = cx(styles.item, isActiveItem && styles.itemActive)
 
-    console.group("TabItem")
-    console.log("props.tab", props.tab)
-    console.log("props.activePath", props.activePath)
-    console.log("props.tab.path", props.tab.path)
-    console.log("isActiveItem", isActiveItem)
-    console.groupEnd()
-
     return (
         <div className={className}>
             <Link href={props.tab.path} as={props.tab.as}>
