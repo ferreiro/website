@@ -83,7 +83,6 @@ export async function fetchTalks(_, res, next) {
 // We set res.locals in every controller logic as a variable
 // for the current request.
 export function responseHandler(_, res) {
-    console.log(res.locals.errors)
     if (res.locals.errors) {
         return res.status(401).json({
             error: res.locals.errors
@@ -106,8 +105,6 @@ function _fetchVideosFromPlaylist(playlistId) {
     return fetch(endpoint)
         .then(response => response.json())
         .then(responseJson => {
-            console.log(responseJson)
-
             return {
                 items: transformYoutubePlaylistVideos(responseJson.items),
                 pagination: responseJson.pageInfo
