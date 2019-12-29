@@ -19,6 +19,10 @@ function comingSoon(req, res) {
   return res.render("comingSoon");
 }
 
+function recap2019(req, res) {
+  return res.render("./pages/landings/2019");
+}
+
 // leave this, backwards compatibility
 function redirectProjectsToPortfolio(req, res) {
   return res.redirect("/portfolio");
@@ -57,6 +61,7 @@ router.use("/encuesta", surveySpanish);
 router.use("/survey", surveyEnglish);
 router.get("/feedback", redirectFeedbackToContact);
 router.use("/gifts", gifts);
+router.use("/2019", recap2019);
 router.use("/go", go);
 router.use("/london", redirectMeetupLondon);
 router.use("/newsletter", newsletter);
