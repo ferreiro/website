@@ -10,6 +10,107 @@
   },
   "pastTalks": [
     {
+      "title": "My Newbie Road to TypeScript - Eventbrite",
+      "summary": "I gave a quick presentation for the frontend engineers at Eventbrite and I covered: Why to use TypeScript? What's strategy did we use in my team to adopt TypeScript? How to create shared types across multiple apps?",
+      "permalink": "https://speakerdeck.com/ferreiro/my-newbie-road-to-typescript",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_newbie_road_to_typescript.png",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "Dec 13th, 2019",
+      "location": {
+        "venue": "Eventbrite Madrid",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/my-newbie-road-to-typescript"
+        }
+      ]
+    },
+    {
+      "title": "Interactive Prototyping with React + Framer - Eventbrite Madrid",
+      "summary": "Introduction to Interactive Prototyping with React and Framer for the design team in Eventbrite Spain. We covered how to create your first prototypes using Framer, as well as the main concepts of the tool.",
+      "permalink": "https://speakerdeck.com/ferreiro/interactive-prototyping-with-react-plus-framer-jorge-ferreiro-at-eventbrite-spain",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_interactive_prototyping_with_react_and_framer.png",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "Dec 4th, 2019",
+      "location": {
+        "venue": "Eventbrite Madrid",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/interactive-prototyping-with-react-plus-framer-jorge-ferreiro-at-eventbrite-spain"
+        }
+      ]
+    },
+    {
+      "title": "The future YOU - Eventbrite Argentina",
+      "summary": "Talk for my Argentina folks working for Eventbrite in Mendoza. They are school graduates and other smart people who are starting to build a successful career in tech.",
+      "permalink": "https://speakerdeck.com/ferreiro/the-future-you-eda-eventbrite-argentina-jorge-ferreiro",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_the_future_you.png",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "Nov 21th, 2019",
+      "location": {
+        "venue": "Eventbrite Argentina",
+        "city": "Online"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/the-future-you-eda-eventbrite-argentina-jorge-ferreiro"
+        }
+      ]
+    },
+    {
+      "title": "Codemotion webinar - Progressive Web Apps",
+      "summary": "Webinar for Codemotion about Progressive Web Apps and how to start creating your first Progressive Web App.",
+      "permalink": "https://www.youtube.com/watch?v=yYjvLUj-Mt8",
+      "type": "slides",
+      "pic": "/images/talks/jorge_ferreiro_speaker_public_talk_codemotion_progressive_web_apps.png",
+      "language": {
+        "display": "English",
+        "icon": "icon-english"
+      },
+      "date": "Oct 24th, 2019",
+      "location": {
+        "venue": "Codemotion Webinar",
+        "city": "Madrid"
+      },
+      "event": "",
+      "buttons": [
+        {
+          "title": "Watch the video",
+          "type": "video",
+          "url": "https://www.youtube.com/watch?v=yYjvLUj-Mt8"
+        },
+        {
+          "title": "Read the slides",
+          "type": "slides",
+          "url": "https://speakerdeck.com/ferreiro/codemotion-webinar-progressive-web-applications-pwas-jorge-ferreiro-at-jgferreiro"
+        }
+      ]
+    },
+    {
       "title": "Pennapps hackathon - Workshop: Progressive Web Apps, the future of web development - University of Pennsylvania",
       "summary": "Progressive Web Apps is a term that Google created in 2015. Representing the next revolution in web development, PWAs enable more reliable, faster and engaging user experiences while also incorporating mobile app functionalities into websites.",
       "permalink": "https://www.youtube.com/watch?v=de1xiqz-BTE",
@@ -366,7 +467,7 @@
       "event": "",
       "buttons": [
         {
-          "title" : "Read presentation",
+          "title": "Read presentation",
           "type": "slides",
           "url": "https://www.slideshare.net/jgferreiro/dailyfocus"
         }
