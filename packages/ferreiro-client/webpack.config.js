@@ -5,20 +5,22 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
-const DESTINATION_PATH = path.join(__dirname, '../ferreiro-server/dist');
+const LIB_PATH = path.join(__dirname, './lib')
+const DIST_PATH = path.join(__dirname, '../ferreiro-server/dist')
 
 module.exports = {
     entry: {
         client: './src/index.js',
+        lib: './src/server.js',
     },
     output: {
         filename: '[name].bundle.js',
-        path: DESTINATION_PATH,
+        path: LIB_PATH,
     },
     // This is required to make the hot reload work for the web...
     target: 'web',
     devServer: {
-        contentBase: DESTINATION_PATH,
+        contentBase: DIST_PATH,
         compress: true,
         port: 9000
     },
@@ -31,7 +33,11 @@ module.exports = {
         }),
         new CopyWebpackPlugin([{
           from: './images/**/**',
-          to: DESTINATION_PATH
+          to: DIST_PATH
+        }]),
+        new CopyWebpackPlugin([{
+          from: `${LIB_PATH}/client.bundle.js`,
+          to: DIST_PATH
         }]),
         new ImageminPlugin()
     ],

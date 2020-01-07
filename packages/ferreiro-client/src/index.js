@@ -2,12 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 
-import App from './App'
-import {Blog} from './pages/blog/Blog'
+import App from './app'
 
-ReactDOM.render(
-    <Blog />,
-    document.getElementById('blog')
+function Header() {
+    return <div>This is a react notification!</div>
+}
+
+ReactDOM.hydrate(
+    <Header />,
+    document.getElementById('header')
 )
 
 ReactDOM.render(

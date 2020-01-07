@@ -93,7 +93,7 @@ module.exports.buildJs = function buildJs (opts) {
         .src(opts.src)
         .pipe(cache.filter()) // remember files
         .pipe(babel({
-            presets: ['es2015'] // compile ne ones
+            presets: ['@babel/env'] // compile ne ones
         }))
         .pipe(concat(opts.filename))
         .pipe(uglify())
