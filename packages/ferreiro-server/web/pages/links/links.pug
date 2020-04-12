@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css?v=3.6.3', type='text/css')
     <meta charset="UTF-8"><meta http-equiv="Content-Language" content="en-US">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     meta(property="og:type", content="website")
@@ -116,6 +117,19 @@ html
         width: 100%;
       }
 
+      .social {
+        margin-bottom: 3rem;
+        display: flex;
+        justify-content: center;
+      }
+      .social img {
+        width: 30px;
+        margin: 0 .3rem;
+        border: 2px solid #cecece;
+        border-radius: 10px;
+        padding: .4rem;
+      }
+
     .wrapper
       .masthead
         img.masthead__image(src="https://scontent-mad1-1.cdninstagram.com/v/t51.2885-19/s150x150/44545007_194949794748632_2823704911357673472_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_ohc=atMca9GHGTYAX_epVDa&oh=2bc77848b96e5bc888e666507f2fddf4&oe=5EBBDE07", alt="Jorge Ferreiro, developer, indie maker, entrepreneur")
@@ -159,3 +173,17 @@ html
               h3.project__title= project.title
 
 
+      h2.projects__title Social networks
+
+      .social
+        a(href="https://www.linkedin.com/in/jgferreiro/?utm_source=links&utm_medium=cta&utm_campaign=links-ferreiro")
+          img(src="/images/icons/logo-linkedin.svg")
+
+        a(href="https://www.twitter.com/jgferreiro/?utm_source=links&utm_medium=cta&utm_campaign=links-ferreiro")
+          img(src="/images/icons/logo-twitter.svg")
+
+        a(href="https://www.youtube.com/channel/UCA2Z3mQUqOj80M84vRu-3AQ?utm_source=links&utm_medium=cta&utm_campaign=links-ferreiro")
+          img(src="/images/icons/logo-youtube.svg")
+
+        a(href="https://www.instagram.com/jgferreiro/?utm_source=links&utm_medium=cta&utm_campaign=links-ferreiro")
+          img(src="/images/icons/logo-instagram.svg")
