@@ -19,7 +19,7 @@ mixin postCard(post)
             span.postCard__series__text= post.series.title + ' series'
 
     .postCard__body
-      h1.postCard__title
+      h2.postCard__title
         a(href= postUrl)= post.title
       p.postCard__summary= post.summary
       //-a.postCard__date(href= postUrl)= 'Jorge Ferreiro - ' + (post.createdAt || 'Some days ago')

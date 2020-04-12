@@ -230,6 +230,8 @@ $postCard_options_item_margin: 0.8em;
     line-height: $postCard_title;
     height: $postCard_title_max_height;
     max-height: $postCard_title_max_height;
+    font-weight: 700;
+    margin-bottom: 0;
 
     a {
       width: 100%;
