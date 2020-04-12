@@ -38,6 +38,7 @@ html
       }
       .masthead {
         text-align: center;
+        margin-bottom: 3rem;
       }
       .masthead__image {
         width: 100px;
@@ -92,9 +93,25 @@ html
         align-items: center;
       }
 
-      .projects_title {
-        margin-top: 2.5rem;
+      .projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+      }
+      .projects__title {
+        margin: 3rem;
+        margin-bottom: 2rem;
         text-align: center;
+      }
+      .project {
+        
+      }
+      .project__title {
+        color: #000;
+        font-size: 1.3rem;
+      }
+      .project__image {
+        width: 100%;
       }
 
     .wrapper
@@ -130,12 +147,13 @@ html
               h2.card__title=latestVideo.snippet.title.substr(0, 65)
 
 
-      h2.projects_title My project
+      h2.projects__title My projects
 
-      each project in projects
-        .project
-          a(href= project.url).project__link
-            img(src= project.image)
-            h3= project.title
+      .projects
+        each project in projects
+          .project
+            a(href= project.url).project__link
+              img(alt=project.title, src= '/images/' + project.image).project__image
+              h3.project__title= project.title
 
 
