@@ -1,0 +1,118 @@
+doctype html
+html
+  head
+    meta(property="og:type", content="website")
+    meta(property="og:title", content= title ? title : defaultTitle)
+    meta(property='og:description', content= description ? description : defaultDescription)
+    meta(property="og:url", content="http://www.ferreiro.me")
+    meta(property="og:site_name", content="Jorge Ferreiro")
+    meta(property="og:locale", content="en_US")
+    meta(property='og:image', content= defaultImage)
+    meta(property='og:image:alt', content= title + ' ' + defaultTitle)
+
+    meta(name="twitter:site", content="@jgferreiro")
+    meta(name="twitter:creator", content="@jgferreiro")
+    meta(name="twitter:card", content="summary")
+    meta(name="twitter:title", content= title ? title : defaultTitle)
+    meta(name="twitter:description", content=description ? description : defaultDescription)
+    meta(name="twitter:image", content=defaultImage)
+
+    title="Jorge Ferreiro Links"
+    meta(name='description', content="Useful links from Jorge Ferreiro")
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,700&display=swap" rel="stylesheet">
+
+
+  body
+    style.
+      h1, h2, h3, h4, p {
+        margin: 0;
+        padding: 0;
+      }
+      .wrapper {
+        margin: 0 auto;
+        padding: 1em;
+        max-width: 600px;
+        font-family: 'Roboto', sans-serif;
+      }
+      .masthead {
+        text-align: center;
+      }
+      .masthead__image {
+        width: 100px;
+        border-radius: 100%;
+      }
+      .masthead__title {
+        margin: 1rem;
+        font-weight: bold;
+      }
+      .masthead__subtitle {
+        margin: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+      }
+      .cards {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .card {
+        border-radius: 3px;
+        border: 3px solid #d83902;
+        margin-bottom: 1.5rem;
+      }
+      .card__link {
+        display: block;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+      }
+      .card__wrapper {
+        display: flex;
+        align-items: center;
+      }
+      .card__wrapper img {
+        flex: 0 0 auto;
+        width: 120px;
+        height: 80px;
+        object-position: center;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-right: 1.5rem;
+      }
+      .card__label {
+        margin-bottom: 1.2rem;
+      }
+      .card__title {
+        color: #000;
+        line-height: 1.8rem;
+        font-size: 1.6rem;
+      }
+      .card__content {
+        align-items: center;
+      }
+
+    .wrapper
+      .masthead
+        img.masthead__image(src="https://scontent-mad1-1.cdninstagram.com/v/t51.2885-19/s150x150/44545007_194949794748632_2823704911357673472_n.jpg?_nc_ht=scontent-mad1-1.cdninstagram.com&_nc_ohc=atMca9GHGTYAX_epVDa&oh=2bc77848b96e5bc888e666507f2fddf4&oe=5EBBDE07", alt="Jorge Ferreiro, developer, indie maker, entrepreneur")
+        h1.masthead__title Jorge Ferreiro
+        h2.masthead__subtitle @jgferreiro
+
+      h2.card__label Last post
+      .card
+        a(href= '/blog/' + post.permalink).card__link
+          .card__wrapper
+            .card__image
+              img(src= post.pic)
+            .card__content
+              h2.card__title= post.title
+
+      h2.card__label Last video
+      .card
+        a(href="").card__link
+          span.card__label Last post
+          .card__wrapper
+            .card__image
+              img(src="")
+            .card__content
+              h2.card__title This is a title

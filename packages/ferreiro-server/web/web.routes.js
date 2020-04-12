@@ -6,6 +6,7 @@ import contact from "./pages/contact/contact.routes";
 import gifts from "./pages/landings/gifts.routes";
 import go from "./pages/go/go.routes";
 import home from "./pages/home/home.routes";
+import linksLanding from "./pages/links/links.routes"
 import newsletter from "./pages/newsletter/newsletter.routes";
 import portfolio from "./pages/portfolio/portfolio.routes";
 import resume from "./pages/resume/resume.routes";
@@ -58,6 +59,7 @@ router.use("/survey", surveyEnglish);
 router.get("/feedback", redirectFeedbackToContact);
 router.use("/gifts", gifts);
 router.use("/go", go);
+router.use("/links", linksLanding);
 router.use("/london", redirectMeetupLondon);
 router.use("/newsletter", newsletter);
 router.use("/portfolio", portfolio);

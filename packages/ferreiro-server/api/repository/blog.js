@@ -90,7 +90,7 @@ module.exports.getAllDrafts = function () {
         .populate('series')
 }
 
-module.exports.getAllPublished = function (extraQueryFields, opts) {
+module.exports.getAllPublished = function (extraQueryFields = {}, opts = {}) {
     let maxLimit = 15
 
     if (opts) {
@@ -123,7 +123,7 @@ module.exports.getAllPublished = function (extraQueryFields, opts) {
 }
 
 // https://stackoverflow.com/questions/5539955/how-to-paginate-with-mongoose-in-node-js
-module.exports.getMostRecentPosts = function (opts) {
+module.exports.getMostRecentPosts = function (opts = {}) {
     const limit = opts.limit || 3
 
     const query = {
@@ -136,7 +136,7 @@ module.exports.getMostRecentPosts = function (opts) {
         .populate('series')
 }
 
-module.exports.getRandomPosts = function (opts) {
+module.exports.getRandomPosts = function (opts = {}) {
     const limit = opts.limit || 3
     const permalinkToSkip = opts.permalinkToSkip || ''
 
