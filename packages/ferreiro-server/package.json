@@ -61,7 +61,7 @@
     "marked": "^0.6.1",
     "memory-cache": "0.2.0",
     "moment": "2.24.0",
-    "mongoose": "^4.11.13",
+    "mongoose": "^5.7.5",
     "mongoose-paginate": "^5.0.3",
     "mongoose-permalink": "^2.0.0",
     "mongoose-simple-random": "^0.4.1",
