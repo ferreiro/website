@@ -86,10 +86,15 @@ html
       .card__title {
         color: #000;
         line-height: 1.8rem;
-        font-size: 1.6rem;
+        font-size: 1.3rem;
       }
       .card__content {
         align-items: center;
+      }
+
+      .projects_title {
+        margin-top: 2.5rem;
+        text-align: center;
       }
 
     .wrapper
@@ -98,21 +103,39 @@ html
         h1.masthead__title Jorge Ferreiro
         h2.masthead__subtitle @jgferreiro
 
-      h2.card__label Last post
-      .card
-        a(href= '/blog/' + post.permalink).card__link
-          .card__wrapper
-            .card__image
-              img(src= post.pic)
-            .card__content
-              h2.card__title= post.title
+      if pinnedLink
+        h2.card__label 📌 Pinned link
+        .card
+          a(href=pinnedLink.url).card__link
+            .card__wrapper
+              .card__content
+                h2.card__title=pinnedLink.title
 
-      h2.card__label Last video
+      h2.card__label 📝 Last post
       .card
-        a(href="").card__link
-          span.card__label Last post
+        a(href= '/blog/' + latestPost.permalink).card__link
           .card__wrapper
             .card__image
-              img(src="")
+              img(src= latestPost.pic)
             .card__content
-              h2.card__title This is a title
+              h2.card__title= latestPost.title
+
+      h2.card__label 📹 Last video
+      .card
+        a(href='https://www.youtube.com/watch?v=' + latestVideo.id.videoId).card__link
+          .card__wrapper
+            .card__image
+              img(src=latestVideo.snippet.thumbnails.default.url)
+            .card__content
+              h2.card__title=latestVideo.snippet.title.substr(0, 65)
+
+
+      h2.projects_title My project
+
+      each project in projects
+        .project
+          a(href= project.url).project__link
+            img(src= project.image)
+            h3= project.title
+
+
