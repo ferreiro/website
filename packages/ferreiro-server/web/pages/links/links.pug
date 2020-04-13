@@ -62,9 +62,17 @@ html
         padding: 0;
       }
       .card {
-        border-radius: 3px;
-        border: 3px solid #d83902;
+        border-radius: 10px;
+        border: 4px solid #bf3201;
         margin-bottom: 1.5rem;
+        background: #d83902;
+        border-bottom-width: 8px;
+        border-right-width: 8px;
+        overflow: hidden;
+      }
+      .card__pinned {
+        background: #5402d8;
+        border-color: #5301bf;
       }
       .card__link {
         display: block;
@@ -89,7 +97,7 @@ html
         margin-bottom: 1.2rem;
       }
       .card__title {
-        color: #000;
+        color: #fff;
         line-height: 1.8rem;
         font-size: 1.3rem;
         font-weight: 500;
@@ -124,6 +132,7 @@ html
       }
       .project__image {
         width: 100%;
+        border-radius: 10px;
       }
 
       .social {
@@ -147,7 +156,7 @@ html
 
       if pinnedLink
         h2.card__label 📌 Pinned link
-        .card
+        .card.card__pinned
           a(href=pinnedLink.url).card__link
             .card__wrapper
               .card__content
