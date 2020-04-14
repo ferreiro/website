@@ -1,9 +1,18 @@
 doctype html
 html
   head
-    link(rel='stylesheet', href='/bower_components/Ionicons/css/ionicons.min.css?v=3.6.3', type='text/css')
-    <meta charset="UTF-8"><meta http-equiv="Content-Language" content="en-US">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-75997945-1')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-75997945-1');
+
+    meta(charset='UTF-8')
+    meta(http-equiv='Content-Language' content='en-US')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+
     meta(property="og:type", content="website")
     meta(property="og:title", content= title ? title : defaultTitle)
     meta(property='og:description', content= description ? description : defaultDescription)
@@ -23,9 +32,7 @@ html
     title="Jorge Ferreiro Links"
     meta(name='description', content="Useful links from Jorge Ferreiro")
 
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,700&display=swap" rel="stylesheet">
-
+    link(href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,700&display=swap' rel='stylesheet')
 
   body
     style.
