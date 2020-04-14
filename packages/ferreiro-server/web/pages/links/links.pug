@@ -82,7 +82,20 @@ html
       .card__wrapper {
         display: flex;
         align-items: center;
+        flex-direction: column;
       }
+      .card__image {
+        display: none;
+      }
+      @media all and (min-width: 600px){
+        .card__image {
+          display: flex;
+        }
+        .card__wrapper {
+          flex-direction: row;
+        }
+      }
+      
       .card__wrapper img {
         flex: 0 0 auto;
         width: 120px;
@@ -101,6 +114,7 @@ html
         line-height: 1.8rem;
         font-size: 1.3rem;
         font-weight: 500;
+        word-break: break-word;
       }
       .card__content {
         align-items: center;
