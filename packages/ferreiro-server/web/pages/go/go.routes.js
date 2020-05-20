@@ -6,6 +6,8 @@ const router = express.Router();
 // TODO: Move this into a database and let the admin of ferreiro.me to
 // create more urls as they need on the go
 const SHORT_URL_TO_URL = {
+  remote:
+    "https://www.youtube.com/watch?v=7XAvIKBBeAE&utm-source=ferreiro&utm-campaign=remote",
   didlaunch:
     "https://developersindepth.com/?utm_source=ferreiro-blog&utm-campaign=did-launch&utm-medium=blog",
   dailyfocus:
