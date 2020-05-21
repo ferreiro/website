@@ -69,5 +69,6 @@ router.use("/resume/jorge_ferreiro_resume.pdf", resume);
 router.use("/stats", stats);
 router.use("/talks", talks);
 router.use("/university", university);
+router.use("/", go);
 
 module.exports = router;
