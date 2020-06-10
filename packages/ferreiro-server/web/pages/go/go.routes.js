@@ -6,6 +6,8 @@ const router = express.Router();
 // TODO: Move this into a database and let the admin of ferreiro.me to
 // create more urls as they need on the go
 const SHORT_URL_TO_URL = {
+  hackathon:
+    "https://www.ferreiro.me/blog/part-1-the-definitive-guide-to-making-the-most-of-college-tech-hackathons?utm_source=ferreiro.me-hackathon-part-2&utm-source=ferreiro&utm-campaign=go-hackathon",
   remote:
     "https://www.youtube.com/watch?v=7XAvIKBBeAE&utm-source=ferreiro&utm-campaign=remote",
   didlaunch:
