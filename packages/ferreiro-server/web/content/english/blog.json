@@ -1,48 +1,48 @@
 {
   "config": {
-    "wallpaper":"/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer.jpg",
-    "title": "The corner of Jorge",
-    "subtitle":"A blog about Software Engineering, Web Development and Entrepreneurship.",
-    "subscription":"/newsletter/",
-    "author":{
-       "name":"Jorge Ferreiro",
-       "url":"http://ferreiro.me"
+    "wallpaper": "/images/blog/jorge_ferreiro_in_san_francisco_golden_gate_software_engineer_full_stack_web_developer.jpg",
+    "title": "The product engineer",
+    "subtitle": "Sharing my lessons learned on building tech products",
+    "subscription": "/newsletter/",
+    "author": {
+      "name": "Jorge Ferreiro",
+      "url": "http://ferreiro.me"
     }
   },
   "posts": [
     {
-       "author":{
-          "name":"Jorge Ferreiro",
-          "url":"http://ferreiro.me",
-          "pic":"/images/jorge_big_2.png"
-       },
-       "date":"3 august",
-       "title":"How I completely rebuild my personal webpage in X days",
-       "permalink":"rebuild-personal-webpage",
-       "pic":"https://images.unsplash.com/photo-1501159771943-cc9027db4d8b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=",
-       "summary":"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae. tenetur perferendis beatae.",
-       "body":"<img src=\"\" /><br />Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae voluptatibus est nihil id a vero asperiores? Adipisci, quas rem quae cumque vitae aut dicta est sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cum vitae quas fuga! Qui fugiat perspiciatis dolorum in.",
-       "unlisted":false,
-       "draft":false,
-       "views":30000,
-       "likes":500
+      "author": {
+        "name": "Jorge Ferreiro",
+        "url": "http://ferreiro.me",
+        "pic": "/images/jorge_big_2.png"
+      },
+      "date": "3 august",
+      "title": "How I completely rebuild my personal webpage in X days",
+      "permalink": "rebuild-personal-webpage",
+      "pic": "https://images.unsplash.com/photo-1501159771943-cc9027db4d8b?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=",
+      "summary": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae. tenetur perferendis beatae.",
+      "body": "<img src=\"\" /><br />Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae voluptatibus est nihil id a vero asperiores? Adipisci, quas rem quae cumque vitae aut dicta est sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cum vitae quas fuga! Qui fugiat perspiciatis dolorum in.",
+      "unlisted": false,
+      "draft": false,
+      "views": 30000,
+      "likes": 500
     },
     {
-       "author":{
-          "name":"Jorge Ferreiro",
-          "url":"http://ferreiro.me",
-          "pic":"/images/jorge_big_2.png"
-       },
-       "date":"3 august",
-       "title":"How I completely rebuild my personal webpage in X days",
-       "permalink":"rebuild-personal-webpage",
-       "pic":"https://images.unsplash.com/photo-1499175860898-fa38bee4bcdd?dpr=2&auto=format&fit=crop&w=1500&h=1541&q=80&cs=tinysrgb&crop=",
-       "summary":"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae. tenetur perferendis beatae.",
-       "body":"<img src=\"\" /><br />Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae voluptatibus est nihil id a vero asperiores? Adipisci, quas rem quae cumque vitae aut dicta est sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cum vitae quas fuga! Qui fugiat perspiciatis dolorum in.",
-       "unlisted":false,
-       "draft":false,
-       "views":30000,
-       "likes":500
+      "author": {
+        "name": "Jorge Ferreiro",
+        "url": "http://ferreiro.me",
+        "pic": "/images/jorge_big_2.png"
+      },
+      "date": "3 august",
+      "title": "How I completely rebuild my personal webpage in X days",
+      "permalink": "rebuild-personal-webpage",
+      "pic": "https://images.unsplash.com/photo-1499175860898-fa38bee4bcdd?dpr=2&auto=format&fit=crop&w=1500&h=1541&q=80&cs=tinysrgb&crop=",
+      "summary": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae. tenetur perferendis beatae.",
+      "body": "<img src=\"\" /><br />Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempore tenetur perferendis beatae voluptatibus est nihil id a vero asperiores? Adipisci, quas rem quae cumque vitae aut dicta est sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius cum vitae quas fuga! Qui fugiat perspiciatis dolorum in.",
+      "unlisted": false,
+      "draft": false,
+      "views": 30000,
+      "likes": 500
     }
   ]
 }
