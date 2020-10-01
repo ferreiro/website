@@ -1,11 +1,11 @@
 # Jorge Ferreiro website
 
-Open source project that runs the website for Jorge Ferreiro, including the blog and the admin panel.
+Open-source project that runs the website for Jorge Ferreiro, including the blog and the admin panel.
 
 **Features:**
 
 - Blog.
-- Adming panel.
+- Admin panel.
 - Projects/Portfolio.
 - Contact form.
 - Subscription modal with Mailchimp.
@@ -15,11 +15,11 @@ Open source project that runs the website for Jorge Ferreiro, including the blog
 
 **Disclaimer:** This documentation is a Work In Progress.
 
-## Cross browser testing with BrowserStack
+## Cross-browser testing with BrowserStack
 
 <img src="https://i1.wp.com/www.diogonunes.com/blog/wp-content/uploads/2016/07/browserstack-logo.png?resize=840%2C276" width="200px" style="float: left;" />
 
-The blog post is getting thousands of readers. In order to make sure that we are able to offer the best possible experience across multiple devices we have teamed up with BrowserStack, a really powerful tool for performing cross browser testing.
+The blog post is getting thousands of readers. In order to make sure that we are able to offer the best possible experience across multiple devices we have teamed up with BrowserStack, a really powerful tool for performing cross-browser testing.
 
 ## Run the server
 
@@ -55,9 +55,9 @@ We have all the configuration for beta and prod inside `./env/index.js`, there w
 
 ### Version 3.5 (December 2018)
 
-* Fully refactor the codebase to use a Ducks pattern. Instead of controllers.js, routes.js, you'll find one folder per functionality. Also, there were some refactors from the web server to the API.
+* Fully refactor the codebase to use a Ducks pattern. Instead of controllers.js, routes.js, you'll find one folder per functionality. Also, there were some refactors from the webserver to the API.
 
-* Revamp completely sections headers and the following sections: home, about and talks.
+* Revamp completely sections headers and the following sections: home, about, and talks.
 * Now the blog has a sidebar with useful links, extra information.
 * Added new biography.
 
