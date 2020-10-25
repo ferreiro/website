@@ -163,6 +163,10 @@ block content_large
 
       .separator_no_margin
 
+      .blogPost__separator
+
+      a(href='https://twitter.com/search?q=https://www.ferreiro.me/blog/' + path) Discuss on Twitter
+
       input#canonicalUrl(type='hidden', value='https://www.ferreiro.me/' + (path ? path : '') + (post ? '/' + post.permalink : ''))
       input#postIdentifier(type='hidden', value= post.permalink)
 
