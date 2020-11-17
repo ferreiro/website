@@ -5,15 +5,16 @@ Open source project that runs the website for Jorge Ferreiro, including the blog
 **Features:**
 
 - Blog.
-- Adming panel.
-- Projects/Portfolio.
-- Contact form.
-- Subscription modal with Mailchimp.
+- Admin panel.
+- Projects.
+- Portfolio.
+- Contact us form.
+- Subscription model with Mailchimp.
 - Image uploader with AWS.
 
 ![](./ferreiro.png)
 
-**Disclaimer:** This documentation is a Work In Progress.
+**Disclaimer:** We are still working on this documentation.
 
 ## Cross browser testing with BrowserStack
 
